@@ -58,6 +58,40 @@ FIXTURE = [
     "not-a-dict",
 ]
 
+# Shaped like https://api.zindi.world/v1/competitions as read on 2026-10-14.
+ZINDI_FIXTURE = {
+    "data": [
+        {"id": "bias-bounty-mapping-equity-challenge",
+         "title": "Bias Bounty Mapping Equity Challenge",
+         "reward": "$10 000 USD", "reward_type": "prize",
+         "start_time": "2026-08-28T14:00:00.000Z", "end_time": "2026-10-31T23:59:00.000Z",
+         "entries_close_at": None, "kind": "competition", "open": True,
+         "is_access_restricted": False, "secret_code_required": False},
+        {"id": "sasol-customer-value-recruitment-challenge",
+         "title": "Sasol Customer Value Recruitment Challenge",
+         "reward": "R25 000 ZAR", "end_time": "2026-10-18T23:59:00.000Z",
+         "kind": "competition", "open": True,
+         "is_access_restricted": False, "secret_code_required": False},
+        {"id": "eswatini-indabax-hack", "title": "IndabaX Eswatini: VAT File & Pay",
+         "reward": "50 000 SZL", "end_time": "2026-10-31T22:15:00.000Z",
+         "kind": "hackathon", "open": True,
+         "is_access_restricted": True, "secret_code_required": True},
+        {"id": "google-waxal-asr-challenge-october-study-jam",
+         "title": "October Study Jam: Google WAXAL ASR Challenge",
+         "reward": "500 Points", "end_time": "2026-10-31T23:59:00.000Z",
+         "kind": "hackathon", "open": True,
+         "is_access_restricted": False, "secret_code_required": False},
+        {"id": "road-barbados-historic-handwriting-challenge",
+         "title": "R.O.A.D. Barbados Historic Handwriting Challenge",
+         "reward": "$25 000 USD", "end_time": "2026-10-04T23:59:00.000Z",
+         "kind": "competition", "open": False},
+        {"id": "closed-but-future-date", "title": "Closed early",
+         "reward": "$3 000 USD", "end_time": "2026-12-01T00:00:00.000Z",
+         "kind": "competition", "open": False},
+    ],
+    "meta": {"total_count": 6, "open_count": 4, "closed_count": 2, "per_page": 10},
+}
+
 
 class ParseTests(unittest.TestCase):
     def test_parse_date_ok(self):
@@ -72,12 +106,28 @@ class ParseTests(unittest.TestCase):
         self.assertIsNone(radar.parse_date("31 Feb 2026"))
         self.assertIsNone(radar.parse_date("2026-10-13"))
 
+    def test_parse_iso_date(self):
+        self.assertEqual(radar.parse_iso_date("2026-10-31T23:59:00.000Z"), dt.date(2026, 10, 31))
+        self.assertIsNone(radar.parse_iso_date(None))
+        self.assertIsNone(radar.parse_iso_date("31 Oct 2026"))
+        self.assertIsNone(radar.parse_iso_date("2026-02-31T00:00:00Z"))
+
     def test_parse_prize(self):
         self.assertEqual(radar.parse_prize("$52,000"), 52000)
         self.assertEqual(radar.parse_prize("$1"), 1)
         self.assertEqual(radar.parse_prize(None), 0)
         self.assertEqual(radar.parse_prize(""), 0)
         self.assertEqual(radar.parse_prize(700000), 700000)
+
+    def test_parse_reward(self):
+        self.assertEqual(radar.parse_reward("$10 000 USD"), (10000, "USD", True))
+        self.assertEqual(radar.parse_reward("R25 000 ZAR"), (25000, "ZAR", True))
+        self.assertEqual(radar.parse_reward("€2 000 EUR"), (2000, "EUR", True))
+        self.assertEqual(radar.parse_reward("1000 CHF"), (1000, "CHF", True))
+        self.assertEqual(radar.parse_reward("$5,000"), (5000, "USD", True))
+        self.assertEqual(radar.parse_reward("500 Points"), (500, None, False))
+        self.assertEqual(radar.parse_reward("Knowledge"), (0, None, False))
+        self.assertEqual(radar.parse_reward(None), (0, None, False))
 
     def test_clean_url(self):
         self.assertEqual(
@@ -125,6 +175,71 @@ class SelectTests(unittest.TestCase):
         self.assertEqual(len(rows), 1)
 
 
+class ZindiTests(unittest.TestCase):
+    def rows(self, **kw):
+        items = radar.zindi_items(ZINDI_FIXTURE)
+        return radar.select_rows([radar.normalize_zindi(e) for e in items], TODAY, **kw)
+
+    def test_normalize(self):
+        r = radar.normalize_zindi(ZINDI_FIXTURE["data"][0])
+        self.assertEqual(r["url"], "https://zindi.world/competitions/bias-bounty-mapping-equity-challenge")
+        self.assertEqual(r["prize_usd"], 10000)
+        self.assertEqual(r["deadline"], dt.date(2026, 10, 31))
+        self.assertEqual(r["platform"], "Zindi")
+        self.assertFalse(r["restricted"])
+
+    def test_default_filter(self):
+        # open, unrestricted, cash: the USD prize first, then the ZAR prize
+        names = [r["name"] for r in self.rows()]
+        self.assertEqual(names, ["Bias Bounty Mapping Equity Challenge",
+                                 "Sasol Customer Value Recruitment Challenge"])
+
+    def test_non_usd_prize_dropped_by_usd_threshold(self):
+        names = [r["name"] for r in self.rows(min_prize=1000)]
+        self.assertEqual(names, ["Bias Bounty Mapping Equity Challenge"])
+
+    def test_include_restricted(self):
+        names = [r["name"] for r in self.rows(include_restricted=True)]
+        self.assertIn("IndabaX Eswatini: VAT File & Pay", names)
+
+    def test_points_and_closed_excluded(self):
+        names = [r["name"] for r in self.rows(min_prize=0, include_restricted=True)]
+        self.assertIn("October Study Jam: Google WAXAL ASR Challenge", names)  # min_prize 0 keeps no-cash
+        self.assertNotIn("Closed early", names)  # open: false even though the date is ahead
+        self.assertNotIn("R.O.A.D. Barbados Historic Handwriting Challenge", names)
+
+    def test_markdown_shows_foreign_currency(self):
+        md = radar.render_markdown(self.rows(), TODAY)
+        self.assertIn("| R25 000 ZAR | 2026-10-18 | 5 |", md)
+        self.assertIn("| 10,000 | 2026-10-31 | 18 |", md)
+
+    def test_pagination_stops(self):
+        calls = []
+
+        def fetch(url):
+            calls.append(url)
+            return ZINDI_FIXTURE  # the API ignoring ?page= must not loop
+
+        items = radar.load_zindi(fetch=fetch)
+        self.assertEqual(len(items), len(ZINDI_FIXTURE["data"]))
+        self.assertLessEqual(len(calls), 2)
+
+    def test_pagination_follows_pages(self):
+        page1 = {"data": [{"id": "a", "open": True}], "meta": {"open_count": 2}}
+        page2 = {"data": [{"id": "b", "open": True}], "meta": {"open_count": 2}}
+        pages = {radar.ZINDI_API_URL: page1, radar.ZINDI_API_URL + "?page=2": page2}
+        items = radar.load_zindi(fetch=lambda u: pages[u])
+        self.assertEqual([i["id"] for i in items], ["a", "b"])
+
+    def test_dedupe_across_sources(self):
+        ml = [{"name": "Bias Bounty Mapping Equity Challenge", "deadline": "31 Oct 2026",
+               "prize": "$10,000", "platform": "Zindi"}]
+        rows = [radar.normalize(e) for e in ml]
+        rows += [radar.normalize_zindi(e) for e in ZINDI_FIXTURE["data"]]
+        out = radar.select_rows(rows, TODAY)
+        self.assertEqual(sum(1 for r in out if r["name"].startswith("Bias Bounty")), 1)
+
+
 class RenderTests(unittest.TestCase):
     def test_markdown(self):
         rows = radar.select(FIXTURE, TODAY)
@@ -147,21 +262,48 @@ class RenderTests(unittest.TestCase):
 
 
 class CliTests(unittest.TestCase):
+    def run_main(self, argv):
+        import io
+        from contextlib import redirect_stdout
+
+        buf = io.StringIO()
+        with redirect_stdout(buf):
+            rc = radar.main(argv)
+        return rc, buf.getvalue()
+
     def test_main_offline_json(self):
         with tempfile.TemporaryDirectory() as d:
             path = os.path.join(d, "competitions.json")
             with open(path, "w", encoding="utf-8") as fh:
                 json.dump(FIXTURE, fh)
-            import io
-            from contextlib import redirect_stdout
-
-            buf = io.StringIO()
-            with redirect_stdout(buf):
-                rc = radar.main(["--input", path, "--today", "2026-10-13", "--json"])
+            rc, out = self.run_main(["--input", path, "--today", "2026-10-13", "--json"])
             self.assertEqual(rc, 0)
-            data = json.loads(buf.getvalue())
+            data = json.loads(out)
             self.assertEqual(len(data), 2)
             self.assertEqual(data[0]["prize_usd"], 50000)
+
+    def test_main_offline_both_sources(self):
+        with tempfile.TemporaryDirectory() as d:
+            ml = os.path.join(d, "competitions.json")
+            zi = os.path.join(d, "zindi.json")
+            with open(ml, "w", encoding="utf-8") as fh:
+                json.dump(FIXTURE, fh)
+            with open(zi, "w", encoding="utf-8") as fh:
+                json.dump(ZINDI_FIXTURE, fh)
+            rc, out = self.run_main(["--input", ml, "--zindi-input", zi,
+                                     "--today", "2026-10-13", "--json"])
+            self.assertEqual(rc, 0)
+            data = json.loads(out)
+            self.assertEqual([r["source"] for r in data],
+                             ["mlcontests", "zindi", "mlcontests", "zindi"])
+
+    def test_unknown_source(self):
+        import io
+        from contextlib import redirect_stderr
+
+        with redirect_stderr(io.StringIO()):
+            rc, _ = self.run_main(["--sources", "nope"])
+        self.assertEqual(rc, 2)
 
     def test_main_wrapper_object(self):
         with tempfile.TemporaryDirectory() as d:
