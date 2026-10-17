@@ -1,4 +1,4 @@
-# AI-assistance rules across ML competition platforms (checked 2026-10-17)
+# AI-assistance rules across ML competition platforms (version 0.2.0, checked 2026-10-17)
 
 CC BY 4.0. MV2 of Munim, Inc., with AI agents working in his name. Quotes are verbatim
 fragments of at most 125 characters; the URL carries the full text. "none" means the page has
@@ -11,15 +11,16 @@ no such clause, not that the thing is allowed.
 | [DrivenData](https://www.drivendata.org/competitions/297/whats-up-docs/rules/) (standard template) | page fetched | none | none | not addressed | **no**: "Legal entities and organizations are not eligible for entry." | 18+ and age of majority; not under U.S. sanctions; Russian Federation residents cannot win | "Winning solutions need to be made available under the MIT License" | documentation template; "Privately sharing code or data outside of teams is not permitted." |
 | [Kaggle](https://www.kaggle.com/competitions/abstraction-and-reasoning-challenge/rules) (Foundational Rules) | search snippets only (JS page) | none | per competition: "permits the use of automated machine learning tool(s) ("AMLT")" | not addressed; external tools must be "reasonably accessible to all" | **no** in practice: "Each Team member must be a single individual with a separate Kaggle account." | Crimea, DNR, LNR, Cuba, Iran, Syria, North Korea, U.S. sanctions excluded | per competition | per competition; code competitions run in Notebooks |
 | [Codabench](https://github.com/codalab/codabench/blob/master/documentation/PRIVACY.md) | page fetched | none | none | not addressed; organiser terms govern | not addressed | none; French law | organiser property "unless otherwise stated in the competition's terms of use" | per competition |
+| [EvalAI](https://evalai.readthedocs.io/en/latest/configuration.html) (host docs; no platform-wide terms) | page fetched + starter template | none | none | set by each host | per challenge; hosts may filter by e-mail domain: "Leave blank if everyone is allowed to participate." | none at platform level | per challenge | host's "Python script which will decide how to evaluate submissions" |
 | [NeurIPS 2026 EEG/EMG Foundation Challenge](https://neural-interfaces26.github.io/rules.html) | page fetched | none | none | not addressed | **yes**: "Industry, academia, students, and independents are all eligible" | none stated | "Participants retain the intellectual property rights"; open release "entirely the participant's choice" | "The top three per track must replay within ±2σ."; training re-run from committed config |
 | [Wunder Fund Alfa Connectome](https://wundernn.io/docs/rules) | saved copy (2026-10-16) re-read | none | none | not addressed; sandbox has no network | not addressed | not addressed | code + 2-8 page report + code-review call | no public or private sharing before the end |
 | [ThinkOnward](https://thinkonward.com/app/c/challenges/patch-the-planet/rules) | page fetched | none | none | not addressed; no GPL/LGPL code | **yes**: "you" may mean "Your Organization on whose behalf you are acting" | 18+ or majority; restricted jurisdictions listed | non-exclusive, perpetual, royalty-free licence "for any purpose whatsoever" | documents + one interview |
 | [bitgrit (AI Immune System Challenge)](https://bitgrit.com/competition/27) | page fetched | none | none | **forbidden**: "commercial or proprietary APIs (e.g., OpenAI GPT series, Claude, Gemini API) is strictly prohibited" | individuals only; no teams | none stated | README to reproduce end to end; exact model weights or version link | "fix all random seeds and set the inference temperature to 0" |
+| [CrunchDAO](https://docs.crunchdao.com/) (docs landing page only) | page fetched | none | none | not addressed on this page | not addressed as such: "Everyone. Crunch is open and permissionless." | not addressed on this page | "rewarded in USDC"; licence in per-competition rules (not read) | not addressed on this page |
 
-Not covered this time: Solafune (terms page 404), Numerai (rules page 404; ToS not read),
-CrunchDAO (rules behind sign-up; earlier reading: KYC, one account per natural person), Signate
-(not found), Tianchi (snippet only: one 2025 challenge forbids "commercial LLM API calls"),
-EvalAI (not searched).
+Not covered (with the reason, all 2026-10-17): Solafune (terms page HTTP 404), Numerai (terms
+page JS-only; rules page HTTP 404), Signate (terms URL redirects to a JS-only page), Topcoder
+(terms page JS-only), HeroX (terms page HTTP 404), Tianchi (search snippets only).
 
 ## Reading
 
@@ -33,6 +34,13 @@ EvalAI (not searched).
    restricts how the code was written.
 4. Every platform with prizes re-runs or inspects winning code. An AI-made pipeline is held to
    the same bar: scripted, seeded, documented.
+5. (New in 0.2.0) EvalAI has no platform-wide participation terms at all: each host writes its
+   own terms HTML, and on 2026-10-17 the terms file in the official EvalAI-Starters template was
+   Lorem ipsum placeholder text. Whether any live challenge still ships it was not checked.
+6. (New in 0.2.0) Platform terms are increasingly unreadable without a browser: Numerai,
+   Signate, Topcoder and Kaggle all render their terms with JavaScript, and Solafune and HeroX
+   returned 404 at their terms URLs. A census like this one can only quote what a plain fetch
+   returns, so those four plus two stay listed as not covered rather than guessed.
 
 ## Prior art checked (2026-10-17)
 

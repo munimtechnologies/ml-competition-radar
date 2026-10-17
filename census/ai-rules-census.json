@@ -1,11 +1,15 @@
 {
   "name": "ml-competition-ai-rules-census",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "checked_utc": "2026-10-17",
   "licence": "CC BY 4.0",
   "made_by": "MV2 of Munim, Inc., with AI agents working in his name",
-  "method": "For each platform or contest the platform-wide terms page (or, where none exists, the standard per-competition rules template) was fetched on 2026-10-17 and searched for: AI-assisted or AI-generated code; AutoML; commercial LLM APIs inside a solution; external data; pre-trained models; whether companies or legal entities may enter; age and sanctions; winner code terms; reproducibility audits. Quotes are verbatim fragments of at most 125 characters each. 'read_how' says whether the primary page was read directly, read from a saved copy, or only seen through search-result snippets.",
-  "headline": "Of 9 platforms or contests whose primary terms were read, 0 have any clause on AI-assisted or AI-generated code. The rules that actually bind an AI-made entry are indirect: natural-person-only eligibility (DrivenData, Kaggle), open-source / no-paid-service rules that forbid commercial LLM APIs inside a solution (Zindi, bitgrit), and reproducibility audits (NeurIPS EEG/EMG 2026, bitgrit, Zindi).",
+  "method": "For each platform or contest the platform-wide terms page (or, where none exists, the standard per-competition rules template or the platform's own documentation) was fetched on 2026-10-17 and searched for: AI-assisted or AI-generated code; AutoML; commercial LLM APIs inside a solution; external data; pre-trained models; whether companies or legal entities may enter; age and sanctions; winner code terms; reproducibility audits. Quotes are verbatim fragments of at most 125 characters each. 'read_how' says whether the primary page was read directly, read from a saved copy, or only seen through search-result snippets.",
+  "headline": "Of 11 platforms or contests whose primary texts were read, 0 have any clause on AI-assisted or AI-generated code. The rules that actually bind an AI-made entry are indirect: natural-person-only eligibility (DrivenData, Kaggle), open-source / no-paid-service rules that forbid commercial LLM APIs inside a solution (Zindi, bitgrit), and reproducibility audits (NeurIPS EEG/EMG 2026, bitgrit, Zindi). EvalAI has no platform-wide participation terms at all: each host writes its own, and the official starter template's terms file is placeholder text.",
+  "changes": [
+    {"version": "0.2.0", "date": "2026-10-17", "what": "Added EvalAI (host documentation and starter template) and CrunchDAO (documentation landing page). Re-tried Numerai, Signate, Topcoder and HeroX: their terms pages were JS-only, redirected or missing, so they stay under not_covered with the reason."},
+    {"version": "0.1.0", "date": "2026-10-17", "what": "First census: Zindi, AIcrowd, DrivenData, Kaggle, Codabench, NeurIPS 2026 EEG/EMG Foundation Challenge, Wunder Fund Alfa Connectome, ThinkOnward, bitgrit."}
+  ],
   "platforms": [
     {
       "name": "Zindi",
@@ -84,6 +88,22 @@
       "reproducibility": "per competition"
     },
     {
+      "name": "EvalAI",
+      "scope": "platform (no platform-wide participation terms found; each challenge host supplies its own terms HTML)",
+      "url": "https://evalai.readthedocs.io/en/latest/configuration.html",
+      "read_how": "fetched page (host configuration docs) and the official starter template https://github.com/Cloud-CV/EvalAI-Starters (templates/terms_and_conditions.html)",
+      "ai_assisted_code_clause": null,
+      "automl_clause": null,
+      "commercial_llm_api_inside_solution": "not addressed; set by each host",
+      "external_data": "not addressed; set by each host",
+      "pretrained_models": "not addressed; set by each host",
+      "legal_entities_may_enter": "set per challenge; hosts may filter by e-mail domain: 'A list of domains allowed to participate in the challenge. Leave blank if everyone is allowed to participate.'",
+      "age_or_sanctions": "none stated at platform level",
+      "winner_code_terms": "per challenge",
+      "reproducibility": "per challenge; scoring is the host's 'Python script which will decide how to evaluate submissions in different phases'",
+      "note": "The terms field is described as 'Terms and conditions of the challenge (use a relative path for the HTML file, e.g. `templates/terms_and_conditions.html`)'. On 2026-10-17 that file in the official EvalAI-Starters template held only Lorem ipsum placeholder text, so a host who does not replace it publishes no terms. Live challenges were not checked for this."
+    },
+    {
       "name": "NeurIPS 2026 EEG/EMG Foundation Challenge (hosted on Codabench)",
       "scope": "contest rules",
       "url": "https://neural-interfaces26.github.io/rules.html",
@@ -142,15 +162,31 @@
       "age_or_sanctions": "none stated on the page",
       "winner_code_terms": "README with 'Clear, unambiguous instructions to reproduce the predictions from start to finish'; weights or a permanent link to the exact pre-trained model version",
       "reproducibility": "'Participants must fix all random seeds and set the inference temperature to 0 (where applicable)'"
+    },
+    {
+      "name": "CrunchDAO",
+      "scope": "documentation landing page only (each competition's rules sit behind sign-up and were not read)",
+      "url": "https://docs.crunchdao.com/",
+      "read_how": "fetched page",
+      "ai_assisted_code_clause": null,
+      "automl_clause": null,
+      "commercial_llm_api_inside_solution": "not addressed on this page",
+      "external_data": "not addressed on this page",
+      "pretrained_models": "not addressed on this page",
+      "legal_entities_may_enter": "not addressed as such: 'Everyone. Crunch is open and permissionless.' 'Anyone with skill can compete, regardless of geography or institutional backing.'",
+      "age_or_sanctions": "not addressed on this page",
+      "winner_code_terms": "models are 'ranked, and rewarded in USDC'; licence terms are in each competition's rules (not read)",
+      "reproducibility": "not addressed on this page",
+      "note": "An earlier reading of one CrunchDAO competition's rules by MV2's agents (not re-read on 2026-10-17) found identity checks (KYC) and a perpetual licence; the landing page mentions neither. Treat this record as the platform's own summary, not its binding terms."
     }
   ],
   "not_covered": [
     {"name": "Solafune", "reason": "https://solafune.com/about/terms returned HTTP 404 on 2026-10-17; rules are per competition"},
-    {"name": "Numerai", "reason": "https://docs.numer.ai/numerai-tournament/rules returned HTTP 404; the Terms of Service at https://numer.ai/terms were not read this run"},
-    {"name": "CrunchDAO", "reason": "rules sit behind sign-up; an earlier reading (MV2 playbook) found KYC and one account per natural person"},
-    {"name": "Signate", "reason": "no platform-wide AI clause found by search in Japanese or English; the terms page was not read"},
-    {"name": "Tianchi", "reason": "only search snippets: one 2025 challenge said 'commercial LLM API calls is prohibited'; the platform terms were not read"},
-    {"name": "EvalAI", "reason": "not searched this run"}
+    {"name": "Numerai", "reason": "https://numer.ai/terms is JS-rendered: on 2026-10-17 a plain fetch returned only navigation and 'We're sorry but Numerai doesn't work properly without JavaScript enabled.'; https://docs.numer.ai/numerai-tournament/rules returned HTTP 404"},
+    {"name": "Signate", "reason": "https://signate.jp/terms redirected (HTTP 301) to https://competition-content.signate.jp/, whose content is JS-rendered (title only) on 2026-10-17"},
+    {"name": "Topcoder", "reason": "https://www.topcoder.com/policy/terms returned only the title 'Topcoder' (JS-rendered) on 2026-10-17; an older Community Terms page was found by search but not read"},
+    {"name": "HeroX", "reason": "https://www.herox.com/terms returned HTTP 404 on 2026-10-17"},
+    {"name": "Tianchi", "reason": "only search snippets: one 2025 challenge said 'commercial LLM API calls is prohibited'; the platform terms were not read"}
   ],
   "prior_art_checked": [
     {"what": "mlcontests.com State of Competitive ML 2023 and State of ML Competitions 2024", "finding": "report how winners used LLMs and note one competition that required specific open-weight models; no rules census"},
@@ -159,8 +195,9 @@
     {"what": "mlcontests.com/platforms feature matrix", "finding": "compares code evaluation, private evaluation and similar features; no AI-use policy column"}
   ],
   "limits": [
-    "Nine primary texts, one date. Rules change; per-competition rules can override every platform-wide term quoted here.",
+    "Eleven primary texts, one date. Rules change; per-competition rules can override every platform-wide term quoted here.",
     "Kaggle quotes come from search-result snippets of rules pages, not from a direct read; Kaggle's pages are JS-rendered.",
+    "The EvalAI and CrunchDAO records rest on documentation pages, not on binding terms: EvalAI has no platform-wide participation terms, and CrunchDAO's per-competition rules were not read.",
     "Quotes are fragments of at most 125 characters, so some sentences are split; the URL gives the full text.",
     "Absence of a clause is reported as 'not addressed', never as 'allowed'."
   ]

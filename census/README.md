@@ -2,15 +2,13 @@
 
 A dated census of what machine-learning and data-competition platforms actually say
 about AI-assisted entries, with verbatim quotes and the URL each quote came from.
-It sits next to ml-competition-radar, which lists the competitions; this folder records
-the rules that decide whether an entry made with AI help may take part.
 
-Version 0.1.0, checked 2026-10-17. Made by MV2 of Munim, Inc. with AI agents working in his
-name. Text and data in this folder: CC BY 4.0. Code in the repository: Apache-2.0.
+Version 0.2.0, checked 2026-10-17. Made by MV2 of Munim, Inc. with AI agents working in his
+name. Text and data: CC BY 4.0. Code in this repository: Apache-2.0.
 
 ## The finding
 
-Of 9 platforms or contests whose primary terms were read on 2026-10-17, **none has a clause
+Of 11 platforms or contests whose primary texts were read on 2026-10-17, **none has a clause
 about AI-assisted or AI-generated code**. Not one permits it, forbids it, or asks for it to be
 disclosed. What actually binds an entry made with AI is indirect:
 
@@ -21,6 +19,7 @@ disclosed. What actually binds an entry made with AI is indirect:
 | AutoML ban | Zindi ("Automated machine learning tools such as AutoML are not permitted.") | Written for AutoML products; does not mention coding assistants or agents |
 | Reproducibility audit | NeurIPS EEG/EMG 2026 (re-run training, ±2σ), bitgrit (fixed seeds), Zindi (code must run, "Always set the seed.") | An AI-made pipeline must be scripted and seeded like any other |
 | Organisations welcome | ThinkOnward ("you" may mean "Your Organization"), NeurIPS EEG/EMG 2026 ("Industry, academia, students, and independents are all eligible") | A company can enter as itself |
+| No platform terms at all | EvalAI (each host writes its own terms; the official starter template's terms file was Lorem ipsum on 2026-10-17) | Read each challenge's own terms; there is nothing above them |
 
 The practical rule for anyone entering with AI help in 2026: check eligibility (person or
 entity), keep every model and package open and reproducible, and disclose AI use in the
@@ -31,8 +30,16 @@ disqualify entries that break "the spirit of the Competition".
 
 - `ai-rules-census.json`: one record per platform with the quotes by topic, how the page was
   read (direct fetch, saved copy, or search snippet only), the platforms not covered and why,
-  and the prior art checked.
+  the prior art checked, and a change log.
 - `ai-rules-census.md`: the same as a readable table.
+
+## What changed in 0.2.0
+
+- Added EvalAI (host configuration docs and the official EvalAI-Starters template) and
+  CrunchDAO (documentation landing page; its per-competition rules sit behind sign-up).
+- Re-tried Numerai, Signate, Topcoder and HeroX. Their terms pages were JS-only, redirected to
+  a JS-only page, or returned 404, so they stay under "not covered" with the reason, rather
+  than being filled in from memory or snippets.
 
 ## Why it is new
 
@@ -47,10 +54,12 @@ could not be read, so it may overlap; that is the main limit of this claim.
 
 - One date. Per-competition rules can override every platform-wide term quoted here.
 - Kaggle's rules pages are JS-rendered; its quotes come from search-result snippets.
+- The EvalAI and CrunchDAO records rest on documentation pages, not binding terms.
 - Quotes are fragments of at most 125 characters each; the URL carries the full text.
 - "Not addressed" never means "allowed".
 
 ## How to update
 
 Fetch each URL in `ai-rules-census.json`, search it for the same topics, replace the quotes,
-bump `checked_utc` and the version. Add a platform by adding a record with the same keys.
+bump `checked_utc` and the version, and add a line to `changes`. Add a platform by adding a
+record with the same keys.
