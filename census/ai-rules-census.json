@@ -1,12 +1,14 @@
 {
   "name": "ml-competition-ai-rules-census",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "checked_utc": "2026-10-17",
+  "evalai_live_check_utc": "2026-10-18",
   "licence": "CC BY 4.0",
   "made_by": "MV2 of Munim, Inc., with AI agents working in his name",
-  "method": "For each platform or contest the platform-wide terms page (or, where none exists, the standard per-competition rules template or the platform's own documentation) was fetched on 2026-10-17 and searched for: AI-assisted or AI-generated code; AutoML; commercial LLM APIs inside a solution; external data; pre-trained models; whether companies or legal entities may enter; age and sanctions; winner code terms; reproducibility audits. Quotes are verbatim fragments of at most 125 characters each. 'read_how' says whether the primary page was read directly, read from a saved copy, or only seen through search-result snippets.",
-  "headline": "Of 11 platforms or contests whose primary texts were read, 0 have any clause on AI-assisted or AI-generated code. The rules that actually bind an AI-made entry are indirect: natural-person-only eligibility (DrivenData, Kaggle), open-source / no-paid-service rules that forbid commercial LLM APIs inside a solution (Zindi, bitgrit), and reproducibility audits (NeurIPS EEG/EMG 2026, bitgrit, Zindi). EvalAI has no platform-wide participation terms at all: each host writes its own, and the official starter template's terms file is placeholder text.",
+  "method": "For each platform or contest the platform-wide terms page (or, where none exists, the standard per-competition rules template or the platform's own documentation) was fetched on 2026-10-17 and searched for: AI-assisted or AI-generated code; AutoML; commercial LLM APIs inside a solution; external data; pre-trained models; whether companies or legal entities may enter; age and sanctions; winner code terms; reproducibility audits. Quotes are verbatim fragments of at most 125 characters each. 'read_how' says whether the primary page was read directly, read from a saved copy, or only seen through search-result snippets. On 2026-10-18 EvalAI's public JSON list of running challenges (https://eval.ai/api/challenges/challenge/present/approved/public, 18 challenges; the upcoming list https://eval.ai/api/challenges/challenge/future/approved/public was empty) was searched in every field for placeholder text ('Lorem', 'ipsum', 'consectetur', 'dolor sit'), in the terms fields for AI-tool terms, and its has_prize flags were counted; the challenges that stood out were re-read from https://eval.ai/api/challenges/challenge/<id>.",
+  "headline": "Of 11 platforms or contests whose primary texts were read, 0 have any clause on AI-assisted or AI-generated code. The rules that actually bind an AI-made entry are indirect: natural-person-only eligibility (DrivenData, Kaggle), open-source / no-paid-service rules that forbid commercial LLM APIs inside a solution (Zindi, bitgrit), and reproducibility audits (NeurIPS EEG/EMG 2026, bitgrit, Zindi). EvalAI has no platform-wide participation terms at all: each host writes its own. The official starter template's terms file is placeholder text, but none of the 18 running EvalAI challenges still shipped it on 2026-10-18. One of them (eBay 2026 University ML Competition - Canada) carries the first explicit AI-tool clause found, and it restricts data and output licensing, not authorship.",
   "changes": [
+    {"version": "0.2.1", "date": "2026-10-18", "what": "Checked all 18 running public EvalAI challenges: none ships the starter template's Lorem ipsum terms; none has has_prize true, though one (id 2672) lists $1,500 in cash prizes in its description while its terms say 'There are no prizes.' and its API end_date (2099) disagrees with its stated deadline (May 31, 2026); one (id 2680, eBay, Canadian students) has an explicit 'Use of AI' section about data and licensing."},
     {"version": "0.2.0", "date": "2026-10-17", "what": "Added EvalAI (host documentation and starter template) and CrunchDAO (documentation landing page). Re-tried Numerai, Signate, Topcoder and HeroX: their terms pages were JS-only, redirected or missing, so they stay under not_covered with the reason."},
     {"version": "0.1.0", "date": "2026-10-17", "what": "First census: Zindi, AIcrowd, DrivenData, Kaggle, Codabench, NeurIPS 2026 EEG/EMG Foundation Challenge, Wunder Fund Alfa Connectome, ThinkOnward, bitgrit."}
   ],
@@ -91,7 +93,7 @@
       "name": "EvalAI",
       "scope": "platform (no platform-wide participation terms found; each challenge host supplies its own terms HTML)",
       "url": "https://evalai.readthedocs.io/en/latest/configuration.html",
-      "read_how": "fetched page (host configuration docs) and the official starter template https://github.com/Cloud-CV/EvalAI-Starters (templates/terms_and_conditions.html)",
+      "read_how": "fetched page (host configuration docs) and the official starter template https://github.com/Cloud-CV/EvalAI-Starters (templates/terms_and_conditions.html) on 2026-10-17; public challenge API on 2026-10-18",
       "ai_assisted_code_clause": null,
       "automl_clause": null,
       "commercial_llm_api_inside_solution": "not addressed; set by each host",
@@ -101,7 +103,32 @@
       "age_or_sanctions": "none stated at platform level",
       "winner_code_terms": "per challenge",
       "reproducibility": "per challenge; scoring is the host's 'Python script which will decide how to evaluate submissions in different phases'",
-      "note": "The terms field is described as 'Terms and conditions of the challenge (use a relative path for the HTML file, e.g. `templates/terms_and_conditions.html`)'. On 2026-10-17 that file in the official EvalAI-Starters template held only Lorem ipsum placeholder text, so a host who does not replace it publishes no terms. Live challenges were not checked for this."
+      "note": "The terms field is described as 'Terms and conditions of the challenge (use a relative path for the HTML file, e.g. `templates/terms_and_conditions.html`)'. On 2026-10-17 that file in the official EvalAI-Starters template held only Lorem ipsum placeholder text, so a host who does not replace it publishes no terms. On 2026-10-18 none of the 18 running public challenges still had it.",
+      "live_challenges_2026_10_18": {
+        "source": "https://eval.ai/api/challenges/challenge/present/approved/public",
+        "count": 18,
+        "ids": [2703, 2680, 2672, 2619, 2466, 2319, 2266, 2099, 1255, 1243, 830, 720, 591, 518, 476, 356, 355, 97],
+        "upcoming_count": 0,
+        "placeholder_terms": 0,
+        "terms_fields_mentioning_ai_tools": 0,
+        "has_prize_true": 0,
+        "flag_text_mismatch": {
+          "id": 2672,
+          "title": "CVPR 2026 Roboflow-20VL Few-Shot Object Detection Challenge",
+          "description_quotes": ["Top performing teams can win cash prizes!", "Overall Track Winner: $500", "Many thanks to Roboflow for sponsoring prizes!", "The submission period for this challenge will end on May 31st, 2026 at 11:59 PM EST."],
+          "terms_quote": "There are no prizes.",
+          "has_prize": false,
+          "api_end_date": "2099-06-01T23:59:59Z"
+        },
+        "challenge_level_ai_clause": {
+          "id": 2680,
+          "title": "eBay 2026 University Machine Learning Competition - Canada",
+          "eligibility": "students at accredited Canadian universities, Canada excluding Quebec; allowed_email_domains ['.ca']",
+          "where": "description ('Use of AI' section and FAQ 'Can I use AI tools?') and submission_guidelines item (g); not in terms_and_conditions",
+          "quotes": ["eBay data MUST NOT be inputted into third party hosted platforms (including Generative AI tools, such as ChatGPT, Claude", "if AI tools are used, the resulting code, data, or other generated content MUST NOT limit commercial use"],
+          "reading": "restricts what data may be sent to hosted AI tools and the licence of AI-generated output; does not forbid or require disclosure of AI-written code"
+        }
+      }
     },
     {
       "name": "NeurIPS 2026 EEG/EMG Foundation Challenge (hosted on Codabench)",
@@ -195,9 +222,10 @@
     {"what": "mlcontests.com/platforms feature matrix", "finding": "compares code evaluation, private evaluation and similar features; no AI-use policy column"}
   ],
   "limits": [
-    "Eleven primary texts, one date. Rules change; per-competition rules can override every platform-wide term quoted here.",
+    "Eleven primary texts, one date (EvalAI's live list one day later). Rules change; per-competition rules can override every platform-wide term quoted here.",
     "Kaggle quotes come from search-result snippets of rules pages, not from a direct read; Kaggle's pages are JS-rendered.",
     "The EvalAI and CrunchDAO records rest on documentation pages, not on binding terms: EvalAI has no platform-wide participation terms, and CrunchDAO's per-competition rules were not read.",
+    "The EvalAI live check covers only challenges in the public 'present/approved' list on 2026-10-18; private, unapproved and past challenges were not checked. The long JSON list was read in two parts by a text-search model, and the three challenges discussed (2266, 2672, 2680) were re-read one by one.",
     "Quotes are fragments of at most 125 characters, so some sentences are split; the URL gives the full text.",
     "Absence of a clause is reported as 'not addressed', never as 'allowed'."
   ]
