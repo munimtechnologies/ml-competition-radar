@@ -3,37 +3,62 @@
 A dated census of what machine-learning and data-competition platforms actually say
 about AI-assisted entries, with verbatim quotes and the URL each quote came from.
 
-Version 0.2.1, checked 2026-10-17 (EvalAI live challenges 2026-10-18). Made by MV2 of Munim,
-Inc. with AI agents working in his name. Text and data: CC BY 4.0. Code in this repository:
-Apache-2.0.
+Version 0.3.0, platform terms checked 2026-10-17 (EvalAI live challenges 2026-10-18; Zindi
+competitions and ARC Prize 2026 checked 2026-10-21). Made by MV2 of Munim, Inc. with AI agents
+working in his name. Text and data: CC BY 4.0. Code in this repository: Apache-2.0.
 
 ## The finding
 
-Of 11 platforms or contests whose primary texts were read on 2026-10-17, **none has a clause
-about AI-assisted or AI-generated code**. Not one permits it, forbids it, or asks for it to be
-disclosed. What actually binds an entry made with AI is indirect:
+Of 12 platforms or contests whose primary texts were read, **no platform-wide terms have a
+clause about AI-assisted or AI-generated code**. Clauses about AI tools exist only inside
+single competitions, and two have been found:
+
+- **The first explicit permission:** Zindi's Bias Bounty Mapping Equity Challenge ($10,000; rules
+  updated 2026-10-06) says "General-purpose development assistants such as commercial LLM coding
+  tools may be used for code drafting, debugging, testing" (and documentation), "provided they are
+  not required to execute or reproduce the submitted solution." It is 1 of the 7 open Zindi
+  competitions on 2026-10-21. The other 6 use Zindi's standard text, which allows only
+  open-source "languages and tools in building models" and does not say whether a coding
+  assistant counts.
+- **A data and licence rule:** the eBay 2026 University ML Competition - Canada (EvalAI) keeps
+  eBay data out of hosted AI tools and says AI output "MUST NOT limit commercial use".
+
+What otherwise binds an entry made with AI is indirect:
 
 | Gate | Where it appears | Effect on an AI-made entry |
 |---|---|---|
 | Natural persons only | DrivenData ("Legal entities and organizations are not eligible for entry."), Kaggle ("Each Team member must be a single individual") | A company cannot be the entrant; a person must hold the account |
-| Open-source / no paid services | Zindi ("no paid services or free trials that require a credit card"), bitgrit ("commercial or proprietary APIs ... strictly prohibited") | A commercial LLM API cannot run *inside* the solution; nothing is said about AI used to *write* it |
+| Open-source / no paid services / no internet | Zindi ("no paid services or free trials that require a credit card"), bitgrit ("commercial or proprietary APIs ... strictly prohibited"), ARC Prize 2026 ("no API-based systems like GPT/Claude/etc.") | A commercial LLM API cannot run *inside* the solution; only Zindi's Bias Bounty says anything about AI used to *write* it, and it allows it |
 | AutoML ban | Zindi ("Automated machine learning tools such as AutoML are not permitted.") | Written for AutoML products; does not mention coding assistants or agents |
-| Reproducibility audit | NeurIPS EEG/EMG 2026 (re-run training, ±2σ), bitgrit (fixed seeds), Zindi (code must run, "Always set the seed.") | An AI-made pipeline must be scripted and seeded like any other |
+| Reproducibility audit | NeurIPS EEG/EMG 2026 (re-run training, ±2σ), bitgrit (fixed seeds), Zindi (code must run, "Always set the seed."), ARC Prize 2026 (open source before private scores) | An AI-made pipeline must be scripted and seeded like any other |
 | Organisations welcome | ThinkOnward ("you" may mean "Your Organization"), NeurIPS EEG/EMG 2026 ("Industry, academia, students, and independents are all eligible") | A company can enter as itself |
 | No platform terms at all | EvalAI (each host writes its own terms; the official starter template's terms file was Lorem ipsum on 2026-10-17, but none of the 18 running challenges still used it on 2026-10-18) | Read each challenge's own terms; there is nothing above them |
 
-The practical rule for anyone entering with AI help in 2026: check eligibility (person or
-entity), keep every model and package open and reproducible, and disclose AI use in the
-method write-up even though no platform asks, because every platform reserves the right to
-disqualify entries that break "the spirit of the Competition".
+The practical rule for anyone entering with AI help in 2026: read the competition's own rules,
+not only the platform's; check eligibility (person or entity); keep every model and package open
+and reproducible; and disclose AI use in the method write-up even where no rule asks, because
+every platform reserves the right to disqualify entries that break "the spirit of the
+Competition". Where the rules are silent or ambiguous about coding assistants, ask the organisers.
 
 ## Files
 
 - `ai-rules-census.json`: one record per platform with the quotes by topic, how the page was
   read (direct fetch, saved copy, or search snippet only), the platforms not covered and why,
   the prior art checked, and a change log. The EvalAI record carries the 2026-10-18 live check
-  under `live_challenges_2026_10_18`.
-- `ai-rules-census.md`: the same as a readable table.
+  under `live_challenges_2026_10_18`; the Zindi record carries the 2026-10-21 competition check
+  under `zindi_competitions_2026_10_21`.
+- `ai-rules-census.md`: the same as readable tables.
+
+## What changed in 0.3.0
+
+- **Zindi competition-level check (2026-10-21).** All 7 open Zindi competitions and 2 recently
+  closed ones were read through Zindi's public API. One (Bias Bounty) permits commercial LLM coding
+  tools for drafting, debugging, testing and documentation, as long as the solution does not need
+  them to run; it does not ask for AI use to be disclosed. The other 8 have no AI-tool clause.
+  Zindi's platform rules page, re-fetched the same day, still has none.
+- **Added ARC Prize 2026** (overview page): no internet during Kaggle evaluation, so no GPT/Claude
+  API can run inside a solution; prize code must be open source under CC0 or MIT-0.
+- **Headline narrowed.** "No clause on AI-assisted code" now holds for platform-wide terms only.
 
 ## What changed in 0.2.1
 
@@ -42,7 +67,7 @@ All 18 challenges in EvalAI's public list of running challenges were checked on 
 
 - **No placeholder terms.** None contains the starter template's Lorem ipsum text in any
   field. The question left open in 0.2.0 is answered: live hosts replace it.
-- **The first explicit AI-tool clause, at challenge level.** The eBay 2026 University Machine
+- **An explicit AI-tool clause, at challenge level.** The eBay 2026 University Machine
   Learning Competition - Canada (id 2680, Canadian university students only) asks "Can I use AI
   tools?" and answers with a data and licence rule, not an authorship rule: eBay data must not go
   into hosted generative AI tools that keep it, and AI-generated output "MUST NOT limit commercial
@@ -67,20 +92,28 @@ mlcontests.com yearly reports describe how *winners* used LLMs; the mlcontests p
 matrix compares evaluation features; Nasios (arXiv:2604.08001, April 2026) surveys the
 ecosystem without touching AI-tool rules. One paywalled paper ("Ethical guidelines for machine
 learning competitions", AI and Ethics, 2026) compares Kaggle, AIcrowd and DrivenData rules and
-could not be read, so it may overlap; that is the main limit of this claim.
+could not be read, so it may overlap; that is the main limit of this claim. Searches on
+2026-10-21 found no page quoting the Zindi Bias Bounty clause.
 
 ## Limits
 
-- One date for the platform terms, one more for EvalAI's live list. Per-competition rules can
-  override every platform-wide term quoted here.
+- One date for the platform terms, one more for EvalAI's live list, a third for Zindi's
+  competitions and ARC Prize. Per-competition rules can override every platform-wide term quoted
+  here.
 - Kaggle's rules pages are JS-rendered; its quotes come from search-result snippets.
-- The EvalAI and CrunchDAO records rest on documentation pages, not binding terms.
-- The EvalAI live check covers only public, approved, running challenges.
+- The EvalAI and CrunchDAO records rest on documentation pages, not binding terms; the ARC Prize
+  record rests on its overview page, not each track's rules.
+- The EvalAI live check covers only public, approved, running challenges. The Zindi check covers
+  9 of 515 listed competitions (all 7 open ones); three long pages were read only to 100,000
+  characters, where the unread rest held repeated parent-competition rules. Long pages were read
+  by a text-extraction model, not parsed by code.
 - Quotes are fragments of at most 125 characters each; the URL carries the full text.
 - "Not addressed" never means "allowed".
 
 ## How to update
 
 Fetch each URL in `ai-rules-census.json`, search it for the same topics, replace the quotes,
-bump `checked_utc` and the version, and add a line to `changes`. Add a platform by adding a
-record with the same keys.
+bump the check date and the version, and add a line to `changes`. Add a platform by adding a
+record with the same keys. For Zindi, list open competitions from
+`https://api.zindi.world/v1/competitions` and read each one at
+`https://api.zindi.world/v1/competitions/<slug>`.
