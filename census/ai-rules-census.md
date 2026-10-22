@@ -1,4 +1,4 @@
-# AI-assistance rules across ML competition platforms (version 0.3.1, platform terms checked 2026-10-17; EvalAI live check 2026-10-18; Zindi competitions, ARC Prize 2026 and DOE GEMS Prize checked 2026-10-21)
+# AI-assistance rules across ML competition platforms (version 0.3.2, platform terms checked 2026-10-17; EvalAI live check 2026-10-18; Zindi competitions, ARC Prize 2026 and DOE GEMS Prize checked 2026-10-21; DOE comparison 2026-10-22)
 
 CC BY 4.0. MV2 of Munim, Inc., with AI agents working in his name. Quotes are verbatim
 fragments of at most 125 characters; the URL carries the full text. "none" means the page has
@@ -18,7 +18,7 @@ no such clause, not that the thing is allowed.
 | [bitgrit (AI Immune System Challenge)](https://bitgrit.com/competition/27) | page fetched | none | none | **forbidden**: "commercial or proprietary APIs (e.g., OpenAI GPT series, Claude, Gemini API) is strictly prohibited" | individuals only; no teams | none stated | README to reproduce end to end; exact model weights or version link | "fix all random seeds and set the inference temperature to 0" |
 | [CrunchDAO](https://docs.crunchdao.com/) (docs landing page only) | page fetched | none | none | not addressed on this page | not addressed as such: "Everyone. Crunch is open and permissionless." | not addressed on this page | "rewarded in USDC"; licence in per-competition rules (not read) | not addressed on this page |
 | [ARC Prize 2026](https://arcprize.org/competitions/2026/) (overview page; submitted on Kaggle) | page fetched 2026-10-21 | none | none | **not possible**: "Internet access is not available during Kaggle evaluation (no API-based systems like GPT/Claude/etc.)" | not addressed on this page; Kaggle admits individual accounts only | not addressed on this page | "all code and methods authored by the submitter must be made open source" (CC0 or MIT-0) | "All prizes require reproducible, open-source submissions" |
-| [U.S. DOE GEMS Prize](https://docs.nlr.gov/docs/fy26osti/96647.pdf) (official rules, September 2026; hosted on [DrivenData](https://www.drivendata.org/competitions/306/competition-doe-gems/)) | PDF text extracted by code, 2026-10-21 (19 pages) | **permits it, disclosure required** (item 11): "Using generative AI technology in the development of your prize submission is allowed." | none | not addressed | **yes, U.S.-based**: "Private entities must be incorporated in and maintain a primary place of business in the United States." | individuals: U.S. citizen or permanent resident, 18+; FFRDCs, federal employees, debarred parties, foreign-talent-program members excluded | complete code assets and documentation; public parts under "an unlimited license to display publicly and to use"; no open-source licence required | "should be able to sufficiently reproduce the winning results and generate predictions on new data samples" |
+| [U.S. DOE GEMS Prize](https://docs.nlr.gov/docs/fy26osti/96647.pdf) (official rules, September 2026; hosted on [DrivenData](https://www.drivendata.org/competitions/306/competition-doe-gems/)) | PDF text extracted by code, 2026-10-21 (19 pages) | **permits it, disclosure required** (items 11 and 13): "Using generative AI technology in the development of your prize submission is allowed." | none | not addressed | **yes, U.S.-based**: "Private entities must be incorporated in and maintain a primary place of business in the United States." | individuals: U.S. citizen or permanent resident, 18+; FFRDCs, federal employees, debarred parties, foreign-talent-program members excluded | complete code assets and documentation; public parts under "an unlimited license to display publicly and to use"; no open-source licence required | "should be able to sufficiently reproduce the winning results and generate predictions on new data samples" |
 
 Not covered (with the reason, all 2026-10-17): Solafune (terms page HTTP 404), Numerai (terms
 page JS-only; rules page HTTP 404), Signate (terms URL redirects to a JS-only page), Topcoder
@@ -45,6 +45,20 @@ generative AI, ChatGPT, AutoML, paid APIs, proprietary model services and disclo
 The other 8 all carry Zindi's standard text: "You may only use open-source languages and tools in
 building models for this challenge." and "The solution must use publicly-available, open-source
 packages only."
+
+## DOE prize rules compared with GEMS (new in 0.3.2, 2026-10-22)
+
+Three DOE prize rules PDFs were fixed in order and two predictions written down on 2026-10-21,
+before any of their text was read: P1, at least one has a generative-AI clause (guess 50%); P2,
+if so it requires disclosure rather than banning AI (guess 65%). The PDFs were downloaded and
+searched by code in a sealed job. **Both predictions held.** These are hardware and utility
+prizes, read for comparison only, and are not counted among the records above.
+
+| Document | Prize | Pages | Change table | Generative-AI clause | Disclosure goes in |
+|---|---|---|---|---|---|
+| [D1 Energy Storage Innovations Prize Round 2](https://docs.nlr.gov/docs/gen/fy26/96785.pdf) | $300,000 | 28 | Modification 1, 12/12/2025: "Incorporate guidance about the use of generative artificial intelligence in preparing submissions" | **yes**: "Use of generative AI technology in the development of a competitor’s prize submission is not prohibited." | "the technical concept paper (not included in the word count)", a required part of the entry |
+| [D2 Digitizing Utilities Prize Round 3](https://docs.nlr.gov/docs/gen/fy26/98559.pdf) | $2,425,000 (cash and lab vouchers) | 33 | Modification 1, January 8, 2026 (substantial rewrite, changes not listed) | **yes**, in both phases: "Using generative AI technology in the development of a competitor’s prize submission is not prohibited." | "the narrative (not included in the word count)", a required section: "Maximum 2,500 words and up to five supporting images or figures (PDF)" |
+| [D3 Industrial Energy Storage Systems Prize](https://americanmadechallenges.org/challenges/industrial-energy-storage/docs/Industrial-Energy-Storage-Systems-Prize-Rules.pdf) | $4,800,000 | 24 | none | **no**; "artificial intelligence" only as background ("data center construction driven by artificial intelligence") | - |
 
 ## Reading
 
@@ -110,17 +124,18 @@ packages only."
    Zindi competition who uses a commercial coding assistant should ask the organisers first.
 11. (New in 0.3.1) The U.S. Department of Energy's GEMS Prize (Geologic Enhanced Mapping System;
    $300,000; on DrivenData; official rules "SEPTEMBER 2026", section 3.2) has the only **disclosure
-   duty** found so far. "Using generative AI technology in the development of your prize submission
-   is allowed." But "you must indicate in the narrative (not included in the word count)" "the
-   extent to which, if any, you used generative AI technology and how you used it to develop your
-   submission", "including all submission elements described in this official rules document",
-   which takes in the code finalists hand over. "You are responsible for the accuracy,
-   authenticity, and authorship representations of your submission", and "Relying on generative
-   AI may introduce significant risks" (it names research misconduct). Two gaps: the word
-   "narrative" appears nowhere else in the 19 pages (section 3.5 "What To Submit" asks for
+   duty** found so far in an ML competition. "Using generative AI technology in the development of
+   your prize submission is allowed." But "you must indicate in the narrative (not included in the
+   word count)" "the extent to which, if any, you used generative AI technology and how you used it
+   to develop your submission", "including all submission elements described in this official
+   rules document", which takes in the code finalists hand over. "You are responsible for the
+   accuracy, authenticity, and authorship representations of your submission", and "Relying on
+   generative AI may introduce significant risks" (it names research misconduct). Two gaps: the
+   word "narrative" appears nowhere else in the 19 pages (section 3.5 "What To Submit" asks for
    predictions, code and documentation), and the competition's DrivenData pages ask for no
    narrative or write-up, so where to put the disclosure is not defined. The wording follows the
    National Science Foundation's 2023 notice to grant proposers, which only "encouraged" it.
+   Item 13 traces the gap.
 12. (New in 0.3.1) GEMS also shows that a contest's own rules can reverse a platform's default
    and that its dates need reading twice. Its rules admit "Institutions, companies, nonprofit
    organizations, and individuals based in the United States (U.S.) are eligible to compete"
@@ -130,8 +145,20 @@ packages only."
    earlier. Its prize goals, apparently shared DOE American-Made text, ask that a submission
    confirm the "intent to commercialize early-stage technology and establish a viable U.S.-based
    business in the near future", which is an unusual bar for a leaderboard competition.
+13. (New in 0.3.2) The GEMS clause is shared DOE prize text: three of the four DOE prize rules
+   read so far carry it in nearly the same words (table above). In the two non-ML prizes the
+   disclosure goes into a written document the entry must contain, and Digitizing Utilities uses
+   exactly the GEMS phrase "must indicate in the narrative (not included in the word count)" for
+   its required 2,500-word narrative. GEMS, a leaderboard competition, kept the phrase but asks
+   for no narrative, so its gap most likely comes from reusing the text unchanged (an inference
+   from wording; DOE's drafting history was not seen). The Energy Storage rules date the clause:
+   their 2025-12-12 amendment lists "Incorporate guidance about the use of generative artificial
+   intelligence in preparing submissions". The Industrial Energy Storage rules, the only ones of
+   the four without a change table, are the only ones without it. Practical upshot: anyone
+   entering a 2026 DOE prize with AI help should expect a written disclosure duty, and in GEMS
+   should ask the organisers where to put it.
 
-## Prior art checked (2026-10-17; searches repeated 2026-10-21)
+## Prior art checked (2026-10-17; searches repeated 2026-10-21 and 2026-10-22)
 
 mlcontests.com reports 2023 and 2024 (how winners used LLMs; no rules census);
 mlcontests.com/platforms (feature matrix, no AI-policy column); Nasios, arXiv:2604.08001
@@ -140,4 +167,5 @@ AI and Ethics 2026 (compares Kaggle, AIcrowd, DrivenData rules; paywalled, not r
 On 2026-10-21 no page quoting the Zindi Bias Bounty clause or the GEMS clause was found; a Kaggle
 forum thread on AI-generated code shows users disagreeing with no official rule cited. The GEMS
 clause echoes the NSF notice of 2023-12-14: "Proposers are encouraged to indicate in the project
-description the extent to which, if any, generative AI technology was" (it goes on).
+description the extent to which, if any, generative AI technology was" (it goes on). On 2026-10-22
+no page quoting the Energy Storage / Digitizing Utilities sentence was found.

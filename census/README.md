@@ -3,10 +3,10 @@
 A dated census of what machine-learning and data-competition platforms actually say
 about AI-assisted entries, with verbatim quotes and the URL each quote came from.
 
-Version 0.3.1, platform terms checked 2026-10-17 (EvalAI live challenges 2026-10-18; Zindi
-competitions, ARC Prize 2026 and the U.S. DOE GEMS Prize checked 2026-10-21). Made by MV2 of
-Munim, Inc. with AI agents working in his name. Text and data: CC BY 4.0. Code in this
-repository: Apache-2.0.
+Version 0.3.2, platform terms checked 2026-10-17 (EvalAI live challenges 2026-10-18; Zindi
+competitions, ARC Prize 2026 and the U.S. DOE GEMS Prize checked 2026-10-21; three more DOE
+prize rules 2026-10-22). Made by MV2 of Munim, Inc. with AI agents working in his name. Text
+and data: CC BY 4.0. Code in this repository: Apache-2.0.
 
 ## The finding
 
@@ -18,9 +18,11 @@ single competitions, and three have been found:
   on DrivenData; official rules dated September 2026) says "Using generative AI technology in the
   development of your prize submission is allowed." Entrants must state "the extent to which, if
   any, you used generative AI technology and how you used it to develop your submission". It is
-  the only rule in this census that requires AI use to be disclosed. The rules say the disclosure
-  goes "in the narrative", but no narrative is defined anywhere else in the 19-page rules or on
-  the competition's DrivenData pages.
+  the only ML competition in this census that requires AI use to be disclosed. The rules say the
+  disclosure goes "in the narrative", but no narrative is defined anywhere else in the 19-page
+  rules or on the competition's DrivenData pages. **New in 0.3.2:** the same clause is in 2 of 3
+  other DOE prize rules read for comparison, where the narrative is a required part of the entry,
+  so the clause is shared DOE prize text and the GEMS gap most likely came with it (below).
 - **Permission without disclosure:** Zindi's Bias Bounty Mapping Equity Challenge ($10,000; rules
   updated 2026-10-06) says "General-purpose development assistants such as commercial LLM coding
   tools may be used for code drafting, debugging, testing" (and documentation), "provided they are
@@ -46,8 +48,8 @@ The practical rule for anyone entering with AI help in 2026: read the competitio
 not only the platform's; check eligibility (person or entity); keep every model and package open
 and reproducible; and disclose AI use in the method write-up even where no rule asks, because
 every platform reserves the right to disqualify entries that break "the spirit of the
-Competition", and at least one federal prize now makes disclosure a condition. Where the rules
-are silent or ambiguous about coding assistants, ask the organisers.
+Competition", and U.S. DOE prizes now make disclosure a condition. Where the rules are silent or
+ambiguous about coding assistants, ask the organisers.
 
 ## Files
 
@@ -56,8 +58,30 @@ are silent or ambiguous about coding assistants, ask the organisers.
   the platforms not covered and why, the prior art checked, and a change log. The EvalAI record
   carries the 2026-10-18 live check under `live_challenges_2026_10_18`; the Zindi record carries
   the 2026-10-21 competition check under `zindi_competitions_2026_10_21`; the GEMS record carries
-  its AI clause under `ai_clause`.
+  its AI clause under `ai_clause`; the DOE comparison is under `doe_template_check_2026_10_22`.
 - `ai-rules-census.md`: the same as readable tables.
+
+## What changed in 0.3.2
+
+- **The GEMS clause is shared DOE prize text.** Before reading them, three other DOE prize rules
+  PDFs were fixed in order and two predictions were written down: at least one has a
+  generative-AI clause (guessed 50%), and if so it requires disclosure rather than banning AI
+  (guessed 65%). Both held. The Energy Storage Innovations Prize Round 2 ($300,000) and the
+  Digitizing Utilities Prize Round 3 ($2.4 million) both say "Using generative AI technology in
+  the development of a competitor's prize submission is not prohibited." (Energy Storage: "Use
+  of"), and both require entrants to state the extent and manner of their use. The Industrial
+  Energy Storage Systems Prize ($4.8 million) has no AI clause. These are hardware and utility
+  prizes, read only for comparison; they are not counted among the 13 records.
+- **Where the GEMS "narrative" most likely came from.** In Digitizing Utilities, "Competitors
+  must indicate in the narrative (not included in the word count)" refers to a required
+  2,500-word narrative with its own section; in Energy Storage the disclosure goes in the
+  technical concept paper. GEMS uses the same words but asks for no narrative, which points to
+  the text being reused unchanged. This is an inference from wording; DOE's drafting history was
+  not seen.
+- **When it arrived.** The Energy Storage rules list "Incorporate guidance about the use of
+  generative artificial intelligence in preparing submissions" among the changes of their
+  2025-12-12 amendment. Digitizing Utilities was rewritten on 2026-01-08. The Industrial Energy
+  Storage rules, the only ones without a change table, are the only ones without the clause.
 
 ## What changed in 0.3.1
 
@@ -123,16 +147,18 @@ matrix compares evaluation features; Nasios (arXiv:2604.08001, April 2026) surve
 ecosystem without touching AI-tool rules. One paywalled paper ("Ethical guidelines for machine
 learning competitions", AI and Ethics, 2026) compares Kaggle, AIcrowd and DrivenData rules and
 could not be read, so it may overlap; that is the main limit of this claim. Searches on
-2026-10-21 found no page quoting the Zindi Bias Bounty clause or the GEMS clause. The GEMS
+2026-10-21 found no page quoting the Zindi Bias Bounty clause or the GEMS clause, and a search on
+2026-10-22 found none quoting the Energy Storage / Digitizing Utilities wording. The GEMS
 wording follows the U.S. National Science Foundation's notice of 2023-12-14 to grant proposers
 ("Proposers are encouraged to indicate in the project description the extent to which, if any,
-generative AI technology was" ...), which encourages disclosure; GEMS makes it a "must".
+generative AI technology was" ...), which encourages disclosure; DOE's prize rules make it a
+"must".
 
 ## Limits
 
 - One date for the platform terms, one more for EvalAI's live list, a third for Zindi's
-  competitions, ARC Prize and GEMS. Per-competition rules can override every platform-wide term
-  quoted here.
+  competitions, ARC Prize and GEMS, a fourth for the DOE comparison. Per-competition rules can
+  override every platform-wide term quoted here.
 - Kaggle's rules pages are JS-rendered; its quotes come from search-result snippets.
 - The EvalAI and CrunchDAO records rest on documentation pages, not binding terms; the ARC Prize
   record rests on its overview page, not each track's rules.
@@ -140,8 +166,8 @@ generative AI technology was" ...), which encourages disclosure; GEMS makes it a
   9 of 515 listed competitions (all 7 open ones); three long pages were read only to 100,000
   characters, where the unread rest held repeated parent-competition rules. Long pages were read
   by a text-extraction model, not parsed by code.
-- The GEMS record covers one federal prize. Its AI clause reads like shared DOE American-Made
-  template text, but other American-Made prizes were not read, so how far it reaches is unknown.
+- Four DOE prize rules have been read (GEMS plus three for comparison), out of many more DOE
+  prizes, and the three were the ones whose rules PDFs could be found, not a random sample.
 - Quotes are fragments of at most 125 characters each; the URL carries the full text.
 - "Not addressed" never means "allowed".
 

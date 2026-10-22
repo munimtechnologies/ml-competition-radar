@@ -53,6 +53,14 @@ class CensusTest(unittest.TestCase):
         self.assertIn("Apache-2.0", text)
         self.assertIsNone(re.search(r"Code in this repository: MIT", text))
 
+    def test_doe_comparison_matches_headline(self):
+        census = load()
+        documents = census["doe_template_check_2026_10_22"]["documents"]
+        hits = [d["id"] for d in documents if d["generative_ai_clause"]]
+        self.assertEqual(hits, ["D1", "D2"])
+        self.assertEqual(len(documents), 3)
+        self.assertIn("2 of 3", census["headline"])
+
 
 if __name__ == "__main__":
     unittest.main()
