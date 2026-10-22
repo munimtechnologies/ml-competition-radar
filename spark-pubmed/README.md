@@ -50,6 +50,19 @@ The task descriptions exclude only preprints. The predictions are in
 - `fts_pilot/test_fts_pilot.py`: tests on fake data, with no network. They passed as the first
   step of the sealed job `spark27-fts-v1` on 2026-10-22.
 
+`dev_sets/` builds two practice question sets, because no SPARK questions are public yet and a
+search found no public known-item benchmark over PubMed:
+
+- `dev_sets/landmarks.json`: 47 well-known first reports since 1959 (CRISPR-Cas9, PCR, iPS
+  cells, BLAST, HIV, and others), each with a plain-language question, plus four pre-1959
+  controls. Titles and years were recalled and are only hints: `dev_sets.py` keeps an item only
+  if PubMed's own record (NCBI E-utilities) has a near-identical title and year.
+- `dev_sets/dev_sets.py`: the lookups, and a fixed-seed sample of 90 records with abstracts from
+  six evenly spaced corpus files, for questions written later from the abstracts alone.
+- `dev_sets/test_dev_sets.py`: tests on fake data, with no network.
+- `dev_sets/PREREGISTRATION.md`: predictions for the lookups and for later BM25 scores, written
+  before anything was looked up.
+
 ## Status
 
 The first audit run is done and graded: 10 of 11 predictions held (`corpus_audit/RESULTS.md`).
@@ -67,6 +80,7 @@ One miss: file `pubmed27n0851` holds 29,999 records, not 30,000.
 
 The FTS5 pilot job started on 2026-10-22 at 10:47 UTC and was still running when this folder
 was first published. Nothing in `fts_pilot/` is a finding until its results are graded here.
+The dev-set lookups (`dev_sets/`) were queued on 2026-10-22 at about 14:50 UTC and are ungraded.
 
 ## Limits
 
@@ -78,5 +92,6 @@ was first published. Nothing in `fts_pilot/` is a finding until its results are 
   descriptions describe a Creative Commons, NIH-funded subset. Only the task descriptions were
   used here.
 - No SPARK questions have been published, so nothing here measures retrieval quality on them.
+  The dev sets are AI-written proxies, not NLM's expert questions.
 
 Contact: MV2, Munim, Inc., mv2@munimtech.com
