@@ -1,0 +1,1775 @@
+[
+ {
+  "id": "L01",
+  "question": "Which study first showed that the Cas9 protein, guided by two RNAs, can be programmed to cut a chosen DNA sequence?",
+  "title": "A programmable dual-RNA-guided DNA endonuclease in adaptive bacterial immunity",
+  "year": 2012,
+  "journal": "Science",
+  "first_author": "Jinek M",
+  "contested": false,
+  "control": null,
+  "status": "verified",
+  "strategy": "title+year",
+  "pmid": "22745249",
+  "pubmed_title": "A programmable dual-RNA-guided DNA endonuclease in adaptive bacterial immunity.",
+  "pubdate": "2012 Aug 17",
+  "pubmed_year": 2012,
+  "year_diff": 0,
+  "pubmed_journal": "Science",
+  "pubmed_first_author": "Jinek M",
+  "pubtypes": [
+   "Journal Article",
+   "Research Support, Non-U.S. Gov't"
+  ],
+  "pmcid": "PMC6286148",
+  "title_ratio": 1.0,
+  "runner_up": null,
+  "in_window": true,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "programmable[ti] AND dual[ti] AND rna[ti] AND guided[ti] AND dna[ti] AND endonuclease[ti] AND adaptive[ti] AND bacterial[ti] AND immunity[ti] AND 2012[dp]",
+    "hits": 1
+   }
+  ]
+ },
+ {
+  "id": "L02",
+  "question": "Which paper first turned mouse fibroblasts into embryonic-like stem cells with four transcription factors?",
+  "title": "Induction of pluripotent stem cells from mouse embryonic and adult fibroblast cultures by defined factors",
+  "year": 2006,
+  "journal": "Cell",
+  "first_author": "Takahashi K",
+  "contested": false,
+  "control": null,
+  "status": "verified",
+  "strategy": "title+year",
+  "pmid": "16904174",
+  "pubmed_title": "Induction of pluripotent stem cells from mouse embryonic and adult fibroblast cultures by defined factors.",
+  "pubdate": "2006 Aug 25",
+  "pubmed_year": 2006,
+  "year_diff": 0,
+  "pubmed_journal": "Cell",
+  "pubmed_first_author": "Takahashi K",
+  "pubtypes": [
+   "Journal Article",
+   "Research Support, Non-U.S. Gov't"
+  ],
+  "pmcid": null,
+  "title_ratio": 1.0,
+  "runner_up": null,
+  "in_window": true,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "induction[ti] AND pluripotent[ti] AND stem[ti] AND cells[ti] AND mouse[ti] AND embryonic[ti] AND adult[ti] AND fibroblast[ti] AND cultures[ti] AND defined[ti] AND 2006[dp]",
+    "hits": 1
+   }
+  ]
+ },
+ {
+  "id": "L03",
+  "question": "What was the first published use of the polymerase chain reaction, applied to diagnosing sickle cell anemia?",
+  "title": "Enzymatic amplification of beta-globin genomic sequences and restriction site analysis for diagnosis of sickle cell anemia",
+  "year": 1985,
+  "journal": "Science",
+  "first_author": "Saiki RK",
+  "contested": false,
+  "control": null,
+  "status": "verified",
+  "strategy": "title+year",
+  "pmid": "2999980",
+  "pubmed_title": "Enzymatic amplification of beta-globin genomic sequences and restriction site analysis for diagnosis of sickle cell anemia.",
+  "pubdate": "1985 Dec 20",
+  "pubmed_year": 1985,
+  "year_diff": 0,
+  "pubmed_journal": "Science",
+  "pubmed_first_author": "Saiki RK",
+  "pubtypes": [
+   "Journal Article"
+  ],
+  "pmcid": null,
+  "title_ratio": 1.0,
+  "runner_up": null,
+  "in_window": true,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "enzymatic[ti] AND amplification[ti] AND beta[ti] AND globin[ti] AND genomic[ti] AND sequences[ti] AND restriction[ti] AND site[ti] AND analysis[ti] AND diagnosis[ti] AND 1985[dp]",
+    "hits": 1
+   }
+  ]
+ },
+ {
+  "id": "L04",
+  "question": "Which paper introduced the dideoxy method for reading DNA sequences?",
+  "title": "DNA sequencing with chain-terminating inhibitors",
+  "year": 1977,
+  "journal": "Proc Natl Acad Sci U S A",
+  "first_author": "Sanger F",
+  "contested": false,
+  "control": null,
+  "status": "verified",
+  "strategy": "title+year",
+  "pmid": "271968",
+  "pubmed_title": "DNA sequencing with chain-terminating inhibitors.",
+  "pubdate": "1977 Dec",
+  "pubmed_year": 1977,
+  "year_diff": 0,
+  "pubmed_journal": "Proc Natl Acad Sci U S A",
+  "pubmed_first_author": "Sanger F",
+  "pubtypes": [
+   "Journal Article"
+  ],
+  "pmcid": "PMC431765",
+  "title_ratio": 1.0,
+  "runner_up": null,
+  "in_window": true,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "dna[ti] AND sequencing[ti] AND chain[ti] AND terminating[ti] AND inhibitors[ti] AND 1977[dp]",
+    "hits": 1
+   }
+  ]
+ },
+ {
+  "id": "L05",
+  "question": "Which study first fused myeloma cells with immune spleen cells to make hybrid lines secreting antibodies of a single specificity?",
+  "title": "Continuous cultures of fused cells secreting antibody of predefined specificity",
+  "year": 1975,
+  "journal": "Nature",
+  "first_author": "Kohler G",
+  "contested": false,
+  "control": null,
+  "status": "verified",
+  "strategy": "title+year",
+  "pmid": "1172191",
+  "pubmed_title": "Continuous cultures of fused cells secreting antibody of predefined specificity.",
+  "pubdate": "1975 Aug 7",
+  "pubmed_year": 1975,
+  "year_diff": 0,
+  "pubmed_journal": "Nature",
+  "pubmed_first_author": "Köhler G",
+  "pubtypes": [
+   "Journal Article"
+  ],
+  "pmcid": null,
+  "title_ratio": 1.0,
+  "runner_up": null,
+  "in_window": true,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "continuous[ti] AND cultures[ti] AND fused[ti] AND cells[ti] AND secreting[ti] AND antibody[ti] AND predefined[ti] AND specificity[ti] AND 1975[dp]",
+    "hits": 1
+   }
+  ]
+ },
+ {
+  "id": "L06",
+  "question": "Which report first isolated the retrovirus later named HIV, from a patient with lymphadenopathy?",
+  "title": "Isolation of a T-lymphotropic retrovirus from a patient at risk for acquired immune deficiency syndrome (AIDS)",
+  "year": 1983,
+  "journal": "Science",
+  "first_author": "Barre-Sinoussi F",
+  "contested": false,
+  "control": null,
+  "status": "verified",
+  "strategy": "title+year",
+  "pmid": "6189183",
+  "pubmed_title": "Isolation of a T-lymphotropic retrovirus from a patient at risk for acquired immune deficiency syndrome (AIDS).",
+  "pubdate": "1983 May 20",
+  "pubmed_year": 1983,
+  "year_diff": 0,
+  "pubmed_journal": "Science",
+  "pubmed_first_author": "Barré-Sinoussi F",
+  "pubtypes": [
+   "Journal Article"
+  ],
+  "pmcid": null,
+  "title_ratio": 1.0,
+  "runner_up": null,
+  "in_window": true,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "isolation[ti] AND lymphotropic[ti] AND retrovirus[ti] AND patient[ti] AND risk[ti] AND acquired[ti] AND immune[ti] AND deficiency[ti] AND syndrome[ti] AND aids[ti] AND 1983[dp]",
+    "hits": 1
+   }
+  ]
+ },
+ {
+  "id": "L07",
+  "question": "Which paper first linked spiral bacteria in the stomach lining to gastritis and peptic ulcers?",
+  "title": "Unidentified curved bacilli in the stomach of patients with gastritis and peptic ulceration",
+  "year": 1984,
+  "journal": "Lancet",
+  "first_author": "Marshall BJ",
+  "contested": false,
+  "control": null,
+  "status": "verified",
+  "strategy": "title+year",
+  "pmid": "6145023",
+  "pubmed_title": "Unidentified curved bacilli in the stomach of patients with gastritis and peptic ulceration.",
+  "pubdate": "1984 Jun 16",
+  "pubmed_year": 1984,
+  "year_diff": 0,
+  "pubmed_journal": "Lancet",
+  "pubmed_first_author": "Marshall BJ",
+  "pubtypes": [
+   "Journal Article"
+  ],
+  "pmcid": null,
+  "title_ratio": 1.0,
+  "runner_up": null,
+  "in_window": true,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "unidentified[ti] AND curved[ti] AND bacilli[ti] AND stomach[ti] AND patients[ti] AND gastritis[ti] AND peptic[ti] AND ulceration[ti] AND 1984[dp]",
+    "hits": 1
+   }
+  ]
+ },
+ {
+  "id": "L08",
+  "question": "Which study first showed that injected double-stranded RNA silences matching genes in worms far more strongly than single strands?",
+  "title": "Potent and specific genetic interference by double-stranded RNA in Caenorhabditis elegans",
+  "year": 1998,
+  "journal": "Nature",
+  "first_author": "Fire A",
+  "contested": false,
+  "control": null,
+  "status": "verified",
+  "strategy": "title+year",
+  "pmid": "9486653",
+  "pubmed_title": "Potent and specific genetic interference by double-stranded RNA in Caenorhabditis elegans.",
+  "pubdate": "1998 Feb 19",
+  "pubmed_year": 1998,
+  "year_diff": 0,
+  "pubmed_journal": "Nature",
+  "pubmed_first_author": "Fire A",
+  "pubtypes": [
+   "Journal Article",
+   "Research Support, Non-U.S. Gov't",
+   "Research Support, U.S. Gov't, P.H.S."
+  ],
+  "pmcid": null,
+  "title_ratio": 1.0,
+  "runner_up": null,
+  "in_window": true,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "potent[ti] AND specific[ti] AND genetic[ti] AND interference[ti] AND double[ti] AND stranded[ti] AND rna[ti] AND caenorhabditis[ti] AND elegans[ti] AND 1998[dp]",
+    "hits": 1
+   }
+  ]
+ },
+ {
+  "id": "L09",
+  "question": "Which paper first used the jellyfish fluorescent protein as a reporter of gene expression in living organisms?",
+  "title": "Green fluorescent protein as a marker for gene expression",
+  "year": 1994,
+  "journal": "Science",
+  "first_author": "Chalfie M",
+  "contested": false,
+  "control": null,
+  "status": "verified",
+  "strategy": "title+year",
+  "pmid": "8303295",
+  "pubmed_title": "Green fluorescent protein as a marker for gene expression.",
+  "pubdate": "1994 Feb 11",
+  "pubmed_year": 1994,
+  "year_diff": 0,
+  "pubmed_journal": "Science",
+  "pubmed_first_author": "Chalfie M",
+  "pubtypes": [
+   "Journal Article",
+   "Research Support, Non-U.S. Gov't",
+   "Research Support, U.S. Gov't, P.H.S."
+  ],
+  "pmcid": null,
+  "title_ratio": 1.0,
+  "runner_up": null,
+  "in_window": true,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "green[ti] AND fluorescent[ti] AND protein[ti] AND marker[ti] AND gene[ti] AND expression[ti] AND 1994[dp]",
+    "hits": 1
+   }
+  ]
+ },
+ {
+  "id": "L10",
+  "question": "Which paper proposed the word prion for the protein-only infectious agent of scrapie?",
+  "title": "Novel proteinaceous infectious particles cause scrapie",
+  "year": 1982,
+  "journal": "Science",
+  "first_author": "Prusiner SB",
+  "contested": false,
+  "control": null,
+  "status": "verified",
+  "strategy": "title+year",
+  "pmid": "6801762",
+  "pubmed_title": "Novel proteinaceous infectious particles cause scrapie.",
+  "pubdate": "1982 Apr 9",
+  "pubmed_year": 1982,
+  "year_diff": 0,
+  "pubmed_journal": "Science",
+  "pubmed_first_author": "Prusiner SB",
+  "pubtypes": [
+   "Journal Article",
+   "Research Support, Non-U.S. Gov't",
+   "Research Support, U.S. Gov't, Non-P.H.S.",
+   "Research Support, U.S. Gov't, P.H.S."
+  ],
+  "pmcid": null,
+  "title_ratio": 1.0,
+  "runner_up": null,
+  "in_window": true,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "novel[ti] AND proteinaceous[ti] AND infectious[ti] AND particles[ti] AND cause[ti] AND scrapie[ti] AND 1982[dp]",
+    "hits": 1
+   }
+  ]
+ },
+ {
+  "id": "L11",
+  "question": "What is the original source of the discontinuous SDS gel buffer system for proteins, described in a study of phage T4 head assembly?",
+  "title": "Cleavage of structural proteins during the assembly of the head of bacteriophage T4",
+  "year": 1970,
+  "journal": "Nature",
+  "first_author": "Laemmli UK",
+  "contested": false,
+  "control": null,
+  "status": "verified",
+  "strategy": "title+year",
+  "pmid": "5432063",
+  "pubmed_title": "Cleavage of structural proteins during the assembly of the head of bacteriophage T4.",
+  "pubdate": "1970 Aug 15",
+  "pubmed_year": 1970,
+  "year_diff": 0,
+  "pubmed_journal": "Nature",
+  "pubmed_first_author": "Laemmli UK",
+  "pubtypes": [
+   "Journal Article"
+  ],
+  "pmcid": null,
+  "title_ratio": 1.0,
+  "runner_up": null,
+  "in_window": true,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "cleavage[ti] AND structural[ti] AND proteins[ti] AND assembly[ti] AND head[ti] AND bacteriophage[ti] AND 1970[dp]",
+    "hits": 1
+   }
+  ]
+ },
+ {
+  "id": "L12",
+  "question": "Which paper introduced the Coomassie dye-binding assay for measuring protein concentration?",
+  "title": "A rapid and sensitive method for the quantitation of microgram quantities of protein utilizing the principle of protein-dye binding",
+  "year": 1976,
+  "journal": "Anal Biochem",
+  "first_author": "Bradford MM",
+  "contested": false,
+  "control": null,
+  "status": "verified",
+  "strategy": "title+year",
+  "pmid": "942051",
+  "pubmed_title": "A rapid and sensitive method for the quantitation of microgram quantities of protein utilizing the principle of protein-dye binding.",
+  "pubdate": "1976 May 7",
+  "pubmed_year": 1976,
+  "year_diff": 0,
+  "pubmed_journal": "Anal Biochem",
+  "pubmed_first_author": "Bradford MM",
+  "pubtypes": [
+   "Journal Article",
+   "Research Support, U.S. Gov't, P.H.S."
+  ],
+  "pmcid": null,
+  "title_ratio": 1.0,
+  "runner_up": null,
+  "in_window": true,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "rapid[ti] AND sensitive[ti] AND method[ti] AND quantitation[ti] AND microgram[ti] AND quantities[ti] AND protein[ti] AND utilizing[ti] AND principle[ti] AND dye[ti] AND 1976[dp]",
+    "hits": 1
+   }
+  ]
+ },
+ {
+  "id": "L13",
+  "question": "Which method paper introduced one-step RNA extraction with acidic guanidinium thiocyanate, phenol and chloroform?",
+  "title": "Single-step method of RNA isolation by acid guanidinium thiocyanate-phenol-chloroform extraction",
+  "year": 1987,
+  "journal": "Anal Biochem",
+  "first_author": "Chomczynski P",
+  "contested": false,
+  "control": null,
+  "status": "verified",
+  "strategy": "title+year",
+  "pmid": "2440339",
+  "pubmed_title": "Single-step method of RNA isolation by acid guanidinium thiocyanate-phenol-chloroform extraction.",
+  "pubdate": "1987 Apr",
+  "pubmed_year": 1987,
+  "year_diff": 0,
+  "pubmed_journal": "Anal Biochem",
+  "pubmed_first_author": "Chomczynski P",
+  "pubtypes": [
+   "Journal Article"
+  ],
+  "pmcid": null,
+  "title_ratio": 1.0,
+  "runner_up": null,
+  "in_window": true,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "single[ti] AND step[ti] AND method[ti] AND rna[ti] AND isolation[ti] AND acid[ti] AND guanidinium[ti] AND thiocyanate[ti] AND phenol[ti] AND chloroform[ti] AND 1987[dp]",
+    "hits": 1
+   }
+  ]
+ },
+ {
+  "id": "L14",
+  "question": "Which paper introduced the BLAST program for fast sequence similarity searching?",
+  "title": "Basic local alignment search tool",
+  "year": 1990,
+  "journal": "J Mol Biol",
+  "first_author": "Altschul SF",
+  "contested": false,
+  "control": null,
+  "status": "verified",
+  "strategy": "title+year",
+  "pmid": "2231712",
+  "pubmed_title": "Basic local alignment search tool.",
+  "pubdate": "1990 Oct 5",
+  "pubmed_year": 1990,
+  "year_diff": 0,
+  "pubmed_journal": "J Mol Biol",
+  "pubmed_first_author": "Altschul SF",
+  "pubtypes": [
+   "Journal Article",
+   "Research Support, U.S. Gov't, P.H.S."
+  ],
+  "pmcid": null,
+  "title_ratio": 1.0,
+  "runner_up": null,
+  "in_window": true,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "basic[ti] AND local[ti] AND alignment[ti] AND search[ti] AND tool[ti] AND 1990[dp]",
+    "hits": 1
+   }
+  ]
+ },
+ {
+  "id": "L15",
+  "question": "Which study reported the first mammal cloned from an adult body cell, a sheep?",
+  "title": "Viable offspring derived from fetal and adult mammalian cells",
+  "year": 1997,
+  "journal": "Nature",
+  "first_author": "Wilmut I",
+  "contested": false,
+  "control": null,
+  "status": "verified",
+  "strategy": "title+year",
+  "pmid": "9039911",
+  "pubmed_title": "Viable offspring derived from fetal and adult mammalian cells.",
+  "pubdate": "1997 Feb 27",
+  "pubmed_year": 1997,
+  "year_diff": 0,
+  "pubmed_journal": "Nature",
+  "pubmed_first_author": "Wilmut I",
+  "pubtypes": [
+   "Journal Article",
+   "Research Support, Non-U.S. Gov't"
+  ],
+  "pmcid": null,
+  "title_ratio": 1.0,
+  "runner_up": null,
+  "in_window": true,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "viable[ti] AND offspring[ti] AND derived[ti] AND fetal[ti] AND adult[ti] AND mammalian[ti] AND cells[ti] AND 1997[dp]",
+    "hits": 1
+   }
+  ]
+ },
+ {
+  "id": "L16",
+  "question": "Which paper first cloned the genome of the virus behind transfusion-associated non-A, non-B hepatitis (hepatitis C)?",
+  "title": "Isolation of a cDNA clone derived from a blood-borne non-A, non-B viral hepatitis genome",
+  "year": 1989,
+  "journal": "Science",
+  "first_author": "Choo QL",
+  "contested": false,
+  "control": null,
+  "status": "verified",
+  "strategy": "title+year",
+  "pmid": "2523562",
+  "pubmed_title": "Isolation of a cDNA clone derived from a blood-borne non-A, non-B viral hepatitis genome.",
+  "pubdate": "1989 Apr 21",
+  "pubmed_year": 1989,
+  "year_diff": 0,
+  "pubmed_journal": "Science",
+  "pubmed_first_author": "Choo QL",
+  "pubtypes": [
+   "Journal Article",
+   "Research Support, Non-U.S. Gov't"
+  ],
+  "pmcid": null,
+  "title_ratio": 1.0,
+  "runner_up": null,
+  "in_window": true,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "isolation[ti] AND cdna[ti] AND clone[ti] AND derived[ti] AND blood[ti] AND borne[ti] AND non[ti] AND viral[ti] AND hepatitis[ti] AND genome[ti] AND 1989[dp]",
+    "hits": 1
+   }
+  ]
+ },
+ {
+  "id": "L17",
+  "question": "Which report identified the 2019 Wuhan coronavirus as closely related to a bat virus and showed it uses the ACE2 receptor?",
+  "title": "A pneumonia outbreak associated with a new coronavirus of probable bat origin",
+  "year": 2020,
+  "journal": "Nature",
+  "first_author": "Zhou P",
+  "contested": false,
+  "control": null,
+  "status": "verified",
+  "strategy": "title+year",
+  "pmid": "32015507",
+  "pubmed_title": "A pneumonia outbreak associated with a new coronavirus of probable bat origin.",
+  "pubdate": "2020 Mar",
+  "pubmed_year": 2020,
+  "year_diff": 0,
+  "pubmed_journal": "Nature",
+  "pubmed_first_author": "Zhou P",
+  "pubtypes": [
+   "Journal Article"
+  ],
+  "pmcid": "PMC7095418",
+  "title_ratio": 1.0,
+  "runner_up": {
+   "pmid": "33199918",
+   "title_ratio": 0.945
+  },
+  "in_window": true,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "pneumonia[ti] AND outbreak[ti] AND associated[ti] AND new[ti] AND coronavirus[ti] AND probable[ti] AND bat[ti] AND origin[ti] AND 2020[dp]",
+    "hits": 2
+   }
+  ]
+ },
+ {
+  "id": "L18",
+  "question": "Which clinical report first described a new acquired immune deficiency in previously healthy young men in Los Angeles in 1981?",
+  "title": "Pneumocystis carinii pneumonia and mucosal candidiasis in previously healthy homosexual men: evidence of a new acquired cellular immunodeficiency",
+  "year": 1981,
+  "journal": "N Engl J Med",
+  "first_author": "Gottlieb MS",
+  "contested": false,
+  "control": null,
+  "status": "verified",
+  "strategy": "title+year",
+  "pmid": "6272109",
+  "pubmed_title": "Pneumocystis carinii pneumonia and mucosal candidiasis in previously healthy homosexual men: evidence of a new acquired cellular immunodeficiency.",
+  "pubdate": "1981 Dec 10",
+  "pubmed_year": 1981,
+  "year_diff": 0,
+  "pubmed_journal": "N Engl J Med",
+  "pubmed_first_author": "Gottlieb MS",
+  "pubtypes": [
+   "Case Reports",
+   "Journal Article",
+   "Research Support, Non-U.S. Gov't",
+   "Research Support, U.S. Gov't, P.H.S."
+  ],
+  "pmcid": null,
+  "title_ratio": 1.0,
+  "runner_up": null,
+  "in_window": true,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "pneumocystis[ti] AND carinii[ti] AND pneumonia[ti] AND mucosal[ti] AND candidiasis[ti] AND previously[ti] AND healthy[ti] AND homosexual[ti] AND men[ti] AND evidence[ti] AND 1981[dp]",
+    "hits": 1
+   }
+  ]
+ },
+ {
+  "id": "L19",
+  "question": "Which paper first cloned the PD-1 gene, from T cell lines undergoing cell death?",
+  "title": "Induced expression of PD-1, a novel member of the immunoglobulin gene superfamily, upon programmed cell death",
+  "year": 1992,
+  "journal": "EMBO J",
+  "first_author": "Ishida Y",
+  "contested": false,
+  "control": null,
+  "status": "verified",
+  "strategy": "title+year",
+  "pmid": "1396582",
+  "pubmed_title": "Induced expression of PD-1, a novel member of the immunoglobulin gene superfamily, upon programmed cell death.",
+  "pubdate": "1992 Nov",
+  "pubmed_year": 1992,
+  "year_diff": 0,
+  "pubmed_journal": "EMBO J",
+  "pubmed_first_author": "Ishida Y",
+  "pubtypes": [
+   "Comparative Study",
+   "Journal Article",
+   "Research Support, Non-U.S. Gov't"
+  ],
+  "pmcid": "PMC556898",
+  "title_ratio": 1.0,
+  "runner_up": null,
+  "in_window": true,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "induced[ti] AND expression[ti] AND novel[ti] AND member[ti] AND immunoglobulin[ti] AND gene[ti] AND superfamily[ti] AND programmed[ti] AND cell[ti] AND death[ti] AND 1992[dp]",
+    "hits": 1
+   }
+  ]
+ },
+ {
+  "id": "L20",
+  "question": "Which study first showed that antibodies blocking CTLA-4 make mice reject tumours?",
+  "title": "Enhancement of antitumor immunity by CTLA-4 blockade",
+  "year": 1996,
+  "journal": "Science",
+  "first_author": "Leach DR",
+  "contested": false,
+  "control": null,
+  "status": "verified",
+  "strategy": "title+year",
+  "pmid": "8596936",
+  "pubmed_title": "Enhancement of antitumor immunity by CTLA-4 blockade.",
+  "pubdate": "1996 Mar 22",
+  "pubmed_year": 1996,
+  "year_diff": 0,
+  "pubmed_journal": "Science",
+  "pubmed_first_author": "Leach DR",
+  "pubtypes": [
+   "Journal Article",
+   "Research Support, U.S. Gov't, P.H.S."
+  ],
+  "pmcid": null,
+  "title_ratio": 1.0,
+  "runner_up": null,
+  "in_window": true,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "enhancement[ti] AND antitumor[ti] AND immunity[ti] AND ctla[ti] AND blockade[ti] AND 1996[dp]",
+    "hits": 1
+   }
+  ]
+ },
+ {
+  "id": "L21",
+  "question": "Which paper showed that modified nucleosides such as pseudouridine let in vitro transcribed RNA avoid activating innate immune receptors?",
+  "title": "Suppression of RNA recognition by Toll-like receptors: the impact of nucleoside modification and the evolutionary origin of RNA",
+  "year": 2005,
+  "journal": "Immunity",
+  "first_author": "Kariko K",
+  "contested": false,
+  "control": null,
+  "status": "verified",
+  "strategy": "title+year",
+  "pmid": "16111635",
+  "pubmed_title": "Suppression of RNA recognition by Toll-like receptors: the impact of nucleoside modification and the evolutionary origin of RNA.",
+  "pubdate": "2005 Aug",
+  "pubmed_year": 2005,
+  "year_diff": 0,
+  "pubmed_journal": "Immunity",
+  "pubmed_first_author": "Karikó K",
+  "pubtypes": [
+   "Journal Article",
+   "Research Support, N.I.H., Extramural",
+   "Research Support, U.S. Gov't, P.H.S."
+  ],
+  "pmcid": null,
+  "title_ratio": 1.0,
+  "runner_up": null,
+  "in_window": true,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "suppression[ti] AND rna[ti] AND recognition[ti] AND toll[ti] AND like[ti] AND receptors[ti] AND impact[ti] AND nucleoside[ti] AND modification[ti] AND evolutionary[ti] AND 2005[dp]",
+    "hits": 1
+   }
+  ]
+ },
+ {
+  "id": "L22",
+  "question": "Which review proposed six acquired capabilities shared by all cancers?",
+  "title": "The hallmarks of cancer",
+  "year": 2000,
+  "journal": "Cell",
+  "first_author": "Hanahan D",
+  "contested": false,
+  "control": null,
+  "status": "verified",
+  "strategy": "title+year",
+  "pmid": "10647931",
+  "pubmed_title": "The hallmarks of cancer.",
+  "pubdate": "2000 Jan 7",
+  "pubmed_year": 2000,
+  "year_diff": 0,
+  "pubmed_journal": "Cell",
+  "pubmed_first_author": "Hanahan D",
+  "pubtypes": [
+   "Journal Article",
+   "Research Support, U.S. Gov't, Non-P.H.S.",
+   "Research Support, U.S. Gov't, P.H.S.",
+   "Review"
+  ],
+  "pmcid": null,
+  "title_ratio": 1.0,
+  "runner_up": null,
+  "in_window": true,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "hallmarks[ti] AND cancer[ti] AND 2000[dp]",
+    "hits": 1
+   }
+  ]
+ },
+ {
+  "id": "L23",
+  "question": "Which paper introduced the comparative threshold-cycle (delta-delta Ct) method for relative quantification in real-time PCR?",
+  "title": "Analysis of relative gene expression data using real-time quantitative PCR and the 2(-Delta Delta C(T)) Method",
+  "year": 2001,
+  "journal": "Methods",
+  "first_author": "Livak KJ",
+  "contested": false,
+  "control": null,
+  "status": "verified",
+  "strategy": "title+year",
+  "pmid": "11846609",
+  "pubmed_title": "Analysis of relative gene expression data using real-time quantitative PCR and the 2(-Delta Delta C(T)) Method.",
+  "pubdate": "2001 Dec",
+  "pubmed_year": 2001,
+  "year_diff": 0,
+  "pubmed_journal": "Methods",
+  "pubmed_first_author": "Livak KJ",
+  "pubtypes": [
+   "Journal Article"
+  ],
+  "pmcid": null,
+  "title_ratio": 1.0,
+  "runner_up": null,
+  "in_window": true,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "analysis[ti] AND relative[ti] AND gene[ti] AND expression[ti] AND data[ti] AND real[ti] AND time[ti] AND quantitative[ti] AND pcr[ti] AND delta[ti] AND 2001[dp]",
+    "hits": 1
+   }
+  ]
+ },
+ {
+  "id": "L24",
+  "question": "Which study first used CRISPR-Cas9 to edit several sites at once in the genomes of human and mouse cells?",
+  "title": "Multiplex genome engineering using CRISPR/Cas systems",
+  "year": 2013,
+  "journal": "Science",
+  "first_author": "Cong L",
+  "contested": true,
+  "control": null,
+  "status": "verified",
+  "strategy": "title+year",
+  "pmid": "23287718",
+  "pubmed_title": "Multiplex genome engineering using CRISPR/Cas systems.",
+  "pubdate": "2013 Feb 15",
+  "pubmed_year": 2013,
+  "year_diff": 0,
+  "pubmed_journal": "Science",
+  "pubmed_first_author": "Cong L",
+  "pubtypes": [
+   "Journal Article",
+   "Research Support, N.I.H., Extramural",
+   "Research Support, Non-U.S. Gov't"
+  ],
+  "pmcid": "PMC3795411",
+  "title_ratio": 1.0,
+  "runner_up": null,
+  "in_window": true,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "multiplex[ti] AND genome[ti] AND engineering[ti] AND crispr[ti] AND cas[ti] AND systems[ti] AND 2013[dp]",
+    "hits": 1
+   }
+  ]
+ },
+ {
+  "id": "L25",
+  "question": "Which article first proposed that blocking the growth of new blood vessels could treat cancer?",
+  "title": "Tumor angiogenesis: therapeutic implications",
+  "year": 1971,
+  "journal": "N Engl J Med",
+  "first_author": "Folkman J",
+  "contested": false,
+  "control": null,
+  "status": "verified",
+  "strategy": "title+year",
+  "pmid": "4938153",
+  "pubmed_title": "Tumor angiogenesis: therapeutic implications.",
+  "pubdate": "1971 Nov 18",
+  "pubmed_year": 1971,
+  "year_diff": 0,
+  "pubmed_journal": "N Engl J Med",
+  "pubmed_first_author": "Folkman J",
+  "pubtypes": [
+   "Journal Article",
+   "Review"
+  ],
+  "pmcid": null,
+  "title_ratio": 1.0,
+  "runner_up": null,
+  "in_window": true,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "tumor[ti] AND angiogenesis[ti] AND therapeutic[ti] AND implications[ti] AND 1971[dp]",
+    "hits": 1
+   }
+  ]
+ },
+ {
+  "id": "L26",
+  "question": "Which paper cloned the gene mutated in obese ob/ob mice, encoding the fat-derived hormone later called leptin?",
+  "title": "Positional cloning of the mouse obese gene and its human homologue",
+  "year": 1994,
+  "journal": "Nature",
+  "first_author": "Zhang Y",
+  "contested": false,
+  "control": null,
+  "status": "verified",
+  "strategy": "title+year",
+  "pmid": "7984236",
+  "pubmed_title": "Positional cloning of the mouse obese gene and its human homologue.",
+  "pubdate": "1994 Dec 1",
+  "pubmed_year": 1994,
+  "year_diff": 0,
+  "pubmed_journal": "Nature",
+  "pubmed_first_author": "Zhang Y",
+  "pubtypes": [
+   "Journal Article",
+   "Research Support, U.S. Gov't, P.H.S."
+  ],
+  "pmcid": null,
+  "title_ratio": 1.0,
+  "runner_up": null,
+  "in_window": true,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "positional[ti] AND cloning[ti] AND mouse[ti] AND obese[ti] AND gene[ti] AND human[ti] AND homologue[ti] AND 1994[dp]",
+    "hits": 1
+   }
+  ]
+ },
+ {
+  "id": "L27",
+  "question": "Which study discovered the first microRNA, a small RNA controlling developmental timing in worms?",
+  "title": "The C. elegans heterochronic gene lin-4 encodes small RNAs with antisense complementarity to lin-14",
+  "year": 1993,
+  "journal": "Cell",
+  "first_author": "Lee RC",
+  "contested": false,
+  "control": null,
+  "status": "verified",
+  "strategy": "title+year",
+  "pmid": "8252621",
+  "pubmed_title": "The C. elegans heterochronic gene lin-4 encodes small RNAs with antisense complementarity to lin-14.",
+  "pubdate": "1993 Dec 3",
+  "pubmed_year": 1993,
+  "year_diff": 0,
+  "pubmed_journal": "Cell",
+  "pubmed_first_author": "Lee RC",
+  "pubtypes": [
+   "Comparative Study",
+   "Journal Article",
+   "Research Support, Non-U.S. Gov't",
+   "Research Support, U.S. Gov't, Non-P.H.S.",
+   "Research Support, U.S. Gov't, P.H.S."
+  ],
+  "pmcid": null,
+  "title_ratio": 1.0,
+  "runner_up": null,
+  "in_window": true,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "elegans[ti] AND heterochronic[ti] AND gene[ti] AND lin[ti] AND encodes[ti] AND small[ti] AND rnas[ti] AND antisense[ti] AND complementarity[ti] AND 1993[dp]",
+    "hits": 1
+   }
+  ]
+ },
+ {
+  "id": "L28",
+  "question": "Which paper established the nematode C. elegans as a model for genetic analysis?",
+  "title": "The genetics of Caenorhabditis elegans",
+  "year": 1974,
+  "journal": "Genetics",
+  "first_author": "Brenner S",
+  "contested": false,
+  "control": null,
+  "status": "verified",
+  "strategy": "title+year",
+  "pmid": "4366476",
+  "pubmed_title": "The genetics of Caenorhabditis elegans.",
+  "pubdate": "1974 May",
+  "pubmed_year": 1974,
+  "year_diff": 0,
+  "pubmed_journal": "Genetics",
+  "pubmed_first_author": "Brenner S",
+  "pubtypes": [
+   "Journal Article"
+  ],
+  "pmcid": "PMC1213120",
+  "title_ratio": 1.0,
+  "runner_up": null,
+  "in_window": true,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "genetics[ti] AND caenorhabditis[ti] AND elegans[ti] AND 1974[dp]",
+    "hits": 1
+   }
+  ]
+ },
+ {
+  "id": "L29",
+  "question": "Which paper introduced blotting of gel-separated DNA fragments onto a membrane for hybridization?",
+  "title": "Detection of specific sequences among DNA fragments separated by gel electrophoresis",
+  "year": 1975,
+  "journal": "J Mol Biol",
+  "first_author": "Southern EM",
+  "contested": false,
+  "control": null,
+  "status": "verified",
+  "strategy": "title+year",
+  "pmid": "1195397",
+  "pubmed_title": "Detection of specific sequences among DNA fragments separated by gel electrophoresis.",
+  "pubdate": "1975 Nov 5",
+  "pubmed_year": 1975,
+  "year_diff": 0,
+  "pubmed_journal": "J Mol Biol",
+  "pubmed_first_author": "Southern EM",
+  "pubtypes": [
+   "Journal Article"
+  ],
+  "pmcid": null,
+  "title_ratio": 1.0,
+  "runner_up": null,
+  "in_window": true,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "detection[ti] AND specific[ti] AND sequences[ti] AND dna[ti] AND fragments[ti] AND separated[ti] AND gel[ti] AND electrophoresis[ti] AND 1975[dp]",
+    "hits": 1
+   }
+  ]
+ },
+ {
+  "id": "L30",
+  "question": "Which paper first described transferring proteins electrically from gels to nitrocellulose, the western blot?",
+  "title": "Electrophoretic transfer of proteins from polyacrylamide gels to nitrocellulose sheets: procedure and some applications",
+  "year": 1979,
+  "journal": "Proc Natl Acad Sci U S A",
+  "first_author": "Towbin H",
+  "contested": false,
+  "control": null,
+  "status": "verified",
+  "strategy": "author+year+journal",
+  "pmid": "388439",
+  "pubmed_title": "Electrophoretic transfer of proteins from polyacrylamide gels to nitrocellulose sheets: procedure and some applications.",
+  "pubdate": "1979 Sep",
+  "pubmed_year": 1979,
+  "year_diff": 0,
+  "pubmed_journal": "Proc Natl Acad Sci U S A",
+  "pubmed_first_author": "Towbin H",
+  "pubtypes": [
+   "Journal Article"
+  ],
+  "pmcid": "PMC411572",
+  "title_ratio": 1.0,
+  "runner_up": null,
+  "in_window": true,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "electrophoretic[ti] AND transfer[ti] AND proteins[ti] AND polyacrylamide[ti] AND gels[ti] AND nitrocellulose[ti] AND sheets[ti] AND procedure[ti] AND some[ti] AND applications[ti] AND 1979[dp]",
+    "hits": 0
+   },
+   {
+    "strategy": "author+year+journal",
+    "term": "Towbin H[1au] AND 1979[dp] AND \"Proc Natl Acad Sci U S A\"[ta]",
+    "hits": 1
+   }
+  ]
+ },
+ {
+  "id": "L31",
+  "question": "Which paper first purified and sequenced the beta-amyloid protein from blood vessel deposits in Alzheimer's disease?",
+  "title": "Alzheimer's disease: initial report of the purification and characterization of a novel cerebrovascular amyloid protein",
+  "year": 1984,
+  "journal": "Biochem Biophys Res Commun",
+  "first_author": "Glenner GG",
+  "contested": false,
+  "control": null,
+  "status": "verified",
+  "strategy": "title+year",
+  "pmid": "6375662",
+  "pubmed_title": "Alzheimer's disease: initial report of the purification and characterization of a novel cerebrovascular amyloid protein.",
+  "pubdate": "1984 May 16",
+  "pubmed_year": 1984,
+  "year_diff": 0,
+  "pubmed_journal": "Biochem Biophys Res Commun",
+  "pubmed_first_author": "Glenner GG",
+  "pubtypes": [
+   "Journal Article",
+   "Research Support, Non-U.S. Gov't"
+  ],
+  "pmcid": null,
+  "title_ratio": 1.0,
+  "runner_up": null,
+  "in_window": true,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "alzheimer[ti] AND disease[ti] AND initial[ti] AND report[ti] AND purification[ti] AND characterization[ti] AND novel[ti] AND cerebrovascular[ti] AND amyloid[ti] AND protein[ti] AND 1984[dp]",
+    "hits": 1
+   }
+  ]
+ },
+ {
+  "id": "L32",
+  "question": "Which study showed that the transforming gene of an avian sarcoma virus has a counterpart in normal bird DNA, the first proto-oncogene?",
+  "title": "DNA related to the transforming gene(s) of avian sarcoma viruses is present in normal avian DNA",
+  "year": 1976,
+  "journal": "Nature",
+  "first_author": "Stehelin D",
+  "contested": false,
+  "control": null,
+  "status": "verified",
+  "strategy": "title+year",
+  "pmid": "176594",
+  "pubmed_title": "DNA related to the transforming gene(s) of avian sarcoma viruses is present in normal avian DNA.",
+  "pubdate": "1976 Mar 11",
+  "pubmed_year": 1976,
+  "year_diff": 0,
+  "pubmed_journal": "Nature",
+  "pubmed_first_author": "Stehelin D",
+  "pubtypes": [
+   "Comparative Study",
+   "Journal Article",
+   "Research Support, U.S. Gov't, Non-P.H.S.",
+   "Research Support, U.S. Gov't, P.H.S."
+  ],
+  "pmcid": null,
+  "title_ratio": 1.0,
+  "runner_up": null,
+  "in_window": true,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "dna[ti] AND related[ti] AND transforming[ti] AND gene[ti] AND avian[ti] AND sarcoma[ti] AND viruses[ti] AND present[ti] AND normal[ti] AND 1976[dp]",
+    "hits": 1
+   }
+  ]
+ },
+ {
+  "id": "L33",
+  "question": "Which paper first isolated human papillomavirus type 16 DNA from a cervical cancer?",
+  "title": "A papillomavirus DNA from a cervical carcinoma and its prevalence in cancer biopsy samples from different geographic regions",
+  "year": 1983,
+  "journal": "Proc Natl Acad Sci U S A",
+  "first_author": "Durst M",
+  "contested": false,
+  "control": null,
+  "status": "verified",
+  "strategy": "title+year",
+  "pmid": "6304740",
+  "pubmed_title": "A papillomavirus DNA from a cervical carcinoma and its prevalence in cancer biopsy samples from different geographic regions.",
+  "pubdate": "1983 Jun",
+  "pubmed_year": 1983,
+  "year_diff": 0,
+  "pubmed_journal": "Proc Natl Acad Sci U S A",
+  "pubmed_first_author": "Dürst M",
+  "pubtypes": [
+   "Journal Article",
+   "Research Support, Non-U.S. Gov't"
+  ],
+  "pmcid": "PMC394142",
+  "title_ratio": 1.0,
+  "runner_up": null,
+  "in_window": true,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "papillomavirus[ti] AND dna[ti] AND cervical[ti] AND carcinoma[ti] AND prevalence[ti] AND cancer[ti] AND biopsy[ti] AND samples[ti] AND different[ti] AND geographic[ti] AND 1983[dp]",
+    "hits": 1
+   }
+  ]
+ },
+ {
+  "id": "L34",
+  "question": "Which report described isolating the novel coronavirus from Wuhan pneumonia patients, with electron micrographs of it in human airway cells?",
+  "title": "A Novel Coronavirus from Patients with Pneumonia in China, 2019",
+  "year": 2020,
+  "journal": "N Engl J Med",
+  "first_author": "Zhu N",
+  "contested": false,
+  "control": null,
+  "status": "verified",
+  "strategy": "title+year",
+  "pmid": "31978945",
+  "pubmed_title": "A Novel Coronavirus from Patients with Pneumonia in China, 2019.",
+  "pubdate": "2020 Feb 20",
+  "pubmed_year": 2020,
+  "year_diff": 0,
+  "pubmed_journal": "N Engl J Med",
+  "pubmed_first_author": "Zhu N",
+  "pubtypes": [
+   "Journal Article"
+  ],
+  "pmcid": "PMC7092803",
+  "title_ratio": 1.0,
+  "runner_up": null,
+  "in_window": true,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "novel[ti] AND coronavirus[ti] AND patients[ti] AND pneumonia[ti] AND china[ti] AND 2019[ti] AND 2020[dp]",
+    "hits": 8
+   }
+  ]
+ },
+ {
+  "id": "L35",
+  "question": "Which study first gave evidence that immunoglobulin genes for variable and constant regions are rearranged in antibody-producing cells?",
+  "title": "Evidence for somatic rearrangement of immunoglobulin genes coding for variable and constant regions",
+  "year": 1976,
+  "journal": "Proc Natl Acad Sci U S A",
+  "first_author": "Hozumi N",
+  "contested": false,
+  "control": null,
+  "status": "verified",
+  "strategy": "title+year",
+  "pmid": "824647",
+  "pubmed_title": "Evidence for somatic rearrangement of immunoglobulin genes coding for variable and constant regions.",
+  "pubdate": "1976 Oct",
+  "pubmed_year": 1976,
+  "year_diff": 0,
+  "pubmed_journal": "Proc Natl Acad Sci U S A",
+  "pubmed_first_author": "Hozumi N",
+  "pubtypes": [
+   "Journal Article"
+  ],
+  "pmcid": "PMC431171",
+  "title_ratio": 1.0,
+  "runner_up": null,
+  "in_window": true,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "evidence[ti] AND somatic[ti] AND rearrangement[ti] AND immunoglobulin[ti] AND genes[ti] AND coding[ti] AND variable[ti] AND constant[ti] AND regions[ti] AND 1976[dp]",
+    "hits": 1
+   }
+  ]
+ },
+ {
+  "id": "L36",
+  "question": "Which study showed, using frog oocytes, that the red cell membrane protein CHIP28 forms water channels?",
+  "title": "Appearance of water channels in Xenopus oocytes expressing red cell CHIP28 protein",
+  "year": 1992,
+  "journal": "Science",
+  "first_author": "Preston GM",
+  "contested": false,
+  "control": null,
+  "status": "verified",
+  "strategy": "title+year",
+  "pmid": "1373524",
+  "pubmed_title": "Appearance of water channels in Xenopus oocytes expressing red cell CHIP28 protein.",
+  "pubdate": "1992 Apr 17",
+  "pubmed_year": 1992,
+  "year_diff": 0,
+  "pubmed_journal": "Science",
+  "pubmed_first_author": "Preston GM",
+  "pubtypes": [
+   "Journal Article",
+   "Research Support, Non-U.S. Gov't",
+   "Research Support, U.S. Gov't, P.H.S."
+  ],
+  "pmcid": null,
+  "title_ratio": 1.0,
+  "runner_up": null,
+  "in_window": true,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "appearance[ti] AND water[ti] AND channels[ti] AND xenopus[ti] AND oocytes[ti] AND expressing[ti] AND red[ti] AND cell[ti] AND chip28[ti] AND protein[ti] AND 1992[dp]",
+    "hits": 1
+   }
+  ]
+ },
+ {
+  "id": "L37",
+  "question": "Which paper identified the expanded CAG repeat gene that causes Huntington's disease?",
+  "title": "A novel gene containing a trinucleotide repeat that is expanded and unstable on Huntington's disease chromosomes",
+  "year": 1993,
+  "journal": "Cell",
+  "first_author": "",
+  "contested": false,
+  "control": null,
+  "status": "not_found",
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "novel[ti] AND gene[ti] AND containing[ti] AND trinucleotide[ti] AND repeat[ti] AND expanded[ti] AND unstable[ti] AND huntington[ti] AND disease[ti] AND chromosomes[ti] AND 1993[dp]",
+    "hits": 1
+   },
+   {
+    "strategy": "title",
+    "term": "novel[ti] AND gene[ti] AND containing[ti] AND trinucleotide[ti] AND repeat[ti] AND expanded[ti] AND unstable[ti] AND huntington[ti] AND disease[ti] AND chromosomes[ti]",
+    "hits": 1
+   }
+  ]
+ },
+ {
+  "id": "L38",
+  "question": "Which paper cloned the complementary DNA of the cystic fibrosis gene?",
+  "title": "Identification of the cystic fibrosis gene: cloning and characterization of complementary DNA",
+  "year": 1989,
+  "journal": "Science",
+  "first_author": "Riordan JR",
+  "contested": true,
+  "control": null,
+  "status": "verified",
+  "strategy": "title+year",
+  "pmid": "2475911",
+  "pubmed_title": "Identification of the cystic fibrosis gene: cloning and characterization of complementary DNA.",
+  "pubdate": "1989 Sep 8",
+  "pubmed_year": 1989,
+  "year_diff": 0,
+  "pubmed_journal": "Science",
+  "pubmed_first_author": "Riordan JR",
+  "pubtypes": [
+   "Journal Article",
+   "Research Support, Non-U.S. Gov't",
+   "Research Support, U.S. Gov't, P.H.S."
+  ],
+  "pmcid": null,
+  "title_ratio": 1.0,
+  "runner_up": null,
+  "in_window": true,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "identification[ti] AND cystic[ti] AND fibrosis[ti] AND gene[ti] AND cloning[ti] AND characterization[ti] AND complementary[ti] AND dna[ti] AND 1989[dp]",
+    "hits": 1
+   }
+  ]
+ },
+ {
+  "id": "L39",
+  "question": "Which paper first isolated BRCA1, the breast and ovarian cancer susceptibility gene?",
+  "title": "A strong candidate for the breast and ovarian cancer susceptibility gene BRCA1",
+  "year": 1994,
+  "journal": "Science",
+  "first_author": "Miki Y",
+  "contested": false,
+  "control": null,
+  "status": "verified",
+  "strategy": "title+year",
+  "pmid": "7545954",
+  "pubmed_title": "A strong candidate for the breast and ovarian cancer susceptibility gene BRCA1.",
+  "pubdate": "1994 Oct 7",
+  "pubmed_year": 1994,
+  "year_diff": 0,
+  "pubmed_journal": "Science",
+  "pubmed_first_author": "Miki Y",
+  "pubtypes": [
+   "Journal Article",
+   "Research Support, Non-U.S. Gov't",
+   "Research Support, U.S. Gov't, P.H.S."
+  ],
+  "pmcid": null,
+  "title_ratio": 1.0,
+  "runner_up": null,
+  "in_window": true,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "strong[ti] AND candidate[ti] AND breast[ti] AND ovarian[ti] AND cancer[ti] AND susceptibility[ti] AND gene[ti] AND brca1[ti] AND 1994[dp]",
+    "hits": 1
+   }
+  ]
+ },
+ {
+  "id": "L40",
+  "question": "Which study first found a host cell protein (later named p53) bound to SV40 large T antigen in transformed cells?",
+  "title": "T antigen is bound to a host protein in SV40-transformed cells",
+  "year": 1979,
+  "journal": "Nature",
+  "first_author": "Lane DP",
+  "contested": true,
+  "control": null,
+  "status": "verified",
+  "strategy": "title+year",
+  "pmid": "218111",
+  "pubmed_title": "T antigen is bound to a host protein in SV40-transformed cells.",
+  "pubdate": "1979 Mar 15",
+  "pubmed_year": 1979,
+  "year_diff": 0,
+  "pubmed_journal": "Nature",
+  "pubmed_first_author": "Lane DP",
+  "pubtypes": [
+   "Journal Article"
+  ],
+  "pmcid": null,
+  "title_ratio": 1.0,
+  "runner_up": null,
+  "in_window": true,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "antigen[ti] AND bound[ti] AND host[ti] AND protein[ti] AND sv40[ti] AND transformed[ti] AND cells[ti] AND 1979[dp]",
+    "hits": 1
+   }
+  ]
+ },
+ {
+  "id": "L41",
+  "question": "Which paper first detected telomerase activity, in Tetrahymena extracts?",
+  "title": "Identification of a specific telomere terminal transferase activity in Tetrahymena extracts",
+  "year": 1985,
+  "journal": "Cell",
+  "first_author": "Greider CW",
+  "contested": false,
+  "control": null,
+  "status": "verified",
+  "strategy": "title+year",
+  "pmid": "3907856",
+  "pubmed_title": "Identification of a specific telomere terminal transferase activity in Tetrahymena extracts.",
+  "pubdate": "1985 Dec",
+  "pubmed_year": 1985,
+  "year_diff": 0,
+  "pubmed_journal": "Cell",
+  "pubmed_first_author": "Greider CW",
+  "pubtypes": [
+   "Journal Article",
+   "Research Support, U.S. Gov't, P.H.S."
+  ],
+  "pmcid": null,
+  "title_ratio": 1.0,
+  "runner_up": null,
+  "in_window": true,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "identification[ti] AND specific[ti] AND telomere[ti] AND terminal[ti] AND transferase[ti] AND activity[ti] AND tetrahymena[ti] AND extracts[ti] AND 1985[dp]",
+    "hits": 1
+   }
+  ]
+ },
+ {
+  "id": "L42",
+  "question": "Which study showed that ATP-dependent protein breakdown involves covalently attaching a small polypeptide, later called ubiquitin, to the proteins?",
+  "title": "ATP-dependent conjugation of reticulocyte proteins with the polypeptide required for protein degradation",
+  "year": 1980,
+  "journal": "Proc Natl Acad Sci U S A",
+  "first_author": "Ciechanover A",
+  "contested": false,
+  "control": null,
+  "status": "verified",
+  "strategy": "title+year",
+  "pmid": "6769112",
+  "pubmed_title": "ATP-dependent conjugation of reticulocyte proteins with the polypeptide required for protein degradation.",
+  "pubdate": "1980 Mar",
+  "pubmed_year": 1980,
+  "year_diff": 0,
+  "pubmed_journal": "Proc Natl Acad Sci U S A",
+  "pubmed_first_author": "Ciechanover A",
+  "pubtypes": [
+   "Journal Article",
+   "Research Support, U.S. Gov't, Non-P.H.S.",
+   "Research Support, U.S. Gov't, P.H.S."
+  ],
+  "pmcid": "PMC348495",
+  "title_ratio": 1.0,
+  "runner_up": null,
+  "in_window": true,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "atp[ti] AND dependent[ti] AND conjugation[ti] AND reticulocyte[ti] AND proteins[ti] AND polypeptide[ti] AND required[ti] AND protein[ti] AND degradation[ti] AND 1980[dp]",
+    "hits": 1
+   }
+  ]
+ },
+ {
+  "id": "L43",
+  "question": "Which paper showed that endothelium-derived relaxing factor is nitric oxide?",
+  "title": "Nitric oxide release accounts for the biological activity of endothelium-derived relaxing factor",
+  "year": 1987,
+  "journal": "Nature",
+  "first_author": "Palmer RM",
+  "contested": true,
+  "control": null,
+  "status": "verified",
+  "strategy": "title+year",
+  "pmid": "3495737",
+  "pubmed_title": "Nitric oxide release accounts for the biological activity of endothelium-derived relaxing factor.",
+  "pubdate": "1987 Jun 11-17",
+  "pubmed_year": 1987,
+  "year_diff": 0,
+  "pubmed_journal": "Nature",
+  "pubmed_first_author": "Palmer RM",
+  "pubtypes": [
+   "Journal Article"
+  ],
+  "pmcid": null,
+  "title_ratio": 1.0,
+  "runner_up": null,
+  "in_window": true,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "nitric[ti] AND oxide[ti] AND release[ti] AND accounts[ti] AND biological[ti] AND activity[ti] AND endothelium[ti] AND derived[ti] AND relaxing[ti] AND factor[ti] AND 1987[dp]",
+    "hits": 1
+   }
+  ]
+ },
+ {
+  "id": "L44",
+  "question": "Which paper showed that acetylcholine relaxes arteries only when their endothelial cells are intact?",
+  "title": "The obligatory role of endothelial cells in the relaxation of arterial smooth muscle by acetylcholine",
+  "year": 1980,
+  "journal": "Nature",
+  "first_author": "Furchgott RF",
+  "contested": false,
+  "control": null,
+  "status": "verified",
+  "strategy": "title+year",
+  "pmid": "6253831",
+  "pubmed_title": "The obligatory role of endothelial cells in the relaxation of arterial smooth muscle by acetylcholine.",
+  "pubdate": "1980 Nov 27",
+  "pubmed_year": 1980,
+  "year_diff": 0,
+  "pubmed_journal": "Nature",
+  "pubmed_first_author": "Furchgott RF",
+  "pubtypes": [
+   "Journal Article",
+   "Research Support, U.S. Gov't, P.H.S."
+  ],
+  "pmcid": null,
+  "title_ratio": 1.0,
+  "runner_up": null,
+  "in_window": true,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "obligatory[ti] AND role[ti] AND endothelial[ti] AND cells[ti] AND relaxation[ti] AND arterial[ti] AND smooth[ti] AND muscle[ti] AND acetylcholine[ti] AND 1980[dp]",
+    "hits": 1
+   }
+  ]
+ },
+ {
+  "id": "L45",
+  "question": "Which paper described the neural network that predicted protein structures at near-experimental accuracy in CASP14?",
+  "title": "Highly accurate protein structure prediction with AlphaFold",
+  "year": 2021,
+  "journal": "Nature",
+  "first_author": "Jumper J",
+  "contested": false,
+  "control": null,
+  "status": "verified",
+  "strategy": "title+year",
+  "pmid": "34265844",
+  "pubmed_title": "Highly accurate protein structure prediction with AlphaFold.",
+  "pubdate": "2021 Aug",
+  "pubmed_year": 2021,
+  "year_diff": 0,
+  "pubmed_journal": "Nature",
+  "pubmed_first_author": "Jumper J",
+  "pubtypes": [
+   "Journal Article",
+   "Research Support, Non-U.S. Gov't"
+  ],
+  "pmcid": "PMC8371605",
+  "title_ratio": 1.0,
+  "runner_up": null,
+  "in_window": true,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "highly[ti] AND accurate[ti] AND protein[ti] AND structure[ti] AND prediction[ti] AND alphafold[ti] AND 2021[dp]",
+    "hits": 1
+   }
+  ]
+ },
+ {
+  "id": "L46",
+  "question": "Which paper first described the Australia antigen in blood sera, later identified as the hepatitis B surface antigen?",
+  "title": "A \"new\" antigen in leukemia sera",
+  "year": 1965,
+  "journal": "JAMA",
+  "first_author": "Blumberg BS",
+  "contested": false,
+  "control": null,
+  "status": "verified",
+  "strategy": "title+year",
+  "pmid": "14239025",
+  "pubmed_title": "A \"NEW\" ANTIGEN IN LEUKEMIA SERA.",
+  "pubdate": "1965 Feb 15",
+  "pubmed_year": 1965,
+  "year_diff": 0,
+  "pubmed_journal": "JAMA",
+  "pubmed_first_author": "BLUMBERG BS",
+  "pubtypes": [
+   "Journal Article"
+  ],
+  "pmcid": null,
+  "title_ratio": 1.0,
+  "runner_up": null,
+  "in_window": true,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "new[ti] AND antigen[ti] AND leukemia[ti] AND sera[ti] AND 1965[dp]",
+    "hits": 1
+   }
+  ]
+ },
+ {
+  "id": "L47",
+  "question": "Which paper reported the discovery of the first statins, cholesterol synthesis inhibitors from a Penicillium fungus?",
+  "title": "ML-236A, ML-236B, and ML-236C, new inhibitors of cholesterogenesis produced by Penicillium citrinium",
+  "year": 1976,
+  "journal": "J Antibiot (Tokyo)",
+  "first_author": "Endo A",
+  "contested": false,
+  "control": null,
+  "status": "verified",
+  "strategy": "title+year",
+  "pmid": "1010803",
+  "pubmed_title": "ML-236A, ML-236B, and ML-236C, new inhibitors of cholesterogenesis produced by Penicillium citrinium.",
+  "pubdate": "1976 Dec",
+  "pubmed_year": 1976,
+  "year_diff": 0,
+  "pubmed_journal": "J Antibiot (Tokyo)",
+  "pubmed_first_author": "Endo A",
+  "pubtypes": [
+   "Journal Article"
+  ],
+  "pmcid": null,
+  "title_ratio": 1.0,
+  "runner_up": null,
+  "in_window": true,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "236a[ti] AND 236b[ti] AND 236c[ti] AND new[ti] AND inhibitors[ti] AND cholesterogenesis[ti] AND produced[ti] AND penicillium[ti] AND citrinium[ti] AND 1976[dp]",
+    "hits": 1
+   }
+  ]
+ },
+ {
+  "id": "C01",
+  "question": "Which paper first proposed the double-helix structure of DNA?",
+  "title": "Molecular structure of nucleic acids; a structure for deoxyribose nucleic acid",
+  "year": 1953,
+  "journal": "Nature",
+  "first_author": "Watson JD",
+  "contested": false,
+  "control": true,
+  "status": "verified",
+  "strategy": "title+year",
+  "pmid": "13054692",
+  "pubmed_title": "Molecular structure of nucleic acids; a structure for deoxyribose nucleic acid.",
+  "pubdate": "1953 Apr 25",
+  "pubmed_year": 1953,
+  "year_diff": 0,
+  "pubmed_journal": "Nature",
+  "pubmed_first_author": "WATSON JD",
+  "pubtypes": [
+   "Journal Article"
+  ],
+  "pmcid": null,
+  "title_ratio": 1.0,
+  "runner_up": null,
+  "in_window": false,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "molecular[ti] AND structure[ti] AND nucleic[ti] AND acids[ti] AND deoxyribose[ti] AND acid[ti] AND 1953[dp]",
+    "hits": 1
+   }
+  ]
+ },
+ {
+  "id": "C02",
+  "question": "Which paper introduced the Folin phenol method for measuring protein?",
+  "title": "Protein measurement with the Folin phenol reagent",
+  "year": 1951,
+  "journal": "J Biol Chem",
+  "first_author": "Lowry OH",
+  "contested": false,
+  "control": true,
+  "status": "verified",
+  "strategy": "title+year",
+  "pmid": "14907713",
+  "pubmed_title": "Protein measurement with the Folin phenol reagent.",
+  "pubdate": "1951 Nov",
+  "pubmed_year": 1951,
+  "year_diff": 0,
+  "pubmed_journal": "J Biol Chem",
+  "pubmed_first_author": "LOWRY OH",
+  "pubtypes": [
+   "Journal Article"
+  ],
+  "pmcid": null,
+  "title_ratio": 1.0,
+  "runner_up": null,
+  "in_window": false,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "protein[ti] AND measurement[ti] AND folin[ti] AND phenol[ti] AND reagent[ti] AND 1951[dp]",
+    "hits": 1
+   }
+  ]
+ },
+ {
+  "id": "C03",
+  "question": "Which study showed that DNA is the substance that transforms pneumococcal types?",
+  "title": "Studies on the chemical nature of the substance inducing transformation of pneumococcal types: induction of transformation by a desoxyribonucleic acid fraction isolated from pneumococcus type III",
+  "year": 1944,
+  "journal": "J Exp Med",
+  "first_author": "Avery OT",
+  "contested": false,
+  "control": true,
+  "status": "verified",
+  "strategy": "title+year",
+  "pmid": "19871359",
+  "pubmed_title": "STUDIES ON THE CHEMICAL NATURE OF THE SUBSTANCE INDUCING TRANSFORMATION OF PNEUMOCOCCAL TYPES : INDUCTION OF TRANSFORMATION BY A DESOXYRIBONUCLEIC ACID FRACTION ISOLATED FROM PNEUMOCOCCUS TYPE III.",
+  "pubdate": "1944 Feb 1",
+  "pubmed_year": 1944,
+  "year_diff": 0,
+  "pubmed_journal": "J Exp Med",
+  "pubmed_first_author": "Avery OT",
+  "pubtypes": [
+   "Journal Article"
+  ],
+  "pmcid": "PMC2135445",
+  "title_ratio": 1.0,
+  "runner_up": null,
+  "in_window": false,
+  "excluded_types": [],
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "studies[ti] AND chemical[ti] AND nature[ti] AND substance[ti] AND inducing[ti] AND transformation[ti] AND pneumococcal[ti] AND types[ti] AND induction[ti] AND desoxyribonucleic[ti] AND 1944[dp]",
+    "hits": 1
+   }
+  ]
+ },
+ {
+  "id": "C04",
+  "question": "Which paper introduced the product-limit estimator of survival from incomplete observations?",
+  "title": "Nonparametric estimation from incomplete observations",
+  "year": 1958,
+  "journal": "J Am Stat Assoc",
+  "first_author": "Kaplan EL",
+  "contested": false,
+  "control": true,
+  "status": "not_found",
+  "tried": [
+   {
+    "strategy": "title+year",
+    "term": "nonparametric[ti] AND estimation[ti] AND incomplete[ti] AND observations[ti] AND 1958[dp]",
+    "hits": 0
+   },
+   {
+    "strategy": "author+year+journal",
+    "term": "Kaplan EL[1au] AND 1958[dp] AND \"J Am Stat Assoc\"[ta]",
+    "hits": 0
+   },
+   {
+    "strategy": "title",
+    "term": "nonparametric[ti] AND estimation[ti] AND incomplete[ti] AND observations[ti]",
+    "hits": 1
+   }
+  ]
+ }
+]

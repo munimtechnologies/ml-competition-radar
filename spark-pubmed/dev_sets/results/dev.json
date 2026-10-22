@@ -1,0 +1,96 @@
+{
+ "started_utc": "2026-10-22T14:32:57Z",
+ "problem": null,
+ "L": {
+  "landmarks": 47,
+  "controls": 4,
+  "verified": 46,
+  "verified_title_year": 45,
+  "verified_exact_year": 46,
+  "verified_by_strategy": {
+   "title+year": 48,
+   "author+year+journal": 1
+  },
+  "not_found": [
+   "L37",
+   "C04"
+  ],
+  "errors": [],
+  "verified_in_window": 46,
+  "verified_with_pmcid": 12,
+  "verified_excluded_types": {},
+  "with_runner_up": [
+   "L17"
+  ],
+  "controls_found": [
+   "C01",
+   "C02",
+   "C03"
+  ],
+  "controls_in_window": [],
+  "eutils_calls": 107
+ },
+ "R": {
+  "files": [
+   {
+    "file": "pubmed27n0001.xml.gz",
+    "skipped": false,
+    "problem": null,
+    "records": 30000,
+    "eligible": 12765,
+    "sampled": 15,
+    "eligible_share": 0.4255
+   },
+   {
+    "file": "pubmed27n0262.xml.gz",
+    "skipped": false,
+    "problem": null,
+    "records": 30000,
+    "eligible": 19780,
+    "sampled": 15,
+    "eligible_share": 0.6593
+   },
+   {
+    "file": "pubmed27n0523.xml.gz",
+    "skipped": false,
+    "problem": null,
+    "records": 30000,
+    "eligible": 22988,
+    "sampled": 15,
+    "eligible_share": 0.7663
+   },
+   {
+    "file": "pubmed27n0784.xml.gz",
+    "skipped": false,
+    "problem": null,
+    "records": 30000,
+    "eligible": 23787,
+    "sampled": 15,
+    "eligible_share": 0.7929
+   },
+   {
+    "file": "pubmed27n1045.xml.gz",
+    "skipped": false,
+    "problem": null,
+    "records": 30000,
+    "eligible": 25247,
+    "sampled": 15,
+    "eligible_share": 0.8416
+   },
+   {
+    "file": "pubmed27n1306.xml.gz",
+    "skipped": false,
+    "problem": null,
+    "records": 17568,
+    "eligible": 15732,
+    "sampled": 15,
+    "eligible_share": 0.8955
+   }
+  ],
+  "pool": 90,
+  "unique_pmids": 90,
+  "eligible_share_excl_0001": 0.7817,
+  "failed": []
+ },
+ "finished_utc": "2026-10-22T14:35:20Z"
+}
