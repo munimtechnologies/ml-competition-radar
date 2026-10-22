@@ -3,14 +3,15 @@
 A dated census of what machine-learning and data-competition platforms actually say
 about AI-assisted entries, with verbatim quotes and the URL each quote came from.
 
-Version 0.3.2, platform terms checked 2026-10-17 (EvalAI live challenges 2026-10-18; Zindi
+Version 0.3.3, platform terms checked 2026-10-17 (EvalAI live challenges 2026-10-18; Zindi
 competitions, ARC Prize 2026 and the U.S. DOE GEMS Prize checked 2026-10-21; three more DOE
-prize rules 2026-10-22). Made by MV2 of Munim, Inc. with AI agents working in his name. Text
-and data: CC BY 4.0. Code in this repository: Apache-2.0.
+prize rules and the NIH/NLM SPARK PubMed/PMC Challenge 2026-10-22). Made by MV2 of Munim, Inc.
+with AI agents working in his name. Text and data: CC BY 4.0. Code in this repository:
+Apache-2.0.
 
 ## The finding
 
-Of 13 platforms or contests whose primary texts were read, **no platform-wide terms have a
+Of 14 platforms or contests whose primary texts were read, **no platform-wide terms have a
 clause about AI-assisted or AI-generated code**. Clauses about AI tools exist only inside
 single competitions, and three have been found:
 
@@ -20,9 +21,9 @@ single competitions, and three have been found:
   any, you used generative AI technology and how you used it to develop your submission". It is
   the only ML competition in this census that requires AI use to be disclosed. The rules say the
   disclosure goes "in the narrative", but no narrative is defined anywhere else in the 19-page
-  rules or on the competition's DrivenData pages. **New in 0.3.2:** the same clause is in 2 of 3
-  other DOE prize rules read for comparison, where the narrative is a required part of the entry,
-  so the clause is shared DOE prize text and the GEMS gap most likely came with it (below).
+  rules or on the competition's DrivenData pages. The same clause is in 2 of 3 other DOE prize
+  rules read for comparison, where the narrative is a required part of the entry, so the clause
+  is shared DOE prize text and the GEMS gap most likely came with it (below).
 - **Permission without disclosure:** Zindi's Bias Bounty Mapping Equity Challenge ($10,000; rules
   updated 2026-10-06) says "General-purpose development assistants such as commercial LLM coding
   tools may be used for code drafting, debugging, testing" (and documentation), "provided they are
@@ -33,15 +34,22 @@ single competitions, and three have been found:
 - **A data and licence rule:** the eBay 2026 University ML Competition - Canada (EvalAI) keeps
   eBay data out of hosted AI tools and says AI output "MUST NOT limit commercial use".
 
+**New in 0.3.3:** the NIH/NLM SPARK PubMed/PMC Challenge ($250,000) has no clause on AI help in
+writing an entry, but strict rules on what the entry runs: "Systems may not invoke external APIs
+to proprietary frontier models (e.g., commercial hosted LLM endpoints)", only open-weight models
+bundled in a Docker image that runs "with all external network calls blocked", and full
+disclosure of base models, training data and fine-tuning. Its official sources also disagree on
+the most important date (below).
+
 What otherwise binds an entry made with AI is indirect:
 
 | Gate | Where it appears | Effect on an AI-made entry |
 |---|---|---|
 | Natural persons only | DrivenData's standard template ("Legal entities and organizations are not eligible for entry."), Kaggle ("Each Team member must be a single individual") | A company cannot be the entrant; a person must hold the account. Contest rules can lift this: the DOE GEMS Prize on DrivenData admits U.S.-incorporated companies |
-| Open-source / no paid services / no internet | Zindi ("no paid services or free trials that require a credit card"), bitgrit ("commercial or proprietary APIs ... strictly prohibited"), ARC Prize 2026 ("no API-based systems like GPT/Claude/etc.") | A commercial LLM API cannot run *inside* the solution; only Zindi's Bias Bounty and the DOE GEMS Prize say anything about AI used to *write* it, and both allow it |
+| Open-source / no paid services / no internet | Zindi ("no paid services or free trials that require a credit card"), bitgrit ("commercial or proprietary APIs ... strictly prohibited"), ARC Prize 2026 ("no API-based systems like GPT/Claude/etc."), NIH/NLM SPARK ("may use only publicly available, open-weight Large Language Models"; network blocked) | A commercial LLM API cannot run *inside* the solution; only Zindi's Bias Bounty and the DOE GEMS Prize say anything about AI used to *write* it, and both allow it |
 | AutoML ban | Zindi ("Automated machine learning tools such as AutoML are not permitted.") | Written for AutoML products; does not mention coding assistants or agents |
-| Reproducibility audit | NeurIPS EEG/EMG 2026 (re-run training, ±2σ), bitgrit (fixed seeds), Zindi (code must run, "Always set the seed."), ARC Prize 2026 (open source before private scores), DOE GEMS (finalists' code must reproduce the winning results) | An AI-made pipeline must be scripted and seeded like any other |
-| Organisations welcome | ThinkOnward ("you" may mean "Your Organization"), NeurIPS EEG/EMG 2026 ("Industry, academia, students, and independents are all eligible"), DOE GEMS (U.S.-based companies, institutions and nonprofits) | A company can enter as itself |
+| Reproducibility audit | NeurIPS EEG/EMG 2026 (re-run training, ±2σ), bitgrit (fixed seeds), Zindi (code must run, "Always set the seed."), ARC Prize 2026 (open source before private scores), DOE GEMS (finalists' code must reproduce the winning results), NIH/NLM SPARK (Docker images re-run on hidden "adversarial probes"; public repository) | An AI-made pipeline must be scripted and seeded like any other |
+| Organisations welcome | ThinkOnward ("you" may mean "Your Organization"), NeurIPS EEG/EMG 2026 ("Industry, academia, students, and independents are all eligible"), DOE GEMS (U.S.-based companies, institutions and nonprofits), NIH/NLM SPARK (U.S.-incorporated entities; the prize goes to the entity) | A company can enter as itself |
 | No platform terms at all | EvalAI (each host writes its own terms; the official starter template's terms file was Lorem ipsum on 2026-10-17, but none of the 18 running challenges still used it on 2026-10-18) | Read each challenge's own terms; there is nothing above them |
 
 The practical rule for anyone entering with AI help in 2026: read the competition's own rules,
@@ -49,7 +57,8 @@ not only the platform's; check eligibility (person or entity); keep every model 
 and reproducible; and disclose AI use in the method write-up even where no rule asks, because
 every platform reserves the right to disqualify entries that break "the spirit of the
 Competition", and U.S. DOE prizes now make disclosure a condition. Where the rules are silent or
-ambiguous about coding assistants, ask the organisers.
+ambiguous about coding assistants, ask the organisers. And read the dates in the rule documents,
+not only on the registration page.
 
 ## Files
 
@@ -58,8 +67,33 @@ ambiguous about coding assistants, ask the organisers.
   the platforms not covered and why, the prior art checked, and a change log. The EvalAI record
   carries the 2026-10-18 live check under `live_challenges_2026_10_18`; the Zindi record carries
   the 2026-10-21 competition check under `zindi_competitions_2026_10_21`; the GEMS record carries
-  its AI clause under `ai_clause`; the DOE comparison is under `doe_template_check_2026_10_22`.
+  its AI clause under `ai_clause`; the DOE comparison is under `doe_template_check_2026_10_22`;
+  the SPARK record carries its date comparison under `deadline_check` and its graded predictions
+  under `preregistered`.
 - `ai-rules-census.md`: the same as readable tables.
+
+## What changed in 0.3.3
+
+- **Added the NIH/NLM SPARK PubMed/PMC Challenge** (two tasks, $125,000 each, on the NIDDK-CR
+  Challenge Management Platform). Its rule documents are links signed for 10 minutes, so a
+  sealed job loaded each challenge page and downloaded them at once, and code extracted the text.
+  Five predictions were written down before any document was read; three held (no duty to
+  disclose AI used in building the entry; U.S.-incorporated companies may enter; the solution must
+  go on GitHub) and two missed (there *is* an explicit ban on commercial LLM APIs inside the
+  solution; the documents do *not* all give the platform's deadline).
+- **Three timelines for one contest.** The announcement says "Code Upload Close: January 15,
+  2027" and takes result files January 18-31; the Task 2 description requires every model and
+  index to have been "created or last modified on or before January 15, 2027"; the FAQ says
+  systems are "frozen, date-stamped, and uploaded by the system upload deadline". The NLM news
+  release says "Deadline for solution submissions will be Jan. 15, 2027, and result submissions
+  are due by Jan. 30, 2027." But the platform page where entrants register shows "Challenge
+  Starts" 1/15/2027 5:00 AM ET and "Solution Submission Due" 2/1/2027 4:59 AM ET, with no
+  code-upload date. An entrant who reads only that page would plan to keep building for two
+  weeks after the system freeze.
+- **A data rule that may be stricter than meant.** Entrants may not use "licensed data, purchased
+  datasets, or any non-CC-BY (Creative Commons Attribution) data". Read literally, that also
+  rules out public-domain (CC0) data such as many NIH-produced datasets; the documents do not
+  say whether that is intended.
 
 ## What changed in 0.3.2
 
@@ -71,7 +105,7 @@ ambiguous about coding assistants, ask the organisers.
   the development of a competitor's prize submission is not prohibited." (Energy Storage: "Use
   of"), and both require entrants to state the extent and manner of their use. The Industrial
   Energy Storage Systems Prize ($4.8 million) has no AI clause. These are hardware and utility
-  prizes, read only for comparison; they are not counted among the 13 records.
+  prizes, read only for comparison; they are not counted among the records.
 - **Where the GEMS "narrative" most likely came from.** In Digitizing Utilities, "Competitors
   must indicate in the narrative (not included in the word count)" refers to a required
   2,500-word narrative with its own section; in Energy Storage the disclosure goes in the
@@ -152,13 +186,14 @@ could not be read, so it may overlap; that is the main limit of this claim. Sear
 wording follows the U.S. National Science Foundation's notice of 2023-12-14 to grant proposers
 ("Proposers are encouraged to indicate in the project description the extent to which, if any,
 generative AI technology was" ...), which encourages disclosure; DOE's prize rules make it a
-"must".
+"must". A search on 2026-10-22 found the SPARK news release and challenge pages but no page that
+sets the announcement's code-upload date against the platform page's dates.
 
 ## Limits
 
 - One date for the platform terms, one more for EvalAI's live list, a third for Zindi's
-  competitions, ARC Prize and GEMS, a fourth for the DOE comparison. Per-competition rules can
-  override every platform-wide term quoted here.
+  competitions, ARC Prize and GEMS, a fourth for the DOE comparison and SPARK. Per-competition
+  rules can override every platform-wide term quoted here.
 - Kaggle's rules pages are JS-rendered; its quotes come from search-result snippets.
 - The EvalAI and CrunchDAO records rest on documentation pages, not binding terms; the ARC Prize
   record rests on its overview page, not each track's rules.
@@ -168,6 +203,9 @@ generative AI technology was" ...), which encourages disclosure; DOE's prize rul
   by a text-extraction model, not parsed by code.
 - Four DOE prize rules have been read (GEMS plus three for comparison), out of many more DOE
   prizes, and the three were the ones whose rules PDFs could be found, not a random sample.
+- The SPARK record does not yet include the first four pages of either task description or the
+  two timeline PDFs, which an extraction defect overwrote; they are being re-read. The nih.gov
+  challenge page refuses plain fetches, so it is not quoted.
 - Quotes are fragments of at most 125 characters each; the URL carries the full text.
 - "Not addressed" never means "allowed".
 
@@ -178,4 +216,6 @@ bump the check date and the version, and add a line to `changes`. Add a platform
 record with the same keys. For Zindi, list open competitions from
 `https://api.zindi.world/v1/competitions` and read each one at
 `https://api.zindi.world/v1/competitions/<slug>`. For rules published only as PDF, extract the
-text with code (WebFetch returns the compressed bytes) and read the pages with the hits.
+text with code (WebFetch returns the compressed bytes) and read the pages with the hits. For
+documents behind short-lived signed links, load the page and download in the same step, and
+never store the link's query string.

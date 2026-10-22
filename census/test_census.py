@@ -61,6 +61,26 @@ class CensusTest(unittest.TestCase):
         self.assertEqual(len(documents), 3)
         self.assertIn("2 of 3", census["headline"])
 
+    def test_record_count_matches_headline_and_readme(self):
+        census = load()
+        n = len(census["platforms"])
+        self.assertIn("of %d platforms or contests" % n, census["headline"])
+        with open(os.path.join(HERE, "README.md"), encoding="utf-8") as f:
+            self.assertIn("Of %d platforms or contests" % n, f.read())
+
+    def test_spark_record_grades_and_dates(self):
+        spark = [r for r in load()["platforms"] if r["name"].startswith("NIH/NLM SPARK")]
+        self.assertEqual(len(spark), 1)
+        record = spark[0]
+        grades = record["preregistered"]["predictions"]
+        self.assertEqual(len(grades), 5)
+        self.assertEqual(sum(g.endswith(": held") for g in grades), 3)
+        self.assertEqual(sum(g.endswith(": missed") for g in grades), 2)
+        quotes = record["deadline_check"]["quotes"]
+        self.assertIn("Code Upload Close: January 15, 2027", quotes)
+        self.assertIn("2/1/2027 4:59 AM ET", record["deadline_check"]["platform_page"])
+        self.assertTrue(record["commercial_llm_api_inside_solution"].startswith("FORBIDDEN"))
+
 
 if __name__ == "__main__":
     unittest.main()

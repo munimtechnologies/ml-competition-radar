@@ -1,4 +1,4 @@
-# AI-assistance rules across ML competition platforms (version 0.3.2, platform terms checked 2026-10-17; EvalAI live check 2026-10-18; Zindi competitions, ARC Prize 2026 and DOE GEMS Prize checked 2026-10-21; DOE comparison 2026-10-22)
+# AI-assistance rules across ML competition platforms (version 0.3.3, platform terms checked 2026-10-17; EvalAI live check 2026-10-18; Zindi competitions, ARC Prize 2026 and DOE GEMS Prize checked 2026-10-21; DOE comparison and NIH/NLM SPARK 2026-10-22)
 
 CC BY 4.0. MV2 of Munim, Inc., with AI agents working in his name. Quotes are verbatim
 fragments of at most 125 characters; the URL carries the full text. "none" means the page has
@@ -19,6 +19,7 @@ no such clause, not that the thing is allowed.
 | [CrunchDAO](https://docs.crunchdao.com/) (docs landing page only) | page fetched | none | none | not addressed on this page | not addressed as such: "Everyone. Crunch is open and permissionless." | not addressed on this page | "rewarded in USDC"; licence in per-competition rules (not read) | not addressed on this page |
 | [ARC Prize 2026](https://arcprize.org/competitions/2026/) (overview page; submitted on Kaggle) | page fetched 2026-10-21 | none | none | **not possible**: "Internet access is not available during Kaggle evaluation (no API-based systems like GPT/Claude/etc.)" | not addressed on this page; Kaggle admits individual accounts only | not addressed on this page | "all code and methods authored by the submitter must be made open source" (CC0 or MIT-0) | "All prizes require reproducible, open-source submissions" |
 | [U.S. DOE GEMS Prize](https://docs.nlr.gov/docs/fy26osti/96647.pdf) (official rules, September 2026; hosted on [DrivenData](https://www.drivendata.org/competitions/306/competition-doe-gems/)) | PDF text extracted by code, 2026-10-21 (19 pages) | **permits it, disclosure required** (items 11 and 13): "Using generative AI technology in the development of your prize submission is allowed." | none | not addressed | **yes, U.S.-based**: "Private entities must be incorporated in and maintain a primary place of business in the United States." | individuals: U.S. citizen or permanent resident, 18+; FFRDCs, federal employees, debarred parties, foreign-talent-program members excluded | complete code assets and documentation; public parts under "an unlimited license to display publicly and to use"; no open-source licence required | "should be able to sufficiently reproduce the winning results and generate predictions on new data samples" |
+| [NIH/NLM SPARK PubMed/PMC Challenge](https://repository.niddk.nih.gov/data-challenge/challenges/166) (Tasks 1 and 2, $125,000 each; announcement dated September 15, 2026) | announcement PDF, rules .docx and FAQ extracted by code, 2026-10-22; platform page and news release fetched | none (item 14) | none | **forbidden**: "Systems may not invoke external APIs to proprietary frontier models (e.g., commercial hosted LLM endpoints)"; open-weight LLMs only, network blocked | **yes, U.S. only**: "In the case of a private entity, shall be incorporated in and maintain a primary place of business in the United States" | 18+; not on the Excluded Parties List; no federal or HHS employees | public repository; NIH gets a non-exclusive licence; "Participants will not be required to transfer their intellectual property rights to NIH" | Docker images re-run by NIH; "unseen, private adversarial probes" in the final test; finalists installed in an NIH AWS environment |
 
 Not covered (with the reason, all 2026-10-17): Solafune (terms page HTTP 404), Numerai (terms
 page JS-only; rules page HTTP 404), Signate (terms URL redirects to a JS-only page), Topcoder
@@ -60,6 +61,21 @@ prizes, read for comparison only, and are not counted among the records above.
 | [D2 Digitizing Utilities Prize Round 3](https://docs.nlr.gov/docs/gen/fy26/98559.pdf) | $2,425,000 (cash and lab vouchers) | 33 | Modification 1, January 8, 2026 (substantial rewrite, changes not listed) | **yes**, in both phases: "Using generative AI technology in the development of a competitor’s prize submission is not prohibited." | "the narrative (not included in the word count)", a required section: "Maximum 2,500 words and up to five supporting images or figures (PDF)" |
 | [D3 Industrial Energy Storage Systems Prize](https://americanmadechallenges.org/challenges/industrial-energy-storage/docs/Industrial-Energy-Storage-Systems-Prize-Rules.pdf) | $4,800,000 | 24 | none | **no**; "artificial intelligence" only as background ("data center construction driven by artificial intelligence") | - |
 
+## SPARK PubMed/PMC: one contest, three timelines (new in 0.3.3, 2026-10-22)
+
+| Source | What it says |
+|---|---|
+| Announcement PDF (September 15, 2026), Timeline | "Code Upload Close: January 15, 2027"; "Submissions Open: January 18, 2027"; "Submissions Close: January 31, 2027" |
+| Task 2 description, "System Submission" | everything "must have been created or last modified on or before January 15, 2027" |
+| FAQ (2026-10-06), question 6 | systems "frozen, date-stamped, and uploaded by the system upload deadline. No changes are permitted after this deadline." |
+| NLM news release (September 15, 2026) | "Deadline for solution submissions will be Jan. 15, 2027, and result submissions are due by Jan. 30, 2027." |
+| Platform page (where entrants register), 2026-10-22 | "Challenge Starts" 1/15/2027 5:00 AM ET; "Solution Submission Due" 2/1/2027 4:59 AM ET; no code-upload date |
+
+Five predictions were written before any SPARK document was read: P1 no duty to disclose AI used
+in building the entry (held); P2 no explicit ban on commercial LLM APIs inside the solution
+(missed); P3 U.S.-incorporated companies may enter (held); P4 every document gives the platform's
+deadline (missed); P5 the solution must go on GitHub (held).
+
 ## Reading
 
 1. (Narrowed in 0.3.0) No platform-wide terms address AI-written code. The nearest clauses are
@@ -72,8 +88,9 @@ prizes, read for comparison only, and are not counted among the records above.
    admits U.S.-incorporated companies (item 12).
 3. Where a commercial LLM is banned, the ban is on running it inside the solution (Zindi via
    "no paid services", bitgrit explicitly, ARC Prize 2026 by having no internet during
-   evaluation), for reproducibility and fairness. Only two rules (items 9 and 11) speak to how the
-   code was written, and both allow AI help.
+   evaluation, NIH/NLM SPARK explicitly and by blocking the network), for reproducibility and
+   fairness. Only two rules (items 9 and 11) speak to how the code was written, and both allow AI
+   help.
 4. Every platform with prizes re-runs or inspects winning code. An AI-made pipeline is held to
    the same bar: scripted, seeded, documented.
 5. (Updated in 0.2.1) EvalAI has no platform-wide participation terms at all: each host writes
@@ -157,6 +174,20 @@ prizes, read for comparison only, and are not counted among the records above.
    the four without a change table, are the only ones without it. Practical upshot: anyone
    entering a 2026 DOE prize with AI help should expect a written disclosure duty, and in GEMS
    should ask the organisers where to put it.
+14. (New in 0.3.3) The NIH/NLM SPARK PubMed/PMC Challenge ($250,000; NIH, not DOE) has no
+   clause about AI help in writing an entry and no AI-use disclosure duty, but the strictest
+   rules in this census on what the entry runs: "Submitted systems may use only publicly
+   available, open-weight Large Language Models (LLMs), open-source software" (it goes on),
+   models must ship "within the submitted Docker images", and the images run "with all external
+   network calls blocked" (NLM services such as UMLS excepted). It does require disclosure of the
+   system itself: "Submissions must explicitly disclose all training data sources, base model
+   selections, architectural diagrams" (it goes on), with the exact commands of any fine-tuning.
+   Its data rule bans "licensed data, purchased datasets, or any non-CC-BY (Creative Commons
+   Attribution) data", which read literally also bans public-domain (CC0) data. Its dates are in
+   the table above: the rule documents and the news release freeze every system on January 15,
+   2027, while the platform page where entrants register calls that day the challenge start and
+   gives February 1 as the solution due date. Like GEMS (item 12), it shows that the registration
+   page is not the rule; unlike GEMS, the gap here is two weeks, not two hours.
 
 ## Prior art checked (2026-10-17; searches repeated 2026-10-21 and 2026-10-22)
 
@@ -168,4 +199,5 @@ On 2026-10-21 no page quoting the Zindi Bias Bounty clause or the GEMS clause wa
 forum thread on AI-generated code shows users disagreeing with no official rule cited. The GEMS
 clause echoes the NSF notice of 2023-12-14: "Proposers are encouraged to indicate in the project
 description the extent to which, if any, generative AI technology was" (it goes on). On 2026-10-22
-no page quoting the Energy Storage / Digitizing Utilities sentence was found.
+no page quoting the Energy Storage / Digitizing Utilities sentence was found, and no page was found
+that sets the SPARK announcement's code-upload date against its platform page's dates.
