@@ -88,6 +88,22 @@ class Blocked(object):
         return b""
 
 
+class ReadOnly(object):
+    """A response with read() but no read1()."""
+
+    def __init__(self, data):
+        self.buf = io.BytesIO(data)
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *exc):
+        return False
+
+    def read(self, n=-1):
+        return self.buf.read(n)
+
+
 class FetchTest(unittest.TestCase):
     def test_fetch_resume_and_md5(self):
         files = {"pubmed27n0001.xml.gz": fake_file(1, 3), "pubmed27n0002.xml.gz": fake_file(10, 2)}
@@ -117,6 +133,29 @@ class FetchTest(unittest.TestCase):
             s = fetch_corpus.run(os.path.join(d, "raw"), os.path.join(d, "out"), 1, 1e12,
                                  opener_for({}))
             self.assertIn("not enough free disk", s["problem"])
+
+    def test_disk_floor_skips_download(self):
+        name = "pubmed27n0001.xml.gz"
+        calls = []
+        with tempfile.TemporaryDirectory() as d:
+            info = fetch_corpus.get(name, d, opener_for(site({name: fake_file(1, 1)}), calls),
+                                    tries=1, min_free_bytes=1e18)
+            self.assertTrue(info["problem"].startswith("disk floor"))
+            self.assertEqual(calls, [])
+            self.assertFalse(os.path.exists(os.path.join(d, name + ".md5ok")))
+
+    def test_response_without_read1(self):
+        name = "pubmed27n0001.xml.gz"
+        data = fake_file(1, 2)
+        pages = site({name: data})
+
+        def opener(url, timeout=120):
+            return ReadOnly(pages[url]) if url == fetch_corpus.BASE + name else io.BytesIO(pages[url])
+        with tempfile.TemporaryDirectory() as d:
+            info = fetch_corpus.get(name, d, opener, tries=1)
+            self.assertIsNone(info["problem"])
+            self.assertEqual(info["bytes"], len(data))
+            self.assertTrue(os.path.exists(os.path.join(d, name + ".md5ok")))
 
     def test_trickling_download_times_out(self):
         name = "pubmed27n0001.xml.gz"

@@ -12,6 +12,11 @@ v0.2 (run 172): run 1 stalled for hours on one download (a socket that kept tric
 hit the 120 s read timeout). Each attempt now has a wall-clock limit (--file-minutes) and the
 whole step has one too (--max-minutes); files still unfinished then are recorded as failed, and
 the process exits without waiting for stuck threads, so the job's later steps still run.
+
+v0.2.1 (run 173): v0.2 picked the read method with getattr(resp, "read1", resp.read), which
+evaluates resp.read even when read1 exists, so a response with only read1 raised AttributeError
+(two tests failed in the sealed job, before any download). --min-free-gb is now also a floor
+checked before each file, so a host with less disk stops early instead of filling up.
 """
 import argparse
 import hashlib
@@ -25,7 +30,7 @@ import urllib.request
 from concurrent.futures import ThreadPoolExecutor, wait
 
 BASE = "https://ftp.ncbi.nlm.nih.gov/pubmed/.pubmed-spark/"
-UA = "MV2-Munim-spark-fetch/0.2 (mv2@munimtech.com)"
+UA = "MV2-Munim-spark-fetch/0.2.1 (mv2@munimtech.com)"
 NAME_RX = re.compile(r"pubmed27n(\d{4})\.xml\.gz(?!\.md5)")
 MD5_RX = re.compile(r"\b([0-9a-f]{32})\b")
 
@@ -41,7 +46,7 @@ def list_files(opener=fetch):
     return sorted(set("pubmed27n%s.xml.gz" % m.group(1) for m in NAME_RX.finditer(html)))
 
 
-def get(name, data_dir, opener=fetch, tries=3, file_seconds=900.0):
+def get(name, data_dir, opener=fetch, tries=3, file_seconds=900.0, min_free_bytes=0):
     """Download one file (once), check its md5, mark it verified. Returns a per-file record."""
     path = os.path.join(data_dir, name)
     marker = path + ".md5ok"
@@ -50,6 +55,10 @@ def get(name, data_dir, opener=fetch, tries=3, file_seconds=900.0):
             return {"file": name, "bytes": os.path.getsize(path), "md5": f.read().strip(),
                     "skipped": True, "problem": None}
     info = {"file": name, "skipped": False}
+    free = shutil.disk_usage(data_dir).free
+    if free < min_free_bytes:
+        info["problem"] = "disk floor: %.1f GB free < %.1f GB; not downloaded" % (free / 1e9, min_free_bytes / 1e9)
+        return info
     for attempt in range(1, tries + 1):
         try:
             t0 = time.time()
@@ -58,7 +67,7 @@ def get(name, data_dir, opener=fetch, tries=3, file_seconds=900.0):
             want = m.group(1) if m else None
             h, n = hashlib.md5(), 0
             with opener(BASE + name) as resp, open(path + ".part", "wb") as f:
-                read = getattr(resp, "read1", resp.read)  # read1: one socket read, never a long wait
+                read = resp.read1 if hasattr(resp, "read1") else resp.read  # read1: one socket read, never a long wait
                 while True:
                     if time.time() - t0 > file_seconds:
                         raise TimeoutError("no complete download within %.0f s" % file_seconds)
@@ -98,7 +107,8 @@ def run(data_dir, out_dir, workers, min_free_gb, opener=fetch, max_minutes=None,
         summary["listing_files"] = len(names)
         t0 = time.time()
         pool = ThreadPoolExecutor(max_workers=max(1, workers))
-        futs = {pool.submit(get, n, data_dir, opener, 3, 60.0 * file_minutes): n for n in names}
+        futs = {pool.submit(get, n, data_dir, opener, 3, 60.0 * file_minutes, min_free_gb * 1e9): n
+                for n in names}
         pending, done_n = set(futs), 0
         deadline = None if max_minutes is None else t0 + 60.0 * max_minutes
         while pending:
@@ -121,6 +131,7 @@ def run(data_dir, out_dir, workers, min_free_gb, opener=fetch, max_minutes=None,
         summary.update({
             "files_ok": len(good), "files_resumed": sum(1 for i in good if i["skipped"]),
             "files_failed": [i["file"] for i in results if i.get("problem")],
+            "files_disk_floor": sum(1 for i in results if (i.get("problem") or "").startswith("disk floor")),
             "bytes_total": sum(i["bytes"] for i in good),
             "seconds": round(time.time() - t0, 1),
             "free_gb_after": round(shutil.disk_usage(data_dir).free / 1e9, 1)})
