@@ -7,6 +7,8 @@ import os
 import sqlite3
 import sys
 import tempfile
+import threading
+import time
 import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -55,6 +57,37 @@ def opener_for(pages, calls=None):
     return opener
 
 
+class Trickle(object):
+    """A response that sends one byte every 20 ms and never ends (the run-1 stall)."""
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *exc):
+        return False
+
+    def read1(self, n):
+        time.sleep(0.02)
+        return b"x"
+
+
+class Blocked(object):
+    """A response whose first read waits until the test releases it."""
+
+    def __init__(self, release):
+        self.release = release
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *exc):
+        return False
+
+    def read1(self, n):
+        self.release.wait(10)
+        return b""
+
+
 class FetchTest(unittest.TestCase):
     def test_fetch_resume_and_md5(self):
         files = {"pubmed27n0001.xml.gz": fake_file(1, 3), "pubmed27n0002.xml.gz": fake_file(10, 2)}
@@ -84,6 +117,52 @@ class FetchTest(unittest.TestCase):
             s = fetch_corpus.run(os.path.join(d, "raw"), os.path.join(d, "out"), 1, 1e12,
                                  opener_for({}))
             self.assertIn("not enough free disk", s["problem"])
+
+    def test_trickling_download_times_out(self):
+        name = "pubmed27n0001.xml.gz"
+        pages = site({name: fake_file(1, 1)})
+
+        def opener(url, timeout=120):
+            return Trickle() if url == fetch_corpus.BASE + name else io.BytesIO(pages[url])
+        with tempfile.TemporaryDirectory() as d:
+            t0 = time.time()
+            info = fetch_corpus.get(name, d, opener, tries=1, file_seconds=0.3)
+            self.assertLess(time.time() - t0, 5)
+            self.assertIn("TimeoutError", info["problem"])
+            self.assertFalse(os.path.exists(os.path.join(d, name + ".md5ok")))
+
+    def test_max_minutes_records_unfinished_file(self):
+        files = {"pubmed27n0001.xml.gz": fake_file(1, 2), "pubmed27n0002.xml.gz": fake_file(5, 2)}
+        pages, release = site(files), threading.Event()
+
+        def opener(url, timeout=120):
+            if url == fetch_corpus.BASE + "pubmed27n0002.xml.gz":
+                return Blocked(release)
+            return io.BytesIO(pages[url])
+        with tempfile.TemporaryDirectory() as d:
+            t0 = time.time()
+            s = fetch_corpus.run(os.path.join(d, "raw"), os.path.join(d, "out"), 2, 0, opener,
+                                 max_minutes=0.01, file_minutes=10)
+            self.assertLess(time.time() - t0, 5)
+            self.assertEqual(s["unfinished"], 1)
+            self.assertEqual(s["files_ok"], 1)
+            self.assertEqual(s["files_failed"], ["pubmed27n0002.xml.gz"])
+            with open(os.path.join(d, "out", "fetch_files.jsonl"), encoding="utf-8") as f:
+                rows = [json.loads(line) for line in f]
+            self.assertEqual(len(rows), 2)
+            self.assertIn("not finished", rows[1]["problem"])
+            self.assertEqual(fetch_corpus.exit_code(s, 0), 1)
+            self.assertEqual(fetch_corpus.exit_code(s, 1), 0)
+            release.set()
+            time.sleep(0.3)
+
+    def test_exit_code(self):
+        self.assertEqual(fetch_corpus.exit_code({"problem": None}, 0), 0)
+        self.assertEqual(fetch_corpus.exit_code({"problem": "not enough free disk"}, 5), 1)
+        self.assertEqual(fetch_corpus.exit_code(
+            {"problem": "x", "files_failed": ["a", "b"], "files_ok": 3}, 1), 1)
+        self.assertEqual(fetch_corpus.exit_code(
+            {"problem": "x", "files_failed": ["a", "b"], "files_ok": 0}, 5), 1)
 
 
 class PilotTest(unittest.TestCase):
