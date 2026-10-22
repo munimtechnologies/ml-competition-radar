@@ -3,7 +3,7 @@
 A dated census of what machine-learning and data-competition platforms actually say
 about AI-assisted entries, with verbatim quotes and the URL each quote came from.
 
-Version 0.3.3, platform terms checked 2026-10-17 (EvalAI live challenges 2026-10-18; Zindi
+Version 0.3.4, platform terms checked 2026-10-17 (EvalAI live challenges 2026-10-18; Zindi
 competitions, ARC Prize 2026 and the U.S. DOE GEMS Prize checked 2026-10-21; three more DOE
 prize rules and the NIH/NLM SPARK PubMed/PMC Challenge 2026-10-22). Made by MV2 of Munim, Inc.
 with AI agents working in his name. Text and data: CC BY 4.0. Code in this repository:
@@ -71,6 +71,28 @@ not only on the registration page.
   the SPARK record carries its date comparison under `deadline_check` and its graded predictions
   under `preregistered`.
 - `ai-rules-census.md`: the same as readable tables.
+
+## What changed in 0.3.4
+
+- **SPARK dates: only the platform page differs.** The two one-page timeline PDFs (Task 1 and
+  Task 2), extracted again on 2026-10-22 after an extraction defect, both say "Code Upload Close:
+  January 15, 2027", with submissions from January 18 to 31, judging from February 1 to March 29
+  and winners on March 30, 2027. The Task 1 description adds "By January 15, 2027, participants
+  must submit a Docker image(s)". Every NIH document now agrees; the platform page (start
+  1/15/2027, solution due 2/1/2027) is the only source with other dates.
+- **The SPARK PubMed corpus is already public.** Both task descriptions define it as "all
+  citations with a publication date from January 1,1959 to July 31,2026", without preprints, at
+  https://ftp.ncbi.nlm.nih.gov/pubmed/.pubmed-spark/ (1,306 files dated 2026-08-31). 0.3.3 read
+  the corpus as still to come; that was wrong. The PMC part is a list of PMC ids,
+  `Challenge_PMCIDs.txt`, which was not on the platform page on 2026-10-22. The announcement
+  describes a different corpus, "drawn entirely from PubMed and the PMC Open Access subset" and
+  without editorials and historical articles. A pre-registered sample audit of the PubMed files
+  (10 of 11 predictions held) is at https://github.com/munimtechnologies/ml-competition-radar/tree/main/spark-pubmed.
+- **Three follow-up predictions graded**, written before the re-read. Q1 held: the timeline PDFs
+  freeze systems on January 15, 2027. Q2 missed: the Task 1 description gives no calendar date for
+  the corpus (it gives the publication window). Q3 missed: it does not name the PMC Open Access
+  subset; it defines its own subset by licence, NIH funding, date and status. All three are under
+  `preregistered.followup` in the SPARK record.
 
 ## What changed in 0.3.3
 
@@ -203,8 +225,8 @@ sets the announcement's code-upload date against the platform page's dates.
   by a text-extraction model, not parsed by code.
 - Four DOE prize rules have been read (GEMS plus three for comparison), out of many more DOE
   prizes, and the three were the ones whose rules PDFs could be found, not a random sample.
-- The SPARK record does not yet include the first four pages of either task description or the
-  two timeline PDFs, which an extraction defect overwrote; they are being re-read. The nih.gov
+- The SPARK record now rests on every SPARK document on the two challenge pages (0.3.4); the
+  pages an extraction defect overwrote in 0.3.3 were extracted again and read. The nih.gov
   challenge page refuses plain fetches, so it is not quoted.
 - Quotes are fragments of at most 125 characters each; the URL carries the full text.
 - "Not addressed" never means "allowed".

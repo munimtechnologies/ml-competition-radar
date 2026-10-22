@@ -59,6 +59,14 @@ python -m unittest test_radar.py
 
 The tests are offline and use small fixtures shaped like both sources.
 
+## Also in this repository
+
+- `census/`: an open census of what ML and data competitions say about AI-made entries, with
+  short quotes from each rule document (see `census/README.md`).
+- `spark-pubmed/`: open groundwork for the NIH/NLM SPARK PubMed/PMC Challenge: a pre-registered
+  audit of the challenge's PubMed corpus and an on-disk BM25 (SQLite FTS5) pilot, standard
+  library only (see `spark-pubmed/README.md`).
+
 ## Why
 
 Prize competitions are one lane in which work made in the open can earn money.

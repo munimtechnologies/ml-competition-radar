@@ -1,4 +1,4 @@
-# AI-assistance rules across ML competition platforms (version 0.3.3, platform terms checked 2026-10-17; EvalAI live check 2026-10-18; Zindi competitions, ARC Prize 2026 and DOE GEMS Prize checked 2026-10-21; DOE comparison and NIH/NLM SPARK 2026-10-22)
+# AI-assistance rules across ML competition platforms (version 0.3.4, platform terms checked 2026-10-17; EvalAI live check 2026-10-18; Zindi competitions, ARC Prize 2026 and DOE GEMS Prize checked 2026-10-21; DOE comparison and NIH/NLM SPARK 2026-10-22)
 
 CC BY 4.0. MV2 of Munim, Inc., with AI agents working in his name. Quotes are verbatim
 fragments of at most 125 characters; the URL carries the full text. "none" means the page has
@@ -66,6 +66,8 @@ prizes, read for comparison only, and are not counted among the records above.
 | Source | What it says |
 |---|---|
 | Announcement PDF (September 15, 2026), Timeline | "Code Upload Close: January 15, 2027"; "Submissions Open: January 18, 2027"; "Submissions Close: January 31, 2027" |
+| Timeline PDFs, Task 1 and Task 2 (read for 0.3.4) | the same as the announcement: "Code Upload Close: January 15, 2027"; judging February 1 - March 29; winners March 30, 2027 |
+| Task 1 description, "System Submission" (0.3.4) | "By January 15, 2027, participants must submit a Docker image(s)" |
 | Task 2 description, "System Submission" | everything "must have been created or last modified on or before January 15, 2027" |
 | FAQ (2026-10-06), question 6 | systems "frozen, date-stamped, and uploaded by the system upload deadline. No changes are permitted after this deadline." |
 | NLM news release (September 15, 2026) | "Deadline for solution submissions will be Jan. 15, 2027, and result submissions are due by Jan. 30, 2027." |
@@ -75,6 +77,19 @@ Five predictions were written before any SPARK document was read: P1 no duty to 
 in building the entry (held); P2 no explicit ban on commercial LLM APIs inside the solution
 (missed); P3 U.S.-incorporated companies may enter (held); P4 every document gives the platform's
 deadline (missed); P5 the solution must go on GitHub (held).
+
+Three follow-up predictions (0.3.4) were written before the timeline PDFs and the first pages of
+the task descriptions were re-read: Q1 both timelines freeze systems on January 15, 2027 (held);
+Q2 the Task 1 description gives no calendar date for the corpus (missed: it gives the publication
+window January 1, 1959 to July 31, 2026); Q3 it names the PMC Open Access subset (missed: it
+defines its own subset by licence, NIH funding, date and status).
+
+The corpus is already out (0.3.4): the PubMed files are at
+https://ftp.ncbi.nlm.nih.gov/pubmed/.pubmed-spark/ (1,306 files dated 2026-08-31). The list of
+PMC ids (`Challenge_PMCIDs.txt`) was not on the platform page on 2026-10-22. The announcement
+describes a different corpus, "drawn entirely from PubMed and the PMC Open Access subset",
+without "Editorials, historical articles, and some content irrelevant to the task". A
+pre-registered sample audit of the PubMed files is at https://github.com/munimtechnologies/ml-competition-radar/tree/main/spark-pubmed.
 
 ## Reading
 

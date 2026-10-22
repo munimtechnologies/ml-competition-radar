@@ -80,6 +80,12 @@ class CensusTest(unittest.TestCase):
         self.assertIn("Code Upload Close: January 15, 2027", quotes)
         self.assertIn("2/1/2027 4:59 AM ET", record["deadline_check"]["platform_page"])
         self.assertTrue(record["commercial_llm_api_inside_solution"].startswith("FORBIDDEN"))
+        followup = record["preregistered"]["followup"]["predictions"]
+        self.assertEqual(len(followup), 3)
+        self.assertEqual(sum(": held" in g for g in followup), 1)
+        self.assertEqual(sum(": missed" in g for g in followup), 2)
+        self.assertIn("January 15, 2027", record["deadline_check"]["timeline_pdfs"])
+        self.assertIn(".pubmed-spark", record["corpus"])
 
 
 if __name__ == "__main__":
