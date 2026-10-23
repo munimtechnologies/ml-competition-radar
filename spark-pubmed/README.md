@@ -28,6 +28,10 @@ GitHub refused to create that repository twice on 2026-10-22 ("secondary rate li
 - `t1_runner/` holds the Task 1 pipeline: the resumable index builder, BM25 candidates, ten
   fixed cutoff policies (the task penalises wrong citations), the submission JSONL, a format
   validator and a scorer. Its predictions were pre-registered before any score existed.
+- `rerank/` is the planned second stage: NCBI's public-domain MedCPT cross-encoder rereads the
+  top BM25 candidates on CPU. Its first job checks that the model reproduces its own model
+  card, measures time per candidate at 128-512 tokens and tries int8 weights. The predictions
+  were pre-registered before the job ran.
 
 ## Findings so far
 
@@ -52,9 +56,10 @@ GitHub refused to create that repository twice on 2026-10-22 ("secondary rate li
 
 Graded: corpus audit (10 of 11 predictions held), dev sets (10 of 11 held), FTS5 pilot and
 count (11 of 16 held). The runner's tests passed. Queued as job `spark32-build-v1`: the mirror
-repair, the full count and the first 240 minutes of the whole-corpus build. Next steps: finish
-the index, score the dev sets with the ten cutoff policies (pre-registered), then add an
-open-weight reranker on CPU.
+repair, the full count and the first 240 minutes of the whole-corpus build. Queued as job
+`sparkrr-bench-v1`: the reranker's card check and CPU benchmark (`rerank/PREREGISTRATION.md`).
+Next steps: finish the index, score the dev sets with the ten cutoff policies
+(pre-registered), then score BM25 + rerank at the depth the benchmark allows.
 
 ## Limits
 
