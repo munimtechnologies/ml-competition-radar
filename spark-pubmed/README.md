@@ -19,7 +19,7 @@ GitHub refused to create that repository twice on 2026-10-22 ("secondary rate li
   FTS5 (BM25) index built with the standard library only, and counts every record of the corpus.
   It has pre-registered predictions and graded results (`fts_pilot/RESULTS.md`).
 - `corpus_build/` holds the full count of all 1,306 files and the whole-corpus index build, with
-  pre-registered predictions and graded results (`corpus_build/RESULTS.md`).
+  pre-registered predictions and graded results (`corpus_build/RESULTS*.md`).
 - `dev_sets/` holds two practice question sets, because no SPARK questions are public yet:
   - L: well-known first reports since 1959, each matched to PubMed's own record. 46 of 47 were
     found automatically, and a hand check confirmed every match.
@@ -31,9 +31,10 @@ GitHub refused to create that repository twice on 2026-10-22 ("secondary rate li
 - `rerank/` is the second stage: NCBI's public-domain MedCPT cross-encoder rereads the top BM25
   candidates on CPU. Its card check and CPU benchmark are graded (`rerank/RESULTS.md`).
 - `t2/` starts Task 2. `compose.py` is an extractive baseline that copies every sentence from a
-  cited abstract and flags conflicting findings. `biogen_census.py` turns NIST's TREC 2024
-  BioGen judgments (65 health questions, citations judged Supports / Contradicts / Neutral /
-  Not Relevant) into development data. Its predictions were pre-registered.
+  cited abstract and flags conflicting findings. `biogen_census.py` and `biogen_stance.py` turn
+  NIST's TREC 2024 BioGen judgments (65 health questions, citations judged Supports /
+  Contradicts / Neutral / Not Relevant) into development data and measure how repeatable each
+  label is. Every job was pre-registered.
 
 ## Findings so far
 
@@ -49,25 +50,28 @@ GitHub refused to create that repository twice on 2026-10-22 ("secondary rate li
 - **Corpus shape.** 39,167,524 records and 56.25 GB compressed. 74.2% of records have an abstract
   and 27.9% a PMC id. There is 1 duplicate PMID (25973045), and both copies sit in the same file,
   `pubmed27n0782.xml.gz`.
-- **Index.** FTS5 at `detail=full` uses about 2.26 KB per record, about 88.5 GB for the whole
-  corpus by extrapolation, and builds at about 2,500 records/s on one CPU. The `column` and
-  `none` levels save only 13-22% and make queries 18-19 times slower, with the same ranking on
-  the pilot's checks.
+- **Index.** The whole-corpus FTS5 index at `detail=full` is built: 39,167,523 records, 92.5 GB
+  (2,362 bytes per record, above the pilot's 2.26 KB because later files carry more abstracts).
+  Whole-corpus BM25 is slow: a 6.1 s median per question at depth 50 on a warm pass, 22.7 s at
+  worst, against 30 ms on the 1.2-million-record pilot.
 - **Reranker.** MedCPT's cross-encoder reproduces its model card's scores in fp32 and costs about
   437 ms per pair at 320 tokens on 2 CPUs. That allows about 82 candidates per question if 200
   questions must run in 2 hours, so the first scoring job reranks 50. Dynamic int8 is 1.7-2.1x
   faster and kept the card's order, but it shifted the six card scores by 2.0-6.7 points, so a
   score cutoff set in fp32 would not carry over. int8 is dropped.
+- **BioGen's Contradicts label is the least repeatable.** Where the identical sentence citing the
+  same paper was judged more than once, specific agreement is 0.85 for Supports and 0.22 for
+  Contradicts (Scott's pi 0.23 overall). 92 of the 168 papers judged both ways in one topic got
+  both labels on the identical sentence (`t2/RESULTS-biogen-stance*.md`).
 
 ## Status (2026-10-23)
 
 Graded: corpus audit (10 of 11 predictions held), dev sets (10 of 11), FTS5 pilot and count
-(11 of 16), mirror repair and full count (7 of 8 graded; the build part was stopped by the host,
-so 6 are ungraded), reranker check (10 of 11). The runner's tests passed. The whole-corpus build
-continues in job `spark33-build-v1`, with predictions in
-`corpus_build/PREREGISTRATION-spark33.md`. Task 2: the BioGen census `biogen-census-v1` is
-queued, with predictions in `t2/PREREGISTRATION-biogen.md`. Next steps: finish the index, score
-the dev sets with the ten cutoff policies (pre-registered), score BM25 + rerank at depth 50, and
+(11 of 16), mirror repair and full count (7 of 8 graded), index build continued (13 of 13) and
+finished (14 of 16), reranker check (10 of 11), BioGen census (5 of 10, then 9 of 10), BioGen
+stance (8 of 9, then 5 of 8). Queued with predictions written first: the first whole-corpus
+Task 1 scoring on the dev sets (`t1_runner/PREREGISTRATION-spark35.md`) and BioGen stance v3
+(`t2/PREREGISTRATION-biogen-stance-v3.md`). Next steps: score BM25 + rerank at depth 50, and
 score the Task 2 baseline on the BioGen questions.
 
 ## Limits

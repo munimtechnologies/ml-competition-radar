@@ -36,7 +36,8 @@ Every job was pre-registered before it ran and graded word for word:
 | biogen-census-v1 | `PREREGISTRATION-biogen.md` | `RESULTS-biogen.md`, `results-biogen/` | 5 of 10; all misses one label-word defect in 0.1.0 |
 | biogen-census-v2 | `PREREGISTRATION-biogen-v2.md` | `RESULTS-biogen-v2.md`, `results-biogen-v2/` | 9 of 10 |
 | biogen-stance-v1 | `PREREGISTRATION-biogen-stance.md` | `RESULTS-biogen-stance.md`, `results-biogen-stance/` | 3 of 3 checks, 8 of 9 |
-| biogen-stance-v2 | `PREREGISTRATION-biogen-stance-v2.md` | pending | queued |
+| biogen-stance-v2 | `PREREGISTRATION-biogen-stance-v2.md` | `RESULTS-biogen-stance-v2.md`, `results-biogen-stance-v2/` | 3 of 3 checks, 5 of 8 |
+| biogen-stance-v3 | `PREREGISTRATION-biogen-stance-v3.md` | pending | queued |
 
 What v2 counted: 14,763 citation judgments (69.4% supporting, 1.9% contradicting, 4.3% invalid);
 55 of 65 topics have a contradicting judgment; 3,858 distinct PMIDs, all inside the SPARK
@@ -48,12 +49,19 @@ What stance-v1 found: for **92 of those 168 papers (55%), the identical sentence
 paper was judged both Supports and Contradicts**. Only 28 were different sentences in one run's
 answer, and 48 were only different runs' different sentences. Where the identical sentence-paper
 pair was judged more than once (2,084 groups), 69.7% of groups agree completely. Of the 130
-groups that include a Contradicts label, only 11 (8.5%) do. So much of BioGen's "contradicting
-evidence" signal is one claim judged two ways. MedAESQA (Scientific Data 2025, PMC12179289), which
-releases 40 of these questions, already reports lower annotator agreement within one item for
-Contradicting (67.67) than for Supporting (82.09). Our count adds the between-item view: the
-final labels of identical sentence-paper pairs. stance-v2 measures chance-corrected and per-label
-agreement for those pairs before we lean on that further.
+groups that include a Contradicts label, only 11 (8.5%) do.
+
+What stance-v2 added: over the 4,045 pairs of judgments of an identical (topic, sentence, PMID),
+**specific agreement is 0.85 for Supports but 0.22 for Contradicts** (Neutral 0.31, Not relevant
+0.42). Raw agreement of 0.75 shrinks to a Scott's pi of 0.23 once chance is removed. So
+Contradicts is the least repeatable label. Unexpectedly, most repeats (2,657) sit inside one
+run's answer, and 85 of the 92 both-ways papers got both labels inside one run. stance-v3 checks
+whether these are one sentence citing the same PMID twice, each copy judged separately.
+
+MedAESQA (Scientific Data 2025, PMC12179289), which releases 40 of these questions, already
+reports lower annotator agreement within one item for Contradicting (67.67) than for Supporting
+(82.09). Our counts add the view across items: the released final labels of identical
+sentence-paper pairs. No human has checked them yet.
 
 ## Baseline: `compose.py` 0.2.0 (extractive, cited, standard library only)
 
@@ -81,8 +89,9 @@ beat.
 
 ## Next
 
-1. Grade `biogen-stance-v2`.
-2. Once the whole-corpus index is complete: run t1.py BM25 (then MedCPT rerank) on the 65
-   BioGen questions, run `compose`, and run `score`, with predictions written first.
+1. Grade `biogen-stance-v3`.
+2. The whole-corpus index is complete (`corpus_build/RESULTS-spark34.md`) and the first
+   whole-corpus Task 1 scoring job is queued. After it: run t1.py BM25 (then MedCPT rerank) on
+   the 65 BioGen questions, run `compose`, and run `score`, with predictions written first.
 
 Contact: MV2, Munim, Inc., mv2@munimtech.com
