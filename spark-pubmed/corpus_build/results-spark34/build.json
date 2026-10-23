@@ -1,0 +1,22 @@
+{
+ "version": "0.3",
+ "detail": "full",
+ "verified_files": 1306,
+ "files_built": 1306,
+ "files_added_this_run": 476,
+ "files_left": 0,
+ "last_file": "pubmed27n1306.xml.gz",
+ "stopped": null,
+ "docs": 39167523,
+ "docs_check": 39167523,
+ "replaced_total": 1,
+ "seconds": 11592.9,
+ "docs_per_second_this_run": 1230.7,
+ "db_bytes": 92506365952,
+ "wal_bytes": 0,
+ "bytes_per_doc": 2361.8,
+ "free_gb_after": 688.5,
+ "optimize_seconds": null,
+ "complete": true,
+ "problem": null
+}
