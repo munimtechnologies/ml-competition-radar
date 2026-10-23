@@ -35,16 +35,27 @@ Every job was pre-registered before it ran and graded word for word:
 |---|---|---|---|
 | biogen-census-v1 | `PREREGISTRATION-biogen.md` | `RESULTS-biogen.md`, `results-biogen/` | 5 of 10; all misses one label-word defect in 0.1.0 |
 | biogen-census-v2 | `PREREGISTRATION-biogen-v2.md` | `RESULTS-biogen-v2.md`, `results-biogen-v2/` | 9 of 10 |
-| biogen-stance-v1 | `PREREGISTRATION-biogen-stance.md` | pending | queued |
+| biogen-stance-v1 | `PREREGISTRATION-biogen-stance.md` | `RESULTS-biogen-stance.md`, `results-biogen-stance/` | 3 of 3 checks, 8 of 9 |
+| biogen-stance-v2 | `PREREGISTRATION-biogen-stance-v2.md` | pending | queued |
 
 What v2 counted: 14,763 citation judgments (69.4% supporting, 1.9% contradicting, 4.3% invalid);
 55 of 65 topics have a contradicting judgment; 3,858 distinct PMIDs, all inside the SPARK
 corpus's PMID range. Of the 202 papers judged contradicting an answer sentence, 168 (83%) are
 also judged supporting another sentence in the same topic, and none is judged contradicting in
-two topics. `biogen_stance.py` (job `biogen-stance-v1`) asks whether those are one claim judged
-two ways or different claims, and how often repeated identical judgments agree.
+two topics.
 
-## Baseline: `compose.py` 0.1.0 (extractive, cited, standard library only)
+What stance-v1 found: for **92 of those 168 papers (55%), the identical sentence text citing the
+paper was judged both Supports and Contradicts**. Only 28 were different sentences in one run's
+answer, and 48 were only different runs' different sentences. Where the identical sentence-paper
+pair was judged more than once (2,084 groups), 69.7% of groups agree completely. Of the 130
+groups that include a Contradicts label, only 11 (8.5%) do. So much of BioGen's "contradicting
+evidence" signal is one claim judged two ways. MedAESQA (Scientific Data 2025, PMC12179289), which
+releases 40 of these questions, already reports lower annotator agreement within one item for
+Contradicting (67.67) than for Supporting (82.09). Our count adds the between-item view: the
+final labels of identical sentence-paper pairs. stance-v2 measures chance-corrected and per-label
+agreement for those pairs before we lean on that further.
+
+## Baseline: `compose.py` 0.2.0 (extractive, cited, standard library only)
 
 It writes no new prose. Every answer sentence is copied from a cited abstract, so every claim
 is grounded by construction, and an answer takes milliseconds on a CPU. Steps: split the
@@ -53,19 +64,24 @@ question, plus a prior for the article's rank. Choose sentences by MMR up to 250
 2 per article; a near-copy of a chosen sentence becomes an extra citation instead of a repeat.
 Flag a conflict when two chosen sentences from different articles share content words but one
 reports a finding and the other reports none (negation cues). Flag uncertainty when a sentence
-says the evidence is mixed or unclear. `score` measures citations against the BioGen
-judgments: the share of citations judged Supports, Contradicts or unjudged, and the recall of
-judged Supports PMIDs.
+says the evidence is mixed or unclear.
+
+`score` puts every cited PMID into exactly one class against the BioGen judgments: supports,
+**mixed** (judged both Supports and Contradicts in the topic), contradicts (only), other (only
+Neutral / Not Relevant), or unjudged. It reports each class's share of the citations, the recall
+of all Supports papers and of Supports-only papers, how many mixed and contradicts-only papers an
+answer cites, and how many of them its conflict flags hit. 0.1.0 counted a mixed paper as both
+supporting and contradicting. That double-counted 168 of the 202 contradicting papers.
 
 Pooled judgments only cover what 2024 runs cited, so an unjudged PMID is unknown, not wrong.
 A BioGen 2025 paper reports that contradicting evidence is rarer and often expressed through
 negation, hedging or population-specific conditions (arXiv 2603.17580). Negation cues alone will
-miss many conflicts, and the v2 census suggests that a paper's stance depends on the claim it is
-cited for. This baseline is the floor that a later open-weight rewriting stage must beat.
+miss many conflicts. This baseline is the floor that a later open-weight rewriting stage must
+beat.
 
 ## Next
 
-1. Grade `biogen-stance-v1`.
+1. Grade `biogen-stance-v2`.
 2. Once the whole-corpus index is complete: run t1.py BM25 (then MedCPT rerank) on the 65
    BioGen questions, run `compose`, and run `score`, with predictions written first.
 
