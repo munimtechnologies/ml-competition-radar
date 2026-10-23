@@ -1,0 +1,123 @@
+{
+ "rerank_version": "0.1.0",
+ "torch": "2.5.1+cpu",
+ "transformers": "4.46.3",
+ "threads": 2,
+ "batch": 8,
+ "batches": 3,
+ "cpu_count": 16,
+ "cpu_capability": "AVX2",
+ "load_seconds": 0.6,
+ "torch_threads": 2,
+ "rss_after_load_gb": 0.269,
+ "fp32": {
+  "card": {
+   "graded": true,
+   "query": "diabetes treatment",
+   "n": 6,
+   "printed": [
+    6.9363,
+    -8.2063,
+    -8.7692,
+    -12.345,
+    -10.4416,
+    -15.8475
+   ],
+   "got": [
+    6.9363,
+    -8.2064,
+    -8.7692,
+    -12.345,
+    -10.4416,
+    -15.8475
+   ],
+   "max_abs_diff": 7e-05,
+   "order_printed": [
+    0,
+    1,
+    2,
+    4,
+    3,
+    5
+   ],
+   "order_got": [
+    0,
+    1,
+    2,
+    4,
+    3,
+    5
+   ],
+   "same_order": true
+  },
+  "ms_per_pair": {
+   "128": 175.998,
+   "256": 341.637,
+   "512": 721.458
+  },
+  "budget": {
+   "ms_per_pair_at": 320,
+   "ms_per_pair": 436.6,
+   "depth": 82
+  }
+ },
+ "rss_after_fp32_gb": 0.822,
+ "int8": {
+  "card": {
+   "graded": true,
+   "query": "diabetes treatment",
+   "n": 6,
+   "printed": [
+    6.9363,
+    -8.2063,
+    -8.7692,
+    -12.345,
+    -10.4416,
+    -15.8475
+   ],
+   "got": [
+    4.9405,
+    -3.0991,
+    -3.2941,
+    -8.7441,
+    -3.7835,
+    -12.5406
+   ],
+   "max_abs_diff": 6.65814,
+   "order_printed": [
+    0,
+    1,
+    2,
+    4,
+    3,
+    5
+   ],
+   "order_got": [
+    0,
+    1,
+    2,
+    4,
+    3,
+    5
+   ],
+   "same_order": true
+  },
+  "ms_per_pair": {
+   "128": 85.478,
+   "256": 186.724,
+   "512": 424.719
+  },
+  "budget": {
+   "ms_per_pair_at": 320,
+   "ms_per_pair": 246.2,
+   "depth": 146
+  },
+  "speedup": {
+   "128": 2.06,
+   "256": 1.83,
+   "512": 1.7
+  },
+  "max_abs_diff_vs_fp32": 6.6581
+ },
+ "peak_rss_gb": 0.938
+}
