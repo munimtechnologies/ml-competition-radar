@@ -9,6 +9,10 @@ the `built` table, under a WAL journal, so a job killed at any point resumes at 
 not yet committed. A PMID seen again in a later file replaces the earlier record (PubMed's
 later files carry newer versions). A time budget and a free-disk guard stop the build cleanly
 between files; a later run continues it. Python standard library only. Writes build.json.
+
+0.3: every committed file is appended (and fsynced) to progress.jsonl in the output folder, so
+a host kill still leaves a record; SIGTERM rolls back the file in progress and writes
+build.json with `stopped` = "signal 15" (job spark32-build-v1 was killed with no record).
 """
 import argparse
 import gzip
@@ -16,17 +20,27 @@ import json
 import os
 import re
 import shutil
+import signal
 import sqlite3
 import sys
 import time
 import xml.etree.ElementTree as ET
 
+VERSION = "0.3"
 NAME_RX = re.compile(r"pubmed27n\d{4}\.xml\.gz")
 TOKEN_RX = re.compile(r"[a-z0-9]+")
 STOP = frozenset("a an and are as at be by for from has have in is it of on or that the this to "
                  "was were which with we our these those their its not but than into".split())
 WEIGHTS = (2.0, 1.0, 0.5)  # bm25 column weights: title, abstract, MeSH (as in fts_pilot.py)
 MAX_TERMS = 32
+
+
+class Stopped(Exception):
+    """Raised by the signal handler; the open file's transaction rolls back."""
+
+
+def on_signal(signum, frame):
+    raise Stopped("signal %d" % signum)
 
 
 def text_of(elem):
@@ -111,6 +125,12 @@ def add_file(con, path, name):
     return n, replaced
 
 
+def log_progress(f, row):
+    f.write(json.dumps(row) + "\n")
+    f.flush()
+    os.fsync(f.fileno())
+
+
 def match_expr(text):
     seen, toks = set(), []
     for t in TOKEN_RX.findall(text.lower()):
@@ -134,8 +154,12 @@ def free_gb(path):
     return shutil.disk_usage(path).free / 1e9
 
 
+def size_of(path):
+    return os.path.getsize(path) if os.path.exists(path) else 0
+
+
 def run(raw_dir, db_path, out_dir, detail="full", max_files=0, max_minutes=0, min_free_gb=0.0,
-        optimize=False, clock=time.time):
+        optimize=False, clock=time.time, adder=add_file):
     os.makedirs(os.path.dirname(os.path.abspath(db_path)), exist_ok=True)
     os.makedirs(out_dir, exist_ok=True)
     names = sorted(n for n in os.listdir(raw_dir)
@@ -144,37 +168,53 @@ def run(raw_dir, db_path, out_dir, detail="full", max_files=0, max_minutes=0, mi
     done = {r[0] for r in con.execute("SELECT file FROM built")}
     todo = [n for n in names if n not in done]
     start, added, stopped = clock(), [], None
-    for name in todo:
-        if max_files and len(added) >= max_files:
-            stopped = "max_files"
-            break
-        if max_minutes and clock() - start >= 60 * max_minutes:
-            stopped = "time budget"
-            break
-        if min_free_gb and free_gb(os.path.dirname(os.path.abspath(db_path))) < min_free_gb:
-            stopped = "free disk under %.0f GB" % min_free_gb
-            break
-        n, rep = add_file(con, os.path.join(raw_dir, name), name)
-        added.append({"file": name, "docs": n, "replaced": rep})
-    left = len(todo) - len(added)
-    opt_seconds = None
-    if optimize and left == 0 and names:
-        t0 = clock()
-        con.execute("INSERT INTO docs(docs) VALUES('optimize')")
-        con.commit()
-        opt_seconds = round(clock() - t0, 1)
-    con.execute("PRAGMA wal_checkpoint(TRUNCATE)")
-    docs = con.execute("SELECT COUNT(*) FROM meta").fetchone()[0]
-    files_built, replaced = con.execute("SELECT COUNT(*), COALESCE(SUM(replaced), 0) FROM built").fetchone()
+    with open(os.path.join(out_dir, "progress.jsonl"), "a", encoding="utf-8") as prog:
+        try:
+            for name in todo:
+                if max_files and len(added) >= max_files:
+                    stopped = "max_files"
+                    break
+                if max_minutes and clock() - start >= 60 * max_minutes:
+                    stopped = "time budget"
+                    break
+                if min_free_gb and free_gb(os.path.dirname(os.path.abspath(db_path))) < min_free_gb:
+                    stopped = "free disk under %.0f GB" % min_free_gb
+                    break
+                n, rep = adder(con, os.path.join(raw_dir, name), name)
+                added.append({"file": name, "docs": n, "replaced": rep})
+                log_progress(prog, {"file": name, "docs": n, "replaced": rep,
+                                    "elapsed": round(clock() - start, 1),
+                                    "utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())})
+                if len(added) % 25 == 0:
+                    print("built %d/%d files this run" % (len(added), len(todo)), flush=True)
+        except Stopped as e:
+            stopped = str(e)
+    done = {r[0] for r in con.execute("SELECT file FROM built")}
+    left = sum(1 for n in names if n not in done)  # from the db: a signal can land after a commit
+    opt_seconds = docs_check = None
+    if stopped is None or not stopped.startswith("signal"):  # a signalled run skips slow steps
+        if optimize and left == 0 and names:
+            t0 = clock()
+            con.execute("INSERT INTO docs(docs) VALUES('optimize')")
+            con.commit()
+            opt_seconds = round(clock() - t0, 1)
+        con.execute("PRAGMA wal_checkpoint(TRUNCATE)")
+        docs_check = con.execute("SELECT COUNT(*) FROM meta").fetchone()[0]
+    files_built, docs, replaced = con.execute(
+        "SELECT COUNT(*), COALESCE(SUM(docs), 0) - COALESCE(SUM(replaced), 0), "
+        "COALESCE(SUM(replaced), 0) FROM built").fetchone()
     con.close()
     secs = round(clock() - start, 1)
     new_docs = sum(a["docs"] for a in added)
-    summary = {"detail": detail, "verified_files": len(names), "files_built": files_built,
-               "files_added_this_run": len(added), "files_left": left, "stopped": stopped,
-               "docs": docs, "replaced_total": replaced, "seconds": secs,
+    db_bytes, wal_bytes = size_of(db_path), size_of(db_path + "-wal")
+    summary = {"version": VERSION, "detail": detail, "verified_files": len(names),
+               "files_built": files_built, "files_added_this_run": len(added), "files_left": left,
+               "last_file": added[-1]["file"] if added else None, "stopped": stopped,
+               "docs": docs, "docs_check": docs_check, "replaced_total": replaced, "seconds": secs,
                "docs_per_second_this_run": round(new_docs / secs, 1) if secs and new_docs else None,
-               "db_bytes": os.path.getsize(db_path),
-               "bytes_per_doc": round(os.path.getsize(db_path) / docs, 1) if docs else None,
+               "db_bytes": db_bytes, "wal_bytes": wal_bytes,
+               "bytes_per_doc": round((db_bytes + wal_bytes) / docs, 1) if docs else None,
+               "free_gb_after": round(free_gb(os.path.dirname(os.path.abspath(db_path))), 1),
                "optimize_seconds": opt_seconds, "complete": left == 0 and bool(names),
                "problem": None if names else "no verified corpus files under %s" % raw_dir}
     with open(os.path.join(out_dir, "build.json"), "w", encoding="utf-8") as f:
@@ -193,6 +233,7 @@ def main(argv=None):
     ap.add_argument("--min-free-gb", type=float, default=0)
     ap.add_argument("--optimize", action="store_true")
     args = ap.parse_args(argv)
+    signal.signal(signal.SIGTERM, on_signal)
     s = run(args.raw_dir, args.db, args.out_dir, args.detail, args.max_files, args.max_minutes,
             args.min_free_gb, args.optimize)
     print(json.dumps(s, indent=1))

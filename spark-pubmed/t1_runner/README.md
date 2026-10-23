@@ -6,10 +6,12 @@ in his name. Code Apache-2.0; notes CC BY 4.0.
 
 ## Files
 
-- `build_index.py`: resumable whole-corpus SQLite FTS5 (BM25) index of the SPARK PubMed files
-  (title, abstract, MeSH; rowid = PMID; meta table with year, journal, PMC id). Python standard
-  library only. Its fake-data tests (`test_build_index.py`) passed in the sealed jobs
-  `spark28-test-v1` (2026-10-22) and `spark30-t1-test-v1` (2026-10-23).
+- `build_index.py` 0.3: resumable whole-corpus SQLite FTS5 (BM25) index of the SPARK PubMed
+  files (title, abstract, MeSH; rowid = PMID; meta table with year, journal, PMC id). Python
+  standard library only. Each corpus file is one transaction, so a stopped build resumes at the
+  first file not yet committed. New in 0.3: every committed file is logged to `progress.jsonl`,
+  and SIGTERM rolls back the file in progress and still writes `build.json` (a host stop of job
+  `spark32-build-v1` left no record of the build). Fake-data tests: `test_build_index.py`.
 - `t1.py`: questions -> BM25 candidates -> cutoff policy -> Task 1 submission JSONL
   (`metadata`: team_id, submission_id, info_need_id, info_need; `response`: up to five PMIDs),
   a format validator, and a scorer (MRR@5, hit share, items returned and wrong citations for ten
@@ -30,10 +32,9 @@ python t1.py validate out_l/submission.jsonl
 
 ## Status (2026-10-23)
 
-All 11 fake-data tests (`test_t1.py` and `test_build_index.py`) passed in the sealed job
-`spark30-t1-test-v1` on 2026-10-23 (01:13-01:16 UTC, no network). The whole-corpus index is
-being built. The FTS5 pilot (`../fts_pilot/RESULTS.md`) settled on `detail=full`. The mirror
-repair and the first 240 minutes of the build are job `spark32-build-v1` (`../corpus_build/`).
+The tests for `t1.py` and `build_index.py` 0.2 passed in the sealed job `spark30-t1-test-v1`.
+`build_index.py` 0.3 keeps the same index and API (7 tests, 2 new). It continues the
+whole-corpus build in job `spark33-build-v1` (`../corpus_build/PREREGISTRATION-spark33.md`).
 Nothing here has scored a real question yet. The submission format follows the task
 description, because the official sample submission file was not posted on the challenge page
 as of 2026-10-23.
