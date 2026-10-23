@@ -1,0 +1,3055 @@
+{
+ "$": {
+  "count": 1,
+  "types": {
+   "list": 1
+  },
+  "min": 65,
+  "max": 65,
+  "values": null,
+  "many_values": false
+ },
+ "$[]": {
+  "count": 65,
+  "types": {
+   "dict": 65
+  },
+  "min": 2,
+  "max": 2,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers": {
+  "count": 65,
+  "types": {
+   "dict": 65
+  },
+  "min": 30,
+  "max": 30,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.iiresearch_trec_bio2024_t5base_run": {
+  "count": 65,
+  "types": {
+   "dict": 65
+  },
+  "min": 3,
+  "max": 3,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.iiresearch_trec_bio2024_t5base_run.answer": {
+  "count": 65,
+  "types": {
+   "str": 65
+  },
+  "min": 374,
+  "max": 975,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.iiresearch_trec_bio2024_t5base_run.answer_sentences": {
+  "count": 65,
+  "types": {
+   "list": 65
+  },
+  "min": 2,
+  "max": 6,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.iiresearch_trec_bio2024_t5base_run.answer_sentences[]": {
+  "count": 268,
+  "types": {
+   "dict": 268
+  },
+  "min": 4,
+  "max": 4,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.iiresearch_trec_bio2024_t5base_run.answer_sentences[].answer_sentence": {
+  "count": 268,
+  "types": {
+   "str": 268
+  },
+  "min": 48,
+  "max": 334,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.iiresearch_trec_bio2024_t5base_run.answer_sentences[].answer_sentence_id": {
+  "count": 268,
+  "types": {
+   "str": 268
+  },
+  "min": 1,
+  "max": 1,
+  "values": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.iiresearch_trec_bio2024_t5base_run.answer_sentences[].answer_sentence_relevance": {
+  "count": 268,
+  "types": {
+   "str": 268
+  },
+  "min": 8,
+  "max": 13,
+  "values": [
+   "borderline",
+   "inappropriate",
+   "required",
+   "unnecessary"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.iiresearch_trec_bio2024_t5base_run.answer_sentences[].citation_assessment": {
+  "count": 268,
+  "types": {
+   "NoneType": 188,
+   "list": 80
+  },
+  "min": 1,
+  "max": 2,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.iiresearch_trec_bio2024_t5base_run.answer_sentences[].citation_assessment[]": {
+  "count": 85,
+  "types": {
+   "dict": 85
+  },
+  "min": 3,
+  "max": 3,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.iiresearch_trec_bio2024_t5base_run.answer_sentences[].citation_assessment[].cited_pmid": {
+  "count": 85,
+  "types": {
+   "str": 85
+  },
+  "min": 8,
+  "max": 8,
+  "values": null,
+  "many_values": true
+ },
+ "$[].machine_generated_answers.iiresearch_trec_bio2024_t5base_run.answer_sentences[].citation_assessment[].evidence_relation": {
+  "count": 85,
+  "types": {
+   "str": 85
+  },
+  "min": 7,
+  "max": 12,
+  "values": [
+   "neutral",
+   "not relevant",
+   "supporting"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.iiresearch_trec_bio2024_t5base_run.answer_sentences[].citation_assessment[].evidence_support": {
+  "count": 85,
+  "types": {
+   "NoneType": 58,
+   "str": 27
+  },
+  "min": 67,
+  "max": 1075,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.iiresearch_trec_bio2024_t5base_run.is_answer_accurate": {
+  "count": 65,
+  "types": {
+   "str": 65
+  },
+  "min": 3,
+  "max": 3,
+  "values": [
+   "yes"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.listgalore_gpt-4o_arenuggetsallyouneed": {
+  "count": 65,
+  "types": {
+   "dict": 65
+  },
+  "min": 3,
+  "max": 3,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.listgalore_gpt-4o_arenuggetsallyouneed.answer": {
+  "count": 65,
+  "types": {
+   "str": 65
+  },
+  "min": 953,
+  "max": 1408,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.listgalore_gpt-4o_arenuggetsallyouneed.answer_sentences": {
+  "count": 65,
+  "types": {
+   "list": 65
+  },
+  "min": 5,
+  "max": 11,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.listgalore_gpt-4o_arenuggetsallyouneed.answer_sentences[]": {
+  "count": 535,
+  "types": {
+   "dict": 535
+  },
+  "min": 4,
+  "max": 4,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.listgalore_gpt-4o_arenuggetsallyouneed.answer_sentences[].answer_sentence": {
+  "count": 535,
+  "types": {
+   "str": 535
+  },
+  "min": 60,
+  "max": 334,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.listgalore_gpt-4o_arenuggetsallyouneed.answer_sentences[].answer_sentence_id": {
+  "count": 535,
+  "types": {
+   "str": 535
+  },
+  "min": 1,
+  "max": 2,
+  "values": [
+   "1",
+   "10",
+   "11",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.listgalore_gpt-4o_arenuggetsallyouneed.answer_sentences[].answer_sentence_relevance": {
+  "count": 535,
+  "types": {
+   "str": 535
+  },
+  "min": 8,
+  "max": 13,
+  "values": [
+   "borderline",
+   "inappropriate",
+   "required",
+   "unnecessary"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.listgalore_gpt-4o_arenuggetsallyouneed.answer_sentences[].citation_assessment": {
+  "count": 535,
+  "types": {
+   "list": 535
+  },
+  "min": 1,
+  "max": 7,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.listgalore_gpt-4o_arenuggetsallyouneed.answer_sentences[].citation_assessment[]": {
+  "count": 1711,
+  "types": {
+   "dict": 1711
+  },
+  "min": 3,
+  "max": 3,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.listgalore_gpt-4o_arenuggetsallyouneed.answer_sentences[].citation_assessment[].cited_pmid": {
+  "count": 1711,
+  "types": {
+   "str": 1711
+  },
+  "min": 8,
+  "max": 8,
+  "values": null,
+  "many_values": true
+ },
+ "$[].machine_generated_answers.listgalore_gpt-4o_arenuggetsallyouneed.answer_sentences[].citation_assessment[].evidence_relation": {
+  "count": 1711,
+  "types": {
+   "str": 1711
+  },
+  "min": 7,
+  "max": 13,
+  "values": [
+   "contradicting",
+   "neutral",
+   "not relevant",
+   "supporting"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.listgalore_gpt-4o_arenuggetsallyouneed.answer_sentences[].citation_assessment[].evidence_support": {
+  "count": 1711,
+  "types": {
+   "NoneType": 389,
+   "str": 1322
+  },
+  "min": 17,
+  "max": 1373,
+  "values": [
+   "SMC proliferation",
+   "ankle fracture management,",
+   "as attenuation of",
+   "possibly hypogonadism",
+   "syndesmosis fixation"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.listgalore_gpt-4o_arenuggetsallyouneed.is_answer_accurate": {
+  "count": 65,
+  "types": {
+   "str": 65
+  },
+  "min": 3,
+  "max": 3,
+  "values": [
+   "yes"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.listgalore_gpt-4o_ragnarokv5biogen_top20": {
+  "count": 65,
+  "types": {
+   "dict": 65
+  },
+  "min": 3,
+  "max": 3,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.listgalore_gpt-4o_ragnarokv5biogen_top20.answer": {
+  "count": 65,
+  "types": {
+   "str": 65
+  },
+  "min": 764,
+  "max": 1226,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.listgalore_gpt-4o_ragnarokv5biogen_top20.answer_sentences": {
+  "count": 65,
+  "types": {
+   "list": 65
+  },
+  "min": 4,
+  "max": 7,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.listgalore_gpt-4o_ragnarokv5biogen_top20.answer_sentences[]": {
+  "count": 360,
+  "types": {
+   "dict": 360
+  },
+  "min": 4,
+  "max": 4,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.listgalore_gpt-4o_ragnarokv5biogen_top20.answer_sentences[].answer_sentence": {
+  "count": 360,
+  "types": {
+   "str": 360
+  },
+  "min": 39,
+  "max": 423,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.listgalore_gpt-4o_ragnarokv5biogen_top20.answer_sentences[].answer_sentence_id": {
+  "count": 360,
+  "types": {
+   "str": 360
+  },
+  "min": 1,
+  "max": 1,
+  "values": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.listgalore_gpt-4o_ragnarokv5biogen_top20.answer_sentences[].answer_sentence_relevance": {
+  "count": 360,
+  "types": {
+   "str": 360
+  },
+  "min": 8,
+  "max": 11,
+  "values": [
+   "borderline",
+   "required",
+   "unnecessary"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.listgalore_gpt-4o_ragnarokv5biogen_top20.answer_sentences[].citation_assessment": {
+  "count": 360,
+  "types": {
+   "list": 311,
+   "NoneType": 49
+  },
+  "min": 1,
+  "max": 6,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.listgalore_gpt-4o_ragnarokv5biogen_top20.answer_sentences[].citation_assessment[]": {
+  "count": 771,
+  "types": {
+   "dict": 771
+  },
+  "min": 3,
+  "max": 3,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.listgalore_gpt-4o_ragnarokv5biogen_top20.answer_sentences[].citation_assessment[].cited_pmid": {
+  "count": 771,
+  "types": {
+   "str": 771
+  },
+  "min": 8,
+  "max": 8,
+  "values": null,
+  "many_values": true
+ },
+ "$[].machine_generated_answers.listgalore_gpt-4o_ragnarokv5biogen_top20.answer_sentences[].citation_assessment[].evidence_relation": {
+  "count": 771,
+  "types": {
+   "str": 771
+  },
+  "min": 7,
+  "max": 13,
+  "values": [
+   "contradicting",
+   "neutral",
+   "not relevant",
+   "supporting"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.listgalore_gpt-4o_ragnarokv5biogen_top20.answer_sentences[].citation_assessment[].evidence_support": {
+  "count": 771,
+  "types": {
+   "str": 676,
+   "NoneType": 95
+  },
+  "min": 34,
+  "max": 1212,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.listgalore_gpt-4o_ragnarokv5biogen_top20.is_answer_accurate": {
+  "count": 65,
+  "types": {
+   "str": 65
+  },
+  "min": 3,
+  "max": 3,
+  "values": [
+   "yes"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.rl31-70b_gpt-4o_ragnarokv5biogen_top20": {
+  "count": 65,
+  "types": {
+   "dict": 65
+  },
+  "min": 3,
+  "max": 3,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.rl31-70b_gpt-4o_ragnarokv5biogen_top20.answer": {
+  "count": 65,
+  "types": {
+   "str": 65
+  },
+  "min": 798,
+  "max": 1269,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.rl31-70b_gpt-4o_ragnarokv5biogen_top20.answer_sentences": {
+  "count": 65,
+  "types": {
+   "list": 65
+  },
+  "min": 4,
+  "max": 8,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.rl31-70b_gpt-4o_ragnarokv5biogen_top20.answer_sentences[]": {
+  "count": 367,
+  "types": {
+   "dict": 367
+  },
+  "min": 4,
+  "max": 4,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.rl31-70b_gpt-4o_ragnarokv5biogen_top20.answer_sentences[].answer_sentence": {
+  "count": 367,
+  "types": {
+   "str": 367
+  },
+  "min": 34,
+  "max": 423,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.rl31-70b_gpt-4o_ragnarokv5biogen_top20.answer_sentences[].answer_sentence_id": {
+  "count": 367,
+  "types": {
+   "str": 367
+  },
+  "min": 1,
+  "max": 1,
+  "values": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.rl31-70b_gpt-4o_ragnarokv5biogen_top20.answer_sentences[].answer_sentence_relevance": {
+  "count": 367,
+  "types": {
+   "str": 367
+  },
+  "min": 8,
+  "max": 11,
+  "values": [
+   "borderline",
+   "required",
+   "unnecessary"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.rl31-70b_gpt-4o_ragnarokv5biogen_top20.answer_sentences[].citation_assessment": {
+  "count": 367,
+  "types": {
+   "NoneType": 57,
+   "list": 310
+  },
+  "min": 1,
+  "max": 8,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.rl31-70b_gpt-4o_ragnarokv5biogen_top20.answer_sentences[].citation_assessment[]": {
+  "count": 757,
+  "types": {
+   "dict": 757
+  },
+  "min": 3,
+  "max": 3,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.rl31-70b_gpt-4o_ragnarokv5biogen_top20.answer_sentences[].citation_assessment[].cited_pmid": {
+  "count": 757,
+  "types": {
+   "str": 757
+  },
+  "min": 8,
+  "max": 8,
+  "values": null,
+  "many_values": true
+ },
+ "$[].machine_generated_answers.rl31-70b_gpt-4o_ragnarokv5biogen_top20.answer_sentences[].citation_assessment[].evidence_relation": {
+  "count": 757,
+  "types": {
+   "str": 757
+  },
+  "min": 7,
+  "max": 13,
+  "values": [
+   "contradicting",
+   "neutral",
+   "not relevant",
+   "supporting"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.rl31-70b_gpt-4o_ragnarokv5biogen_top20.answer_sentences[].citation_assessment[].evidence_support": {
+  "count": 757,
+  "types": {
+   "NoneType": 103,
+   "str": 654
+  },
+  "min": 30,
+  "max": 1253,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.rl31-70b_gpt-4o_ragnarokv5biogen_top20.is_answer_accurate": {
+  "count": 65,
+  "types": {
+   "str": 65
+  },
+  "min": 3,
+  "max": 3,
+  "values": [
+   "yes"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.rl31-70b_gpt-4o_ragnarokv5biogennc_top20": {
+  "count": 65,
+  "types": {
+   "dict": 65
+  },
+  "min": 3,
+  "max": 3,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.rl31-70b_gpt-4o_ragnarokv5biogennc_top20.answer": {
+  "count": 65,
+  "types": {
+   "str": 65
+  },
+  "min": 609,
+  "max": 1051,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.rl31-70b_gpt-4o_ragnarokv5biogennc_top20.answer_sentences": {
+  "count": 65,
+  "types": {
+   "list": 65
+  },
+  "min": 3,
+  "max": 10,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.rl31-70b_gpt-4o_ragnarokv5biogennc_top20.answer_sentences[]": {
+  "count": 384,
+  "types": {
+   "dict": 384
+  },
+  "min": 4,
+  "max": 4,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.rl31-70b_gpt-4o_ragnarokv5biogennc_top20.answer_sentences[].answer_sentence": {
+  "count": 384,
+  "types": {
+   "str": 384
+  },
+  "min": 54,
+  "max": 597,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.rl31-70b_gpt-4o_ragnarokv5biogennc_top20.answer_sentences[].answer_sentence_id": {
+  "count": 384,
+  "types": {
+   "str": 384
+  },
+  "min": 1,
+  "max": 2,
+  "values": [
+   "1",
+   "10",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.rl31-70b_gpt-4o_ragnarokv5biogennc_top20.answer_sentences[].answer_sentence_relevance": {
+  "count": 384,
+  "types": {
+   "str": 384
+  },
+  "min": 8,
+  "max": 11,
+  "values": [
+   "borderline",
+   "required",
+   "unnecessary"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.rl31-70b_gpt-4o_ragnarokv5biogennc_top20.answer_sentences[].citation_assessment": {
+  "count": 384,
+  "types": {
+   "NoneType": 384
+  },
+  "min": null,
+  "max": null,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.rl31-70b_gpt-4o_ragnarokv5biogennc_top20.is_answer_accurate": {
+  "count": 65,
+  "types": {
+   "str": 65
+  },
+  "min": 3,
+  "max": 3,
+  "values": [
+   "yes"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.rl31-70b_l31-70b_ragnarokv5biogen_top20": {
+  "count": 65,
+  "types": {
+   "dict": 65
+  },
+  "min": 3,
+  "max": 3,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.rl31-70b_l31-70b_ragnarokv5biogen_top20.answer": {
+  "count": 65,
+  "types": {
+   "str": 65
+  },
+  "min": 738,
+  "max": 1175,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.rl31-70b_l31-70b_ragnarokv5biogen_top20.answer_sentences": {
+  "count": 65,
+  "types": {
+   "list": 65
+  },
+  "min": 4,
+  "max": 7,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.rl31-70b_l31-70b_ragnarokv5biogen_top20.answer_sentences[]": {
+  "count": 377,
+  "types": {
+   "dict": 377
+  },
+  "min": 4,
+  "max": 4,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.rl31-70b_l31-70b_ragnarokv5biogen_top20.answer_sentences[].answer_sentence": {
+  "count": 377,
+  "types": {
+   "str": 377
+  },
+  "min": 72,
+  "max": 363,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.rl31-70b_l31-70b_ragnarokv5biogen_top20.answer_sentences[].answer_sentence_id": {
+  "count": 377,
+  "types": {
+   "str": 377
+  },
+  "min": 1,
+  "max": 1,
+  "values": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.rl31-70b_l31-70b_ragnarokv5biogen_top20.answer_sentences[].answer_sentence_relevance": {
+  "count": 377,
+  "types": {
+   "str": 377
+  },
+  "min": 8,
+  "max": 13,
+  "values": [
+   "borderline",
+   "inappropriate",
+   "required",
+   "unnecessary"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.rl31-70b_l31-70b_ragnarokv5biogen_top20.answer_sentences[].citation_assessment": {
+  "count": 377,
+  "types": {
+   "list": 338,
+   "NoneType": 39
+  },
+  "min": 1,
+  "max": 7,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.rl31-70b_l31-70b_ragnarokv5biogen_top20.answer_sentences[].citation_assessment[]": {
+  "count": 746,
+  "types": {
+   "dict": 746
+  },
+  "min": 3,
+  "max": 3,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.rl31-70b_l31-70b_ragnarokv5biogen_top20.answer_sentences[].citation_assessment[].cited_pmid": {
+  "count": 746,
+  "types": {
+   "str": 746
+  },
+  "min": 8,
+  "max": 8,
+  "values": null,
+  "many_values": true
+ },
+ "$[].machine_generated_answers.rl31-70b_l31-70b_ragnarokv5biogen_top20.answer_sentences[].citation_assessment[].evidence_relation": {
+  "count": 746,
+  "types": {
+   "str": 746
+  },
+  "min": 7,
+  "max": 13,
+  "values": [
+   "contradicting",
+   "neutral",
+   "not relevant",
+   "supporting"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.rl31-70b_l31-70b_ragnarokv5biogen_top20.answer_sentences[].citation_assessment[].evidence_support": {
+  "count": 746,
+  "types": {
+   "NoneType": 92,
+   "str": 654
+  },
+  "min": 24,
+  "max": 1572,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.rl31-70b_l31-70b_ragnarokv5biogen_top20.is_answer_accurate": {
+  "count": 65,
+  "types": {
+   "str": 65
+  },
+  "min": 3,
+  "max": 3,
+  "values": [
+   "yes"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.ten-shot-gemini-flash": {
+  "count": 65,
+  "types": {
+   "dict": 65
+  },
+  "min": 3,
+  "max": 3,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.ten-shot-gemini-flash-wiki": {
+  "count": 65,
+  "types": {
+   "dict": 65
+  },
+  "min": 3,
+  "max": 3,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.ten-shot-gemini-flash-wiki.answer": {
+  "count": 65,
+  "types": {
+   "str": 65
+  },
+  "min": 386,
+  "max": 1039,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.ten-shot-gemini-flash-wiki.answer_sentences": {
+  "count": 65,
+  "types": {
+   "list": 65
+  },
+  "min": 3,
+  "max": 7,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.ten-shot-gemini-flash-wiki.answer_sentences[]": {
+  "count": 354,
+  "types": {
+   "dict": 354
+  },
+  "min": 4,
+  "max": 4,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.ten-shot-gemini-flash-wiki.answer_sentences[].answer_sentence": {
+  "count": 354,
+  "types": {
+   "str": 354
+  },
+  "min": 7,
+  "max": 312,
+  "values": [
+   "[PMID1, PMID2].",
+   "[PMID1]",
+   "[PMID2]",
+   "[PMID3]"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.ten-shot-gemini-flash-wiki.answer_sentences[].answer_sentence_id": {
+  "count": 354,
+  "types": {
+   "str": 354
+  },
+  "min": 1,
+  "max": 1,
+  "values": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.ten-shot-gemini-flash-wiki.answer_sentences[].answer_sentence_relevance": {
+  "count": 354,
+  "types": {
+   "str": 330,
+   "NoneType": 24
+  },
+  "min": 8,
+  "max": 11,
+  "values": [
+   "borderline",
+   "required",
+   "unnecessary"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.ten-shot-gemini-flash-wiki.answer_sentences[].citation_assessment": {
+  "count": 354,
+  "types": {
+   "list": 305,
+   "NoneType": 49
+  },
+  "min": 1,
+  "max": 9,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.ten-shot-gemini-flash-wiki.answer_sentences[].citation_assessment[]": {
+  "count": 624,
+  "types": {
+   "dict": 624
+  },
+  "min": 3,
+  "max": 3,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.ten-shot-gemini-flash-wiki.answer_sentences[].citation_assessment[].cited_pmid": {
+  "count": 624,
+  "types": {
+   "str": 624
+  },
+  "min": 1,
+  "max": 8,
+  "values": null,
+  "many_values": true
+ },
+ "$[].machine_generated_answers.ten-shot-gemini-flash-wiki.answer_sentences[].citation_assessment[].evidence_relation": {
+  "count": 624,
+  "types": {
+   "str": 624
+  },
+  "min": 7,
+  "max": 16,
+  "values": [
+   "contradicting",
+   "invalid citation",
+   "neutral",
+   "not relevant",
+   "supporting"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.ten-shot-gemini-flash-wiki.answer_sentences[].citation_assessment[].evidence_support": {
+  "count": 624,
+  "types": {
+   "str": 458,
+   "NoneType": 166
+  },
+  "min": 36,
+  "max": 1699,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.ten-shot-gemini-flash-wiki.is_answer_accurate": {
+  "count": 65,
+  "types": {
+   "str": 65
+  },
+  "min": 2,
+  "max": 3,
+  "values": [
+   "no",
+   "yes"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.ten-shot-gemini-flash.answer": {
+  "count": 65,
+  "types": {
+   "str": 65
+  },
+  "min": 178,
+  "max": 1203,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.ten-shot-gemini-flash.answer_sentences": {
+  "count": 65,
+  "types": {
+   "list": 65
+  },
+  "min": 2,
+  "max": 9,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.ten-shot-gemini-flash.answer_sentences[]": {
+  "count": 350,
+  "types": {
+   "dict": 350
+  },
+  "min": 4,
+  "max": 4,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.ten-shot-gemini-flash.answer_sentences[].answer_sentence": {
+  "count": 350,
+  "types": {
+   "str": 350
+  },
+  "min": 8,
+  "max": 308,
+  "values": [
+   "The *PIK3CA*",
+   "[PMID1, PMID2, PMID3]",
+   "[PMID1, PMID2].",
+   "[PMID3]."
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.ten-shot-gemini-flash.answer_sentences[].answer_sentence_id": {
+  "count": 350,
+  "types": {
+   "str": 350
+  },
+  "min": 1,
+  "max": 1,
+  "values": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.ten-shot-gemini-flash.answer_sentences[].answer_sentence_relevance": {
+  "count": 350,
+  "types": {
+   "str": 336,
+   "NoneType": 14
+  },
+  "min": 8,
+  "max": 13,
+  "values": [
+   "borderline",
+   "inappropriate",
+   "required",
+   "unnecessary"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.ten-shot-gemini-flash.answer_sentences[].citation_assessment": {
+  "count": 350,
+  "types": {
+   "list": 317,
+   "NoneType": 33
+  },
+  "min": 1,
+  "max": 6,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.ten-shot-gemini-flash.answer_sentences[].citation_assessment[]": {
+  "count": 581,
+  "types": {
+   "dict": 581
+  },
+  "min": 3,
+  "max": 3,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.ten-shot-gemini-flash.answer_sentences[].citation_assessment[].cited_pmid": {
+  "count": 581,
+  "types": {
+   "str": 581
+  },
+  "min": 6,
+  "max": 8,
+  "values": null,
+  "many_values": true
+ },
+ "$[].machine_generated_answers.ten-shot-gemini-flash.answer_sentences[].citation_assessment[].evidence_relation": {
+  "count": 581,
+  "types": {
+   "str": 581
+  },
+  "min": 7,
+  "max": 16,
+  "values": [
+   "contradicting",
+   "invalid citation",
+   "neutral",
+   "not relevant",
+   "supporting"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.ten-shot-gemini-flash.answer_sentences[].citation_assessment[].evidence_support": {
+  "count": 581,
+  "types": {
+   "str": 436,
+   "NoneType": 145
+  },
+  "min": 52,
+  "max": 1743,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.ten-shot-gemini-flash.is_answer_accurate": {
+  "count": 65,
+  "types": {
+   "str": 65
+  },
+  "min": 2,
+  "max": 3,
+  "values": [
+   "no",
+   "yes"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.ten-shot-gpt4o-mini": {
+  "count": 65,
+  "types": {
+   "dict": 65
+  },
+  "min": 3,
+  "max": 3,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.ten-shot-gpt4o-mini-wiki": {
+  "count": 65,
+  "types": {
+   "dict": 65
+  },
+  "min": 3,
+  "max": 3,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.ten-shot-gpt4o-mini-wiki.answer": {
+  "count": 65,
+  "types": {
+   "str": 65
+  },
+  "min": 316,
+  "max": 944,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.ten-shot-gpt4o-mini-wiki.answer_sentences": {
+  "count": 65,
+  "types": {
+   "list": 65
+  },
+  "min": 2,
+  "max": 9,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.ten-shot-gpt4o-mini-wiki.answer_sentences[]": {
+  "count": 353,
+  "types": {
+   "dict": 353
+  },
+  "min": 4,
+  "max": 4,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.ten-shot-gpt4o-mini-wiki.answer_sentences[].answer_sentence": {
+  "count": 353,
+  "types": {
+   "str": 353
+  },
+  "min": 8,
+  "max": 261,
+  "values": [
+   "[PMID1, PMID2].",
+   "[PMID1].",
+   "[PMID3].",
+   "[PMID: 45678901]."
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.ten-shot-gpt4o-mini-wiki.answer_sentences[].answer_sentence_id": {
+  "count": 353,
+  "types": {
+   "str": 353
+  },
+  "min": 1,
+  "max": 1,
+  "values": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.ten-shot-gpt4o-mini-wiki.answer_sentences[].answer_sentence_relevance": {
+  "count": 353,
+  "types": {
+   "str": 328,
+   "NoneType": 25
+  },
+  "min": 8,
+  "max": 11,
+  "values": [
+   "borderline",
+   "required",
+   "unnecessary"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.ten-shot-gpt4o-mini-wiki.answer_sentences[].citation_assessment": {
+  "count": 353,
+  "types": {
+   "list": 250,
+   "NoneType": 103
+  },
+  "min": 1,
+  "max": 5,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.ten-shot-gpt4o-mini-wiki.answer_sentences[].citation_assessment[]": {
+  "count": 476,
+  "types": {
+   "dict": 476
+  },
+  "min": 3,
+  "max": 3,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.ten-shot-gpt4o-mini-wiki.answer_sentences[].citation_assessment[].cited_pmid": {
+  "count": 476,
+  "types": {
+   "str": 476
+  },
+  "min": 6,
+  "max": 8,
+  "values": null,
+  "many_values": true
+ },
+ "$[].machine_generated_answers.ten-shot-gpt4o-mini-wiki.answer_sentences[].citation_assessment[].evidence_relation": {
+  "count": 476,
+  "types": {
+   "str": 476
+  },
+  "min": 7,
+  "max": 16,
+  "values": [
+   "contradicting",
+   "invalid citation",
+   "neutral",
+   "not relevant",
+   "supporting"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.ten-shot-gpt4o-mini-wiki.answer_sentences[].citation_assessment[].evidence_support": {
+  "count": 476,
+  "types": {
+   "str": 379,
+   "NoneType": 97
+  },
+  "min": 36,
+  "max": 1072,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.ten-shot-gpt4o-mini-wiki.is_answer_accurate": {
+  "count": 65,
+  "types": {
+   "str": 65
+  },
+  "min": 2,
+  "max": 3,
+  "values": [
+   "no",
+   "yes"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.ten-shot-gpt4o-mini.answer": {
+  "count": 65,
+  "types": {
+   "str": 65
+  },
+  "min": 601,
+  "max": 1038,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.ten-shot-gpt4o-mini.answer_sentences": {
+  "count": 65,
+  "types": {
+   "list": 65
+  },
+  "min": 4,
+  "max": 8,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.ten-shot-gpt4o-mini.answer_sentences[]": {
+  "count": 360,
+  "types": {
+   "dict": 360
+  },
+  "min": 4,
+  "max": 4,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.ten-shot-gpt4o-mini.answer_sentences[].answer_sentence": {
+  "count": 360,
+  "types": {
+   "str": 360
+  },
+  "min": 65,
+  "max": 262,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.ten-shot-gpt4o-mini.answer_sentences[].answer_sentence_id": {
+  "count": 360,
+  "types": {
+   "str": 360
+  },
+  "min": 1,
+  "max": 1,
+  "values": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.ten-shot-gpt4o-mini.answer_sentences[].answer_sentence_relevance": {
+  "count": 360,
+  "types": {
+   "str": 360
+  },
+  "min": 8,
+  "max": 11,
+  "values": [
+   "borderline",
+   "required",
+   "unnecessary"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.ten-shot-gpt4o-mini.answer_sentences[].citation_assessment": {
+  "count": 360,
+  "types": {
+   "list": 293,
+   "NoneType": 67
+  },
+  "min": 1,
+  "max": 5,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.ten-shot-gpt4o-mini.answer_sentences[].citation_assessment[]": {
+  "count": 520,
+  "types": {
+   "dict": 520
+  },
+  "min": 3,
+  "max": 3,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.ten-shot-gpt4o-mini.answer_sentences[].citation_assessment[].cited_pmid": {
+  "count": 520,
+  "types": {
+   "str": 520
+  },
+  "min": 5,
+  "max": 8,
+  "values": null,
+  "many_values": true
+ },
+ "$[].machine_generated_answers.ten-shot-gpt4o-mini.answer_sentences[].citation_assessment[].evidence_relation": {
+  "count": 520,
+  "types": {
+   "str": 520
+  },
+  "min": 7,
+  "max": 16,
+  "values": [
+   "contradicting",
+   "invalid citation",
+   "neutral",
+   "not relevant",
+   "supporting"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.ten-shot-gpt4o-mini.answer_sentences[].citation_assessment[].evidence_support": {
+  "count": 520,
+  "types": {
+   "str": 403,
+   "NoneType": 117
+  },
+  "min": 32,
+  "max": 1240,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.ten-shot-gpt4o-mini.is_answer_accurate": {
+  "count": 65,
+  "types": {
+   "str": 65
+  },
+  "min": 3,
+  "max": 3,
+  "values": [
+   "yes"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-1": {
+  "count": 65,
+  "types": {
+   "dict": 65
+  },
+  "min": 3,
+  "max": 3,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-1.answer": {
+  "count": 65,
+  "types": {
+   "str": 65
+  },
+  "min": 80,
+  "max": 825,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-1.answer_sentences": {
+  "count": 65,
+  "types": {
+   "list": 65
+  },
+  "min": 1,
+  "max": 6,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-1.answer_sentences[]": {
+  "count": 129,
+  "types": {
+   "dict": 129
+  },
+  "min": 4,
+  "max": 4,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-1.answer_sentences[].answer_sentence": {
+  "count": 129,
+  "types": {
+   "str": 129
+  },
+  "min": 2,
+  "max": 321,
+  "values": [
+   ".."
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-1.answer_sentences[].answer_sentence_id": {
+  "count": 129,
+  "types": {
+   "str": 129
+  },
+  "min": 1,
+  "max": 1,
+  "values": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-1.answer_sentences[].answer_sentence_relevance": {
+  "count": 129,
+  "types": {
+   "str": 104,
+   "NoneType": 25
+  },
+  "min": 8,
+  "max": 11,
+  "values": [
+   "borderline",
+   "required",
+   "unnecessary"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-1.answer_sentences[].citation_assessment": {
+  "count": 129,
+  "types": {
+   "list": 93,
+   "NoneType": 36
+  },
+  "min": 1,
+  "max": 8,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-1.answer_sentences[].citation_assessment[]": {
+  "count": 215,
+  "types": {
+   "dict": 215
+  },
+  "min": 3,
+  "max": 3,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-1.answer_sentences[].citation_assessment[].cited_pmid": {
+  "count": 215,
+  "types": {
+   "str": 215
+  },
+  "min": 8,
+  "max": 8,
+  "values": null,
+  "many_values": true
+ },
+ "$[].machine_generated_answers.webis-1.answer_sentences[].citation_assessment[].evidence_relation": {
+  "count": 215,
+  "types": {
+   "str": 215
+  },
+  "min": 7,
+  "max": 16,
+  "values": [
+   "contradicting",
+   "invalid citation",
+   "neutral",
+   "not relevant",
+   "supporting"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-1.answer_sentences[].citation_assessment[].evidence_support": {
+  "count": 215,
+  "types": {
+   "str": 134,
+   "NoneType": 81
+  },
+  "min": 48,
+  "max": 409,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-1.is_answer_accurate": {
+  "count": 65,
+  "types": {
+   "str": 65
+  },
+  "min": 2,
+  "max": 3,
+  "values": [
+   "no",
+   "yes"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-2": {
+  "count": 65,
+  "types": {
+   "dict": 65
+  },
+  "min": 3,
+  "max": 3,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-2.answer": {
+  "count": 65,
+  "types": {
+   "str": 65
+  },
+  "min": 51,
+  "max": 416,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-2.answer_sentences": {
+  "count": 65,
+  "types": {
+   "list": 65
+  },
+  "min": 1,
+  "max": 4,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-2.answer_sentences[]": {
+  "count": 108,
+  "types": {
+   "dict": 108
+  },
+  "min": 4,
+  "max": 4,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-2.answer_sentences[].answer_sentence": {
+  "count": 108,
+  "types": {
+   "str": 108
+  },
+  "min": 10,
+  "max": 300,
+  "values": [
+   "The exact.",
+   "This condition is.",
+   "[Not from context]."
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-2.answer_sentences[].answer_sentence_id": {
+  "count": 108,
+  "types": {
+   "str": 108
+  },
+  "min": 1,
+  "max": 1,
+  "values": [
+   "1",
+   "2",
+   "3",
+   "4"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-2.answer_sentences[].answer_sentence_relevance": {
+  "count": 108,
+  "types": {
+   "str": 75,
+   "NoneType": 33
+  },
+  "min": 8,
+  "max": 11,
+  "values": [
+   "borderline",
+   "required",
+   "unnecessary"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-2.answer_sentences[].citation_assessment": {
+  "count": 108,
+  "types": {
+   "list": 63,
+   "NoneType": 45
+  },
+  "min": 1,
+  "max": 3,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-2.answer_sentences[].citation_assessment[]": {
+  "count": 81,
+  "types": {
+   "dict": 81
+  },
+  "min": 3,
+  "max": 3,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-2.answer_sentences[].citation_assessment[].cited_pmid": {
+  "count": 81,
+  "types": {
+   "str": 81
+  },
+  "min": 8,
+  "max": 8,
+  "values": null,
+  "many_values": true
+ },
+ "$[].machine_generated_answers.webis-2.answer_sentences[].citation_assessment[].evidence_relation": {
+  "count": 81,
+  "types": {
+   "str": 81
+  },
+  "min": 7,
+  "max": 13,
+  "values": [
+   "contradicting",
+   "neutral",
+   "not relevant",
+   "supporting"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-2.answer_sentences[].citation_assessment[].evidence_support": {
+  "count": 81,
+  "types": {
+   "str": 52,
+   "NoneType": 29
+  },
+  "min": 49,
+  "max": 788,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-2.is_answer_accurate": {
+  "count": 65,
+  "types": {
+   "str": 65
+  },
+  "min": 2,
+  "max": 3,
+  "values": [
+   "no",
+   "yes"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-3": {
+  "count": 65,
+  "types": {
+   "dict": 65
+  },
+  "min": 3,
+  "max": 3,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-3.answer": {
+  "count": 65,
+  "types": {
+   "str": 65
+  },
+  "min": 70,
+  "max": 719,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-3.answer_sentences": {
+  "count": 65,
+  "types": {
+   "list": 65
+  },
+  "min": 1,
+  "max": 5,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-3.answer_sentences[]": {
+  "count": 119,
+  "types": {
+   "dict": 119
+  },
+  "min": 4,
+  "max": 4,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-3.answer_sentences[].answer_sentence": {
+  "count": 119,
+  "types": {
+   "str": 119
+  },
+  "min": 2,
+  "max": 443,
+  "values": [
+   ".."
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-3.answer_sentences[].answer_sentence_id": {
+  "count": 119,
+  "types": {
+   "str": 119
+  },
+  "min": 1,
+  "max": 1,
+  "values": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-3.answer_sentences[].answer_sentence_relevance": {
+  "count": 119,
+  "types": {
+   "str": 68,
+   "NoneType": 51
+  },
+  "min": 8,
+  "max": 11,
+  "values": [
+   "borderline",
+   "required",
+   "unnecessary"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-3.answer_sentences[].citation_assessment": {
+  "count": 119,
+  "types": {
+   "NoneType": 44,
+   "list": 75
+  },
+  "min": 1,
+  "max": 5,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-3.answer_sentences[].citation_assessment[]": {
+  "count": 107,
+  "types": {
+   "dict": 107
+  },
+  "min": 3,
+  "max": 3,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-3.answer_sentences[].citation_assessment[].cited_pmid": {
+  "count": 107,
+  "types": {
+   "str": 107
+  },
+  "min": 8,
+  "max": 8,
+  "values": null,
+  "many_values": true
+ },
+ "$[].machine_generated_answers.webis-3.answer_sentences[].citation_assessment[].evidence_relation": {
+  "count": 107,
+  "types": {
+   "str": 107
+  },
+  "min": 7,
+  "max": 13,
+  "values": [
+   "contradicting",
+   "neutral",
+   "not relevant",
+   "supporting"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-3.answer_sentences[].citation_assessment[].evidence_support": {
+  "count": 107,
+  "types": {
+   "NoneType": 34,
+   "str": 73
+  },
+  "min": 44,
+  "max": 573,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-3.is_answer_accurate": {
+  "count": 65,
+  "types": {
+   "str": 65
+  },
+  "min": 2,
+  "max": 3,
+  "values": [
+   "no",
+   "yes"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-5": {
+  "count": 65,
+  "types": {
+   "dict": 65
+  },
+  "min": 3,
+  "max": 3,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-5.answer": {
+  "count": 65,
+  "types": {
+   "str": 65
+  },
+  "min": 70,
+  "max": 723,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-5.answer_sentences": {
+  "count": 65,
+  "types": {
+   "list": 65
+  },
+  "min": 1,
+  "max": 5,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-5.answer_sentences[]": {
+  "count": 120,
+  "types": {
+   "dict": 120
+  },
+  "min": 4,
+  "max": 4,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-5.answer_sentences[].answer_sentence": {
+  "count": 120,
+  "types": {
+   "str": 120
+  },
+  "min": 2,
+  "max": 444,
+  "values": [
+   "..",
+   "[1,2,3,4,5,6."
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-5.answer_sentences[].answer_sentence_id": {
+  "count": 120,
+  "types": {
+   "str": 120
+  },
+  "min": 1,
+  "max": 1,
+  "values": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-5.answer_sentences[].answer_sentence_relevance": {
+  "count": 120,
+  "types": {
+   "NoneType": 42,
+   "str": 78
+  },
+  "min": 8,
+  "max": 11,
+  "values": [
+   "borderline",
+   "required",
+   "unnecessary"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-5.answer_sentences[].citation_assessment": {
+  "count": 120,
+  "types": {
+   "NoneType": 68,
+   "list": 52
+  },
+  "min": 1,
+  "max": 4,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-5.answer_sentences[].citation_assessment[]": {
+  "count": 74,
+  "types": {
+   "dict": 74
+  },
+  "min": 3,
+  "max": 3,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-5.answer_sentences[].citation_assessment[].cited_pmid": {
+  "count": 74,
+  "types": {
+   "str": 74
+  },
+  "min": 1,
+  "max": 8,
+  "values": null,
+  "many_values": true
+ },
+ "$[].machine_generated_answers.webis-5.answer_sentences[].citation_assessment[].evidence_relation": {
+  "count": 74,
+  "types": {
+   "str": 74
+  },
+  "min": 7,
+  "max": 16,
+  "values": [
+   "contradicting",
+   "invalid citation",
+   "neutral",
+   "not relevant",
+   "supporting"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-5.answer_sentences[].citation_assessment[].evidence_support": {
+  "count": 74,
+  "types": {
+   "NoneType": 15,
+   "str": 59
+  },
+  "min": 70,
+  "max": 542,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-5.is_answer_accurate": {
+  "count": 65,
+  "types": {
+   "str": 65
+  },
+  "min": 2,
+  "max": 3,
+  "values": [
+   "no",
+   "yes"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-gpt-1": {
+  "count": 65,
+  "types": {
+   "dict": 65
+  },
+  "min": 3,
+  "max": 3,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-gpt-1.answer": {
+  "count": 65,
+  "types": {
+   "str": 65
+  },
+  "min": 226,
+  "max": 631,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-gpt-1.answer_sentences": {
+  "count": 65,
+  "types": {
+   "list": 65
+  },
+  "min": 2,
+  "max": 4,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-gpt-1.answer_sentences[]": {
+  "count": 167,
+  "types": {
+   "dict": 167
+  },
+  "min": 4,
+  "max": 4,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-gpt-1.answer_sentences[].answer_sentence": {
+  "count": 167,
+  "types": {
+   "str": 167
+  },
+  "min": 62,
+  "max": 319,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-gpt-1.answer_sentences[].answer_sentence_id": {
+  "count": 167,
+  "types": {
+   "str": 167
+  },
+  "min": 1,
+  "max": 1,
+  "values": [
+   "1",
+   "2",
+   "3",
+   "4"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-gpt-1.answer_sentences[].answer_sentence_relevance": {
+  "count": 167,
+  "types": {
+   "str": 167
+  },
+  "min": 8,
+  "max": 11,
+  "values": [
+   "borderline",
+   "required",
+   "unnecessary"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-gpt-1.answer_sentences[].citation_assessment": {
+  "count": 167,
+  "types": {
+   "NoneType": 167
+  },
+  "min": null,
+  "max": null,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-gpt-1.is_answer_accurate": {
+  "count": 65,
+  "types": {
+   "str": 65
+  },
+  "min": 3,
+  "max": 3,
+  "values": [
+   "yes"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-gpt-4": {
+  "count": 65,
+  "types": {
+   "dict": 65
+  },
+  "min": 3,
+  "max": 3,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-gpt-4.answer": {
+  "count": 65,
+  "types": {
+   "str": 65
+  },
+  "min": 42,
+  "max": 654,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-gpt-4.answer_sentences": {
+  "count": 65,
+  "types": {
+   "list": 65
+  },
+  "min": 1,
+  "max": 4,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-gpt-4.answer_sentences[]": {
+  "count": 142,
+  "types": {
+   "dict": 142
+  },
+  "min": 4,
+  "max": 4,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-gpt-4.answer_sentences[].answer_sentence": {
+  "count": 142,
+  "types": {
+   "str": 142
+  },
+  "min": 40,
+  "max": 298,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-gpt-4.answer_sentences[].answer_sentence_id": {
+  "count": 142,
+  "types": {
+   "str": 142
+  },
+  "min": 1,
+  "max": 1,
+  "values": [
+   "1",
+   "2",
+   "3",
+   "4"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-gpt-4.answer_sentences[].answer_sentence_relevance": {
+  "count": 142,
+  "types": {
+   "NoneType": 14,
+   "str": 128
+  },
+  "min": 8,
+  "max": 11,
+  "values": [
+   "borderline",
+   "required",
+   "unnecessary"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-gpt-4.answer_sentences[].citation_assessment": {
+  "count": 142,
+  "types": {
+   "NoneType": 66,
+   "list": 76
+  },
+  "min": 1,
+  "max": 4,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-gpt-4.answer_sentences[].citation_assessment[]": {
+  "count": 95,
+  "types": {
+   "dict": 95
+  },
+  "min": 3,
+  "max": 3,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-gpt-4.answer_sentences[].citation_assessment[].cited_pmid": {
+  "count": 95,
+  "types": {
+   "str": 95
+  },
+  "min": 8,
+  "max": 8,
+  "values": null,
+  "many_values": true
+ },
+ "$[].machine_generated_answers.webis-gpt-4.answer_sentences[].citation_assessment[].evidence_relation": {
+  "count": 95,
+  "types": {
+   "str": 95
+  },
+  "min": 7,
+  "max": 13,
+  "values": [
+   "contradicting",
+   "neutral",
+   "not relevant",
+   "supporting"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-gpt-4.answer_sentences[].citation_assessment[].evidence_support": {
+  "count": 95,
+  "types": {
+   "str": 91,
+   "NoneType": 4
+  },
+  "min": 67,
+  "max": 708,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-gpt-4.is_answer_accurate": {
+  "count": 65,
+  "types": {
+   "str": 65
+  },
+  "min": 2,
+  "max": 3,
+  "values": [
+   "no",
+   "yes"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-gpt-6": {
+  "count": 65,
+  "types": {
+   "dict": 65
+  },
+  "min": 3,
+  "max": 3,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-gpt-6.answer": {
+  "count": 65,
+  "types": {
+   "str": 65
+  },
+  "min": 54,
+  "max": 685,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-gpt-6.answer_sentences": {
+  "count": 65,
+  "types": {
+   "list": 65
+  },
+  "min": 1,
+  "max": 3,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-gpt-6.answer_sentences[]": {
+  "count": 173,
+  "types": {
+   "dict": 173
+  },
+  "min": 4,
+  "max": 4,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-gpt-6.answer_sentences[].answer_sentence": {
+  "count": 173,
+  "types": {
+   "str": 173
+  },
+  "min": 54,
+  "max": 306,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-gpt-6.answer_sentences[].answer_sentence_id": {
+  "count": 173,
+  "types": {
+   "str": 173
+  },
+  "min": 1,
+  "max": 1,
+  "values": [
+   "1",
+   "2",
+   "3"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-gpt-6.answer_sentences[].answer_sentence_relevance": {
+  "count": 173,
+  "types": {
+   "str": 166,
+   "NoneType": 7
+  },
+  "min": 8,
+  "max": 11,
+  "values": [
+   "borderline",
+   "required",
+   "unnecessary"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-gpt-6.answer_sentences[].citation_assessment": {
+  "count": 173,
+  "types": {
+   "list": 83,
+   "NoneType": 90
+  },
+  "min": 1,
+  "max": 6,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-gpt-6.answer_sentences[].citation_assessment[]": {
+  "count": 181,
+  "types": {
+   "dict": 181
+  },
+  "min": 3,
+  "max": 3,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-gpt-6.answer_sentences[].citation_assessment[].cited_pmid": {
+  "count": 181,
+  "types": {
+   "str": 181
+  },
+  "min": 8,
+  "max": 8,
+  "values": null,
+  "many_values": true
+ },
+ "$[].machine_generated_answers.webis-gpt-6.answer_sentences[].citation_assessment[].evidence_relation": {
+  "count": 181,
+  "types": {
+   "str": 181
+  },
+  "min": 7,
+  "max": 13,
+  "values": [
+   "contradicting",
+   "neutral",
+   "not relevant",
+   "supporting"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-gpt-6.answer_sentences[].citation_assessment[].evidence_support": {
+  "count": 181,
+  "types": {
+   "NoneType": 29,
+   "str": 152
+  },
+  "min": 31,
+  "max": 1788,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.webis-gpt-6.is_answer_accurate": {
+  "count": 65,
+  "types": {
+   "str": 65
+  },
+  "min": 2,
+  "max": 3,
+  "values": [
+   "no",
+   "yes"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.zero-shot-gemini-flash": {
+  "count": 65,
+  "types": {
+   "dict": 65
+  },
+  "min": 3,
+  "max": 3,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.zero-shot-gemini-flash.answer": {
+  "count": 65,
+  "types": {
+   "str": 65
+  },
+  "min": 191,
+  "max": 1430,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.zero-shot-gemini-flash.answer_sentences": {
+  "count": 65,
+  "types": {
+   "list": 65
+  },
+  "min": 2,
+  "max": 11,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.zero-shot-gemini-flash.answer_sentences[]": {
+  "count": 416,
+  "types": {
+   "dict": 416
+  },
+  "min": 4,
+  "max": 4,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.zero-shot-gemini-flash.answer_sentences[].answer_sentence": {
+  "count": 416,
+  "types": {
+   "str": 416
+  },
+  "min": 7,
+  "max": 258,
+  "values": [
+   "[PMID1, PMID2]",
+   "[PMID3]",
+   "[PMID3].",
+   "[PMID: 28408424]",
+   "[PMID: 28408428].",
+   "[PMID: 29987534]"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.zero-shot-gemini-flash.answer_sentences[].answer_sentence_id": {
+  "count": 416,
+  "types": {
+   "str": 416
+  },
+  "min": 1,
+  "max": 2,
+  "values": [
+   "1",
+   "10",
+   "11",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8",
+   "9"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.zero-shot-gemini-flash.answer_sentences[].answer_sentence_relevance": {
+  "count": 416,
+  "types": {
+   "str": 358,
+   "NoneType": 58
+  },
+  "min": 8,
+  "max": 11,
+  "values": [
+   "borderline",
+   "required",
+   "unnecessary"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.zero-shot-gemini-flash.answer_sentences[].citation_assessment": {
+  "count": 416,
+  "types": {
+   "list": 345,
+   "NoneType": 71
+  },
+  "min": 1,
+  "max": 6,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.zero-shot-gemini-flash.answer_sentences[].citation_assessment[]": {
+  "count": 551,
+  "types": {
+   "dict": 551
+  },
+  "min": 3,
+  "max": 3,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.zero-shot-gemini-flash.answer_sentences[].citation_assessment[].cited_pmid": {
+  "count": 551,
+  "types": {
+   "str": 551
+  },
+  "min": 6,
+  "max": 8,
+  "values": null,
+  "many_values": true
+ },
+ "$[].machine_generated_answers.zero-shot-gemini-flash.answer_sentences[].citation_assessment[].evidence_relation": {
+  "count": 551,
+  "types": {
+   "str": 551
+  },
+  "min": 7,
+  "max": 16,
+  "values": [
+   "contradicting",
+   "invalid citation",
+   "neutral",
+   "not relevant",
+   "supporting"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.zero-shot-gemini-flash.answer_sentences[].citation_assessment[].evidence_support": {
+  "count": 551,
+  "types": {
+   "str": 416,
+   "NoneType": 135
+  },
+  "min": 49,
+  "max": 1931,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.zero-shot-gemini-flash.is_answer_accurate": {
+  "count": 65,
+  "types": {
+   "str": 65
+  },
+  "min": 2,
+  "max": 3,
+  "values": [
+   "no",
+   "yes"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.zero-shot-gpt4o-mini": {
+  "count": 65,
+  "types": {
+   "dict": 65
+  },
+  "min": 3,
+  "max": 3,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.zero-shot-gpt4o-mini.answer": {
+  "count": 65,
+  "types": {
+   "str": 65
+  },
+  "min": 527,
+  "max": 1008,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.zero-shot-gpt4o-mini.answer_sentences": {
+  "count": 65,
+  "types": {
+   "list": 65
+  },
+  "min": 3,
+  "max": 8,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.zero-shot-gpt4o-mini.answer_sentences[]": {
+  "count": 362,
+  "types": {
+   "dict": 362
+  },
+  "min": 4,
+  "max": 4,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.zero-shot-gpt4o-mini.answer_sentences[].answer_sentence": {
+  "count": 362,
+  "types": {
+   "str": 362
+  },
+  "min": 17,
+  "max": 352,
+  "values": [
+   "[PMID: 32912345].",
+   "[PMID: 33098765].",
+   "[PMID: 33123456]."
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.zero-shot-gpt4o-mini.answer_sentences[].answer_sentence_id": {
+  "count": 362,
+  "types": {
+   "str": 362
+  },
+  "min": 1,
+  "max": 1,
+  "values": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.zero-shot-gpt4o-mini.answer_sentences[].answer_sentence_relevance": {
+  "count": 362,
+  "types": {
+   "str": 355,
+   "NoneType": 7
+  },
+  "min": 8,
+  "max": 13,
+  "values": [
+   "borderline",
+   "inappropriate",
+   "required",
+   "unnecessary"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.zero-shot-gpt4o-mini.answer_sentences[].citation_assessment": {
+  "count": 362,
+  "types": {
+   "list": 293,
+   "NoneType": 69
+  },
+  "min": 1,
+  "max": 6,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.zero-shot-gpt4o-mini.answer_sentences[].citation_assessment[]": {
+  "count": 531,
+  "types": {
+   "dict": 531
+  },
+  "min": 3,
+  "max": 3,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.zero-shot-gpt4o-mini.answer_sentences[].citation_assessment[].cited_pmid": {
+  "count": 531,
+  "types": {
+   "str": 531
+  },
+  "min": 6,
+  "max": 8,
+  "values": null,
+  "many_values": true
+ },
+ "$[].machine_generated_answers.zero-shot-gpt4o-mini.answer_sentences[].citation_assessment[].evidence_relation": {
+  "count": 531,
+  "types": {
+   "str": 531
+  },
+  "min": 7,
+  "max": 16,
+  "values": [
+   "contradicting",
+   "invalid citation",
+   "neutral",
+   "not relevant",
+   "supporting"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.zero-shot-gpt4o-mini.answer_sentences[].citation_assessment[].evidence_support": {
+  "count": 531,
+  "types": {
+   "str": 404,
+   "NoneType": 127
+  },
+  "min": 49,
+  "max": 818,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.zero-shot-gpt4o-mini.is_answer_accurate": {
+  "count": 65,
+  "types": {
+   "str": 65
+  },
+  "min": 2,
+  "max": 3,
+  "values": [
+   "no",
+   "yes"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.{text}": {
+  "count": 715,
+  "types": {
+   "dict": 715
+  },
+  "min": 3,
+  "max": 3,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.{text}.answer": {
+  "count": 715,
+  "types": {
+   "str": 715
+  },
+  "min": 111,
+  "max": 1280,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.{text}.answer_sentences": {
+  "count": 715,
+  "types": {
+   "list": 715
+  },
+  "min": 1,
+  "max": 8,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.{text}.answer_sentences[]": {
+  "count": 2488,
+  "types": {
+   "dict": 2488
+  },
+  "min": 4,
+  "max": 4,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.{text}.answer_sentences[].answer_sentence": {
+  "count": 2488,
+  "types": {
+   "str": 2488
+  },
+  "min": 37,
+  "max": 600,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.{text}.answer_sentences[].answer_sentence_id": {
+  "count": 2488,
+  "types": {
+   "str": 2488
+  },
+  "min": 1,
+  "max": 1,
+  "values": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5",
+   "6",
+   "7",
+   "8"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.{text}.answer_sentences[].answer_sentence_relevance": {
+  "count": 2488,
+  "types": {
+   "str": 2441,
+   "NoneType": 47
+  },
+  "min": 8,
+  "max": 13,
+  "values": [
+   "borderline",
+   "inappropriate",
+   "required",
+   "unnecessary"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.{text}.answer_sentences[].citation_assessment": {
+  "count": 2488,
+  "types": {
+   "list": 2408,
+   "NoneType": 80
+  },
+  "min": 1,
+  "max": 9,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.{text}.answer_sentences[].citation_assessment[]": {
+  "count": 6657,
+  "types": {
+   "dict": 6657
+  },
+  "min": 3,
+  "max": 3,
+  "values": null,
+  "many_values": false
+ },
+ "$[].machine_generated_answers.{text}.answer_sentences[].citation_assessment[].cited_pmid": {
+  "count": 6657,
+  "types": {
+   "str": 6657
+  },
+  "min": 8,
+  "max": 8,
+  "values": null,
+  "many_values": true
+ },
+ "$[].machine_generated_answers.{text}.answer_sentences[].citation_assessment[].evidence_relation": {
+  "count": 6657,
+  "types": {
+   "str": 6657
+  },
+  "min": 7,
+  "max": 16,
+  "values": [
+   "contradicting",
+   "invalid citation",
+   "neutral",
+   "not relevant",
+   "supporting"
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.{text}.answer_sentences[].citation_assessment[].evidence_support": {
+  "count": 6657,
+  "types": {
+   "str": 5537,
+   "NoneType": 1120
+  },
+  "min": 3,
+  "max": 1498,
+  "values": [
+   "Clonazepam",
+   "Interestingly",
+   "Mutations in FBN1 ",
+   "Valproic",
+   "carbamazepine",
+   "es."
+  ],
+  "many_values": false
+ },
+ "$[].machine_generated_answers.{text}.is_answer_accurate": {
+  "count": 715,
+  "types": {
+   "str": 715
+  },
+  "min": 2,
+  "max": 3,
+  "values": [
+   "no",
+   "yes"
+  ],
+  "many_values": false
+ },
+ "$[].question_id": {
+  "count": 65,
+  "types": {
+   "str": 65
+  },
+  "min": 3,
+  "max": 3,
+  "values": null,
+  "many_values": true
+ }
+}

@@ -1,0 +1,47 @@
+{
+ "version": "0.1.0",
+ "problem": null,
+ "parse_seconds": 0.1,
+ "units": 65,
+ "topics": 65,
+ "units_per_topic_max": 1,
+ "sentence_labels": {
+  "required": 6227,
+  "unnecessary": 1032,
+  "borderline": 302,
+  "inappropriate": 24
+ },
+ "citation_labels": {
+  "supports": 0,
+  "contradicts": 0,
+  "neutral": 1412,
+  "notrelevant": 2201
+ },
+ "citation_label_share": {
+  "supports": 0.0,
+  "contradicts": 0.0,
+  "neutral": 0.3908,
+  "notrelevant": 0.6092
+ },
+ "citations_without_pmid": 0,
+ "pmid_pattern": {
+  "record": 3613
+ },
+ "topics_with_contradicts": 0,
+ "topics_with_contradicts_pmid": 0,
+ "contradicts_per_topic_median": 0,
+ "contradicts_per_topic_max": 0,
+ "contradicts_pmids_per_topic_median": 0,
+ "distinct_pmids": 2075,
+ "distinct_pmids_by_label": {
+  "supports": 0,
+  "contradicts": 0,
+  "neutral": 936,
+  "notrelevant": 1493
+ },
+ "topic_pmid_pairs_supports_and_contradicts": 0,
+ "pmid_min": 14564663,
+ "pmid_max": 38082262,
+ "pmids_over_spark_max": 0,
+ "topic_keys_matching_topic_ids": 65
+}
