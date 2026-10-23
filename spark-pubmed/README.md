@@ -1,97 +1,69 @@
 # spark-pubmed: groundwork for the NIH/NLM SPARK PubMed/PMC Challenge
 
-Open groundwork for the NIH/NLM SPARK PubMed/PMC Challenge (Task 1, Known-Item & Provenance
-Retrieval), by MV2 of Munim, Inc. The code and notes were made with AI agents working in his
-name. Code: Apache-2.0 (the repository's `LICENSE`). Notes and data: CC BY 4.0.
+MV2 of Munim, Inc. is building this open groundwork for the NIH/NLM SPARK PubMed/PMC Challenge
+(Task 1, Known-Item & Provenance Retrieval). The code and notes were made with AI agents working
+in his name. Code is Apache-2.0 (the repository's `LICENSE`); notes and data are CC BY 4.0.
 
-This folder sits inside `ml-competition-radar`. It was planned as a separate repository,
-`spark-pubmed-retrieval`, but GitHub refused to create that repository twice on 2026-10-22
-("secondary rate limit"), so the work is published here instead.
+This folder sits inside `ml-competition-radar`. It was planned as a separate repository, but
+GitHub refused to create that repository twice on 2026-10-22 ("secondary rate limit").
 
-## What is here now
+## Folders
 
-`corpus_audit/` checks the PubMed part of the challenge corpus against the challenge's own
-definition. The Task 1 and Task 2 descriptions say the PubMed files are at
-https://ftp.ncbi.nlm.nih.gov/pubmed/.pubmed-spark/ and that the corpus "includes all citations
-with a publication date from January 1,1959 to July 31,2026 and excludes any citation with the
-publication type "preprint" (MeSH UI D000076942)". On 2026-10-22 that directory listed
-`pubmed27n0001.xml.gz` to `pubmed27n1306.xml.gz`, all dated 2026-08-31. NLM's regular 2026
-baseline has `pubmed26n0001` to `pubmed26n1334`.
+- `corpus_audit/` checks the PubMed part of the challenge corpus against the challenge's own
+  definition. The definition reads: "all citations with a publication date from January 1,1959
+  to July 31,2026", excluding publication type "preprint" (D000076942). The files are
+  `pubmed27n0001`-`1306` under https://ftp.ncbi.nlm.nih.gov/pubmed/.pubmed-spark/, dated
+  2026-08-31. It covers a 133-file sample, with pre-registered predictions and graded results.
+- `fts_pilot/` mirrors the whole corpus (md5-checked, resumable), measures an on-disk SQLite
+  FTS5 (BM25) index built with the standard library only, and counts every record of the corpus.
+  It has pre-registered predictions and graded results (`fts_pilot/RESULTS.md`).
+- `corpus_build/` repairs the mirror, finishes the count and starts the whole-corpus index build.
+  The fix comes from what the pilot found: two files were cut short on disk behind valid
+  markers. Its predictions are pre-registered.
+- `dev_sets/` holds two practice question sets, because no SPARK questions are public yet:
+  - L: well-known first reports since 1959, each matched to PubMed's own record. 46 of 47 were
+    found automatically, and a hand check confirmed every match.
+  - R: 90 questions written from a fixed-seed sample of corpus abstracts. All 90 titles were
+    checked against NCBI's records.
+- `t1_runner/` holds the Task 1 pipeline: the resumable index builder, BM25 candidates, ten
+  fixed cutoff policies (the task penalises wrong citations), the submission JSONL, a format
+  validator and a scorer. Its predictions were pre-registered before any score existed.
 
-PubMed records carry several dates (the journal issue date, the electronic publication date,
-the date the record entered PubMed), and the definition does not say which one it uses. The
-audit counts, per file: records, records outside the window by each date, preprint-type
-records, DeleteCitation entries, PMC ids and abstracts. It also checks for duplicate PMIDs and
-compares two files with their 2026-baseline counterparts.
+## Findings so far
 
-- `corpus_audit/audit.py`: Python standard library only. It streams each chosen file from NLM,
-  checks it against its `.md5` file and keeps only counts and PMIDs. Nothing downloaded is kept
-  or executed. A rerun resumes from its checkpoints.
-- `corpus_audit/test_audit.py`: tests on fake data, with no network.
-- `corpus_audit/PREREGISTRATION.md`: the eleven predictions written before any corpus file was
-  read. The first run samples 133 of the 1,306 files: every 10th file, plus 0656 and the last one.
-- `corpus_audit/RESULTS.md`: the graded results. `corpus_audit/results/`: the run's raw output.
+- **Editorials and historical articles are in the corpus.** The challenge announcement says
+  "Editorials, historical articles, and some content irrelevant to the task will be excluded".
+  The published PubMed files hold 749,482 Editorial and 361,972 Historical Article records, out
+  of 39,107,524 counted in 1,304 of 1,306 files. They also hold 0 Preprint records, as the task
+  descriptions say.
+- **The date window is not applied to one date field.** 11,544 records have a journal date after
+  July 2026 and 29,751 entered PubMed after July 2026, but only 29 have neither a journal nor an
+  electronic date on or before 2026-07-31. Reading the date rule this way is an inference from
+  counts.
+- **Corpus shape.** About 39.17 million records (exact count pending two repaired files) and
+  56 GB compressed. 74.2% of records have an abstract and 27.9% a PMC id. There is 1 duplicate
+  PMID.
+- **Index.** FTS5 at `detail=full` uses about 2.26 KB per record, about 88.5 GB for the whole
+  corpus by extrapolation, and builds at about 2,500 records/s on one CPU. The `column` and
+  `none` levels save only 13-22% and make queries 18-19 times slower, with the same ranking on
+  the pilot's checks.
 
-Run (from `spark-pubmed/`): `python corpus_audit/audit.py --data-dir <scratch> --out-dir <out>
---stride 10 --also 0656`.
+## Status (2026-10-23)
 
-`fts_pilot/` is the next step. It mirrors the whole corpus (md5-checked, resumable) and measures
-whether an on-disk SQLite FTS5 (BM25) index, built with the standard library only, can hold all
-of it on one CPU machine. It measures bytes per document, build speed, query speed, and the
-size/ranking trade-off of FTS5's three detail levels. The same job then counts every record of
-the mirror, including every publication type, to test a sentence of the challenge announcement:
-"Editorials, historical articles, and some content irrelevant to the task will be excluded."
-The task descriptions exclude only preprints. The predictions are in
-`fts_pilot/PREREGISTRATION.md`, written before the job ran.
-
-- `fts_pilot/fetch_corpus.py`: md5-checked, resumable mirror of all 1,306 files.
-- `fts_pilot/fts_pilot.py`: the FTS5 size and speed pilot.
-- `fts_pilot/full_count.py`: whole-corpus record count with per-file checkpoints.
-- `fts_pilot/test_fts_pilot.py`: tests on fake data, with no network. They passed as the first
-  step of the sealed job `spark27-fts-v1` on 2026-10-22.
-
-`dev_sets/` builds two practice question sets, because no SPARK questions are public yet and a
-search found no public known-item benchmark over PubMed:
-
-- `dev_sets/landmarks.json`: 47 well-known first reports since 1959 (CRISPR-Cas9, PCR, iPS
-  cells, BLAST, HIV, and others), each with a plain-language question, plus four pre-1959
-  controls. Titles and years were recalled and are only hints: `dev_sets.py` keeps an item only
-  if PubMed's own record (NCBI E-utilities) has a near-identical title and year.
-- `dev_sets/dev_sets.py`: the lookups, and a fixed-seed sample of 90 records with abstracts from
-  six evenly spaced corpus files, for questions written later from the abstracts alone.
-- `dev_sets/test_dev_sets.py`: tests on fake data, with no network.
-- `dev_sets/PREREGISTRATION.md`: predictions for the lookups and for later BM25 scores, written
-  before anything was looked up.
-
-## Status
-
-The first audit run is done and graded: 10 of 11 predictions held (`corpus_audit/RESULTS.md`).
-In a 133-file sample (3,977,567 records), the corpus matches its definition closely:
-
-- no preprint-type records, no deletions and no duplicate PMIDs;
-- only 1 record with a journal year before 1959.
-
-The date window is not applied to one date field. Records with a journal date, an electronic
-date or a PubMed entry date after July 2026 are all included, and only 3 records have neither
-a journal nor an electronic date inside the window. That reading is an inference from counts.
-
-The whole PubMed part is estimated at about 39.17 million records, roughly 56 GB compressed.
-One miss: file `pubmed27n0851` holds 29,999 records, not 30,000.
-
-The FTS5 pilot job started on 2026-10-22 at 10:47 UTC and was still running when this folder
-was first published. Nothing in `fts_pilot/` is a finding until its results are graded here.
-The dev-set lookups (`dev_sets/`) were queued on 2026-10-22 at about 14:50 UTC and are ungraded.
+Graded: corpus audit (10 of 11 predictions held), dev sets (10 of 11 held), FTS5 pilot and
+count (11 of 16 held). The runner's tests passed. Queued as job `spark32-build-v1`: the mirror
+repair, the full count and the first 240 minutes of the whole-corpus build. Next steps: finish
+the index, score the dev sets with the ten cutoff policies (pre-registered), then add an
+open-weight reranker on CPU.
 
 ## Limits
 
-- A 10% sample of files cannot show that something is absent from the whole corpus. A zero in
-  the sample is evidence, not proof.
+- No SPARK questions have been published, so nothing here measures retrieval quality on them.
+  The dev sets are AI-written proxies, not NLM's expert questions.
 - This covers only the PubMed part. The PMC part is defined by a `Challenge_PMCIDs.txt` list,
-  which was not on the challenge page on 2026-10-22.
+  which was not on the challenge page as of 2026-10-23.
 - NIH's general challenge page describes the PMC part as about 50,000 CC0 articles. The task
   descriptions describe a Creative Commons, NIH-funded subset. Only the task descriptions were
   used here.
-- No SPARK questions have been published, so nothing here measures retrieval quality on them.
-  The dev sets are AI-written proxies, not NLM's expert questions.
 
 Contact: MV2, Munim, Inc., mv2@munimtech.com
