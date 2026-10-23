@@ -96,20 +96,39 @@ class Formats(unittest.TestCase):
         self.assertEqual(c2.needs_from_topics({"topics": [{"id": 116, "question": "q?", "topic": "t"}]}),
                          [{"info_need_id": "116", "info_need": "q?"}])
 
+    def test_stance_class(self):
+        sup, con, other = {"1", "2"}, {"2", "3"}, {"1", "4"}
+        self.assertEqual([c2.stance_class(p, sup, con, other) for p in ("1", "2", "3", "4", "5")],
+                         ["supports", "mixed", "contradicts", "other", "unjudged"])
+
     def test_score(self):
-        answers = [{"info_need_id": "116", "responses": [{"text": "a", "citations": ["1", "2"]},
-                                                         {"text": "b", "citations": ["3"]}],
-                    "conflicts": [{"pmids": ["2", "3"]}]},
+        # 116 cites one PMID of each class: 1 supports (also not relevant elsewhere), 2 mixed,
+        # 3 unjudged, 7 contradicts only, 8 neutral only; 117's only citation is mixed
+        answers = [{"info_need_id": "116", "responses": [{"text": "a", "citations": ["1", "2", "3"]},
+                                                         {"text": "b", "citations": ["7", "8"]}],
+                    "conflicts": [{"pmids": ["2", "7"]}]},
+                   {"info_need_id": "117", "responses": [{"text": "c", "citations": ["9"]}]},
                    {"info_need_id": "999", "responses": []}]
-        gold = [{"topic": "116", "supports": [1, 4], "contradicts": [2], "neutral": [], "notrelevant": [5]}]
+        gold = [{"topic": "116", "supports": [1, 4, 2, 6], "contradicts": [2, 7], "neutral": [8],
+                 "notrelevant": [5, 1]},
+                {"topic": "117", "supports": [9], "contradicts": [9], "neutral": [], "notrelevant": []}]
         s = c2.score(answers, gold)
-        self.assertEqual((s["answers_scored"], s["answers_without_gold"]), (1, 1))
-        self.assertEqual(s["mean_supports_share"], 0.3333)
-        self.assertEqual(s["mean_contradicts_share"], 0.3333)
-        self.assertEqual(s["mean_unjudged_share"], 0.3333)
-        self.assertEqual(s["mean_supports_recall"], 0.5)
-        self.assertEqual(s["topics_with_contradicts_found"], 1)
-        self.assertEqual(s["per_topic"][0]["conflict_flag_hits_contradicts"], 1)
+        self.assertEqual((s["answers_scored"], s["answers_without_gold"]), (2, 1))
+        p = s["per_topic"][0]
+        self.assertEqual([p[k + "_share"] for k in c2.CLASSES], [0.2] * 5)
+        self.assertAlmostEqual(sum(p[k + "_share"] for k in c2.CLASSES), 1.0)
+        self.assertEqual((p["supports_recall"], round(p["supports_only_recall"], 4)), (0.5, 0.3333))
+        self.assertEqual((p["mixed_found"], p["mixed_known"], p["contradicts_only_found"],
+                          p["contradicts_only_known"]), (1, 1, 1, 1))
+        self.assertEqual((p["conflict_flag_hits_mixed"], p["conflict_flag_hits_contradicts_only"]), (1, 1))
+        q = s["per_topic"][1]
+        self.assertEqual((q["mixed_share"], q["supports_share"], q["supports_only_recall"]), (1.0, 0.0, None))
+        self.assertEqual((s["mean_supports_share"], s["mean_mixed_share"], s["mean_contradicts_share"],
+                          s["mean_other_share"], s["mean_unjudged_share"]), (0.1, 0.6, 0.1, 0.1, 0.1))
+        self.assertEqual((s["mean_supports_recall"], s["mean_supports_only_recall"]), (0.75, 0.3333))
+        self.assertEqual((s["topics_with_mixed_found"], s["topics_with_mixed_known"],
+                          s["topics_with_contradicts_only_found"], s["topics_with_contradicts_only_known"]),
+                         (2, 2, 1, 1))
 
 
 class Run(unittest.TestCase):
@@ -137,6 +156,16 @@ class Run(unittest.TestCase):
             self.assertEqual(c2.main(["biogen", "--answers", os.path.join(out, "answers.jsonl"),
                                       "--team-id", "T", "--run-id", "T-1", "--out", bg]), 0)
             self.assertEqual(c2.load_jsonl(bg)[0]["metadata"]["topic_id"], "N1")
+            gold = os.path.join(d, "gold.jsonl")
+            c2.write_jsonl(gold, [{"topic": "N1", "supports": [11], "contradicts": [22, 11],
+                                   "neutral": [], "notrelevant": []}])
+            self.assertEqual(c2.main(["score", "--answers", os.path.join(out, "answers.jsonl"),
+                                      "--gold", gold, "--out-dir", out]), 0)
+            with open(os.path.join(out, "scores.json"), encoding="utf-8") as f:
+                sc = json.load(f)
+            # cites 22, 11, 33: one contradicts-only, one mixed, one unjudged; both flagged
+            self.assertEqual((sc["per_topic"][0]["mixed_found"], sc["per_topic"][0]["contradicts_only_found"],
+                              sc["per_topic"][0]["conflict_flag_hits_mixed"]), (1, 1, 1))
             with self.assertRaises(FileNotFoundError):
                 c2.run(os.path.join(d, "missing.db"), ranked, out)
 

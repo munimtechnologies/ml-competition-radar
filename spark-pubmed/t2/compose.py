@@ -24,8 +24,10 @@ floor it has to beat.
 Output (answers.jsonl): one row per need, {info_need_id, responses: [{text, citations,
 role}], conflicts: [{pmids, sentences}], uncertain: [sentence index], words}. `biogen` writes
 the TREC BioGen 2025 Task B run format; SPARK's own format is not published yet. `score`
-measures citations against judged PMIDs (biogen_census.py's gold_t2.jsonl). Standard library
-only.
+measures citations against judged PMIDs (biogen_census.py's gold_t2.jsonl). Each cited PMID
+gets exactly one class; 0.2.0 adds `mixed` for a paper judged both Supports and Contradicts in
+the topic (168 of BioGen 2024's 202 contradicting papers, mostly one claim judged two ways:
+job biogen-stance-v1), which 0.1.0 counted under both. Standard library only.
 
 Commands:
   needs   --topics F --out F                          BioGen topics JSON -> needs JSONL
@@ -44,7 +46,7 @@ import sys
 import time
 from collections import Counter
 
-VERSION = "0.1.0"
+VERSION = "0.2.0"
 TOKEN_RX = re.compile(r"[a-z0-9]+")
 STOP = frozenset("a an and are as at be by for from has have in is it of on or that the this to "
                  "was were which with we our these those their its not but than into".split())
@@ -65,6 +67,7 @@ HEDGE_RX = re.compile(r"\b(?:conflicting|controvers(?:y|ial)|inconsistent|mixed 
                       r"insufficient evidence|limited evidence|evidence is (?:weak|limited|lacking))\b", re.I)
 MAX_CITES = 3
 MAX_DOCS = 30
+CLASSES = ("supports", "mixed", "contradicts", "other", "unjudged")
 
 
 def load_jsonl(path):
@@ -258,10 +261,21 @@ def needs_from_topics(obj):
     return [{"info_need_id": str(t["id"]), "info_need": t["question"]} for t in rows]
 
 
+def stance_class(p, sup, con, other):
+    """One class per PMID: in both the topic's Supports and Contradicts sets -> 'mixed'; then
+    'supports', 'contradicts', 'other' (only Neutral / Not Relevant), else 'unjudged'."""
+    if p in sup:
+        return "mixed" if p in con else "supports"
+    if p in con:
+        return "contradicts"
+    return "other" if p in other else "unjudged"
+
+
 def score(answers, gold):
     """Citations against judged PMIDs. Judgments are pooled from 2024 runs, so a PMID nobody
-    cited then is 'unjudged', not wrong. Per answer: share of cited PMIDs judged supports /
-    contradicts / unjudged, and recall of the topic's supports PMIDs; then means."""
+    cited then is 'unjudged', not wrong. Per answer: the share of citations in each class of
+    CLASSES (they sum to 1), recall of all Supports PMIDs and of Supports-only PMIDs, mixed and
+    contradicts-only papers cited and known, and conflict flags on them; then means."""
     by = {str(g["topic"]): g for g in gold}
     per = []
     for a in answers:
@@ -269,25 +283,30 @@ def score(answers, gold):
         if g is None:
             continue
         sup, con = set(map(str, g["supports"])), set(map(str, g["contradicts"]))
-        judged = sup | con | set(map(str, g["neutral"])) | set(map(str, g["notrelevant"]))
-        cited = [p for x in a["responses"] for p in x["citations"]]
+        other = set(map(str, g["neutral"])) | set(map(str, g["notrelevant"]))
+        mixed, sup_only, con_only = sup & con, sup - con, con - sup
+        cited = [str(p) for x in a["responses"] for p in x["citations"]]
         docs = set(cited)
         n = len(cited) or 1
-        flagged = {p for c in a.get("conflicts", []) for p in c["pmids"]}
-        per.append({"topic": g["topic"], "citations": len(cited),
-                    "supports_share": sum(p in sup for p in cited) / n,
-                    "contradicts_share": sum(p in con for p in cited) / n,
-                    "unjudged_share": sum(p not in judged for p in cited) / n,
-                    "supports_recall": len(docs & sup) / len(sup) if sup else None,
-                    "contradicts_found": len(docs & con), "contradicts_known": len(con),
-                    "conflict_flag_hits_contradicts": len(flagged & con)})
+        kinds = Counter(stance_class(p, sup, con, other) for p in cited)
+        flagged = {str(p) for c in a.get("conflicts", []) for p in c["pmids"]}
+        row = {"topic": g["topic"], "citations": len(cited)}
+        row.update({k + "_share": kinds[k] / n for k in CLASSES})
+        row.update({"supports_recall": len(docs & sup) / len(sup) if sup else None,
+                    "supports_only_recall": len(docs & sup_only) / len(sup_only) if sup_only else None,
+                    "mixed_found": len(docs & mixed), "mixed_known": len(mixed),
+                    "contradicts_only_found": len(docs & con_only), "contradicts_only_known": len(con_only),
+                    "conflict_flag_hits_mixed": len(flagged & mixed),
+                    "conflict_flag_hits_contradicts_only": len(flagged & con_only)})
+        per.append(row)
     out = {"version": VERSION, "answers_scored": len(per),
            "answers_without_gold": sum(1 for a in answers if str(a["info_need_id"]) not in by)}
-    for k in ("supports_share", "contradicts_share", "unjudged_share", "supports_recall"):
+    for k in [c + "_share" for c in CLASSES] + ["supports_recall", "supports_only_recall"]:
         vals = [p[k] for p in per if p[k] is not None]
         out["mean_" + k] = round(sum(vals) / len(vals), 4) if vals else None
-    out["topics_with_contradicts_found"] = sum(1 for p in per if p["contradicts_found"])
-    out["topics_with_contradicts_known"] = sum(1 for p in per if p["contradicts_known"])
+    for k in ("mixed", "contradicts_only"):
+        out["topics_with_%s_found" % k] = sum(1 for p in per if p[k + "_found"])
+        out["topics_with_%s_known" % k] = sum(1 for p in per if p[k + "_known"])
     out["per_topic"] = per
     return out
 
