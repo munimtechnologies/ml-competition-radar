@@ -48,6 +48,12 @@ AGREE = [{"question_id": "3", "machine_generated_answers": {
     "r4": ans(s("Same.", [c("108", "neutral")])),
     "r5": ans(s("Same.", [c("108", "neutral")]))}}]
 
+# one run judges the same sentence text both ways (twice in one sentence, once more later)
+WITHIN = [{"question_id": "4", "machine_generated_answers": {
+    "r1": ans(s("Dup.", [c("109", "supporting"), c("109", "contradicting")]),
+              s("dup.", [c("109", "supporting")])),
+    "r2": ans(s("Dup.", [c("109", "supporting")]))}}]
+
 
 class Parts(unittest.TestCase):
     def test_label(self):
@@ -73,6 +79,11 @@ class Parts(unittest.TestCase):
         self.assertEqual(bs.text_key("A  b\n"), bs.text_key("a b"))
         self.assertNotEqual(bs.text_key("a b"), bs.text_key("a c"))
 
+    def test_agreement_formulas(self):
+        self.assertEqual(bs.agreement({}, 0, 0), (dict.fromkeys(bs.ORDER[:4]), None))
+        spec, pi = bs.agreement({"supports|supports": 2}, 2, 2)  # one label only: pi undefined
+        self.assertEqual((spec["supports"], spec["contradicts"], pi), (1.0, None, None))
+
 
 class Census(unittest.TestCase):
     def test_judgments(self):
@@ -93,6 +104,7 @@ class Census(unittest.TestCase):
         # 116/101: one run, two sentences; 116/102: one sentence text in two runs; 117/105: neither
         self.assertEqual((r["mixed_same_text"], r["mixed_same_run"],
                           r["mixed_same_run_not_same_text"], r["mixed_across_only"]), (1, 1, 1, 1))
+        self.assertEqual(r["mixed_same_text_within_one_run"], 0)
         self.assertEqual((r["contradicts_judgments_on_mixed_pairs"],
                           r["supports_judgments_on_mixed_pairs"]), (3, 3))
         self.assertEqual((r["mixed_supports_texts_median"], r["mixed_contradicts_texts_median"]), (1, 1))
@@ -100,6 +112,12 @@ class Census(unittest.TestCase):
                           r["repeated_judgment_pairs"], r["repeated_pairs_agree"]), (1, 0, 1, 0))
         self.assertEqual(r["repeated_pair_agreement"], 0.0)
         self.assertEqual(r["repeated_pair_confusion"], {"contradicts|supports": 1})
+        self.assertEqual(r["repeated_pair_matrix"], {"contradicts|supports": 1})
+        self.assertEqual(r["specific_agreement"], {"supports": 0.0, "contradicts": 0.0,
+                                                   "neutral": None, "notrelevant": None})
+        self.assertEqual(r["repeated_pair_scotts_pi"], -1.0)
+        self.assertEqual((r["repeated_within_run_pairs"], r["repeated_across_run_pairs"],
+                          r["repeated_across_run_agree"], r["repeated_within_run_agreement"]), (0, 1, 0, None))
         self.assertEqual((r["repeated_groups_with_contradicts"],
                           r["repeated_groups_with_contradicts_all_agree"]), (1, 0))
         self.assertEqual(r["per_topic"], [
@@ -114,9 +132,29 @@ class Census(unittest.TestCase):
         self.assertEqual((r["repeated_judgment_pairs"], r["repeated_pairs_agree"]), (4, 2))
         self.assertEqual(r["repeated_pair_agreement"], 0.5)
         self.assertEqual(r["repeated_pair_confusion"], {"contradicts|supports": 2})
+        self.assertEqual(r["repeated_pair_matrix"], {"contradicts|supports": 2, "neutral|neutral": 1,
+                                                     "supports|supports": 1})
+        self.assertEqual(r["specific_agreement"], {"supports": 0.5, "contradicts": 0.0,
+                                                   "neutral": 1.0, "notrelevant": None})
+        self.assertEqual(r["repeated_pair_scotts_pi"], 0.2)  # po 0.5, pe 0.375
+        self.assertEqual((r["repeated_across_run_pairs"], r["repeated_across_run_agreement"]), (4, 0.5))
         self.assertEqual((r["mixed_pairs"], r["mixed_same_text"], r["mixed_same_run"],
-                          r["mixed_across_only"]), (1, 1, 0, 0))
+                          r["mixed_across_only"], r["mixed_same_text_within_one_run"]), (1, 1, 0, 0, 0))
         self.assertEqual(r["per_topic"][0]["contradicts_judgments"], 1)
+
+    def test_within_run(self):
+        r = bs.analyse(bs.judgments(WITHIN)[0])
+        self.assertEqual((r["repeated_groups"], r["repeated_judgment_pairs"], r["repeated_pairs_agree"]),
+                         (1, 6, 3))
+        self.assertEqual(r["repeated_pair_matrix"], {"contradicts|supports": 3, "supports|supports": 3})
+        self.assertEqual((r["repeated_within_run_pairs"], r["repeated_within_run_agree"],
+                          r["repeated_across_run_pairs"], r["repeated_across_run_agree"]), (3, 1, 3, 2))
+        self.assertEqual((r["repeated_within_run_agreement"], r["repeated_across_run_agreement"]),
+                         (0.3333, 0.6667))
+        self.assertEqual(r["specific_agreement"]["supports"], 0.6667)
+        self.assertEqual(r["repeated_pair_scotts_pi"], -0.3333)  # po 0.5, pe 0.625
+        self.assertEqual((r["mixed_same_text"], r["mixed_same_run"], r["mixed_same_text_within_one_run"]),
+                         (1, 1, 1))
 
 
 class Files(unittest.TestCase):
@@ -145,6 +183,7 @@ class Files(unittest.TestCase):
         text = self.result()
         r = json.loads(text)
         self.assertIsNone(r["problem"])
+        self.assertEqual(r["version"], "0.2.0")
         self.assertTrue(r["file"]["cached"])
         self.assertEqual((r["mixed_pairs"], r["unknown_relations"]), (3, {"Weird Label": 1}))
         self.assertNotIn("sentinel", text.lower())
