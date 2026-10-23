@@ -1,0 +1,14 @@
+[
+ {
+  "url": "https://trec.nist.gov/data/biogen/BioGen2024topics-json.txt",
+  "bytes": 21598,
+  "sha256": "d456904111ed963552eda412c224107dccf632fc54d04d23b47f9b8878374774",
+  "cached": true
+ },
+ {
+  "url": "https://trec.nist.gov/data/biogen/biogen_collection_v3.json",
+  "bytes": 11128359,
+  "sha256": "78449ef270e60abe0c268fa446ade23737164bba44c37308e216529fa63d066d",
+  "cached": true
+ }
+]

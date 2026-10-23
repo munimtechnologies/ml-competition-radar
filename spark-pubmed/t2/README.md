@@ -17,17 +17,32 @@ MV2 of Munim, Inc. (made with AI agents working in his name). Code Apache-2.0; n
 
 No SPARK Task 2 questions are public. The closest public data we found is NIST's TREC 2024
 BioGen track (overview: https://arxiv.org/abs/2411.18069). It has 65 health questions with
-every PubMed citation from 30 runs judged Supports, Contradicts, Neutral or Not Relevant, and
-every answer sentence judged Required, Unnecessary, Borderline or Inappropriate. The 2025 track
-recommends these assessments for development (https://trec-biogen.github.io/docs/). Its
-answers are at most 250 words, with at most 3 PMIDs per sentence and 30 per answer.
+every PubMed citation from 30 runs judged by assessors. The file's own labels are "supporting",
+"contradicting", "neutral", "not relevant" and "invalid citation", and every answer sentence is
+judged Required, Unnecessary, Borderline or Inappropriate. The 2025 track recommends these
+assessments for development (https://trec-biogen.github.io/docs/). Its answers are at most 250
+words, with at most 3 PMIDs per sentence and 30 per answer.
 
 `biogen_census.py` downloads the topics and assessments, hashes them, and writes counts and
-PMIDs only, never text. It produces label totals, per-topic contradiction counts, and the PMIDs
-judged under each label per topic (`gold_t2.jsonl`). Its predictions were written before
-anyone opened the file (`PREREGISTRATION-biogen.md`). The data is used to develop and evaluate
-only. Nothing from it goes into a submitted system. NIST states no licence for it, so the
-judged-PMID file is not republished here until that is clear.
+PMIDs only, never text: label totals, per-topic contradiction counts, per-run label shares, and
+the PMIDs judged under each label per topic (`gold_t2.jsonl`). The data is used to develop and
+evaluate only. Nothing from it goes into a submitted system. NIST states no licence for it, so
+the judged-PMID file is not republished here until that is clear.
+
+Every job was pre-registered before it ran and graded word for word:
+
+| job | pre-registration | results | outcome |
+|---|---|---|---|
+| biogen-census-v1 | `PREREGISTRATION-biogen.md` | `RESULTS-biogen.md`, `results-biogen/` | 5 of 10; all misses one label-word defect in 0.1.0 |
+| biogen-census-v2 | `PREREGISTRATION-biogen-v2.md` | `RESULTS-biogen-v2.md`, `results-biogen-v2/` | 9 of 10 |
+| biogen-stance-v1 | `PREREGISTRATION-biogen-stance.md` | pending | queued |
+
+What v2 counted: 14,763 citation judgments (69.4% supporting, 1.9% contradicting, 4.3% invalid);
+55 of 65 topics have a contradicting judgment; 3,858 distinct PMIDs, all inside the SPARK
+corpus's PMID range. Of the 202 papers judged contradicting an answer sentence, 168 (83%) are
+also judged supporting another sentence in the same topic, and none is judged contradicting in
+two topics. `biogen_stance.py` (job `biogen-stance-v1`) asks whether those are one claim judged
+two ways or different claims, and how often repeated identical judgments agree.
 
 ## Baseline: `compose.py` 0.1.0 (extractive, cited, standard library only)
 
@@ -45,12 +60,12 @@ judged Supports PMIDs.
 Pooled judgments only cover what 2024 runs cited, so an unjudged PMID is unknown, not wrong.
 A BioGen 2025 paper reports that contradicting evidence is rarer and often expressed through
 negation, hedging or population-specific conditions (arXiv 2603.17580). Negation cues alone will
-miss many conflicts. This baseline is the floor that a later open-weight rewriting stage must
-beat.
+miss many conflicts, and the v2 census suggests that a paper's stance depends on the claim it is
+cited for. This baseline is the floor that a later open-weight rewriting stage must beat.
 
 ## Next
 
-1. Grade `biogen-census-v1` against its predictions.
+1. Grade `biogen-stance-v1`.
 2. Once the whole-corpus index is complete: run t1.py BM25 (then MedCPT rerank) on the 65
    BioGen questions, run `compose`, and run `score`, with predictions written first.
 
