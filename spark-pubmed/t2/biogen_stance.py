@@ -22,6 +22,13 @@ same repeated judgments: the full pair matrix (diagonal included), specific agre
 pi over all pairs, agreement within one run vs across runs, and how many same_text mixed pairs
 carry both labels inside one run. Every 0.1.0 output is unchanged.
 
+0.3.0 (after job biogen-stance-v2 found 2,657 of the 4,045 repeated pairs inside one run, and 85
+of the 92 same_text mixed pairs inside one run) splits within-run pairs into one sentence (the
+same PMID listed more than once in one sentence's citations) and two sentences of one answer,
+counts citation slots (topic, run, sentence, PMID) judged more than once and how many of them
+carry two different labels, and counts same_text mixed pairs with both labels in one sentence.
+Every 0.2.0 output is unchanged.
+
 Reads biogen_collection_v3.json from the data volume that biogen_census.py fills
 (/data/biogen2024/assessments.json), downloading it again only if it is missing, and stops unless
 its sha256 is the one jobs biogen-census-v1 and -v2 recorded.
@@ -37,7 +44,7 @@ import time
 import urllib.request
 from collections import Counter, defaultdict
 
-VERSION = "0.2.0"
+VERSION = "0.3.0"
 ASSESS_URL = "https://trec.nist.gov/data/biogen/biogen_collection_v3.json"
 ASSESS_SHA256 = "78449ef270e60abe0c268fa446ade23737164bba44c37308e216529fa63d066d"
 LABELS = {"supporting": "supports", "contradicting": "contradicts", "neutral": "neutral",
@@ -111,6 +118,10 @@ def agreement(matrix, agree, pairs):
     return specific, pi
 
 
+def share(agree, pairs):
+    return round(agree / pairs, 4) if pairs else None
+
+
 def analyse(js):
     labels = Counter(j[5] for j in js)
     usable = [j for j in js if j[5] != "invalid" and j[4] is not None]
@@ -135,6 +146,7 @@ def analyse(js):
         kinds["same_text"] += same_text
         kinds["same_text_one_run"] += any({x[1] for x in sup if x[3] == t} & {x[1] for x in con if x[3] == t}
                                           for t in shared)
+        kinds["one_sentence"] += bool({(x[1], x[2]) for x in sup} & {(x[1], x[2]) for x in con})
         kinds["same_run"] += same_run
         kinds["same_run_not_same_text"] += same_run and not same_text
         kinds["across_only"] += not same_text and not same_run
@@ -146,13 +158,14 @@ def analyse(js):
         row["mixed_pmids"] += 1
         row["mixed_same_text"] += same_text
         row["mixed_same_run"] += same_run
-    groups = defaultdict(list)  # (topic, text key, pmid) -> [(label, run)]
+    groups = defaultdict(list)  # (topic, text key, pmid) -> [(label, run, sentence index)]
     for j in usable:
         if j[3]:
-            groups[(j[0], j[3], j[4])].append((j[5], j[1]))
+            groups[(j[0], j[3], j[4])].append((j[5], j[1], j[2]))
     rep = [v for v in groups.values() if len(v) >= 2]
     pairs = agree = 0
     confusion, matrix, where = Counter(), Counter(), Counter()
+    one_matrix = Counter()  # pairs inside one sentence's citation list
     for v in rep:
         c = Counter(x[0] for x in v)
         n = len(v)
@@ -169,8 +182,18 @@ def analyse(js):
                 w = "within_run" if v[a][1] == v[b][1] else "across_run"
                 where[w + "_pairs"] += 1
                 where[w + "_agree"] += la == lb
+                if w == "within_run":
+                    w2 = "one_sentence" if v[a][2] == v[b][2] else "two_sentences"
+                    where[w2 + "_pairs"] += 1
+                    where[w2 + "_agree"] += la == lb
+                    if w2 == "one_sentence":
+                        one_matrix["%s|%s" % (la, lb)] += 1
     specific, pi = agreement(matrix, agree, pairs)
     rep_con = [v for v in rep if any(x[0] == "contradicts" for x in v)]
+    slots = defaultdict(list)  # (topic, run, sentence index, pmid) -> labels
+    for j in usable:
+        slots[(j[0], j[1], j[2], j[4])].append(j[5])
+    dup = [v for v in slots.values() if len(v) >= 2]
     cols = ("contradicts_judgments", "contradicting_pmids", "mixed_pmids", "mixed_same_text",
             "mixed_same_run")
     return {
@@ -183,6 +206,7 @@ def analyse(js):
         "mixed_same_run_not_same_text": kinds["same_run_not_same_text"],
         "mixed_across_only": kinds["across_only"],
         "mixed_same_text_within_one_run": kinds["same_text_one_run"],
+        "mixed_one_sentence": kinds["one_sentence"],
         "contradicts_judgments_on_mixed_pairs": kinds["contradicts_judgments"],
         "supports_judgments_on_mixed_pairs": kinds["supports_judgments"],
         "mixed_supports_texts_median": statistics.median(texts_sup) if texts_sup else None,
@@ -202,6 +226,16 @@ def analyse(js):
                                           if where["within_run_pairs"] else None),
         "repeated_across_run_agreement": (round(where["across_run_agree"] / where["across_run_pairs"], 4)
                                           if where["across_run_pairs"] else None),
+        "repeated_one_sentence_pairs": where["one_sentence_pairs"],
+        "repeated_one_sentence_agree": where["one_sentence_agree"],
+        "repeated_one_sentence_agreement": share(where["one_sentence_agree"], where["one_sentence_pairs"]),
+        "repeated_two_sentences_pairs": where["two_sentences_pairs"],
+        "repeated_two_sentences_agree": where["two_sentences_agree"],
+        "repeated_two_sentences_agreement": share(where["two_sentences_agree"], where["two_sentences_pairs"]),
+        "one_sentence_pair_matrix": dict(sorted(one_matrix.items())),
+        "duplicate_citation_slots": len(dup),
+        "duplicate_citation_slots_conflicting": sum(1 for v in dup if len(set(v)) > 1),
+        "duplicate_citation_slots_max_judgments": max((len(v) for v in dup), default=0),
         "repeated_groups_with_contradicts": len(rep_con),
         "repeated_groups_with_contradicts_all_agree": sum(1 for v in rep_con if len({x[0] for x in v}) == 1),
         "per_topic": [{"topic": t, **{c: topics.get(t, Counter())[c] for c in cols}}

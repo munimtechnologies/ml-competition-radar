@@ -54,6 +54,11 @@ WITHIN = [{"question_id": "4", "machine_generated_answers": {
               s("dup.", [c("109", "supporting")])),
     "r2": ans(s("Dup.", [c("109", "supporting")]))}}]
 
+# one sentence lists a PMID three times (two labels), another lists one twice (one label)
+DUPS = [{"question_id": "5", "machine_generated_answers": {
+    "r1": ans(s("A.", [c("110", "supporting"), c("110", "supporting"), c("110", "neutral")]),
+              s("B.", [c("111", "supporting"), c("111", "supporting")]))}}]
+
 
 class Parts(unittest.TestCase):
     def test_label(self):
@@ -83,6 +88,7 @@ class Parts(unittest.TestCase):
         self.assertEqual(bs.agreement({}, 0, 0), (dict.fromkeys(bs.ORDER[:4]), None))
         spec, pi = bs.agreement({"supports|supports": 2}, 2, 2)  # one label only: pi undefined
         self.assertEqual((spec["supports"], spec["contradicts"], pi), (1.0, None, None))
+        self.assertEqual((bs.share(0, 0), bs.share(1, 3)), (None, 0.3333))
 
 
 class Census(unittest.TestCase):
@@ -104,7 +110,7 @@ class Census(unittest.TestCase):
         # 116/101: one run, two sentences; 116/102: one sentence text in two runs; 117/105: neither
         self.assertEqual((r["mixed_same_text"], r["mixed_same_run"],
                           r["mixed_same_run_not_same_text"], r["mixed_across_only"]), (1, 1, 1, 1))
-        self.assertEqual(r["mixed_same_text_within_one_run"], 0)
+        self.assertEqual((r["mixed_same_text_within_one_run"], r["mixed_one_sentence"]), (0, 0))
         self.assertEqual((r["contradicts_judgments_on_mixed_pairs"],
                           r["supports_judgments_on_mixed_pairs"]), (3, 3))
         self.assertEqual((r["mixed_supports_texts_median"], r["mixed_contradicts_texts_median"]), (1, 1))
@@ -118,6 +124,10 @@ class Census(unittest.TestCase):
         self.assertEqual(r["repeated_pair_scotts_pi"], -1.0)
         self.assertEqual((r["repeated_within_run_pairs"], r["repeated_across_run_pairs"],
                           r["repeated_across_run_agree"], r["repeated_within_run_agreement"]), (0, 1, 0, None))
+        self.assertEqual((r["repeated_one_sentence_pairs"], r["repeated_two_sentences_pairs"],
+                          r["repeated_one_sentence_agreement"], r["one_sentence_pair_matrix"]), (0, 0, None, {}))
+        self.assertEqual((r["duplicate_citation_slots"], r["duplicate_citation_slots_conflicting"],
+                          r["duplicate_citation_slots_max_judgments"]), (0, 0, 0))
         self.assertEqual((r["repeated_groups_with_contradicts"],
                           r["repeated_groups_with_contradicts_all_agree"]), (1, 0))
         self.assertEqual(r["per_topic"], [
@@ -139,7 +149,9 @@ class Census(unittest.TestCase):
         self.assertEqual(r["repeated_pair_scotts_pi"], 0.2)  # po 0.5, pe 0.375
         self.assertEqual((r["repeated_across_run_pairs"], r["repeated_across_run_agreement"]), (4, 0.5))
         self.assertEqual((r["mixed_pairs"], r["mixed_same_text"], r["mixed_same_run"],
-                          r["mixed_across_only"], r["mixed_same_text_within_one_run"]), (1, 1, 0, 0, 0))
+                          r["mixed_across_only"], r["mixed_same_text_within_one_run"],
+                          r["mixed_one_sentence"]), (1, 1, 0, 0, 0, 0))
+        self.assertEqual((r["repeated_one_sentence_pairs"], r["duplicate_citation_slots"]), (0, 0))
         self.assertEqual(r["per_topic"][0]["contradicts_judgments"], 1)
 
     def test_within_run(self):
@@ -155,6 +167,28 @@ class Census(unittest.TestCase):
         self.assertEqual(r["repeated_pair_scotts_pi"], -0.3333)  # po 0.5, pe 0.625
         self.assertEqual((r["mixed_same_text"], r["mixed_same_run"], r["mixed_same_text_within_one_run"]),
                          (1, 1, 1))
+        # within run: (S,C) in sentence 0 is one sentence; (S0,S1) and (C0,S1) are two sentences
+        self.assertEqual((r["repeated_one_sentence_pairs"], r["repeated_one_sentence_agree"],
+                          r["repeated_two_sentences_pairs"], r["repeated_two_sentences_agree"]), (1, 0, 2, 1))
+        self.assertEqual((r["repeated_one_sentence_agreement"], r["repeated_two_sentences_agreement"]),
+                         (0.0, 0.5))
+        self.assertEqual(r["one_sentence_pair_matrix"], {"contradicts|supports": 1})
+        self.assertEqual((r["duplicate_citation_slots"], r["duplicate_citation_slots_conflicting"],
+                          r["duplicate_citation_slots_max_judgments"]), (1, 1, 2))
+        self.assertEqual(r["mixed_one_sentence"], 1)
+
+    def test_duplicate_slots(self):
+        r = bs.analyse(bs.judgments(DUPS)[0])
+        self.assertEqual((r["repeated_groups"], r["repeated_groups_all_agree"],
+                          r["repeated_judgment_pairs"], r["repeated_pairs_agree"]), (2, 1, 4, 2))
+        self.assertEqual((r["repeated_within_run_pairs"], r["repeated_across_run_pairs"]), (4, 0))
+        self.assertEqual((r["repeated_one_sentence_pairs"], r["repeated_one_sentence_agree"],
+                          r["repeated_two_sentences_pairs"], r["repeated_two_sentences_agreement"]),
+                         (4, 2, 0, None))
+        self.assertEqual(r["one_sentence_pair_matrix"], {"neutral|supports": 2, "supports|supports": 2})
+        self.assertEqual((r["duplicate_citation_slots"], r["duplicate_citation_slots_conflicting"],
+                          r["duplicate_citation_slots_max_judgments"]), (2, 1, 3))
+        self.assertEqual((r["mixed_pairs"], r["mixed_one_sentence"]), (0, 0))
 
 
 class Files(unittest.TestCase):
@@ -183,7 +217,7 @@ class Files(unittest.TestCase):
         text = self.result()
         r = json.loads(text)
         self.assertIsNone(r["problem"])
-        self.assertEqual(r["version"], "0.2.0")
+        self.assertEqual(r["version"], "0.3.0")
         self.assertTrue(r["file"]["cached"])
         self.assertEqual((r["mixed_pairs"], r["unknown_relations"]), (3, {"Weird Label": 1}))
         self.assertNotIn("sentinel", text.lower())
