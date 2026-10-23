@@ -1,8 +1,9 @@
 # spark-pubmed: groundwork for the NIH/NLM SPARK PubMed/PMC Challenge
 
 MV2 of Munim, Inc. is building this open groundwork for the NIH/NLM SPARK PubMed/PMC Challenge
-(Task 1, Known-Item & Provenance Retrieval). The code and notes were made with AI agents working
-in his name. Code is Apache-2.0 (the repository's `LICENSE`); notes and data are CC BY 4.0.
+(Task 1, Known-Item & Provenance Retrieval; Task 2, open-ended biomedical questions). The code
+and notes were made with AI agents working in his name. Code is Apache-2.0 (the repository's
+`LICENSE`); notes and data are CC BY 4.0.
 
 This folder sits inside `ml-competition-radar`. It was planned as a separate repository, but
 GitHub refused to create that repository twice on 2026-10-22 ("secondary rate limit").
@@ -29,6 +30,10 @@ GitHub refused to create that repository twice on 2026-10-22 ("secondary rate li
   validator and a scorer. Its predictions were pre-registered before any score existed.
 - `rerank/` is the second stage: NCBI's public-domain MedCPT cross-encoder rereads the top BM25
   candidates on CPU. Its card check and CPU benchmark are graded (`rerank/RESULTS.md`).
+- `t2/` starts Task 2. `compose.py` is an extractive baseline that copies every sentence from a
+  cited abstract and flags conflicting findings. `biogen_census.py` turns NIST's TREC 2024
+  BioGen judgments (65 health questions, citations judged Supports / Contradicts / Neutral /
+  Not Relevant) into development data. Its predictions were pre-registered.
 
 ## Findings so far
 
@@ -58,15 +63,18 @@ GitHub refused to create that repository twice on 2026-10-22 ("secondary rate li
 
 Graded: corpus audit (10 of 11 predictions held), dev sets (10 of 11), FTS5 pilot and count
 (11 of 16), mirror repair and full count (7 of 8 graded; the build part was stopped by the host,
-so 6 are ungraded), reranker check (10 of 11). The runner's tests passed. Queued as job
-`spark33-build-v1`: the whole-corpus build continues, with predictions pre-registered in
-`corpus_build/PREREGISTRATION-spark33.md`. Next steps: finish the index, score the dev sets with
-the ten cutoff policies (pre-registered), then score BM25 + rerank at depth 50.
+so 6 are ungraded), reranker check (10 of 11). The runner's tests passed. The whole-corpus build
+continues in job `spark33-build-v1`, with predictions in
+`corpus_build/PREREGISTRATION-spark33.md`. Task 2: the BioGen census `biogen-census-v1` is
+queued, with predictions in `t2/PREREGISTRATION-biogen.md`. Next steps: finish the index, score
+the dev sets with the ten cutoff policies (pre-registered), score BM25 + rerank at depth 50, and
+score the Task 2 baseline on the BioGen questions.
 
 ## Limits
 
 - No SPARK questions have been published, so nothing here measures retrieval quality on them.
-  The dev sets are AI-written proxies, not NLM's expert questions.
+  The dev sets are AI-written proxies, not NLM's expert questions. BioGen's questions are
+  consumer and clinician health questions, and its judgments cover only what 2024 runs cited.
 - This covers only the PubMed part. The PMC part is defined by a `Challenge_PMCIDs.txt` list,
   which was not on the challenge page as of 2026-10-23.
 - NIH's general challenge page describes the PMC part as about 50,000 CC0 articles. The task
