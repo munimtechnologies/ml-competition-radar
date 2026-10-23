@@ -1,0 +1,16 @@
+{
+ "free_gb_before": 638.3,
+ "min_free_gb": 30.0,
+ "max_minutes": 90.0,
+ "file_minutes": 15.0,
+ "problem": null,
+ "listing_files": 1306,
+ "unfinished": 0,
+ "files_ok": 1306,
+ "files_resumed": 1280,
+ "files_failed": [],
+ "files_disk_floor": 0,
+ "bytes_total": 56143787546,
+ "seconds": 45.8,
+ "free_gb_after": 636.3
+}

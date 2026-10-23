@@ -1,0 +1,388 @@
+{
+ "verified_files": 1306,
+ "stride": 33,
+ "seed": 169,
+ "sqlite": "3.46.1",
+ "pilot_files": [
+  "pubmed27n0001.xml.gz",
+  "pubmed27n0034.xml.gz",
+  "pubmed27n0067.xml.gz",
+  "pubmed27n0100.xml.gz",
+  "pubmed27n0133.xml.gz",
+  "pubmed27n0166.xml.gz",
+  "pubmed27n0199.xml.gz",
+  "pubmed27n0232.xml.gz",
+  "pubmed27n0265.xml.gz",
+  "pubmed27n0298.xml.gz",
+  "pubmed27n0331.xml.gz",
+  "pubmed27n0364.xml.gz",
+  "pubmed27n0397.xml.gz",
+  "pubmed27n0430.xml.gz",
+  "pubmed27n0463.xml.gz",
+  "pubmed27n0496.xml.gz",
+  "pubmed27n0529.xml.gz",
+  "pubmed27n0562.xml.gz",
+  "pubmed27n0595.xml.gz",
+  "pubmed27n0628.xml.gz",
+  "pubmed27n0661.xml.gz",
+  "pubmed27n0694.xml.gz",
+  "pubmed27n0727.xml.gz",
+  "pubmed27n0760.xml.gz",
+  "pubmed27n0793.xml.gz",
+  "pubmed27n0826.xml.gz",
+  "pubmed27n0859.xml.gz",
+  "pubmed27n0892.xml.gz",
+  "pubmed27n0925.xml.gz",
+  "pubmed27n0958.xml.gz",
+  "pubmed27n0991.xml.gz",
+  "pubmed27n1024.xml.gz",
+  "pubmed27n1057.xml.gz",
+  "pubmed27n1090.xml.gz",
+  "pubmed27n1123.xml.gz",
+  "pubmed27n1156.xml.gz",
+  "pubmed27n1189.xml.gz",
+  "pubmed27n1222.xml.gz",
+  "pubmed27n1255.xml.gz",
+  "pubmed27n1288.xml.gz"
+ ],
+ "problem": null,
+ "pilot": {
+  "detail": "full",
+  "files": 40,
+  "docs": 1199999,
+  "duplicate_pmids": 0,
+  "build_seconds": 480.0,
+  "docs_per_second": 2500.0,
+  "bytes_built": 2756177920,
+  "bytes_compacted": 2711707648,
+  "compact_seconds": 95.6,
+  "bytes_per_doc": 2259.8,
+  "index_bytes": 724974665,
+  "text_bytes": 1464626748,
+  "per_file": [
+   {
+    "file": "pubmed27n0001.xml.gz",
+    "docs": 30000,
+    "seconds": 8.1
+   },
+   {
+    "file": "pubmed27n0034.xml.gz",
+    "docs": 30000,
+    "seconds": 5.8
+   },
+   {
+    "file": "pubmed27n0067.xml.gz",
+    "docs": 30000,
+    "seconds": 8.5
+   },
+   {
+    "file": "pubmed27n0100.xml.gz",
+    "docs": 30000,
+    "seconds": 10.2
+   },
+   {
+    "file": "pubmed27n0133.xml.gz",
+    "docs": 30000,
+    "seconds": 7.9
+   },
+   {
+    "file": "pubmed27n0166.xml.gz",
+    "docs": 30000,
+    "seconds": 7.0
+   },
+   {
+    "file": "pubmed27n0199.xml.gz",
+    "docs": 30000,
+    "seconds": 5.3
+   },
+   {
+    "file": "pubmed27n0232.xml.gz",
+    "docs": 30000,
+    "seconds": 8.0
+   },
+   {
+    "file": "pubmed27n0265.xml.gz",
+    "docs": 30000,
+    "seconds": 8.8
+   },
+   {
+    "file": "pubmed27n0298.xml.gz",
+    "docs": 30000,
+    "seconds": 9.6
+   },
+   {
+    "file": "pubmed27n0331.xml.gz",
+    "docs": 30000,
+    "seconds": 4.9
+   },
+   {
+    "file": "pubmed27n0364.xml.gz",
+    "docs": 30000,
+    "seconds": 9.2
+   },
+   {
+    "file": "pubmed27n0397.xml.gz",
+    "docs": 30000,
+    "seconds": 11.5
+   },
+   {
+    "file": "pubmed27n0430.xml.gz",
+    "docs": 30000,
+    "seconds": 4.8
+   },
+   {
+    "file": "pubmed27n0463.xml.gz",
+    "docs": 30000,
+    "seconds": 10.0
+   },
+   {
+    "file": "pubmed27n0496.xml.gz",
+    "docs": 30000,
+    "seconds": 10.5
+   },
+   {
+    "file": "pubmed27n0529.xml.gz",
+    "docs": 30000,
+    "seconds": 10.2
+   },
+   {
+    "file": "pubmed27n0562.xml.gz",
+    "docs": 30000,
+    "seconds": 12.3
+   },
+   {
+    "file": "pubmed27n0595.xml.gz",
+    "docs": 30000,
+    "seconds": 11.4
+   },
+   {
+    "file": "pubmed27n0628.xml.gz",
+    "docs": 30000,
+    "seconds": 11.0
+   },
+   {
+    "file": "pubmed27n0661.xml.gz",
+    "docs": 30000,
+    "seconds": 13.1
+   },
+   {
+    "file": "pubmed27n0694.xml.gz",
+    "docs": 30000,
+    "seconds": 12.1
+   },
+   {
+    "file": "pubmed27n0727.xml.gz",
+    "docs": 30000,
+    "seconds": 15.2
+   },
+   {
+    "file": "pubmed27n0760.xml.gz",
+    "docs": 30000,
+    "seconds": 12.2
+   },
+   {
+    "file": "pubmed27n0793.xml.gz",
+    "docs": 30000,
+    "seconds": 13.7
+   },
+   {
+    "file": "pubmed27n0826.xml.gz",
+    "docs": 30000,
+    "seconds": 11.7
+   },
+   {
+    "file": "pubmed27n0859.xml.gz",
+    "docs": 29999,
+    "seconds": 13.5
+   },
+   {
+    "file": "pubmed27n0892.xml.gz",
+    "docs": 30000,
+    "seconds": 13.3
+   },
+   {
+    "file": "pubmed27n0925.xml.gz",
+    "docs": 30000,
+    "seconds": 14.0
+   },
+   {
+    "file": "pubmed27n0958.xml.gz",
+    "docs": 30000,
+    "seconds": 14.9
+   },
+   {
+    "file": "pubmed27n0991.xml.gz",
+    "docs": 30000,
+    "seconds": 15.7
+   },
+   {
+    "file": "pubmed27n1024.xml.gz",
+    "docs": 30000,
+    "seconds": 17.4
+   },
+   {
+    "file": "pubmed27n1057.xml.gz",
+    "docs": 30000,
+    "seconds": 14.9
+   },
+   {
+    "file": "pubmed27n1090.xml.gz",
+    "docs": 30000,
+    "seconds": 19.5
+   },
+   {
+    "file": "pubmed27n1123.xml.gz",
+    "docs": 30000,
+    "seconds": 15.4
+   },
+   {
+    "file": "pubmed27n1156.xml.gz",
+    "docs": 30000,
+    "seconds": 15.3
+   },
+   {
+    "file": "pubmed27n1189.xml.gz",
+    "docs": 30000,
+    "seconds": 15.9
+   },
+   {
+    "file": "pubmed27n1222.xml.gz",
+    "docs": 30000,
+    "seconds": 15.4
+   },
+   {
+    "file": "pubmed27n1255.xml.gz",
+    "docs": 30000,
+    "seconds": 16.2
+   },
+   {
+    "file": "pubmed27n1288.xml.gz",
+    "docs": 30000,
+    "seconds": 25.6
+   }
+  ],
+  "extrapolated_gb_full_corpus": 88.5,
+  "queries": {
+   "title": {
+    "n": 300,
+    "mrr_at_5": 0.9861,
+    "hit_at_1": 0.98,
+    "ms_median": 446.3,
+    "ms_p90": 813.8,
+    "ms_max": 1456.5
+   },
+   "first_sentence": {
+    "n": 300,
+    "mrr_at_5": 0.9629,
+    "hit_at_1": 0.95,
+    "ms_median": 678.9,
+    "ms_p90": 1140.2,
+    "ms_max": 1952.0
+   }
+  }
+ },
+ "compare": [
+  {
+   "detail": "full",
+   "files": 3,
+   "docs": 90000,
+   "duplicate_pmids": 0,
+   "build_seconds": 34.4,
+   "docs_per_second": 2616.3,
+   "bytes_built": 221216768,
+   "bytes_compacted": 217120768,
+   "compact_seconds": 1.5,
+   "bytes_per_doc": 2412.5,
+   "index_bytes": 58229090,
+   "text_bytes": 116051476,
+   "queries": {
+    "title": {
+     "n": 300,
+     "mrr_at_5": 0.99,
+     "hit_at_1": 0.9833,
+     "ms_median": 30.0,
+     "ms_p90": 57.1,
+     "ms_max": 89.5
+    },
+    "first_sentence": {
+     "n": 300,
+     "mrr_at_5": 0.9933,
+     "hit_at_1": 0.99,
+     "ms_median": 47.2,
+     "ms_p90": 77.7,
+     "ms_max": 110.2
+    }
+   }
+  },
+  {
+   "detail": "column",
+   "files": 3,
+   "docs": 90000,
+   "duplicate_pmids": 0,
+   "build_seconds": 32.0,
+   "docs_per_second": 2812.5,
+   "bytes_built": 193466368,
+   "bytes_compacted": 189231104,
+   "compact_seconds": 1.1,
+   "bytes_per_doc": 2102.6,
+   "index_bytes": 30785746,
+   "text_bytes": 116051476,
+   "queries": {
+    "title": {
+     "n": 300,
+     "mrr_at_5": 0.99,
+     "hit_at_1": 0.9833,
+     "ms_median": 565.6,
+     "ms_p90": 942.1,
+     "ms_max": 1281.4
+    },
+    "first_sentence": {
+     "n": 300,
+     "mrr_at_5": 0.9933,
+     "hit_at_1": 0.99,
+     "ms_median": 923.2,
+     "ms_p90": 1329.1,
+     "ms_max": 1852.3
+    }
+   }
+  },
+  {
+   "detail": "none",
+   "files": 3,
+   "docs": 90000,
+   "duplicate_pmids": 0,
+   "build_seconds": 33.5,
+   "docs_per_second": 2686.6,
+   "bytes_built": 173662208,
+   "bytes_compacted": 169762816,
+   "compact_seconds": 0.9,
+   "bytes_per_doc": 1886.3,
+   "index_bytes": 11639692,
+   "text_bytes": 116051476,
+   "queries": {
+    "title": {
+     "n": 300,
+     "mrr_at_5": 0.99,
+     "hit_at_1": 0.9833,
+     "ms_median": 548.2,
+     "ms_p90": 948.1,
+     "ms_max": 1299.8
+    },
+    "first_sentence": {
+     "n": 300,
+     "mrr_at_5": 0.9933,
+     "hit_at_1": 0.99,
+     "ms_median": 838.3,
+     "ms_p90": 1172.0,
+     "ms_max": 1699.2
+    }
+   }
+  }
+ ],
+ "compare_files": [
+  "pubmed27n0001.xml.gz",
+  "pubmed27n0661.xml.gz",
+  "pubmed27n1288.xml.gz"
+ ],
+ "peak_rss_mb": 32.7
+}

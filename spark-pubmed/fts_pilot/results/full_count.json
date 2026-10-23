@@ -1,0 +1,402 @@
+{
+ "verified_files": 1306,
+ "files_ok": 1304,
+ "files_failed": [
+  "pubmed27n1279.xml.gz",
+  "pubmed27n1281.xml.gz"
+ ],
+ "problem": "2 file(s) failed (see full_files.jsonl)",
+ "seconds": 5294.5,
+ "totals": {
+  "records": 39107524,
+  "with_abstract": 28998994,
+  "with_pmcid": 10912175,
+  "journal_missing": 0,
+  "journal_before_1959": 1,
+  "journal_after_2026_07": 11544,
+  "journal_2026_no_month": 117783,
+  "electronic_after_2026_07": 1053,
+  "pubmed_after_2026_07": 29751,
+  "no_date_on_or_before_end": 29,
+  "deleted_pmids": 0
+ },
+ "shares": {
+  "with_abstract": 0.74152,
+  "with_pmcid": 0.27903,
+  "journal_after_2026_07": 0.000295,
+  "pubmed_after_2026_07": 0.000761
+ },
+ "records_per_file": {
+  "17568": 1,
+  "29987": 1,
+  "29990": 2,
+  "29996": 1,
+  "29999": 8,
+  "30000": 1290,
+  "30001": 1
+ },
+ "duplicate_pmids": 1,
+ "pmid_min": 1,
+ "pmid_max": 42671487,
+ "watched_types": {
+  "D000076942": {
+   "name": "Preprint",
+   "records": 0,
+   "examples": []
+  },
+  "D016421": {
+   "name": "Editorial",
+   "records": 749482,
+   "examples": [
+    1317,
+    5332,
+    7490,
+    7500,
+    8354,
+    31042,
+    31143,
+    32195,
+    32446,
+    32467
+   ]
+  },
+  "D016456": {
+   "name": "Historical Article",
+   "records": 361972,
+   "examples": [
+    254,
+    306,
+    307,
+    545,
+    546,
+    31270,
+    31952,
+    31989,
+    32577,
+    32578
+   ]
+  }
+ },
+ "publication_types": {
+  "D016428": {
+   "name": "Journal Article",
+   "records": 36470293
+  },
+  "D013485": {
+   "name": "Research Support, Non-U.S. Gov't",
+   "records": 9024300
+  },
+  "D016454": {
+   "name": "Review",
+   "records": 3493886
+  },
+  "D002363": {
+   "name": "Case Reports",
+   "records": 2555759
+  },
+  "D003160": {
+   "name": "Comparative Study",
+   "records": 1991021
+  },
+  "D004740": {
+   "name": "English Abstract",
+   "records": 1549826
+  },
+  "D052061": {
+   "name": "Research Support, N.I.H., Extramural",
+   "records": 1532555
+  },
+  "D013487": {
+   "name": "Research Support, U.S. Gov't, P.H.S.",
+   "records": 1491331
+  },
+  "D016422": {
+   "name": "Letter",
+   "records": 1345188
+  },
+  "D016420": {
+   "name": "Comment",
+   "records": 1069171
+  },
+  "D013486": {
+   "name": "Research Support, U.S. Gov't, Non-P.H.S.",
+   "records": 951042
+  },
+  "D016421": {
+   "name": "Editorial",
+   "records": 749482
+  },
+  "D016449": {
+   "name": "Randomized Controlled Trial",
+   "records": 665509
+  },
+  "D016430": {
+   "name": "Clinical Trial",
+   "records": 537182
+  },
+  "D016448": {
+   "name": "Multicenter Study",
+   "records": 402169
+  },
+  "D016456": {
+   "name": "Historical Article",
+   "records": 361972
+  },
+  "D000078182": {
+   "name": "Systematic Review",
+   "records": 338267
+  },
+  "D023362": {
+   "name": "Evaluation Study",
+   "records": 270881
+  },
+  "D016433": {
+   "name": "News",
+   "records": 231891
+  },
+  "D017418": {
+   "name": "Meta-Analysis",
+   "records": 229834
+  },
+  "D016425": {
+   "name": "Published Erratum",
+   "records": 205013
+  },
+  "D064888": {
+   "name": "Observational Study",
+   "records": 201608
+  },
+  "D019215": {
+   "name": "Biography",
+   "records": 162612
+  },
+  "D023361": {
+   "name": "Validation Study",
+   "records": 128118
+  },
+  "D018848": {
+   "name": "Controlled Clinical Trial",
+   "records": 95836
+  },
+  "D052060": {
+   "name": "Research Support, N.I.H., Intramural",
+   "records": 72091
+  },
+  "D016423": {
+   "name": "Conference Proceedings",
+   "records": 68197
+  },
+  "D054711": {
+   "name": "Introductory Journal Article",
+   "records": 60716
+  },
+  "D019477": {
+   "name": "Portrait",
+   "records": 49248
+  },
+  "D059040": {
+   "name": "Video-Audio Media",
+   "records": 47299
+  },
+  "D017427": {
+   "name": "Clinical Trial, Phase II",
+   "records": 46304
+  },
+  "D017065": {
+   "name": "Practice Guideline",
+   "records": 35632
+  },
+  "D000098583": {
+   "name": "Scoping Review",
+   "records": 35032
+  },
+  "D016441": {
+   "name": "Retracted Publication",
+   "records": 34281
+  },
+  "D016440": {
+   "name": "Retraction Notice",
+   "records": 32366
+  },
+  "D017203": {
+   "name": "Interview",
+   "records": 31820
+  },
+  "D017426": {
+   "name": "Clinical Trial, Phase I",
+   "records": 29219
+  },
+  "D016446": {
+   "name": "Consensus Statement",
+   "records": 29167
+  },
+  "D016424": {
+   "name": "Overall",
+   "records": 27753
+  },
+  "D017428": {
+   "name": "Clinical Trial, Phase III",
+   "records": 26912
+  },
+  "D000078325": {
+   "name": "Clinical Trial Protocol",
+   "records": 23586
+  },
+  "D018431": {
+   "name": "Newspaper Article",
+   "records": 18294
+  },
+  "D016431": {
+   "name": "Guideline",
+   "records": 15870
+  },
+  "D016417": {
+   "name": "Bibliography",
+   "records": 15501
+  },
+  "D016418": {
+   "name": "Legal Case",
+   "records": 11079
+  },
+  "D018486": {
+   "name": "Twin Study",
+   "records": 10163
+  },
+  "D000099094": {
+   "name": "Network Meta-Analysis",
+   "records": 9502
+  },
+  "D016429": {
+   "name": "Clinical Conference",
+   "records": 7249
+  },
+  "D062210": {
+   "name": "Personal Narrative",
+   "records": 6912
+  },
+  "D019531": {
+   "name": "Lecture",
+   "records": 6876
+  },
+  "D016419": {
+   "name": "Seminal Article",
+   "records": 6749
+  },
+  "D016435": {
+   "name": "Directory",
+   "records": 6645
+  },
+  "D029282": {
+   "name": "Patient Education Handout",
+   "records": 6030
+  },
+  "D000073843": {
+   "name": "Equivalence Trial",
+   "records": 5844
+  },
+  "D064886": {
+   "name": "Dataset",
+   "records": 5627
+  },
+  "D000081262": {
+   "name": "Randomized Controlled Trial, Veterinary",
+   "records": 5574
+  },
+  "D019484": {
+   "name": "Address",
+   "records": 5462
+  },
+  "D065007": {
+   "name": "Pragmatic Clinical Trial",
+   "records": 4974
+  },
+  "D000068397": {
+   "name": "Clinical Study",
+   "records": 4321
+  },
+  "D020493": {
+   "name": "Autobiography",
+   "records": 3977
+  },
+  "D000075742": {
+   "name": "Expression of Concern",
+   "records": 3688
+  },
+  "D016427": {
+   "name": "Technical Report",
+   "records": 3244
+  },
+  "D017429": {
+   "name": "Clinical Trial, Phase IV",
+   "records": 3083
+  },
+  "D057666": {
+   "name": "Research Support, American Recovery and Reinvestment Act",
+   "records": 2105
+  },
+  "D000077522": {
+   "name": "Clinical Trial, Veterinary",
+   "records": 1979
+  },
+  "D016439": {
+   "name": "Corrected and Republished Article",
+   "records": 1712
+  },
+  "D016221": {
+   "name": "Festschrift",
+   "records": 1707
+  },
+  "D020485": {
+   "name": "Legislation",
+   "records": 1643
+  },
+  "D016438": {
+   "name": "Duplicate Publication",
+   "records": 914
+  },
+  "D000078323": {
+   "name": "Observational Study, Veterinary",
+   "records": 797
+  },
+  "D016447": {
+   "name": "Consensus Development Conference, NIH",
+   "records": 780
+  },
+  "D016437": {
+   "name": "Dictionary",
+   "records": 546
+  },
+  "D057405": {
+   "name": "Webcast",
+   "records": 416
+  },
+  "D016453": {
+   "name": "Periodical Index",
+   "records": 313
+  },
+  "D016426": {
+   "name": "Scientific Integrity Review",
+   "records": 280
+  },
+  "D054710": {
+   "name": "Interactive Tutorial",
+   "records": 276
+  },
+  "D000076362": {
+   "name": "Adaptive Clinical Trial",
+   "records": 205
+  },
+  "D022903": {
+   "name": "Government Publication",
+   "records": 174
+  },
+  "D000099290": {
+   "name": "Evidence Synthesis",
+   "records": 34
+  },
+  "D059036": {
+   "name": "Photograph",
+   "records": 1
+  }
+ }
+}
