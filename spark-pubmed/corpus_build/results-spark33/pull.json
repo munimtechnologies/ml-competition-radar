@@ -1,0 +1,27 @@
+{
+ "commit": "25345bedb3498e02b689512d596051102dff9fd8",
+ "ok": true,
+ "files": [
+  {
+   "file": "fetch_corpus.py",
+   "bytes": 10604,
+   "want": "80ddc4aa61fe5d48e91d2d37af24381dd7c17983",
+   "got": "80ddc4aa61fe5d48e91d2d37af24381dd7c17983",
+   "ok": true
+  },
+  {
+   "file": "full_count.py",
+   "bytes": 10100,
+   "want": "c05af323f7bf764a2b6d364511b8a6e55868702a",
+   "got": "c05af323f7bf764a2b6d364511b8a6e55868702a",
+   "ok": true
+  },
+  {
+   "file": "test_corpus_build.py",
+   "bytes": 14083,
+   "want": "b3a77b9addb62842c1f8d28e7126ae9c1b2038fd",
+   "got": "b3a77b9addb62842c1f8d28e7126ae9c1b2038fd",
+   "ok": true
+  }
+ ]
+}

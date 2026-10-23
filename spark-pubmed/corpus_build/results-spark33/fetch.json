@@ -1,0 +1,22 @@
+{
+ "free_gb_before": 777.1,
+ "min_free_gb": 30.0,
+ "max_minutes": 60.0,
+ "file_minutes": 15.0,
+ "rehash": true,
+ "problem": null,
+ "listing_files": 1306,
+ "unfinished": 0,
+ "files_ok": 1306,
+ "files_resumed": 1304,
+ "files_rehashed": 1304,
+ "stale_markers": [
+  "pubmed27n1279.xml.gz",
+  "pubmed27n1281.xml.gz"
+ ],
+ "files_failed": [],
+ "files_disk_floor": 0,
+ "bytes_total": 56245402986,
+ "seconds": 68.6,
+ "free_gb_after": 777.0
+}
