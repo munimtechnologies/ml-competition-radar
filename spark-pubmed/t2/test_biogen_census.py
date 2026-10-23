@@ -36,6 +36,28 @@ C = [{"id": "a1", "topic_id": 116, "citations": [{"doc_id": 5, "label": "Neutral
      {"id": "a3", "topic_id": 117, "citations": [{"doc_id": 5, "label": "Supports"}, {"label": "Supports"}]}]
 
 
+def sent(rel, cites):
+    return {"answer_sentence": SENTINEL, "answer_sentence_id": "1",
+            "answer_sentence_relevance": rel, "citation_assessment": cites}
+
+
+def cite(pmid, rel):
+    return {"cited_pmid": pmid, "evidence_relation": rel, "evidence_support": SENTINEL}
+
+
+# layout 4: the layout biogen_collection_v3.json turned out to have (job biogen-census-v1)
+D = [{"question_id": 116, "machine_generated_answers": {
+        "runA": {"answer": SENTINEL, "is_answer_accurate": "yes", "answer_sentences": [
+            sent("required", [cite("38000001", "supporting"), cite("38000002", "contradicting")]),
+            sent(None, None)]},
+        "run.b": {"answer": SENTINEL, "is_answer_accurate": "yes", "answer_sentences": [
+            sent("unnecessary", [cite("38000001", "contradicting"), cite("1", "invalid citation")])]}}},
+     {"question_id": 117, "machine_generated_answers": {
+        "runA": {"answer": SENTINEL, "is_answer_accurate": "no", "answer_sentences": [
+            sent("inappropriate", [cite("38000003", "neutral"), cite("38000004", "not relevant")])]},
+        SENTINEL: {"answer": SENTINEL, "answer_sentences": [sent("required", None)]}}}]
+
+
 class Labels(unittest.TestCase):
     def test_label_of(self):
         self.assertEqual(bc.label_of("Not Relevant"), ("cite", "notrelevant"))
@@ -44,6 +66,13 @@ class Labels(unittest.TestCase):
         self.assertEqual(bc.label_of("Borderline"), ("sent", "borderline"))
         self.assertIsNone(bc.label_of("supported"))
         self.assertIsNone(bc.label_of(3))
+
+    def test_file_label_words(self):
+        self.assertEqual(bc.label_of("supporting"), ("cite", "supports"))
+        self.assertEqual(bc.label_of("contradicting"), ("cite", "contradicts"))
+        self.assertEqual(bc.label_of("invalid citation"), ("cite", "invalid"))
+        self.assertEqual(bc.label_of("not relevant"), ("cite", "notrelevant"))
+        self.assertIsNone(bc.label_of("yes"))
 
     def test_pmid_of(self):
         self.assertEqual(bc.pmid_of(123), 123)
@@ -84,7 +113,7 @@ class Census(unittest.TestCase):
         self.assertEqual(c["sentence_labels"],
                          {"required": 1, "unnecessary": 1, "borderline": 1, "inappropriate": 0})
         self.assertEqual(c["citation_labels"],
-                         {"supports": 2, "contradicts": 1, "neutral": 1, "notrelevant": 1})
+                         {"supports": 2, "contradicts": 1, "neutral": 1, "notrelevant": 1, "invalid": 0})
         self.assertEqual(c["citation_label_share"]["supports"], 0.4)
         self.assertEqual(c["pmid_pattern"], {"record": 5})
         self.assertEqual(c["citations_without_pmid"], 0)
@@ -92,10 +121,11 @@ class Census(unittest.TestCase):
         self.assertEqual(c["contradicts_per_topic_median"], 0.5)
         self.assertEqual(c["distinct_pmids"], 4)
         self.assertEqual(c["distinct_pmids_by_label"],
-                         {"supports": 2, "contradicts": 1, "neutral": 1, "notrelevant": 1})
+                         {"supports": 2, "contradicts": 1, "neutral": 1, "notrelevant": 1, "invalid": 0})
         self.assertEqual(c["topic_pmid_pairs_supports_and_contradicts"], 0)
         self.assertEqual((c["pmid_min"], c["pmid_max"], c["pmids_over_spark_max"]), (101, 104, 0))
         self.assertEqual(c["topic_keys_matching_topic_ids"], 2)
+        self.assertEqual((c["runs"], c["per_run"]), (0, {}))
         self.assertEqual([g["topic"] for g in gold], ["116", "117"])
         self.assertEqual((gold[0]["supports"], gold[0]["contradicts"], gold[0]["notrelevant"]),
                          ([101], [102], [101]))
@@ -108,10 +138,11 @@ class Census(unittest.TestCase):
         self.assertEqual(c["contradicts_per_topic_median"], 1)
         self.assertEqual(c["distinct_pmids_by_label"]["contradicts"], 2)
         self.assertEqual(c["topic_pmid_pairs_supports_and_contradicts"], 1)
+        self.assertEqual(c["topics_with_a_pmid_judged_both"], 1)
         self.assertEqual(c["sentence_labels"]["inappropriate"], 1)
         self.assertNotIn("topic_keys_matching_topic_ids", c)
         self.assertEqual(gold[1], {"topic": "117", "supports": [201], "contradicts": [201],
-                                   "neutral": [], "notrelevant": [],
+                                   "neutral": [], "notrelevant": [], "invalid": [],
                                    "sentence_labels": {"required": 1, "unnecessary": 0,
                                                        "borderline": 0, "inappropriate": 1},
                                    "citations_without_pmid": 0})
@@ -128,6 +159,44 @@ class Census(unittest.TestCase):
     def test_phrase_keys_never_become_topics(self):
         _, gold = bc.census({"a phrase key": {"label": "Required"}, "x": {"label": "Required"}})
         self.assertEqual([g["topic"] for g in gold], ["0", "x"])
+
+    def test_file_layout_and_runs(self):
+        c, gold = bc.census(D, [116, 117])
+        self.assertEqual((c["units"], c["topics"], c["topic_keys_matching_topic_ids"]), (2, 2, 2))
+        self.assertEqual(c["citation_labels"],
+                         {"supports": 1, "contradicts": 2, "neutral": 1, "notrelevant": 1, "invalid": 1})
+        self.assertEqual((c["citations"], c["citations_without_pmid"]), (6, 0))
+        self.assertEqual(c["sentence_labels"],
+                         {"required": 2, "unnecessary": 1, "borderline": 0, "inappropriate": 1})
+        self.assertEqual(c["topics_with_contradicts"], 1)
+        self.assertEqual(c["topic_pmid_pairs_supports_and_contradicts"], 1)
+        self.assertEqual(c["topics_with_a_pmid_judged_both"], 1)
+        self.assertEqual(c["distinct_pmids"], 4)  # the invalid citation's "1" is not a document
+        self.assertEqual((c["pmid_min"], c["pmid_max"]), (38000001, 38000004))
+        self.assertEqual(gold[0]["invalid"], [1])
+        self.assertEqual(c["runs"], 3)
+        self.assertEqual(sorted(c["per_run"]), ["run.b", "run1", "runA"])  # a phrase key is renamed
+        a = c["per_run"]["runA"]
+        self.assertEqual((a["topics"], a["topics_with_citations"], a["citations"]), (2, 2, 4))
+        self.assertEqual(a["citation_label_share"]["supports"], 0.25)
+        self.assertEqual(a["sentence_labels"]["inappropriate"], 1)
+        self.assertEqual(a["accurate"], {"yes": 1, "no": 1})
+        b = c["per_run"]["run.b"]
+        self.assertEqual(b["citation_labels"]["invalid"], 1)
+        self.assertEqual(b["citation_label_share"]["contradicts"], 0.5)
+        self.assertEqual(c["per_run"]["run1"]["citation_label_share"]["supports"], None)
+        self.assertEqual((c["runs_with_100_citations"], c["run_supports_share_max"]), (0, None))
+
+    def test_run_maxima_need_100_citations(self):
+        many = [{"question_id": 116, "machine_generated_answers": {
+            "big": {"answer_sentences": [sent("required", [cite(str(10 + i), "supporting")
+                                                          for i in range(60)]
+                                              + [cite(str(90 + i), "contradicting") for i in range(40)])]},
+            "small": {"answer_sentences": [sent("required", [cite("5", "supporting")])]}}}]
+        c, _ = bc.census(many)
+        self.assertEqual(c["runs_with_100_citations"], 1)
+        self.assertEqual((c["run_supports_share_max"], c["run_supports_share_max_run"]), (0.6, "big"))
+        self.assertEqual(c["run_contradicts_share_max"], 0.4)
 
 
 class Files(unittest.TestCase):
@@ -146,14 +215,14 @@ class Files(unittest.TestCase):
                 bc.download(url, os.path.join(d, "dl", "b.bin"), 3)
             self.assertFalse(os.path.exists(os.path.join(d, "dl", "b.bin")))
 
-    def test_main_writes_no_text(self):
+    def check_main(self, assess):
         with tempfile.TemporaryDirectory() as d:
             tp, ap_ = os.path.join(d, "t.json"), os.path.join(d, "a.json")
             with open(tp, "w", encoding="utf-8") as f:
                 json.dump({"topics": [{"id": i, "topic": PHRASE, "question": SENTINEL,
                                        "narrative": SENTINEL} for i in (116, 117)]}, f)
             with open(ap_, "w", encoding="utf-8") as f:
-                json.dump(A, f)
+                json.dump(assess, f)
             out = os.path.join(d, "out")
             rc = bc.main(["--data-dir", os.path.join(d, "data"), "--out-dir", out,
                           "--topics-url", pathlib.Path(tp).as_uri(),
@@ -173,6 +242,14 @@ class Files(unittest.TestCase):
                     body = f.read()
                 self.assertNotIn("SENTINEL", body, name)
                 self.assertNotIn(PHRASE, body, name)
+            return c
+
+    def test_main_writes_no_text(self):
+        self.check_main(A)
+
+    def test_main_writes_no_text_file_layout(self):
+        c = self.check_main(D)
+        self.assertEqual(c["citation_labels"]["supports"], 1)
 
     def test_main_records_problem(self):
         with tempfile.TemporaryDirectory() as d:

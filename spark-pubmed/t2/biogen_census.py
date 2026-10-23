@@ -13,11 +13,17 @@ counts only, never question, answer or abstract text:
   download.json  urls, bytes, sha256
   topics.json    number of topics, id range, keys
   schema.json    every key path (digit keys folded to {n}) with types, sizes and label values
-  census.json    label totals, per-topic contradiction counts, judged PMIDs
+  census.json    label totals, per-topic contradiction counts, judged PMIDs, per-run rates
   gold_t2.jsonl  per topic: the PMIDs judged under each citation label, plus sentence-label counts
-The file's layout is not documented, so labels are found by value (the eight label words) and a
+The file's layout is not documented, so labels are found by value (the label words) and a
 citation's PMID is a PMID-like sibling under a key naming a document ("record") or the digit key
 the label sits under ("keyed"). Python standard library only.
+
+0.2.0: job biogen-census-v1 showed the file's own label words: citations are "supporting",
+"contradicting", "neutral", "not relevant" and "invalid citation" (a fifth label), so 0.1.0
+missed every Supports and Contradicts judgment. Those words are now read; PMIDs under "invalid
+citation" (placeholders such as "1") are counted but kept out of the PMID totals and range; and
+each run under "machine_generated_answers" gets its own label counts and shares (`per_run`).
 """
 import argparse
 import hashlib
@@ -30,15 +36,21 @@ import time
 import urllib.request
 from collections import Counter
 
-VERSION = "0.1.0"
+VERSION = "0.2.0"
 TOPICS_URL = "https://trec.nist.gov/data/biogen/BioGen2024topics-json.txt"
 ASSESS_URL = "https://trec.nist.gov/data/biogen/biogen_collection_v3.json"
 SENT_LABELS = ("required", "unnecessary", "borderline", "inappropriate")
-CITE_LABELS = ("supports", "contradicts", "neutral", "notrelevant")
+CITE_LABELS = ("supports", "contradicts", "neutral", "notrelevant", "invalid")
+CITE_SYNONYMS = {"supporting": "supports", "contradicting": "contradicts",
+                 "invalidcitation": "invalid"}  # the words biogen_collection_v3.json uses
+PMID_LABELS = CITE_LABELS[:4]  # an invalid citation's "PMID" is not a document
+RUNS_KEYS = ("machinegeneratedanswers",)  # normalised key holding {run name: answer}
+ACCURATE_KEY = "isansweraccurate"
 TOPIC_KEYS = ("topic_id", "topicid", "qid", "question_id", "id", "topic")  # first match wins
 PMID_HINTS = ("pmid", "doc", "cit", "ref")
 PMID_RX = re.compile(r"(?:pmid[:\s]*)?([1-9][0-9]{0,8})", re.I)
 ID_RX = re.compile(r"[A-Za-z0-9_\-]{1,40}")  # an id, never a phrase: keys like this are kept
+RUN_RX = re.compile(r"[A-Za-z0-9_.\-]{1,80}")  # run names are kept; anything else becomes run<i>
 SPARK_MAX_PMID = 42671487  # highest PMID in the SPARK corpus (corpus_build/RESULTS.md)
 MAX_PARSE_BYTES = 300 * 1024 * 1024  # json.load needs several times the file size in RAM
 USER_AGENT = "MV2-Munim-Inc-research (mv2@munimtech.com)"
@@ -49,9 +61,10 @@ def norm(s):
 
 
 def label_of(v):
-    """('sent', label) or ('cite', label) if v is one of the eight label words, else None."""
+    """('sent', label) or ('cite', label) if v is one of the label words, else None."""
     if isinstance(v, str) and len(v) <= 30:
         n = norm(v)
+        n = CITE_SYNONYMS.get(n, n)
         if n in SENT_LABELS:
             return "sent", n
         if n in CITE_LABELS:
@@ -176,6 +189,17 @@ def units(obj):
     return []
 
 
+def runs_of(unit):
+    """(run name, run answer) pairs from a unit's {run name: answer} dict, else []."""
+    if not isinstance(unit, dict):
+        return []
+    for k, v in unit.items():
+        if norm(str(k)) in RUNS_KEYS and isinstance(v, dict):
+            return [(str(r) if RUN_RX.fullmatch(str(r)) else "run%d" % i, a)
+                    for i, (r, a) in enumerate(v.items()) if isinstance(a, dict)]
+    return []
+
+
 def judgments(unit):
     """(kind, label, pmid or None, how) for every label word found in a unit."""
     out, stack = [], [(None, unit)]
@@ -206,10 +230,26 @@ def judgments(unit):
     return out
 
 
+def share(n, d):
+    return round(n / d, 4) if d else None
+
+
+def run_rows(per_run):
+    rows = {}
+    for name, r in sorted(per_run.items()):
+        n = sum(r["cite"].values())
+        rows[name] = {"topics": r["topics"], "topics_with_citations": r["topics_cited"],
+                      "sentence_labels": {lab: r["sent"][lab] for lab in SENT_LABELS},
+                      "citations": n, "citation_labels": {lab: r["cite"][lab] for lab in CITE_LABELS},
+                      "citation_label_share": {lab: share(r["cite"][lab], n) for lab in CITE_LABELS},
+                      "accurate": dict(r["accurate"])}
+    return rows
+
+
 def census(assess, topic_ids=None):
     """Returns (census dict, gold rows)."""
     us = units(assess)
-    per, hows = {}, Counter()
+    per, hows, per_run = {}, Counter(), {}
     for key, u in us:
         t = per.setdefault(key, {"units": 0, "sent": Counter(), "cite": Counter(),
                                  "pmids": {lab: set() for lab in CITE_LABELS}, "cite_no_pmid": 0})
@@ -222,23 +262,38 @@ def census(assess, topic_ids=None):
                 else:
                     t["pmids"][lab].add(pm)
                     hows[how] += 1
+        for name, ans in runs_of(u):
+            r = per_run.setdefault(name, {"topics": 0, "topics_cited": 0, "sent": Counter(),
+                                          "cite": Counter(), "accurate": Counter()})
+            r["topics"] += 1
+            js = judgments(ans)
+            for kind, lab, _, _ in js:
+                r[kind][lab] += 1
+            r["topics_cited"] += any(j[0] == "cite" for j in js)
+            acc = next((v for k, v in ans.items() if norm(str(k)) == ACCURATE_KEY), None)
+            if isinstance(acc, str) and len(acc) <= 10:
+                r["accurate"][norm(acc)] += 1
     sent, cite = Counter(), Counter()
-    allp, both = set(), 0
+    allp, both, both_topics = set(), 0, 0
     for t in per.values():
         sent.update(t["sent"])
         cite.update(t["cite"])
-        for s in t["pmids"].values():
-            allp |= s
-        both += len(t["pmids"]["supports"] & t["pmids"]["contradicts"])
+        for lab in PMID_LABELS:
+            allp |= t["pmids"][lab]
+        pair = len(t["pmids"]["supports"] & t["pmids"]["contradicts"])
+        both += pair
+        both_topics += pair > 0
     n_cite = sum(cite.values())
     contra = [t["cite"]["contradicts"] for t in per.values()]
     contra_p = [len(t["pmids"]["contradicts"]) for t in per.values()]
+    runs = run_rows(per_run)
+    big = {k: r for k, r in runs.items() if r["citations"] >= 100}
     out = {"version": VERSION, "units": len(us), "topics": len(per),
            "units_per_topic_max": max((t["units"] for t in per.values()), default=0),
            "sentence_labels": {lab: sent[lab] for lab in SENT_LABELS},
            "citation_labels": {lab: cite[lab] for lab in CITE_LABELS},
-           "citation_label_share": {lab: round(cite[lab] / n_cite, 4) if n_cite else None
-                                    for lab in CITE_LABELS},
+           "citations": n_cite,
+           "citation_label_share": {lab: share(cite[lab], n_cite) for lab in CITE_LABELS},
            "citations_without_pmid": sum(t["cite_no_pmid"] for t in per.values()),
            "pmid_pattern": dict(hows),
            "topics_with_contradicts": sum(1 for c in contra if c),
@@ -250,8 +305,18 @@ def census(assess, topic_ids=None):
            "distinct_pmids_by_label": {lab: len(set().union(*(t["pmids"][lab] for t in per.values())))
                                        for lab in CITE_LABELS} if per else {},
            "topic_pmid_pairs_supports_and_contradicts": both,
+           "topics_with_a_pmid_judged_both": both_topics,
            "pmid_min": min(allp, default=None), "pmid_max": max(allp, default=None),
-           "pmids_over_spark_max": sum(1 for p in allp if p > SPARK_MAX_PMID)}
+           "pmids_over_spark_max": sum(1 for p in allp if p > SPARK_MAX_PMID),
+           "runs": len(runs),
+           "runs_with_100_citations": len(big),
+           "run_supports_share_max": max((r["citation_label_share"]["supports"] for r in big.values()),
+                                         default=None),
+           "run_supports_share_max_run": max(big, key=lambda k: big[k]["citation_label_share"]["supports"],
+                                             default=None),
+           "run_contradicts_share_max": max((r["citation_label_share"]["contradicts"] for r in big.values()),
+                                            default=None),
+           "per_run": runs}
     if topic_ids is not None:
         ids = {str(i) for i in topic_ids}
         out["topic_keys_matching_topic_ids"] = sum(1 for k in per if k in ids)
@@ -310,7 +375,7 @@ def main(argv=None):
     except Exception as e:  # recorded, never hidden
         res["problem"] = "%s: %s" % (type(e).__name__, e)
     dump(os.path.join(a.out_dir, "census.json"), res)
-    print(json.dumps(res, indent=1)[:4000])
+    print(json.dumps({k: v for k, v in res.items() if k != "per_run"}, indent=1)[:4000])
     return 1 if res["problem"] else 0
 
 
