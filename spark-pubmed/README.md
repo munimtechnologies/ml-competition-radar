@@ -32,6 +32,9 @@ GitHub refused to create that repository twice on 2026-10-22 ("secondary rate li
   candidates on CPU. Its card check, CPU benchmark, whole-corpus scoring and cut-off counts are
   graded (`rerank/RESULTS.md`, `rerank/RESULTS-spark36.md`, `rerank/RESULTS-spark39.md`);
   `rerank/depth_curve.py` measures how deep to rerank.
+- `system/` joins the stages into the one command the challenge's no-network Docker image runs:
+  `spark_t1.py` turns a questions file into the two planned submission files, resumes after a
+  stop and times every question (`system/README.md`; the image itself is not built yet).
 - `speed/` tested leaving very common words out of the BM25 query (`speed/RESULTS-spark37.md`).
 - `prf/` tested pseudo-relevance feedback fused with the BM25 list as a recall stage
   (`prf/RESULTS-spark38.md`; not adopted).
@@ -88,7 +91,7 @@ GitHub refused to create that repository twice on 2026-10-22 ("secondary rate li
   Contradicts (Scott's pi 0.23 overall). 92 of the 168 papers judged both ways in one topic got
   both labels on the identical sentence (`t2/RESULTS-biogen-stance*.md`).
 
-## Status (2026-10-24, late)
+## Status (2026-10-24, night)
 
 Graded: corpus audit (10 of 11 predictions held), dev sets (10 of 11), FTS5 pilot and count
 (11 of 16), mirror repair and full count (7 of 8 graded), index build continued (13 of 13) and
@@ -96,8 +99,9 @@ finished (14 of 16), reranker check (10 of 11), BioGen census (5 of 10, then 9 o
 stance (8 of 9, then 5 of 8, then 9 of 9), query pruning (5 of 10), whole-corpus reranking (10 of
 10), pseudo-relevance feedback (6 of 11), reranking R with cut-off counts (7 of 10). Queued with
 predictions written first: reranking BM25's first 300 on L and first 200 on BioGen and R, to set
-the rerank depth (`rerank/PREREGISTRATION-spark40.md`). Planned submissions: `top:5`, and `top:1`
-as a second.
+the rerank depth (`rerank/PREREGISTRATION-spark40.md`), and the whole Task 1 system on R, which
+should reproduce the graded R result exactly and time every question
+(`system/PREREGISTRATION-spark41.md`). Planned submissions: `top:5`, and `top:1` as a second.
 
 ## Limits
 
