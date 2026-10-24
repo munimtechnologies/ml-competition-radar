@@ -21,17 +21,24 @@ image.
 | `PREREGISTRATION.md` | Predictions for job `sparkrr-bench-v1`, written before it ran |
 | `RESULTS.md` | Grades: 10 of 11 held |
 | `results/` | The job's raw `bench.json` and `fetch_model.json` |
+| `PREREGISTRATION-spark36.md` | Predictions for job `spark36-rerank-v1` (first rerank on real whole-corpus candidates: headline L and the 65 TREC 2024 BioGen questions), written before it was filed |
 
 The code needs torch 2.5.1 (CPU build) and transformers 4.46.3. Its tests ran in the sealed job
 `sparkrr-bench-v1` (13 of 13 passed on 2026-10-23). They are not re-run when files here are
 committed, because the publishing machine has no torch.
 
-## Status (2026-10-23)
+## Status (2026-10-24)
 
-Graded (`RESULTS.md`). In fp32 the model reproduces its card's six scores to within 0.0001 and
-costs about 437 ms per question-article pair at 320 tokens on 2 CPUs, so the first scoring job
-reranks the top **50** BM25 candidates. Dynamic int8 is 1.7-2.1x faster and kept the card's order,
-but it moved the scores by 2.0-6.7 points, so it is dropped as a candidate. No reranker has been
-scored on the dev sets yet. That waits for the whole-corpus index.
+`RESULTS.md` (graded 2026-10-23): in fp32 the model reproduces its card's six scores to within
+0.0001 and costs about 437 ms per question-article pair at 320 tokens on 2 CPUs, so the first
+scoring job reranks the top **50** BM25 candidates. Dynamic int8 is 1.7-2.1x faster and kept the
+card's order, but it moved the scores by 2.0-6.7 points, so it is dropped as a candidate.
+
+`PREREGISTRATION-spark36.md` was committed at 05:42:41 UTC on 2026-10-24 (commit `782abfa3`).
+`spark36-rerank-v1` was placed on the Dell, which holds only a partial copy of the index (112 of
+1,306 files); its tests and code fetch ran, and `host_guard` stopped it at 07:25 UTC with exit 3
+before any rerank: check K1, "premise not met", as pre-registered. Nothing was graded. It is filed
+again unchanged as `spark36-rerank-v2`, to be graded in `RESULTS-spark36.md` against the same
+pre-registration. No reranker has been scored on the dev sets yet.
 
 Contact: MV2, Munim, Inc., mv2@munimtech.com
