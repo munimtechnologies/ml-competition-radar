@@ -1,0 +1,616 @@
+{
+ "version": "0.3.0",
+ "problem": null,
+ "file": {
+  "url": "https://trec.nist.gov/data/biogen/biogen_collection_v3.json",
+  "cached": true,
+  "bytes": 11128359,
+  "sha256": "78449ef270e60abe0c268fa446ade23737164bba44c37308e216529fa63d066d"
+ },
+ "unknown_relations": {},
+ "judgments": 14763,
+ "labels": {
+  "supports": 10240,
+  "contradicts": 275,
+  "neutral": 1412,
+  "notrelevant": 2201,
+  "invalid": 635
+ },
+ "judgments_without_pmid": 0,
+ "topics": 65,
+ "runs": 28,
+ "contradicting_pairs": 202,
+ "mixed_pairs": 168,
+ "contradiction_only_pairs": 34,
+ "mixed_same_text": 92,
+ "mixed_same_run": 114,
+ "mixed_same_run_not_same_text": 28,
+ "mixed_across_only": 48,
+ "mixed_same_text_within_one_run": 85,
+ "mixed_one_sentence": 85,
+ "contradicts_judgments_on_mixed_pairs": 237,
+ "supports_judgments_on_mixed_pairs": 1161,
+ "mixed_supports_texts_median": 3.0,
+ "mixed_contradicts_texts_median": 1.0,
+ "repeated_groups": 2084,
+ "repeated_groups_all_agree": 1453,
+ "repeated_judgment_pairs": 4045,
+ "repeated_pairs_agree": 3019,
+ "repeated_pair_agreement": 0.7464,
+ "repeated_pair_confusion": {
+  "contradicts|neutral": 48,
+  "contradicts|notrelevant": 6,
+  "contradicts|supports": 167,
+  "neutral|notrelevant": 11,
+  "neutral|supports": 694,
+  "notrelevant|supports": 100
+ },
+ "repeated_pair_matrix": {
+  "contradicts|contradicts": 31,
+  "contradicts|neutral": 48,
+  "contradicts|notrelevant": 6,
+  "contradicts|supports": 167,
+  "neutral|neutral": 169,
+  "neutral|notrelevant": 11,
+  "neutral|supports": 694,
+  "notrelevant|notrelevant": 42,
+  "notrelevant|supports": 100,
+  "supports|supports": 2777
+ },
+ "specific_agreement": {
+  "supports": 0.8525,
+  "contradicts": 0.2191,
+  "neutral": 0.3098,
+  "notrelevant": 0.4179
+ },
+ "repeated_pair_scotts_pi": 0.2347,
+ "repeated_within_run_pairs": 2657,
+ "repeated_within_run_agree": 1911,
+ "repeated_across_run_pairs": 1388,
+ "repeated_across_run_agree": 1108,
+ "repeated_within_run_agreement": 0.7192,
+ "repeated_across_run_agreement": 0.7983,
+ "repeated_one_sentence_pairs": 2657,
+ "repeated_one_sentence_agree": 1911,
+ "repeated_one_sentence_agreement": 0.7192,
+ "repeated_two_sentences_pairs": 0,
+ "repeated_two_sentences_agree": 0,
+ "repeated_two_sentences_agreement": null,
+ "one_sentence_pair_matrix": {
+  "contradicts|contradicts": 12,
+  "contradicts|neutral": 38,
+  "contradicts|supports": 122,
+  "neutral|neutral": 130,
+  "neutral|supports": 586,
+  "notrelevant|notrelevant": 1,
+  "supports|supports": 1768
+ },
+ "duplicate_citation_slots": 1867,
+ "duplicate_citation_slots_conflicting": 567,
+ "duplicate_citation_slots_max_judgments": 7,
+ "repeated_groups_with_contradicts": 130,
+ "repeated_groups_with_contradicts_all_agree": 11,
+ "per_topic": [
+  {
+   "topic": "116",
+   "contradicts_judgments": 4,
+   "contradicting_pmids": 4,
+   "mixed_pmids": 4,
+   "mixed_same_text": 2,
+   "mixed_same_run": 0
+  },
+  {
+   "topic": "117",
+   "contradicts_judgments": 2,
+   "contradicting_pmids": 2,
+   "mixed_pmids": 2,
+   "mixed_same_text": 0,
+   "mixed_same_run": 1
+  },
+  {
+   "topic": "118",
+   "contradicts_judgments": 3,
+   "contradicting_pmids": 2,
+   "mixed_pmids": 2,
+   "mixed_same_text": 0,
+   "mixed_same_run": 0
+  },
+  {
+   "topic": "119",
+   "contradicts_judgments": 1,
+   "contradicting_pmids": 1,
+   "mixed_pmids": 0,
+   "mixed_same_text": 0,
+   "mixed_same_run": 0
+  },
+  {
+   "topic": "120",
+   "contradicts_judgments": 2,
+   "contradicting_pmids": 2,
+   "mixed_pmids": 1,
+   "mixed_same_text": 1,
+   "mixed_same_run": 1
+  },
+  {
+   "topic": "121",
+   "contradicts_judgments": 15,
+   "contradicting_pmids": 11,
+   "mixed_pmids": 8,
+   "mixed_same_text": 2,
+   "mixed_same_run": 7
+  },
+  {
+   "topic": "122",
+   "contradicts_judgments": 0,
+   "contradicting_pmids": 0,
+   "mixed_pmids": 0,
+   "mixed_same_text": 0,
+   "mixed_same_run": 0
+  },
+  {
+   "topic": "123",
+   "contradicts_judgments": 0,
+   "contradicting_pmids": 0,
+   "mixed_pmids": 0,
+   "mixed_same_text": 0,
+   "mixed_same_run": 0
+  },
+  {
+   "topic": "124",
+   "contradicts_judgments": 0,
+   "contradicting_pmids": 0,
+   "mixed_pmids": 0,
+   "mixed_same_text": 0,
+   "mixed_same_run": 0
+  },
+  {
+   "topic": "125",
+   "contradicts_judgments": 3,
+   "contradicting_pmids": 3,
+   "mixed_pmids": 2,
+   "mixed_same_text": 1,
+   "mixed_same_run": 1
+  },
+  {
+   "topic": "126",
+   "contradicts_judgments": 4,
+   "contradicting_pmids": 4,
+   "mixed_pmids": 4,
+   "mixed_same_text": 3,
+   "mixed_same_run": 4
+  },
+  {
+   "topic": "127",
+   "contradicts_judgments": 3,
+   "contradicting_pmids": 2,
+   "mixed_pmids": 2,
+   "mixed_same_text": 1,
+   "mixed_same_run": 1
+  },
+  {
+   "topic": "128",
+   "contradicts_judgments": 17,
+   "contradicting_pmids": 8,
+   "mixed_pmids": 7,
+   "mixed_same_text": 3,
+   "mixed_same_run": 5
+  },
+  {
+   "topic": "129",
+   "contradicts_judgments": 4,
+   "contradicting_pmids": 3,
+   "mixed_pmids": 3,
+   "mixed_same_text": 1,
+   "mixed_same_run": 1
+  },
+  {
+   "topic": "130",
+   "contradicts_judgments": 9,
+   "contradicting_pmids": 5,
+   "mixed_pmids": 4,
+   "mixed_same_text": 4,
+   "mixed_same_run": 4
+  },
+  {
+   "topic": "131",
+   "contradicts_judgments": 18,
+   "contradicting_pmids": 12,
+   "mixed_pmids": 12,
+   "mixed_same_text": 8,
+   "mixed_same_run": 9
+  },
+  {
+   "topic": "132",
+   "contradicts_judgments": 2,
+   "contradicting_pmids": 1,
+   "mixed_pmids": 1,
+   "mixed_same_text": 1,
+   "mixed_same_run": 0
+  },
+  {
+   "topic": "133",
+   "contradicts_judgments": 19,
+   "contradicting_pmids": 12,
+   "mixed_pmids": 7,
+   "mixed_same_text": 6,
+   "mixed_same_run": 6
+  },
+  {
+   "topic": "134",
+   "contradicts_judgments": 4,
+   "contradicting_pmids": 4,
+   "mixed_pmids": 4,
+   "mixed_same_text": 2,
+   "mixed_same_run": 2
+  },
+  {
+   "topic": "135",
+   "contradicts_judgments": 0,
+   "contradicting_pmids": 0,
+   "mixed_pmids": 0,
+   "mixed_same_text": 0,
+   "mixed_same_run": 0
+  },
+  {
+   "topic": "136",
+   "contradicts_judgments": 7,
+   "contradicting_pmids": 6,
+   "mixed_pmids": 3,
+   "mixed_same_text": 3,
+   "mixed_same_run": 3
+  },
+  {
+   "topic": "137",
+   "contradicts_judgments": 5,
+   "contradicting_pmids": 4,
+   "mixed_pmids": 3,
+   "mixed_same_text": 2,
+   "mixed_same_run": 2
+  },
+  {
+   "topic": "138",
+   "contradicts_judgments": 6,
+   "contradicting_pmids": 3,
+   "mixed_pmids": 3,
+   "mixed_same_text": 1,
+   "mixed_same_run": 3
+  },
+  {
+   "topic": "139",
+   "contradicts_judgments": 0,
+   "contradicting_pmids": 0,
+   "mixed_pmids": 0,
+   "mixed_same_text": 0,
+   "mixed_same_run": 0
+  },
+  {
+   "topic": "140",
+   "contradicts_judgments": 3,
+   "contradicting_pmids": 3,
+   "mixed_pmids": 3,
+   "mixed_same_text": 2,
+   "mixed_same_run": 2
+  },
+  {
+   "topic": "141",
+   "contradicts_judgments": 0,
+   "contradicting_pmids": 0,
+   "mixed_pmids": 0,
+   "mixed_same_text": 0,
+   "mixed_same_run": 0
+  },
+  {
+   "topic": "142",
+   "contradicts_judgments": 12,
+   "contradicting_pmids": 7,
+   "mixed_pmids": 7,
+   "mixed_same_text": 3,
+   "mixed_same_run": 4
+  },
+  {
+   "topic": "143",
+   "contradicts_judgments": 1,
+   "contradicting_pmids": 1,
+   "mixed_pmids": 1,
+   "mixed_same_text": 1,
+   "mixed_same_run": 1
+  },
+  {
+   "topic": "144",
+   "contradicts_judgments": 3,
+   "contradicting_pmids": 3,
+   "mixed_pmids": 2,
+   "mixed_same_text": 1,
+   "mixed_same_run": 1
+  },
+  {
+   "topic": "145",
+   "contradicts_judgments": 2,
+   "contradicting_pmids": 2,
+   "mixed_pmids": 2,
+   "mixed_same_text": 1,
+   "mixed_same_run": 2
+  },
+  {
+   "topic": "146",
+   "contradicts_judgments": 1,
+   "contradicting_pmids": 1,
+   "mixed_pmids": 1,
+   "mixed_same_text": 1,
+   "mixed_same_run": 1
+  },
+  {
+   "topic": "147",
+   "contradicts_judgments": 0,
+   "contradicting_pmids": 0,
+   "mixed_pmids": 0,
+   "mixed_same_text": 0,
+   "mixed_same_run": 0
+  },
+  {
+   "topic": "148",
+   "contradicts_judgments": 1,
+   "contradicting_pmids": 1,
+   "mixed_pmids": 1,
+   "mixed_same_text": 1,
+   "mixed_same_run": 1
+  },
+  {
+   "topic": "149",
+   "contradicts_judgments": 12,
+   "contradicting_pmids": 8,
+   "mixed_pmids": 6,
+   "mixed_same_text": 5,
+   "mixed_same_run": 4
+  },
+  {
+   "topic": "150",
+   "contradicts_judgments": 6,
+   "contradicting_pmids": 5,
+   "mixed_pmids": 5,
+   "mixed_same_text": 2,
+   "mixed_same_run": 2
+  },
+  {
+   "topic": "151",
+   "contradicts_judgments": 0,
+   "contradicting_pmids": 0,
+   "mixed_pmids": 0,
+   "mixed_same_text": 0,
+   "mixed_same_run": 0
+  },
+  {
+   "topic": "152",
+   "contradicts_judgments": 5,
+   "contradicting_pmids": 4,
+   "mixed_pmids": 4,
+   "mixed_same_text": 0,
+   "mixed_same_run": 2
+  },
+  {
+   "topic": "153",
+   "contradicts_judgments": 10,
+   "contradicting_pmids": 7,
+   "mixed_pmids": 5,
+   "mixed_same_text": 3,
+   "mixed_same_run": 4
+  },
+  {
+   "topic": "154",
+   "contradicts_judgments": 5,
+   "contradicting_pmids": 5,
+   "mixed_pmids": 4,
+   "mixed_same_text": 3,
+   "mixed_same_run": 4
+  },
+  {
+   "topic": "155",
+   "contradicts_judgments": 0,
+   "contradicting_pmids": 0,
+   "mixed_pmids": 0,
+   "mixed_same_text": 0,
+   "mixed_same_run": 0
+  },
+  {
+   "topic": "156",
+   "contradicts_judgments": 1,
+   "contradicting_pmids": 1,
+   "mixed_pmids": 1,
+   "mixed_same_text": 1,
+   "mixed_same_run": 0
+  },
+  {
+   "topic": "157",
+   "contradicts_judgments": 13,
+   "contradicting_pmids": 11,
+   "mixed_pmids": 9,
+   "mixed_same_text": 5,
+   "mixed_same_run": 6
+  },
+  {
+   "topic": "158",
+   "contradicts_judgments": 9,
+   "contradicting_pmids": 5,
+   "mixed_pmids": 5,
+   "mixed_same_text": 1,
+   "mixed_same_run": 1
+  },
+  {
+   "topic": "159",
+   "contradicts_judgments": 1,
+   "contradicting_pmids": 1,
+   "mixed_pmids": 1,
+   "mixed_same_text": 1,
+   "mixed_same_run": 1
+  },
+  {
+   "topic": "160",
+   "contradicts_judgments": 3,
+   "contradicting_pmids": 2,
+   "mixed_pmids": 1,
+   "mixed_same_text": 0,
+   "mixed_same_run": 0
+  },
+  {
+   "topic": "161",
+   "contradicts_judgments": 1,
+   "contradicting_pmids": 1,
+   "mixed_pmids": 1,
+   "mixed_same_text": 0,
+   "mixed_same_run": 1
+  },
+  {
+   "topic": "162",
+   "contradicts_judgments": 3,
+   "contradicting_pmids": 3,
+   "mixed_pmids": 3,
+   "mixed_same_text": 0,
+   "mixed_same_run": 1
+  },
+  {
+   "topic": "163",
+   "contradicts_judgments": 6,
+   "contradicting_pmids": 2,
+   "mixed_pmids": 1,
+   "mixed_same_text": 0,
+   "mixed_same_run": 0
+  },
+  {
+   "topic": "164",
+   "contradicts_judgments": 3,
+   "contradicting_pmids": 3,
+   "mixed_pmids": 3,
+   "mixed_same_text": 2,
+   "mixed_same_run": 2
+  },
+  {
+   "topic": "165",
+   "contradicts_judgments": 0,
+   "contradicting_pmids": 0,
+   "mixed_pmids": 0,
+   "mixed_same_text": 0,
+   "mixed_same_run": 0
+  },
+  {
+   "topic": "166",
+   "contradicts_judgments": 3,
+   "contradicting_pmids": 3,
+   "mixed_pmids": 2,
+   "mixed_same_text": 1,
+   "mixed_same_run": 2
+  },
+  {
+   "topic": "167",
+   "contradicts_judgments": 1,
+   "contradicting_pmids": 1,
+   "mixed_pmids": 1,
+   "mixed_same_text": 1,
+   "mixed_same_run": 1
+  },
+  {
+   "topic": "168",
+   "contradicts_judgments": 2,
+   "contradicting_pmids": 2,
+   "mixed_pmids": 2,
+   "mixed_same_text": 1,
+   "mixed_same_run": 1
+  },
+  {
+   "topic": "169",
+   "contradicts_judgments": 7,
+   "contradicting_pmids": 7,
+   "mixed_pmids": 5,
+   "mixed_same_text": 1,
+   "mixed_same_run": 4
+  },
+  {
+   "topic": "170",
+   "contradicts_judgments": 6,
+   "contradicting_pmids": 3,
+   "mixed_pmids": 3,
+   "mixed_same_text": 2,
+   "mixed_same_run": 2
+  },
+  {
+   "topic": "171",
+   "contradicts_judgments": 1,
+   "contradicting_pmids": 1,
+   "mixed_pmids": 1,
+   "mixed_same_text": 1,
+   "mixed_same_run": 1
+  },
+  {
+   "topic": "172",
+   "contradicts_judgments": 4,
+   "contradicting_pmids": 4,
+   "mixed_pmids": 2,
+   "mixed_same_text": 1,
+   "mixed_same_run": 1
+  },
+  {
+   "topic": "173",
+   "contradicts_judgments": 1,
+   "contradicting_pmids": 1,
+   "mixed_pmids": 1,
+   "mixed_same_text": 1,
+   "mixed_same_run": 1
+  },
+  {
+   "topic": "174",
+   "contradicts_judgments": 3,
+   "contradicting_pmids": 2,
+   "mixed_pmids": 2,
+   "mixed_same_text": 0,
+   "mixed_same_run": 0
+  },
+  {
+   "topic": "175",
+   "contradicts_judgments": 1,
+   "contradicting_pmids": 1,
+   "mixed_pmids": 1,
+   "mixed_same_text": 1,
+   "mixed_same_run": 1
+  },
+  {
+   "topic": "176",
+   "contradicts_judgments": 1,
+   "contradicting_pmids": 1,
+   "mixed_pmids": 1,
+   "mixed_same_text": 1,
+   "mixed_same_run": 1
+  },
+  {
+   "topic": "177",
+   "contradicts_judgments": 5,
+   "contradicting_pmids": 3,
+   "mixed_pmids": 3,
+   "mixed_same_text": 2,
+   "mixed_same_run": 3
+  },
+  {
+   "topic": "178",
+   "contradicts_judgments": 1,
+   "contradicting_pmids": 1,
+   "mixed_pmids": 1,
+   "mixed_same_text": 1,
+   "mixed_same_run": 1
+  },
+  {
+   "topic": "179",
+   "contradicts_judgments": 2,
+   "contradicting_pmids": 2,
+   "mixed_pmids": 2,
+   "mixed_same_text": 2,
+   "mixed_same_run": 2
+  },
+  {
+   "topic": "180",
+   "contradicts_judgments": 8,
+   "contradicting_pmids": 5,
+   "mixed_pmids": 3,
+   "mixed_same_text": 2,
+   "mixed_same_run": 3
+  }
+ ],
+ "seconds": 0.3
+}
