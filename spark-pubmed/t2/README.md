@@ -2,7 +2,7 @@
 
 MV2 of Munim, Inc. (made with AI agents working in his name). Code Apache-2.0; notes CC BY 4.0.
 
-## The task, as published (challenge page /challenges/199, read 2026-10-23)
+## The task, as published (challenge page /challenges/199, read 2026-10-24)
 
 - About 1,000 natural-language questions, released "shortly before the end of the challenge
   period" (the challenge runs 2027-01-15 to 2027-02-01). Prize $100,000 + $25,000.
@@ -38,7 +38,8 @@ Every job was pre-registered before it ran and graded word for word:
 | biogen-stance-v1 | `PREREGISTRATION-biogen-stance.md` | `RESULTS-biogen-stance.md`, `results-biogen-stance/` | 3 of 3 checks, 8 of 9 |
 | biogen-stance-v2 | `PREREGISTRATION-biogen-stance-v2.md` | `RESULTS-biogen-stance-v2.md`, `results-biogen-stance-v2/` | 3 of 3 checks, 5 of 8 |
 | biogen-stance-v3 | `PREREGISTRATION-biogen-stance-v3.md` | `RESULTS-biogen-stance-v3.md`, `results-biogen-stance-v3/` | 3 of 3 checks, 6 of 6 |
-| biogen-slots-v1 | `PREREGISTRATION-biogen-slots.md` | pending | queued |
+| biogen-slots-v1 | `PREREGISTRATION-biogen-slots.md` | `RESULTS-biogen-slots.md`, `results-biogen-slots/` | 4 of 4 checks, 8 of 8 (public commit came after the job; see results) |
+| t2dev-v1 | `PREREGISTRATION-t2dev.md` | pending | queued: first end-to-end Task 2 dev run (BM25 + `compose.py`) on the 65 BioGen questions |
 
 What v2 counted: 14,763 citation judgments (69.4% supporting, 1.9% contradicting, 4.3% invalid);
 55 of 65 topics have a contradicting judgment; 3,858 distinct PMIDs, all inside the SPARK
@@ -52,16 +53,23 @@ answer, and 48 were only different runs' different sentences.
 
 What stance-v2 added: over the 4,045 pairs of judgments of an identical (topic, sentence, PMID),
 specific agreement is 0.85 for Supports but 0.22 for Contradicts (Neutral 0.31, Not relevant
-0.42), and Scott's pi is 0.23. Most of those pairs (2,657) sit inside one run's answer.
+0.42), and Scott's pi is 0.23. Most of those pairs (2,657) sit inside one run's answer, and
+slots-v1 shows those are passages, not repeat judgments (below).
 
-What stance-v3 settled: **all 2,657 inside-one-run pairs are one PMID listed 2 to 7 times in one
-sentence's citation list** (1,867 such slots; 567 of them, 30.4%, with different labels), and
-all 85 inside-one-run both-ways papers are of this kind. The overview allows at most 3 references
-per sentence, and each entry carries its own quoted evidence passage. So a repeated slot may be
-several passages from one paper, each labelled separately. If it is, a Supports + Contradicts
-slot is one paper with passages pointing both ways, and the stance-v1/v2 figures above are partly
-passage-level. `biogen-slots-v1` tests this and re-measures agreement between slots only. Until it
-is graded, do not read 0.22 as assessor disagreement about one paper.
+What stance-v3 settled: all 2,657 inside-one-run pairs of stance-v2 are one PMID listed 2 to 7
+times in one sentence's citation list (1,867 such slots; 567 of them, 30.4%, with different
+labels), and all 85 inside-one-run both-ways papers are of this kind.
+
+What slots-v1 settled: **the released assessments are passage-level.** In 99.2% of the 1,867
+repeated slots the entries quote different passages of the paper, and runs printed the PMID twice
+in only 0.21%. Every one of the 567 slots with two labels has a different passage behind each
+label. So most of stance-v1's 92 papers are papers with passages pointing both ways, which the
+overview's rule ("no other sentence in the document contradicts the statement") makes Contradicts.
+Between slots, at the paper level (802 pairs from different runs), Scott's pi is 0.47 (0.23 when
+passages were mixed in, stance-v2). Contradicts is still the least repeatable label: specific
+agreement 0.39, against Supports 0.90, Neutral 0.71 and Not relevant 0.47. Counting papers
+instead of entries changes each run's support rate by at most 0.029 and contradict rate by at
+most 0.036, but reorders 12-15 of 28 runs.
 
 MedAESQA (Scientific Data 2025, PMC12179289), which releases 40 of these questions, already
 reports lower annotator agreement within one item for Contradicting (67.67) than for Supporting
@@ -93,10 +101,13 @@ beat.
 
 ## Next
 
-1. Grade `biogen-slots-v1`.
-2. The whole-corpus index is complete (`corpus_build/RESULTS-spark34.md`). The first
-   whole-corpus Task 1 scoring job is re-filed as `spark35-score-v2`. After it: run t1.py BM25
-   (then MedCPT rerank) on the 65 BioGen questions, run `compose`, and run `score`, with
-   predictions written first.
+1. The whole-corpus index is complete (`corpus_build/RESULTS-spark34.md`). The first
+   whole-corpus Task 1 scoring job, `spark35-score-v2`, is running.
+2. `t2dev-v1` (pre-registered in `PREREGISTRATION-t2dev.md`) waits for it, then runs t1.py BM25
+   on the 65 BioGen questions over the whole index, composes answers with `compose.py`, and
+   scores them per topic and per paper. Helpers: `t2dev.py` (wait, download pins, gold files)
+   and `fetch_code.py` (fetches the published t1_runner, t2 and rerank code at pinned commits
+   and checks each file's size).
+3. Then the MedCPT rerank of the same candidates, with predictions written first.
 
 Contact: MV2, Munim, Inc., mv2@munimtech.com
