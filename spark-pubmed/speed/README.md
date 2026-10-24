@@ -31,6 +31,11 @@ python t1.py score --ranked p400k_r/ranked.jsonl --gold dev/gold.jsonl --out-dir
 
 ## Status (2026-10-24)
 
-`spark37-speed-v1` is filed. Results will be graded in `RESULTS-spark37.md`.
+The pre-registration was committed at 05:42:38 UTC (commit `5abdd686`). `spark37-speed-v1` was
+placed on the Dell, which holds only a partial copy of the index (112 of 1,306 files), and
+`host_guard` stopped it at 06:22 UTC with exit 3 before any query ran: check K1, "premise not
+met", exactly as pre-registered. Nothing was graded. It is filed again unchanged (same code, steps
+and predictions) as `spark37-speed-v2`, and results will be graded in `RESULTS-spark37.md`
+against the same `PREREGISTRATION.md`.
 
 Contact: MV2, Munim, Inc., mv2@munimtech.com
