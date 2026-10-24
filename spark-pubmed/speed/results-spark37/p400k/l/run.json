@@ -1,0 +1,21 @@
+{
+ "version": "0.1.0",
+ "needs": 43,
+ "depth": 100,
+ "max_df": 400000,
+ "min_terms": 2,
+ "no_candidates": 0,
+ "fallbacks": 8,
+ "mean_terms": 11.14,
+ "mean_kept": 4.37,
+ "median_ms": 1855.0,
+ "p95_ms": 22685.5,
+ "median_query_ms": 887.4,
+ "median_df_ms": 795.9,
+ "probed_terms": 328,
+ "probe_seconds": 35.5,
+ "baseline_median_ms": 27226.9,
+ "median_speedup": 14.48,
+ "top1_same": 0.3023,
+ "mean_top5_overlap": 0.3674
+}

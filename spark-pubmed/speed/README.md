@@ -24,6 +24,8 @@ challenge's tie-breakers.
 - `PREREGISTRATION-spark37-addendum.md`: the one change made for `spark37-speed-v3` before it
   ran (memory ask 2 GB to 4.5 GB, so the job waits for the machine that holds the index); V10 is
   withdrawn and replaced by V10b.
+- `RESULTS-spark37.md`: the grades. `results-spark37/`: the job's guard, gold summary, and each
+  leg's `run.json` and `scores.json` (no question text).
 
 ## Use
 
@@ -34,13 +36,11 @@ python t1.py score --ranked p400k_r/ranked.jsonl --gold dev/gold.jsonl --out-dir
 
 ## Status (2026-10-24)
 
-The pre-registration was committed at 05:42:38 UTC (commit `5abdd686`). `spark37-speed-v1` and
-`spark37-speed-v2` were both placed on the Dell, which holds only a partial copy of the index
-(112 of 1,306 files), and `host_guard` stopped each one with exit 3 before any query ran (v2 at
-08:35 UTC): check K1, "premise not met", as pre-registered. Nothing was graded. The compute runner
-picks the machine with the most memory left after a job's expected use, and with the Blade's two
-slots full the Dell took the small 2 GB ask. `spark37-speed-v3` therefore asks for 4.5 GB, with
-nothing else changed; see `PREREGISTRATION-spark37-addendum.md`. Results will be graded in
-`RESULTS-spark37.md`.
+Graded: 5 of 10 predictions held. Cutting words found in over 400,000 records made queries 9 to
+14 times faster (median 1.8 to 2.6 s) but dropped top-5 MRR from 0.793 to 0.538 on R and from
+0.317 to 0.198 on BioGen; even the 2,000,000 cap lost 0.054 on R. Under the rule written in
+advance, `t1.py` keeps querying every non-stop word, and `prune.py` stays an experiment. Post hoc:
+words at these caps still carry a large BM25 weight (IDF 4.6 at 400,000 records, 2.9 at
+2,000,000), so the pre-registration's premise was wrong. See `RESULTS-spark37.md`.
 
 Contact: MV2, Munim, Inc., mv2@munimtech.com
