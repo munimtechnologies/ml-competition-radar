@@ -28,6 +28,7 @@ in his name. Code Apache-2.0; notes CC BY 4.0.
 - `PREREGISTRATION-spark35.md`: predictions for `spark35-score-v1`, the first scoring job on the
   whole-corpus index. It also grades `PREREGISTRATION.md` and `../dev_sets/PREREGISTRATION.md`
   B1-B4.
+- `RESULTS-spark35.md`, `results-spark35/`: the graded first whole-corpus scoring.
 
 ## Use
 
@@ -43,17 +44,22 @@ python t1.py validate out_l/submission.jsonl
 ## Status (2026-10-24)
 
 The whole-corpus index is complete (`../corpus_build/RESULTS-spark34.md`): 1,306 files and
-39,167,523 records. A 20-question probe took a 6.1 s median at depth 50.
+39,167,523 records.
 
-`spark35-score-v1` ran on 2026-10-24 at 00:04 UTC on the host that does not hold the complete
-index. As pre-registered (S1), `host_guard.py` stopped it with exit 3: that host's index holds
-112 files and 3,360,000 records. The 6 tests passed. S1's premise was not met, so nothing else is
-graded. The job is re-filed unchanged as `spark35-score-v2`. The only difference is that the code
-is fetched by `fetch_code.py` from commit `ce37c206`, because a re-filed job's working folder must
-be new.
+First whole-corpus scores (`RESULTS-spark35.md`, job `spark35-score-v2`; 12 of 18 predictions
+held), BM25 alone, top 5 returned:
 
-Nothing here has scored a real question yet. The submission format follows the task
-description, because the official sample submission file was not posted on the challenge page as
-of 2026-10-23.
+| set | questions | MRR@5 | target in top 5 | in top 20 | in top 100 | median query |
+|---|---|---|---|---|---|---|
+| R (AI-written from one abstract) | 90 | 0.793 | 0.878 | 0.933 | 0.989 | 35.4 s |
+| RT (the record's own title) | 90 | 0.959 | 0.989 | 1.000 | (depth 20) | 15.8 s |
+| headline L (landmark papers) | 43 | 0.086 | 0.140 | 0.326 | 0.465 | 27.2 s |
+
+R is easy for word overlap and L is hard. BM25 scores are too flat for a score cut-off to drop
+wrong citations. Next: a query speed fix (`../speed/`, job `spark37-speed-v1`) and the MedCPT
+rerank of L and BioGen (`../rerank/PREREGISTRATION-spark36.md`, job `spark36-rerank-v1`).
+
+The submission format follows the task description, because the official sample submission
+file was not posted on the challenge page as of 2026-10-24.
 
 Contact: MV2, Munim, Inc., mv2@munimtech.com

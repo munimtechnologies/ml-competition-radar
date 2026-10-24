@@ -1,0 +1,15 @@
+{
+ "needs": 43,
+ "index_docs": 39167523,
+ "depth": 100,
+ "policy": "top:5",
+ "no_candidates": 0,
+ "median_ms": 27226.9,
+ "p95_ms": 46979.0,
+ "gold_missing_from_index": [],
+ "validate": {
+  "lines": 43,
+  "empty_responses": 0,
+  "problems": []
+ }
+}
