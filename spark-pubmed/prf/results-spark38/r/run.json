@@ -1,0 +1,22 @@
+{
+ "version": "0.1.0",
+ "needs": 90,
+ "depth": 100,
+ "fb_docs": 10,
+ "fb_terms": 10,
+ "max_df": 400000,
+ "question_max_df": 0,
+ "min_terms": 2,
+ "rrf_k": 60,
+ "no_candidates_fused": 0,
+ "no_candidates_exp": 0,
+ "no_expansion": 0,
+ "mean_expansion_terms": 8.86,
+ "missing_text": 0,
+ "median_ms": 50972.5,
+ "p95_ms": 94718.5,
+ "baseline_median_ms": 35413.4,
+ "median_total_ms": 87045.3,
+ "probed_terms": 1477,
+ "probe_seconds": 160.1
+}

@@ -32,7 +32,8 @@ words are never written to `run.json`. Standard library only.
   questions have a gold paper within the first 1, 5, ... 1,000 candidates and where the first
   gold paper sits (counts and ranks only). `test_deep_recall.py`: 4 fake-data tests.
 - `PREREGISTRATION-spark38.md`: predictions for job `spark38-prf-v1`, written before it was
-  filed.
+  filed. `RESULTS-spark38.md`: its grades. `results-spark38/`: the job's raw counts (no question,
+  abstract or expansion-word text).
 
 ## Use
 
@@ -41,12 +42,15 @@ python prf.py --db spark_full.db --needs out_l/ranked.jsonl --out-dir prf_l
 python t1.py score --ranked prf_l/ranked.jsonl --gold dev/gold.jsonl --out-dir prf_l
 ```
 
-## Status (2026-10-24)
+## Status (2026-10-24, late): not adopted
 
-The speed job (`../speed/RESULTS-spark37.md`) failed its quality checks, so the question's own
-words are not pruned (`--question-max-df 0`). Job `spark38-prf-v1` is queued: PRF on L, BioGen and
-R with every default, plus plain BM25 on L at depth 1,000 to see how deep the missing targets sit.
-The key prediction is that the fused list reaches at least 21 of L's 43 targets in its first 100.
+`RESULTS-spark38.md`: 4 of 4 checks and 6 of 11 predictions held. The fused list reaches L's
+target in its first 100 for 24 of 43 questions (BM25: 20), but top:5 MRR fell on BioGen (0.3174
+to 0.2700) and R (0.7931 to 0.6996), and each query took about twice as long. Plain BM25 to depth
+1,000 showed that L's targets are mostly deep, not missing: 26 of 43 within 200 candidates, 32
+within 300, 36 within 1,000. The next recall test is a deeper cross-encoder rerank of plain BM25
+(`../rerank/PREREGISTRATION-spark40.md`), not PRF.
+
 PRF is decades-old prior art (Lavrenko and Croft 2001; RM3). What is new here is only measuring
 it on the SPARK corpus and dev sets.
 

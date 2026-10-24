@@ -1,0 +1,74 @@
+{
+ "needs": 43,
+ "no_gold": [],
+ "recall_at": {
+  "1": 0.0465,
+  "5": 0.186,
+  "10": 0.2558,
+  "20": 0.3256,
+  "50": 0.4186,
+  "100": 0.5581
+ },
+ "policies": {
+  "top:1": {
+   "mrr": 0.0465,
+   "hit": 0.0465,
+   "mean_returned": 1.0,
+   "mean_wrong": 0.953
+  },
+  "top:2": {
+   "mrr": 0.0698,
+   "hit": 0.093,
+   "mean_returned": 2.0,
+   "mean_wrong": 1.907
+  },
+  "top:3": {
+   "mrr": 0.0775,
+   "hit": 0.1163,
+   "mean_returned": 3.0,
+   "mean_wrong": 2.884
+  },
+  "top:4": {
+   "mrr": 0.0891,
+   "hit": 0.1628,
+   "mean_returned": 4.0,
+   "mean_wrong": 3.837
+  },
+  "top:5": {
+   "mrr": 0.0938,
+   "hit": 0.186,
+   "mean_returned": 5.0,
+   "mean_wrong": 4.814
+  },
+  "ratio:0.5": {
+   "mrr": 0.0938,
+   "hit": 0.186,
+   "mean_returned": 4.977,
+   "mean_wrong": 4.791
+  },
+  "ratio:0.6": {
+   "mrr": 0.0938,
+   "hit": 0.186,
+   "mean_returned": 4.953,
+   "mean_wrong": 4.767
+  },
+  "ratio:0.7": {
+   "mrr": 0.0938,
+   "hit": 0.186,
+   "mean_returned": 4.907,
+   "mean_wrong": 4.721
+  },
+  "ratio:0.8": {
+   "mrr": 0.0938,
+   "hit": 0.186,
+   "mean_returned": 4.744,
+   "mean_wrong": 4.558
+  },
+  "ratio:0.9": {
+   "mrr": 0.0891,
+   "hit": 0.1628,
+   "mean_returned": 3.86,
+   "mean_wrong": 3.698
+  }
+ }
+}
