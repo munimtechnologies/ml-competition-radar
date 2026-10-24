@@ -20,6 +20,8 @@ image.
 | `test_rerank_run.py` | 4 fake-data tests with a fake scorer (standard library only) |
 | `cutoff.py` | Counts only: MRR, hits, items returned and wrong items for top-k, absolute-score, empty-allowed and logit-margin cuts, with a hypothetical citation penalty; first-item calibration (AUROC); reciprocal-rank fusion of cross-encoder and BM25 ranks |
 | `test_cutoff.py` | 8 fake-data tests (standard library only) |
+| `depth_curve.py` | Counts only: from one deep rerank, what reranking BM25's first d candidates would have scored for every smaller d (reach, top:5 MRR, hits, questions gained or lost) |
+| `test_depth_curve.py` | 5 fake-data tests (standard library only) |
 | `PREREGISTRATION.md` | Predictions for job `sparkrr-bench-v1`, written before it ran |
 | `RESULTS.md` | Grades: 10 of 11 held |
 | `results/` | The job's raw `bench.json` and `fetch_model.json` |
@@ -28,25 +30,33 @@ image.
 | `RESULTS-spark36.md` | Grades for `spark36-rerank-v3`: 3 of 3 checks and 10 of 10 predictions held |
 | `results-spark36/` | That job's raw counts (no question or abstract text) |
 | `PREREGISTRATION-spark39.md` | Predictions for job `spark39-cutoff-v1` (rerank R; cut-off, calibration and fusion counts on all three sets), written before it was filed |
+| `RESULTS-spark39.md` | Grades for `spark39-cutoff-v1`: 4 of 4 checks and 7 of 10 predictions held |
+| `results-spark39/` | That job's raw counts (no question or abstract text) |
+| `PREREGISTRATION-spark40.md` | Predictions for job `spark40-depth-v1` (rerank BM25's first 300 on L and first 200 on BioGen and R; depth curve), written before it was filed |
 
 The torch code needs torch 2.5.1 (CPU build) and transformers 4.46.3. Its tests run inside the
-sealed jobs (13 of 13 passed in `sparkrr-bench-v1` and again in `spark36-rerank-v3`); they are not
-re-run when files here are committed, because the publishing machine has no torch.
-`test_cutoff.py` and `test_rerank_run.py` need only the standard library.
+sealed jobs (13 of 13 passed in `sparkrr-bench-v1`, `spark36-rerank-v3` and `spark39-cutoff-v1`);
+they are not re-run when files here are committed, because the publishing machine has no torch.
+`test_cutoff.py`, `test_depth_curve.py` and `test_rerank_run.py` need only the standard library.
 
-## Status (2026-10-24)
+## Status (2026-10-24, late)
 
 `RESULTS.md` (graded 2026-10-23): in fp32 the model reproduces its card's six scores to within
-0.0001 and costs about 437 ms per question-article pair at 320 tokens on 2 CPUs, so scoring jobs
-rerank the top **50** BM25 candidates. Dynamic int8 was dropped (it moved scores by 2.0-6.7 points).
+0.0001 and costs about 437 ms per question-article pair at 320 tokens on 2 CPUs. Dynamic int8 was
+dropped (it moved scores by 2.0-6.7 points).
 
-`RESULTS-spark36.md` (graded 2026-10-24): on the whole 39.2-million-record index, reranking
-BM25's first 50 raised top:5 MRR on headline L from 0.0860 to **0.1500** (hits 6 to 13 of 43) and
-on BioGen Supports from 0.3174 to **0.4321** (hits 32 to 44 of 65), at a median 19-24 s per
-question on 2 CPUs. Cited Task 2 answers built from reranked candidates had a judged precision of
-0.817 (BM25 candidates: 0.757). The cross-encoder is now stage 2 of the Task 1 system.
+`RESULTS-spark36.md`: on the whole 39.2-million-record index, reranking BM25's first 50 raised
+top:5 MRR on headline L from 0.0860 to **0.1500** and on BioGen Supports from 0.3174 to
+**0.4321**.
 
-Next: `spark39-cutoff-v1` checks that reranking does not hurt the easy R set, measures which cut
-(fewer than five items) would pay if wrong citations are penalised, and tests rank fusion.
+`RESULTS-spark39.md`: on the easy R set it raised top:5 MRR from 0.7931 to **0.8981**, so the
+cross-encoder is stage 2 on every question type. Reciprocal-rank fusion with BM25 did worse than
+the plain cross-encoder order on all three sets. The cross-encoder's sigmoid score was above 0.9
+for every one of the 198 first answers, so it cannot tell a right first answer from a wrong one
+(AUROC 0.19-0.57); cuts to fewer than five items use `top:k` only. Planned: submission 1 `top:5`,
+a second submission `top:1`.
+
+Next: `spark40-depth-v1` reranks deeper (L's targets sit within BM25's first 300 for 32 of 43
+questions, against 19 within 50; `../prf/RESULTS-spark38.md`) and sets the stage-2 depth.
 
 Contact: MV2, Munim, Inc., mv2@munimtech.com
