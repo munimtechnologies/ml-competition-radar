@@ -14,6 +14,9 @@ in his name. Code Apache-2.0; notes CC BY 4.0.
   `spark32-build-v1` left no record of the build). Fake-data tests: `test_build_index.py`.
 - `host_guard.py`: stops a job (exit 3) unless the index on its data volume already holds a
   given number of files and records. A data volume is per host and a job cannot choose its host.
+- `fetch_code.py`: fetches `t1.py`, `test_t1.py`, `build_index.py` and `host_guard.py` from a
+  pinned commit of this folder and checks each file's size and line count. A re-filed job runs
+  the identical published code this way.
 - `query_probe.py`: times 20 fixed general health questions (written for the probe) on a cold
   and a warm pass. Tests for both: `test_spark34.py`.
 - `t1.py`: questions -> BM25 candidates -> cutoff policy -> Task 1 submission JSONL
@@ -37,12 +40,20 @@ python t1.py score --ranked out_l/ranked.jsonl --gold dev/gold.jsonl --out-dir o
 python t1.py validate out_l/submission.jsonl
 ```
 
-## Status (2026-10-23)
+## Status (2026-10-24)
 
 The whole-corpus index is complete (`../corpus_build/RESULTS-spark34.md`): 1,306 files and
-39,167,523 records. A 20-question probe took a 6.1 s median at depth 50. The first dev-set
-scoring job, `spark35-score-v1`, is queued with its predictions written first. Nothing here has
-scored a real question yet. The submission format follows the task description, because the
-official sample submission file was not posted on the challenge page as of 2026-10-23.
+39,167,523 records. A 20-question probe took a 6.1 s median at depth 50.
+
+`spark35-score-v1` ran on 2026-10-24 at 00:04 UTC on the host that does not hold the complete
+index. As pre-registered (S1), `host_guard.py` stopped it with exit 3: that host's index holds
+112 files and 3,360,000 records. The 6 tests passed. S1's premise was not met, so nothing else is
+graded. The job is re-filed unchanged as `spark35-score-v2`. The only difference is that the code
+is fetched by `fetch_code.py` from commit `ce37c206`, because a re-filed job's working folder must
+be new.
+
+Nothing here has scored a real question yet. The submission format follows the task
+description, because the official sample submission file was not posted on the challenge page as
+of 2026-10-23.
 
 Contact: MV2, Munim, Inc., mv2@munimtech.com
