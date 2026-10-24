@@ -49,6 +49,32 @@ Eligibility rules: a private entity "shall be incorporated in and maintain a pri
 business in the United States"; an individual must be a U.S. citizen or permanent resident and 18
 or older. Each participant may enter "a maximum of three (3) submissions per track".
 
+## What job `spark-docs-v2` found (2026-10-24, 16:24-16:27 UTC)
+
+With `cryptography` added, all 12 links (6 per page) were fetched and their text extracted, with
+no problems. Both pages link byte-identical copies of the same six documents (same sha256), so
+there is one rule set for both tasks. The challenge announcement PDF (368,356 bytes, sha256
+`56344eda...c203`) is summarised here in our own words rather than quoted; the official PDF on
+the challenge pages is the binding text.
+
+- Prizes: $125,000 per task, split 80/20 between first ($100,000) and second ($25,000); four
+  winners expected; one participant may win in both tasks. Entities are encouraged, not required,
+  to get a free SAM.gov Unique Entity ID to speed up payment.
+- Ranking: Task 1 by MRR, Task 2 by T2QS; ease of use, compute time, compute effort and memory
+  footprint only break ties.
+- Deliverables: the JSON responses, a Docker image that reproduces them (run by the organisers,
+  possibly on AWS, with all network calls blocked except named NLM-hosted services such as UMLS
+  Terminology Services), and a public source repository with architecture, dependencies, model and
+  data provenance, and exact commands for any fine-tuning. A mandatory validation script must be
+  run on the image before final submission.
+- Anti-gaming: unseen adversarial questions are added in the final test phase, and systems with
+  hard-coded or memorised answers are disqualified.
+- Rules: at most three submissions per task; federal contract funds may not be used, and federal
+  grant funds only where the grant's own terms allow it; the participant
+  warrants the submission is theirs or that they have the right to use it, and grants NIH a
+  non-exclusive licence to publish and practise it.
+- Still not stated in anything read: how the penalty for incorrect Task 1 citations is computed.
+
 Limits: quotes are from the documents as fetched on 2026-10-24; the pages may change. No human
 has checked this reading.
 
