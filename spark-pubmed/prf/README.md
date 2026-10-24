@@ -28,6 +28,11 @@ format, so `t1.py score` applies unchanged, and `run.json` with counts and timin
 words are never written to `run.json`. Standard library only.
 
 - `test_prf.py`: 6 fake-data tests on a five-record FTS5 index (no network).
+- `deep_recall.py` 0.1.0: for a `t1.py` ranked.jsonl run deeper than 100, counts how many
+  questions have a gold paper within the first 1, 5, ... 1,000 candidates and where the first
+  gold paper sits (counts and ranks only). `test_deep_recall.py`: 4 fake-data tests.
+- `PREREGISTRATION-spark38.md`: predictions for job `spark38-prf-v1`, written before it was
+  filed.
 
 ## Use
 
@@ -38,9 +43,11 @@ python t1.py score --ranked prf_l/ranked.jsonl --gold dev/gold.jsonl --out-dir p
 
 ## Status (2026-10-24)
 
-Code and tests only. It has not run on the index. Its first job will be pre-registered after the
-speed job (`../speed/`) is graded, because that decides whether the question's own words are pruned
-(`--question-max-df`). PRF is decades-old prior art (Lavrenko and Croft 2001; RM3). What is new
-here is only measuring it on the SPARK corpus and dev sets.
+The speed job (`../speed/RESULTS-spark37.md`) failed its quality checks, so the question's own
+words are not pruned (`--question-max-df 0`). Job `spark38-prf-v1` is queued: PRF on L, BioGen and
+R with every default, plus plain BM25 on L at depth 1,000 to see how deep the missing targets sit.
+The key prediction is that the fused list reaches at least 21 of L's 43 targets in its first 100.
+PRF is decades-old prior art (Lavrenko and Croft 2001; RM3). What is new here is only measuring
+it on the SPARK corpus and dev sets.
 
 Contact: MV2, Munim, Inc., mv2@munimtech.com
