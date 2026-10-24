@@ -39,7 +39,7 @@ Every job was pre-registered before it ran and graded word for word:
 | biogen-stance-v2 | `PREREGISTRATION-biogen-stance-v2.md` | `RESULTS-biogen-stance-v2.md`, `results-biogen-stance-v2/` | 3 of 3 checks, 5 of 8 |
 | biogen-stance-v3 | `PREREGISTRATION-biogen-stance-v3.md` | `RESULTS-biogen-stance-v3.md`, `results-biogen-stance-v3/` | 3 of 3 checks, 6 of 6 |
 | biogen-slots-v1 | `PREREGISTRATION-biogen-slots.md` | `RESULTS-biogen-slots.md`, `results-biogen-slots/` | 4 of 4 checks, 8 of 8 (public commit came after the job; see results) |
-| t2dev-v1 | `PREREGISTRATION-t2dev.md` | pending | queued: first end-to-end Task 2 dev run (BM25 + `compose.py`) on the 65 BioGen questions |
+| t2dev-v1 | `PREREGISTRATION-t2dev.md` | `RESULTS-t2dev.md`, `results-t2dev/` | 3 of 3 checks, 10 of 11 (memory missed; public commit 2 min after the job started) |
 
 What v2 counted: 14,763 citation judgments (69.4% supporting, 1.9% contradicting, 4.3% invalid);
 55 of 65 topics have a contradicting judgment; 3,858 distinct PMIDs, all inside the SPARK
@@ -99,15 +99,26 @@ negation, hedging or population-specific conditions (arXiv 2603.17580). Negation
 miss many conflicts. This baseline is the floor that a later open-weight rewriting stage must
 beat.
 
+## First end-to-end numbers (`RESULTS-t2dev.md`)
+
+BM25 over all 39,167,523 records, then `compose.py`, on the 65 BioGen questions:
+
+- A paper judged Supports is in BM25's top 5 for 32 of 65 questions, top 20 for 55, top 100
+  for 59 (top-5 MRR 0.317). Median query 15.8 s; median answer 247 words, composed in 48 ms.
+- 72.9% of the answers' citations were never judged (no 2024 run cited them); 16 answers have no
+  judged citation at all. Of the judged citations, 75.7% are Supports or mixed papers.
+- The negation-cue conflict flag fired on no answer, although 10 answers cite a mixed paper.
+
 ## Next
 
-1. The whole-corpus index is complete (`corpus_build/RESULTS-spark34.md`). The first
-   whole-corpus Task 1 scoring job, `spark35-score-v2`, is running.
-2. `t2dev-v1` (pre-registered in `PREREGISTRATION-t2dev.md`) waits for it, then runs t1.py BM25
-   on the 65 BioGen questions over the whole index, composes answers with `compose.py`, and
-   scores them per topic and per paper. Helpers: `t2dev.py` (wait, download pins, gold files)
-   and `fetch_code.py` (fetches the published t1_runner, t2 and rerank code at pinned commits
-   and checks each file's size).
-3. Then the MedCPT rerank of the same candidates, with predictions written first.
+1. `spark37-speed-v1` (`../speed/PREREGISTRATION.md`): leave very common words out of the BM25
+   query, on these 65 questions and the Task 1 dev sets.
+2. `spark36-rerank-v1` (`../rerank/PREREGISTRATION-spark36.md`): rerank the first 50 candidates
+   with the MedCPT cross-encoder, compose again, score the same way.
+3. Then an open-weight stage for conflicts and rewriting, measured on judged precision and on how
+   many citations were judged at all.
+
+Helpers: `t2dev.py` (wait, download pins, gold files) and `fetch_code.py` (fetches the published
+t1_runner, t2 and rerank code at pinned commits and checks each file's size).
 
 Contact: MV2, Munim, Inc., mv2@munimtech.com

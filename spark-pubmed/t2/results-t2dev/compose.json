@@ -1,0 +1,15 @@
+{
+ "version": "0.2.0",
+ "needs": 65,
+ "depth": 20,
+ "words": 250,
+ "per_doc": 2,
+ "empty": 0,
+ "median_sentences": 11,
+ "median_words": 247,
+ "needs_with_conflict": 0,
+ "needs_with_uncertainty": 5,
+ "median_ms": 48.3,
+ "max_ms": 168.8,
+ "validate": []
+}
