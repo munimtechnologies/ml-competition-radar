@@ -30,11 +30,16 @@ GitHub refused to create that repository twice on 2026-10-22 ("secondary rate li
   validator and a scorer. Its predictions were pre-registered before any score existed.
 - `rerank/` is the second stage: NCBI's public-domain MedCPT cross-encoder rereads the top BM25
   candidates on CPU. Its card check and CPU benchmark are graded (`rerank/RESULTS.md`).
+- `speed/` tested leaving very common words out of the BM25 query (`speed/RESULTS-spark37.md`).
+- `prf/` is a recall stage: pseudo-relevance feedback fused with the BM25 list. Its first job is
+  pre-registered (`prf/PREREGISTRATION-spark38.md`).
 - `t2/` starts Task 2. `compose.py` is an extractive baseline that copies every sentence from a
   cited abstract and flags conflicting findings. `biogen_census.py` and `biogen_stance.py` turn
   NIST's TREC 2024 BioGen judgments (65 health questions, citations judged Supports /
   Contradicts / Neutral / Not Relevant) into development data and measure how repeatable each
   label is. Every job was pre-registered.
+- `sparkdocs/` fetches the documents attached to the two challenge pages and extracts their text
+  (`sparkdocs/README.md` quotes the Task 1 rules that shape the pipeline).
 
 ## Findings so far
 
@@ -52,8 +57,15 @@ GitHub refused to create that repository twice on 2026-10-22 ("secondary rate li
   `pubmed27n0782.xml.gz`.
 - **Index.** The whole-corpus FTS5 index at `detail=full` is built: 39,167,523 records, 92.5 GB
   (2,362 bytes per record, above the pilot's 2.26 KB because later files carry more abstracts).
-  Whole-corpus BM25 is slow: a 6.1 s median per question at depth 50 on a warm pass, 22.7 s at
-  worst, against 30 ms on the 1.2-million-record pilot.
+  Whole-corpus BM25 is slow: a 6.1 s median per short question at depth 50 on a warm pass, and a
+  35.4 s median on R's full-length questions at depth 100, against 30 ms on the 1.2-million-record
+  pilot.
+- **Whole-corpus Task 1 baseline.** BM25 alone scores top-5 MRR 0.793 on R but 0.086 on headline
+  L, where the target is in the first 100 candidates for only 20 of 43 questions. L is the hard
+  set and the one that guides the next stages.
+- **Dropping common words is fast but costly.** Leaving out words found in over 400,000 records
+  made queries 9 to 14 times faster but cut top-5 MRR from 0.793 to 0.538 on R; such words still
+  carry a large BM25 weight. The Task 1 query stays unpruned (`speed/RESULTS-spark37.md`).
 - **Reranker.** MedCPT's cross-encoder reproduces its model card's scores in fp32 and costs about
   437 ms per pair at 320 tokens on 2 CPUs. That allows about 82 candidates per question if 200
   questions must run in 2 hours, so the first scoring job reranks 50. Dynamic int8 is 1.7-2.1x
@@ -64,15 +76,15 @@ GitHub refused to create that repository twice on 2026-10-22 ("secondary rate li
   Contradicts (Scott's pi 0.23 overall). 92 of the 168 papers judged both ways in one topic got
   both labels on the identical sentence (`t2/RESULTS-biogen-stance*.md`).
 
-## Status (2026-10-23)
+## Status (2026-10-24)
 
 Graded: corpus audit (10 of 11 predictions held), dev sets (10 of 11), FTS5 pilot and count
 (11 of 16), mirror repair and full count (7 of 8 graded), index build continued (13 of 13) and
 finished (14 of 16), reranker check (10 of 11), BioGen census (5 of 10, then 9 of 10), BioGen
-stance (8 of 9, then 5 of 8). Queued with predictions written first: the first whole-corpus
-Task 1 scoring on the dev sets (`t1_runner/PREREGISTRATION-spark35.md`) and BioGen stance v3
-(`t2/PREREGISTRATION-biogen-stance-v3.md`). Next steps: score BM25 + rerank at depth 50, and
-score the Task 2 baseline on the BioGen questions.
+stance (8 of 9, then 5 of 8, then 9 of 9), query pruning (5 of 10). Running: MedCPT reranking
+of the BM25 candidates on L and BioGen (`rerank/PREREGISTRATION-spark36.md`). Queued with
+predictions written first: pseudo-relevance feedback on L, BioGen and R, plus BM25 at depth 1,000
+on L (`prf/PREREGISTRATION-spark38.md`).
 
 ## Limits
 
@@ -80,7 +92,7 @@ score the Task 2 baseline on the BioGen questions.
   The dev sets are AI-written proxies, not NLM's expert questions. BioGen's questions are
   consumer and clinician health questions, and its judgments cover only what 2024 runs cited.
 - This covers only the PubMed part. The PMC part is defined by a `Challenge_PMCIDs.txt` list,
-  which was not on the challenge page as of 2026-10-23.
+  which was not on the challenge page as of 2026-10-24.
 - NIH's general challenge page describes the PMC part as about 50,000 CC0 articles. The task
   descriptions describe a Creative Commons, NIH-funded subset. Only the task descriptions were
   used here.
