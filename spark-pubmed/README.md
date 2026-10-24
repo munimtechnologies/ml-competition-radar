@@ -29,7 +29,9 @@ GitHub refused to create that repository twice on 2026-10-22 ("secondary rate li
   fixed cutoff policies (the task penalises wrong citations), the submission JSONL, a format
   validator and a scorer. Its predictions were pre-registered before any score existed.
 - `rerank/` is the second stage: NCBI's public-domain MedCPT cross-encoder rereads the top BM25
-  candidates on CPU. Its card check and CPU benchmark are graded (`rerank/RESULTS.md`).
+  candidates on CPU. Its card check, CPU benchmark and first whole-corpus scoring are graded
+  (`rerank/RESULTS.md`, `rerank/RESULTS-spark36.md`); `rerank/cutoff.py` measures cut-offs,
+  calibration and rank fusion.
 - `speed/` tested leaving very common words out of the BM25 query (`speed/RESULTS-spark37.md`).
 - `prf/` is a recall stage: pseudo-relevance feedback fused with the BM25 list. Its first job is
   pre-registered (`prf/PREREGISTRATION-spark38.md`).
@@ -39,7 +41,8 @@ GitHub refused to create that repository twice on 2026-10-22 ("secondary rate li
   Contradicts / Neutral / Not Relevant) into development data and measure how repeatable each
   label is. Every job was pre-registered.
 - `sparkdocs/` fetches the documents attached to the two challenge pages and extracts their text
-  (`sparkdocs/README.md` quotes the Task 1 rules that shape the pipeline).
+  (`sparkdocs/README.md` quotes the Task 1 rules that shape the pipeline and summarises the
+  announcement).
 
 ## Findings so far
 
@@ -66,11 +69,12 @@ GitHub refused to create that repository twice on 2026-10-22 ("secondary rate li
 - **Dropping common words is fast but costly.** Leaving out words found in over 400,000 records
   made queries 9 to 14 times faster but cut top-5 MRR from 0.793 to 0.538 on R; such words still
   carry a large BM25 weight. The Task 1 query stays unpruned (`speed/RESULTS-spark37.md`).
-- **Reranker.** MedCPT's cross-encoder reproduces its model card's scores in fp32 and costs about
-  437 ms per pair at 320 tokens on 2 CPUs. That allows about 82 candidates per question if 200
-  questions must run in 2 hours, so the first scoring job reranks 50. Dynamic int8 is 1.7-2.1x
-  faster and kept the card's order, but it shifted the six card scores by 2.0-6.7 points, so a
-  score cutoff set in fp32 would not carry over. int8 is dropped.
+- **Reranking works on the whole corpus.** MedCPT's cross-encoder (fp32, about 0.4-0.5 s per
+  question-article pair on 2 CPUs) reranking BM25's first 50 raised top-5 MRR on L from 0.086 to
+  0.150 (hits 6 to 13 of 43) and on the 65 BioGen questions from 0.317 to 0.432; Task 2 answers
+  built from reranked papers had more citations judged Supports (judged precision 0.817 vs
+  0.757). All 10 pre-registered predictions held (`rerank/RESULTS-spark36.md`). L's ceiling is
+  now recall: only 19 of its 43 targets are in BM25's first 50.
 - **BioGen's Contradicts label is the least repeatable.** Where the identical sentence citing the
   same paper was judged more than once, specific agreement is 0.85 for Supports and 0.22 for
   Contradicts (Scott's pi 0.23 overall). 92 of the 168 papers judged both ways in one topic got
@@ -81,10 +85,10 @@ GitHub refused to create that repository twice on 2026-10-22 ("secondary rate li
 Graded: corpus audit (10 of 11 predictions held), dev sets (10 of 11), FTS5 pilot and count
 (11 of 16), mirror repair and full count (7 of 8 graded), index build continued (13 of 13) and
 finished (14 of 16), reranker check (10 of 11), BioGen census (5 of 10, then 9 of 10), BioGen
-stance (8 of 9, then 5 of 8, then 9 of 9), query pruning (5 of 10). Running: MedCPT reranking
-of the BM25 candidates on L and BioGen (`rerank/PREREGISTRATION-spark36.md`). Queued with
-predictions written first: pseudo-relevance feedback on L, BioGen and R, plus BM25 at depth 1,000
-on L (`prf/PREREGISTRATION-spark38.md`).
+stance (8 of 9, then 5 of 8, then 9 of 9), query pruning (5 of 10), whole-corpus reranking (10 of
+10). Running: pseudo-relevance feedback on L, BioGen and R, plus BM25 at depth 1,000 on L
+(`prf/PREREGISTRATION-spark38.md`). Queued with predictions written first: reranking R, and
+cut-off, calibration and fusion counts on all three sets (`rerank/PREREGISTRATION-spark39.md`).
 
 ## Limits
 
