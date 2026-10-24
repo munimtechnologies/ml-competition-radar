@@ -29,12 +29,12 @@ GitHub refused to create that repository twice on 2026-10-22 ("secondary rate li
   fixed cutoff policies (the task penalises wrong citations), the submission JSONL, a format
   validator and a scorer. Its predictions were pre-registered before any score existed.
 - `rerank/` is the second stage: NCBI's public-domain MedCPT cross-encoder rereads the top BM25
-  candidates on CPU. Its card check, CPU benchmark and first whole-corpus scoring are graded
-  (`rerank/RESULTS.md`, `rerank/RESULTS-spark36.md`); `rerank/cutoff.py` measures cut-offs,
-  calibration and rank fusion.
+  candidates on CPU. Its card check, CPU benchmark, whole-corpus scoring and cut-off counts are
+  graded (`rerank/RESULTS.md`, `rerank/RESULTS-spark36.md`, `rerank/RESULTS-spark39.md`);
+  `rerank/depth_curve.py` measures how deep to rerank.
 - `speed/` tested leaving very common words out of the BM25 query (`speed/RESULTS-spark37.md`).
-- `prf/` is a recall stage: pseudo-relevance feedback fused with the BM25 list. Its first job is
-  pre-registered (`prf/PREREGISTRATION-spark38.md`).
+- `prf/` tested pseudo-relevance feedback fused with the BM25 list as a recall stage
+  (`prf/RESULTS-spark38.md`; not adopted).
 - `t2/` starts Task 2. `compose.py` is an extractive baseline that copies every sentence from a
   cited abstract and flags conflicting findings. `biogen_census.py` and `biogen_stance.py` turn
   NIST's TREC 2024 BioGen judgments (65 health questions, citations judged Supports /
@@ -69,26 +69,35 @@ GitHub refused to create that repository twice on 2026-10-22 ("secondary rate li
 - **Dropping common words is fast but costly.** Leaving out words found in over 400,000 records
   made queries 9 to 14 times faster but cut top-5 MRR from 0.793 to 0.538 on R; such words still
   carry a large BM25 weight. The Task 1 query stays unpruned (`speed/RESULTS-spark37.md`).
-- **Reranking works on the whole corpus.** MedCPT's cross-encoder (fp32, about 0.4-0.5 s per
-  question-article pair on 2 CPUs) reranking BM25's first 50 raised top-5 MRR on L from 0.086 to
-  0.150 (hits 6 to 13 of 43) and on the 65 BioGen questions from 0.317 to 0.432; Task 2 answers
-  built from reranked papers had more citations judged Supports (judged precision 0.817 vs
-  0.757). All 10 pre-registered predictions held (`rerank/RESULTS-spark36.md`). L's ceiling is
-  now recall: only 19 of its 43 targets are in BM25's first 50.
+- **Reranking works on the whole corpus, on every dev set.** MedCPT's cross-encoder (fp32, about
+  0.4-0.5 s per question-article pair on 2 CPUs) reranking BM25's first 50 raised top-5 MRR on L
+  from 0.086 to 0.150 (hits 6 to 13 of 43), on the 65 BioGen questions from 0.317 to 0.432, and
+  on R from 0.793 to 0.898 (hits 79 to 87 of 90). Task 2 answers built from reranked papers had
+  more citations judged Supports (judged precision 0.817 vs 0.757). Fusing its ranks with BM25's
+  did worse on all three sets (`rerank/RESULTS-spark36.md`, `rerank/RESULTS-spark39.md`).
+- **The cross-encoder's score cannot say when its first answer is wrong.** All 198 first answers
+  across the three dev sets scored above 0.9 (sigmoid), and that score separates right from wrong
+  first answers barely better than chance on R (AUROC 0.57) and BioGen (0.54), and worse than
+  chance on L (0.19). So a cut to fewer than five items cannot rest on it.
+- **L's targets are deep, not missing.** Plain BM25 reaches a target for 19 of L's 43 questions
+  in its first 50 candidates, 26 in 200, 32 in 300 and 36 in 1,000, at about the same query time
+  as depth 100. Pseudo-relevance feedback reached 24 in its first 100 but lowered precision on
+  BioGen and R, so it was dropped (`prf/RESULTS-spark38.md`).
 - **BioGen's Contradicts label is the least repeatable.** Where the identical sentence citing the
   same paper was judged more than once, specific agreement is 0.85 for Supports and 0.22 for
   Contradicts (Scott's pi 0.23 overall). 92 of the 168 papers judged both ways in one topic got
   both labels on the identical sentence (`t2/RESULTS-biogen-stance*.md`).
 
-## Status (2026-10-24)
+## Status (2026-10-24, late)
 
 Graded: corpus audit (10 of 11 predictions held), dev sets (10 of 11), FTS5 pilot and count
 (11 of 16), mirror repair and full count (7 of 8 graded), index build continued (13 of 13) and
 finished (14 of 16), reranker check (10 of 11), BioGen census (5 of 10, then 9 of 10), BioGen
 stance (8 of 9, then 5 of 8, then 9 of 9), query pruning (5 of 10), whole-corpus reranking (10 of
-10). Running: pseudo-relevance feedback on L, BioGen and R, plus BM25 at depth 1,000 on L
-(`prf/PREREGISTRATION-spark38.md`). Queued with predictions written first: reranking R, and
-cut-off, calibration and fusion counts on all three sets (`rerank/PREREGISTRATION-spark39.md`).
+10), pseudo-relevance feedback (6 of 11), reranking R with cut-off counts (7 of 10). Queued with
+predictions written first: reranking BM25's first 300 on L and first 200 on BioGen and R, to set
+the rerank depth (`rerank/PREREGISTRATION-spark40.md`). Planned submissions: `top:5`, and `top:1`
+as a second.
 
 ## Limits
 
