@@ -1,0 +1,13 @@
+{
+ "version": "0.1",
+ "db": "/data/spark28/spark_full.db",
+ "db_exists": true,
+ "db_bytes": 92506365952,
+ "files_built": 1306,
+ "docs": 39167523,
+ "last_file": "pubmed27n1306.xml.gz",
+ "min_built": 1306,
+ "min_docs": 39167523,
+ "ok": true,
+ "problem": null
+}

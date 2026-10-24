@@ -1,0 +1,97 @@
+{
+ "repo": "ncbi/MedCPT-Cross-Encoder",
+ "commit": "71caf65d4927987813984f54c284405a13fcca49",
+ "model_dir": "/data/models/medcpt-ce-71caf65",
+ "ok": true,
+ "total_bytes": 438937324,
+ "files": [
+  {
+   "file": "README.md",
+   "bytes": 4236,
+   "kind": "git",
+   "want": "66c40e55c2b6ffacac881df8a0b282f831c4d432",
+   "got": "66c40e55c2b6ffacac881df8a0b282f831c4d432",
+   "got_bytes": 4236,
+   "attempts": 1,
+   "seconds": 0.2,
+   "status": "downloaded"
+  },
+  {
+   "file": "added_tokens.json",
+   "bytes": 74,
+   "kind": "git",
+   "want": "e97f8f93bfdfff48a98fde37a3cd61007272f226",
+   "got": "e97f8f93bfdfff48a98fde37a3cd61007272f226",
+   "got_bytes": 74,
+   "attempts": 1,
+   "seconds": 0.1,
+   "status": "downloaded"
+  },
+  {
+   "file": "config.json",
+   "bytes": 741,
+   "kind": "git",
+   "want": "766e5596630ebbdbe72b10cc777a95bb749f2bc0",
+   "got": "766e5596630ebbdbe72b10cc777a95bb749f2bc0",
+   "got_bytes": 741,
+   "attempts": 1,
+   "seconds": 0.1,
+   "status": "downloaded"
+  },
+  {
+   "file": "pytorch_model.bin",
+   "bytes": 437998062,
+   "kind": "sha256",
+   "want": "61d5ccd48869e03500544525fc231641d7daa9ba267b202c82724750038dc1e0",
+   "got": "61d5ccd48869e03500544525fc231641d7daa9ba267b202c82724750038dc1e0",
+   "got_bytes": 437998062,
+   "attempts": 1,
+   "seconds": 8.9,
+   "status": "downloaded"
+  },
+  {
+   "file": "special_tokens_map.json",
+   "bytes": 228,
+   "kind": "git",
+   "want": "8e5082c800f715935ea0eb822faad62f4fac1ada",
+   "got": "8e5082c800f715935ea0eb822faad62f4fac1ada",
+   "got_bytes": 228,
+   "attempts": 1,
+   "seconds": 0.1,
+   "status": "downloaded"
+  },
+  {
+   "file": "tokenizer.json",
+   "bytes": 706277,
+   "kind": "git",
+   "want": "e68fee3b6ebe7cc02f2b5f9753071bdf2c401ecf",
+   "got": "e68fee3b6ebe7cc02f2b5f9753071bdf2c401ecf",
+   "got_bytes": 706277,
+   "attempts": 1,
+   "seconds": 0.2,
+   "status": "downloaded"
+  },
+  {
+   "file": "tokenizer_config.json",
+   "bytes": 1556,
+   "kind": "git",
+   "want": "85ae100df867ca6a1387ae02918eb02fdc03383e",
+   "got": "85ae100df867ca6a1387ae02918eb02fdc03383e",
+   "got_bytes": 1556,
+   "attempts": 1,
+   "seconds": 0.1,
+   "status": "downloaded"
+  },
+  {
+   "file": "vocab.txt",
+   "bytes": 226150,
+   "kind": "git",
+   "want": "9d595d9c20feef7012f174efaaa5eb621910588e",
+   "got": "9d595d9c20feef7012f174efaaa5eb621910588e",
+   "got_bytes": 226150,
+   "attempts": 1,
+   "seconds": 0.1,
+   "status": "downloaded"
+  }
+ ]
+}
