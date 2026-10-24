@@ -21,6 +21,9 @@ challenge's tie-breakers.
 - `test_prune.py`: 6 fake-data tests on a five-record FTS5 index (no network).
 - `PREREGISTRATION.md`: predictions for job `spark37-speed-v1` (caps of 400,000 and 2,000,000
   records on R, L and BioGen), written before the job was filed.
+- `PREREGISTRATION-spark37-addendum.md`: the one change made for `spark37-speed-v3` before it
+  ran (memory ask 2 GB to 4.5 GB, so the job waits for the machine that holds the index); V10 is
+  withdrawn and replaced by V10b.
 
 ## Use
 
@@ -31,11 +34,13 @@ python t1.py score --ranked p400k_r/ranked.jsonl --gold dev/gold.jsonl --out-dir
 
 ## Status (2026-10-24)
 
-The pre-registration was committed at 05:42:38 UTC (commit `5abdd686`). `spark37-speed-v1` was
-placed on the Dell, which holds only a partial copy of the index (112 of 1,306 files), and
-`host_guard` stopped it at 06:22 UTC with exit 3 before any query ran: check K1, "premise not
-met", exactly as pre-registered. Nothing was graded. It is filed again unchanged (same code, steps
-and predictions) as `spark37-speed-v2`, and results will be graded in `RESULTS-spark37.md`
-against the same `PREREGISTRATION.md`.
+The pre-registration was committed at 05:42:38 UTC (commit `5abdd686`). `spark37-speed-v1` and
+`spark37-speed-v2` were both placed on the Dell, which holds only a partial copy of the index
+(112 of 1,306 files), and `host_guard` stopped each one with exit 3 before any query ran (v2 at
+08:35 UTC): check K1, "premise not met", as pre-registered. Nothing was graded. The compute runner
+picks the machine with the most memory left after a job's expected use, and with the Blade's two
+slots full the Dell took the small 2 GB ask. `spark37-speed-v3` therefore asks for 4.5 GB, with
+nothing else changed; see `PREREGISTRATION-spark37-addendum.md`. Results will be graded in
+`RESULTS-spark37.md`.
 
 Contact: MV2, Munim, Inc., mv2@munimtech.com
