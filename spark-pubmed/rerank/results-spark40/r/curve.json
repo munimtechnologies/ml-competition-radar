@@ -1,0 +1,52 @@
+{
+ "version": "0.1.0",
+ "needs": 90,
+ "no_gold": 0,
+ "rerank_depth": 200,
+ "skipped_depths": [
+  300
+ ],
+ "depths": {
+  "20": {
+   "reach": 84,
+   "mrr": 0.8815,
+   "hit5": 84,
+   "hit1": 75,
+   "gained_vs_base": 0,
+   "lost_vs_base": 3
+  },
+  "50": {
+   "reach": 88,
+   "mrr": 0.8981,
+   "hit5": 87,
+   "hit1": 75,
+   "gained_vs_base": 0,
+   "lost_vs_base": 0
+  },
+  "100": {
+   "reach": 89,
+   "mrr": 0.9093,
+   "hit5": 88,
+   "hit1": 76,
+   "gained_vs_base": 1,
+   "lost_vs_base": 0
+  },
+  "150": {
+   "reach": 90,
+   "mrr": 0.913,
+   "hit5": 89,
+   "hit1": 76,
+   "gained_vs_base": 2,
+   "lost_vs_base": 0
+  },
+  "200": {
+   "reach": 90,
+   "mrr": 0.913,
+   "hit5": 89,
+   "hit1": 76,
+   "gained_vs_base": 2,
+   "lost_vs_base": 0
+  }
+ },
+ "base_depth": 50
+}

@@ -1,0 +1,12 @@
+{
+ "version": "0.1.0",
+ "needs": 90,
+ "rerank_depth": 200,
+ "pairs": 18000,
+ "seconds": 9140.6,
+ "ms_per_pair": 507.8,
+ "median_need_seconds": 101.52,
+ "max_need_seconds": 132.62,
+ "needs_top1_changed": 24,
+ "missing_text": 0
+}

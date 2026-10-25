@@ -1,0 +1,15 @@
+{
+ "version": "0.1.0",
+ "problems": [],
+ "topics": 65,
+ "supports": {
+  "topics": 65,
+  "pmids": 3000,
+  "distinct_pmids": 2990
+ },
+ "relevant": {
+  "topics": 65,
+  "pmids": 3247,
+  "distinct_pmids": 3236
+ }
+}

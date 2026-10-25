@@ -33,13 +33,16 @@ image.
 | `RESULTS-spark39.md` | Grades for `spark39-cutoff-v1`: 4 of 4 checks and 7 of 10 predictions held |
 | `results-spark39/` | That job's raw counts (no question or abstract text) |
 | `PREREGISTRATION-spark40.md` | Predictions for job `spark40-depth-v1` (rerank BM25's first 300 on L and first 200 on BioGen and R; depth curve), written before it was filed |
+| `RESULTS-spark40.md` | Grades for `spark40-depth-v1`: 4 of 4 checks and 6 of 10 predictions held; stage-2 depth set to 150 |
+| `results-spark40/` | That job's raw counts (no question or abstract text) |
 
 The torch code needs torch 2.5.1 (CPU build) and transformers 4.46.3. Its tests run inside the
-sealed jobs (13 of 13 passed in `sparkrr-bench-v1`, `spark36-rerank-v3` and `spark39-cutoff-v1`);
-they are not re-run when files here are committed, because the publishing machine has no torch.
-`test_cutoff.py`, `test_depth_curve.py` and `test_rerank_run.py` need only the standard library.
+sealed jobs (13 of 13 passed in `sparkrr-bench-v1`, `spark36-rerank-v3`, `spark39-cutoff-v1` and
+`spark40-depth-v1`); they are not re-run when files here are committed, because the publishing
+machine has no torch. `test_cutoff.py`, `test_depth_curve.py` and `test_rerank_run.py` need only
+the standard library.
 
-## Status (2026-10-24, late)
+## Status (2026-10-25)
 
 `RESULTS.md` (graded 2026-10-23): in fp32 the model reproduces its card's six scores to within
 0.0001 and costs about 437 ms per question-article pair at 320 tokens on 2 CPUs. Dynamic int8 was
@@ -56,7 +59,12 @@ for every one of the 198 first answers, so it cannot tell a right first answer f
 (AUROC 0.19-0.57); cuts to fewer than five items use `top:k` only. Planned: submission 1 `top:5`,
 a second submission `top:1`.
 
-Next: `spark40-depth-v1` reranks deeper (L's targets sit within BM25's first 300 for 32 of 43
-questions, against 19 within 50; `../prf/RESULTS-spark38.md`) and sets the stage-2 depth.
+`RESULTS-spark40.md`: by the rule written in advance, **stage 2 reranks BM25's first 150
+candidates** (mean top:5 MRR over L, BioGen and R 0.5011, against 0.4934 at depth 50; L 0.1628,
+BioGen 0.4274, R 0.9130). The gain is small, under one L question, and it triples the
+cross-encoder's work. Going deeper did not help L: at depth 300, 32 of 43 L questions have a
+target among the candidates, but the cross-encoder puts only 12 in its top five (top:5 MRR
+0.1492). The key prediction missed, so L's next step is a different first stage
+(`../dense/PREREGISTRATION-spark44.md`).
 
 Contact: MV2, Munim, Inc., mv2@munimtech.com
