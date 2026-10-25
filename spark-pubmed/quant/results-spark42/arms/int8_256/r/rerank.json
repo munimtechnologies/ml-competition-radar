@@ -1,0 +1,16 @@
+{
+ "version": "0.1.0",
+ "needs": 90,
+ "rerank_depth": 50,
+ "pairs": 4500,
+ "seconds": 911.2,
+ "ms_per_pair": 202.5,
+ "median_need_seconds": 10.07,
+ "max_need_seconds": 13.17,
+ "needs_top1_changed": 17,
+ "missing_text": 0,
+ "quant_run_version": "0.1.0",
+ "variant": "int8_256",
+ "quantize": true,
+ "max_length": 256
+}

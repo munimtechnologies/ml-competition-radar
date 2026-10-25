@@ -1,0 +1,16 @@
+{
+ "version": "0.1.0",
+ "needs": 43,
+ "rerank_depth": 50,
+ "pairs": 2150,
+ "seconds": 820.7,
+ "ms_per_pair": 381.7,
+ "median_need_seconds": 19.13,
+ "max_need_seconds": 28.43,
+ "needs_top1_changed": 0,
+ "missing_text": 0,
+ "quant_run_version": "0.1.0",
+ "variant": "fp32_512",
+ "quantize": false,
+ "max_length": 512
+}

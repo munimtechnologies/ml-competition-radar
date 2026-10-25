@@ -16,6 +16,21 @@ settings that `../rerank/rerank.py` already has:
 Each variant rescores the same 50 candidates per question that the fp32/512 runs scored on the
 three dev sets (L, BioGen Supports, R), so a change in the top five comes from the variant alone.
 
+## Result (`RESULTS-spark42.md`, graded 2026-10-25)
+
+4 of 4 checks and 4 of 10 predictions held; the key prediction missed. **No cheaper variant
+passed the pre-registered rule, so stage 2 stays fp32 with 512-token inputs.**
+
+| Variant | Mean top:5 MRR (L, BioGen, R) | L MRR | ms per pair | L speed-up |
+|---|---|---|---|---|
+| fp32/512 (base) | 0.4934 | 0.1500 | 381.7 (L) | 1.00 |
+| int8/512 | 0.4586 | 0.0814 | 251.7 | 1.77 |
+| fp32/256 | 0.4778 | 0.1287 | 324.5 | 1.19 |
+| int8/256 | 0.4360 | 0.0636 | 181.3 | 2.12 |
+
+Dynamic int8 reorders the top five on almost every question (the same top-five set on 5 of 43 L
+questions) and halves L's MRR. 256-token inputs keep the ranking better but save only about 16%.
+
 ## Files
 
 - `quant_run.py` 0.1.0: runs `../rerank/rerank_run.py` with `CrossEncoder(max_length, quantize)`
@@ -25,14 +40,12 @@ three dev sets (L, BioGen Supports, R), so a change in the top five comes from t
 - `test_quant.py`: 8 tests (fake data, plus one on the published `rerank_run.py`).
 - `PREREGISTRATION-spark42.md`: the job's design, 10 predictions and the decision rule, written
   before the job was filed.
+- `RESULTS-spark42.md`: the grade, word for word, and what it decides.
+- `results-spark42/`: the job's count files (`table.json`, each variant's `rerank.json`, the
+  host, model and gold checks). No question text.
 
 The job also uses copies of `t2dev.py` (BioGen gold) and `fetch_code.py` (fetches the published
 `t1_runner`, `t2` and `rerank` code at pinned commits).
-
-## Status (2026-10-25)
-
-Job `spark42-quant-v1` is queued. Results will be graded word for word against the
-pre-registration in `RESULTS-spark42.md`.
 
 Prior art: int8 quantisation of BERT-family models (for example Q8BERT, 2019) and input
 truncation are standard. What is new here is only the measurement for MedCPT's cross-encoder on
