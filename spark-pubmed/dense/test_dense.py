@@ -120,6 +120,38 @@ class Build(unittest.TestCase):
             again = dense_build.build(idx, tmp, **kw)
             self.assertEqual((again["built"], again["kept"], again["vectors"], again["ok"]), (0, 2, 50, True))
             self.assertEqual(len(asked), 4)
+            self.assertEqual((again["fidelity"], again["records"][0]["fidelity_source"]), (f, "saved"))
+            self.assertEqual((again["out_of_span"], again["pmid_max"]), (0, 1000140))
+
+    def test_resume_after_stop_keeps_fidelity(self):
+        data = {0: chunk(0, 30, 3), 1: chunk(1, 20, 4)}
+        open_url, asked = fake_server(data)
+        q = np.random.default_rng(5).normal(size=(4, DIM)).astype(np.float32)
+        with tempfile.TemporaryDirectory() as d:
+            idx, tmp = os.path.join(d, "idx"), os.path.join(d, "tmp")
+            kw = dict(first=1, queries=q, base="mem/", open_url=open_url, dim=DIM, block=7, min_free=0)
+            first = dense_build.build(idx, tmp, chunks=(1,), **kw)
+            self.assertTrue(first["ok"], first["problems"])
+            # As 0.1.0 left a stopped run: no saved fidelity record, a half-finished download.
+            os.remove(os.path.join(idx, "fidelity_1.json"))
+            with open(os.path.join(tmp, "embeds_chunk_0.npy.part"), "wb") as f:
+                f.write(b"half")
+            rep = dense_build.build(idx, tmp, chunks=(0, 1), **kw)
+            self.assertTrue(rep["ok"], rep["problems"])
+            self.assertEqual((rep["built"], rep["kept"], rep["vectors"]), (1, 1, 50))
+            r1 = rep["records"][0]
+            self.assertEqual((r1["chunk"], r1["status"], r1["fidelity_source"]), (1, "kept", "recomputed"))
+            self.assertEqual(rep["fidelity"], first["fidelity"])
+            self.assertEqual((rep["out_of_span"], rep["pmid_max"], rep["stale_files_removed"]), (0, 1000140, 1))
+            self.assertEqual(len(asked), 5)
+            self.assertEqual(os.listdir(tmp), [])
+            again = dense_build.build(idx, tmp, chunks=(0, 1), **kw)
+            self.assertEqual((again["records"][0]["fidelity_source"], again["fidelity"]),
+                             ("saved", first["fidelity"]))
+            self.assertEqual(len(asked), 5)
+            other = dense_build.build(idx, tmp, chunks=(0, 1), **dict(kw, queries=q[:2]))
+            self.assertEqual((other["records"][0]["fidelity_source"], other["fidelity"]["queries"]),
+                             ("recomputed", 2))
 
     def test_failed_first_chunk_stops(self):
         open_url, asked = fake_server({0: chunk(0, 5, 6)})

@@ -1,5 +1,5 @@
 """One-bit index of NCBI's precomputed MedCPT PubMed embeddings, for a dense first stage in SPARK
-Task 1 (job spark44-dense-v1).
+Task 1 (job spark44-dense, first filed as -v1).
 
 MV2 of Munim, Inc. (made with AI agents working in his name). Apache-2.0.
 
@@ -22,9 +22,17 @@ With --queries Q.npy, the first chunk also measures what one bit per dimension l
 query, the exact float top-k within that chunk against the bit-score top-k (overlap@10,
 overlap@100, and the share of the exact top 10 / top 100 inside the bit top 100 / top 1,000).
 
+0.1.1 (after spark44-dense-v1 was stopped by its host during the build): the fidelity record is
+saved next to the index (fidelity_k.json, with the sha256 of the queries). When the first chunk
+is kept from a stopped run, its saved record is reused if the queries match; otherwise its floats
+are downloaded once more and compared with the kept bits. Kept chunks now count towards
+pmid_max and out_of_span, files left in the download folder by a stopped run are removed first,
+and one progress line per chunk goes to stderr.
+
   python dense_build.py --index-dir D --tmp-dir D --out-dir D [--queries Q.npy]
 """
 import argparse
+import hashlib
 import json
 import os
 import shutil
@@ -34,7 +42,7 @@ import urllib.request
 
 import numpy as np
 
-VERSION = "0.1.0"
+VERSION = "0.1.1"
 BASE = "https://ftp.ncbi.nlm.nih.gov/pub/lu/MedCPT/pubmed_embeddings/"
 CHUNKS = tuple(range(38))
 FIRST = 36
@@ -146,6 +154,52 @@ def fidelity(emb, bits, queries, dim=DIM, block=BLOCK, k_exact=100, k_bits=1000)
             "exact10_in_bits100": share(e, b, 10, 100), "exact100_in_bits1000": share(e, b, 100, 1000)}
 
 
+def qdigest(queries):
+    return hashlib.sha256(np.ascontiguousarray(queries, dtype=np.float32).tobytes()).hexdigest()
+
+
+def save_fidelity(index_dir, k, queries, fid):
+    path = os.path.join(index_dir, "fidelity_%d.json" % k)
+    with open(path + ".part", "w", encoding="utf-8") as f:
+        json.dump({"queries_sha256": qdigest(queries), "fidelity": fid}, f)
+    os.replace(path + ".part", path)
+
+
+def pmid_stats(pmids, k):
+    n = len(pmids)
+    return {"n": n, "pmid_min": int(pmids.min()) if n else None, "pmid_max": int(pmids.max()) if n else None,
+            "out_of_span": int(np.count_nonzero(pmids // SPAN != k))}
+
+
+def kept_fidelity(k, index_dir, tmp_dir, queries, base=BASE, open_url=opener, dim=DIM, block=BLOCK):
+    """Fidelity of a chunk an earlier, stopped run built: its saved record if the queries match,
+    else the floats are downloaded once more and compared with the kept bits."""
+    path = os.path.join(index_dir, "fidelity_%d.json" % k)
+    if os.path.exists(path):
+        with open(path, encoding="utf-8") as f:
+            saved = json.load(f)
+        if saved.get("queries_sha256") == qdigest(queries):
+            return {"fidelity": saved["fidelity"], "fidelity_source": "saved"}
+    emb_path = os.path.join(tmp_dir, "embeds_chunk_%d.npy" % k)
+    got = download(base + os.path.basename(emb_path), emb_path, open_url)
+    out = {"fidelity_download": got}
+    if got["status"] != "ok":
+        remove(emb_path)
+        out["problems"] = ["fidelity: %s: %s" % (os.path.basename(emb_path), got.get("error") or got["status"])]
+        return out
+    emb = np.load(emb_path, mmap_mode="r")
+    bits = np.load(os.path.join(index_dir, "bits_%d.npy" % k), mmap_mode="r")
+    if emb.dtype != np.float32 or emb.shape != (bits.shape[0], dim):
+        out["problems"] = ["fidelity: embeddings are %s %s, kept bits have %d rows"
+                           % (emb.dtype, emb.shape, bits.shape[0])]
+    else:
+        out.update(fidelity=fidelity(emb, bits, queries, dim, block), fidelity_source="recomputed")
+        save_fidelity(index_dir, k, queries, out["fidelity"])
+    del emb, bits
+    remove(emb_path)
+    return out
+
+
 def build_chunk(k, index_dir, tmp_dir, mu, queries=None, base=BASE, open_url=opener, dim=DIM,
                 block=BLOCK):
     """Download, check and binarise chunk k. Returns (record, mu); mu is set from this chunk if None."""
@@ -153,7 +207,9 @@ def build_chunk(k, index_dir, tmp_dir, mu, queries=None, base=BASE, open_url=ope
     pmids_path = os.path.join(index_dir, "pmids_%d.npy" % k)
     rec = {"chunk": k}
     if os.path.exists(bits_path) and os.path.exists(pmids_path):
-        rec.update(status="kept", n=int(np.load(pmids_path, mmap_mode="r").shape[0]))
+        rec.update(pmid_stats(np.load(pmids_path), k), status="kept")
+        if queries is not None:
+            rec.update(kept_fidelity(k, index_dir, tmp_dir, queries, base, open_url, dim, block))
         return rec, mu
     emb_path = os.path.join(tmp_dir, "embeds_chunk_%d.npy" % k)
     ids_path = os.path.join(tmp_dir, "pmids_chunk_%d.json" % k)
@@ -179,8 +235,7 @@ def build_chunk(k, index_dir, tmp_dir, mu, queries=None, base=BASE, open_url=ope
         rec.update(status="error", problems=problems)
         return rec, mu
     n = len(pmids)
-    rec.update(n=n, pmid_min=int(pmids.min()) if n else None, pmid_max=int(pmids.max()) if n else None,
-               out_of_span=int(np.count_nonzero(pmids // SPAN != k)))
+    rec.update(pmid_stats(pmids, k))
     if mu is None:
         mu = mean_rows(emb, block)
         np.save(os.path.join(index_dir, "mu.npy"), mu)
@@ -197,6 +252,7 @@ def build_chunk(k, index_dir, tmp_dir, mu, queries=None, base=BASE, open_url=ope
     if queries is not None:
         bits = np.load(bits_path, mmap_mode="r")
         rec["fidelity"] = fidelity(emb, bits, queries, dim, block)
+        save_fidelity(index_dir, k, queries, rec["fidelity"])
         del bits
     del emb
     remove(emb_path, ids_path)
@@ -204,10 +260,21 @@ def build_chunk(k, index_dir, tmp_dir, mu, queries=None, base=BASE, open_url=ope
     return rec, mu
 
 
+def clear_stale(index_dir, tmp_dir):
+    """Remove what a stopped run left: every file in the download folder, and .part files in the
+    index folder. Returns how many files were removed."""
+    stale = [os.path.join(tmp_dir, n) for n in os.listdir(tmp_dir)]
+    stale += [os.path.join(index_dir, n) for n in os.listdir(index_dir) if n.endswith(".part")]
+    stale = [p for p in stale if os.path.isfile(p)]
+    remove(*stale)
+    return len(stale)
+
+
 def build(index_dir, tmp_dir, chunks=CHUNKS, first=FIRST, queries=None, base=BASE, open_url=opener,
           dim=DIM, block=BLOCK, min_free=MIN_FREE, disk_free=lambda p: shutil.disk_usage(p).free):
     os.makedirs(index_dir, exist_ok=True)
     os.makedirs(tmp_dir, exist_ok=True)
+    stale = clear_stale(index_dir, tmp_dir)
     mu_path = os.path.join(index_dir, "mu.npy")
     mu = np.load(mu_path) if os.path.exists(mu_path) else None
     order = [first] + [k for k in chunks if k != first]
@@ -220,6 +287,8 @@ def build(index_dir, tmp_dir, chunks=CHUNKS, first=FIRST, queries=None, base=BAS
         rec, mu = build_chunk(k, index_dir, tmp_dir, mu, queries if k == first else None, base,
                               open_url, dim, block)
         recs.append(rec)
+        print(json.dumps({x: rec[x] for x in ("chunk", "status", "n", "seconds", "fidelity_source")
+                          if x in rec}), file=sys.stderr, flush=True)
         problems += ["chunk %d: %s" % (k, p) for p in rec.get("problems", [])]
         if mu is None:
             problems.append("no mean vector: chunk %d failed, so no other chunk is built" % k)
@@ -233,7 +302,8 @@ def build(index_dir, tmp_dir, chunks=CHUNKS, first=FIRST, queries=None, base=BAS
             "bits_bytes": vectors * (dim // 8),
             "out_of_span": sum(r.get("out_of_span", 0) for r in done),
             "pmid_max": max((r["pmid_max"] for r in done if r.get("pmid_max") is not None), default=None),
-            "fidelity": fid[0] if fid else None, "seconds": round(time.time() - t0, 1),
+            "fidelity": fid[0] if fid else None, "stale_files_removed": stale,
+            "seconds": round(time.time() - t0, 1),
             "problems": problems, "ok": not problems and len(done) == len(order), "records": recs}
 
 
