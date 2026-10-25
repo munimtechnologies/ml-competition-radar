@@ -21,22 +21,30 @@ the two planned submissions), each checked with `t1.py`'s validator.
 
 ```
 python spark_t1.py --db spark_full.db --questions questions.jsonl --out-dir out \
-    --scorer medcpt --model-dir medcpt-ce --depth 50 --team-id TEAM
+    --scorer medcpt --model-dir medcpt-ce --depth 150 --team-id TEAM
 python spark_t1.py ... --scorer none      # BM25 only, no torch needed
 ```
 
 `agree.py` checks that the system reproduces an earlier ranking and that a resumed run writes
 byte-identical submission files. `Dockerfile` is the planned image.
 
-## Status (2026-10-24)
+| File | What it is |
+|---|---|
+| `PREREGISTRATION-spark41.md` | Predictions for job `spark41-system-v1`, written before it ran |
+| `RESULTS-spark41.md` | Grades: 3 of 3 checks and 7 of 8 predictions held |
+| `results-spark41/` | That job's run, score, agreement and resume-check counts (no question text) |
 
-- `spark_t1.py` 0.1.0 and `agree.py` 0.1.0 with unit tests on a tiny real FTS5 index and a fake
-  cross-encoder.
-- Queued with predictions written first: `spark41-system-v1` runs the whole system on the 90 R
-  questions at depth 50, where it should reproduce spark39's graded result exactly (top-5 MRR
-  0.8981) and time every question (`PREREGISTRATION-spark41.md`).
-- The rerank depth is still open (`../rerank/PREREGISTRATION-spark40.md`); the default of 50 is
-  the depth measured so far.
+## Status (2026-10-25)
+
+- `RESULTS-spark41.md`: on the 90 R questions at depth 50, the whole system reproduced spark39's
+  graded ranking exactly (same top five on 90 of 90; top:5 MRR 0.8981, top:1 0.8333). A second run
+  on the same folder resumed all 90 answers in 6 s and wrote byte-identical submission files.
+  Median time per question was 75.0 s on 2 CPUs (BM25 43.4 s, cross-encoder 31.3 s), on a host
+  shared with another job. Peak memory was 2.67 GB against a predicted 1.5 GB (the only miss).
+  So **`spark_t1.py` is the Task 1 entry point.**
+- Depth: **150**, set by `../rerank/RESULTS-spark40.md`. The code's default is still 50 until the
+  whole-pipeline timing job at depth 150 (`spark43`, after the cheaper-scorer test
+  `../quant/PREREGISTRATION-spark42.md` is graded) confirms it.
 - **The Docker image has not been built or run yet.** Open items: whether the challenge mounts
   the corpus or expects it inside the image (the index is about 92.5 GB); the index uses SQLite's
   WAL journal, so its folder must be writable unless it is converted first; the challenge has not
