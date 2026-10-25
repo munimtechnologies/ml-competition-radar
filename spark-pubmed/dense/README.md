@@ -19,18 +19,20 @@ PMIDs up to about 37.4 million (early 2024).
 | `test_dense.py` | 10 fake-data tests (numpy only, no torch, no network) |
 | `PREREGISTRATION-spark44.md` | Predictions for job `spark44-dense`, written before it was first filed |
 | `NOTE-spark44-v2.md` | Why the job was filed again as `-v2`, and the one code change that made |
+| `NOTE-spark44-v3.md` | Why it was filed again as `-v3`: `-v2` was placed on a machine without the whole index, and its index check stopped it (no code change) |
 
 The tests run inside the sealed job (python 3.12, numpy 2.1.3, torch 2.5.1+cpu, transformers
 4.46.3). They are not re-run when these files are committed.
 
-## Status (2026-10-25)
+## Status (2026-10-25, about 19:30 UTC)
 
-`spark44-dense-v1` was stopped by its host during the index build, after its first eight steps
-had exited 0. Nothing from it is graded. `spark44-dense-v2` is queued with `dense_build.py` 0.1.1
-and keeps the chunks already built (`NOTE-spark44-v2.md`). It measures, on L, BioGen and R,
-whether BM25's first 100 plus dense's first 50 reach more targets than BM25's first 150 (the
-depth spark40 chose). The adoption rule is written in the pre-registration. Nothing has been
-measured yet.
+Nothing has been measured yet. `spark44-dense-v1` was stopped by its host during the index build,
+after its first eight steps had exited 0. `spark44-dense-v2` was placed on the other machine,
+which holds only a partial copy of the data (112 of 1,306 files). Its index check stopped it with
+exit 3 four minutes after it started, before any download or build. `spark44-dense-v3` is queued
+with the same code (`NOTE-spark44-v3.md`). It measures, on L, BioGen and R, whether BM25's first
+100 plus dense's first 50 reach more targets than BM25's first 150 (the depth spark40 chose). The
+adoption rule is written in the pre-registration, which is unchanged.
 
 Prior art: MedCPT and NCBI's released embeddings; binary embedding retrieval (for example BPR,
 Yamada et al. 2021); hybrid BM25 + dense candidate sets. New here is only the measurement: one bit
