@@ -42,9 +42,11 @@ byte-identical submission files. `Dockerfile` is the planned image.
   Median time per question was 75.0 s on 2 CPUs (BM25 43.4 s, cross-encoder 31.3 s), on a host
   shared with another job. Peak memory was 2.67 GB against a predicted 1.5 GB (the only miss).
   So **`spark_t1.py` is the Task 1 entry point.**
-- Depth: **150**, set by `../rerank/RESULTS-spark40.md`. The code's default is still 50 until the
-  whole-pipeline timing job at depth 150 (`spark43`, after the cheaper-scorer test
-  `../quant/PREREGISTRATION-spark42.md` is graded) confirms it.
+- Depth: **150**, set by `../rerank/RESULTS-spark40.md`. Scorer: **fp32 with 512-token inputs**;
+  the cheaper int8 and 256-token settings failed their pre-registered rule
+  (`../quant/RESULTS-spark42.md`), so no new option is added. The code's default depth is still 50
+  until a whole-pipeline timing job at depth 150 (`spark43`) confirms it. That job waits for the
+  dense first-stage test (`../dense/`), because it may change the candidate set.
 - **The Docker image has not been built or run yet.** Open items: whether the challenge mounts
   the corpus or expects it inside the image (the index is about 92.5 GB); the index uses SQLite's
   WAL journal, so its folder must be writable unless it is converted first; the challenge has not
