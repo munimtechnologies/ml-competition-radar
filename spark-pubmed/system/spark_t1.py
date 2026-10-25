@@ -21,8 +21,11 @@ The model loads from a local folder with HF_HUB_OFFLINE and TRANSFORMERS_OFFLINE
 nothing here opens a network connection. Standard library only, except --scorer medcpt
 (rerank.py: torch + transformers), imported only when used, so the tests need neither.
 
+0.1.1: the default depth is 150, the depth spark40-depth-v1's pre-registered rule chose
+(rerank/RESULTS-spark40.md); 0.1.0 defaulted to 50. Nothing else changed.
+
   python spark_t1.py --db DB --questions F --out-dir D [--scorer medcpt --model-dir M | --scorer none]
-         [--depth 50] [--rerank-depth N] [--policies top:5,top:1] [--submission-ids 1,2]
+         [--depth 150] [--rerank-depth N] [--policies top:5,top:1] [--submission-ids 1,2]
          [--team-id TEAM] [--max-minutes 0] [--threads 2] [--batch 8]
 Exit 0 = complete and valid, 1 = a submission file failed validation, 4 = stopped by
 --max-minutes (run the same command again to continue).
@@ -42,8 +45,8 @@ sys.path[:0] = [d for d in (HERE, os.path.join(HERE, "..", "t1_runner"), os.path
 import rerank_run  # noqa: E402
 import t1  # noqa: E402
 
-VERSION = "0.1.0"
-DEPTH = 50  # the stage-2 depth measured so far (spark36, spark39); spark40-depth-v1 decides the final one
+VERSION = "0.1.1"
+DEPTH = 150  # chosen by spark40-depth-v1's pre-registered rule (best mean top:5 MRR of the eligible depths)
 POLICIES = ("top:5", "top:1")
 STOPPED = 4
 

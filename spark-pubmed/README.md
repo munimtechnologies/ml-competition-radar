@@ -36,10 +36,11 @@ GitHub refused to create that repository twice on 2026-10-22 ("secondary rate li
   on the same candidates (`quant/RESULTS-spark42.md`; neither adopted).
 - `system/` joins the stages into the one command the challenge's no-network Docker image runs:
   `spark_t1.py` turns a questions file into the two planned submission files, resumes after a
-  stop and times every question (`system/RESULTS-spark41.md`; the image itself is not built yet).
+  stop and times every question (`system/RESULTS-spark41.md`; 0.1.1 defaults to the chosen depth
+  of 150; the image itself is not built yet).
 - `dense/` tests a dense first stage next to BM25: a one-bit index (about 3.5 GB) of the MedCPT
   PubMed embeddings that NCBI publishes, searched with NCBI's MedCPT Query Encoder
-  (`dense/PREREGISTRATION-spark44.md`, `dense/NOTE-spark44-v2.md`).
+  (`dense/PREREGISTRATION-spark44.md`, `dense/NOTE-spark44-v2.md`, `dense/NOTE-spark44-v3.md`).
 - `speed/` tested leaving very common words out of the BM25 query (`speed/RESULTS-spark37.md`).
 - `prf/` tested pseudo-relevance feedback fused with the BM25 list as a recall stage
   (`prf/RESULTS-spark38.md`; not adopted).
@@ -110,7 +111,7 @@ GitHub refused to create that repository twice on 2026-10-22 ("secondary rate li
   Contradicts (Scott's pi 0.23 overall). 92 of the 168 papers judged both ways in one topic got
   both labels on the identical sentence (`t2/RESULTS-biogen-stance*.md`).
 
-## Status (2026-10-25)
+## Status (2026-10-25, about 19:30 UTC)
 
 Graded: corpus audit (10 of 11 predictions held), dev sets (10 of 11), FTS5 pilot and count
 (11 of 16), mirror repair and full count (7 of 8 graded), index build continued (13 of 13) and
@@ -118,9 +119,11 @@ finished (14 of 16), reranker check (10 of 11), BioGen census (5 of 10, then 9 o
 stance (8 of 9, then 5 of 8, then 9 of 9), query pruning (5 of 10), whole-corpus reranking (10 of
 10), pseudo-relevance feedback (6 of 11), reranking R with cut-off counts (7 of 10), rerank depth
 (6 of 10), the whole system on R (7 of 8), cheaper cross-encoder settings (4 of 10). Queued with
-predictions written first: the dense first stage (`dense/PREREGISTRATION-spark44.md`; its first
-run was stopped by the host and is filed again, `dense/NOTE-spark44-v2.md`). Planned submissions:
-`top:5`, and `top:1` as a second.
+predictions written first: the dense first stage (`dense/PREREGISTRATION-spark44.md`). Its first
+run was stopped by the host, and its second was placed on a machine without the whole index and
+stopped by its own index check, so it is filed a third time with the same code
+(`dense/NOTE-spark44-v2.md`, `dense/NOTE-spark44-v3.md`). Planned submissions: `top:5`, and
+`top:1` as a second.
 
 ## Limits
 

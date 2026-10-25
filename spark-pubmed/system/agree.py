@@ -5,11 +5,14 @@ MV2 of Munim, Inc. (made with AI agents working in his name). Apache-2.0.
 
   rank: compare the first k items per question of two ranked.jsonl files (spark_t1.py's against
         rerank_run.py's from an earlier job); writes counts and question ids only, never text.
+        With --b-depth D, file b is read the way rerank/depth_curve.py reads a deeper rerank:
+        only its reranked items (the first len(logits) candidates) whose bm25_rank is at most D,
+        in cross-encoder order (0.1.1, for spark43-system-v1).
   snap: sha256 of every submission_*.jsonl in a folder, saved to a JSON file.
   same: exit 0 if the folder's submission files still match a snap, else 1.
 Standard library only.
 
-  python agree.py rank --a F --b F --out F [--k 5]
+  python agree.py rank --a F --b F --out F [--k 5] [--b-depth D]
   python agree.py snap --dir D --out F
   python agree.py same --dir D --snap F
 """
@@ -19,7 +22,7 @@ import json
 import os
 import sys
 
-VERSION = "0.1.0"
+VERSION = "0.1.1"
 
 
 def load_jsonl(path):
@@ -31,11 +34,20 @@ def first_k(row, k):
     return [str(c[0]) for c in row["candidates"][:k]]
 
 
-def rank(a_rows, b_rows, k=5):
+def at_depth(row, depth):
+    """The row as if only BM25's first `depth` candidates had been reranked."""
+    n = len(row.get("logits") or [])
+    keep = [c for c, b in zip(row["candidates"][:n], row["bm25_rank"][:n]) if b <= depth]
+    return dict(row, candidates=keep)
+
+
+def rank(a_rows, b_rows, k=5, b_depth=0):
+    if b_depth:
+        b_rows = [at_depth(r, b_depth) for r in b_rows]
     a = {r["info_need_id"]: first_k(r, k) for r in a_rows}
     b = {r["info_need_id"]: first_k(r, k) for r in b_rows}
     common = [i for i in a if i in b]
-    return {"version": VERSION, "k": k, "common": len(common),
+    return {"version": VERSION, "k": k, "b_depth": b_depth, "common": len(common),
             "only_a": len(a) - len(common), "only_b": len(b) - len(common),
             "same_order": sum(1 for i in common if a[i] == b[i]),
             "same_set": sum(1 for i in common if set(a[i]) == set(b[i])),
@@ -61,6 +73,7 @@ def main(argv=None):
     r.add_argument("--b", required=True)
     r.add_argument("--out", required=True)
     r.add_argument("--k", type=int, default=5)
+    r.add_argument("--b-depth", type=int, default=0)
     s = sub.add_parser("snap")
     s.add_argument("--dir", required=True)
     s.add_argument("--out", required=True)
@@ -75,7 +88,7 @@ def main(argv=None):
         res = {"same": bool(before) and now == before, "before": before, "now": now}
         print(json.dumps(res, indent=1))
         return 0 if res["same"] else 1
-    res = rank(load_jsonl(a.a), load_jsonl(a.b), a.k) if a.cmd == "rank" else snap(a.dir)
+    res = rank(load_jsonl(a.a), load_jsonl(a.b), a.k, a.b_depth) if a.cmd == "rank" else snap(a.dir)
     os.makedirs(os.path.dirname(os.path.abspath(a.out)), exist_ok=True)
     with open(a.out, "w", encoding="utf-8") as f:
         json.dump(res, f, indent=1)

@@ -28,6 +28,20 @@ class Agree(unittest.TestCase):
         self.assertEqual(res["differ_ids"], ["B", "C"])
         self.assertEqual(agree.rank(a, b, k=1)["same_order"], 2)
 
+    def test_rank_b_depth(self):
+        # A deeper rerank: three reranked items (logits), then one BM25-only tail item.
+        a = [row("A", [10, 20]), row("B", [5])]
+        b = [{"info_need_id": "A", "candidates": [[30, 3.0], [10, 2.0], [20, 1.0], [40, 0.1]],
+              "logits": [3.0, 2.0, 1.0], "bm25_rank": [3, 1, 2, 4]},
+             {"info_need_id": "B", "candidates": [[5, 1.0], [6, 0.5]], "logits": [1.0, 0.5], "bm25_rank": [2, 1]}]
+        self.assertEqual(agree.at_depth(b[0], 2)["candidates"], [[10, 2.0], [20, 1.0]])
+        res = agree.rank(a, b, k=5, b_depth=2)
+        self.assertEqual((res["b_depth"], res["same_order"], res["same_set"], res["same_first"], res["differ_ids"]),
+                         (2, 1, 1, 2, ["B"]))
+        res = agree.rank(a, b, k=5)
+        self.assertEqual((res["b_depth"], res["same_order"], res["same_first"]), (0, 0, 1))
+        self.assertEqual(len(b[0]["candidates"]), 4)
+
     def test_main(self):
         with tempfile.TemporaryDirectory() as d:
             pa, pb, out = os.path.join(d, "a.jsonl"), os.path.join(d, "b.jsonl"), os.path.join(d, "o", "agree.json")

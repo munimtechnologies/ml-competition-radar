@@ -139,7 +139,8 @@ class Pipeline(Base):
                                         "--scorer", "none", "--policies", "top:3"]), 0)
         self.assertEqual(sorted(os.listdir(self.out)), ["ranked.jsonl", "run.json", "submission_top3.jsonl"])
         with open(os.path.join(self.out, "run.json"), encoding="utf-8") as f:
-            self.assertEqual(json.load(f)["version"], "0.1.0")
+            self.assertEqual({k: v for k, v in json.load(f).items() if k in ("version", "depth")},
+                             {"version": "0.1.1", "depth": 150})
         with self.assertRaises(SystemExit):
             spark_t1.main(["--db", self.db, "--questions", self.q, "--out-dir", self.out])  # medcpt needs --model-dir
 
