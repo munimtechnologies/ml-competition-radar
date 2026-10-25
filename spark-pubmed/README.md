@@ -29,15 +29,18 @@ GitHub refused to create that repository twice on 2026-10-22 ("secondary rate li
   fixed cutoff policies (the task penalises wrong citations), the submission JSONL, a format
   validator and a scorer. Its predictions were pre-registered before any score existed.
 - `rerank/` is the second stage: NCBI's public-domain MedCPT cross-encoder rereads the top BM25
-  candidates on CPU. Its card check, CPU benchmark, whole-corpus scoring and cut-off counts are
-  graded (`rerank/RESULTS.md`, `rerank/RESULTS-spark36.md`, `rerank/RESULTS-spark39.md`);
-  `rerank/depth_curve.py` measures how deep to rerank.
+  candidates on CPU. Its card check, CPU benchmark, whole-corpus scoring, cut-off counts and
+  rerank depth are graded (`rerank/RESULTS.md`, `rerank/RESULTS-spark36.md`,
+  `rerank/RESULTS-spark39.md`, `rerank/RESULTS-spark40.md`).
 - `quant/` tests two cheaper settings of that cross-encoder, int8 weights and 256-token inputs,
   on the same candidates, with a pre-registered rule for adopting one
   (`quant/PREREGISTRATION-spark42.md`).
 - `system/` joins the stages into the one command the challenge's no-network Docker image runs:
   `spark_t1.py` turns a questions file into the two planned submission files, resumes after a
-  stop and times every question (`system/README.md`; the image itself is not built yet).
+  stop and times every question (`system/RESULTS-spark41.md`; the image itself is not built yet).
+- `dense/` tests a dense first stage next to BM25: a one-bit index (about 3.5 GB) of the MedCPT
+  PubMed embeddings that NCBI publishes, searched with NCBI's MedCPT Query Encoder
+  (`dense/PREREGISTRATION-spark44.md`).
 - `speed/` tested leaving very common words out of the BM25 query (`speed/RESULTS-spark37.md`).
 - `prf/` tested pseudo-relevance feedback fused with the BM25 list as a recall stage
   (`prf/RESULTS-spark38.md`; not adopted).
@@ -81,6 +84,15 @@ GitHub refused to create that repository twice on 2026-10-22 ("secondary rate li
   on R from 0.793 to 0.898 (hits 79 to 87 of 90). Task 2 answers built from reranked papers had
   more citations judged Supports (judged precision 0.817 vs 0.757). Fusing its ranks with BM25's
   did worse on all three sets (`rerank/RESULTS-spark36.md`, `rerank/RESULTS-spark39.md`).
+- **Reranking deeper helps a little, then stops helping L.** By the rule written in advance,
+  stage 2 reranks BM25's first 150 candidates (mean top-5 MRR over the three sets 0.501, against
+  0.493 at 50). On L, depth 300 puts a target among the candidates for 32 of 43 questions, but
+  the cross-encoder lifts only 12 into its top five, and top-5 MRR (0.149) is no better than at
+  depth 50 (`rerank/RESULTS-spark40.md`).
+- **The whole system reproduces itself.** `system/spark_t1.py` matched the graded R ranking on
+  90 of 90 questions, resumed a finished run byte for byte, and took a median 75 s per question on
+  2 CPUs at depth 50, more of it in BM25 (43 s) than in the cross-encoder (31 s)
+  (`system/RESULTS-spark41.md`).
 - **The cross-encoder's score cannot say when its first answer is wrong.** All 198 first answers
   across the three dev sets scored above 0.9 (sigmoid), and that score separates right from wrong
   first answers barely better than chance on R (AUROC 0.57) and BioGen (0.54), and worse than
@@ -94,19 +106,17 @@ GitHub refused to create that repository twice on 2026-10-22 ("secondary rate li
   Contradicts (Scott's pi 0.23 overall). 92 of the 168 papers judged both ways in one topic got
   both labels on the identical sentence (`t2/RESULTS-biogen-stance*.md`).
 
-## Status (2026-10-25, early)
+## Status (2026-10-25)
 
 Graded: corpus audit (10 of 11 predictions held), dev sets (10 of 11), FTS5 pilot and count
 (11 of 16), mirror repair and full count (7 of 8 graded), index build continued (13 of 13) and
 finished (14 of 16), reranker check (10 of 11), BioGen census (5 of 10, then 9 of 10), BioGen
 stance (8 of 9, then 5 of 8, then 9 of 9), query pruning (5 of 10), whole-corpus reranking (10 of
-10), pseudo-relevance feedback (6 of 11), reranking R with cut-off counts (7 of 10). Running or
-queued with predictions written first: reranking BM25's first 300 on L and first 200 on BioGen
-and R, to set the rerank depth (`rerank/PREREGISTRATION-spark40.md`); the whole Task 1 system on
-R, which should reproduce the graded R result exactly and time every question
-(`system/PREREGISTRATION-spark41.md`); and int8 and 256-token variants of the cross-encoder on
-the same candidates (`quant/PREREGISTRATION-spark42.md`). Planned submissions: `top:5`, and
-`top:1` as a second.
+10), pseudo-relevance feedback (6 of 11), reranking R with cut-off counts (7 of 10), rerank depth
+(6 of 10), the whole system on R (7 of 8). Running or queued with predictions written first:
+int8 and 256-token variants of the cross-encoder on the same candidates
+(`quant/PREREGISTRATION-spark42.md`), and the dense first stage
+(`dense/PREREGISTRATION-spark44.md`). Planned submissions: `top:5`, and `top:1` as a second.
 
 ## Limits
 
