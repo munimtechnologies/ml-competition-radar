@@ -38,9 +38,10 @@ GitHub refused to create that repository twice on 2026-10-22 ("secondary rate li
   `spark_t1.py` turns a questions file into the two planned submission files, resumes after a
   stop and times every question (`system/RESULTS-spark41.md`; 0.1.1 defaults to the chosen depth
   of 150; the image itself is not built yet).
-- `dense/` tests a dense first stage next to BM25: a one-bit index (about 3.5 GB) of the MedCPT
+- `dense/` tested a dense first stage next to BM25: a one-bit index (about 3.5 GB) of the MedCPT
   PubMed embeddings that NCBI publishes, searched with NCBI's MedCPT Query Encoder
-  (`dense/PREREGISTRATION-spark44.md`, `dense/NOTE-spark44-v2.md`, `dense/NOTE-spark44-v3.md`).
+  (`dense/RESULTS-spark44.md`; not adopted), and a cheaper reading of the same bits
+  (`dense/PREREGISTRATION-spark46.md`).
 - `speed/` tested leaving very common words out of the BM25 query (`speed/RESULTS-spark37.md`).
 - `prf/` tested pseudo-relevance feedback fused with the BM25 list as a recall stage
   (`prf/RESULTS-spark38.md`; not adopted).
@@ -106,24 +107,29 @@ GitHub refused to create that repository twice on 2026-10-22 ("secondary rate li
   in its first 50 candidates, 26 in 200, 32 in 300 and 36 in 1,000, at about the same query time
   as depth 100. Pseudo-relevance feedback reached 24 in its first 100 but lowered precision on
   BioGen and R, so it was dropped (`prf/RESULTS-spark38.md`).
+- **A one-bit dense index of NCBI's MedCPT PubMed embeddings does not help Task 1 as built.**
+  36 million articles fit in 3.45 GB, and a whole-index scan takes 4.5 s per question on 2 CPUs.
+  But scoring q . b kept only 54% of the exact top 10 inside its top 100. BM25's first 100 plus
+  dense's first 50 reached 23 L questions, against 25 for BM25's first 150, so by the rule
+  written in advance it is not adopted. Dense search alone was level with BM25 at the top of L
+  (7 against 6 hits in the top five). It was far behind on BioGen and R, and it cannot reach
+  articles after PMID 37.4 million (`dense/RESULTS-spark44.md`).
 - **BioGen's Contradicts label is the least repeatable.** Where the identical sentence citing the
   same paper was judged more than once, specific agreement is 0.85 for Supports and 0.22 for
   Contradicts (Scott's pi 0.23 overall). 92 of the 168 papers judged both ways in one topic got
   both labels on the identical sentence (`t2/RESULTS-biogen-stance*.md`).
 
-## Status (2026-10-25, about 19:30 UTC)
+## Status (2026-10-26, about 15:30 UTC)
 
 Graded: corpus audit (10 of 11 predictions held), dev sets (10 of 11), FTS5 pilot and count
 (11 of 16), mirror repair and full count (7 of 8 graded), index build continued (13 of 13) and
 finished (14 of 16), reranker check (10 of 11), BioGen census (5 of 10, then 9 of 10), BioGen
 stance (8 of 9, then 5 of 8, then 9 of 9), query pruning (5 of 10), whole-corpus reranking (10 of
 10), pseudo-relevance feedback (6 of 11), reranking R with cut-off counts (7 of 10), rerank depth
-(6 of 10), the whole system on R (7 of 8), cheaper cross-encoder settings (4 of 10). Queued with
-predictions written first: the dense first stage (`dense/PREREGISTRATION-spark44.md`). Its first
-run was stopped by the host, and its second was placed on a machine without the whole index and
-stopped by its own index check, so it is filed a third time with the same code
-(`dense/NOTE-spark44-v2.md`, `dense/NOTE-spark44-v3.md`). Planned submissions: `top:5`, and
-`top:1` as a second.
+(6 of 10), the whole system on R (7 of 8), cheaper cross-encoder settings (4 of 10), the dense
+first stage (9 of 13; not adopted). Queued with predictions written first: weighted scoring of the
+same one-bit index (`dense/PREREGISTRATION-spark46.md`). If it is not adopted either, the next job
+times the whole Task 1 system at depth 150. Planned submissions: `top:5`, and `top:1` as a second.
 
 ## Limits
 
@@ -131,7 +137,7 @@ stopped by its own index check, so it is filed a third time with the same code
   The dev sets are AI-written proxies, not NLM's expert questions. BioGen's questions are
   consumer and clinician health questions, and its judgments cover only what 2024 runs cited.
 - This covers only the PubMed part. The PMC part is defined by a `Challenge_PMCIDs.txt` list,
-  which was not on the challenge page as of 2026-10-25.
+  which was not on the challenge page as of 2026-10-26.
 - NIH's general challenge page describes the PMC part as about 50,000 CC0 articles. The task
   descriptions describe a Creative Commons, NIH-funded subset. Only the task descriptions were
   used here.

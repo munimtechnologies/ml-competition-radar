@@ -18,29 +18,32 @@ PMIDs up to about 37.4 million (early 2024).
 | `dense_eval.py` | Counts only: gold coverage of the index, reach of BM25 alone, dense alone and BM25 + dense unions, top-5 MRR of each list alone, and the pre-registered adoption rule |
 | `test_dense.py` | 10 fake-data tests (numpy only, no torch, no network) |
 | `PREREGISTRATION-spark44.md` | Predictions for job `spark44-dense`, written before it was first filed |
-| `NOTE-spark44-v2.md` | Why the job was filed again as `-v2`, and the one code change that made |
-| `NOTE-spark44-v3.md` | Why it was filed again as `-v3`: `-v2` was placed on a machine without the whole index, and its index check stopped it (no code change) |
-| `NOTE-spark44-v4.md` | Why it was filed again as `-v4`: `-v3` was placed on that same machine and stopped the same way (no code change) |
-| `NOTE-spark44-v5.md` | Why it was filed again as `-v5`: `-v4` was placed on that same machine and stopped the same way (no code change) |
+| `NOTE-spark44-v2.md` to `NOTE-spark44-v5.md` | Why the job was filed again four times: a host stop during the build (`-v1`, one code change in `-v2`), then three placements on a machine without the whole index (no code change) |
+| `RESULTS-spark44.md` | The graded result: 4 of 4 checks, 9 of 13 predictions; the dense stage is not adopted |
+| `dense_wbits.py` | 0.1.0. Weighted one-bit scoring, (q * w) . b with w = hi - lo per dimension (no new index), measured on chunk 36 against plain q . b and a two-bit code; writes the weighted queries for `dense_search.py` |
+| `test_wbits.py` | 9 fake-data tests for `dense_wbits.py`, expected values worked out by hand |
+| `fetch_code.py`, `test_fetch_code.py` | The job's code fetcher, with a `dense` group pinned to the commit `spark44-dense-v5` ran |
+| `PREREGISTRATION-spark46.md` | Predictions for job `spark46-wbits-v1`, written before it was filed |
 
 The tests run inside the sealed job (python 3.12, numpy 2.1.3, torch 2.5.1+cpu, transformers
 4.46.3). They are not re-run when these files are committed.
 
-## Status (2026-10-26, about 10:40 UTC)
+## Status (2026-10-26, about 15:30 UTC)
 
-Nothing has been measured yet. `spark44-dense-v1` was stopped by its host during the index build,
-after its first eight steps had exited 0. `spark44-dense-v2`, `-v3` and `-v4` were all placed on
-the other machine, which holds only a partial copy of the data (112 of 1,306 files). Each time,
-the index check stopped the job with exit 3 within four minutes, before any download or build.
-`spark44-dense-v5` (same code, `NOTE-spark44-v5.md`) was filed at about 10:40 UTC on October 26.
-The runner places a job on whichever machine has more free memory and cannot pin a job to the
-machine that holds its data, so `-v5` may be stopped the same way. The job measures, on L, BioGen
-and R, whether BM25's first 100 plus dense's first 50 reach more targets than BM25's first 150
-(the depth spark40 chose). The adoption rule is written in the pre-registration, which is
-unchanged.
+`spark44-dense-v5` ran on the machine holding the whole index and was graded
+(`RESULTS-spark44.md`). One bit per dimension, scored as q . b, kept only 53.7% of the exact top 10
+inside its top 100 on chunk 36. BM25's first 100 plus dense's first 50 reached 23 of 43 L
+questions, against 25 for BM25's first 150. **By the pre-registered rule the dense stage is not
+used in Task 1.** Dense search alone did slightly better than BM25 at the top of L (7 against 6
+questions with a target in the top five), and it is far behind on BioGen and R.
+
+`spark46-wbits-v1` was filed at about 15:30 UTC on October 26. It tests whether weighting each
+bit by how far that dimension moves recovers the ranking, using the same bits. If the rule still
+does not adopt dense search, the dense line closes for Task 1.
 
 Prior art: MedCPT and NCBI's released embeddings; binary embedding retrieval (for example BPR,
-Yamada et al. 2021); hybrid BM25 + dense candidate sets. New here is only the measurement: one bit
-per dimension of the published PubMed embeddings, combined with BM25 on the whole SPARK corpus.
+Yamada et al. 2021) and asymmetric distances for binary codes (Gordo et al. 2014); hybrid BM25 +
+dense candidate sets. New here is only the measurement: one bit per dimension of the published
+PubMed embeddings, combined with BM25 on the whole SPARK corpus.
 
 Contact: MV2, Munim, Inc., mv2@munimtech.com
