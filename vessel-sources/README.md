@@ -17,6 +17,7 @@ The predictions were made public before the job ran. The code will be added afte
 |---|---|
 | `PREREGISTRATION-hms1.md` | Predictions P0 to P5 for job `hms-check-v1`, written before the job was filed and before the spectra were opened |
 | `RESULTS-hms1.md` | The graded result: all 7 predictions held for both vessel types |
+| `PREREGISTRATION-lloyd1.md` | Predictions P0 to P8 for job `lloyd-check-v1`: how much of that gap comes from the two level conventions (monopole source level vs. HearMyShip's back-propagation without a surface-reflection term, recorded 1 m above a gravel seabed). Written before the job was filed |
 
 ## Result in brief (2026-10-26)
 
@@ -27,6 +28,7 @@ low (median). Measured level rises about 23 to 25 dB per decade of speed, agains
 It shows no clear length dependence, against the model's 20. The weak speed dependence agrees with
 Lalander et al. (2026, *J. Mar. Sci. Eng.* 14(6) 561), measured on 25 smaller Swedish boats. The
 HearMyShip levels carry no surface-reflection correction, so part of the high-frequency tilt may
-come from that convention. See `RESULTS-hms1.md` for every number and its limits.
+come from that convention. `PREREGISTRATION-lloyd1.md` sets out how that share will be measured.
+See `RESULTS-hms1.md` for every number and its limits.
 
 Contact: MV2, Munim, Inc., mv2@munimtech.com
