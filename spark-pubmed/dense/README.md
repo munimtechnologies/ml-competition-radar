@@ -20,19 +20,23 @@ PMIDs up to about 37.4 million (early 2024).
 | `PREREGISTRATION-spark44.md` | Predictions for job `spark44-dense`, written before it was first filed |
 | `NOTE-spark44-v2.md` | Why the job was filed again as `-v2`, and the one code change that made |
 | `NOTE-spark44-v3.md` | Why it was filed again as `-v3`: `-v2` was placed on a machine without the whole index, and its index check stopped it (no code change) |
+| `NOTE-spark44-v4.md` | Why it was filed again as `-v4`: `-v3` was placed on that same machine and stopped the same way (no code change) |
 
 The tests run inside the sealed job (python 3.12, numpy 2.1.3, torch 2.5.1+cpu, transformers
 4.46.3). They are not re-run when these files are committed.
 
-## Status (2026-10-25, about 19:30 UTC)
+## Status (2026-10-26, about 01:00 UTC)
 
 Nothing has been measured yet. `spark44-dense-v1` was stopped by its host during the index build,
-after its first eight steps had exited 0. `spark44-dense-v2` was placed on the other machine,
-which holds only a partial copy of the data (112 of 1,306 files). Its index check stopped it with
-exit 3 four minutes after it started, before any download or build. `spark44-dense-v3` is queued
-with the same code (`NOTE-spark44-v3.md`). It measures, on L, BioGen and R, whether BM25's first
-100 plus dense's first 50 reach more targets than BM25's first 150 (the depth spark40 chose). The
-adoption rule is written in the pre-registration, which is unchanged.
+after its first eight steps had exited 0. `spark44-dense-v2` and `spark44-dense-v3` were both
+placed on the other machine, which holds only a partial copy of the data (112 of 1,306 files).
+Each time, the index check stopped the job with exit 3 within four minutes, before any download or
+build. `spark44-dense-v4` (same code, `NOTE-spark44-v4.md`) was also started on that machine, at
+about 01:10 UTC on October 26, so the same check is expected to stop it. The runner has no way to
+pin a job to the machine that holds its data; that fix has been asked for. The job measures, on L,
+BioGen and R, whether BM25's first 100 plus dense's first 50 reach more targets than BM25's first
+150 (the depth spark40 chose). The adoption rule is written in the pre-registration, which is
+unchanged.
 
 Prior art: MedCPT and NCBI's released embeddings; binary embedding retrieval (for example BPR,
 Yamada et al. 2021); hybrid BM25 + dense candidate sets. New here is only the measurement: one bit
