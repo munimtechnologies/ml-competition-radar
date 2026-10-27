@@ -16,19 +16,25 @@ The predictions were made public before the job ran. The code will be added afte
 | File | What it is |
 |---|---|
 | `PREREGISTRATION-hms1.md` | Predictions P0 to P5 for job `hms-check-v1`, written before the job was filed and before the spectra were opened |
-| `RESULTS-hms1.md` | The graded result: all 7 predictions held for both vessel types |
+| `RESULTS-hms1.md` | The graded result: all 7 predictions held for both vessel types. Addenda: the pooled offset, and the level-convention check |
 | `PREREGISTRATION-lloyd1.md` | Predictions P0 to P8 for job `lloyd-check-v1`: how much of that gap comes from the two level conventions (monopole source level vs. HearMyShip's back-propagation without a surface-reflection term, recorded 1 m above a gravel seabed). Written before the job was filed |
+| `RESULTS-lloyd1.md` | The graded result: 7 of 10 held, including P4, so the headline stands. Misses P2, P3 and P5 are explained |
+| `PREREGISTRATION-lloyd2.md` | Predictions S1 to S4 for job `lloyd-sym-v1`: a test of the post-hoc explanation for the P2 and P3 misses (two reflected paths of equal length when the source depth equals the hydrophone's height above the seabed) |
 
-## Result in brief (2026-10-26)
+## Result in brief (updated 2026-10-27)
 
 On 265 measured passages (165 sailboats under motor, 100 yachts), the JOMOPANS-ECHO
-"recreational" class matches the measured median below about 125 Hz. Above 200 Hz it is 10 to
-31 dB too low, and across the challenge's 31.6 Hz to 7.94 kHz bands it is about 19 to 20 dB too
-low (median). Measured level rises about 23 to 25 dB per decade of speed, against the model's 60.
-It shows no clear length dependence, against the model's 20. The weak speed dependence agrees with
-Lalander et al. (2026, *J. Mar. Sci. Eng.* 14(6) 561), measured on 25 smaller Swedish boats. The
-HearMyShip levels carry no surface-reflection correction, so part of the high-frequency tilt may
-come from that convention. `PREREGISTRATION-lloyd1.md` sets out how that share will be measured.
-See `RESULTS-hms1.md` for every number and its limits.
+"recreational" class is about 19 to 20 dB too quiet (median, 31.6 Hz to 7.94 kHz). Above 200 Hz it
+is 10 to 31 dB too low. Measured level rises about 23 to 25 dB per decade of speed, against the
+model's 60, and shows no clear length dependence, against the model's 20. The weak speed dependence
+agrees with Lalander et al. (2026, *J. Mar. Sci. Eng.* 14(6) 561), measured on 25 smaller Swedish
+boats.
+
+The pre-registered convention check (`RESULTS-lloyd1.md`) converted HearMyShip's levels to monopole
+source levels under 10 assumptions about source depth and seabed. Every conclusion above survived
+all 10. The conversion explains almost none of the broadband offset (pooled median +19.13 dB
+becomes +17.6 to +20.7 dB). It explains 5% to 48% of the high-frequency tilt, depending on the
+source depth. It also shows that the apparent agreement below 125 Hz is a convention effect: as
+monopole levels, the boats are louder than the model at 31.6 Hz too.
 
 Contact: MV2, Munim, Inc., mv2@munimtech.com

@@ -68,7 +68,8 @@ JOMOPANS-ECHO's own coefficients are 60 dB per decade of speed and 20 dB per dec
   gap. JOMOPANS-ECHO's length term takes 10 to 20 dB off a 9 to 28 m boat, while measured level
   shows no length dependence here: both length coefficients are near zero, with intervals that
   exclude 20. The speed dependence is also much weaker than the model's (about 24 against 60 dB
-  per decade).
+  per decade). *(Narrowed on 2026-10-27; see the second addendum. The low-band agreement holds
+  only in HearMyShip's level convention.)*
 - **Prior art.** Lalander, Sigray, Johansson, Östberg and Andersson (2026, *J. Mar. Sci. Eng.*
   14(6) 561, doi:10.3390/jmse14060561) measured 25 small vessels under 12 m in Sweden. Their
   abstract reports that JOMOPANS-ECHO "consistently overestimates the speed dependence". Our P3
@@ -103,5 +104,31 @@ moves from 0.84 to 0.86. The earlier smoke test numbers were
 reproduced exactly (flat labels: 1-RMSE 0.9354; physical labels: RMSE 0.0461). How much of the
 offset to keep is still open: `PREREGISTRATION-lloyd1.md` asks how much of it is a level
 convention rather than the boats, and that job has not run yet.
+
+## Addendum 2 (2026-10-27): the level convention (job `lloyd-check-v1`, graded in `RESULTS-lloyd1.md`)
+
+The pre-registered convention check scored 7 of 10. Its key prediction (P4) held, so **the
+headline above stands.** As monopole source levels, these small craft are still +17.4 to
++21.2 dB louder broadband than JOMOPANS-ECHO in every scenario tried, and the corrected tilt is
++14.0 to +30.4 dB. The speed coefficient stays far below 60 dB per decade in every scenario, and
+no length interval reaches 20.
+
+What the convention explains:
+
+- **Offset.** Almost none of it. The pooled median goes from +19.13 dB to +18.99 dB in the
+  central scenario (source 1 m deep, gravel seabed), and stays between +17.64 and +20.67 dB across
+  the 10 scenarios.
+- **Tilt.** 8% (sailboats) and 10% (yachts) in the central scenario. The range is 5% to 48% across
+  scenarios, so this share depends strongly on the assumed source depth.
+
+One sentence above is narrowed. "The model gets the level below about 125 Hz right" holds only in
+HearMyShip's own convention. Removing the surface-reflection (dipole) loss makes the boats louder
+than the model at 31.6 Hz as well: +11.8 dB (sailboats) and +12.6 dB (yachts) in the central
+scenario, and +8.4 to +21.1 dB across scenarios.
+
+Three predictions missed (P2, P3, P5). The central scenario's convention tilt was 2.65 dB, below
+the predicted +3 to +10. A post-hoc explanation, that a source 1 m deep and a hydrophone 1 m above
+the seabed make two reflected paths exactly equal in length, is untested and is pre-registered as
+job `lloyd-sym-v1` (`PREREGISTRATION-lloyd2.md`).
 
 Contact: MV2, Munim, Inc., mv2@munimtech.com
