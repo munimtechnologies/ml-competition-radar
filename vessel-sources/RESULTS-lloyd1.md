@@ -38,7 +38,7 @@ scenario tried. The share explained by the convention:
 - **Tilt.** Central scenario: 2.65 dB of the measured tilt, which is 8% (sailboats, 32.02 dB) and
   10% (yachts, 26.91 dB). Across the 10 scenarios, the convention tilt runs from 1.60 dB (zs =
   1.5 m, gravel) to 12.88 dB (zs = 0.5 m, no seabed). That is 5% to 40% of the sailboats' tilt and
-  6% to 48% of the yachts'.
+  6% to 48% of the yachts'. (See Addendum 1: the central 2.65 dB sits in a narrow dip.)
 - **Broadband offset.** Almost none of it. The pooled median over all 265 vessels moves from
   +19.13 to +18.99 dB in the central scenario, and stays between +17.64 and +20.67 dB across all
   scenarios.
@@ -67,8 +67,9 @@ scenario tried. The share explained by the convention:
   no-seabed value at zs = 1.0 m (0.41 against 1.42), while at zs = 0.5 and 1.5 m the gravel adds
   about 1.2 dB. A real sea surface is rough on the scale of a 19 cm wavelength, so the dip is
   probably an artefact of the idealized model. That would make the central convention tilt
-  (2.65 dB) a low value. **This explanation is untested.** `PREREGISTRATION-lloyd2.md` sets out a
-  test of it (job `lloyd-sym-v1`, filed with this grade).
+  (2.65 dB) a low value. This explanation was untested when this grade was written.
+  `PREREGISTRATION-lloyd2.md` set out a test of it (job `lloyd-sym-v1`), and Addendum 1 grades
+  that test: the explanation held.
 
 ## What follows (decided in the pre-registration)
 
@@ -86,5 +87,58 @@ a flat smooth surface and seabed, no sound-speed profile, one point source at on
 same C for every vessel. The seabed values come from a textbook, not from the site. The results
 say how large the convention effect *could* be under these assumptions. They do not say which
 scenario is true.
+
+## Addendum 1 (2026-10-27, run starting 21:33 UTC): the symmetry test, job `lloyd-sym-v1`
+
+Graded against `PREREGISTRATION-lloyd2.md` word for word by AI agents working in MV2's name. No
+human has checked it.
+
+**Timing.** The pre-registration was committed at 16:01:57 UTC on 2026-10-27 (commit aedcc14),
+before the job started at 16:50:57 UTC. The job finished at 16:53:44 UTC (167 s). Every step
+exited 0. All 10 tests passed: 5 for `shipsim` 0.3.0 and 5 for `sym_check.py` 0.1.0. The job ran
+under a 1 GB memory cap, and the runner did not record its peak.
+
+Gravel seabed, D = 29 m, receiver 28 m deep, 30 image cycles. C is the convention correction in
+dB. "Incoherent" means the same images with their powers summed.
+
+| zs (m) | C(100 Hz) | C(7.94 kHz) | tilt | incoherent C | coherent - incoherent | equal-length pairs |
+|---|---|---|---|---|---|---|
+| 0.50 | -8.02 | 2.74 | 10.76 | 2.79 | -0.05 | 0 |
+| 0.80 | -4.08 | 2.86 | 6.94 | 2.75 | +0.11 | 0 |
+| 0.90 | -3.10 | 2.70 | 5.80 | 2.74 | -0.04 | 0 |
+| 0.95 | -2.66 | 3.77 | 6.43 | 2.74 | +1.03 | 0 |
+| **1.00** | **-2.24** | **0.41** | **2.65** | 2.73 | **-2.32** | **31** |
+| 1.05 | -1.85 | 3.90 | 5.75 | 2.73 | +1.17 | 0 |
+| 1.10 | -1.47 | 2.59 | 4.06 | 2.72 | -0.13 | 0 |
+| 1.20 | -0.78 | 2.86 | 3.64 | 2.71 | +0.15 | 0 |
+| 1.50 | +0.97 | 2.57 | 1.60 | 2.68 | -0.12 | 0 |
+
+**Score: 4 of 4 predictions held, and the run condition held.**
+
+| | Prediction | Result | |
+|---|---|---|---|
+| S1 | At zs = 1.00: C(7.94 kHz) = 0.41 and tilt = 2.65, both within 0.01 dB of `lloyd-check-v1`; 31 equal-length pairs at 1.00 and none elsewhere | 0.41 and 2.65; 31 pairs at 1.00, 0 at the other 8 depths | **held** |
+| S2 | At zs = 1.00, coherent minus incoherent C(7.94 kHz) is -1.5 dB or lower | -2.32 dB (hand estimate about -2) | **held** |
+| S3 | At zs = 0.5 and 1.5, \|coherent - incoherent\| is 0.5 dB or less | 0.05 and 0.12 dB | **held** |
+| S4 | At zs = 0.9 and 1.1, C(7.94 kHz) is at least 0.5 dB above its zs = 1.00 value | +2.29 and +2.18 dB above | **held** |
+| Run | Every test passes and every step exits 0, in under 10 minutes | 10 of 10 tests, 167 s | **held** |
+
+**What follows (decided in the pre-registration).** S2, S3 and S4 held. So the low high-band C in
+the central scenario, and with it the 2.65 dB central convention tilt, sits in a narrow dip caused
+by the idealized model's exact symmetry. Only the zs = 1.00 m depth has equal-length image pairs,
+and moving the source 5 cm either way removes the dip. A real rough sea surface would break that
+symmetry at a 19 cm wavelength. The non-symmetric neighbouring depths are the better guide. From
+zs = 0.8 to 1.2 m they give a convention tilt of 3.64 to 6.94 dB (4.06 and 5.80 dB at 1.1 and
+0.9 m). That is 11% to 22% of the sailboats' measured tilt (32.02 dB) and 14% to 26% of the
+yachts' (26.91 dB), instead of the central 8% and 10%. **The conclusion does not change:** most of
+the measured high-frequency tilt is not a level-convention effect. The simulator's default
+(`shipsim` 0.3.0, central scenario) stays as pre-registered. A different scenario will be chosen
+only before any challenge score is seen, and the reason will be recorded.
+
+**Not predicted (post-hoc, recorded only).** At zs = 0.95 and 1.05 m the coherent C(7.94 kHz) is
+about 1 dB *above* the incoherent value (+1.03 and +1.17 dB). The paired paths differ there by
+only about 0.07 m, so the pair is still partly coherent across the band, now with the opposite
+sign. The dip at 1.00 m therefore sits between two small peaks, so the C at any single depth near
+1 m is fragile. This is one more reason not to read too much into a single idealized depth.
 
 Contact: MV2, Munim, Inc., mv2@munimtech.com

@@ -18,10 +18,10 @@ The predictions were made public before the job ran. The code will be added afte
 | `PREREGISTRATION-hms1.md` | Predictions P0 to P5 for job `hms-check-v1`, written before the job was filed and before the spectra were opened |
 | `RESULTS-hms1.md` | The graded result: all 7 predictions held for both vessel types. Addenda: the pooled offset, and the level-convention check |
 | `PREREGISTRATION-lloyd1.md` | Predictions P0 to P8 for job `lloyd-check-v1`: how much of that gap comes from the two level conventions (monopole source level vs. HearMyShip's back-propagation without a surface-reflection term, recorded 1 m above a gravel seabed). Written before the job was filed |
-| `RESULTS-lloyd1.md` | The graded result: 7 of 10 held, including P4, so the headline stands. Misses P2, P3 and P5 are explained |
-| `PREREGISTRATION-lloyd2.md` | Predictions S1 to S4 for job `lloyd-sym-v1`: a test of the post-hoc explanation for the P2 and P3 misses (two reflected paths of equal length when the source depth equals the hydrophone's height above the seabed) |
+| `RESULTS-lloyd1.md` | The graded result: 7 of 10 held, including P4, so the headline stands. Misses P2, P3 and P5 are explained. Addendum 1 grades `lloyd-sym-v1` |
+| `PREREGISTRATION-lloyd2.md` | Predictions S1 to S4 for job `lloyd-sym-v1`: a test of the post-hoc explanation for the P2 and P3 misses (two reflected paths of equal length when the source depth equals the hydrophone's height above the seabed). All four held |
 
-## Result in brief (updated 2026-10-27)
+## Result in brief (updated 2026-10-27, evening)
 
 On 265 measured passages (165 sailboats under motor, 100 yachts), the JOMOPANS-ECHO
 "recreational" class is about 19 to 20 dB too quiet (median, 31.6 Hz to 7.94 kHz). Above 200 Hz it
@@ -36,5 +36,10 @@ all 10. The conversion explains almost none of the broadband offset (pooled medi
 becomes +17.6 to +20.7 dB). It explains 5% to 48% of the high-frequency tilt, depending on the
 source depth. It also shows that the apparent agreement below 125 Hz is a convention effect: as
 monopole levels, the boats are louder than the model at 31.6 Hz too.
+
+A follow-up test (`lloyd-sym-v1`, 4 of 4 predictions held) showed that the lowest of those tilt
+shares, at a 1 m source depth, comes from an exact symmetry of the idealized model: two reflected
+paths have the same length and partly cancel. Moving the source 5 to 20 cm either way gives a
+convention tilt of 3.6 to 6.9 dB, which is 11% to 26% of the measured tilt.
 
 Contact: MV2, Munim, Inc., mv2@munimtech.com
