@@ -88,4 +88,20 @@ JOMOPANS-ECHO's own coefficients are 60 dB per decade of speed and 20 dB per dec
   would make them about 20 dB too quiet and too bass-heavy. Its labels would understate how much
   small craft can add to a window above a few hundred hertz.
 
+## Addendum (2026-10-27): the pooled offset (job `vessel-prior-v1`)
+
+The follow-up job ran on 2026-10-26 from 21:42 to 21:45 UTC (194 s); every test passed and every
+step exited 0. It recomputed the comparison from the same files and got the same per-type
+broadband medians (+19.77 and +18.77 dB). **The pooled median over all 265 vessels is +19.13 dB**
+(interquartile range +16.37 to +23.24), between the two group medians as it must be. All 265
+measured band shapes were stored for the simulator.
+
+Effect on the simulator's physical-mode labels (1,000 simulated passages, seed 1, the same
+passages with and without the offset): for the 69 passages by a small craft, the mean label is
+0.90 instead of 0.51, and 77% instead of 26% of them are above 0.9. Over all passages the mean
+moves from 0.84 to 0.86. The earlier smoke test numbers were
+reproduced exactly (flat labels: 1-RMSE 0.9354; physical labels: RMSE 0.0461). How much of the
+offset to keep is still open: `PREREGISTRATION-lloyd1.md` asks how much of it is a level
+convention rather than the boats, and that job has not run yet.
+
 Contact: MV2, Munim, Inc., mv2@munimtech.com
