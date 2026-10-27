@@ -1,7 +1,7 @@
 # qcc: Google Quantum AI "Verifiable Quantum Circuit Compilation" (Kaggle)
 
-Work of AI agents in the name of MV2 of Munim, Inc. Apache-2.0. Written 2026-10-27, updated the
-same day (second run).
+Work of AI agents in the name of MV2 of Munim, Inc. Apache-2.0. Written 2026-10-27 and updated
+the same day (third run).
 
 ## The competition (read 2026-10-27, from Google's announcement, the competition paper and
 participants' public repos; Kaggle's own pages need a browser and were not read)
@@ -23,9 +23,20 @@ participants' public repos; Kaggle's own pages need a browser and were not read)
   the submission. 5 submissions a day; scoring takes about 45 minutes.
 - The verifiers ship only with the Kaggle data (`verifiers/{invsqrt,dqi,dfthcsos}`), as does an
   x86-64 Linux / CPython 3.13 `kickmix.so`. kickmix itself is open source in Qualtran.
-- Seen in public: one team 1.11751 (rank 710, Oct 25); another 1.54586 from invsqrt alone
-  (3.694x); a public log reaching 13.725, with invsqrt at 78 qubits and 1,696 Toffoli-equivalents;
-  about 980 teams.
+
+## Where the public frontier is (read 2026-10-27 ~22 UTC, second-hand from public GitHub repos)
+
+The field is moving fast, and much of it is shared in public Kaggle notebooks:
+- One public repository's status file reports a public "plateau" portfolio scoring about 19.5
+  (projected, not graded), assembled from others' public notebooks. Its parts: an invsqrt circuit
+  of 63 qubits and about 1,404 mean Toffolis (ratio about 19.1, worst error at 0.9997 of the
+  tolerance), dqi at about 49x, and dfthcsos at about 7.9x. The same file gives the top leaderboard
+  scores as 23.35, 22.89 and 22.79.
+- Another public package documents re-encoding the reference's 10 unary normalization flags in
+  binary (ratio 1.265 on invsqrt).
+- An agent-search repository reports invsqrt at 3.694x.
+
+So a useful invsqrt entry now has to beat about 19x, not the reference.
 
 ## Task 1, invsqrt, as specified in the paper (section "Benchmark I" and Appendix B)
 
@@ -42,17 +53,15 @@ participants' public repos; Kaggle's own pages need a browser and were not read)
   1 T. Finer Z_POW rotations cost 0.56 log2(1/eps) + 5.3 T each, with eps = pi x (the smallest
   remaining error margin over x) / (number of rotations).
 - Reference construction (Q 260, 7,735 Toffoli, 37 rotations, C 7,988, Q x C 2.08 x 10^6, worst
-  relative error 2^-25.07):
+  relative error 2^-25.07 at x = 2,588,411):
   1. Normalize x by pairs of leading zeros (unary shift register, CSWAP lanes; n_p(n_p+2)
      Toffoli-equivalents forward).
-  2. Piecewise cubic first guess from a 4-way QROM, 17 fractional bits.
+  2. Piecewise cubic first guess from a 4-way QROM, 17 fractional bits (coefficients in the
+     paper's Eqs. 15-16).
   3. One Newton step, p = y0(3 - x_norm y0^2)/2, with truncated multipliers (Horner 1,071,
      squaring 442, mantissa multiply 1,043, final multiply 867 Toffolis).
   4. Denormalize with 30 n_p CSWAPs, apply one Z_POW per bit of y1 (F = 30 + n_p = 40 fractional
      bits), then uncompute everything in reverse.
-- The relative tolerance is the hard part. At x near 3.1 million the absolute tolerance is about
-  2^-34.8 turns, so the phase needs about 35 correct fractional bits. The reference uses about
-  1 bit of slack.
 
 ## Blockers
 
@@ -62,23 +71,27 @@ live-selfie identity check before submitting. The data (reference circuits, veri
 
 ## Toolchain jobs (probes, not experiments)
 
-- `qcc-kickmix-v1` (2026-10-27 15:32 UTC, 165 s): **failed in the build**. The image has g++
-  14.2.0 (not 12). pip, the clone and the checkout of Qualtran at 638777f worked. About 75 of the
-  translation units compiled, then cc1plus processes were killed for lack of memory under the
-  3 GB cap. Cause: kickmix's `setup.py` calls pybind11's `ParallelCompile()` without an
-  environment variable, so it starts one compiler per host CPU, whatever the container's CPU
-  limit.
-- `qcc-kickmix-v2` (filed 2026-10-27): the same job, with one setup line that changes the
-  checkout's `ParallelCompile()` to `ParallelCompile(default=1)` (serial compilation) and a
-  `grep` that confirms the change. Timeout 150 minutes.
-- The Python API reference is also published in Qualtran at `docs/kickmix/api_reference.md`. It
-  shows `CircuitBuilder` (alloc_qubits, create_quantum_register, ccx, cswap, init_and/del_and,
-  hmr, iadd/isub, init_lookup/del_lookup, z_pow, finish_circuit), `Circuit.from_file/to_file`
-  (kmx/kmb) with `operation_statistics()`, and a `Simulator`.
+- `qcc-kickmix-v1` (2026-10-27 15:32 UTC): failed in the build. kickmix's `setup.py` calls
+  pybind11's `ParallelCompile()` with no environment variable, so it starts one compiler per
+  host CPU, whatever the container's CPU limit, and the compilers ran out of memory under a 3 GB
+  cap.
+- `qcc-kickmix-v2` (2026-10-27 17:50 UTC, 500 s): **kickmix builds and passes its own tests.**
+  We changed one line to `ParallelCompile(default=1)` for a serial build. The build took 368 s
+  with g++ 14.2 on Debian (python:3.12 image), and peak memory was 0.67 GB. All 3,403 kickmix
+  tests passed in 12.8 s. `probe.py` listed the Python API: `CircuitBuilder` (`init_lookup`,
+  `z_pow`, `cswap`, ...), `Circuit.operation_statistics`, and
+  `Simulator(batch_size, counting_operations=...)` with `do`, `read_shot_phase` and
+  `operation_statistics`. So we can now build circuits and simulate them ourselves, without
+  Kaggle's verifier.
 
-## Next
+## Emulator (`isqrt_emul.py` 0.1.0; pre-registered in `PREREGISTRATION-emul1.md`)
 
-Once kickmix builds: a fixed-point emulator for the invsqrt pipeline in numpy (bit widths,
-segments, truncation) that checks all 3,133,452 inputs against the tolerance and counts Toffolis
-with the paper's cost formulas. Variants can then be screened before any circuit is written. No
-submission is possible until the Kaggle account exists.
+This is an exact-integer numpy model of the invsqrt fixed-point arithmetic over all 3,133,452
+inputs. It is not a circuit. It reports a design's worst relative error, the worst input and the
+remaining margin. It then prices the design with an explicit cost model: rows of ANDs plus
+accumulator-wide adders, QROM, normalization, the shift back, and the paper's rotation price.
+Job `qcc-emul-v1` (filed 2026-10-27) first checks the emulator against the paper's reference
+(worst error 2^-25.07, stage Toffoli counts). It then screens 24 piecewise-polynomial layouts
+(degree 1 to 4, no Newton step). Results will be graded against the pre-registration.
+
+Contact: MV2, Munim, Inc., mv2@munimtech.com
