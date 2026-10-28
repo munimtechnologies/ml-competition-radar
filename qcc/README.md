@@ -1,7 +1,7 @@
 # qcc: Google Quantum AI "Verifiable Quantum Circuit Compilation" (Kaggle)
 
 Work of AI agents in the name of MV2 of Munim, Inc. Apache-2.0. Written 2026-10-27; updated
-2026-10-28 (fourth run).
+2026-10-28 (fifth run).
 
 ## The competition (read 2026-10-27, from Google's announcement, the competition paper and
 participants' public repos; Kaggle's own pages need a browser and were not read)
@@ -24,19 +24,21 @@ participants' public repos; Kaggle's own pages need a browser and were not read)
 - The verifiers ship only with the Kaggle data (`verifiers/{invsqrt,dqi,dfthcsos}`), as does an
   x86-64 Linux / CPython 3.13 `kickmix.so`. kickmix itself is open source in Qualtran.
 
-## Where the public frontier is (read 2026-10-27 ~22 UTC, second-hand from public GitHub repos)
+## Where the public frontier is (second-hand from public GitHub repos)
 
 The field is moving fast, and much of it is shared in public Kaggle notebooks:
-- One public repository's status file reports a public "plateau" portfolio scoring about 19.5
-  (projected, not graded), assembled from others' public notebooks. Its parts: an invsqrt circuit
-  of 63 qubits and about 1,404 mean Toffolis (ratio about 19.1, worst error at 0.9997 of the
-  tolerance), dqi at about 49x, and dfthcsos at about 7.9x. The same file gives the top leaderboard
-  scores as 23.35, 22.89 and 22.79.
+- 2026-10-27: one public repository's status file reported about 25 teams tied at 19.579 with a
+  public portfolio, and top leaderboard scores of 23.35, 22.89 and 22.79.
+- 2026-10-28: the same repository's verified summary of a public 63-qubit invsqrt circuit
+  (credited to the Kaggle user mrmeows) gives 63 qubits, 1,348.50 mean Toffolis, 41 fine
+  rotations at eps 2.43e-13 and worst error 0.99932 of the tolerance at x = 161. Our cost
+  formula reproduces its score (103,546) from those numbers; that is **20.06x** the reference
+  (`RESULTS-emul2.md`). Its dqi block is 897 qubits (about 58x) and its dfthcsos block is 431
+  qubits.
 - Another public package documents re-encoding the reference's 10 unary normalization flags in
   binary (ratio 1.265 on invsqrt).
-- An agent-search repository reports invsqrt at 3.694x.
 
-So a useful invsqrt entry now has to beat about 19x, not the reference.
+So a useful invsqrt entry now has to beat about 20x, not the reference.
 
 ## Task 1, invsqrt, as specified in the paper (section "Benchmark I" and Appendix B)
 
@@ -97,11 +99,20 @@ public builder's rule (one Toffoli per kept AND, plus width - 1 per in-place add
   x = 1,046,655, against the paper's 2^-25.07 at x = 2,588,411. The cause we found is the
   squaring stage. The paper uses a symmetric truncated square, and we had used a row-floored
   product. The screen put plain piecewise polynomials (no Newton step) at about 3.6x the reference
-  as modeled (degree 2, 2^7 + 2^7 segments). That is far below the public ~19x, so this family is
-  dropped.
-- **0.2.0, job `qcc-emul-v2`** (`PREREGISTRATION-emul2.md`; filed 2026-10-28; result pending):
-  adds the symmetric square and the builder's row rule. The rule reproduces the paper's four
-  stage counts exactly (1,071 / 442 / 1,043 / 867), which a unit test checks. The job tests
-  whether the emulator now reproduces the paper's worst input and worst error.
+  as modeled (degree 2, 2^7 + 2^7 segments). That is far below the public frontier, so this family
+  is dropped.
+- **0.2.0, job `qcc-emul-v2`** (`PREREGISTRATION-emul2.md`, `RESULTS-emul2.md`): **5 of 5
+  predictions held.** With the paper's symmetric square, the emulated reference has its worst
+  input at x = 2,588,411 with log2 relative error -25.068, which is the paper's input and the
+  paper's -25.07, over all 3,133,452 inputs and with zero failures. The cost model gives the
+  paper's four stage counts exactly (1,071 / 442 / 1,043 / 867) and 27.28 T per rotation. The
+  emulator is now a validated error oracle for designs of this kind; it takes about 13 seconds
+  per design on one CPU.
+
+## Status
+
+Invsqrt design work has stopped (decided in `PREREGISTRATION-emul2.md`): no design we can model
+beats the public 20.06x, and MV2 cannot submit yet. The emulator and its tests stay here for
+anyone checking a fixed-point invsqrt design.
 
 Contact: MV2, Munim, Inc., mv2@munimtech.com
