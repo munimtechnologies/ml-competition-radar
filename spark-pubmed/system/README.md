@@ -35,6 +35,17 @@ is the planned image.
 code at pinned commits and checks each file's size against the git tree, so the job runs exactly
 the public code. Its `system` and `t2dev` groups pin commit 4765a24.
 
+`ro_db.py` (0.1.0, standard library only) opens the index read-only for a read-only mount. The
+index uses SQLite's WAL journal, and SQLite 3.22.0 or later can read a WAL-mode database without
+write access only if its `-shm` and `-wal` files already exist, its folder is writable, or the
+connection uses the `immutable` URI parameter
+([sqlite.org/wal.html](https://www.sqlite.org/wal.html), section 5). `connect(path,
+immutable=True)` opens it with `mode=ro&immutable=1`, so no locks or side files are needed and
+nothing can be written. An immutable connection ignores a `-wal` file, so a non-empty one is
+refused rather than silently skipped. `python ro_db.py DB` prints the journal mode, the side-file
+sizes and the SQLite version. Nothing uses it yet: `spark_t1.py` 0.1.1 still opens the index with
+a plain `sqlite3.connect`, unchanged while spark43 runs.
+
 | File | What it is |
 |---|---|
 | `PREREGISTRATION-spark41.md` | Predictions for job `spark41-system-v1`, written before it ran |
@@ -42,8 +53,10 @@ the public code. Its `system` and `t2dev` groups pin commit 4765a24.
 | `results-spark41/` | That job's run, score, agreement and resume-check counts (no question text) |
 | `PREREGISTRATION-spark43.md` | Predictions for job `spark43-system-v1` (whole system at depth 150 on all 198 development questions), written before it ran |
 | `fetch_code.py`, `test_fetch_code.py` | Fetches the pinned public code into a job |
+| `ro_db.py`, `test_ro_db.py` | Opens the WAL-mode index read-only (`immutable`) for a read-only mount |
+| `PREREGISTRATION-rodb1.md` | Predictions for job `rodb-check-v1` (does `ro_db.py` open the real index read-only?), written before it ran |
 
-## Status (2026-10-28, about 13:00 UTC)
+## Status (2026-10-28, about 17:00 UTC)
 
 - `RESULTS-spark41.md`: on the 90 R questions at depth 50, the whole system reproduced spark39's
   graded ranking exactly (same top five on 90 of 90; top:5 MRR 0.8981, top:1 0.8333). A second run
@@ -56,13 +69,18 @@ the public code. Its `system` and `t2dev` groups pin commit 4765a24.
   **fp32 with 512-token inputs** (`../quant/RESULTS-spark42.md`). The 0.1.1 tests (one changed
   assertion in `test_spark_t1.py`, one new test in `test_agree.py`) have been traced by hand only;
   spark43 is the first sealed job that runs them.
-- **spark43 is filed (2026-10-28).** The dense first-stage test it waited for was rejected
-  (`../dense/RESULTS-spark46.md`), so BM25 stays the first stage and the candidate set is final.
-  spark43 runs the whole system at depth 150 on L, BioGen and R (198 questions) and is graded
-  against `PREREGISTRATION-spark43.md` once it finishes.
+- **spark43 is filed (2026-10-28) and waiting for a slot.** The dense first-stage test it waited
+  for was rejected (`../dense/RESULTS-spark46.md`), so BM25 stays the first stage and the candidate
+  set is final. spark43 runs the whole system at depth 150 on L, BioGen and R (198 questions) and
+  is graded against `PREREGISTRATION-spark43.md` once it finishes.
 - **The Docker image has not been built or run yet.** Open items: whether the challenge mounts
-  the corpus or expects it inside the image (the index is about 92.5 GB); the index uses SQLite's
-  WAL journal, so its folder must be writable unless it is converted first; the challenge has not
-  published how wrong citations are penalised, so the `top:1` / `top:5` choice may change.
+  the corpus or expects it inside the image (the index is about 92.5 GB); the challenge has not
+  published how wrong citations are penalised, so the `top:1` / `top:5` choice may change. The
+  WAL item now has a fix that has not been tried on the real index: `ro_db.py` opens the index
+  with `immutable`, and its tests (including one in a folder with no write permission, which runs
+  only as a non-root POSIX user) check that on small databases. Job `rodb-check-v1` tries it on
+  the real index (`PREREGISTRATION-rodb1.md`). The other way is to convert the
+  index once with `PRAGMA journal_mode=DELETE`, as SQLite advises for read-only media. That writes
+  to the shared data volume, so it waits until no job is reading the index.
 
 Contact: MV2, Munim, Inc., mv2@munimtech.com
