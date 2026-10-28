@@ -21,7 +21,8 @@ every PubMed citation from 30 runs judged by assessors. The file's own labels ar
 "contradicting", "neutral", "not relevant" and "invalid citation", and every answer sentence is
 judged Required, Unnecessary, Borderline or Inappropriate. The 2025 track recommends these
 assessments for development (https://trec-biogen.github.io/docs/). Its answers are at most 250
-words, with at most 3 PMIDs per sentence and 30 per answer.
+words, with at most 3 PMIDs per sentence and 30 per answer. The 2025 track's own judgments are
+not public yet (its TREC data page lists topics only, read 2026-10-28).
 
 `biogen_census.py` downloads the topics and assessments, hashes them, and writes counts and
 PMIDs only, never text: label totals, per-topic contradiction counts, per-run label shares, and
@@ -40,6 +41,7 @@ Every job was pre-registered before it ran and graded word for word:
 | biogen-stance-v3 | `PREREGISTRATION-biogen-stance-v3.md` | `RESULTS-biogen-stance-v3.md`, `results-biogen-stance-v3/` | 3 of 3 checks, 6 of 6 |
 | biogen-slots-v1 | `PREREGISTRATION-biogen-slots.md` | `RESULTS-biogen-slots.md`, `results-biogen-slots/` | 4 of 4 checks, 8 of 8 (public commit came after the job; see results) |
 | t2dev-v1 | `PREREGISTRATION-t2dev.md` | `RESULTS-t2dev.md`, `results-t2dev/` | 3 of 3 checks, 10 of 11 (memory missed; public commit 2 min after the job started) |
+| biogen-nli-v1 | `PREREGISTRATION-biogen-nli.md` | (queued 2026-10-28) | |
 
 What v2 counted: 14,763 citation judgments (69.4% supporting, 1.9% contradicting, 4.3% invalid);
 55 of 65 topics have a contradicting judgment; 3,858 distinct PMIDs, all inside the SPARK
@@ -109,12 +111,22 @@ BM25 over all 39,167,523 records, then `compose.py`, on the 65 BioGen questions:
   judged citation at all. Of the judged citations, 75.7% are Supports or mixed papers.
 - The negation-cue conflict flag fired on no answer, although 10 answers cite a mixed paper.
 
+## A model-based conflict flag: `nli_check.py` 0.1.0 (biogen-nli-v1, queued)
+
+Before replacing the negation cues, `nli_check.py` measures how well an off-the-shelf NLI
+cross-encoder (cross-encoder/nli-deberta-v3-base, Apache-2.0, pinned revision, CPU) recovers the
+assessors' labels when it sees exactly what they judged: the quoted passage of the cited paper as
+premise and the answer sentence as hypothesis. It reports AUROC, average precision, argmax and
+oracle-threshold F1 for Contradicts per judgment, per citation slot and per topic-paper, and the
+full label-by-prediction table. Outputs are counts and scores only. The decision rule (use this
+model for compose.py 0.3.0's flag, or move to a biomedical NLI model or an LLM judge) is fixed in
+`PREREGISTRATION-biogen-nli.md`.
+
 ## Next
 
-1. `spark37-speed-v1` (`../speed/PREREGISTRATION.md`): leave very common words out of the BM25
-   query, on these 65 questions and the Task 1 dev sets.
-2. `spark36-rerank-v1` (`../rerank/PREREGISTRATION-spark36.md`): rerank the first 50 candidates
-   with the MedCPT cross-encoder, compose again, score the same way.
+1. Grade biogen-nli-v1 against its pre-registration and follow its decision rule.
+2. Then rerun these 65 questions on the chosen Task 1 system (MedCPT cross-encoder at depth 150,
+   `../system/`), compose again, and score the same way.
 3. Then an open-weight stage for conflicts and rewriting, measured on judged precision and on how
    many citations were judged at all.
 
