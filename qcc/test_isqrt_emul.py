@@ -12,7 +12,7 @@ import isqrt_emul as E
 
 class Basics(unittest.TestCase):
     def test_version_and_range(self):
-        self.assertEqual(E.VERSION, "0.1.0")
+        self.assertEqual(E.VERSION, "0.2.0")
         self.assertEqual(E.X_MAX, 3133452)
         self.assertEqual(E.NBITS, 22)
 
@@ -33,6 +33,12 @@ class Basics(unittest.TestCase):
         self.assertEqual(E.width(np.array([-1, 3])), 3)
         self.assertEqual(E.width(np.array([-4, 3])), 3)
         self.assertEqual(E.width(np.array([-5, 3])), 4)
+
+    def test_signed_rel(self):
+        x = np.array([4], dtype=np.int64)
+        y = np.array([2 ** 39], dtype=np.int64)       # 0.5 turn at F = 40, exact for x = 4
+        self.assertEqual(float(E.signed_rel(y, 40, x)[0]), 0.0)
+        self.assertLess(float(E.signed_rel(y - 1, 40, x)[0]), 0.0)
 
 
 class Tmul(unittest.TestCase):
@@ -56,13 +62,36 @@ class Tmul(unittest.TestCase):
         self.assertEqual(int(E.tmul(np.array([-5]), 80, np.array([1]), 0, 1, 0)[0]), -1)
 
 
-class Costs(unittest.TestCase):
-    def test_mac_cost_full_rows(self):
-        self.assertEqual(E.mac_cost(10, 0, 10, 12, 4, 4), (40, 48, 10))
+class Square(unittest.TestCase):
+    def test_sym_square_exact_without_truncation(self):
+        y = np.random.default_rng(6).integers(0, 2 ** 10, 4000)
+        self.assertTrue(np.array_equal(E.sym_square(y, 10, 20), y * y))
 
+    def test_sym_square_bound(self):
+        # dropped terms at fc = 17, fsq = 28 sum to at most 2.015625 units of 2^-28
+        y = np.concatenate([np.random.default_rng(7).integers(0, 2 ** 17, 20000),
+                            np.array([2 ** 17 - 1, 0, 1])])
+        got = E.sym_square(y, 17, 28)
+        lost = y.astype(np.float64) ** 2 / 2.0 ** 6 - got
+        self.assertTrue(np.all(lost >= 0) and np.all(lost <= 2.015625))
+        self.assertGreater(float(np.max(lost)), 1.0)
+
+
+class Costs(unittest.TestCase):
     def test_mac_cost_truncated(self):
-        # rows i = 0..3, drop = 3 - i bits: kept 7, 8, 9, 10
-        self.assertEqual(E.mac_cost(10, 10, 11, 12, 4, 4), (34, 48, 10))
+        # e = i - 3: kept 7, 8, 9, 10 bits; every adder spans the whole 14-bit accumulator
+        self.assertEqual(E.mac_cost(10, 10, 11, 14, 4, 4), (34, 52, 10))
+
+    def test_mac_cost_shifted_rows(self):
+        # e = 0, 1: the second row's adder starts one position up
+        self.assertEqual(E.mac_cost(10, 0, 0, 14, 0, 2), (20, 25, 10))
+
+    def test_sym_square_cost(self):
+        self.assertEqual(E.sym_square_cost(17, 28), (130, 312))
+
+    def test_reference_stage_costs_match_paper(self):
+        self.assertEqual(E.ref_stage_costs(), {"horner": 1071, "square": 442, "mantissa": 1043,
+                                               "final": 867})
 
     def test_rotation_price_matches_reference(self):
         # 37 rotations and a 2^-35.69 turn margin give the reference's ~27.28 T each
@@ -93,9 +122,20 @@ class Reference(unittest.TestCase):
     def test_pipeline_sane_on_sample(self):
         x = np.concatenate([np.arange(1, 300), np.random.default_rng(4).integers(1, E.X_MAX + 1, 3000),
                             np.array([E.X_MAX, 2588411])]).astype(np.int64)
-        y, F, mid = E.ref_pipeline(x)
-        self.assertEqual(F, 40)
-        self.assertLess(float(np.max(E.rel_err(y, F, x))), 2.0 ** -20)
+        for square in ("sym", "rows"):
+            y, F, mid = E.ref_pipeline(x, square=square)
+            self.assertEqual(F, 40)
+            self.assertLess(float(np.max(E.rel_err(y, F, x))), 2.0 ** -20)
+        with self.assertRaises(ValueError):
+            E.ref_pipeline(x[:5], square="other")
+
+    def test_report_has_both_squares(self):
+        x = np.array([1, 2, 3, 1046655, 2588411], dtype=np.int64)
+        rep = E.ref_report(x)
+        self.assertIn("rows_square", rep)
+        self.assertIsNotNone(rep["at_paper_worst_x"])
+        self.assertIsNone(E.ref_report(x[:3])["at_paper_worst_x"])
+        self.assertLessEqual(rep["max_neg_rel"], rep["max_pos_rel"])
 
 
 class Poly(unittest.TestCase):
@@ -146,6 +186,7 @@ class Run(unittest.TestCase):
                 rep = json.load(fh)
             self.assertEqual(rep["n_inputs"], 4000)
             self.assertIn("model", rep["reference"])
+            self.assertIn("rows_square", rep["reference"])
             self.assertEqual(len(rep["designs"]), 2)
 
 

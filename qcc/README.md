@@ -1,7 +1,7 @@
 # qcc: Google Quantum AI "Verifiable Quantum Circuit Compilation" (Kaggle)
 
-Work of AI agents in the name of MV2 of Munim, Inc. Apache-2.0. Written 2026-10-27 and updated
-the same day (third run).
+Work of AI agents in the name of MV2 of Munim, Inc. Apache-2.0. Written 2026-10-27; updated
+2026-10-28 (fourth run).
 
 ## The competition (read 2026-10-27, from Google's announcement, the competition paper and
 participants' public repos; Kaggle's own pages need a browser and were not read)
@@ -59,7 +59,7 @@ So a useful invsqrt entry now has to beat about 19x, not the reference.
   2. Piecewise cubic first guess from a 4-way QROM, 17 fractional bits (coefficients in the
      paper's Eqs. 15-16).
   3. One Newton step, p = y0(3 - x_norm y0^2)/2, with truncated multipliers (Horner 1,071,
-     squaring 442, mantissa multiply 1,043, final multiply 867 Toffolis).
+     symmetric squaring 442, mantissa multiply 1,043, final multiply 867 Toffolis).
   4. Denormalize with 30 n_p CSWAPs, apply one Z_POW per bit of y1 (F = 30 + n_p = 40 fractional
      bits), then uncompute everything in reverse.
 
@@ -84,14 +84,24 @@ live-selfie identity check before submitting. The data (reference circuits, veri
   `operation_statistics`. So we can now build circuits and simulate them ourselves, without
   Kaggle's verifier.
 
-## Emulator (`isqrt_emul.py` 0.1.0; pre-registered in `PREREGISTRATION-emul1.md`)
+## Emulator (`isqrt_emul.py`)
 
 This is an exact-integer numpy model of the invsqrt fixed-point arithmetic over all 3,133,452
-inputs. It is not a circuit. It reports a design's worst relative error, the worst input and the
-remaining margin. It then prices the design with an explicit cost model: rows of ANDs plus
-accumulator-wide adders, QROM, normalization, the shift back, and the paper's rotation price.
-Job `qcc-emul-v1` (filed 2026-10-27) first checks the emulator against the paper's reference
-(worst error 2^-25.07, stage Toffoli counts). It then screens 24 piecewise-polynomial layouts
-(degree 1 to 4, no Newton step). Results will be graded against the pre-registration.
+inputs. It is not a circuit. It reports a design's worst relative error (signed extremes too),
+the worst input and the remaining margin. It then prices the design with an explicit cost model:
+QROM, normalization, the shift back, the paper's rotation price, and multiply rows priced by the
+public builder's rule (one Toffoli per kept AND, plus width - 1 per in-place adder).
+
+- **0.1.0, job `qcc-emul-v1`** (`PREREGISTRATION-emul1.md`, `RESULTS-emul1.md`): 7 of 9
+  predictions held. It missed both checks against the paper's reference: worst error 2^-24.342 at
+  x = 1,046,655, against the paper's 2^-25.07 at x = 2,588,411. The cause we found is the
+  squaring stage. The paper uses a symmetric truncated square, and we had used a row-floored
+  product. The screen put plain piecewise polynomials (no Newton step) at about 3.6x the reference
+  as modeled (degree 2, 2^7 + 2^7 segments). That is far below the public ~19x, so this family is
+  dropped.
+- **0.2.0, job `qcc-emul-v2`** (`PREREGISTRATION-emul2.md`; filed 2026-10-28; result pending):
+  adds the symmetric square and the builder's row rule. The rule reproduces the paper's four
+  stage counts exactly (1,071 / 442 / 1,043 / 867), which a unit test checks. The job tests
+  whether the emulator now reproduces the paper's worst input and worst error.
 
 Contact: MV2, Munim, Inc., mv2@munimtech.com

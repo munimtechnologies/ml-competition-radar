@@ -8,13 +8,16 @@ circuit computes a fixed-point value y, applies one Z_POW per bit of y, and unco
 module reproduces that arithmetic with exact integers in numpy over every input, so a design's
 worst error is known before any circuit is written.
 
-Toffoli and qubit numbers here are a MODEL (the formulas in mac_cost and poly_cost), not a count
-of a built circuit. The rotation price is the paper's: 0.56 log2(1/eps) + 5.3 T per fine Z_POW,
-eps = pi * min_x(tol - err) / n_rot.
+Toffoli and qubit numbers here are a MODEL (the formulas in mac_cost, sym_square_cost and
+poly_cost), not a count of a built circuit. Since 0.2.0 the row rule follows the public builder
+(one Toffoli per kept AND, width - 1 per in-place adder over target[low:]); it reproduces the
+paper's four reference stage counts (1,071 / 442 / 1,043 / 867) exactly. The rotation price is
+the paper's: 0.56 log2(1/eps) + 5.3 T per fine Z_POW, eps = pi * min_x(tol - err) / n_rot.
 
 Two pipelines:
 - ref: the paper's reference (normalize, 4-case cubic from QROM at 17 fractional bits, one
-  Newton step with truncated multipliers, shift back, phase). Used to check this emulator.
+  Newton step with truncated multipliers, shift back, phase). square="sym" (default since 0.2.0)
+  is the symmetric truncated square of the paper; square="rows" is the 0.1.0 reading.
 - poly: normalize, a piecewise polynomial of degree d from one QROM (2^a_lo segments on [1,2),
   2^a_hi on [2,4)), signed Horner with truncated multipliers, no Newton step, shift back, phase.
   A greedy search trims each stage's fractional bits while every input still passes.
@@ -30,7 +33,7 @@ import time
 
 import numpy as np
 
-VERSION = "0.1.0"
+VERSION = "0.2.0"
 N_P = 10
 NBITS = 2 * N_P + 2            # 22-qubit input register
 FRAC = NBITS - 2               # x_norm has 20 fractional bits, value in [1, 4)
@@ -38,7 +41,11 @@ X_MAX = 3 * (2 ** N_P - 2) ** 2  # 3,133,452
 TOL_LOG2 = -24
 PASS_FRACTION = 15 / 16        # the search keeps worst relative error <= 15/16 of the tolerance
 REF = {"qubits": 260, "toffoli": 7735, "rotations": 37, "C": 7987.59, "cost": 2076774.23,
-       "horner": 1071, "mantissa": 1043, "final": 867, "worst_log2": -25.07, "worst_x": 2588411}
+       "horner": 1071, "square": 442, "mantissa": 1043, "final": 867,
+       "worst_log2": -25.07, "worst_x": 2588411}
+# Reference register widths (paper Appendix B): coefficients 17, y0^2 28, z and 3 - z 28 + 2,
+# p 29 + 1.
+REF_W = {"c": 17, "dx": 14, "sq": 28, "z": 30, "p": 30}
 
 # arXiv:2610.23832 Eqs. 15-16 (attributed there to its Ref. [29]).
 A = (0.99994132489119882162, 0.49609891915903542303, 0.33261112772430493331, 0.14876762006038398086)
@@ -78,6 +85,22 @@ def tmul(a, fa, b, fb, nb, fout):
     return acc
 
 
+def sym_square(y0, fc=17, fsq=28):
+    """T(y0^2) at fsq fractional bits, as the paper's squaring circuit builds it: with y_k the bit
+    of weight 2^-k of y0 (fc fractional bits, y0 < 1), keep y_k at weight 2^-2k when 2k <= fsq and
+    the doubled cross term y_k y_l (k < l) at weight 2^-(k+l-1) when k+l-1 <= fsq."""
+    y0 = np.asarray(y0, dtype=np.int64)
+    bits = {k: ((y0 >> (fc - k)) & 1).astype(np.uint8) for k in range(1, fc + 1)}
+    sq = np.zeros(y0.shape, dtype=np.int64)
+    for k in range(1, fc + 1):
+        if 2 * k <= fsq:
+            sq += bits[k].astype(np.int64) << (fsq - 2 * k)
+        for l in range(k + 1, fc + 1):
+            if k + l - 1 <= fsq:
+                sq += (bits[k] & bits[l]).astype(np.int64) << (fsq - (k + l - 1))
+    return sq
+
+
 def width(v):
     """Register width for the integer values v (two's complement if any is negative)."""
     v = np.asarray(v, dtype=np.int64)
@@ -87,9 +110,14 @@ def width(v):
     return max(mx.bit_length(), (-mn - 1).bit_length()) + 1
 
 
+def signed_rel(y, F, x):
+    """y 2^-F sqrt(x) - 1 for the phase y (F fractional bits of a turn)."""
+    return y.astype(np.float64) * 2.0 ** -F * np.sqrt(np.asarray(x, dtype=np.float64)) - 1.0
+
+
 def rel_err(y, F, x):
     """|y 2^-F sqrt(x) - 1| for the phase y (F fractional bits of a turn)."""
-    return np.abs(y.astype(np.float64) * 2.0 ** -F * np.sqrt(np.asarray(x, dtype=np.float64)) - 1.0)
+    return np.abs(signed_rel(y, F, x))
 
 
 def stats(rel, x):
@@ -112,17 +140,32 @@ def rotation_t(margin_turns, n_rot):
 
 
 def mac_cost(w_mult, f_mult, f_out, w_acc, fb, nb):
-    """Model Toffolis of acc += T(mult * b), rows over nb bits of b (fb fractional bits): per row
-    with any kept partial product, one AND per kept multiplicand bit plus a w_acc-bit adder.
+    """Model Toffolis of acc += T(mult * b), rows over nb bits of b (fb fractional bits). Row i
+    puts multiplicand bit j at accumulator position j + e, e = i - fb - f_mult + f_out, keeping
+    positions 0 .. w_acc - 1. Each row with kept bits costs one AND per kept bit plus an in-place
+    adder over acc[max(0, e):], i.e. w_acc - max(0, e) - 1 Toffolis (the public builder's rule).
     Returns (ands, adder_toffolis, widest row)."""
     ands = adds = widest = 0
     for i in range(nb):
-        m = max(0, w_mult - max(0, f_mult + fb - i - f_out))
-        if m:
-            ands += m
-            adds += w_acc
-            widest = max(widest, m)
+        e = i - fb - f_mult + f_out
+        terms = min(w_mult, w_acc - e) - max(0, -e)
+        if terms > 0:
+            ands += terms
+            adds += w_acc - max(0, e) - 1
+            widest = max(widest, terms)
     return ands, adds, widest
+
+
+def sym_square_cost(wc, wsq):
+    """(ands, adder_toffolis) of sym_square's circuit: row k ANDs y_k into each kept y_l (l > k)
+    and adds over square[wsq - (k + lmax - 1):]."""
+    ands = adds = 0
+    for k in range(1, wc + 1):
+        ls = [l for l in range(k + 1, wc + 1) if k + l - 1 <= wsq]
+        if ls:
+            ands += len(ls)
+            adds += (k + max(ls) - 1) - 1
+    return ands, adds
 
 
 # ---------------------------------------------------------------- reference pipeline
@@ -140,7 +183,7 @@ def ref_tables(fc=17):
     return out
 
 
-def ref_pipeline(x, fc=17, wdx=14, fsq=28, fz=28, fp=29):
+def ref_pipeline(x, fc=17, wdx=14, fsq=28, fz=28, fp=29, square="sym"):
     """The reference arithmetic. Returns (phase integer, F, intermediates)."""
     xn, s = normalize(x)
     upper = (xn >> (FRAC + 1)) & 1
@@ -154,7 +197,12 @@ def ref_pipeline(x, fc=17, wdx=14, fsq=28, fz=28, fp=29):
     t2 = c[2] - tmul(t3, fc, d, wdx, wdx, fc)
     t1 = c[1] - tmul(t2, fc, d, wdx, wdx, fc)
     y0 = c[0] - tmul(t1, fc, d, wdx, wdx, fc)
-    sq = tmul(y0, fc, y0, fc, fc + 1, fsq)
+    if square == "sym":
+        sq = sym_square(y0, fc, fsq)
+    elif square == "rows":
+        sq = tmul(y0, fc, y0, fc, fc + 1, fsq)
+    else:
+        raise ValueError("square must be 'sym' or 'rows'")
     z = tmul(sq, fsq, xn, FRAC, NBITS, fz)
     w = (3 << fz) - z
     p = tmul(w, fz, y0, fc, fc + 1, fp)          # ~ 2 / sqrt(x_norm)
@@ -162,21 +210,42 @@ def ref_pipeline(x, fc=17, wdx=14, fsq=28, fz=28, fp=29):
     return p << s, F, {"t3": t3, "t2": t2, "t1": t1, "y0": y0, "sq": sq, "z": z, "w": w, "p": p}
 
 
-def ref_report(x):
-    y, F, mid = ref_pipeline(x)
-    st = stats(rel_err(y, F, x), x)
+def ref_stage_costs():
+    """Modeled Toffolis of the reference's four multiply stages at its register widths."""
+    W = REF_W
+    h = mac_cost(W["c"], 17, 17, W["c"], W["dx"], W["dx"])
+    sq = sym_square_cost(W["c"], W["sq"])
+    mant = mac_cost(W["sq"], 28, 28, W["z"], FRAC, NBITS)
+    fin = mac_cost(W["z"], 28, 29, W["p"], 17, 17)
+    return {"horner": 3 * (h[0] + h[1]), "square": sq[0] + sq[1], "mantissa": mant[0] + mant[1],
+            "final": fin[0] + fin[1]}
+
+
+def _variant(x, square):
+    y, F, mid = ref_pipeline(x, square=square)
+    sr = signed_rel(y, F, x)
+    st = stats(np.abs(sr), x)
     n_rot = F - 3
     per = rotation_t(st["margin_turns"], n_rot)
-    wd = {k: width(v) for k, v in mid.items()}
-    h = [mac_cost(wd["t3"], 17, 17, wd["t2"], 14, 14), mac_cost(wd["t2"], 17, 17, wd["t1"], 14, 14),
-         mac_cost(wd["t1"], 17, 17, wd["y0"], 14, 14)]
-    mant = mac_cost(wd["sq"], 28, 28, wd["z"], FRAC, NBITS)
-    fin = mac_cost(wd["w"], 28, 29, wd["p"], 17, 18)
+    hit = np.nonzero(np.asarray(x) == REF["worst_x"])[0]
+    at = None
+    if hit.size:
+        v = float(sr[hit[0]])
+        at = {"signed_rel": v, "log2_abs": round(math.log2(abs(v)), 3) if v else None}
     return {"F": F, "n_rot": n_rot, "rotation_t_each": round(per, 3) if per else None,
-            "widths": wd, "stats": st,
-            "model": {"horner": sum(a + b for a, b, _ in h), "mantissa": mant[0] + mant[1],
-                      "final": fin[0] + fin[1]},
-            "paper": {k: REF[k] for k in ("horner", "mantissa", "final", "worst_log2", "worst_x")}}
+            "widths": {k: width(v) for k, v in mid.items()}, "stats": st,
+            "max_pos_rel": float(np.max(sr)), "max_neg_rel": float(np.min(sr)),
+            "at_paper_worst_x": at}
+
+
+def ref_report(x):
+    rep = _variant(x, "sym")
+    rows = _variant(x, "rows")
+    rep["rows_square"] = {k: rows[k] for k in ("rotation_t_each", "stats", "max_pos_rel",
+                                               "max_neg_rel", "at_paper_worst_x")}
+    rep["model"] = ref_stage_costs()
+    rep["paper"] = {k: REF[k] for k in ("horner", "square", "mantissa", "final", "worst_log2", "worst_x")}
+    return rep
 
 
 # ---------------------------------------------------------------- piecewise polynomial pipeline
@@ -362,8 +431,10 @@ def main(argv=None):
     rep = {"version": VERSION, "numpy": np.__version__, "x_max": a.x_max, "n_inputs": int(x.size),
            "pass_fraction": PASS_FRACTION}
     rep["reference"] = ref_report(x)
-    print(json.dumps({"reference": rep["reference"]["stats"], "model": rep["reference"]["model"],
-                      "rotation_t_each": rep["reference"]["rotation_t_each"]}))
+    r = rep["reference"]
+    print(json.dumps({"reference_sym": r["stats"], "reference_rows": r["rows_square"]["stats"],
+                      "model": r["model"], "rotation_t_each": r["rotation_t_each"],
+                      "at_paper_worst_x": r["at_paper_worst_x"]}))
     grid = parse_grid(a.grid) if a.grid else DEFAULT_GRID
     rows, best = screen(x, grid)
     rep["designs"] = rows
