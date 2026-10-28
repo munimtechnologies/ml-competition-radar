@@ -31,13 +31,19 @@ way `../rerank/depth_curve.py` does (only reranked items whose BM25 rank is at m
 system at depth 150 can be compared with spark40's depth-200 and depth-300 reranks. `Dockerfile`
 is the planned image.
 
+`fetch_code.py` (0.2.0, standard library only) lets a sealed job fetch this repository's published
+code at pinned commits and checks each file's size against the git tree, so the job runs exactly
+the public code. Its `system` and `t2dev` groups pin commit 4765a24.
+
 | File | What it is |
 |---|---|
 | `PREREGISTRATION-spark41.md` | Predictions for job `spark41-system-v1`, written before it ran |
 | `RESULTS-spark41.md` | Grades: 3 of 3 checks and 7 of 8 predictions held |
 | `results-spark41/` | That job's run, score, agreement and resume-check counts (no question text) |
+| `PREREGISTRATION-spark43.md` | Predictions for job `spark43-system-v1` (whole system at depth 150 on all 198 development questions), written before it ran |
+| `fetch_code.py`, `test_fetch_code.py` | Fetches the pinned public code into a job |
 
-## Status (2026-10-25, about 19:30 UTC)
+## Status (2026-10-28, about 13:00 UTC)
 
 - `RESULTS-spark41.md`: on the 90 R questions at depth 50, the whole system reproduced spark39's
   graded ranking exactly (same top five on 90 of 90; top:5 MRR 0.8981, top:1 0.8333). A second run
@@ -48,12 +54,12 @@ is the planned image.
 - **`spark_t1.py` 0.1.1 defaults to depth 150**, the depth `../rerank/RESULTS-spark40.md` chose by
   its pre-registered rule (0.1.0 defaulted to 50). Nothing else in it changed. The scorer stays
   **fp32 with 512-token inputs** (`../quant/RESULTS-spark42.md`). The 0.1.1 tests (one changed
-  assertion in `test_spark_t1.py`, one new test in `test_agree.py`) have been traced by hand only.
-  They will first run in the next sealed job that uses this code; committing does not run them.
-- The whole-pipeline timing at the final settings (`spark43`) is not filed yet. It waits for the
-  dense first-stage test (`../dense/`), which may change the candidate set: timing the current
-  system now would mostly repeat what spark40 and spark41 already measured (about 150 x 0.35-0.51 s
-  of cross-encoder work plus BM25's 17-43 s median per question, on 2 CPUs).
+  assertion in `test_spark_t1.py`, one new test in `test_agree.py`) have been traced by hand only;
+  spark43 is the first sealed job that runs them.
+- **spark43 is filed (2026-10-28).** The dense first-stage test it waited for was rejected
+  (`../dense/RESULTS-spark46.md`), so BM25 stays the first stage and the candidate set is final.
+  spark43 runs the whole system at depth 150 on L, BioGen and R (198 questions) and is graded
+  against `PREREGISTRATION-spark43.md` once it finishes.
 - **The Docker image has not been built or run yet.** Open items: whether the challenge mounts
   the corpus or expects it inside the image (the index is about 92.5 GB); the index uses SQLite's
   WAL journal, so its folder must be writable unless it is converted first; the challenge has not
