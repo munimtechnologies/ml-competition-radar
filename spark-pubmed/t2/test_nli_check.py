@@ -83,9 +83,40 @@ class Parts(unittest.TestCase):
         self.assertIn(nc.MODEL_ID, calls[0])
         self.assertEqual(rep["files"]["spm.model"]["bytes"], 1)
 
+    def test_fetch_other_model(self):
+        calls = []
+
+        def get(url, dest, max_bytes):
+            calls.append(url)
+            with open(dest, "wb") as f:
+                f.write(b"xy")
+
+        with tempfile.TemporaryDirectory() as d:
+            rep = nc.fetch_model(d, files=("config.json",), rev="abc", get=get, model="org/m")
+        self.assertEqual(calls, ["https://huggingface.co/org/m/resolve/abc/config.json"])
+        self.assertEqual((rep["model"], rep["revision"], rep["files"]["config.json"]["bytes"]),
+                         ("org/m", "abc", 2))
+
+    def test_fusion(self):
+        ents = [("1", "r", 0, 5, "contradicts", "There was no significant difference in mortality.",
+                 "Drug A improves survival."),
+                ("1", "r", 0, 6, "supports", "Drug A improved survival.", "Drug A improves survival."),
+                ("1", "r", 1, 7, "contradicts", "Patients did not respond.", "Drug A works."),
+                ("1", "r", 1, 8, "neutral", "Not studied here.", "Drug A works.")]
+        probs = [(0.2, 0.5, 0.3), (0.6, 0.3, 0.1), (0.7, 0.1, 0.2), (0.1, 0.1, 0.8)]
+        fu = nc.fusion(ents, probs)
+        g = fu["gate_neg_passage"]["entry"]
+        self.assertEqual((g["argmax"]["tp"], g["argmax"]["fp"], g["argmax"]["fn"], g["argmax"]["f1"],
+                          g["auroc"]), (1, 0, 1, 0.6667, 1.0))
+        u = fu["union_polarity_clash"]["entry"]
+        self.assertEqual((u["argmax"]["tp"], u["argmax"]["fp"], u["argmax"]["precision"],
+                          u["argmax"]["f1"], u["auroc"]), (2, 1, 0.6667, 0.8, 1.0))
+        self.assertEqual((fu["union_polarity_clash"]["slot"]["n"],
+                          fu["union_polarity_clash"]["slot"]["positives"]), (4, 2))
+
 
 class Run(unittest.TestCase):
-    def go(self, sha=None):
+    def go(self, sha=None, pairs_path=None):
         def get(url, dest, max_bytes):
             self.assertEqual(url, nc.ASSESS_URL)
             with open(dest, "w", encoding="utf-8") as f:
@@ -93,7 +124,8 @@ class Run(unittest.TestCase):
             return {"url": url}
 
         with tempfile.TemporaryDirectory() as d:
-            res = nc.run(os.path.join(d, "biogen"), fake_scorer, sha=sha, get=get)
+            res = nc.run(os.path.join(d, "biogen"), fake_scorer, sha=sha, get=get,
+                         pairs_path=pairs_path)
         return res
 
     def test_sha_mismatch_stops(self):
@@ -114,6 +146,7 @@ class Run(unittest.TestCase):
         self.assertEqual(res["census"], {"topic_papers": 5, "topic_papers_contradicts": 2,
                                          "topic_papers_mixed": 1})
         self.assertEqual(res["scoring"], {"pairs": 5})
+        self.assertEqual((res["model"], res["revision"]), (nc.MODEL_ID, nc.MODEL_REV))
 
     def test_metrics(self):
         res = self.go()
@@ -133,6 +166,22 @@ class Run(unittest.TestCase):
         self.assertEqual(e["mean_p"]["supports"], [0.1, 0.8, 0.1])
         self.assertEqual((res["slot"]["n"], res["slot"]["positives"], res["slot"]["auroc"]), (5, 2, 1.0))
         self.assertEqual((res["topic_paper"]["n"], res["topic_paper"]["positives"]), (4, 2))
+        g = res["fusion"]["gate_neg_passage"]
+        self.assertEqual((g["entry"]["argmax"]["tp"], g["entry"]["argmax"]["fp"],
+                          g["entry"]["argmax"]["f1"], g["entry"]["auroc"]), (1, 0, 0.6667, 0.75))
+        self.assertEqual((g["slot"]["n"], g["slot"]["positives"]), (5, 2))
+
+    def test_pairs_file(self):
+        with tempfile.TemporaryDirectory() as d:
+            p = os.path.join(d, "pairs.jsonl")
+            self.go(pairs_path=p)
+            with open(p, encoding="utf-8") as f:
+                rows = [json.loads(line) for line in f]
+        self.assertEqual(len(rows), 5)
+        self.assertEqual(rows[0], {"pair": nc.pair_key("X helped.", "Drug X helps."),
+                                   "p": [0.1, 0.8, 0.1]})
+        self.assertEqual(len(rows[0]["pair"]), 40)
+        self.assertNotIn("helped", json.dumps(rows))
 
 
 if __name__ == "__main__":

@@ -6,18 +6,22 @@ SPARK Task 2 is scored partly on conflict coverage, and compose.py 0.2.0's negat
 flag fired on no answer in t2dev-v1. Before building a model-based flag, this measures how well a
 general NLI model separates the assessors' labels when it sees exactly what they judged: the
 quoted passage of the cited paper (evidence_support, premise) and the answer sentence
-(answer_sentence, hypothesis). Model: cross-encoder/nli-deberta-v3-base (Apache-2.0) at a pinned
-revision, CPU only. Scored three ways: per judgment (entry), per citation slot (topic, run,
-sentence, PMID; Contradicts if any entry is, the overview's rule) and per topic-paper. Each level
-reports AUROC and average precision of p(contradiction) for Contradicts, the argmax prediction's
-precision/recall/F1, and the best F1 over thresholds (an oracle, chosen on the same data). It also
-reports p(entailment) for Supports and the gold-by-argmax confusion matrix.
+(answer_sentence, hypothesis). Default model: cross-encoder/nli-deberta-v3-base (Apache-2.0) at a
+pinned revision; --model/--revision pick another three-way NLI model. CPU only. Scored three ways:
+per judgment (entry), per citation slot (topic, run, sentence, PMID; Contradicts if any entry is,
+the overview's rule) and per topic-paper. Each level reports AUROC and average precision of
+p(contradiction) for Contradicts, the argmax prediction's precision/recall/F1, and the best F1 over
+thresholds (an oracle, chosen on the same data). It also reports p(entailment) for Supports, the
+gold-by-argmax confusion matrix, and (0.2.0) two fixed combinations with cue_check.py's cues.
 
-Outputs are counts and scores only, never question, sentence or passage text. Everything but
-nli_scores() and fetch_model()'s download is standard library, so the tests need no torch.
+Outputs are counts and scores only, never question, sentence or passage text. --pairs-out keeps
+each distinct pair's probabilities keyed by a SHA-1 of the pair, so later combinations need no
+rescoring. Everything but nli_scores() and fetch_model()'s download is standard library, so the
+tests need no torch.
 
-  python nli_check.py fetch-model --model-dir DIR --out FILE
+  python nli_check.py fetch-model --model-dir DIR --out FILE [--model ID --revision SHA]
   python nli_check.py run --data-dir DIR --model-dir DIR --out-dir DIR [--threads 2 --batch 16]
+                          [--model ID --revision SHA --pairs-out FILE]
 """
 import argparse
 import hashlib
@@ -29,7 +33,9 @@ import time
 import urllib.request
 from collections import Counter
 
-VERSION = "0.1.0"
+import cue_check
+
+VERSION = "0.2.0"
 ASSESS_URL = "https://trec.nist.gov/data/biogen/biogen_collection_v3.json"
 ASSESS_SHA256 = "78449ef270e60abe0c268fa446ade23737164bba44c37308e216529fa63d066d"
 MODEL_ID = "cross-encoder/nli-deberta-v3-base"
@@ -85,14 +91,14 @@ def file_sha(path):
     return h.hexdigest()
 
 
-def fetch_model(model_dir, files=MODEL_FILES, rev=MODEL_REV, get=fetch):
+def fetch_model(model_dir, files=MODEL_FILES, rev=MODEL_REV, get=fetch, model=MODEL_ID):
     """Download each pinned model file once (kept on the data volume); report bytes and sha256."""
     os.makedirs(model_dir, exist_ok=True)
-    rep = {"version": VERSION, "model": MODEL_ID, "revision": rev, "files": {}}
+    rep = {"version": VERSION, "model": model, "revision": rev, "files": {}}
     for name in files:
         dest = os.path.join(model_dir, name)
         if not (os.path.exists(dest) and os.path.getsize(dest) > 0):
-            get(HF % (MODEL_ID, rev, name), dest, 2 << 30)
+            get(HF % (model, rev, name), dest, 2 << 30)
         rep["files"][name] = {"bytes": os.path.getsize(dest), "sha256": file_sha(dest)}
     return rep
 
@@ -236,6 +242,26 @@ def evaluate(ents, probs):
     return res
 
 
+def fusion(ents, probs):
+    """Two fixed model x cue combinations (cue_check.py's cues on the same pair), Contradicts vs
+    rest per entry and per slot. gate_neg_passage: argmax contradiction only where the passage has
+    a negation cue (score p_c there, else 0). union_polarity_clash: argmax contradiction or
+    compose.py's polarity_clash (score p_c, plus 1 where the clash fires)."""
+    is_c = [e[4] == "contradicts" for e in ents]
+    feats = [cue_check.features(e[5], e[6]) for e in ents]
+    pc = [p[0] for p in probs]
+    am_c = [max(range(3), key=lambda i: p[i]) == 0 for p in probs]
+    neg = [f["neg_passage"] for f in feats]
+    clash = [f["polarity_clash"] for f in feats]
+    combos = {"gate_neg_passage": ([s if g else 0.0 for s, g in zip(pc, neg)],
+                                   [a and g for a, g in zip(am_c, neg)]),
+              "union_polarity_clash": ([s + (1.0 if c else 0.0) for s, c in zip(pc, clash)],
+                                       [a or c for a, c in zip(am_c, clash)])}
+    keys = [e[:4] for e in ents]
+    return {name: {"entry": block(is_c, sc, pr), "slot": block(*grouped(keys, is_c, sc, pr))}
+            for name, (sc, pr) in combos.items()}
+
+
 def nli_scores(pairs, model_dir, threads=2, batch=16, max_length=256, log=print):
     """(p_contradiction, p_entailment, p_neutral) per (premise, hypothesis) pair, CPU, fp32."""
     import torch
@@ -267,9 +293,14 @@ def nli_scores(pairs, model_dir, threads=2, batch=16, max_length=256, log=print)
                  "ms_per_pair": rnd(1000 * secs / max(1, len(pairs)))}
 
 
-def run(data_dir, scorer, sha=ASSESS_SHA256, get=fetch):
+def pair_key(premise, hypothesis):
+    return hashlib.sha1((premise + "\n" + hypothesis).encode("utf-8")).hexdigest()
+
+
+def run(data_dir, scorer, sha=ASSESS_SHA256, get=fetch, model=MODEL_ID, rev=MODEL_REV,
+        pairs_path=None):
     t0 = time.time()
-    res = {"version": VERSION, "model": MODEL_ID, "revision": MODEL_REV, "problems": []}
+    res = {"version": VERSION, "model": model, "revision": rev, "problems": []}
     os.makedirs(data_dir, exist_ok=True)
     path = os.path.join(data_dir, "assessments.json")
     if not os.path.exists(path):
@@ -298,7 +329,14 @@ def run(data_dir, scorer, sha=ASSESS_SHA256, get=fetch):
         res["problems"].append("no scorable judgments")
         return res
     probs_u, res["scoring"] = scorer(list(uniq))
-    res.update(evaluate(scored, [probs_u[i] for i in idx]))
+    if pairs_path:
+        with open(pairs_path, "w", encoding="utf-8") as f:
+            for (prem, hyp), p in zip(uniq, probs_u):
+                f.write(json.dumps({"pair": pair_key(prem, hyp), "p": [round(x, 6) for x in p]})
+                        + "\n")
+    probs = [probs_u[i] for i in idx]
+    res.update(evaluate(scored, probs))
+    res["fusion"] = fusion(scored, probs)
     res["seconds"] = round(time.time() - t0, 1)
     return res
 
@@ -321,15 +359,20 @@ def main(argv=None):
     r.add_argument("--threads", type=int, default=2)
     r.add_argument("--batch", type=int, default=16)
     r.add_argument("--max-length", type=int, default=256)
+    r.add_argument("--pairs-out")
+    for p in (fm, r):
+        p.add_argument("--model", default=MODEL_ID)
+        p.add_argument("--revision", default=MODEL_REV)
     a = ap.parse_args(argv)
     if a.cmd == "fetch-model":
-        rep = fetch_model(a.model_dir)
+        rep = fetch_model(a.model_dir, rev=a.revision, model=a.model)
         dump(a.out, rep)
         print(json.dumps(rep, indent=1))
         return 0
     os.makedirs(a.out_dir, exist_ok=True)
     res = run(a.data_dir, lambda pairs: nli_scores(pairs, a.model_dir, a.threads, a.batch,
-                                                   a.max_length))
+                                                   a.max_length),
+              model=a.model, rev=a.revision, pairs_path=a.pairs_out)
     dump(os.path.join(a.out_dir, "nli.json"), res)
     print(json.dumps({k: res.get(k) for k in ("problems", "counts", "census", "scoring")}, indent=1))
     return 1 if res["problems"] else 0
