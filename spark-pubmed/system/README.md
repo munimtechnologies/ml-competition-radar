@@ -18,7 +18,7 @@ the two planned submissions), each checked with `t1.py`'s validator.
   `TRANSFORMERS_OFFLINE=1`; nothing opens a connection.
 - **Read-only index (0.2.0).** `--immutable` opens the index through `ro_db.py` with
   `mode=ro&immutable=1`, so it can sit on a read-only mount. Without the flag it is opened as
-  before. Rankings do not depend on the flag.
+  before. Rankings do not depend on the flag (`RESULTS-spark47.md`).
 - **Input.** JSONL with `info_need_id` and `info_need` at the top level or under `metadata` (the
   submission format), or one JSON list. The id is echoed as given.
 
@@ -34,9 +34,10 @@ way `../rerank/depth_curve.py` does (only reranked items whose BM25 rank is at m
 system at depth 150 can be compared with spark40's depth-200 and depth-300 reranks. `Dockerfile`
 is the planned image.
 
-`fetch_code.py` (0.2.0, standard library only) lets a sealed job fetch this repository's published
+`fetch_code.py` (0.3.0, standard library only) lets a sealed job fetch this repository's published
 code at pinned commits and checks each file's size against the git tree, so the job runs exactly
-the public code. Its `system` and `t2dev` groups pin commit 4765a24.
+the public code. Its `system` and `t2dev` groups pin commit 4765a24; 0.3.0 adds `system2`, which
+pins 9a64c8e3 (`spark_t1.py` 0.2.0, `ro_db.py`, `nobody_run.py`, `agree.py` and their tests).
 
 `ro_db.py` (0.1.0, standard library only) opens the index read-only for a read-only mount. The
 index uses SQLite's WAL journal, and SQLite 3.22.0 or later can read a WAL-mode database without
@@ -51,6 +52,12 @@ sizes and the SQLite version.
 `nobody_run.py` (0.1.0, standard library only) runs one command as uid/gid 65534, which cannot
 write the index's folder, and records the index's side files before and after; spark47 uses it
 to stand in for a read-only mount.
+
+`image_eq.py` (0.1.0, standard library only) is a stand-in for the image until it is built.
+`net` records whether the process can resolve a name or open a connection. `app` lays out `/app`
+exactly as the `Dockerfile`'s COPY lines do (six flat files and `model/`) and records each file's
+git blob next to the one this repository lists at the pinned commits, plus the Python, SQLite,
+torch and transformers versions.
 
 | File | What it is |
 |---|---|
@@ -67,8 +74,12 @@ to stand in for a read-only mount.
 | `results-rodb1/rodb.json` | That probe's output (schema object names and counts only) |
 | `nobody_run.py`, `test_nobody_run.py` | Runs a command as a user with no write access to the index |
 | `PREREGISTRATION-spark47.md` | Predictions for job `spark47-immutable-v1` (the whole system with `--immutable`, no write access), written before it ran |
+| `RESULTS-spark47.md` | Grades: 3 of 3 checks and 7 of 7 predictions held |
+| `results-spark47/` | The control's and the run's `nobody.json`, and the run's `run.json`, `scores.json`, `agree.json` (counts only) |
+| `image_eq.py`, `test_image_eq.py` | Stand-in checks for the image: no network, and `/app` laid out as the Dockerfile lays it out |
+| `PREREGISTRATION-spark48.md` | Predictions for job `spark48-image-v1` (the entry point on `python:3.12-slim`, flat `/app`, no network, 65 BioGen questions), written before it ran |
 
-## Status (2026-10-29, about 09:00 UTC)
+## Status (2026-10-29, about 20:30 UTC)
 
 - **`RESULTS-spark43.md`: the system at depth 150 reproduced its chosen rankings exactly.**
   Top-5 MRR was L 0.1628, BioGen 0.4274 and R 0.9130, the same as spark40's depth-150 reading,
@@ -81,11 +92,13 @@ to stand in for a read-only mount.
   `-shm` file. `ro_db.connect(immutable=True)` opened it as root and as uid 65534 (11 schema
   objects), while a plain open as uid 65534 failed with `attempt to write a readonly database`.
   So no conversion of the shared index is needed.
-- **`spark_t1.py` 0.2.0 adds `--immutable`** (three new tests in `test_spark_t1.py`: the same
-  submission files as a plain open, a non-empty `-wal` refused, and the flag through `main`). The
-  `Dockerfile` now mounts the index read-only and passes `--immutable`. The 0.2.0 tests have been
-  traced by hand only; **job `spark47-immutable-v1` is filed** and runs them, then runs the whole
-  system on the 43 L questions as uid 65534 (`PREREGISTRATION-spark47.md`).
+- **`RESULTS-spark47.md`: the whole system runs from a read-only index.** As uid 65534,
+  `spark_t1.py` 0.2.0 with `--immutable` answered all 43 L questions with the same top five, in
+  the same order, as before (43 of 43; top-5 MRR 0.1628), and left no side files. The same command
+  without the flag failed. Median 107.1 s per question, peak 2.14 GB.
+- **Job `spark48-image-v1` is filed** (`PREREGISTRATION-spark48.md`): the `Dockerfile`'s entry point
+  on `python:3.12-slim`, with `/app` as the COPY lines lay it out and no network, on the 65 BioGen
+  questions.
 - **The Docker image has not been built or run yet.** Open items: whether the challenge mounts
   the corpus or expects it inside the image (the index is about 92.5 GB); the challenge has not
   published how wrong citations are penalised, so the `top:1` / `top:5` choice may change.

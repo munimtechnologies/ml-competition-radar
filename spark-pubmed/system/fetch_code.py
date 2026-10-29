@@ -10,8 +10,11 @@ alone). Groups: t1 = t1_runner @ ce37c206 (the code spark35-score-v2 runs), t2 =
 prf = prf @ 3ea7684e (prf.py 0.1.0, pseudo-relevance feedback; added for spark38-prf-v1).
 0.2.0 adds system = system @ 4765a242 (spark_t1.py 0.1.1, agree.py 0.1.1) and t2dev = t2 @
 4765a242 (t2dev.py, the BioGen gold), so spark43-system-v1 copies only this file and its test.
+0.3.0 adds system2 = system @ 9a64c8e3 (spark_t1.py 0.2.0 with --immutable, ro_db.py 0.1.0,
+nobody_run.py 0.1.0, agree.py 0.1.1), so spark48-image-v1 runs the published 0.2.0 system.
+Fetch system or system2, not both (they share file names).
 Sizes are the blob sizes the GitHub contents API listed on 2026-10-24 (system and t2dev: the
-git tree of 4765a242, read 2026-10-28).
+git tree of 4765a242, read 2026-10-28; system2: the contents of 9a64c8e3, read 2026-10-29).
 
   python fetch_code.py OUT GROUP [GROUP ...]
 """
@@ -21,7 +24,7 @@ import os
 import sys
 import urllib.request
 
-VERSION = "0.2.0"
+VERSION = "0.3.0"
 RAW = "https://raw.githubusercontent.com/munimtechnologies/ml-competition-radar/%s/spark-pubmed/%s/"
 GROUPS = {
     "t1": ("ce37c206eb600473223b7773a9b11381dc7fb76b", "t1_runner",
@@ -39,6 +42,10 @@ GROUPS = {
                 "test_agree.py": 3446}),
     "t2dev": ("4765a2427f48435e5cc9224b4db0787a3ece2324", "t2",
               {"t2dev.py": 4862, "test_t2dev.py": 4353}),
+    "system2": ("9a64c8e345ff47113391636475c1ae32c56df00e", "system",
+                {"spark_t1.py": 11414, "test_spark_t1.py": 8847, "ro_db.py": 3335, "test_ro_db.py": 5599,
+                 "nobody_run.py": 3827, "test_nobody_run.py": 3751, "agree.py": 3895,
+                 "test_agree.py": 3446}),
 }
 USER_AGENT = "MV2-Munim-Inc-research (mv2@munimtech.com)"
 
