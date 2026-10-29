@@ -42,6 +42,7 @@ Every job was pre-registered before it ran and graded word for word:
 | biogen-slots-v1 | `PREREGISTRATION-biogen-slots.md` | `RESULTS-biogen-slots.md`, `results-biogen-slots/` | 4 of 4 checks, 8 of 8 (public commit came after the job; see results) |
 | t2dev-v1 | `PREREGISTRATION-t2dev.md` | `RESULTS-t2dev.md`, `results-t2dev/` | 3 of 3 checks, 10 of 11 (memory missed; public commit 2 min after the job started) |
 | biogen-nli-v1 | `PREREGISTRATION-biogen-nli.md` | (queued 2026-10-28) | |
+| biogen-cue-v1 | `PREREGISTRATION-biogen-cue.md` | (queued 2026-10-29) | |
 
 What v2 counted: 14,763 citation judgments (69.4% supporting, 1.9% contradicting, 4.3% invalid);
 55 of 65 topics have a contradicting judgment; 3,858 distinct PMIDs, all inside the SPARK
@@ -76,6 +77,26 @@ most 0.036, but reorders 12-15 of 28 runs.
 MedAESQA (Scientific Data 2025, PMC12179289), which releases 40 of these questions, already
 reports lower annotator agreement within one item for Contradicting (67.67) than for Supporting
 (82.09). No human has checked our counts yet.
+
+## How hard is the conflict part? (TREC 2025 BioGen Task A, published numbers)
+
+TREC 2025 BioGen Task A asked systems to add up to three supporting and three contradicting
+PMIDs for each given answer sentence (40 questions, 194 sentences). Its overview (arXiv
+2603.21582, Table 5) scores every run against Llama-3.3 labels (the BioACE framework):
+
+- The best Contradicts F1 is 15.67 (InfoLab task_a_run2; P 14.09, R 19.42). The SciFive MedNLI
+  baseline scores 4.67, and the GE HealthCare system, 2nd among teams, scores 8.57.
+- Supports is far easier: the best Supports F1 is 67.74 (CLaC LLM_NLI_BM25).
+- In the expert evaluation (10 topics, 244 abstracts judged) the baseline was the strongest on
+  contradictions, at precision 8.33 and recall 10. The overview concludes that systems "struggle
+  to identify contradictory citations".
+
+The GE HealthCare system (arXiv 2603.17580) splits abstracts into sentences, keeps only sentences
+with explicit negation cues (23 NegEx-derived patterns), and asks a MedNLI-tuned T5 model for
+"contradiction". On its SciFact proxy, sentence-level checking gave a contradiction MRR of 0.750,
+against 0.156 for whole documents. So a conflict flag that beats a stock NLI model on BioGen-style
+labels would already be near the 2025 state of the art. biogen-cue-v1 tests the negation premise
+on BioGen 2024's human labels.
 
 ## Baseline: `compose.py` 0.2.0 (extractive, cited, standard library only)
 
@@ -122,9 +143,21 @@ full label-by-prediction table. Outputs are counts and scores only. The decision
 model for compose.py 0.3.0's flag, or move to a biomedical NLI model or an LLM judge) is fixed in
 `PREREGISTRATION-biogen-nli.md`.
 
+## Do the cues mark contradictions at all? `cue_check.py` 0.1.0 (biogen-cue-v1, queued)
+
+`cue_check.py` (standard library only) applies compose.py 0.2.0's own cue patterns, copied
+verbatim, to the same passage/sentence pairs: negation, null finding and hedging in the passage,
+negation in the sentence, a negation mismatch between the two, and compose.py's conflict rule
+(one side reports no effect, the other a finding). For each cue it reports how often it fires per
+label, the ratio of its rate among Contradicts to its rate among Supports, and precision, recall,
+F1 and lift as a Contradicts flag per judgment and per citation slot. Counts and rates only.
+`PREREGISTRATION-biogen-cue.md` fixes whether a negation gate goes in front of the model-based
+flag and whether compose.py 0.3.0 keeps its cue flag.
+
 ## Next
 
-1. Grade biogen-nli-v1 against its pre-registration and follow its decision rule.
+1. Grade biogen-nli-v1 and biogen-cue-v1 against their pre-registrations and follow their
+   decision rules.
 2. Then rerun these 65 questions on the chosen Task 1 system (MedCPT cross-encoder at depth 150,
    `../system/`), compose again, and score the same way.
 3. Then an open-weight stage for conflicts and rewriting, measured on judged precision and on how
