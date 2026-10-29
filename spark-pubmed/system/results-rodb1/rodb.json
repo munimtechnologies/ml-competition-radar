@@ -1,0 +1,51 @@
+{
+ "version": "0.1.0",
+ "ro_db_version": "0.1.0",
+ "before": {
+  "version": "0.1.0",
+  "path": "/data/spark28/spark_full.db",
+  "bytes": 92506365952,
+  "journal_mode": "wal",
+  "side_files": {
+   "wal": null,
+   "shm": null
+  },
+  "sqlite_version": "3.46.1"
+ },
+ "beside": [
+  "spark_full.db"
+ ],
+ "immutable_root": {
+  "ok": true,
+  "objects": 11,
+  "names": [
+   "built",
+   "docs",
+   "docs_config",
+   "docs_content",
+   "docs_data",
+   "docs_docsize",
+   "docs_idx",
+   "meta",
+   "settings",
+   "sqlite_autoindex_built_1",
+   "sqlite_autoindex_settings_1"
+  ],
+  "seconds": 0.001
+ },
+ "after": {
+  "wal": null,
+  "shm": null
+ },
+ "euid": 0,
+ "nobody_immutable": {
+  "exit": 0,
+  "stdout": "11",
+  "stderr_last": ""
+ },
+ "nobody_plain": {
+  "exit": 1,
+  "stdout": "",
+  "stderr_last": "sqlite3.OperationalError: attempt to write a readonly database"
+ }
+}
