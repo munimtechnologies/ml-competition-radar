@@ -41,8 +41,9 @@ Every job was pre-registered before it ran and graded word for word:
 | biogen-stance-v3 | `PREREGISTRATION-biogen-stance-v3.md` | `RESULTS-biogen-stance-v3.md`, `results-biogen-stance-v3/` | 3 of 3 checks, 6 of 6 |
 | biogen-slots-v1 | `PREREGISTRATION-biogen-slots.md` | `RESULTS-biogen-slots.md`, `results-biogen-slots/` | 4 of 4 checks, 8 of 8 (public commit came after the job; see results) |
 | t2dev-v1 | `PREREGISTRATION-t2dev.md` | `RESULTS-t2dev.md`, `results-t2dev/` | 3 of 3 checks, 10 of 11 (memory missed; public commit 2 min after the job started) |
-| biogen-nli-v1 | `PREREGISTRATION-biogen-nli.md` | (queued 2026-10-28) | |
-| biogen-cue-v1 | `PREREGISTRATION-biogen-cue.md` | (queued 2026-10-29) | |
+| biogen-nli-v1 | `PREREGISTRATION-biogen-nli.md` | `RESULTS-biogen-nli.md`, `results-biogen-nli/` | 3 of 3 checks, 9 of 9; model not adopted (AUROC 0.735 < 0.75) |
+| biogen-cue-v1 | `PREREGISTRATION-biogen-cue.md` | `RESULTS-biogen-cue.md`, `results-biogen-cue/` | 2 of 2 checks, 6 of 9 (cues sharper than predicted) |
+| biogen-nli-large-v1 | `PREREGISTRATION-biogen-nli-large.md` | (queued 2026-10-29) | |
 
 What v2 counted: 14,763 citation judgments (69.4% supporting, 1.9% contradicting, 4.3% invalid);
 55 of 65 topics have a contradicting judgment; 3,858 distinct PMIDs, all inside the SPARK
@@ -95,8 +96,34 @@ The GE HealthCare system (arXiv 2603.17580) splits abstracts into sentences, kee
 with explicit negation cues (23 NegEx-derived patterns), and asks a MedNLI-tuned T5 model for
 "contradiction". On its SciFact proxy, sentence-level checking gave a contradiction MRR of 0.750,
 against 0.156 for whole documents. So a conflict flag that beats a stock NLI model on BioGen-style
-labels would already be near the 2025 state of the art. biogen-cue-v1 tests the negation premise
-on BioGen 2024's human labels.
+labels would already be near the 2025 state of the art.
+
+## Conflict flags measured on the 2024 human labels
+
+Both jobs score the same 11,927 judgments (275 Contradicts, 2.3%). Each pairs the assessors' quoted
+passage of the cited paper with the answer sentence, exactly what they judged.
+
+| flag (entry level, Contradicts vs rest) | precision | recall | F1 | AUROC |
+|---|---|---|---|---|
+| NLI cross-encoder (nli-deberta-v3-base), argmax | 0.184 | 0.138 | 0.158 | 0.735 |
+| same, best threshold chosen on this data (oracle) | | | 0.192 | |
+| negation word in the passage (compose.py's NEG_RX) | 0.098 | 0.509 | 0.164 | |
+| null finding in the passage (NULL_RX) | 0.238 | 0.087 | 0.128 | |
+| compose.py's polarity clash (null vs finding) | 0.344 | 0.040 | 0.072 | |
+
+- **Negation is enriched but not a filter.** Half (50.9%) of the passages judged contradicting
+  carry a negation word, against 10.8% of those judged supporting (4.7x). A negation-only gate,
+  as in the GE HealthCare system, would drop about half of the contradictions, so none is used.
+- **A general NLI model adds little over a regular expression here** (post hoc: 0.158 against
+  0.164 F1). It calls most supporting passages "neutral" (8,631 of 10,240), so it was not
+  adopted.
+- compose.py 0.3.0 keeps the polarity-clash flag (slot precision 0.344): rare but precise.
+- Every flag stays far below the assessors' own between-slot agreement on Contradicts (0.39).
+
+Next: `nli_check.py` 0.2.0 (`--model`, two fixed cue combinations, `--pairs-out`) runs
+MoritzLaurer/DeBERTa-v3-large-mnli-fever-anli-ling-wanli (MIT), trained on harder adversarial NLI
+data. The public MedNLI models we checked declare no licence. The decision rule is in
+`PREREGISTRATION-biogen-nli-large.md`.
 
 ## Baseline: `compose.py` 0.2.0 (extractive, cited, standard library only)
 
@@ -117,10 +144,6 @@ answer cites, and how many of them its conflict flags hit. 0.1.0 counted a mixed
 supporting and contradicting. That double-counted 168 of the 202 contradicting papers.
 
 Pooled judgments only cover what 2024 runs cited, so an unjudged PMID is unknown, not wrong.
-A BioGen 2025 paper reports that contradicting evidence is rarer and often expressed through
-negation, hedging or population-specific conditions (arXiv 2603.17580). Negation cues alone will
-miss many conflicts. This baseline is the floor that a later open-weight rewriting stage must
-beat.
 
 ## First end-to-end numbers (`RESULTS-t2dev.md`)
 
@@ -132,34 +155,11 @@ BM25 over all 39,167,523 records, then `compose.py`, on the 65 BioGen questions:
   judged citation at all. Of the judged citations, 75.7% are Supports or mixed papers.
 - The negation-cue conflict flag fired on no answer, although 10 answers cite a mixed paper.
 
-## A model-based conflict flag: `nli_check.py` 0.1.0 (biogen-nli-v1, queued)
-
-Before replacing the negation cues, `nli_check.py` measures how well an off-the-shelf NLI
-cross-encoder (cross-encoder/nli-deberta-v3-base, Apache-2.0, pinned revision, CPU) recovers the
-assessors' labels when it sees exactly what they judged: the quoted passage of the cited paper as
-premise and the answer sentence as hypothesis. It reports AUROC, average precision, argmax and
-oracle-threshold F1 for Contradicts per judgment, per citation slot and per topic-paper, and the
-full label-by-prediction table. Outputs are counts and scores only. The decision rule (use this
-model for compose.py 0.3.0's flag, or move to a biomedical NLI model or an LLM judge) is fixed in
-`PREREGISTRATION-biogen-nli.md`.
-
-## Do the cues mark contradictions at all? `cue_check.py` 0.1.0 (biogen-cue-v1, queued)
-
-`cue_check.py` (standard library only) applies compose.py 0.2.0's own cue patterns, copied
-verbatim, to the same passage/sentence pairs: negation, null finding and hedging in the passage,
-negation in the sentence, a negation mismatch between the two, and compose.py's conflict rule
-(one side reports no effect, the other a finding). For each cue it reports how often it fires per
-label, the ratio of its rate among Contradicts to its rate among Supports, and precision, recall,
-F1 and lift as a Contradicts flag per judgment and per citation slot. Counts and rates only.
-`PREREGISTRATION-biogen-cue.md` fixes whether a negation gate goes in front of the model-based
-flag and whether compose.py 0.3.0 keeps its cue flag.
-
 ## Next
 
-1. Grade biogen-nli-v1 and biogen-cue-v1 against their pre-registrations and follow their
-   decision rules.
-2. Then rerun these 65 questions on the chosen Task 1 system (MedCPT cross-encoder at depth 150,
-   `../system/`), compose again, and score the same way.
+1. Grade biogen-nli-large-v1 and follow its decision rule.
+2. Rerun these 65 questions on the chosen Task 1 system (MedCPT cross-encoder at depth 150,
+   `../system/`), compose again (0.3.0), and score the same way.
 3. Then an open-weight stage for conflicts and rewriting, measured on judged precision and on how
    many citations were judged at all.
 

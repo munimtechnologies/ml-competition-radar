@@ -1,0 +1,220 @@
+{
+ "census": {
+  "topic_papers": 4231,
+  "topic_papers_contradicts": 202,
+  "topic_papers_mixed": 168
+ },
+ "counts": {
+  "empty_passage": {
+   "contradicts": 0,
+   "invalid": 635,
+   "neutral": 0,
+   "notrelevant": 2201,
+   "supports": 0
+  },
+  "empty_sentence": 0,
+  "judgments": 14763,
+  "labels": {
+   "contradicts": 275,
+   "invalid": 635,
+   "neutral": 1412,
+   "notrelevant": 2201,
+   "supports": 10240
+  },
+  "no_pmid": 0,
+  "scored": 11927,
+  "scored_labels": {
+   "contradicts": 275,
+   "invalid": 0,
+   "neutral": 1412,
+   "notrelevant": 0,
+   "supports": 10240
+  },
+  "unique_pairs": 11592,
+  "unknown_label": 0
+ },
+ "entry": {
+  "confusion": {
+   "contradicts": {
+    "contradiction": 38,
+    "entailment": 12,
+    "neutral": 225
+   },
+   "invalid": {
+    "contradiction": 0,
+    "entailment": 0,
+    "neutral": 0
+   },
+   "neutral": {
+    "contradiction": 33,
+    "entailment": 17,
+    "neutral": 1362
+   },
+   "notrelevant": {
+    "contradiction": 0,
+    "entailment": 0,
+    "neutral": 0
+   },
+   "supports": {
+    "contradiction": 136,
+    "entailment": 1473,
+    "neutral": 8631
+   }
+  },
+  "contradicts_vs_rest": {
+   "argmax": {
+    "f1": 0.1577,
+    "fn": 237,
+    "fp": 169,
+    "precision": 0.1836,
+    "recall": 0.1382,
+    "tp": 38
+   },
+   "auroc": 0.735,
+   "average_precision": 0.0939,
+   "best_f1": {
+    "f1": 0.1916,
+    "fn": 220,
+    "fp": 244,
+    "threshold": 0.0601,
+    "tp": 55
+   },
+   "n": 11927,
+   "positives": 275,
+   "prevalence": 0.0231
+  },
+  "contradicts_vs_supports": {
+   "argmax": {
+    "f1": 0.1693,
+    "fn": 237,
+    "fp": 136,
+    "precision": 0.2184,
+    "recall": 0.1382,
+    "tp": 38
+   },
+   "auroc": 0.7439,
+   "average_precision": 0.1125,
+   "best_f1": {
+    "f1": 0.2115,
+    "fn": 216,
+    "fp": 224,
+    "threshold": 0.0358,
+    "tp": 59
+   },
+   "n": 10515,
+   "positives": 275,
+   "prevalence": 0.0262
+  },
+  "mean_p": {
+   "contradicts": [
+    0.148,
+    0.0455,
+    0.8065
+   ],
+   "invalid": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "neutral": [
+    0.0263,
+    0.0135,
+    0.9602
+   ],
+   "notrelevant": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "supports": [
+    0.014,
+    0.1452,
+    0.8408
+   ]
+  },
+  "supports_vs_rest": {
+   "argmax": {
+    "f1": 0.2509,
+    "fn": 8767,
+    "fp": 29,
+    "precision": 0.9807,
+    "recall": 0.1438,
+    "tp": 1473
+   },
+   "auroc": 0.6893,
+   "average_precision": 0.9311,
+   "best_f1": {
+    "f1": 0.9241,
+    "fn": 12,
+    "fp": 1667,
+    "threshold": 0.0,
+    "tp": 10228
+   },
+   "n": 11927,
+   "positives": 10240,
+   "prevalence": 0.8586
+  }
+ },
+ "file": {
+  "bytes": 11128359,
+  "sha256": "78449ef270e60abe0c268fa446ade23737164bba44c37308e216529fa63d066d"
+ },
+ "model": "cross-encoder/nli-deberta-v3-base",
+ "problems": [],
+ "revision": "6c749ce3425cd33b46d187e45b92bbf96ee12ec7",
+ "scoring": {
+  "batch": 16,
+  "max_length": 256,
+  "ms_per_pair": 279.0031,
+  "pairs": 11592,
+  "seconds": 3234.2,
+  "threads": 2,
+  "truncated": 21
+ },
+ "seconds": 3239.5,
+ "slot": {
+  "argmax": {
+   "f1": 0.1609,
+   "fn": 226,
+   "fp": 160,
+   "precision": 0.1878,
+   "recall": 0.1407,
+   "tp": 37
+  },
+  "auroc": 0.7396,
+  "average_precision": 0.1041,
+  "best_f1": {
+   "f1": 0.1939,
+   "fn": 206,
+   "fp": 268,
+   "threshold": 0.0358,
+   "tp": 57
+  },
+  "n": 9704,
+  "positives": 263,
+  "prevalence": 0.0271
+ },
+ "topic_paper": {
+  "argmax": {
+   "f1": 0.271,
+   "fn": 152,
+   "fp": 117,
+   "precision": 0.2994,
+   "recall": 0.2475,
+   "tp": 50
+  },
+  "auroc": 0.7632,
+  "average_precision": 0.214,
+  "best_f1": {
+   "f1": 0.3092,
+   "fn": 121,
+   "fp": 241,
+   "threshold": 0.0153,
+   "tp": 81
+  },
+  "n": 3247,
+  "positives": 202,
+  "prevalence": 0.0622
+ },
+ "version": "0.1.0"
+}

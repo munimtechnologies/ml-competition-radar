@@ -1,0 +1,35 @@
+{
+ "files": {
+  "added_tokens.json": {
+   "bytes": 26,
+   "sha256": "a4b6bfe668f2b3cf6f0cd535e98a0663d2d0d4a4a15f13075ad3597d33985a23"
+  },
+  "config.json": {
+   "bytes": 1052,
+   "sha256": "897e756eb59d3183adb505952e7910e7cbc7750a43f3b3747a96b688d2b02a47"
+  },
+  "model.safetensors": {
+   "bytes": 737726552,
+   "sha256": "d8148c6d49e0a7925134294c56326c71fe0ab1dc390e37355e00c7efbb488afa"
+  },
+  "special_tokens_map.json": {
+   "bytes": 301,
+   "sha256": "ed7c099c988dbb414b18a6980d20cb57b91b7cd119f6f6941eb364b0e892e712"
+  },
+  "spm.model": {
+   "bytes": 2464616,
+   "sha256": "c679fbf93643d19aab7ee10c0b99e460bdbc02fedf34b92b05af343b4af586fd"
+  },
+  "tokenizer.json": {
+   "bytes": 8656624,
+   "sha256": "5124ef2ead1a10a717703bc436de7f353da76d6340e4587719b42b1693707964"
+  },
+  "tokenizer_config.json": {
+   "bytes": 1346,
+   "sha256": "f3eecd07c370ef0bf7dd3780d3cd68cf9c8b00c267e21a208ddcd8f82bfec1a6"
+  }
+ },
+ "model": "cross-encoder/nli-deberta-v3-base",
+ "revision": "6c749ce3425cd33b46d187e45b92bbf96ee12ec7",
+ "version": "0.1.0"
+}

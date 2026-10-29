@@ -1,0 +1,378 @@
+{
+ "census": {
+  "topic_papers": 4231,
+  "topic_papers_contradicts": 202,
+  "topic_papers_mixed": 168
+ },
+ "contradicts_vs_rest": {
+  "hedge_passage": {
+   "f1": 0.031,
+   "fires": 48,
+   "fn": 270,
+   "fp": 43,
+   "lift": 4.5178,
+   "n": 11927,
+   "positives": 275,
+   "precision": 0.1042,
+   "prevalence": 0.0231,
+   "recall": 0.0182,
+   "tp": 5
+  },
+  "neg_mismatch": {
+   "f1": 0.1617,
+   "fires": 1556,
+   "fn": 127,
+   "fp": 1408,
+   "lift": 4.1253,
+   "n": 11927,
+   "positives": 275,
+   "precision": 0.0951,
+   "prevalence": 0.0231,
+   "recall": 0.5382,
+   "tp": 148
+  },
+  "neg_passage": {
+   "f1": 0.164,
+   "fires": 1432,
+   "fn": 135,
+   "fp": 1292,
+   "lift": 4.2402,
+   "n": 11927,
+   "positives": 275,
+   "precision": 0.0978,
+   "prevalence": 0.0231,
+   "recall": 0.5091,
+   "tp": 140
+  },
+  "neg_sentence": {
+   "f1": 0.0702,
+   "fires": 808,
+   "fn": 237,
+   "fp": 770,
+   "lift": 2.0397,
+   "n": 11927,
+   "positives": 275,
+   "precision": 0.047,
+   "prevalence": 0.0231,
+   "recall": 0.1382,
+   "tp": 38
+  },
+  "null_passage": {
+   "f1": 0.1277,
+   "fires": 101,
+   "fn": 251,
+   "fp": 77,
+   "lift": 10.306,
+   "n": 11927,
+   "positives": 275,
+   "precision": 0.2376,
+   "prevalence": 0.0231,
+   "recall": 0.0873,
+   "tp": 24
+  },
+  "polarity_clash": {
+   "f1": 0.0717,
+   "fires": 32,
+   "fn": 264,
+   "fp": 21,
+   "lift": 14.9087,
+   "n": 11927,
+   "positives": 275,
+   "precision": 0.3438,
+   "prevalence": 0.0231,
+   "recall": 0.04,
+   "tp": 11
+  }
+ },
+ "contradicts_vs_supports": {
+  "hedge_passage": {
+   "f1": 0.0319,
+   "fires": 38,
+   "fn": 270,
+   "fp": 33,
+   "lift": 5.0311,
+   "n": 10515,
+   "positives": 275,
+   "precision": 0.1316,
+   "prevalence": 0.0262,
+   "recall": 0.0182,
+   "tp": 5
+  },
+  "neg_mismatch": {
+   "f1": 0.1893,
+   "fires": 1289,
+   "fn": 127,
+   "fp": 1141,
+   "lift": 4.3902,
+   "n": 10515,
+   "positives": 275,
+   "precision": 0.1148,
+   "prevalence": 0.0262,
+   "recall": 0.5382,
+   "tp": 148
+  },
+  "neg_passage": {
+   "f1": 0.184,
+   "fires": 1247,
+   "fn": 135,
+   "fp": 1107,
+   "lift": 4.2928,
+   "n": 10515,
+   "positives": 275,
+   "precision": 0.1123,
+   "prevalence": 0.0262,
+   "recall": 0.5091,
+   "tp": 140
+  },
+  "neg_sentence": {
+   "f1": 0.0818,
+   "fires": 654,
+   "fn": 237,
+   "fp": 616,
+   "lift": 2.2217,
+   "n": 10515,
+   "positives": 275,
+   "precision": 0.0581,
+   "prevalence": 0.0262,
+   "recall": 0.1382,
+   "tp": 38
+  },
+  "null_passage": {
+   "f1": 0.1297,
+   "fires": 95,
+   "fn": 251,
+   "fp": 71,
+   "lift": 9.6597,
+   "n": 10515,
+   "positives": 275,
+   "precision": 0.2526,
+   "prevalence": 0.0262,
+   "recall": 0.0873,
+   "tp": 24
+  },
+  "polarity_clash": {
+   "f1": 0.0717,
+   "fires": 32,
+   "fn": 264,
+   "fp": 21,
+   "lift": 13.1437,
+   "n": 10515,
+   "positives": 275,
+   "precision": 0.3438,
+   "prevalence": 0.0262,
+   "recall": 0.04,
+   "tp": 11
+  }
+ },
+ "counts": {
+  "empty_passage": {
+   "contradicts": 0,
+   "invalid": 635,
+   "neutral": 0,
+   "notrelevant": 2201,
+   "supports": 0
+  },
+  "empty_sentence": 0,
+  "judgments": 14763,
+  "labels": {
+   "contradicts": 275,
+   "invalid": 635,
+   "neutral": 1412,
+   "notrelevant": 2201,
+   "supports": 10240
+  },
+  "no_pmid": 0,
+  "scored": 11927,
+  "scored_labels": {
+   "contradicts": 275,
+   "invalid": 0,
+   "neutral": 1412,
+   "notrelevant": 0,
+   "supports": 10240
+  },
+  "unknown_label": 0
+ },
+ "file": {
+  "bytes": 11128359,
+  "sha256": "78449ef270e60abe0c268fa446ade23737164bba44c37308e216529fa63d066d"
+ },
+ "fires_by_label": {
+  "hedge_passage": {
+   "contradicts": 5,
+   "invalid": 0,
+   "neutral": 10,
+   "notrelevant": 0,
+   "supports": 33
+  },
+  "neg_mismatch": {
+   "contradicts": 148,
+   "invalid": 0,
+   "neutral": 267,
+   "notrelevant": 0,
+   "supports": 1141
+  },
+  "neg_passage": {
+   "contradicts": 140,
+   "invalid": 0,
+   "neutral": 185,
+   "notrelevant": 0,
+   "supports": 1107
+  },
+  "neg_sentence": {
+   "contradicts": 38,
+   "invalid": 0,
+   "neutral": 154,
+   "notrelevant": 0,
+   "supports": 616
+  },
+  "null_passage": {
+   "contradicts": 24,
+   "invalid": 0,
+   "neutral": 6,
+   "notrelevant": 0,
+   "supports": 71
+  },
+  "polarity_clash": {
+   "contradicts": 11,
+   "invalid": 0,
+   "neutral": 0,
+   "notrelevant": 0,
+   "supports": 21
+  }
+ },
+ "problems": [],
+ "rate_by_label": {
+  "hedge_passage": {
+   "contradicts": 0.0182,
+   "invalid": null,
+   "neutral": 0.0071,
+   "notrelevant": null,
+   "supports": 0.0032
+  },
+  "neg_mismatch": {
+   "contradicts": 0.5382,
+   "invalid": null,
+   "neutral": 0.1891,
+   "notrelevant": null,
+   "supports": 0.1114
+  },
+  "neg_passage": {
+   "contradicts": 0.5091,
+   "invalid": null,
+   "neutral": 0.131,
+   "notrelevant": null,
+   "supports": 0.1081
+  },
+  "neg_sentence": {
+   "contradicts": 0.1382,
+   "invalid": null,
+   "neutral": 0.1091,
+   "notrelevant": null,
+   "supports": 0.0602
+  },
+  "null_passage": {
+   "contradicts": 0.0873,
+   "invalid": null,
+   "neutral": 0.0042,
+   "notrelevant": null,
+   "supports": 0.0069
+  },
+  "polarity_clash": {
+   "contradicts": 0.04,
+   "invalid": null,
+   "neutral": 0.0,
+   "notrelevant": null,
+   "supports": 0.0021
+  }
+ },
+ "ratio_c_to_s": {
+  "hedge_passage": 5.6419,
+  "neg_mismatch": 4.83,
+  "neg_passage": 4.7092,
+  "neg_sentence": 2.297,
+  "null_passage": 12.5869,
+  "polarity_clash": 19.5048
+ },
+ "seconds": 0.8,
+ "slot": {
+  "hedge_passage": {
+   "f1": 0.0386,
+   "fires": 48,
+   "fn": 257,
+   "fp": 42,
+   "lift": 4.6122,
+   "n": 9704,
+   "positives": 263,
+   "precision": 0.125,
+   "prevalence": 0.0271,
+   "recall": 0.0228,
+   "tp": 6
+  },
+  "neg_mismatch": {
+   "f1": 0.1795,
+   "fires": 1419,
+   "fn": 112,
+   "fp": 1268,
+   "lift": 3.9264,
+   "n": 9704,
+   "positives": 263,
+   "precision": 0.1064,
+   "prevalence": 0.0271,
+   "recall": 0.5741,
+   "tp": 151
+  },
+  "neg_passage": {
+   "f1": 0.1788,
+   "fires": 1359,
+   "fn": 118,
+   "fp": 1214,
+   "lift": 3.9368,
+   "n": 9704,
+   "positives": 263,
+   "precision": 0.1067,
+   "prevalence": 0.0271,
+   "recall": 0.5513,
+   "tp": 145
+  },
+  "neg_sentence": {
+   "f1": 0.078,
+   "fires": 660,
+   "fn": 227,
+   "fp": 624,
+   "lift": 2.0126,
+   "n": 9704,
+   "positives": 263,
+   "precision": 0.0545,
+   "prevalence": 0.0271,
+   "recall": 0.1369,
+   "tp": 36
+  },
+  "null_passage": {
+   "f1": 0.1389,
+   "fires": 97,
+   "fn": 238,
+   "fp": 72,
+   "lift": 9.5096,
+   "n": 9704,
+   "positives": 263,
+   "precision": 0.2577,
+   "prevalence": 0.0271,
+   "recall": 0.0951,
+   "tp": 25
+  },
+  "polarity_clash": {
+   "f1": 0.0746,
+   "fires": 32,
+   "fn": 252,
+   "fp": 21,
+   "lift": 12.6835,
+   "n": 9704,
+   "positives": 263,
+   "precision": 0.3438,
+   "prevalence": 0.0271,
+   "recall": 0.0418,
+   "tp": 11
+  }
+ },
+ "version": "0.1.0"
+}
