@@ -16,12 +16,15 @@ the two planned submissions), each checked with `t1.py`'s validator.
   median, 95th percentile, maximum and total, because compute time breaks ties in the challenge.
 - **No network.** The model loads from a local folder with `HF_HUB_OFFLINE=1` and
   `TRANSFORMERS_OFFLINE=1`; nothing opens a connection.
+- **Read-only index (0.2.0).** `--immutable` opens the index through `ro_db.py` with
+  `mode=ro&immutable=1`, so it can sit on a read-only mount. Without the flag it is opened as
+  before. Rankings do not depend on the flag.
 - **Input.** JSONL with `info_need_id` and `info_need` at the top level or under `metadata` (the
   submission format), or one JSON list. The id is echoed as given.
 
 ```
 python spark_t1.py --db spark_full.db --questions questions.jsonl --out-dir out \
-    --scorer medcpt --model-dir medcpt-ce --team-id TEAM          # depth 150 by default
+    --scorer medcpt --model-dir medcpt-ce --team-id TEAM --immutable   # depth 150 by default
 python spark_t1.py ... --scorer none      # BM25 only, no torch needed
 ```
 
@@ -43,8 +46,11 @@ connection uses the `immutable` URI parameter
 immutable=True)` opens it with `mode=ro&immutable=1`, so no locks or side files are needed and
 nothing can be written. An immutable connection ignores a `-wal` file, so a non-empty one is
 refused rather than silently skipped. `python ro_db.py DB` prints the journal mode, the side-file
-sizes and the SQLite version. Nothing uses it yet: `spark_t1.py` 0.1.1 still opens the index with
-a plain `sqlite3.connect`, unchanged while spark43 runs.
+sizes and the SQLite version.
+
+`nobody_run.py` (0.1.0, standard library only) runs one command as uid/gid 65534, which cannot
+write the index's folder, and records the index's side files before and after; spark47 uses it
+to stand in for a read-only mount.
 
 | File | What it is |
 |---|---|
@@ -52,35 +58,36 @@ a plain `sqlite3.connect`, unchanged while spark43 runs.
 | `RESULTS-spark41.md` | Grades: 3 of 3 checks and 7 of 8 predictions held |
 | `results-spark41/` | That job's run, score, agreement and resume-check counts (no question text) |
 | `PREREGISTRATION-spark43.md` | Predictions for job `spark43-system-v1` (whole system at depth 150 on all 198 development questions), written before it ran |
+| `RESULTS-spark43.md` | Grades: 3 of 3 checks and 5 of 5 predictions held |
+| `results-spark43/` | Each set's scores, agreement and timing (counts only) |
 | `fetch_code.py`, `test_fetch_code.py` | Fetches the pinned public code into a job |
 | `ro_db.py`, `test_ro_db.py` | Opens the WAL-mode index read-only (`immutable`) for a read-only mount |
 | `PREREGISTRATION-rodb1.md` | Predictions for job `rodb-check-v1` (does `ro_db.py` open the real index read-only?), written before it ran |
+| `RESULTS-rodb1.md` | Grades: 7 of 7 predictions held |
+| `results-rodb1/rodb.json` | That probe's output (schema object names and counts only) |
+| `nobody_run.py`, `test_nobody_run.py` | Runs a command as a user with no write access to the index |
+| `PREREGISTRATION-spark47.md` | Predictions for job `spark47-immutable-v1` (the whole system with `--immutable`, no write access), written before it ran |
 
-## Status (2026-10-28, about 17:00 UTC)
+## Status (2026-10-29, about 09:00 UTC)
 
-- `RESULTS-spark41.md`: on the 90 R questions at depth 50, the whole system reproduced spark39's
-  graded ranking exactly (same top five on 90 of 90; top:5 MRR 0.8981, top:1 0.8333). A second run
-  on the same folder resumed all 90 answers in 6 s and wrote byte-identical submission files.
-  Median time per question was 75.0 s on 2 CPUs (BM25 43.4 s, cross-encoder 31.3 s), on a host
-  shared with another job. Peak memory was 2.67 GB against a predicted 1.5 GB (the only miss).
-  So **`spark_t1.py` is the Task 1 entry point.**
-- **`spark_t1.py` 0.1.1 defaults to depth 150**, the depth `../rerank/RESULTS-spark40.md` chose by
-  its pre-registered rule (0.1.0 defaulted to 50). Nothing else in it changed. The scorer stays
-  **fp32 with 512-token inputs** (`../quant/RESULTS-spark42.md`). The 0.1.1 tests (one changed
-  assertion in `test_spark_t1.py`, one new test in `test_agree.py`) have been traced by hand only;
-  spark43 is the first sealed job that runs them.
-- **spark43 is filed (2026-10-28) and waiting for a slot.** The dense first-stage test it waited
-  for was rejected (`../dense/RESULTS-spark46.md`), so BM25 stays the first stage and the candidate
-  set is final. spark43 runs the whole system at depth 150 on L, BioGen and R (198 questions) and
-  is graded against `PREREGISTRATION-spark43.md` once it finishes.
+- **`RESULTS-spark43.md`: the system at depth 150 reproduced its chosen rankings exactly.**
+  Top-5 MRR was L 0.1628, BioGen 0.4274 and R 0.9130, the same as spark40's depth-150 reading,
+  and the top five were in the same order on 43 of 43, 65 of 65 and 90 of 90 questions. The 198
+  questions took 380.7 minutes on 2 CPUs on a shared host: a median of 109.3 s (L), 82.6 s
+  (BioGen) and 135.2 s (R) per question, 39% of it BM25 and 61% the cross-encoder. Peak memory
+  was 2.65 GB. **`spark_t1.py` at depth 150 is the Task 1 system.** The scorer stays fp32 with
+  512-token inputs (`../quant/RESULTS-spark42.md`).
+- **`RESULTS-rodb1.md`: the real index opens read-only.** It is in WAL mode with no `-wal` or
+  `-shm` file. `ro_db.connect(immutable=True)` opened it as root and as uid 65534 (11 schema
+  objects), while a plain open as uid 65534 failed with `attempt to write a readonly database`.
+  So no conversion of the shared index is needed.
+- **`spark_t1.py` 0.2.0 adds `--immutable`** (three new tests in `test_spark_t1.py`: the same
+  submission files as a plain open, a non-empty `-wal` refused, and the flag through `main`). The
+  `Dockerfile` now mounts the index read-only and passes `--immutable`. The 0.2.0 tests have been
+  traced by hand only; **job `spark47-immutable-v1` is filed** and runs them, then runs the whole
+  system on the 43 L questions as uid 65534 (`PREREGISTRATION-spark47.md`).
 - **The Docker image has not been built or run yet.** Open items: whether the challenge mounts
   the corpus or expects it inside the image (the index is about 92.5 GB); the challenge has not
-  published how wrong citations are penalised, so the `top:1` / `top:5` choice may change. The
-  WAL item now has a fix that has not been tried on the real index: `ro_db.py` opens the index
-  with `immutable`, and its tests (including one in a folder with no write permission, which runs
-  only as a non-root POSIX user) check that on small databases. Job `rodb-check-v1` tries it on
-  the real index (`PREREGISTRATION-rodb1.md`). The other way is to convert the
-  index once with `PRAGMA journal_mode=DELETE`, as SQLite advises for read-only media. That writes
-  to the shared data volume, so it waits until no job is reading the index.
+  published how wrong citations are penalised, so the `top:1` / `top:5` choice may change.
 
 Contact: MV2, Munim, Inc., mv2@munimtech.com

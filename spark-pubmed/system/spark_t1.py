@@ -22,18 +22,20 @@ nothing here opens a network connection. Standard library only, except --scorer 
 (rerank.py: torch + transformers), imported only when used, so the tests need neither.
 
 0.1.1: the default depth is 150, the depth spark40-depth-v1's pre-registered rule chose
-(rerank/RESULTS-spark40.md); 0.1.0 defaulted to 50. Nothing else changed.
+(rerank/RESULTS-spark40.md); 0.1.0 defaulted to 50.
+0.2.0: --immutable opens the index with ro_db.connect(immutable=True) (mode=ro&immutable=1), so
+the WAL-mode index can sit on a read-only mount with no -shm or -wal files (RESULTS-rodb1.md).
+Without the flag the index is opened as before. Rankings do not depend on the flag.
 
   python spark_t1.py --db DB --questions F --out-dir D [--scorer medcpt --model-dir M | --scorer none]
          [--depth 150] [--rerank-depth N] [--policies top:5,top:1] [--submission-ids 1,2]
-         [--team-id TEAM] [--max-minutes 0] [--threads 2] [--batch 8]
+         [--team-id TEAM] [--max-minutes 0] [--threads 2] [--batch 8] [--immutable]
 Exit 0 = complete and valid, 1 = a submission file failed validation, 4 = stopped by
 --max-minutes (run the same command again to continue).
 """
 import argparse
 import json
 import os
-import sqlite3
 import statistics
 import sys
 import time
@@ -43,9 +45,10 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path[:0] = [d for d in (HERE, os.path.join(HERE, "..", "t1_runner"), os.path.join(HERE, "..", "rerank"))
                 if os.path.isdir(d)]
 import rerank_run  # noqa: E402
+import ro_db  # noqa: E402
 import t1  # noqa: E402
 
-VERSION = "0.1.1"
+VERSION = "0.2.0"
 DEPTH = 150  # chosen by spark40-depth-v1's pre-registered rule (best mean top:5 MRR of the eligible depths)
 POLICIES = ("top:5", "top:1")
 STOPPED = 4
@@ -127,7 +130,8 @@ def write_row(f, row):
 
 
 def run(db, questions_path, out_dir, scorer=None, scorer_name="none", depth=DEPTH, rerank_depth=None,
-        policies=POLICIES, submission_ids=None, team_id="TEAM", max_minutes=0, clock=time.perf_counter):
+        policies=POLICIES, submission_ids=None, team_id="TEAM", max_minutes=0, clock=time.perf_counter,
+        immutable=False):
     """Answer every question (resuming), then write and validate one submission per policy."""
     for p in policies:
         t1.parse_policy(p)
@@ -151,7 +155,7 @@ def run(db, questions_path, out_dir, scorer=None, scorer_name="none", depth=DEPT
         os.fsync(f.fileno())
     os.replace(tmp, ranked_path)
     start = clock()
-    con = sqlite3.connect(db)
+    con = ro_db.connect(db, immutable=immutable)  # immutable: ValueError if -wal holds unchecked pages
     try:
         with open(ranked_path, "a", encoding="utf-8") as f:
             for nd in needs:
@@ -176,7 +180,8 @@ def run(db, questions_path, out_dir, scorer=None, scorer_name="none", depth=DEPT
             subs[os.path.basename(path)] = {"policy": pol, "submission_id": sid, "validate": t1.validate(path)}
     summary = {"version": VERSION, "questions": len(needs), "answered_this_run": answered, "resumed": resumed,
                "complete": complete, "stopped": stopped, "depth": depth, "rerank_depth": rerank_depth,
-               "scorer": scorer_name, "no_candidates": sum(1 for r in ranked if not r["candidates"]),
+               "scorer": scorer_name, "immutable": bool(immutable),
+               "no_candidates": sum(1 for r in ranked if not r["candidates"]),
                "ms": {k: ms_stats([r[k + "_ms"] for r in ranked if k + "_ms" in r])
                       for k in ("total", "bm25", "rerank")},
                "submissions": subs,
@@ -205,6 +210,8 @@ def main(argv=None):
     ap.add_argument("--max-minutes", type=float, default=0)
     ap.add_argument("--threads", type=int, default=2)
     ap.add_argument("--batch", type=int, default=8)
+    ap.add_argument("--immutable", action="store_true",
+                    help="open the index read-only and immutable (for a read-only mount)")
     a = ap.parse_args(argv)
     scorer = None
     if a.scorer == "medcpt":
@@ -215,7 +222,7 @@ def main(argv=None):
         from rerank import CrossEncoder  # torch + transformers; imported here so the tests need neither
         scorer = CrossEncoder(a.model_dir, batch_size=a.batch, threads=a.threads)
     s = run(a.db, a.questions, a.out_dir, scorer, a.scorer, a.depth, a.rerank_depth, listing(a.policies),
-            listing(a.submission_ids) or None, a.team_id, a.max_minutes)
+            listing(a.submission_ids) or None, a.team_id, a.max_minutes, immutable=a.immutable)
     print(json.dumps(s, indent=1))
     if s["problems"]:
         return 1

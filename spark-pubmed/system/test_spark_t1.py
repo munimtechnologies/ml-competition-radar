@@ -48,6 +48,11 @@ def read_jsonl(path):
         return [json.loads(line) for line in f if line.strip()]
 
 
+def read_bytes(path):
+    with open(path, "rb") as f:
+        return f.read()
+
+
 class Base(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
@@ -83,7 +88,7 @@ class Pipeline(Base):
     def test_bm25_only(self):
         s = spark_t1.run(self.db, self.q, self.out)
         self.assertEqual((s["complete"], s["answered_this_run"], s["resumed"], s["rerank_depth"]), (True, 3, 0, 0))
-        self.assertEqual((s["no_candidates"], s["problems"], s["scorer"]), (1, [], "none"))
+        self.assertEqual((s["no_candidates"], s["problems"], s["scorer"], s["immutable"]), (1, [], "none", False))
         top5 = self.sub("submission_top5.jsonl")
         self.assertEqual(sorted(top5["Q1"]), ["101", "102", "104"])
         self.assertEqual((top5[7], top5["Q3"]), (["103"], []))
@@ -139,10 +144,35 @@ class Pipeline(Base):
                                         "--scorer", "none", "--policies", "top:3"]), 0)
         self.assertEqual(sorted(os.listdir(self.out)), ["ranked.jsonl", "run.json", "submission_top3.jsonl"])
         with open(os.path.join(self.out, "run.json"), encoding="utf-8") as f:
-            self.assertEqual({k: v for k, v in json.load(f).items() if k in ("version", "depth")},
-                             {"version": "0.1.1", "depth": 150})
+            self.assertEqual({k: v for k, v in json.load(f).items() if k in ("version", "depth", "immutable")},
+                             {"version": "0.2.0", "depth": 150, "immutable": False})
         with self.assertRaises(SystemExit):
             spark_t1.main(["--db", self.db, "--questions", self.q, "--out-dir", self.out])  # medcpt needs --model-dir
+
+
+class Immutable(Base):
+    def test_same_files_as_plain(self):
+        plain = spark_t1.run(self.db, self.q, self.out, FakeScorer(), "fake")
+        out2 = os.path.join(self.tmp.name, "out2")
+        imm = spark_t1.run(self.db, self.q, out2, FakeScorer(), "fake", immutable=True)
+        self.assertEqual((imm["immutable"], imm["complete"], imm["problems"]), (True, True, []))
+        self.assertEqual(plain["immutable"], False)
+        for name in ("submission_top5.jsonl", "submission_top1.jsonl"):
+            self.assertEqual(read_bytes(os.path.join(self.out, name)), read_bytes(os.path.join(out2, name)))
+        self.assertEqual(spark_t1.ro_db.side_files(self.db), {"wal": None, "shm": None})
+
+    def test_refuses_unchecked_wal(self):
+        with open(self.db + "-wal", "wb") as f:
+            f.write(b"\0" * 32)
+        with self.assertRaises(ValueError):
+            spark_t1.run(self.db, self.q, self.out, immutable=True)
+
+    def test_main_flag(self):
+        self.assertEqual(spark_t1.main(["--db", self.db, "--questions", self.q, "--out-dir", self.out,
+                                        "--scorer", "none", "--immutable"]), 0)
+        with open(os.path.join(self.out, "run.json"), encoding="utf-8") as f:
+            self.assertEqual(json.load(f)["immutable"], True)
+        self.assertEqual(sorted(self.sub("submission_top5.jsonl")["Q1"]), ["101", "102", "104"])
 
 
 if __name__ == "__main__":
