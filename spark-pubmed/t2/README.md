@@ -43,7 +43,7 @@ Every job was pre-registered before it ran and graded word for word:
 | t2dev-v1 | `PREREGISTRATION-t2dev.md` | `RESULTS-t2dev.md`, `results-t2dev/` | 3 of 3 checks, 10 of 11 (memory missed; public commit 2 min after the job started) |
 | biogen-nli-v1 | `PREREGISTRATION-biogen-nli.md` | `RESULTS-biogen-nli.md`, `results-biogen-nli/` | 3 of 3 checks, 9 of 9; model not adopted (AUROC 0.735 < 0.75) |
 | biogen-cue-v1 | `PREREGISTRATION-biogen-cue.md` | `RESULTS-biogen-cue.md`, `results-biogen-cue/` | 2 of 2 checks, 6 of 9 (cues sharper than predicted) |
-| biogen-nli-large-v1 | `PREREGISTRATION-biogen-nli-large.md` | (queued 2026-10-29) | |
+| biogen-nli-large-v1 | `PREREGISTRATION-biogen-nli-large.md` | `RESULTS-biogen-nli-large.md`, `results-biogen-nli-large/` | 3 of 3 checks, 8 of 10; model not adopted (AUROC 0.731 < 0.75) |
 
 What v2 counted: 14,763 citation judgments (69.4% supporting, 1.9% contradicting, 4.3% invalid);
 55 of 65 topics have a contradicting judgment; 3,858 distinct PMIDs, all inside the SPARK
@@ -100,13 +100,17 @@ labels would already be near the 2025 state of the art.
 
 ## Conflict flags measured on the 2024 human labels
 
-Both jobs score the same 11,927 judgments (275 Contradicts, 2.3%). Each pairs the assessors' quoted
-passage of the cited paper with the answer sentence, exactly what they judged.
+All three jobs score the same 11,927 judgments (275 Contradicts, 2.3%). Each pairs the assessors'
+quoted passage of the cited paper with the answer sentence, exactly what they judged.
 
 | flag (entry level, Contradicts vs rest) | precision | recall | F1 | AUROC |
 |---|---|---|---|---|
 | NLI cross-encoder (nli-deberta-v3-base), argmax | 0.184 | 0.138 | 0.158 | 0.735 |
 | same, best threshold chosen on this data (oracle) | | | 0.192 | |
+| NLI large (DeBERTa-v3-large-mnli-fever-anli-ling-wanli), argmax | 0.315 | 0.149 | 0.203 | 0.731 |
+| same, oracle threshold | | | 0.224 | |
+| large, only where the passage has a negation word | 0.656 | 0.076 | 0.137 | 0.710 |
+| large, or compose.py's polarity clash | 0.299 | 0.171 | 0.218 | 0.740 |
 | negation word in the passage (compose.py's NEG_RX) | 0.098 | 0.509 | 0.164 | |
 | null finding in the passage (NULL_RX) | 0.238 | 0.087 | 0.128 | |
 | compose.py's polarity clash (null vs finding) | 0.344 | 0.040 | 0.072 | |
@@ -114,16 +118,15 @@ passage of the cited paper with the answer sentence, exactly what they judged.
 - **Negation is enriched but not a filter.** Half (50.9%) of the passages judged contradicting
   carry a negation word, against 10.8% of those judged supporting (4.7x). A negation-only gate,
   as in the GE HealthCare system, would drop about half of the contradictions, so none is used.
-- **A general NLI model adds little over a regular expression here** (post hoc: 0.158 against
-  0.164 F1). It calls most supporting passages "neutral" (8,631 of 10,240), so it was not
-  adopted.
+- **A bigger NLI model sharpens the calls but not the ranking.** The large model's
+  "contradiction" calls are right 32% of the time (base 18%), but its AUROC is level (0.731 against
+  0.735) and it calls 90% of supporting passages "neutral". Neither model met the pre-registered
+  bar (AUROC >= 0.75 and slot F1 >= 0.20), so no NLI cross-encoder is used.
 - compose.py 0.3.0 keeps the polarity-clash flag (slot precision 0.344): rare but precise.
 - Every flag stays far below the assessors' own between-slot agreement on Contradicts (0.39).
 
-Next: `nli_check.py` 0.2.0 (`--model`, two fixed cue combinations, `--pairs-out`) runs
-MoritzLaurer/DeBERTa-v3-large-mnli-fever-anli-ling-wanli (MIT), trained on harder adversarial NLI
-data. The public MedNLI models we checked declare no licence. The decision rule is in
-`PREREGISTRATION-biogen-nli-large.md`.
+Next for conflicts: an open-weight LLM judge, run only on pairs the large model or the negation
+cue already marks, pre-registered separately, with a model whose licence allows public use.
 
 ## Baseline: `compose.py` 0.2.0 (extractive, cited, standard library only)
 
@@ -157,10 +160,9 @@ BM25 over all 39,167,523 records, then `compose.py`, on the 65 BioGen questions:
 
 ## Next
 
-1. Grade biogen-nli-large-v1 and follow its decision rule.
-2. Rerun these 65 questions on the chosen Task 1 system (MedCPT cross-encoder at depth 150,
-   `../system/`), compose again (0.3.0), and score the same way.
-3. Then an open-weight stage for conflicts and rewriting, measured on judged precision and on how
+1. Rerun these 65 questions on the chosen Task 1 system (MedCPT cross-encoder at depth 150,
+   `../system/`), compose again (0.3.0, polarity clash only), and score the same way.
+2. Then an open-weight stage for conflicts and rewriting, measured on judged precision and on how
    many citations were judged at all.
 
 Helpers: `t2dev.py` (wait, download pins, gold files) and `fetch_code.py` (fetches the published

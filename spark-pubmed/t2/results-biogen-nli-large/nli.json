@@ -1,0 +1,314 @@
+{
+ "census": {
+  "topic_papers": 4231,
+  "topic_papers_contradicts": 202,
+  "topic_papers_mixed": 168
+ },
+ "counts": {
+  "empty_passage": {
+   "contradicts": 0,
+   "invalid": 635,
+   "neutral": 0,
+   "notrelevant": 2201,
+   "supports": 0
+  },
+  "empty_sentence": 0,
+  "judgments": 14763,
+  "labels": {
+   "contradicts": 275,
+   "invalid": 635,
+   "neutral": 1412,
+   "notrelevant": 2201,
+   "supports": 10240
+  },
+  "no_pmid": 0,
+  "scored": 11927,
+  "scored_labels": {
+   "contradicts": 275,
+   "invalid": 0,
+   "neutral": 1412,
+   "notrelevant": 0,
+   "supports": 10240
+  },
+  "unique_pairs": 11592,
+  "unknown_label": 0
+ },
+ "entry": {
+  "confusion": {
+   "contradicts": {
+    "contradiction": 41,
+    "entailment": 7,
+    "neutral": 227
+   },
+   "invalid": {
+    "contradiction": 0,
+    "entailment": 0,
+    "neutral": 0
+   },
+   "neutral": {
+    "contradiction": 9,
+    "entailment": 13,
+    "neutral": 1390
+   },
+   "notrelevant": {
+    "contradiction": 0,
+    "entailment": 0,
+    "neutral": 0
+   },
+   "supports": {
+    "contradiction": 80,
+    "entailment": 972,
+    "neutral": 9188
+   }
+  },
+  "contradicts_vs_rest": {
+   "argmax": {
+    "f1": 0.2025,
+    "fn": 234,
+    "fp": 89,
+    "precision": 0.3154,
+    "recall": 0.1491,
+    "tp": 41
+   },
+   "auroc": 0.7305,
+   "average_precision": 0.1374,
+   "best_f1": {
+    "f1": 0.2237,
+    "fn": 206,
+    "fp": 273,
+    "threshold": 0.0456,
+    "tp": 69
+   },
+   "n": 11927,
+   "positives": 275,
+   "prevalence": 0.0231
+  },
+  "contradicts_vs_supports": {
+   "argmax": {
+    "f1": 0.2071,
+    "fn": 234,
+    "fp": 80,
+    "precision": 0.3388,
+    "recall": 0.1491,
+    "tp": 41
+   },
+   "auroc": 0.7301,
+   "average_precision": 0.1491,
+   "best_f1": {
+    "f1": 0.2388,
+    "fn": 206,
+    "fp": 234,
+    "threshold": 0.0456,
+    "tp": 69
+   },
+   "n": 10515,
+   "positives": 275,
+   "prevalence": 0.0262
+  },
+  "mean_p": {
+   "contradicts": [
+    0.1472,
+    0.0287,
+    0.8241
+   ],
+   "invalid": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "neutral": [
+    0.0106,
+    0.0129,
+    0.9764
+   ],
+   "notrelevant": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "supports": [
+    0.0107,
+    0.1055,
+    0.8838
+   ]
+  },
+  "supports_vs_rest": {
+   "argmax": {
+    "f1": 0.1731,
+    "fn": 9268,
+    "fp": 20,
+    "precision": 0.9798,
+    "recall": 0.0949,
+    "tp": 972
+   },
+   "auroc": 0.7081,
+   "average_precision": 0.9346,
+   "best_f1": {
+    "f1": 0.924,
+    "fn": 2,
+    "fp": 1683,
+    "threshold": 0.0001,
+    "tp": 10238
+   },
+   "n": 11927,
+   "positives": 10240,
+   "prevalence": 0.8586
+  }
+ },
+ "file": {
+  "bytes": 11128359,
+  "sha256": "78449ef270e60abe0c268fa446ade23737164bba44c37308e216529fa63d066d"
+ },
+ "fusion": {
+  "gate_neg_passage": {
+   "entry": {
+    "argmax": {
+     "f1": 0.1368,
+     "fn": 254,
+     "fp": 11,
+     "precision": 0.6562,
+     "recall": 0.0764,
+     "tp": 21
+    },
+    "auroc": 0.7102,
+    "average_precision": 0.1769,
+    "best_f1": {
+     "f1": 0.2438,
+     "fn": 216,
+     "fp": 150,
+     "threshold": 0.0061,
+     "tp": 59
+    },
+    "n": 11927,
+    "positives": 275,
+    "prevalence": 0.0231
+   },
+   "slot": {
+    "argmax": {
+     "f1": 0.1361,
+     "fn": 243,
+     "fp": 11,
+     "precision": 0.6452,
+     "recall": 0.076,
+     "tp": 20
+    },
+    "auroc": 0.7249,
+    "average_precision": 0.189,
+    "best_f1": {
+     "f1": 0.2553,
+     "fn": 203,
+     "fp": 147,
+     "threshold": 0.0061,
+     "tp": 60
+    },
+    "n": 9704,
+    "positives": 263,
+    "prevalence": 0.0271
+   }
+  },
+  "union_polarity_clash": {
+   "entry": {
+    "argmax": {
+     "f1": 0.2176,
+     "fn": 228,
+     "fp": 110,
+     "precision": 0.2994,
+     "recall": 0.1709,
+     "tp": 47
+    },
+    "auroc": 0.7401,
+    "average_precision": 0.1476,
+    "best_f1": {
+     "f1": 0.234,
+     "fn": 200,
+     "fp": 291,
+     "threshold": 0.0456,
+     "tp": 75
+    },
+    "n": 11927,
+    "positives": 275,
+    "prevalence": 0.0231
+   },
+   "slot": {
+    "argmax": {
+     "f1": 0.2271,
+     "fn": 216,
+     "fp": 104,
+     "precision": 0.3113,
+     "recall": 0.1787,
+     "tp": 47
+    },
+    "auroc": 0.751,
+    "average_precision": 0.1606,
+    "best_f1": {
+     "f1": 0.2472,
+     "fn": 187,
+     "fp": 276,
+     "threshold": 0.0456,
+     "tp": 76
+    },
+    "n": 9704,
+    "positives": 263,
+    "prevalence": 0.0271
+   }
+  }
+ },
+ "model": "MoritzLaurer/DeBERTa-v3-large-mnli-fever-anli-ling-wanli",
+ "problems": [],
+ "revision": "b3546ea6b0346eb6f8d5d68b13c7dc6d0376b3d7",
+ "scoring": {
+  "batch": 16,
+  "max_length": 256,
+  "ms_per_pair": 648.5886,
+  "pairs": 11592,
+  "seconds": 7518.4,
+  "threads": 4,
+  "truncated": 21
+ },
+ "seconds": 7525.7,
+ "slot": {
+  "argmax": {
+   "f1": 0.2119,
+   "fn": 222,
+   "fp": 83,
+   "precision": 0.3306,
+   "recall": 0.1559,
+   "tp": 41
+  },
+  "auroc": 0.7406,
+  "average_precision": 0.15,
+  "best_f1": {
+   "f1": 0.2369,
+   "fn": 193,
+   "fp": 258,
+   "threshold": 0.0456,
+   "tp": 70
+  },
+  "n": 9704,
+  "positives": 263,
+  "prevalence": 0.0271
+ },
+ "topic_paper": {
+  "argmax": {
+   "f1": 0.3203,
+   "fn": 153,
+   "fp": 55,
+   "precision": 0.4712,
+   "recall": 0.2426,
+   "tp": 49
+  },
+  "auroc": 0.785,
+  "average_precision": 0.272,
+  "best_f1": {
+   "f1": 0.3436,
+   "fn": 124,
+   "fp": 174,
+   "threshold": 0.046,
+   "tp": 78
+  },
+  "n": 3247,
+  "positives": 202,
+  "prevalence": 0.0622
+ },
+ "version": "0.2.0"
+}
