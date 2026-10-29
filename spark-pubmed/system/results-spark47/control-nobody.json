@@ -1,0 +1,50 @@
+{
+ "version": "0.1.0",
+ "uid": 65534,
+ "cmd": [
+  "python",
+  "/tmp/code/spark_t1.py",
+  "--db",
+  "/data/spark28/spark_full.db",
+  "--questions",
+  "/tmp/q1.jsonl",
+  "--out-dir",
+  "/tmp/ctl",
+  "--scorer",
+  "none",
+  "--depth",
+  "150",
+  "--team-id",
+  "MV2"
+ ],
+ "expect": "fail",
+ "before": {
+  "side_files": {
+   "wal": null,
+   "shm": null
+  },
+  "beside": [
+   "spark_full.db"
+  ]
+ },
+ "exit": 1,
+ "stderr_last": [
+  "    rows = con.execute(\"SELECT rowid, bm25(docs, ?, ?, ?) FROM docs WHERE docs MATCH ? ORDER BY 2 LIMIT ?\",",
+  "           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+  "sqlite3.OperationalError: attempt to write a readonly database"
+ ],
+ "stdout_tail": "",
+ "after": {
+  "side_files": {
+   "wal": null,
+   "shm": null
+  },
+  "beside": [
+   "spark_full.db"
+  ]
+ },
+ "copied": [
+  "ranked.jsonl"
+ ],
+ "as_expected": true
+}

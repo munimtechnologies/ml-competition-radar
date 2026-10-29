@@ -1,0 +1,56 @@
+{
+ "version": "0.1.0",
+ "uid": 65534,
+ "cmd": [
+  "python",
+  "/tmp/code/spark_t1.py",
+  "--db",
+  "/data/spark28/spark_full.db",
+  "--questions",
+  "/data/spark38/bm25_l_d1000.jsonl",
+  "--out-dir",
+  "/tmp/sys",
+  "--scorer",
+  "medcpt",
+  "--model-dir",
+  "/data/models/medcpt-ce-71caf65",
+  "--depth",
+  "150",
+  "--threads",
+  "2",
+  "--batch",
+  "8",
+  "--team-id",
+  "MV2",
+  "--immutable"
+ ],
+ "expect": "ok",
+ "before": {
+  "side_files": {
+   "wal": null,
+   "shm": null
+  },
+  "beside": [
+   "spark_full.db"
+  ]
+ },
+ "exit": 0,
+ "stderr_last": [],
+ "stdout_tail": "{\n \"version\": \"0.2.0\",\n \"questions\": 43,\n \"answered_this_run\": 43,\n \"resumed\": 0,\n \"complete\": true,\n \"stopped\": null,\n \"depth\": 150,\n \"rerank_depth\": 150,\n \"scorer\": \"medcpt\",\n \"immutable\": true,\n \"no_candidates\": 0,\n \"ms\": {\n  \"total\": {\n   \"median\": 107071.4,\n   \"p95\": 154205.8,\n   \"max\": 178945.3,\n   \"total_seconds\": 4647.3\n  },\n  \"bm25\": {\n   \"median\": 39995.5,\n   \"p95\": 75903.8,\n   \"max\": 115323.8,\n   \"total_seconds\": 1869.8\n  },\n  \"rerank\": {\n   \"median\": 62826.0,\n   \"p95\": 91401.7,\n   \"max\": 99489.0,\n   \"total_seconds\": 2777.6\n  }\n },\n \"submissions\": {\n  \"submission_top5.jsonl\": {\n   \"policy\": \"top:5\",\n   \"submission_id\": \"1\",\n   \"validate\": {\n    \"lines\": 43,\n    \"empty_responses\": 0,\n    \"problems\": []\n   }\n  },\n  \"submission_top1.jsonl\": {\n   \"policy\": \"top:1\",\n   \"submission_id\": \"2\",\n   \"validate\": {\n    \"lines\": 43,\n    \"empty_responses\": 0,\n    \"problems\": []\n   }\n  }\n },\n \"problems\": []\n}\n",
+ "after": {
+  "side_files": {
+   "wal": null,
+   "shm": null
+  },
+  "beside": [
+   "spark_full.db"
+  ]
+ },
+ "copied": [
+  "ranked.jsonl",
+  "run.json",
+  "submission_top1.jsonl",
+  "submission_top5.jsonl"
+ ],
+ "as_expected": true
+}

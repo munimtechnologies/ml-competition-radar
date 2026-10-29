@@ -1,0 +1,54 @@
+{
+ "version": "0.2.0",
+ "questions": 43,
+ "answered_this_run": 43,
+ "resumed": 0,
+ "complete": true,
+ "stopped": null,
+ "depth": 150,
+ "rerank_depth": 150,
+ "scorer": "medcpt",
+ "immutable": true,
+ "no_candidates": 0,
+ "ms": {
+  "total": {
+   "median": 107071.4,
+   "p95": 154205.8,
+   "max": 178945.3,
+   "total_seconds": 4647.3
+  },
+  "bm25": {
+   "median": 39995.5,
+   "p95": 75903.8,
+   "max": 115323.8,
+   "total_seconds": 1869.8
+  },
+  "rerank": {
+   "median": 62826.0,
+   "p95": 91401.7,
+   "max": 99489.0,
+   "total_seconds": 2777.6
+  }
+ },
+ "submissions": {
+  "submission_top5.jsonl": {
+   "policy": "top:5",
+   "submission_id": "1",
+   "validate": {
+    "lines": 43,
+    "empty_responses": 0,
+    "problems": []
+   }
+  },
+  "submission_top1.jsonl": {
+   "policy": "top:1",
+   "submission_id": "2",
+   "validate": {
+    "lines": 43,
+    "empty_responses": 0,
+    "problems": []
+   }
+  }
+ },
+ "problems": []
+}
