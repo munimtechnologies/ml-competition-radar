@@ -1,0 +1,65 @@
+{
+ "version": "0.2.0",
+ "started_utc": "2026-10-30T06:41:06Z",
+ "tag": "mv2-spark-t1:spark49b",
+ "steps": {},
+ "problem": "no running docker engine found (nothing was started)",
+ "engine_listing": {
+  "contexts": {
+   "exit": 0,
+   "stdout": [
+    "default|npipe:////./pipe/docker_engine",
+    "desktop-linux|npipe:////./pipe/dockerDesktopLinuxEngine"
+   ],
+   "stderr": [],
+   "cmd": "docker context ls --format {{.Name}}|{{.DockerEndpoint}}",
+   "seconds": 0.5
+  },
+  "wsl": {
+   "exit": 0,
+   "stdout": [],
+   "stderr": [],
+   "cmd": "wsl --list --quiet --running",
+   "seconds": 0.6
+  }
+ },
+ "engine_tries": [
+  {
+   "exit": 1,
+   "stdout": [
+    ""
+   ],
+   "stderr": [
+    "error during connect: Get \"http://%2F%2F.%2Fpipe%2FdockerDesktopLinuxEngine/v1.51/version\": open //./pipe/dockerDesktopLinuxEngine: The system cannot find the file specified."
+   ],
+   "cmd": "docker version --format {{.Server.Version}}|{{.Server.Os}}",
+   "seconds": 0.2,
+   "engine": "docker as it is"
+  },
+  {
+   "exit": 1,
+   "stdout": [
+    ""
+   ],
+   "stderr": [
+    "error during connect: in the default daemon configuration on Windows, the docker client must be run with elevated privileges to connect: Get \"http://%2F%2F.%2Fpipe%2Fdocker_engine/v1.51/version\": open //./pipe/docker_engine: The system cannot find the file specified."
+   ],
+   "cmd": "docker --context default version --format {{.Server.Version}}|{{.Server.Os}}",
+   "seconds": 0.1,
+   "engine": "context default"
+  },
+  {
+   "exit": 1,
+   "stdout": [
+    ""
+   ],
+   "stderr": [
+    "error during connect: Get \"http://%2F%2F.%2Fpipe%2FdockerDesktopLinuxEngine/v1.51/version\": open //./pipe/dockerDesktopLinuxEngine: The system cannot find the file specified."
+   ],
+   "cmd": "docker --context desktop-linux version --format {{.Server.Version}}|{{.Server.Os}}",
+   "seconds": 0.2,
+   "engine": "context desktop-linux"
+  }
+ ],
+ "finished_utc": "2026-10-30T06:41:07Z"
+}
