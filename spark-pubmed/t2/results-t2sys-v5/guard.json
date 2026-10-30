@@ -1,0 +1,13 @@
+{
+ "version": "0.1",
+ "db": "/data/spark28/spark_full.db",
+ "db_exists": true,
+ "db_bytes": 5264363520,
+ "files_built": 112,
+ "docs": 3360000,
+ "last_file": "pubmed27n0112.xml.gz",
+ "min_built": 1306,
+ "min_docs": 39167523,
+ "ok": false,
+ "problem": "index holds 112 files and 3360000 records, below 1306 and 39167523"
+}
