@@ -61,6 +61,11 @@ exactly as the `Dockerfile`'s COPY lines do (six flat files and `model/`) and re
 git blob next to the one this repository lists at the pinned commits, plus the Python, SQLite,
 torch and transformers versions.
 
+`spark49_image.py` (0.1.0, standard library only) is the first real build: on a machine with
+Docker it fetches the six files, the `Dockerfile` and the model at pinned commits (checking each
+sha256), runs `docker build`, then runs the image only with `--network none` on a five-record test
+index mounted read-only, and removes the image at the end.
+
 | File | What it is |
 |---|---|
 | `PREREGISTRATION-spark41.md` | Predictions for job `spark41-system-v1`, written before it ran |
@@ -80,8 +85,12 @@ torch and transformers versions.
 | `results-spark47/` | The control's and the run's `nobody.json`, and the run's `run.json`, `scores.json`, `agree.json` (counts only) |
 | `image_eq.py`, `test_image_eq.py` | Stand-in checks for the image: no network, and `/app` laid out as the Dockerfile lays it out |
 | `PREREGISTRATION-spark48.md` | Predictions for job `spark48-image-v1` (the entry point on `python:3.12-slim`, flat `/app`, no network, 65 BioGen questions), written before it ran |
+| `RESULTS-spark48.md` | Grades: 8 of 8 predictions held; one test count was miscounted in the pre-registration (explained there) |
+| `results-spark48/` | `net.json`, `app.json` (file and model hashes, versions), and the run's `nobody.json`, `run.json`, `scores.json`, `agree.json` (counts only) |
+| `PREREGISTRATION-spark49.md` | Predictions for `spark49_image.py` (the first `docker build`, then `docker run --network none` with a read-only mount), written before it ran |
+| `spark49_image.py` | That build-and-run script |
 
-## Status (2026-10-30, about 01:30 UTC)
+## Status (2026-10-30, about 03:50 UTC)
 
 - **`RESULTS-spark43.md`: the system at depth 150 reproduced its chosen rankings exactly.**
   Top-5 MRR was L 0.1628, BioGen 0.4274 and R 0.9130, the same as spark40's depth-150 reading,
@@ -98,13 +107,17 @@ torch and transformers versions.
   `spark_t1.py` 0.2.0 with `--immutable` answered all 43 L questions with the same top five, in
   the same order, as before (43 of 43; top-5 MRR 0.1628), and left no side files. The same command
   without the flag failed. Median 107.1 s per question, peak 2.14 GB.
-- **Job `spark48-image-v1` is queued** (`PREREGISTRATION-spark48.md`): the `Dockerfile`'s entry point
-  on `python:3.12-slim`, with `/app` as the COPY lines lay it out and no network, on the 65 BioGen
-  questions.
-- **Task 2 on this system is queued** (`../t2/PREREGISTRATION-t2sys.md`): the same 65 BioGen
-  questions, then answers composed from these rankings with the index opened read-only.
-- **The Docker image has not been built or run yet.** Open items: whether the challenge mounts
-  the corpus or expects it inside the image (the index is about 92.5 GB); the challenge has not
-  published how wrong citations are penalised, so the `top:1` / `top:5` choice may change.
+- **`RESULTS-spark48.md`: the Dockerfile's layout works.** On `python:3.12-slim` (SQLite 3.46.1),
+  with `/app` exactly as the COPY lines lay it out, the model in `/app/model`, no network and no
+  write access to the index, the Dockerfile's entry point gave spark43's BioGen rankings on 65 of
+  65 questions (top-5 MRR 0.4274, top-1 0.3231). Median 71.3 s per question, peak 2.15 GB. All 8
+  predictions held.
+- **The real image is next** (`PREREGISTRATION-spark49.md`): `docker build` and an offline,
+  read-only-mount run on a test index. Until it has run, the image has not been built.
+- **Task 2 on this system is queued again** (`../t2/PREREGISTRATION-t2sys.md`, re-filed as
+  `t2sys-v2`; `../t2/ADDENDUM-t2sys-v2.md` says why).
+- Open items: whether the challenge mounts the corpus or expects it inside the image (the index is
+  about 92.5 GB); the challenge has not published how wrong citations are penalised, so the
+  `top:1` / `top:5` choice may change.
 
 Contact: MV2, Munim, Inc., mv2@munimtech.com

@@ -1,0 +1,11 @@
+{
+ "version": "0.1.0",
+ "host": "pypi.org",
+ "ip": "1.1.1.1",
+ "port": 443,
+ "dns": false,
+ "dns_error": "gaierror: [Errno -3] Temporary failure in name resolution",
+ "connect": false,
+ "connect_error": "OSError: [Errno 101] Network is unreachable",
+ "reachable": false
+}

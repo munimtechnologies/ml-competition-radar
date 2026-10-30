@@ -1,0 +1,87 @@
+{
+ "version": "0.1.0",
+ "app": "/app",
+ "files": {
+  "build_index.py": {
+   "bytes": 11071,
+   "sha256": "595909e16b0a3b1638530eb70a712f4df34809d842503d73f40066f76550f1be",
+   "git_blob": "7211c27af5b07d8abb920b0610f24a39f165b167"
+  },
+  "rerank.py": {
+   "bytes": 2961,
+   "sha256": "2b5ccfa9c4a1663f3eabd9454a202e7960b51016ee0d7d0b8d96f00cc3cfe2c6",
+   "git_blob": "0de02d8b84282fa6a12c248fbd65013d3cb7e3f0"
+  },
+  "rerank_run.py": {
+   "bytes": 5188,
+   "sha256": "25867eaf4fe1b8ff320caf0d18cd7d90ce8a8d0d7f71bd53d5bfb1c98686fae9",
+   "git_blob": "e3265281535afc5800aa59972b6301469255f03b"
+  },
+  "ro_db.py": {
+   "bytes": 3335,
+   "sha256": "2ca63c2a17d936e7bdb2fed4ad7583e009c66eff7a3aca24f0d5d3346a95a75c",
+   "git_blob": "fb27ff93ef73b58e63ab7b365fd4422c71b06fea"
+  },
+  "spark_t1.py": {
+   "bytes": 11414,
+   "sha256": "33de48845f75a7e453881d67b7dadcfe52e2159dbfed9640e9dffe04c7b37b73",
+   "git_blob": "ff8d03c46704b8b24fe3660ba31fca350692ee6c"
+  },
+  "t1.py": {
+   "bytes": 12240,
+   "sha256": "eff77a880cae9916504f55a7a25d16183460d1338319ea2d3d52aaf52aa3d9b4",
+   "git_blob": "6de6de3f780e9eeb075322e5257d86959dce9e46"
+  }
+ },
+ "model": {
+  "README.md": {
+   "bytes": 4236,
+   "sha256": "8ab1ceed3beea346789e0b9cd7e04d6373dcf8b738fb63b996c7d97bb25df2ec"
+  },
+  "added_tokens.json": {
+   "bytes": 74,
+   "sha256": "691a5ce0135045c12b8410af8d472ff8de864094df40ac9af418d6c644c7588d"
+  },
+  "config.json": {
+   "bytes": 741,
+   "sha256": "1f375c7e8081f043c99fdb9c80059c44ed757cce7b05d333b7f3c81b1b713a42"
+  },
+  "pytorch_model.bin": {
+   "bytes": 437998062,
+   "sha256": "61d5ccd48869e03500544525fc231641d7daa9ba267b202c82724750038dc1e0"
+  },
+  "special_tokens_map.json": {
+   "bytes": 228,
+   "sha256": "cb63d0cbbf45160dc9cd786a257759593b798ae0c72957011016dbc3972df4e4"
+  },
+  "tokenizer.json": {
+   "bytes": 706277,
+   "sha256": "6e046044df8a2fcedb10607075dca187cae61d806c0d80a96c5b81017edc90c9"
+  },
+  "tokenizer_config.json": {
+   "bytes": 1556,
+   "sha256": "25e63abb25f637aa24981117b13394370693dd7bc140903d95008599b3abc1a9"
+  },
+  "vocab.txt": {
+   "bytes": 226150,
+   "sha256": "79489a52be45e6fa033521e8ce8e4f62aedc0a742ee2aa6fc04667e5b0b1454d"
+  }
+ },
+ "blob_mismatch": [],
+ "listing": [
+  "build_index.py",
+  "model",
+  "rerank.py",
+  "rerank_run.py",
+  "ro_db.py",
+  "spark_t1.py",
+  "t1.py"
+ ],
+ "problem": null,
+ "runtime": {
+  "python": "3.12.15",
+  "sqlite": "3.46.1",
+  "torch": "2.5.1+cpu",
+  "transformers": "4.46.3"
+ }
+}

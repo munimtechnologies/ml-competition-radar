@@ -1,0 +1,12 @@
+{
+ "version": "0.1.1",
+ "k": 5,
+ "b_depth": 150,
+ "common": 65,
+ "only_a": 0,
+ "only_b": 0,
+ "same_order": 65,
+ "same_set": 65,
+ "same_first": 65,
+ "differ_ids": []
+}
