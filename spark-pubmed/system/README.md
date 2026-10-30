@@ -39,7 +39,7 @@ code at pinned commits and checks each file's size against the git tree, so the 
 the public code. Its `system` and `t2dev` groups pin commit 4765a24; 0.3.0 added `system2`, which
 pins 9a64c8e3 (`spark_t1.py` 0.2.0, `ro_db.py`, `nobody_run.py`, `agree.py` and their tests);
 0.4.0 adds `t2nli`, which pins 29d7d00c (`../t2/nli_check.py` 0.2.0, `cue_check.py` 0.1.0 and
-their tests) for the Task 2 job `biogen-llm-v1`.
+their tests) for the Task 2 jobs `biogen-llm-v1` and `biogen-llm-v2`.
 
 `ro_db.py` (0.1.0, standard library only) opens the index read-only for a read-only mount. The
 index uses SQLite's WAL journal, and SQLite 3.22.0 or later can read a WAL-mode database without
@@ -64,7 +64,11 @@ torch and transformers versions.
 `spark49_image.py` (0.1.0, standard library only) is the first real build: on a machine with
 Docker it fetches the six files, the `Dockerfile` and the model at pinned commits (checking each
 sha256), runs `docker build`, then runs the image only with `--network none` on a five-record test
-index mounted read-only, and removes the image at the end.
+index mounted read-only, and removes the image at the end. Its one run stopped at the first step
+because Docker Desktop was not running on that machine. `spark49b_image.py` (0.2.0) does the same
+but starts nothing: it uses the first Docker engine that is already running (the docker command as
+it is, another named-pipe context, or docker inside an already-running WSL distribution) and
+records every attempt (`NOTE-spark49b.md`).
 
 | File | What it is |
 |---|---|
@@ -88,9 +92,12 @@ index mounted read-only, and removes the image at the end.
 | `RESULTS-spark48.md` | Grades: 8 of 8 predictions held; one test count was miscounted in the pre-registration (explained there) |
 | `results-spark48/` | `net.json`, `app.json` (file and model hashes, versions), and the run's `nobody.json`, `run.json`, `scores.json`, `agree.json` (counts only) |
 | `PREREGISTRATION-spark49.md` | Predictions for `spark49_image.py` (the first `docker build`, then `docker run --network none` with a read-only mount), written before it ran |
-| `spark49_image.py` | That build-and-run script |
+| `spark49_image.py` | That build-and-run script (0.1.0; its one run found no running engine) |
+| `NOTE-spark49b.md` | Why spark49 did not run, and what 0.2.0 changes; written before it runs |
+| `spark49b_image.py` | The re-run script (0.2.0): same pins and predictions, uses an already-running engine |
+| `results-spark49/report.json` | spark49's report: one step, `docker version`, exit 1 |
 
-## Status (2026-10-30, about 03:50 UTC)
+## Status (2026-10-30, about 07:00 UTC)
 
 - **`RESULTS-spark43.md`: the system at depth 150 reproduced its chosen rankings exactly.**
   Top-5 MRR was L 0.1628, BioGen 0.4274 and R 0.9130, the same as spark40's depth-150 reading,
@@ -112,10 +119,11 @@ index mounted read-only, and removes the image at the end.
   write access to the index, the Dockerfile's entry point gave spark43's BioGen rankings on 65 of
   65 questions (top-5 MRR 0.4274, top-1 0.3231). Median 71.3 s per question, peak 2.15 GB. All 8
   predictions held.
-- **The real image is next** (`PREREGISTRATION-spark49.md`): `docker build` and an offline,
-  read-only-mount run on a test index. Until it has run, the image has not been built.
+- **The real image has still not been built.** spark49 stopped at `docker version` (Docker
+  Desktop's engine was not running) and built nothing; spark49b, which uses an engine that is
+  already running, is next.
 - **Task 2 on this system is queued again** (`../t2/PREREGISTRATION-t2sys.md`, re-filed as
-  `t2sys-v2`; `../t2/ADDENDUM-t2sys-v2.md` says why).
+  `t2sys-v3`; `../t2/ADDENDUM-t2sys-v3.md` says why).
 - Open items: whether the challenge mounts the corpus or expects it inside the image (the index is
   about 92.5 GB); the challenge has not published how wrong citations are penalised, so the
   `top:1` / `top:5` choice may change.

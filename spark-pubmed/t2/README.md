@@ -45,8 +45,10 @@ Every job was pre-registered before it ran and graded word for word:
 | biogen-cue-v1 | `PREREGISTRATION-biogen-cue.md` | `RESULTS-biogen-cue.md`, `results-biogen-cue/` | 2 of 2 checks, 6 of 9 (cues sharper than predicted) |
 | biogen-nli-large-v1 | `PREREGISTRATION-biogen-nli-large.md` | `RESULTS-biogen-nli-large.md`, `results-biogen-nli-large/` | 3 of 3 checks, 8 of 10; model not adopted (AUROC 0.731 < 0.75) |
 | t2sys-v1 | `PREREGISTRATION-t2sys.md` | not graded | ran on a machine with only a partial index; stopped by its guard before any prediction could be tested |
-| t2sys-v2 | `PREREGISTRATION-t2sys.md` + `ADDENDUM-t2sys-v2.md` | queued | the same job re-filed unchanged; the addendum corrects one test count |
-| biogen-llm-v1 | `PREREGISTRATION-biogen-llm.md` | queued | Qwen2.5-1.5B-Instruct as a conflict judge inside the negation gate |
+| t2sys-v2 | `PREREGISTRATION-t2sys.md` + `ADDENDUM-t2sys-v2.md` | not graded | the same machine again; tests passed with the corrected counts, then the guard stopped it |
+| t2sys-v3 | the same + `ADDENDUM-t2sys-v3.md` | queued | re-filed unchanged |
+| biogen-llm-v1 | `PREREGISTRATION-biogen-llm.md` | `RESULTS-biogen-llm.md`, `results-biogen-llm/` | 2 of 2 checks run; stopped by its own speed probe (189.1 s per pair), so no scores |
+| biogen-llm-v2 | `PREREGISTRATION-biogen-llm-v2.md` | queued | Qwen2.5-0.5B-Instruct in float32 on 2 threads, plus a timing check of v1's settings |
 
 What v2 counted: 14,763 citation judgments (69.4% supporting, 1.9% contradicting, 4.3% invalid);
 55 of 65 topics have a contradicting judgment; 3,858 distinct PMIDs, all inside the SPARK
@@ -130,11 +132,18 @@ quoted passage of the cited paper with the answer sentence, exactly what they ju
   decision needed no change to the code.
 - Every flag stays far below the assessors' own between-slot agreement on Contradicts (0.39).
 
-Next for conflicts (queued, `PREREGISTRATION-biogen-llm.md`): `llm_judge.py` asks
-Qwen2.5-1.5B-Instruct (Apache-2.0, bf16 on a CPU) whether each quoted passage supports the answer
-sentence, contradicts it, or neither, but only inside the negation gate (1,432 judgments, 140 of
-the 275 Contradicts), and scores it with `nli_check.py`'s unchanged evaluation. It is adopted only
-if entry F1 >= 0.25, precision >= 0.30 and it takes at most 10 s per pair.
+**An LLM judge inside the negation gate** (`llm_judge.py`): ask an instruction-tuned open model
+whether each quoted passage supports the answer sentence, contradicts it, or neither, only where
+the passage has a negation word (1,389 distinct pairs; 1,432 judgments, 140 of the 275
+Contradicts), and score it with `nli_check.py`'s unchanged evaluation. Adopted only if entry
+F1 >= 0.25, precision >= 0.30 and at most 10 s per pair.
+
+- `biogen-llm-v1` (Qwen2.5-1.5B-Instruct, bfloat16, 4 threads on a 2-CPU limit) stopped itself
+  after 20 pairs: 189.1 s per pair, far past its 6-hour budget, so it has no scores
+  (`RESULTS-biogen-llm.md`). That is about 13 times slower than predicted.
+- `biogen-llm-v2` (queued, `PREREGISTRATION-biogen-llm-v2.md`): the 0.5B model its rule named, in
+  float32 with 2 threads. `bench_dtype.py` first times one fixed prompt in float32 and bfloat16 at
+  2 and 4 threads, so the cause of v1's slowness is measured rather than assumed.
 
 ## Baseline: `compose.py` 0.2.0 (extractive, cited, standard library only)
 
@@ -178,13 +187,12 @@ precision 0.817 (BM25: 0.757); the conflict flag again fired on no answer.
 
 ## Next
 
-1. `t2sys-v2` (queued): the same 65 questions through the chosen Task 1 system (cross-encoder over
+1. `t2sys-v3` (queued): the same 65 questions through the chosen Task 1 system (cross-encoder over
    the top 150), composed through `compose_ro.py`, with BM25's answers recomposed the same way as
-   a control that must reproduce t2dev-v1 exactly. `t2sys-v1` landed on a machine whose copy of
-   the index is partial (112 of 1,306 files); `host_guard.py` stopped it after the tests, as
-   designed, so no prediction was tested. Its tests showed that `test_ro_db.py` has 9 tests, not
-   the 12 the pre-registration says; `ADDENDUM-t2sys-v2.md`, written before v2 runs, corrects that.
-2. `biogen-llm-v1` (queued): the gated LLM conflict judge above.
+   a control that must reproduce t2dev-v1 exactly. v1 and v2 both landed on a machine whose copy
+   of the index is partial (112 of 1,306 files), and `host_guard.py` stopped each after its tests,
+   as designed, so no prediction has been tested yet.
+2. `biogen-llm-v2` (queued): the smaller gated LLM judge and the timing check above.
 3. Then an open-weight rewriting stage, measured on judged precision and on how many citations
    were judged at all.
 
