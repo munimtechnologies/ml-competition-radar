@@ -48,10 +48,11 @@ Every job was pre-registered before it ran and graded word for word:
 | t2sys-v2 | `PREREGISTRATION-t2sys.md` + `ADDENDUM-t2sys-v2.md` | not graded | the same machine again; tests passed with the corrected counts, then the guard stopped it |
 | t2sys-v3 | the same + `ADDENDUM-t2sys-v3.md` | not graded | the same machine a third time (2026-10-30, 07:56-08:04 UTC); tests 14, 12, 11 and 9 (1 skipped) passed, then the guard stopped it |
 | t2sys-v4 | the same + `ADDENDUM-t2sys-v4.md` | not graded (`results-t2sys-v4/guard.json`) | the same machine a fourth time (09:43-09:48 UTC); the same tests passed, then the guard stopped it |
-| t2sys-v5 | the same + `ADDENDUM-t2sys-v5.md` | queued | re-filed unchanged |
+| t2sys-v5 | the same + `ADDENDUM-t2sys-v5.md` | not graded (`results-t2sys-v5/guard.json`) | the same machine a fifth time (14:26-14:32 UTC); the same tests passed, then the guard stopped it |
+| t2sys-v6 | the same + `ADDENDUM-t2sys-v6.md` | queued | unchanged except a 4 GB memory ask (was 3 GB) |
 | biogen-llm-v1 | `PREREGISTRATION-biogen-llm.md` | `RESULTS-biogen-llm.md`, `results-biogen-llm/` | 2 of 2 checks run; stopped by its own speed probe (189.1 s per pair), so no scores |
-| biogen-llm-v2 | `PREREGISTRATION-biogen-llm-v2.md` | `ADDENDUM-biogen-llm-v3.md`, `results-biogen-llm-v2/` | stopped from outside (exit 143) at 600 of 1,389 pairs; checks C1-C2 and timing B1-B3 held |
-| biogen-llm-v3 | the same + `ADDENDUM-biogen-llm-v3.md` | queued | re-filed unchanged |
+| biogen-llm-v2 | `PREREGISTRATION-biogen-llm-v2.md` | `RESULTS-biogen-llm-v2.md`, `results-biogen-llm-v2/` | stopped from outside (exit 143) at 600 of 1,389 pairs; checks C1-C2 and timing B1-B3 held |
+| biogen-llm-v3 | the same + `ADDENDUM-biogen-llm-v3.md` | `RESULTS-biogen-llm-v2.md`, `results-biogen-llm-v3/` | 3 of 3 checks, 9 of 10 (gate AUROC 0.316, below the predicted range); not adopted (F1 0.0) |
 
 What v2 counted: 14,763 citation judgments (69.4% supporting, 1.9% contradicting, 4.3% invalid);
 55 of 65 topics have a contradicting judgment; 3,858 distinct PMIDs, all inside the SPARK
@@ -108,7 +109,7 @@ labels would already be near the 2025 state of the art.
 
 ## Conflict flags measured on the 2024 human labels
 
-All three jobs score the same 11,927 judgments (275 Contradicts, 2.3%). Each pairs the assessors'
+All these jobs score the same 11,927 judgments (275 Contradicts, 2.3%). Each pairs the assessors'
 quoted passage of the cited paper with the answer sentence, exactly what they judged.
 
 | flag (entry level, Contradicts vs rest) | precision | recall | F1 | AUROC |
@@ -119,6 +120,7 @@ quoted passage of the cited paper with the answer sentence, exactly what they ju
 | same, oracle threshold | | | 0.224 | |
 | large, only where the passage has a negation word | 0.656 | 0.076 | 0.137 | 0.710 |
 | large, or compose.py's polarity clash | 0.299 | 0.171 | 0.218 | 0.740 |
+| Qwen2.5-0.5B-Instruct judge, only where the passage has a negation word | none called | 0.000 | 0.000 | 0.689 |
 | negation word in the passage (compose.py's NEG_RX) | 0.098 | 0.509 | 0.164 | |
 | null finding in the passage (NULL_RX) | 0.238 | 0.087 | 0.128 | |
 | compose.py's polarity clash (null vs finding) | 0.344 | 0.040 | 0.072 | |
@@ -144,15 +146,18 @@ F1 >= 0.25, precision >= 0.30 and at most 10 s per pair.
 - `biogen-llm-v1` (Qwen2.5-1.5B-Instruct, bfloat16, 4 threads on a 2-CPU limit) stopped itself
   after 20 pairs: 189.1 s per pair, far past its 6-hour budget, so it has no scores
   (`RESULTS-biogen-llm.md`). That is about 13 times slower than predicted.
-- `biogen-llm-v2` (`PREREGISTRATION-biogen-llm-v2.md`) used the 0.5B model its rule named, in
-  float32 with 2 threads. **Its timing check found the cause of v1's slowness: bfloat16.** On
-  the same 335-token prompt and a 2-CPU limit, one forward pass took a median of 3.25 s in float32
-  and 91.75 s in bfloat16 (28 times slower). 4 threads were no faster than 2 (3.74 s). All three
-  timing predictions held, so later CPU jobs here load weights in float32. This is one shared
-  machine and one prompt, not a general claim about CPUs. The judge then ran at about 2.2 s per
-  pair until the job was stopped from outside at 600 of 1,389 pairs (exit 143, not memory). It is
-  re-filed unchanged as `biogen-llm-v3` (`ADDENDUM-biogen-llm-v3.md`), and the judge's
-  predictions are graded on that run.
+- **The cause was bfloat16.** v2's and v3's timing checks (`RESULTS-biogen-llm-v2.md`) ran the
+  same 335-token prompt on a 2-CPU limit: one forward pass took a median of 3.25 s and 2.92 s in
+  float32, and 91.75 s and 85.28 s in bfloat16 (28 and 29 times slower). 4 threads were no faster
+  than 2. All three timing predictions held in both runs, so later CPU jobs here load weights in
+  float32. This is one shared machine and one prompt, not a general claim about CPUs.
+- **The 0.5B judge (`biogen-llm-v3`, float32, 1.9 s per pair) answered "supports" for 1,429 of
+  the 1,432 gated judgments and never "contradicts".** Its "contradicts" probability was lowest
+  on the passages the assessors judged contradicting (mean 0.088, against 0.123 on Supports), an
+  AUROC of 0.316 inside the gate, below the predicted 0.50-0.70. Overall (0.689) it ranks worse
+  than the negation gate alone as a yes/no score (0.699). F1 is 0.0, so it is **not adopted**,
+  and by the rule fixed in advance no larger LLM is tried as a conflict judge on the shared CPUs.
+  One prompt, one small untuned model: a negative result for this setup, not for LLM judges.
 
 ## Baseline: `compose.py` 0.2.0 (extractive, cited, standard library only)
 
@@ -196,14 +201,14 @@ precision 0.817 (BM25: 0.757); the conflict flag again fired on no answer.
 
 ## Next
 
-1. `t2sys-v5` (queued): the same 65 questions through the chosen Task 1 system (cross-encoder over
+1. `t2sys-v6` (queued): the same 65 questions through the chosen Task 1 system (cross-encoder over
    the top 150), composed through `compose_ro.py`, with BM25's answers recomposed the same way as
-   a control that must reproduce t2dev-v1 exactly. v1 to v4 all landed on a machine whose copy of
+   a control that must reproduce t2dev-v1 exactly. v1 to v5 all landed on a machine whose copy of
    the index is partial (112 of 1,306 files), and `host_guard.py` stopped each after its tests, as
    designed, so no prediction has been tested yet. The job runner picks the machine by free
-   memory, so the job cannot choose it; a way to pin it has been requested.
-2. `biogen-llm-v3` (queued): the gated 0.5B LLM judge, re-run unchanged.
-3. Then an open-weight rewriting stage, measured on judged precision and on how many citations
+   memory and a job cannot choose it. The two 4 GB jobs so far ran on the machine with the full
+   index, so v6 asks for 4 GB instead of 3; nothing else changes.
+2. Then an open-weight rewriting stage, measured on judged precision and on how many citations
    were judged at all.
 
 Helpers: `t2dev.py` (wait, download pins, gold files) and `fetch_code.py` (fetches the published
