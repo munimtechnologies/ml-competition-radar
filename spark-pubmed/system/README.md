@@ -68,7 +68,9 @@ index mounted read-only, and removes the image at the end. Its one run stopped a
 because Docker Desktop was not running on that machine. `spark49b_image.py` (0.2.0) does the same
 but starts nothing: it uses the first Docker engine that is already running (the docker command as
 it is, another named-pipe context, or docker inside an already-running WSL distribution) and
-records every attempt (`NOTE-spark49b.md`).
+records every attempt (`NOTE-spark49b.md`). Its one run (2026-10-30, 06:41 UTC) found none: both
+named-pipe engines were absent and no WSL distribution was running, so it built nothing
+(`results-spark49b/report.json`).
 
 | File | What it is |
 |---|---|
@@ -96,8 +98,9 @@ records every attempt (`NOTE-spark49b.md`).
 | `NOTE-spark49b.md` | Why spark49 did not run, and what 0.2.0 changes; written before it runs |
 | `spark49b_image.py` | The re-run script (0.2.0): same pins and predictions, uses an already-running engine |
 | `results-spark49/report.json` | spark49's report: one step, `docker version`, exit 1 |
+| `results-spark49b/report.json` | spark49b's report: three engine attempts, none answered; no step ran |
 
-## Status (2026-10-30, about 07:00 UTC)
+## Status (2026-10-30, about 08:30 UTC)
 
 - **`RESULTS-spark43.md`: the system at depth 150 reproduced its chosen rankings exactly.**
   Top-5 MRR was L 0.1628, BioGen 0.4274 and R 0.9130, the same as spark40's depth-150 reading,
@@ -119,13 +122,15 @@ records every attempt (`NOTE-spark49b.md`).
   write access to the index, the Dockerfile's entry point gave spark43's BioGen rankings on 65 of
   65 questions (top-5 MRR 0.4274, top-1 0.3231). Median 71.3 s per question, peak 2.15 GB. All 8
   predictions held.
-- **The real image has still not been built.** spark49 stopped at `docker version` (Docker
-  Desktop's engine was not running) and built nothing; spark49b, which uses an engine that is
-  already running, is next.
+- **The real image has still not been built.** Neither spark49 nor spark49b found a running Docker
+  engine on the machine they ran on, and neither starts one. The build waits until an engine is
+  available; `PREREGISTRATION-spark49.md`'s predictions stay as written.
 - **Task 2 on this system is queued again** (`../t2/PREREGISTRATION-t2sys.md`, re-filed as
-  `t2sys-v3`; `../t2/ADDENDUM-t2sys-v3.md` says why).
+  `t2sys-v4`; `../t2/ADDENDUM-t2sys-v4.md` says why).
 - Open items: whether the challenge mounts the corpus or expects it inside the image (the index is
   about 92.5 GB); the challenge has not published how wrong citations are penalised, so the
-  `top:1` / `top:5` choice may change.
+  `top:1` / `top:5` choice may change. That question, and when the PMC part of the corpus will be
+  listed, are being put to the organizers. NLM's first public information
+  session is on 2026-11-05 at 12:00 PM EST.
 
 Contact: MV2, Munim, Inc., mv2@munimtech.com

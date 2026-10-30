@@ -46,7 +46,8 @@ Every job was pre-registered before it ran and graded word for word:
 | biogen-nli-large-v1 | `PREREGISTRATION-biogen-nli-large.md` | `RESULTS-biogen-nli-large.md`, `results-biogen-nli-large/` | 3 of 3 checks, 8 of 10; model not adopted (AUROC 0.731 < 0.75) |
 | t2sys-v1 | `PREREGISTRATION-t2sys.md` | not graded | ran on a machine with only a partial index; stopped by its guard before any prediction could be tested |
 | t2sys-v2 | `PREREGISTRATION-t2sys.md` + `ADDENDUM-t2sys-v2.md` | not graded | the same machine again; tests passed with the corrected counts, then the guard stopped it |
-| t2sys-v3 | the same + `ADDENDUM-t2sys-v3.md` | queued | re-filed unchanged |
+| t2sys-v3 | the same + `ADDENDUM-t2sys-v3.md` | not graded | the same machine a third time (2026-10-30, 07:56-08:04 UTC); tests 14, 12, 11 and 9 (1 skipped) passed, then the guard stopped it |
+| t2sys-v4 | the same + `ADDENDUM-t2sys-v4.md` | queued | re-filed unchanged |
 | biogen-llm-v1 | `PREREGISTRATION-biogen-llm.md` | `RESULTS-biogen-llm.md`, `results-biogen-llm/` | 2 of 2 checks run; stopped by its own speed probe (189.1 s per pair), so no scores |
 | biogen-llm-v2 | `PREREGISTRATION-biogen-llm-v2.md` | queued | Qwen2.5-0.5B-Instruct in float32 on 2 threads, plus a timing check of v1's settings |
 
@@ -187,11 +188,12 @@ precision 0.817 (BM25: 0.757); the conflict flag again fired on no answer.
 
 ## Next
 
-1. `t2sys-v3` (queued): the same 65 questions through the chosen Task 1 system (cross-encoder over
+1. `t2sys-v4` (queued): the same 65 questions through the chosen Task 1 system (cross-encoder over
    the top 150), composed through `compose_ro.py`, with BM25's answers recomposed the same way as
-   a control that must reproduce t2dev-v1 exactly. v1 and v2 both landed on a machine whose copy
-   of the index is partial (112 of 1,306 files), and `host_guard.py` stopped each after its tests,
-   as designed, so no prediction has been tested yet.
+   a control that must reproduce t2dev-v1 exactly. v1, v2 and v3 all landed on a machine whose
+   copy of the index is partial (112 of 1,306 files), and `host_guard.py` stopped each after its
+   tests, as designed, so no prediction has been tested yet. The job runner picks the machine by
+   free memory, so the job cannot choose it.
 2. `biogen-llm-v2` (queued): the smaller gated LLM judge and the timing check above.
 3. Then an open-weight rewriting stage, measured on judged precision and on how many citations
    were judged at all.
