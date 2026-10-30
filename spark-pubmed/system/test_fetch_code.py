@@ -23,7 +23,7 @@ class Fetch(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:
             rep = fetch_code.fetch(d, ["a", "b"], raw="mem/%s/%s/", read=read, table=TABLE)
             self.assertIsNone(rep["problem"])
-            self.assertEqual(rep["version"], "0.3.0")
+            self.assertEqual(rep["version"], "0.4.0")
             self.assertEqual(sorted(os.listdir(d)), ["x.py", "y.py", "z.py"])
             with open(os.path.join(d, "y.py"), "rb") as f:
                 self.assertEqual(f.read(), b"h\ni")
@@ -43,7 +43,7 @@ class Fetch(unittest.TestCase):
     def test_main_usage_and_pins(self):
         self.assertEqual(fetch_code.main(["only-out"]), 2)
         self.assertEqual(sorted(fetch_code.GROUPS),
-                         ["prf", "rerank", "system", "system2", "t1", "t2", "t2dev"])
+                         ["prf", "rerank", "system", "system2", "t1", "t2", "t2dev", "t2nli"])
         for commit, folder, want in fetch_code.GROUPS.values():
             self.assertEqual(len(commit), 40)
             self.assertTrue(all(n.endswith(".py") and s > 0 for n, s in want.items()))
@@ -54,6 +54,8 @@ class Fetch(unittest.TestCase):
         self.assertEqual(fetch_code.GROUPS["system2"][:2], ("9a64c8e345ff47113391636475c1ae32c56df00e", "system"))
         self.assertEqual(fetch_code.GROUPS["system2"][2]["spark_t1.py"], 11414)
         self.assertEqual(len(fetch_code.GROUPS["system2"][2]), 8)
+        self.assertEqual(fetch_code.GROUPS["t2nli"][:2], ("29d7d00c7c5d0fdcceb644d3afc5806e952cbd3f", "t2"))
+        self.assertEqual(fetch_code.GROUPS["t2nli"][2]["nli_check.py"], 17777)
 
     def test_no_name_in_two_groups(self):
         # spark43 fetches t1, t2, rerank, system and t2dev together: no file name may repeat
@@ -65,6 +67,11 @@ class Fetch(unittest.TestCase):
         # spark48 fetches t1, t2, rerank, system2 and t2dev together
         names = [n for g in ("t1", "t2", "rerank", "system2", "t2dev")
                  for n in fetch_code.GROUPS[g][2]]
+        self.assertEqual(len(names), len(set(names)))
+
+    def test_t2nli_apart_from_t2(self):
+        # t2nli may be fetched next to t2 and t2dev (same folder, other commits)
+        names = [n for g in ("t2", "t2dev", "t2nli") for n in fetch_code.GROUPS[g][2]]
         self.assertEqual(len(names), len(set(names)))
 
 

@@ -34,10 +34,12 @@ way `../rerank/depth_curve.py` does (only reranked items whose BM25 rank is at m
 system at depth 150 can be compared with spark40's depth-200 and depth-300 reranks. `Dockerfile`
 is the planned image.
 
-`fetch_code.py` (0.3.0, standard library only) lets a sealed job fetch this repository's published
+`fetch_code.py` (0.4.0, standard library only) lets a sealed job fetch this repository's published
 code at pinned commits and checks each file's size against the git tree, so the job runs exactly
-the public code. Its `system` and `t2dev` groups pin commit 4765a24; 0.3.0 adds `system2`, which
-pins 9a64c8e3 (`spark_t1.py` 0.2.0, `ro_db.py`, `nobody_run.py`, `agree.py` and their tests).
+the public code. Its `system` and `t2dev` groups pin commit 4765a24; 0.3.0 added `system2`, which
+pins 9a64c8e3 (`spark_t1.py` 0.2.0, `ro_db.py`, `nobody_run.py`, `agree.py` and their tests);
+0.4.0 adds `t2nli`, which pins 29d7d00c (`../t2/nli_check.py` 0.2.0, `cue_check.py` 0.1.0 and
+their tests) for the Task 2 job `biogen-llm-v1`.
 
 `ro_db.py` (0.1.0, standard library only) opens the index read-only for a read-only mount. The
 index uses SQLite's WAL journal, and SQLite 3.22.0 or later can read a WAL-mode database without
@@ -47,7 +49,7 @@ connection uses the `immutable` URI parameter
 immutable=True)` opens it with `mode=ro&immutable=1`, so no locks or side files are needed and
 nothing can be written. An immutable connection ignores a `-wal` file, so a non-empty one is
 refused rather than silently skipped. `python ro_db.py DB` prints the journal mode, the side-file
-sizes and the SQLite version.
+sizes and the SQLite version. `../t2/compose_ro.py` uses it to run the Task 2 composer read-only.
 
 `nobody_run.py` (0.1.0, standard library only) runs one command as uid/gid 65534, which cannot
 write the index's folder, and records the index's side files before and after; spark47 uses it
@@ -79,7 +81,7 @@ torch and transformers versions.
 | `image_eq.py`, `test_image_eq.py` | Stand-in checks for the image: no network, and `/app` laid out as the Dockerfile lays it out |
 | `PREREGISTRATION-spark48.md` | Predictions for job `spark48-image-v1` (the entry point on `python:3.12-slim`, flat `/app`, no network, 65 BioGen questions), written before it ran |
 
-## Status (2026-10-29, about 20:30 UTC)
+## Status (2026-10-30, about 01:30 UTC)
 
 - **`RESULTS-spark43.md`: the system at depth 150 reproduced its chosen rankings exactly.**
   Top-5 MRR was L 0.1628, BioGen 0.4274 and R 0.9130, the same as spark40's depth-150 reading,
@@ -96,9 +98,11 @@ torch and transformers versions.
   `spark_t1.py` 0.2.0 with `--immutable` answered all 43 L questions with the same top five, in
   the same order, as before (43 of 43; top-5 MRR 0.1628), and left no side files. The same command
   without the flag failed. Median 107.1 s per question, peak 2.14 GB.
-- **Job `spark48-image-v1` is filed** (`PREREGISTRATION-spark48.md`): the `Dockerfile`'s entry point
+- **Job `spark48-image-v1` is queued** (`PREREGISTRATION-spark48.md`): the `Dockerfile`'s entry point
   on `python:3.12-slim`, with `/app` as the COPY lines lay it out and no network, on the 65 BioGen
   questions.
+- **Task 2 on this system is queued** (`../t2/PREREGISTRATION-t2sys.md`): the same 65 BioGen
+  questions, then answers composed from these rankings with the index opened read-only.
 - **The Docker image has not been built or run yet.** Open items: whether the challenge mounts
   the corpus or expects it inside the image (the index is about 92.5 GB); the challenge has not
   published how wrong citations are penalised, so the `top:1` / `top:5` choice may change.
