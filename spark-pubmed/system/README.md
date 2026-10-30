@@ -100,7 +100,7 @@ named-pipe engines were absent and no WSL distribution was running, so it built 
 | `results-spark49/report.json` | spark49's report: one step, `docker version`, exit 1 |
 | `results-spark49b/report.json` | spark49b's report: three engine attempts, none answered; no step ran |
 
-## Status (2026-10-30, about 08:30 UTC)
+## Status (2026-10-30, about 13:45 UTC)
 
 - **`RESULTS-spark43.md`: the system at depth 150 reproduced its chosen rankings exactly.**
   Top-5 MRR was L 0.1628, BioGen 0.4274 and R 0.9130, the same as spark40's depth-150 reading,
@@ -108,7 +108,9 @@ named-pipe engines were absent and no WSL distribution was running, so it built 
   questions took 380.7 minutes on 2 CPUs on a shared host: a median of 109.3 s (L), 82.6 s
   (BioGen) and 135.2 s (R) per question, 39% of it BM25 and 61% the cross-encoder. Peak memory
   was 2.65 GB. **`spark_t1.py` at depth 150 is the Task 1 system.** The scorer stays fp32 with
-  512-token inputs (`../quant/RESULTS-spark42.md`).
+  512-token inputs (`../quant/RESULTS-spark42.md`). `../t2/ADDENDUM-biogen-llm-v3.md` gives a
+  separate timing: on the same kind of shared 2-CPU host, a 0.5B language model ran 28 times
+  slower in bfloat16 than in float32. That is one more reason the system stays in float32.
 - **`RESULTS-rodb1.md`: the real index opens read-only.** It is in WAL mode with no `-wal` or
   `-shm` file. `ro_db.connect(immutable=True)` opened it as root and as uid 65534 (11 schema
   objects), while a plain open as uid 65534 failed with `attempt to write a readonly database`.
@@ -126,11 +128,15 @@ named-pipe engines were absent and no WSL distribution was running, so it built 
   engine on the machine they ran on, and neither starts one. The build waits until an engine is
   available; `PREREGISTRATION-spark49.md`'s predictions stay as written.
 - **Task 2 on this system is queued again** (`../t2/PREREGISTRATION-t2sys.md`, re-filed as
-  `t2sys-v4`; `../t2/ADDENDUM-t2sys-v4.md` says why).
-- Open items: whether the challenge mounts the corpus or expects it inside the image (the index is
-  about 92.5 GB); the challenge has not published how wrong citations are penalised, so the
-  `top:1` / `top:5` choice may change. That question, and when the PMC part of the corpus will be
-  listed, are being put to the organizers. NLM's first public information
-  session is on 2026-11-05 at 12:00 PM EST.
+  `t2sys-v5`). Its fourth run also landed on the machine with a partial index and was stopped by
+  its guard before any prediction could be tested (`../t2/ADDENDUM-t2sys-v5.md`).
+- **Questions to the organizers sent.** On 2026-10-30 MV2 wrote to the challenge's published
+  mailbox. He asked how wrong citations are penalised under Task 1's MRR, which decides between
+  the `top:1` and `top:5` submissions, and when the PMC part of the corpus will be listed. No
+  answer yet. He is registered for NLM's public information session on 2026-11-05 at 12:00 PM EST
+  (further sessions are listed for 2026-10-08 and 2027-01-07). As of 2026-10-30 the corpus folder
+  lists only the PubMed baseline files (dated 2026-08-31).
+- Still open: whether the challenge mounts the corpus or expects it inside the image (the index is
+  about 92.5 GB).
 
 Contact: MV2, Munim, Inc., mv2@munimtech.com
