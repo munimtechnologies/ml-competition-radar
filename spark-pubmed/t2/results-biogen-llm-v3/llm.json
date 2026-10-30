@@ -1,0 +1,503 @@
+{
+ "census": {
+  "topic_papers": 4231,
+  "topic_papers_contradicts": 202,
+  "topic_papers_mixed": 168
+ },
+ "counts": {
+  "empty_passage": {
+   "contradicts": 0,
+   "invalid": 635,
+   "neutral": 0,
+   "notrelevant": 2201,
+   "supports": 0
+  },
+  "empty_sentence": 0,
+  "judgments": 14763,
+  "labels": {
+   "contradicts": 275,
+   "invalid": 635,
+   "neutral": 1412,
+   "notrelevant": 2201,
+   "supports": 10240
+  },
+  "no_pmid": 0,
+  "scored": 11927,
+  "scored_labels": {
+   "contradicts": 275,
+   "invalid": 0,
+   "neutral": 1412,
+   "notrelevant": 0,
+   "supports": 10240
+  },
+  "unique_pairs": 11592,
+  "unknown_label": 0
+ },
+ "entry": {
+  "confusion": {
+   "contradicts": {
+    "contradiction": 0,
+    "entailment": 140,
+    "neutral": 135
+   },
+   "invalid": {
+    "contradiction": 0,
+    "entailment": 0,
+    "neutral": 0
+   },
+   "neutral": {
+    "contradiction": 0,
+    "entailment": 185,
+    "neutral": 1227
+   },
+   "notrelevant": {
+    "contradiction": 0,
+    "entailment": 0,
+    "neutral": 0
+   },
+   "supports": {
+    "contradiction": 0,
+    "entailment": 1104,
+    "neutral": 9136
+   }
+  },
+  "contradicts_vs_rest": {
+   "argmax": {
+    "f1": 0.0,
+    "fn": 275,
+    "fp": 0,
+    "precision": null,
+    "recall": 0.0,
+    "tp": 0
+   },
+   "auroc": 0.6887,
+   "average_precision": 0.0516,
+   "best_f1": {
+    "f1": 0.1641,
+    "fn": 135,
+    "fp": 1291,
+    "threshold": 0.0147,
+    "tp": 140
+   },
+   "n": 11927,
+   "positives": 275,
+   "prevalence": 0.0231
+  },
+  "contradicts_vs_supports": {
+   "argmax": {
+    "f1": 0.0,
+    "fn": 275,
+    "fp": 0,
+    "precision": null,
+    "recall": 0.0,
+    "tp": 0
+   },
+   "auroc": 0.69,
+   "average_precision": 0.0589,
+   "best_f1": {
+    "f1": 0.1841,
+    "fn": 135,
+    "fp": 1106,
+    "threshold": 0.0147,
+    "tp": 140
+   },
+   "n": 10515,
+   "positives": 275,
+   "prevalence": 0.0262
+  },
+  "mean_p": {
+   "contradicts": [
+    0.0446,
+    0.3802,
+    0.5752
+   ],
+   "invalid": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "neutral": [
+    0.0148,
+    0.0988,
+    0.8864
+   ],
+   "notrelevant": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "supports": [
+    0.0133,
+    0.0811,
+    0.9056
+   ]
+  },
+  "supports_vs_rest": {
+   "argmax": {
+    "f1": 0.1892,
+    "fn": 9136,
+    "fp": 325,
+    "precision": 0.7726,
+    "recall": 0.1078,
+    "tp": 1104
+   },
+   "auroc": 0.4579,
+   "average_precision": 0.8356,
+   "best_f1": {
+    "f1": 0.9239,
+    "fn": 0,
+    "fp": 1687,
+    "threshold": 0.0,
+    "tp": 10240
+   },
+   "n": 11927,
+   "positives": 10240,
+   "prevalence": 0.8586
+  }
+ },
+ "file": {
+  "bytes": 11128359,
+  "sha256": "78449ef270e60abe0c268fa446ade23737164bba44c37308e216529fa63d066d"
+ },
+ "fusion": {
+  "gate_neg_passage": {
+   "entry": {
+    "argmax": {
+     "f1": 0.0,
+     "fn": 275,
+     "fp": 0,
+     "precision": null,
+     "recall": 0.0,
+     "tp": 0
+    },
+    "auroc": 0.6887,
+    "average_precision": 0.0516,
+    "best_f1": {
+     "f1": 0.1641,
+     "fn": 135,
+     "fp": 1291,
+     "threshold": 0.0147,
+     "tp": 140
+    },
+    "n": 11927,
+    "positives": 275,
+    "prevalence": 0.0231
+   },
+   "slot": {
+    "argmax": {
+     "f1": 0.0,
+     "fn": 263,
+     "fp": 0,
+     "precision": null,
+     "recall": 0.0,
+     "tp": 0
+    },
+    "auroc": 0.7009,
+    "average_precision": 0.0619,
+    "best_f1": {
+     "f1": 0.1789,
+     "fn": 118,
+     "fp": 1213,
+     "threshold": 0.0147,
+     "tp": 145
+    },
+    "n": 9704,
+    "positives": 263,
+    "prevalence": 0.0271
+   }
+  },
+  "union_polarity_clash": {
+   "entry": {
+    "argmax": {
+     "f1": 0.0717,
+     "fn": 264,
+     "fp": 21,
+     "precision": 0.3438,
+     "recall": 0.04,
+     "tp": 11
+    },
+    "auroc": 0.6916,
+    "average_precision": 0.0642,
+    "best_f1": {
+     "f1": 0.1639,
+     "fn": 135,
+     "fp": 1293,
+     "threshold": 0.0147,
+     "tp": 140
+    },
+    "n": 11927,
+    "positives": 275,
+    "prevalence": 0.0231
+   },
+   "slot": {
+    "argmax": {
+     "f1": 0.0746,
+     "fn": 252,
+     "fp": 21,
+     "precision": 0.3438,
+     "recall": 0.0418,
+     "tp": 11
+    },
+    "auroc": 0.7043,
+    "average_precision": 0.0763,
+    "best_f1": {
+     "f1": 0.1788,
+     "fn": 118,
+     "fp": 1214,
+     "threshold": 0.0147,
+     "tp": 145
+    },
+    "n": 9704,
+    "positives": 263,
+    "prevalence": 0.0271
+   }
+  }
+ },
+ "gate": {
+  "entry": {
+   "confusion": {
+    "contradicts": {
+     "contradiction": 0,
+     "entailment": 140,
+     "neutral": 0
+    },
+    "invalid": {
+     "contradiction": 0,
+     "entailment": 0,
+     "neutral": 0
+    },
+    "neutral": {
+     "contradiction": 0,
+     "entailment": 185,
+     "neutral": 0
+    },
+    "notrelevant": {
+     "contradiction": 0,
+     "entailment": 0,
+     "neutral": 0
+    },
+    "supports": {
+     "contradiction": 0,
+     "entailment": 1104,
+     "neutral": 3
+    }
+   },
+   "contradicts_vs_rest": {
+    "argmax": {
+     "f1": 0.0,
+     "fn": 140,
+     "fp": 0,
+     "precision": null,
+     "recall": 0.0,
+     "tp": 0
+    },
+    "auroc": 0.3162,
+    "average_precision": 0.066,
+    "best_f1": {
+     "f1": 0.1782,
+     "fn": 0,
+     "fp": 1291,
+     "threshold": 0.0147,
+     "tp": 140
+    },
+    "n": 1432,
+    "positives": 140,
+    "prevalence": 0.0978
+   },
+   "contradicts_vs_supports": {
+    "argmax": {
+     "f1": 0.0,
+     "fn": 140,
+     "fp": 0,
+     "precision": null,
+     "recall": 0.0,
+     "tp": 0
+    },
+    "auroc": 0.3102,
+    "average_precision": 0.0755,
+    "best_f1": {
+     "f1": 0.202,
+     "fn": 0,
+     "fp": 1106,
+     "threshold": 0.0147,
+     "tp": 140
+    },
+    "n": 1247,
+    "positives": 140,
+    "prevalence": 0.1123
+   },
+   "mean_p": {
+    "contradicts": [
+     0.0876,
+     0.7469,
+     0.1655
+    ],
+    "invalid": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "neutral": [
+     0.1129,
+     0.7539,
+     0.1332
+    ],
+    "notrelevant": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "supports": [
+     0.1228,
+     0.7505,
+     0.1268
+    ]
+   },
+   "supports_vs_rest": {
+    "argmax": {
+     "f1": 0.8707,
+     "fn": 3,
+     "fp": 325,
+     "precision": 0.7726,
+     "recall": 0.9973,
+     "tp": 1104
+    },
+    "auroc": 0.508,
+    "average_precision": 0.7908,
+    "best_f1": {
+     "f1": 0.872,
+     "fn": 0,
+     "fp": 325,
+     "threshold": 0.3185,
+     "tp": 1107
+    },
+    "n": 1432,
+    "positives": 1107,
+    "prevalence": 0.773
+   }
+  },
+  "judgments": 1432,
+  "labels": {
+   "contradicts": 140,
+   "invalid": 0,
+   "neutral": 185,
+   "notrelevant": 0,
+   "supports": 1107
+  },
+  "slot": {
+   "argmax": {
+    "f1": 0.0,
+    "fn": 136,
+    "fp": 0,
+    "precision": null,
+    "recall": 0.0,
+    "tp": 0
+   },
+   "auroc": 0.3433,
+   "average_precision": 0.0706,
+   "best_f1": {
+    "f1": 0.1821,
+    "fn": 0,
+    "fp": 1222,
+    "threshold": 0.0147,
+    "tp": 136
+   },
+   "n": 1359,
+   "positives": 136,
+   "prevalence": 0.1001
+  },
+  "topic_paper": {
+   "argmax": {
+    "f1": 0.0,
+    "fn": 102,
+    "fp": 0,
+    "precision": null,
+    "recall": 0.0,
+    "tp": 0
+   },
+   "auroc": 0.3792,
+   "average_precision": 0.1202,
+   "best_f1": {
+    "f1": 0.2695,
+    "fn": 0,
+    "fp": 553,
+    "threshold": 0.0147,
+    "tp": 102
+   },
+   "n": 655,
+   "positives": 102,
+   "prevalence": 0.1557
+  }
+ },
+ "llm_judge_version": "0.2.0",
+ "model": "Qwen/Qwen2.5-0.5B-Instruct",
+ "problems": [],
+ "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+ "scoring": {
+  "clipped": 1,
+  "cpu_limit": 2.0,
+  "dtype": "float32",
+  "judged": 1389,
+  "letter_ids": [
+   33,
+   32,
+   34
+  ],
+  "letter_mass_below_half": 0,
+  "letter_mass_mean": 0.9999,
+  "letter_mass_min": 0.9992,
+  "max_words": 250,
+  "ms_per_judged_pair": 1902.7349,
+  "pairs": 11592,
+  "probe_s_per_pair": 2.1469,
+  "seconds": 2642.9,
+  "threads": 2,
+  "torch_threads": 2
+ },
+ "seconds": 2644.8,
+ "slot": {
+  "argmax": {
+   "f1": 0.0,
+   "fn": 263,
+   "fp": 0,
+   "precision": null,
+   "recall": 0.0,
+   "tp": 0
+  },
+  "auroc": 0.7009,
+  "average_precision": 0.0619,
+  "best_f1": {
+   "f1": 0.1789,
+   "fn": 118,
+   "fp": 1213,
+   "threshold": 0.0147,
+   "tp": 145
+  },
+  "n": 9704,
+  "positives": 263,
+  "prevalence": 0.0271
+ },
+ "topic_paper": {
+  "argmax": {
+   "f1": 0.0,
+   "fn": 202,
+   "fp": 0,
+   "precision": null,
+   "recall": 0.0,
+   "tp": 0
+  },
+  "auroc": 0.7169,
+  "average_precision": 0.1386,
+  "best_f1": {
+   "f1": 0.294,
+   "fn": 76,
+   "fp": 529,
+   "threshold": 0.0147,
+   "tp": 126
+  },
+  "n": 3247,
+  "positives": 202,
+  "prevalence": 0.0622
+ },
+ "version": "0.2.0"
+}
