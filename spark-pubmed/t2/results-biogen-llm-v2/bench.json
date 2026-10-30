@@ -1,0 +1,54 @@
+{
+ "version": "0.1.0",
+ "torch": "2.5.1+cpu",
+ "tokens": 335,
+ "cpu_limit": 2.0,
+ "passes": 3,
+ "cap_s": 120.0,
+ "runs": [
+  {
+   "dtype": "float32",
+   "threads": 2,
+   "warmup_s": 5.67,
+   "pass_s": [
+    3.25,
+    3.36,
+    3.03
+   ],
+   "median_s": 3.25
+  },
+  {
+   "dtype": "float32",
+   "threads": 4,
+   "warmup_s": 3.7,
+   "pass_s": [
+    3.57,
+    3.96,
+    3.74
+   ],
+   "median_s": 3.74
+  },
+  {
+   "dtype": "bfloat16",
+   "threads": 2,
+   "warmup_s": 95.21,
+   "pass_s": [
+    87.47,
+    91.75,
+    95.77
+   ],
+   "median_s": 91.75
+  },
+  {
+   "dtype": "bfloat16",
+   "threads": 4,
+   "warmup_s": 95.95,
+   "pass_s": [
+    106.41,
+    102.71,
+    92.5
+   ],
+   "median_s": 102.71
+  }
+ ]
+}
