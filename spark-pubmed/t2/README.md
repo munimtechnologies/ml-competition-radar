@@ -44,7 +44,8 @@ Every job was pre-registered before it ran and graded word for word:
 | biogen-nli-v1 | `PREREGISTRATION-biogen-nli.md` | `RESULTS-biogen-nli.md`, `results-biogen-nli/` | 3 of 3 checks, 9 of 9; model not adopted (AUROC 0.735 < 0.75) |
 | biogen-cue-v1 | `PREREGISTRATION-biogen-cue.md` | `RESULTS-biogen-cue.md`, `results-biogen-cue/` | 2 of 2 checks, 6 of 9 (cues sharper than predicted) |
 | biogen-nli-large-v1 | `PREREGISTRATION-biogen-nli-large.md` | `RESULTS-biogen-nli-large.md`, `results-biogen-nli-large/` | 3 of 3 checks, 8 of 10; model not adopted (AUROC 0.731 < 0.75) |
-| t2sys-v1 | `PREREGISTRATION-t2sys.md` | queued | answers built on the chosen Task 1 system, index opened read-only |
+| t2sys-v1 | `PREREGISTRATION-t2sys.md` | not graded | ran on a machine with only a partial index; stopped by its guard before any prediction could be tested |
+| t2sys-v2 | `PREREGISTRATION-t2sys.md` + `ADDENDUM-t2sys-v2.md` | queued | the same job re-filed unchanged; the addendum corrects one test count |
 | biogen-llm-v1 | `PREREGISTRATION-biogen-llm.md` | queued | Qwen2.5-1.5B-Instruct as a conflict judge inside the negation gate |
 
 What v2 counted: 14,763 citation judgments (69.4% supporting, 1.9% contradicting, 4.3% invalid);
@@ -177,9 +178,12 @@ precision 0.817 (BM25: 0.757); the conflict flag again fired on no answer.
 
 ## Next
 
-1. `t2sys-v1` (queued): the same 65 questions through the chosen Task 1 system (cross-encoder over
+1. `t2sys-v2` (queued): the same 65 questions through the chosen Task 1 system (cross-encoder over
    the top 150), composed through `compose_ro.py`, with BM25's answers recomposed the same way as
-   a control that must reproduce t2dev-v1 exactly.
+   a control that must reproduce t2dev-v1 exactly. `t2sys-v1` landed on a machine whose copy of
+   the index is partial (112 of 1,306 files); `host_guard.py` stopped it after the tests, as
+   designed, so no prediction was tested. Its tests showed that `test_ro_db.py` has 9 tests, not
+   the 12 the pre-registration says; `ADDENDUM-t2sys-v2.md`, written before v2 runs, corrects that.
 2. `biogen-llm-v1` (queued): the gated LLM conflict judge above.
 3. Then an open-weight rewriting stage, measured on judged precision and on how many citations
    were judged at all.
