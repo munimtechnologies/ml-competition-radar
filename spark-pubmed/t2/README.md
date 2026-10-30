@@ -51,10 +51,11 @@ Every job was pre-registered before it ran and graded word for word:
 | t2sys-v4 | the same + `ADDENDUM-t2sys-v4.md` | not graded (`results-t2sys-v4/guard.json`) | the same machine a fourth time (09:43-09:48 UTC); the same tests passed, then the guard stopped it |
 | t2sys-v5 | the same + `ADDENDUM-t2sys-v5.md` | not graded (`results-t2sys-v5/guard.json`) | the same machine a fifth time (14:26-14:32 UTC); the same tests passed, then the guard stopped it |
 | t2sys-v6 | the same + `ADDENDUM-t2sys-v6.md` | not graded (`results-t2sys-v6/guard.json`) | the same machine a sixth time (15:34-15:43 UTC), despite a 4 GB memory ask; the same tests passed, then the guard stopped it |
-| t2sys-v7 | the same + `ADDENDUM-t2sys-v7.md` | queued | unchanged except a 5 GB memory ask (was 4 GB); the last blind re-file |
+| t2sys-v7 | the same + `ADDENDUM-t2sys-v7.md` | not graded (`results-t2sys-v7/guard.json`) | the same machine a seventh time (19:30-19:37 UTC), despite a 5 GB ask; tests 14, 12, 11 and 9 (1 skipped) passed, then the guard stopped it (112 of 1,306 files). Not re-filed blind again |
 | biogen-llm-v1 | `PREREGISTRATION-biogen-llm.md` | `RESULTS-biogen-llm.md`, `results-biogen-llm/` | 2 of 2 checks run; stopped by its own speed probe (189.1 s per pair), so no scores |
 | biogen-llm-v2 | `PREREGISTRATION-biogen-llm-v2.md` | `RESULTS-biogen-llm-v2.md`, `results-biogen-llm-v2/` | stopped from outside (exit 143) at 600 of 1,389 pairs; checks C1-C2 and timing B1-B3 held |
 | biogen-llm-v3 | the same + `ADDENDUM-biogen-llm-v3.md` | `RESULTS-biogen-llm-v2.md`, `results-biogen-llm-v3/` | 3 of 3 checks, 9 of 10 (gate AUROC 0.316, below the predicted range); not adopted (F1 0.0) |
+| biogen-reuse-v1 | `PREREGISTRATION-biogen-reuse.md` | queued | can the 2024 sentence judgments grade a run outside the pool? (below) |
 
 What v2 counted: 14,763 citation judgments (69.4% supporting, 1.9% contradicting, 4.3% invalid);
 55 of 65 topics have a contradicting judgment; 3,858 distinct PMIDs, all inside the SPARK
@@ -89,6 +90,20 @@ most 0.036, but reorders 12-15 of 28 runs.
 MedAESQA (Scientific Data 2025, PMC12179289), which releases 40 of these questions, already
 reports lower annotator agreement within one item for Contradicting (67.67) than for Supporting
 (82.09). No human has checked our counts yet.
+
+## Can the 2024 judgments grade an answer nobody judged? (biogen-reuse-v1, queued)
+
+A Task 2 answer from MV2's system is a new run: no assessor read it. BioGen 2024 scores
+completeness by clustering the Required sentences of all 30 runs, **including** the scored run and
+its own labels (overview Table 4), and reports no leave-out test. `biogen_reuse.py` (standard
+library only) drops the scored run's whole team from the pool, hides its labels, and scores its
+sentences by word overlap (Dice over content words, bar 0.5) with the other teams' Required
+sentences. It then checks the proxy against each sentence's own label (AUROC) and against the
+official per-run precision and completeness (Kendall tau over 30 runs, `official_biogen2024.json`
+transcribed from Tables 3 and 4), next to a length-only baseline. The pre-registration fixes
+10 predictions and a decision rule: the proxy is used to develop a rewriting stage only if it
+separates Required sentences (AUROC >= 0.60) and ranks runs better than answer length does.
+`wait_public.py` makes the job wait until the pre-registration is public.
 
 ## How hard is the conflict part? (TREC 2025 BioGen Task A, published numbers)
 
@@ -203,17 +218,16 @@ precision 0.817 (BM25: 0.757); the conflict flag again fired on no answer.
 
 ## Next
 
-1. `t2sys-v7` (queued): the same 65 questions through the chosen Task 1 system (cross-encoder over
-   the top 150), composed through `compose_ro.py`, with BM25's answers recomposed the same way as
-   a control that must reproduce t2dev-v1 exactly. v1 to v6 all landed on a machine whose copy of
-   the index is partial (112 of 1,306 files), and `host_guard.py` stopped each after its tests, as
-   designed, so no prediction has been tested yet. The job runner picks the machine by free
-   memory and a job cannot choose it. v6's larger 4 GB ask did not move it, so v7 asks for 5 GB,
-   once; nothing else changes. If v7 lands there too, the job waits until it can be placed on the
-   machine with the full index rather than being re-filed again.
-2. Then an open-weight rewriting stage. Because a rewrite keeps the composer's citations, judged
-   precision alone cannot grade it; it also needs a measure of how much of what the assessors
-   called Required it covers, fixed before it runs.
+1. `t2sys` (the 65 questions through the chosen Task 1 system, composed read-only, with BM25's
+   answers recomposed as a control) has now landed seven times on a machine whose copy of the
+   index is partial (112 of 1,306 files), and `host_guard.py` stopped each run after its tests, as
+   designed. No prediction has been tested yet. The job runner picks the machine by free memory,
+   and a job cannot choose it. As `ADDENDUM-t2sys-v7.md` said, the job is not re-filed blind
+   again; it waits until it can be placed on the machine with the full index.
+2. Meanwhile, `biogen-reuse-v1` (above) needs no index and runs on either machine. If the proxy
+   passes its decision rule, it becomes the yardstick, fixed in advance, for an open-weight
+   rewriting stage. A rewrite keeps the composer's citations, so judged precision alone cannot
+   grade it.
 
 Helpers: `t2dev.py` (wait, download pins, gold files) and `fetch_code.py` (fetches the published
 t1_runner, t2 and rerank code at pinned commits and checks each file's size; the newest version,
