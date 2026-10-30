@@ -22,7 +22,8 @@ every PubMed citation from 30 runs judged by assessors. The file's own labels ar
 judged Required, Unnecessary, Borderline or Inappropriate. The 2025 track recommends these
 assessments for development (https://trec-biogen.github.io/docs/). Its answers are at most 250
 words, with at most 3 PMIDs per sentence and 30 per answer. The 2025 track's own judgments are
-not public yet (its TREC data page lists topics only, read 2026-10-28).
+not public yet (its TREC data page lists topics only and a placeholder for qrels, read 2026-10-28
+and again 2026-10-30).
 
 `biogen_census.py` downloads the topics and assessments, hashes them, and writes counts and
 PMIDs only, never text: label totals, per-topic contradiction counts, per-run label shares, and
@@ -49,7 +50,8 @@ Every job was pre-registered before it ran and graded word for word:
 | t2sys-v3 | the same + `ADDENDUM-t2sys-v3.md` | not graded | the same machine a third time (2026-10-30, 07:56-08:04 UTC); tests 14, 12, 11 and 9 (1 skipped) passed, then the guard stopped it |
 | t2sys-v4 | the same + `ADDENDUM-t2sys-v4.md` | not graded (`results-t2sys-v4/guard.json`) | the same machine a fourth time (09:43-09:48 UTC); the same tests passed, then the guard stopped it |
 | t2sys-v5 | the same + `ADDENDUM-t2sys-v5.md` | not graded (`results-t2sys-v5/guard.json`) | the same machine a fifth time (14:26-14:32 UTC); the same tests passed, then the guard stopped it |
-| t2sys-v6 | the same + `ADDENDUM-t2sys-v6.md` | queued | unchanged except a 4 GB memory ask (was 3 GB) |
+| t2sys-v6 | the same + `ADDENDUM-t2sys-v6.md` | not graded (`results-t2sys-v6/guard.json`) | the same machine a sixth time (15:34-15:43 UTC), despite a 4 GB memory ask; the same tests passed, then the guard stopped it |
+| t2sys-v7 | the same + `ADDENDUM-t2sys-v7.md` | queued | unchanged except a 5 GB memory ask (was 4 GB); the last blind re-file |
 | biogen-llm-v1 | `PREREGISTRATION-biogen-llm.md` | `RESULTS-biogen-llm.md`, `results-biogen-llm/` | 2 of 2 checks run; stopped by its own speed probe (189.1 s per pair), so no scores |
 | biogen-llm-v2 | `PREREGISTRATION-biogen-llm-v2.md` | `RESULTS-biogen-llm-v2.md`, `results-biogen-llm-v2/` | stopped from outside (exit 143) at 600 of 1,389 pairs; checks C1-C2 and timing B1-B3 held |
 | biogen-llm-v3 | the same + `ADDENDUM-biogen-llm-v3.md` | `RESULTS-biogen-llm-v2.md`, `results-biogen-llm-v3/` | 3 of 3 checks, 9 of 10 (gate AUROC 0.316, below the predicted range); not adopted (F1 0.0) |
@@ -201,15 +203,17 @@ precision 0.817 (BM25: 0.757); the conflict flag again fired on no answer.
 
 ## Next
 
-1. `t2sys-v6` (queued): the same 65 questions through the chosen Task 1 system (cross-encoder over
+1. `t2sys-v7` (queued): the same 65 questions through the chosen Task 1 system (cross-encoder over
    the top 150), composed through `compose_ro.py`, with BM25's answers recomposed the same way as
-   a control that must reproduce t2dev-v1 exactly. v1 to v5 all landed on a machine whose copy of
+   a control that must reproduce t2dev-v1 exactly. v1 to v6 all landed on a machine whose copy of
    the index is partial (112 of 1,306 files), and `host_guard.py` stopped each after its tests, as
    designed, so no prediction has been tested yet. The job runner picks the machine by free
-   memory and a job cannot choose it. The two 4 GB jobs so far ran on the machine with the full
-   index, so v6 asks for 4 GB instead of 3; nothing else changes.
-2. Then an open-weight rewriting stage, measured on judged precision and on how many citations
-   were judged at all.
+   memory and a job cannot choose it. v6's larger 4 GB ask did not move it, so v7 asks for 5 GB,
+   once; nothing else changes. If v7 lands there too, the job waits until it can be placed on the
+   machine with the full index rather than being re-filed again.
+2. Then an open-weight rewriting stage. Because a rewrite keeps the composer's citations, judged
+   precision alone cannot grade it; it also needs a measure of how much of what the assessors
+   called Required it covers, fixed before it runs.
 
 Helpers: `t2dev.py` (wait, download pins, gold files) and `fetch_code.py` (fetches the published
 t1_runner, t2 and rerank code at pinned commits and checks each file's size; the newest version,

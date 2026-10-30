@@ -100,7 +100,7 @@ named-pipe engines were absent and no WSL distribution was running, so it built 
 | `results-spark49/report.json` | spark49's report: one step, `docker version`, exit 1 |
 | `results-spark49b/report.json` | spark49b's report: three engine attempts, none answered; no step ran |
 
-## Status (2026-10-30, about 15:45 UTC)
+## Status (2026-10-30, about 19:30 UTC)
 
 - **`RESULTS-spark43.md`: the system at depth 150 reproduced its chosen rankings exactly.**
   Top-5 MRR was L 0.1628, BioGen 0.4274 and R 0.9130, the same as spark40's depth-150 reading,
@@ -129,9 +129,9 @@ named-pipe engines were absent and no WSL distribution was running, so it built 
   engine on the machine they ran on, and neither starts one. The build waits until an engine is
   available; `PREREGISTRATION-spark49.md`'s predictions stay as written.
 - **Task 2 on this system is queued again** (`../t2/PREREGISTRATION-t2sys.md`, re-filed as
-  `t2sys-v6` with a 4 GB memory ask instead of 3 GB). Its fifth run also landed on the machine with
-  a partial index and was stopped by its guard before any prediction could be tested
-  (`../t2/ADDENDUM-t2sys-v6.md`).
+  `t2sys-v7` with a 5 GB memory ask). Its sixth run, with a 4 GB ask, also landed on the machine
+  with a partial index and was stopped by its guard before any prediction could be tested
+  (`../t2/ADDENDUM-t2sys-v7.md`). v7 is the last blind re-file.
 - **Questions to the organizers sent.** On 2026-10-30 MV2 wrote to the challenge's published
   mailbox. He asked how wrong citations are penalised under Task 1's MRR, which decides between
   the `top:1` and `top:5` submissions, and when the PMC part of the corpus will be listed. No
