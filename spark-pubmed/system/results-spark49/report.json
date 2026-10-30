@@ -1,0 +1,20 @@
+{
+ "version": "0.1.0",
+ "started_utc": "2026-10-30T03:29:34Z",
+ "tag": "mv2-spark-t1:spark49",
+ "steps": {
+  "docker_version": {
+   "exit": 1,
+   "stdout": [
+    ""
+   ],
+   "stderr": [
+    "error during connect: Get \"http://%2F%2F.%2Fpipe%2FdockerDesktopLinuxEngine/v1.51/version\": open //./pipe/dockerDesktopLinuxEngine: The system cannot find the file specified."
+   ],
+   "cmd": "docker version --format {{.Server.Version}} {{.Server.Os}}",
+   "seconds": 0.4
+  }
+ },
+ "problem": "docker is not available",
+ "finished_utc": "2026-10-30T03:29:34Z"
+}
