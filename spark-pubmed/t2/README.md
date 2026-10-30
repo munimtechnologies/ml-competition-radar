@@ -44,6 +44,8 @@ Every job was pre-registered before it ran and graded word for word:
 | biogen-nli-v1 | `PREREGISTRATION-biogen-nli.md` | `RESULTS-biogen-nli.md`, `results-biogen-nli/` | 3 of 3 checks, 9 of 9; model not adopted (AUROC 0.735 < 0.75) |
 | biogen-cue-v1 | `PREREGISTRATION-biogen-cue.md` | `RESULTS-biogen-cue.md`, `results-biogen-cue/` | 2 of 2 checks, 6 of 9 (cues sharper than predicted) |
 | biogen-nli-large-v1 | `PREREGISTRATION-biogen-nli-large.md` | `RESULTS-biogen-nli-large.md`, `results-biogen-nli-large/` | 3 of 3 checks, 8 of 10; model not adopted (AUROC 0.731 < 0.75) |
+| t2sys-v1 | `PREREGISTRATION-t2sys.md` | queued | answers built on the chosen Task 1 system, index opened read-only |
+| biogen-llm-v1 | `PREREGISTRATION-biogen-llm.md` | queued | Qwen2.5-1.5B-Instruct as a conflict judge inside the negation gate |
 
 What v2 counted: 14,763 citation judgments (69.4% supporting, 1.9% contradicting, 4.3% invalid);
 55 of 65 topics have a contradicting judgment; 3,858 distinct PMIDs, all inside the SPARK
@@ -122,11 +124,16 @@ quoted passage of the cited paper with the answer sentence, exactly what they ju
   "contradiction" calls are right 32% of the time (base 18%), but its AUROC is level (0.731 against
   0.735) and it calls 90% of supporting passages "neutral". Neither model met the pre-registered
   bar (AUROC >= 0.75 and slot F1 >= 0.20), so no NLI cross-encoder is used.
-- compose.py 0.3.0 keeps the polarity-clash flag (slot precision 0.344): rare but precise.
+- compose.py keeps its 0.2.0 polarity-clash flag (slot precision 0.344): rare but precise. An
+  earlier version of this page called that "compose.py 0.3.0"; there is no 0.3.0, because the
+  decision needed no change to the code.
 - Every flag stays far below the assessors' own between-slot agreement on Contradicts (0.39).
 
-Next for conflicts: an open-weight LLM judge, run only on pairs the large model or the negation
-cue already marks, pre-registered separately, with a model whose licence allows public use.
+Next for conflicts (queued, `PREREGISTRATION-biogen-llm.md`): `llm_judge.py` asks
+Qwen2.5-1.5B-Instruct (Apache-2.0, bf16 on a CPU) whether each quoted passage supports the answer
+sentence, contradicts it, or neither, but only inside the negation gate (1,432 judgments, 140 of
+the 275 Contradicts), and scores it with `nli_check.py`'s unchanged evaluation. It is adopted only
+if entry F1 >= 0.25, precision >= 0.30 and it takes at most 10 s per pair.
 
 ## Baseline: `compose.py` 0.2.0 (extractive, cited, standard library only)
 
@@ -148,9 +155,15 @@ supporting and contradicting. That double-counted 168 of the 202 contradicting p
 
 Pooled judgments only cover what 2024 runs cited, so an unjudged PMID is unknown, not wrong.
 
-## First end-to-end numbers (`RESULTS-t2dev.md`)
+`compose_ro.py` 0.1.0 runs compose.py unchanged but opens the index read-only and immutable
+(`../system/ro_db.py`), so it creates no `-wal`/`-shm` files beside a shared index and works where
+the challenge image mounts the index read-only. `compare.py` 0.1.0 compares two `score` outputs
+(judged precision, judged citations, per-topic higher/lower counts).
 
-BM25 over all 39,167,523 records, then `compose.py`, on the 65 BioGen questions:
+## End-to-end numbers so far
+
+BM25 over all 39,167,523 records, then `compose.py`, on the 65 BioGen questions
+(`RESULTS-t2dev.md`):
 
 - A paper judged Supports is in BM25's top 5 for 32 of 65 questions, top 20 for 55, top 100
   for 59 (top-5 MRR 0.317). Median query 15.8 s; median answer 247 words, composed in 48 ms.
@@ -158,14 +171,21 @@ BM25 over all 39,167,523 records, then `compose.py`, on the 65 BioGen questions:
   judged citation at all. Of the judged citations, 75.7% are Supports or mixed papers.
 - The negation-cue conflict flag fired on no answer, although 10 answers cite a mixed paper.
 
+With the MedCPT cross-encoder reranking the top 50 BM25 candidates first
+(`../rerank/RESULTS-spark36.md`): 70.0% unjudged, Supports share 21.7% (BM25: 16.9%), judged
+precision 0.817 (BM25: 0.757); the conflict flag again fired on no answer.
+
 ## Next
 
-1. Rerun these 65 questions on the chosen Task 1 system (MedCPT cross-encoder at depth 150,
-   `../system/`), compose again (0.3.0, polarity clash only), and score the same way.
-2. Then an open-weight stage for conflicts and rewriting, measured on judged precision and on how
-   many citations were judged at all.
+1. `t2sys-v1` (queued): the same 65 questions through the chosen Task 1 system (cross-encoder over
+   the top 150), composed through `compose_ro.py`, with BM25's answers recomposed the same way as
+   a control that must reproduce t2dev-v1 exactly.
+2. `biogen-llm-v1` (queued): the gated LLM conflict judge above.
+3. Then an open-weight rewriting stage, measured on judged precision and on how many citations
+   were judged at all.
 
 Helpers: `t2dev.py` (wait, download pins, gold files) and `fetch_code.py` (fetches the published
-t1_runner, t2 and rerank code at pinned commits and checks each file's size).
+t1_runner, t2 and rerank code at pinned commits and checks each file's size; the newest version,
+0.4.0, is in `../system/`).
 
 Contact: MV2, Munim, Inc., mv2@munimtech.com
