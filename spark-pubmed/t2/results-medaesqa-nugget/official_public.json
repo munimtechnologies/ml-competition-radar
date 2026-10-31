@@ -1,0 +1,11 @@
+{
+ "url": "https://raw.githubusercontent.com/munimtechnologies/ml-competition-radar/main/spark-pubmed/t2/official_biogen2024.json",
+ "public": true,
+ "local_sha256": "504a548f15d7d109ba248f459f788f761c03c485c8a0031c9d5219e3d13bf0ec",
+ "public_sha256": "504a548f15d7d109ba248f459f788f761c03c485c8a0031c9d5219e3d13bf0ec",
+ "match": true,
+ "tries": 1,
+ "waited_seconds": 0,
+ "seen_at_utc": "2026-10-31T09:07:12Z",
+ "last_error": null
+}

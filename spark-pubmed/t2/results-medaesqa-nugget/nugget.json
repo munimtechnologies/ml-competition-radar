@@ -1,0 +1,250 @@
+{
+ "version": "0.1.0",
+ "biogen_reuse_version": "0.1.0",
+ "problem": null,
+ "download": [
+  {
+   "url": "https://trec.nist.gov/data/biogen/BioGen2024topics-json.txt",
+   "bytes": 21598,
+   "sha256": "d456904111ed963552eda412c224107dccf632fc54d04d23b47f9b8878374774",
+   "cached": false
+  },
+  {
+   "url": "https://trec.nist.gov/data/biogen/biogen_collection_v3.json",
+   "bytes": 11128359,
+   "sha256": "78449ef270e60abe0c268fa446ade23737164bba44c37308e216529fa63d066d",
+   "cached": true
+  },
+  {
+   "url": "https://osf.io/download/9d3qs/",
+   "bytes": 7276948,
+   "sha256": "a062742c1678b4379121ad030a06bda574afd376f331df41575938dd9849c383",
+   "cached": false
+  }
+ ],
+ "medaesqa_items": 40,
+ "nugget_shapes": {
+  "NoneType": 40
+ },
+ "medaesqa_runs": 30,
+ "question_match": {
+  "by_id": 40,
+  "by_text": 0,
+  "unmatched": 0,
+  "id_text_differs": 0
+ },
+ "matched_topics_distinct": 40,
+ "run_map": {
+  "M1": {
+   "run": "norarr.llm_only_2.llama3-70b_fixed",
+   "share": 1.0,
+   "runner_up_share": 0.9859
+  },
+  "M10": {
+   "run": "zero-shot-gpt4o-mini",
+   "share": 1.0,
+   "runner_up_share": 0.018
+  },
+  "M11": {
+   "run": "rarr_attrfix.llm_only_2.llama3-70b_fixed",
+   "share": 1.0,
+   "runner_up_share": 0.9527
+  },
+  "M12": {
+   "run": "rarr_qgen.llm_only_2.llama3-70b_fixed",
+   "share": 1.0,
+   "runner_up_share": 0.9308
+  },
+  "M13": {
+   "run": "zero-shot-gemini-flash",
+   "share": 1.0,
+   "runner_up_share": 0.0156
+  },
+  "M14": {
+   "run": "ten-shot-gpt4o-mini-wiki",
+   "share": 1.0,
+   "runner_up_share": 0.0182
+  },
+  "M15": {
+   "run": "webis-2",
+   "share": 1.0,
+   "runner_up_share": 0.0323
+  },
+  "M16": {
+   "run": "rl31-70b_l31-70b_ragnarokv5biogen_top20",
+   "share": 1.0,
+   "runner_up_share": 0.0687
+  },
+  "M17": {
+   "run": "norarr.llm_only_2.llama3-8b_fixed",
+   "share": 1.0,
+   "runner_up_share": 0.0247
+  },
+  "M18": {
+   "run": "rarr_qgenfix.llm_only_2.llama3-70b_fixed",
+   "share": 1.0,
+   "runner_up_share": 0.6316
+  },
+  "M19": {
+   "run": "listgalore_l31-70b_ragnarokv5biogen_top20",
+   "share": 1.0,
+   "runner_up_share": 0.0667
+  },
+  "M2": {
+   "run": "ten-shot-gpt4o-mini",
+   "share": 1.0,
+   "runner_up_share": 0.0179
+  },
+  "M20": {
+   "run": "rarr_attrfix_custprompt.llm_only_3_v2.llama3-70b_fixed",
+   "share": 1.0,
+   "runner_up_share": 0.9592
+  },
+  "M21": {
+   "run": "norarr.llm_only_2.boolena.llama3-70b_fixed",
+   "share": 1.0,
+   "runner_up_share": 0.0397
+  },
+  "M22": {
+   "run": "webis-3",
+   "share": 1.0,
+   "runner_up_share": 1.0
+  },
+  "M23": {
+   "run": "webis-1",
+   "share": 1.0,
+   "runner_up_share": 0.025
+  },
+  "M24": {
+   "run": "listgalore_gpt-4o_arenuggetsallyouneed",
+   "share": 1.0,
+   "runner_up_share": 0.0
+  },
+  "M25": {
+   "run": "webis-gpt-1",
+   "share": 1.0,
+   "runner_up_share": 0.0091
+  },
+  "M26": {
+   "run": "listgalore_gpt-4o_ragnarokv5biogen_top20",
+   "share": 1.0,
+   "runner_up_share": 0.058
+  },
+  "M27": {
+   "run": "rl31-70b_gpt-4o_ragnarokv5biogennc_top20",
+   "share": 1.0,
+   "runner_up_share": 0.0
+  },
+  "M28": {
+   "run": "iiresearch_trec_bio2024_t5base_run",
+   "share": 1.0,
+   "runner_up_share": 0.0
+  },
+  "M29": {
+   "run": "rarr_qgenfix_custprompt.llm_only_3_v2.llama3-70b_fixed",
+   "share": 1.0,
+   "runner_up_share": 0.6599
+  },
+  "M3": {
+   "run": "rarr_qgenfix.llm_only_2.llama3-8b_fixed",
+   "share": 1.0,
+   "runner_up_share": 0.4938
+  },
+  "M30": {
+   "run": "webis-gpt-6",
+   "share": 1.0,
+   "runner_up_share": 0.0091
+  },
+  "M4": {
+   "run": "rarr_attronly.llm_only_2.llama3-70b_fixed",
+   "share": 1.0,
+   "runner_up_share": 0.9929
+  },
+  "M5": {
+   "run": "webis-3",
+   "share": 1.0,
+   "runner_up_share": 1.0
+  },
+  "M6": {
+   "run": "rl31-70b_gpt-4o_ragnarokv5biogen_top20",
+   "share": 1.0,
+   "runner_up_share": 0.0563
+  },
+  "M7": {
+   "run": "webis-gpt-4",
+   "share": 1.0,
+   "runner_up_share": 0.0111
+  },
+  "M8": {
+   "run": "ten-shot-gemini-flash-wiki",
+   "share": 1.0,
+   "runner_up_share": 0.0367
+  },
+  "M9": {
+   "run": "ten-shot-gemini-flash",
+   "share": 1.0,
+   "runner_up_share": 0.0356
+  }
+ },
+ "run_map_distinct": 29,
+ "run_map_min_share": 1.0,
+ "label_agreement": {
+  "same": 4901,
+  "differ": 5,
+  "medaesqa_null_biogen_labelled": 4,
+  "biogen_null_medaesqa_labelled": 12
+ },
+ "questions": 40,
+ "runs": 30,
+ "nugget_strings": 0,
+ "nuggets": 0,
+ "nuggets_per_question": {
+  "median": 0.0,
+  "min": 0,
+  "max": 0
+ },
+ "questions_without_nuggets": 40,
+ "expert_sentences": 192,
+ "bar": 0.6,
+ "nugget_min_words": 2,
+ "control_expert_recall": null,
+ "control_shuffled_recall": null,
+ "sentence_auroc": {
+  "nugget": 0.5,
+  "question": 0.5376
+ },
+ "sentence_auroc_n": {
+  "required": 3956,
+  "not_required": 956
+ },
+ "run_tau": {
+  "n_runs": 30,
+  "0.4": {
+   "recall_vs_completeness_r": null,
+   "precision_vs_precision": null
+  },
+  "0.5": {
+   "recall_vs_completeness_r": null,
+   "precision_vs_precision": null
+  },
+  "0.6": {
+   "recall_vs_completeness_r": null,
+   "precision_vs_precision": null
+  },
+  "0.7": {
+   "recall_vs_completeness_r": null,
+   "precision_vs_precision": null
+  },
+  "0.8": {
+   "recall_vs_completeness_r": null,
+   "precision_vs_precision": null
+  },
+  "length_vs_completeness_r": 0.7991,
+  "words_vs_completeness_r": 0.8515,
+  "recall_vs_length": null,
+  "partial_recall_vs_completeness_r_given_length": null,
+  "recall_vs_completeness_rb": null,
+  "soft_recall_vs_completeness_r": null
+ },
+ "seconds": 4.0
+}
