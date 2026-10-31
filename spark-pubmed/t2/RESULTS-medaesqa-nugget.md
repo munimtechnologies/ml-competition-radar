@@ -6,11 +6,23 @@ The job ran once on 2026-10-31, about 09:07 UTC (python:3.12-slim, 1 CPU, 1 GB l
 outputs, counts and scores only, are in `results-medaesqa-nugget/` (`nugget.json`,
 `nugget_runs.json` and the three `*_public.json` checks).
 
+> **Correction (2026-10-31, about 12:50 UTC).** This page first said the public MedAESQA file's
+> `expert_curated_nuggets` value "reads as empty (None)" in all 40 items, and called that "a
+> finding about the released data". That was wrong. `bioace-zip-v1` (`RESULTS-bioace-zip.md`)
+> counted every field of the file: it has no `expert_curated_nuggets` key at all, and its experts'
+> nuggets are under `nuggets`, a non-empty list of strings in all 40 items. The job looked under
+> the README's field name and found nothing, which our loader reported as None. The grades below
+> stand as graded, but N1, K1, K2, N2-N5 failed because of our field name, not the data.
+> `medaesqa-nugget-v2` (`PREREGISTRATION-medaesqa-nugget-v2.md`) runs the same test on the right
+> field. The original wording is kept below, struck through where it is wrong.
+
 **Outcome: 4 of 4 checks, 2 of 10 predictions. The test could not be run as designed: in the
-public MedAESQA file (`medaesqa_v1.json`, 7,276,948 bytes, sha256 `a062742c...c383`), the
+public MedAESQA file (`medaesqa_v1.json`, 7,276,948 bytes, sha256 `a062742c...c383`), ~~the
 `expert_curated_nuggets` value of all 40 items reads as empty (None), although the dataset's
-README lists the field. With no nuggets, the controls cannot be computed, so by the rule fixed in
-advance nothing is adopted.** This is a finding about the released data, not about the matcher.
+README lists the field~~ the job found no `expert_curated_nuggets` field (see the correction above).
+With no nuggets read, the controls cannot be computed, so by the rule fixed in advance nothing is
+adopted.** ~~This is a finding about the released data, not about the matcher.~~ This was our
+error, not the data's.
 
 ## Checks
 
@@ -27,8 +39,8 @@ advance nothing is adopted.** This is a finding about the released data, not abo
 |---|---|---|---|
 | M1 | 40 questions, all matched (by id or text), 40 distinct; 30 runs scored | 40 matched by id (0 by text, 0 unmatched), 40 distinct, 30 runs | yes |
 | M2 | 30 MedAESQA runs mapped to 30 distinct BioGen runs, each sharing >= 90% | 30 runs, every one sharing 100% of its scored sentences, but **29** distinct: M5 and M22 both map to webis-3 with a tie (runner-up share 1.0), because webis-3 and webis-5 have the same sentences on these 40 questions | **no** |
-| N1 | median nuggets per question 3-15; none without | 0 nuggets in all 40 (`nugget_shapes`: NoneType 40) | **no** |
-| K1 | expert answers' own nugget recall >= 50 | not computable (no nuggets) | **no** |
+| N1 | median nuggets per question 3-15; none without | 0 nuggets read in all 40 (`nugget_shapes`: NoneType 40; wrong field, see correction) | **no** |
+| K1 | expert answers' own nugget recall >= 50 | not computable (no nuggets read) | **no** |
 | K2 | next-question nugget recall <= 10 | not computable | **no** |
 | N2 | sentence AUROC 0.55-0.75 and above the question baseline | 0.50 (every cover is 0); question baseline 0.538 | **no** |
 | N3 | tau-b (bar 0.6), nugget recall vs completeness R, >= 0.50 | not computable | **no** |
@@ -52,20 +64,24 @@ adopted**. `biogen-reuse-emb-v1` was not adopted either (`RESULTS-biogen-reuse-e
 - On these 40 questions, answer length ranks the 30 runs against official completeness R at tau
   0.80 (sentences) and 0.85 (content words).
 
-## Not yet known
+## Not yet known (as written at grading; answered by `bioace-zip-v1`)
 
 The job used the loader's normalised field lookup, which returns None both when a key is missing
 and when it holds null, so it cannot tell those apart. `bioace-zip-v1` (filed 2026-10-31) lists
 every MedAESQA field with how often it is present, null or empty. It also lists the members of
 NLM's BioACE data bundle (`bioace-data-models.zip`, linked from BioACE's download script) with
-HTTP range requests, without downloading the whole archive. The BioACE paper (arXiv 2602.04982)
+HTTP range requests, without downloading the whole archive. ~~The BioACE paper (arXiv 2602.04982)
 scores answers against expert nuggets for these questions, so the nuggets may be released there
 rather than in MedAESQA. If they are, a new pre-registration will score the runs against them;
-this one is not re-run on different data.
+this one is not re-run on different data.~~ Answer: the key was missing; the nuggets are in
+MedAESQA under `nuggets`, and the BioACE bundle has nuggets for only 2 other questions. The test is
+re-run on the same data, reading the right field, as `medaesqa-nugget-v2`.
 
 ## Limits
 
-No human has checked these counts. The README of MedAESQA (OSF ydbzq, modified 2025-04-16) lists
-`expert_curated_nuggets`; we have not contacted NLM about it.
+No human has checked these counts. ~~The README of MedAESQA (OSF ydbzq, modified 2025-04-16) lists
+`expert_curated_nuggets`; we have not contacted NLM about it.~~ MedAESQA's README (OSF ydbzq,
+modified 2025-04-16) names the field `expert_curated_nuggets`, while the file calls it `nuggets`.
+That is a small naming mismatch, not missing data; we have not contacted NLM about it.
 
 Contact: MV2, Munim, Inc., mv2@munimtech.com
