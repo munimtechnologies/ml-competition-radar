@@ -66,7 +66,8 @@ Every job was pre-registered before it ran and graded word for word:
 | biogen-reuse-emb-v1 | `PREREGISTRATION-biogen-reuse-emb.md` | `RESULTS-biogen-reuse-emb.md`, `results-biogen-reuse-emb/` | 5 of 5 checks, 7 of 9; not adopted (length still ranks runs better: tau 0.82 against 0.80) |
 | medaesqa-nugget-v1 | `PREREGISTRATION-medaesqa-nugget.md` | `RESULTS-medaesqa-nugget.md`, `results-medaesqa-nugget/` | 4 of 4 checks, 2 of 10; not run as designed: it read the README's field name, which the file does not have, so no nuggets were read (corrected 2026-10-31) |
 | bioace-zip-v1 | none (a data survey, no predictions) | `RESULTS-bioace-zip.md`, `results-bioace-zip/` | MedAESQA's nuggets are under `nuggets` in all 40 items; NLM's BioACE bundle has nuggets for 2 other questions only (`bioace_zip/`) |
-| medaesqa-nugget-v2 | `PREREGISTRATION-medaesqa-nugget-v2.md` | queued | v1's test on the right field, with a stricter bar: beat content words per question as well as sentences |
+| medaesqa-nugget-v2 | `PREREGISTRATION-medaesqa-nugget-v2.md` | queued (not run at 18:30 UTC, 2026-10-31) | v1's test on the right field, with a stricter bar: beat content words per question as well as sentences |
+| mv2-nugget-v1 | `PREREGISTRATION-mv2-nugget.md` | to be queued once MV2's local answers are copied into its folder | MV2's own extractive answers (`t2dev-v1`) against the expert nuggets, at each run's own length, with a ceiling from MV2's best sentences (`mv2-nugget/`) |
 
 What v2 counted: 14,763 citation judgments (69.4% supporting, 1.9% contradicting, 4.3% invalid);
 55 of 65 topics have a contradicting judgment; 3,858 distinct PMIDs, all inside the SPARK
@@ -135,6 +136,16 @@ M1-M30 share 100% of their sentences with BioGen runs, and sentence labels agree
 position-paired sentences. On these 40 questions length reaches tau 0.80 (sentences) and 0.85
 (content words). v2 reads `nuggets`, keeps v1's predictions, and must beat both length baselines
 to be used across answer lengths.
+
+**MV2's own answers against the nuggets (`mv2-nugget-v1`).** Pre-registered before either nugget
+job ran. MV2's extractive answers are about twice as long as any 2024 run, so they are compared
+at matched length: for each run, MV2's answer to each question is cut to that run's own length.
+A ceiling (MV2's best sentences, chosen knowing the nuggets, within the same length) tells
+whether a miss means the facts are absent from MV2's sentences or present but not chosen. A rule
+fixed in advance turns the result into the next Task 2 step (precision and conflicts, a
+sentence-selection stage, or the candidate pool), and only if `medaesqa-nugget-v2` finds the
+matcher usable at equal length. MV2's answers contain abstract text and stay local; only counts
+and scores are published.
 
 NLM's BioACE (arXiv 2602.04982) matches LLM-extracted answer nuggets to expert nuggets for these
 questions (Kendall 0.758 against human recall). `bioace-zip-v1` listed its data bundle
@@ -266,6 +277,8 @@ precision 0.817 (BM25: 0.757); the conflict flag again fired on no answer.
    it is used only at a fixed word budget; otherwise a rewriting stage waits for the TREC 2025
    BioGen judgments. A rewrite keeps the composer's citations, so judged precision alone cannot
    grade it.
+3. `mv2-nugget-v1`: grade MV2's answers against the nuggets at matched length and apply its
+   decision rule, if v2 finds the matcher usable.
 
 Helpers: `t2dev.py` (wait, download pins, gold files) and `fetch_code.py` (fetches the published
 t1_runner, t2 and rerank code at pinned commits and checks each file's size; the newest version,
