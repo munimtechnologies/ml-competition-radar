@@ -22,8 +22,12 @@ every PubMed citation from 30 runs judged by assessors. The file's own labels ar
 judged Required, Unnecessary, Borderline or Inappropriate. The 2025 track recommends these
 assessments for development (https://trec-biogen.github.io/docs/). Its answers are at most 250
 words, with at most 3 PMIDs per sentence and 30 per answer. The 2025 track's own judgments are
-not public yet (its TREC data page lists topics only and a placeholder for qrels, read 2026-10-28
-and again 2026-10-30).
+not public yet (its TREC data page lists topics only, plus a pointer to the BioACE scoring code;
+read 2026-10-28, 2026-10-30 and 2026-10-31).
+
+NLM's MedAESQA (https://osf.io/ydbzq, CC0 1.0) releases 40 of these 65 questions with an
+expert-written answer and the expert's nuggets for each, next to the same kind of judged machine
+answers. It is the first expert reference for these questions that no run produced.
 
 `biogen_census.py` downloads the topics and assessments, hashes them, and writes counts and
 PMIDs only, never text: label totals, per-topic contradiction counts, per-run label shares, and
@@ -55,8 +59,9 @@ Every job was pre-registered before it ran and graded word for word:
 | biogen-llm-v1 | `PREREGISTRATION-biogen-llm.md` | `RESULTS-biogen-llm.md`, `results-biogen-llm/` | 2 of 2 checks run; stopped by its own speed probe (189.1 s per pair), so no scores |
 | biogen-llm-v2 | `PREREGISTRATION-biogen-llm-v2.md` | `RESULTS-biogen-llm-v2.md`, `results-biogen-llm-v2/` | stopped from outside (exit 143) at 600 of 1,389 pairs; checks C1-C2 and timing B1-B3 held |
 | biogen-llm-v3 | the same + `ADDENDUM-biogen-llm-v3.md` | `RESULTS-biogen-llm-v2.md`, `results-biogen-llm-v3/` | 3 of 3 checks, 9 of 10 (gate AUROC 0.316, below the predicted range); not adopted (F1 0.0) |
-| biogen-reuse-v1 | `PREREGISTRATION-biogen-reuse.md` | queued | can the 2024 sentence judgments grade a run outside the pool? Word overlap (below) |
+| biogen-reuse-v1 | `PREREGISTRATION-biogen-reuse.md` | `RESULTS-biogen-reuse.md`, `results-biogen-reuse/` | 3 of 3 checks, 8 of 10; not adopted (answer length ranks runs better: tau 0.82 against 0.70) |
 | biogen-reuse-emb-v1 | `PREREGISTRATION-biogen-reuse-emb.md` | queued | the same test with all-mpnet-base-v2 embeddings, pre-registered before either version ran (below) |
+| medaesqa-nugget-v1 | `PREREGISTRATION-medaesqa-nugget.md` | queued | runs scored against NLM's expert nuggets (MedAESQA) instead of other runs; length baseline and partial tau (below) |
 
 What v2 counted: 14,763 citation judgments (69.4% supporting, 1.9% contradicting, 4.3% invalid);
 55 of 65 topics have a contradicting judgment; 3,858 distinct PMIDs, all inside the SPARK
@@ -92,28 +97,39 @@ MedAESQA (Scientific Data 2025, PMC12179289), which releases 40 of these questio
 reports lower annotator agreement within one item for Contradicting (67.67) than for Supporting
 (82.09). No human has checked our counts yet.
 
-## Can the 2024 judgments grade an answer nobody judged? (biogen-reuse-v1 and -emb-v1, queued)
+## Can the 2024 judgments grade an answer nobody judged?
 
 A Task 2 answer from MV2's system is a new run: no assessor read it. BioGen 2024 scores
 completeness by clustering the Required sentences of all 30 runs, **including** the scored run and
-its own labels (overview Table 4), and reports no leave-out test. `biogen_reuse.py` (standard
-library only) drops the scored run's whole team from the pool, hides its labels, and scores its
-sentences by word overlap (Dice over content words, bar 0.5) with the other teams' Required
-sentences. It then checks the proxy against each sentence's own label (AUROC) and against the
-official per-run precision and completeness (Kendall tau over 30 runs, `official_biogen2024.json`
-transcribed from Tables 3 and 4), next to a length-only baseline. The pre-registration fixes
-10 predictions and a decision rule: the proxy is used to develop a rewriting stage only if it
-separates Required sentences (AUROC >= 0.60) and ranks runs better than answer length does.
-`wait_public.py` makes the job wait until the pre-registration is public.
+its own labels (overview Table 4), and reports no leave-out test.
 
-`biogen_reuse_emb.py` runs the same test with cosine similarity of all-mpnet-base-v2 embeddings
-(Apache-2.0, pinned commit and weights hash; one of the two models the overview names), primary
-bar 0.7. It recomputes the word-overlap proxy on the same sentences and compares the two pair by
-pair (a 1,000-resample topic bootstrap of the AUROC difference), and it runs `biogen_reuse.py`
-unchanged as an agreement check. It was pre-registered (8 predictions) before either version
-had run, so its bar could not be fitted to the word-overlap result. Decision rule: whichever proxy
-passes becomes the yardstick (both: the higher AUROC, words on a near-tie); if neither passes, no
-other variant is tried on the 2024 judgments.
+**biogen-reuse-v1 (graded, `RESULTS-biogen-reuse.md`).** `biogen_reuse.py` (standard library
+only) drops the scored run's whole team from the pool, hides its labels, and scores its sentences
+by word overlap (Dice over content words, bar 0.5) with the other teams' Required sentences.
+
+- It separates Required sentences from the rest: AUROC 0.70 (question-overlap baseline 0.56).
+- Its recall ranks the 30 runs against official completeness R at Kendall tau 0.70, but **answer
+  length alone does better: 0.82** (sentences per question). Completeness R in 2024 largely
+  follows how many sentences a run writes; with 5 teams, most of that is the gap between teams.
+  By the rule fixed in advance the proxy is not used.
+- Keeping the scored run's team mates in the pool drops recall's tau to 0.39: leave-one-run-out
+  is not a safe check for these judgments.
+- Table 3's precision is reproduced from the released labels within 0.005 for all 30 runs.
+- For a rewriting stage this means any yardstick must be compared at equal answer length.
+
+**biogen-reuse-emb-v1 (queued)** runs the same test with cosine similarity of all-mpnet-base-v2
+embeddings (Apache-2.0, pinned commit and weights hash), primary bar 0.7, pre-registered before
+either version ran. It must beat the same length baseline.
+
+**medaesqa-nugget-v1 (queued)** scores each run against MedAESQA's expert nuggets instead of
+other runs, by word containment (bar 0.6, no language model), so an outside answer is scored
+exactly as a 2024 run is. It reports the length baseline on the same 40 questions and Kendall's
+partial tau with length held fixed, plus a positive control (the expert answer against its own
+nuggets) and a negative one (each run against the next question's nuggets). It was designed after
+biogen-reuse-v1's numbers were known and before any nugget text was seen. NLM's BioACE (arXiv
+2602.04982) already matches LLM-extracted answer nuggets to these expert nuggets with embeddings
+(Kendall 0.758 against human recall); this test asks what a model-free version gets, against
+length.
 
 ## How hard is the conflict part? (TREC 2025 BioGen Task A, published numbers)
 
@@ -234,9 +250,9 @@ precision 0.817 (BM25: 0.757); the conflict flag again fired on no answer.
    designed. No prediction has been tested yet. The job runner picks the machine by free memory,
    and a job cannot choose it. As `ADDENDUM-t2sys-v7.md` said, the job is not re-filed blind
    again; it waits until it can be placed on the machine with the full index.
-2. Meanwhile, `biogen-reuse-v1` and `biogen-reuse-emb-v1` (above) need no index and run on
-   either machine. If a proxy passes its decision rule, it becomes the yardstick, fixed in
-   advance, for an open-weight rewriting stage. A rewrite keeps the composer's citations, so
+2. `biogen-reuse-emb-v1` and `medaesqa-nugget-v1` need no index and run on either machine. If one
+   ends in "used" by its own rule, it becomes the yardstick, fixed in advance, for an open-weight
+   rewriting stage, compared at equal answer length. A rewrite keeps the composer's citations, so
    judged precision alone cannot grade it.
 
 Helpers: `t2dev.py` (wait, download pins, gold files) and `fetch_code.py` (fetches the published
