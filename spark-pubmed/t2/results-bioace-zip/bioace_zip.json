@@ -1,0 +1,241 @@
+{
+ "version": "0.1.0",
+ "started_utc": "2026-10-31T11:52:46Z",
+ "problem": null,
+ "url": "http://bionlp.nlm.nih.gov/bioace-data-models.zip",
+ "archive_bytes": 3524433522,
+ "eocd": {
+  "entries": 21,
+  "cd_size": 2527,
+  "cd_offset": 3524430973,
+  "comment_bytes": 0
+ },
+ "zip64": false,
+ "members_expected": 21,
+ "members_total": 21,
+ "files": 14,
+ "files_bytes": 4023153490,
+ "folders": {
+  "bioace-data-models/data": {
+   "files": 2,
+   "bytes": 75285
+  },
+  "bioace-data-models/models/correctness_model": {
+   "files": 11,
+   "bytes": 4023076375
+  },
+  "bioace-data-models/models/precision_recall_model": {
+   "files": 1,
+   "bytes": 1830
+  }
+ },
+ "members": [
+  {
+   "name": "bioace-data-models/",
+   "size": 0,
+   "compressed": 0,
+   "method": 0
+  },
+  {
+   "name": "bioace-data-models/data/",
+   "size": 0,
+   "compressed": 0,
+   "method": 0
+  },
+  {
+   "name": "bioace-data-models/data/indexes/",
+   "size": 0,
+   "compressed": 0,
+   "method": 0
+  },
+  {
+   "name": "bioace-data-models/data/task_b_baseline_output.json",
+   "size": 73618,
+   "compressed": 11081,
+   "method": 8
+  },
+  {
+   "name": "bioace-data-models/data/task_b_gt_nuggets_first2.json",
+   "size": 1667,
+   "compressed": 600,
+   "method": 8
+  },
+  {
+   "name": "bioace-data-models/models/",
+   "size": 0,
+   "compressed": 0,
+   "method": 0
+  },
+  {
+   "name": "bioace-data-models/models/completeness_model/",
+   "size": 0,
+   "compressed": 0,
+   "method": 0
+  },
+  {
+   "name": "bioace-data-models/models/correctness_model/",
+   "size": 0,
+   "compressed": 0,
+   "method": 0
+  },
+  {
+   "name": "bioace-data-models/models/correctness_model/config.json",
+   "size": 688,
+   "compressed": 353,
+   "method": 8
+  },
+  {
+   "name": "bioace-data-models/models/correctness_model/model.safetensors",
+   "size": 1340622760,
+   "compressed": 1243701698,
+   "method": 8
+  },
+  {
+   "name": "bioace-data-models/models/correctness_model/optimizer.pt",
+   "size": 2681480830,
+   "compressed": 2280379121,
+   "method": 8
+  },
+  {
+   "name": "bioace-data-models/models/correctness_model/rng_state.pth",
+   "size": 14645,
+   "compressed": 10772,
+   "method": 8
+  },
+  {
+   "name": "bioace-data-models/models/correctness_model/scheduler.pt",
+   "size": 1465,
+   "compressed": 555,
+   "method": 8
+  },
+  {
+   "name": "bioace-data-models/models/correctness_model/special_tokens_map.json",
+   "size": 125,
+   "compressed": 72,
+   "method": 8
+  },
+  {
+   "name": "bioace-data-models/models/correctness_model/tokenizer.json",
+   "size": 711661,
+   "compressed": 209199,
+   "method": 8
+  },
+  {
+   "name": "bioace-data-models/models/correctness_model/tokenizer_config.json",
+   "size": 1221,
+   "compressed": 304,
+   "method": 8
+  },
+  {
+   "name": "bioace-data-models/models/correctness_model/trainer_state.json",
+   "size": 5631,
+   "compressed": 1514,
+   "method": 8
+  },
+  {
+   "name": "bioace-data-models/models/correctness_model/training_args.bin",
+   "size": 5841,
+   "compressed": 2717,
+   "method": 8
+  },
+  {
+   "name": "bioace-data-models/models/correctness_model/vocab.txt",
+   "size": 231508,
+   "compressed": 109776,
+   "method": 8
+  },
+  {
+   "name": "bioace-data-models/models/precision_recall_model/",
+   "size": 0,
+   "compressed": 0,
+   "method": 0
+  },
+  {
+   "name": "bioace-data-models/models/precision_recall_model/gmm_params.pkl",
+   "size": 1830,
+   "compressed": 936,
+   "method": 8
+  }
+ ],
+ "picked": [
+  {
+   "name": "bioace-data-models/data/task_b_baseline_output.json",
+   "size": 73618,
+   "compressed": 11081,
+   "sha256": "1c64cdea484a8fd2ec2fbe8ae431c99cecfe39ca8c8fe1a11653195746428728",
+   "saved": "bioace-data-models/data/task_b_baseline_output.json",
+   "describe": {
+    "bytes": 73618,
+    "format": "json",
+    "shape": "list[{metadata: {answer: str, question: str, run_id: str, team_id: str, topic_id: str}, responses: list[]}|{metadata: {answer: str, question: str, run_id: str, team_id: str, topic_id: str}, responses: list[{citations: list, text: str}]}]",
+    "records": 30,
+    "ids": {
+     "count": 0,
+     "distinct": 0,
+     "min": null,
+     "max": null,
+     "list": []
+    },
+    "list_fields": {
+     "responses": {
+      "records": 30,
+      "total": 165,
+      "median": 5.0,
+      "min": 0,
+      "max": 16,
+      "empty": 3,
+      "mean_words": null
+     }
+    }
+   }
+  },
+  {
+   "name": "bioace-data-models/data/task_b_gt_nuggets_first2.json",
+   "size": 1667,
+   "compressed": 600,
+   "sha256": "f8495e90899d2c858e8ebe693c3763ccb5c5ea9eba93335608611856dabda730",
+   "saved": "bioace-data-models/data/task_b_gt_nuggets_first2.json",
+   "describe": {
+    "bytes": 1667,
+    "format": "json",
+    "shape": "dict{<2 numeric ids>: list[str]}",
+    "records": 2,
+    "ids": {
+     "count": 2,
+     "distinct": 2,
+     "min": 181,
+     "max": 182,
+     "list": [
+      181,
+      182
+     ]
+    },
+    "list_fields": {
+     "_items": {
+      "records": 2,
+      "total": 31,
+      "median": 15.5,
+      "min": 8,
+      "max": 23,
+      "empty": 0,
+      "mean_words": 5.52
+     }
+    }
+   }
+  }
+ ],
+ "unpacked_compressed_bytes": 11681,
+ "http": {
+  "status": 206,
+  "final_url": "https://bionlp.nlm.nih.gov/bioace-data-models.zip",
+  "content_range": "bytes 0-0/3524433522",
+  "content_length": "1",
+  "content_type": "application/zip",
+  "last_modified": "Wed, 07 Jan 2026 22:21:52 GMT",
+  "etag": "\"d2129672-647d3b81c3b0c\"",
+  "accept_ranges": "bytes",
+  "requests": 7,
+  "received_bytes": 80871
+ },
+ "seconds": 1.6
+}

@@ -1,0 +1,73 @@
+{
+ "version": "0.1.0",
+ "started_utc": "2026-10-31T11:52:46Z",
+ "problem": null,
+ "file": {
+  "bytes": 7276948,
+  "sha256": "a062742c1678b4379121ad030a06bda574afd376f331df41575938dd9849c383",
+  "cached": true
+ },
+ "items": 40,
+ "fields": {
+  "question_id": {
+   "present": 40,
+   "null": 0,
+   "empty": 0,
+   "shapes": {
+    "str": 40
+   }
+  },
+  "question": {
+   "present": 40,
+   "null": 0,
+   "empty": 0,
+   "shapes": {
+    "str": 40
+   }
+  },
+  "question_frame": {
+   "present": 40,
+   "null": 0,
+   "empty": 0,
+   "shapes": {
+    "dict(6 keys)": 31,
+    "dict(5 keys)": 1,
+    "dict(7 keys)": 7,
+    "dict(8 keys)": 1
+   }
+  },
+  "expert_curated_answer": {
+   "present": 40,
+   "null": 0,
+   "empty": 0,
+   "shapes": {
+    "str": 40
+   }
+  },
+  "machine_generated_answers": {
+   "present": 40,
+   "null": 0,
+   "empty": 0,
+   "shapes": {
+    "{M1: {answer: str, answer_sentences: list[{answer_sentence: str, answer_sentence_id: str, answer_sentence_relevance: str, citation_assessment: list}], is_answer_accurate: str}, M10: {answer: str, answer_sentences: list[{answer_sentence: str, answer_sentence_id: str, answer_sentence_relevance: str, citation_assessment: NoneType}|{answer_sentence: str, answer_sentence_id: str, answer_sentence_releva": 25,
+    "{M1: {answer: str, answer_sentences: list[{answer_sentence: str, answer_sentence_id: str, answer_sentence_relevance: str, citation_assessment: list}], is_answer_accurate: str}, M10: {answer: str, answer_sentences: list[{answer_sentence: str, answer_sentence_id: str, answer_sentence_relevance: str, citation_assessment: list}], is_answer_accurate: str}, M11: {answer: str, answer_sentences: list[{ans": 12,
+    "{M1: {answer: str, answer_sentences: list[{answer_sentence: str, answer_sentence_id: str, answer_sentence_relevance: str, citation_assessment: list}], is_answer_accurate: str}, M10: {answer: str, answer_sentences: list[{answer_sentence: str, answer_sentence_id: str, answer_sentence_relevance: str, citation_assessment: NoneType}], is_answer_accurate: str}, M11: {answer: str, answer_sentences: list[": 2,
+    "{M1: {answer: str, answer_sentences: list[{answer_sentence: str, answer_sentence_id: str, answer_sentence_relevance: NoneType, citation_assessment: NoneType}], is_answer_accurate: str}, M10: {answer: str, answer_sentences: list[{answer_sentence: str, answer_sentence_id: str, answer_sentence_relevance: str, citation_assessment: NoneType}], is_answer_accurate: str}, M11: {answer: str, answer_sentenc": 1
+   }
+  },
+  "nuggets": {
+   "present": 40,
+   "null": 0,
+   "empty": 0,
+   "shapes": {
+    "list[str]": 40
+   }
+  }
+ },
+ "machine_answer_fields": {
+  "answer": 1200,
+  "is_answer_accurate": 1200,
+  "answer_sentences": 1200
+ },
+ "seconds": 0.1
+}
