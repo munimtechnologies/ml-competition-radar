@@ -1,0 +1,108 @@
+{
+ "version": "0.1.0",
+ "problem": null,
+ "download": [
+  {
+   "url": "https://trec.nist.gov/data/biogen/BioGen2024topics-json.txt",
+   "bytes": 21598,
+   "sha256": "d456904111ed963552eda412c224107dccf632fc54d04d23b47f9b8878374774",
+   "cached": true
+  },
+  {
+   "url": "https://trec.nist.gov/data/biogen/biogen_collection_v3.json",
+   "bytes": 11128359,
+   "sha256": "78449ef270e60abe0c268fa446ade23737164bba44c37308e216529fa63d066d",
+   "cached": true
+  }
+ ],
+ "questions": 65,
+ "topics": 65,
+ "runs": 30,
+ "runs_matched_official": 30,
+ "official_runs_missing": [],
+ "sentences": 7932,
+ "labelled": 7585,
+ "label_counts": {
+  "required": 6227,
+  "unnecessary": 1032,
+  "borderline": 302,
+  "inappropriate": 24
+ },
+ "scored_sentences": 7871,
+ "scored_label_counts": {
+  "required": 6223,
+  "unnecessary": 1025,
+  "borderline": 302,
+  "inappropriate": 24
+ },
+ "bar": 0.5,
+ "min_words": 3,
+ "pool_distinct_required_per_topic": {
+  "median": 80,
+  "min": 36,
+  "max": 117
+ },
+ "greedy_clusters_per_topic": {
+  "median": 50,
+  "min": 22,
+  "max": 88
+ },
+ "sentence_auroc": {
+  "team_out": 0.7023,
+  "run_out": 0.7124,
+  "question": 0.5603
+ },
+ "sentence_auroc_vs_unnecessary": {
+  "team_out": 0.7045,
+  "run_out": 0.7271,
+  "question": 0.5518
+ },
+ "sentence_auroc_n": {
+  "required": 6223,
+  "not_required": 1351
+ },
+ "run_tau": {
+  "n_runs": 30,
+  "0.3": {
+   "recall_team": 0.8422,
+   "recall_run": 0.7833,
+   "precision_team": 0.3057,
+   "precision_run": 0.5402
+  },
+  "0.4": {
+   "recall_team": 0.8051,
+   "recall_run": 0.6118,
+   "precision_team": 0.2394,
+   "precision_run": 0.371
+  },
+  "0.5": {
+   "recall_team": 0.703,
+   "recall_run": 0.3894,
+   "precision_team": 0.2552,
+   "precision_run": 0.3425
+  },
+  "0.6": {
+   "recall_team": 0.5035,
+   "recall_run": 0.2642,
+   "precision_team": 0.2644,
+   "precision_run": 0.3241
+  },
+  "0.7": {
+   "recall_team": 0.4331,
+   "recall_run": 0.1993,
+   "precision_team": 0.2552,
+   "precision_run": 0.3425
+  },
+  "baseline_sentences_vs_completeness_r": 0.8186,
+  "baseline_scored_vs_completeness_r": 0.8399,
+  "baseline_question_overlap_vs_precision": -0.0989
+ },
+ "repro_precision": {
+  "within_1_all": 30,
+  "within_1_labelled": 30,
+  "within_1_answered": 30,
+  "misses_all": [],
+  "max_abs_diff_all": 0.0049
+ },
+ "seconds": 2.3
+}
