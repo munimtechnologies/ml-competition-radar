@@ -26,8 +26,10 @@ not public yet (its TREC data page lists topics only, plus a pointer to the BioA
 read 2026-10-28, 2026-10-30 and 2026-10-31).
 
 NLM's MedAESQA (https://osf.io/ydbzq, CC0 1.0) releases 40 of these 65 questions with an
-expert-written answer and the expert's nuggets for each, next to the same kind of judged machine
-answers. It is the first expert reference for these questions that no run produced.
+expert-written answer for each, next to the same judged machine answers: `medaesqa-nugget-v1`
+confirmed that its M1-M30 are the 30 BioGen 2024 runs. Its README lists the experts' nuggets
+(`expert_curated_nuggets`), but in the public `medaesqa_v1.json` that value reads as empty in all
+40 items (`RESULTS-medaesqa-nugget.md`).
 
 `biogen_census.py` downloads the topics and assessments, hashes them, and writes counts and
 PMIDs only, never text: label totals, per-topic contradiction counts, per-run label shares, and
@@ -60,8 +62,9 @@ Every job was pre-registered before it ran and graded word for word:
 | biogen-llm-v2 | `PREREGISTRATION-biogen-llm-v2.md` | `RESULTS-biogen-llm-v2.md`, `results-biogen-llm-v2/` | stopped from outside (exit 143) at 600 of 1,389 pairs; checks C1-C2 and timing B1-B3 held |
 | biogen-llm-v3 | the same + `ADDENDUM-biogen-llm-v3.md` | `RESULTS-biogen-llm-v2.md`, `results-biogen-llm-v3/` | 3 of 3 checks, 9 of 10 (gate AUROC 0.316, below the predicted range); not adopted (F1 0.0) |
 | biogen-reuse-v1 | `PREREGISTRATION-biogen-reuse.md` | `RESULTS-biogen-reuse.md`, `results-biogen-reuse/` | 3 of 3 checks, 8 of 10; not adopted (answer length ranks runs better: tau 0.82 against 0.70) |
-| biogen-reuse-emb-v1 | `PREREGISTRATION-biogen-reuse-emb.md` | queued | the same test with all-mpnet-base-v2 embeddings, pre-registered before either version ran (below) |
-| medaesqa-nugget-v1 | `PREREGISTRATION-medaesqa-nugget.md` | queued | runs scored against NLM's expert nuggets (MedAESQA) instead of other runs; length baseline and partial tau (below) |
+| biogen-reuse-emb-v1 | `PREREGISTRATION-biogen-reuse-emb.md` | `RESULTS-biogen-reuse-emb.md`, `results-biogen-reuse-emb/` | 5 of 5 checks, 7 of 9; not adopted (length still ranks runs better: tau 0.82 against 0.80) |
+| medaesqa-nugget-v1 | `PREREGISTRATION-medaesqa-nugget.md` | `RESULTS-medaesqa-nugget.md`, `results-medaesqa-nugget/` | 4 of 4 checks, 2 of 10; not run as designed: the public MedAESQA file has no nuggets, so nothing is adopted |
+| bioace-zip-v1 | none (a data survey, no predictions) | queued | lists MedAESQA's fields and the members of NLM's BioACE data bundle, by range requests, to find the expert nuggets (`bioace_zip/`) |
 
 What v2 counted: 14,763 citation judgments (69.4% supporting, 1.9% contradicting, 4.3% invalid);
 55 of 65 topics have a contradicting judgment; 3,858 distinct PMIDs, all inside the SPARK
@@ -103,33 +106,38 @@ A Task 2 answer from MV2's system is a new run: no assessor read it. BioGen 2024
 completeness by clustering the Required sentences of all 30 runs, **including** the scored run and
 its own labels (overview Table 4), and reports no leave-out test.
 
-**biogen-reuse-v1 (graded, `RESULTS-biogen-reuse.md`).** `biogen_reuse.py` (standard library
-only) drops the scored run's whole team from the pool, hides its labels, and scores its sentences
-by word overlap (Dice over content words, bar 0.5) with the other teams' Required sentences.
+**Short answer, so far: not better than counting sentences.** On these 30 runs, the mean number
+of sentences per question ranks runs against official completeness R at Kendall tau 0.82.
 
-- It separates Required sentences from the rest: AUROC 0.70 (question-overlap baseline 0.56).
-- Its recall ranks the 30 runs against official completeness R at Kendall tau 0.70, but **answer
-  length alone does better: 0.82** (sentences per question). Completeness R in 2024 largely
-  follows how many sentences a run writes; with 5 teams, most of that is the gap between teams.
-  By the rule fixed in advance the proxy is not used.
-- Keeping the scored run's team mates in the pool drops recall's tau to 0.39: leave-one-run-out
-  is not a safe check for these judgments.
+| yardstick (team left out of the pool) | sentence AUROC (Required vs rest) | tau, recall vs completeness R | tau, precision vs official precision |
+|---|---|---|---|
+| answer length (sentences per question) | | **0.82** | |
+| word overlap, Dice bar 0.5 (`biogen-reuse-v1`) | 0.702 | 0.70 | 0.26 |
+| all-mpnet-base-v2 cosine, bar 0.7 (`biogen-reuse-emb-v1`) | 0.705 | 0.80 | 0.47 |
+
+- Both proxies separate Required sentences about equally (the bootstrap interval of the
+  difference, -0.017 to 0.021, includes 0). Embeddings rank runs closer to the official order and
+  rank precision much better, but neither beats length, so by the rules fixed in advance neither
+  is used, and no further variant of this pool-based proxy is tried on the 2024 judgments.
+- Keeping the scored run's team mates in the pool drops word overlap's tau to 0.39, but not the
+  embeddings' (0.797 against 0.796 team-out at bar 0.7).
 - Table 3's precision is reproduced from the released labels within 0.005 for all 30 runs.
 - For a rewriting stage this means any yardstick must be compared at equal answer length.
 
-**biogen-reuse-emb-v1 (queued)** runs the same test with cosine similarity of all-mpnet-base-v2
-embeddings (Apache-2.0, pinned commit and weights hash), primary bar 0.7, pre-registered before
-either version ran. It must beat the same length baseline.
+**Expert nuggets instead of other runs (`medaesqa-nugget-v1`).** It scores each run against
+MedAESQA's expert nuggets by word containment (no language model), with a length baseline, a
+partial tau holding length fixed, and positive and negative controls. It found no nuggets in the
+public file, so it could not test anything beyond the data checks: MedAESQA's 40 questions carry
+BioGen ids, its M1-M30 share 100% of their sentences with BioGen runs, and sentence labels agree in
+4,901 of 4,906 position-paired sentences. On these 40 questions length reaches tau 0.80
+(sentences) and 0.85 (content words).
 
-**medaesqa-nugget-v1 (queued)** scores each run against MedAESQA's expert nuggets instead of
-other runs, by word containment (bar 0.6, no language model), so an outside answer is scored
-exactly as a 2024 run is. It reports the length baseline on the same 40 questions and Kendall's
-partial tau with length held fixed, plus a positive control (the expert answer against its own
-nuggets) and a negative one (each run against the next question's nuggets). It was designed after
-biogen-reuse-v1's numbers were known and before any nugget text was seen. NLM's BioACE (arXiv
-2602.04982) already matches LLM-extracted answer nuggets to these expert nuggets with embeddings
-(Kendall 0.758 against human recall); this test asks what a model-free version gets, against
-length.
+NLM's BioACE (arXiv 2602.04982) matches LLM-extracted answer nuggets to expert nuggets for these
+questions (Kendall 0.758 against human recall). Its download script fetches
+`bioace-data-models.zip` from NLM, and its paper says the training split "contains the
+system-generated and ground-truth nuggets". `bioace-zip-v1` lists that bundle by HTTP range
+requests (names and sizes, never the whole archive) and unpacks only nugget and data files, to see
+whether the expert nuggets are there. If they are, a new test is pre-registered before scoring.
 
 ## How hard is the conflict part? (TREC 2025 BioGen Task A, published numbers)
 
@@ -250,10 +258,10 @@ precision 0.817 (BM25: 0.757); the conflict flag again fired on no answer.
    designed. No prediction has been tested yet. The job runner picks the machine by free memory,
    and a job cannot choose it. As `ADDENDUM-t2sys-v7.md` said, the job is not re-filed blind
    again; it waits until it can be placed on the machine with the full index.
-2. `biogen-reuse-emb-v1` and `medaesqa-nugget-v1` need no index and run on either machine. If one
-   ends in "used" by its own rule, it becomes the yardstick, fixed in advance, for an open-weight
-   rewriting stage, compared at equal answer length. A rewrite keeps the composer's citations, so
-   judged precision alone cannot grade it.
+2. `bioace-zip-v1`: if NLM's BioACE bundle holds the expert nuggets for the 2024 questions, a new
+   pre-registered test scores the 30 runs against them, at equal answer length. If not, a
+   rewriting stage waits for the TREC 2025 BioGen judgments. A rewrite keeps the composer's
+   citations, so judged precision alone cannot grade it.
 
 Helpers: `t2dev.py` (wait, download pins, gold files) and `fetch_code.py` (fetches the published
 t1_runner, t2 and rerank code at pinned commits and checks each file's size; the newest version,
