@@ -55,7 +55,8 @@ Every job was pre-registered before it ran and graded word for word:
 | biogen-llm-v1 | `PREREGISTRATION-biogen-llm.md` | `RESULTS-biogen-llm.md`, `results-biogen-llm/` | 2 of 2 checks run; stopped by its own speed probe (189.1 s per pair), so no scores |
 | biogen-llm-v2 | `PREREGISTRATION-biogen-llm-v2.md` | `RESULTS-biogen-llm-v2.md`, `results-biogen-llm-v2/` | stopped from outside (exit 143) at 600 of 1,389 pairs; checks C1-C2 and timing B1-B3 held |
 | biogen-llm-v3 | the same + `ADDENDUM-biogen-llm-v3.md` | `RESULTS-biogen-llm-v2.md`, `results-biogen-llm-v3/` | 3 of 3 checks, 9 of 10 (gate AUROC 0.316, below the predicted range); not adopted (F1 0.0) |
-| biogen-reuse-v1 | `PREREGISTRATION-biogen-reuse.md` | queued | can the 2024 sentence judgments grade a run outside the pool? (below) |
+| biogen-reuse-v1 | `PREREGISTRATION-biogen-reuse.md` | queued | can the 2024 sentence judgments grade a run outside the pool? Word overlap (below) |
+| biogen-reuse-emb-v1 | `PREREGISTRATION-biogen-reuse-emb.md` | queued | the same test with all-mpnet-base-v2 embeddings, pre-registered before either version ran (below) |
 
 What v2 counted: 14,763 citation judgments (69.4% supporting, 1.9% contradicting, 4.3% invalid);
 55 of 65 topics have a contradicting judgment; 3,858 distinct PMIDs, all inside the SPARK
@@ -91,7 +92,7 @@ MedAESQA (Scientific Data 2025, PMC12179289), which releases 40 of these questio
 reports lower annotator agreement within one item for Contradicting (67.67) than for Supporting
 (82.09). No human has checked our counts yet.
 
-## Can the 2024 judgments grade an answer nobody judged? (biogen-reuse-v1, queued)
+## Can the 2024 judgments grade an answer nobody judged? (biogen-reuse-v1 and -emb-v1, queued)
 
 A Task 2 answer from MV2's system is a new run: no assessor read it. BioGen 2024 scores
 completeness by clustering the Required sentences of all 30 runs, **including** the scored run and
@@ -104,6 +105,15 @@ transcribed from Tables 3 and 4), next to a length-only baseline. The pre-regist
 10 predictions and a decision rule: the proxy is used to develop a rewriting stage only if it
 separates Required sentences (AUROC >= 0.60) and ranks runs better than answer length does.
 `wait_public.py` makes the job wait until the pre-registration is public.
+
+`biogen_reuse_emb.py` runs the same test with cosine similarity of all-mpnet-base-v2 embeddings
+(Apache-2.0, pinned commit and weights hash; one of the two models the overview names), primary
+bar 0.7. It recomputes the word-overlap proxy on the same sentences and compares the two pair by
+pair (a 1,000-resample topic bootstrap of the AUROC difference), and it runs `biogen_reuse.py`
+unchanged as an agreement check. It was pre-registered (8 predictions) before either version
+had run, so its bar could not be fitted to the word-overlap result. Decision rule: whichever proxy
+passes becomes the yardstick (both: the higher AUROC, words on a near-tie); if neither passes, no
+other variant is tried on the 2024 judgments.
 
 ## How hard is the conflict part? (TREC 2025 BioGen Task A, published numbers)
 
@@ -224,10 +234,10 @@ precision 0.817 (BM25: 0.757); the conflict flag again fired on no answer.
    designed. No prediction has been tested yet. The job runner picks the machine by free memory,
    and a job cannot choose it. As `ADDENDUM-t2sys-v7.md` said, the job is not re-filed blind
    again; it waits until it can be placed on the machine with the full index.
-2. Meanwhile, `biogen-reuse-v1` (above) needs no index and runs on either machine. If the proxy
-   passes its decision rule, it becomes the yardstick, fixed in advance, for an open-weight
-   rewriting stage. A rewrite keeps the composer's citations, so judged precision alone cannot
-   grade it.
+2. Meanwhile, `biogen-reuse-v1` and `biogen-reuse-emb-v1` (above) need no index and run on
+   either machine. If a proxy passes its decision rule, it becomes the yardstick, fixed in
+   advance, for an open-weight rewriting stage. A rewrite keeps the composer's citations, so
+   judged precision alone cannot grade it.
 
 Helpers: `t2dev.py` (wait, download pins, gold files) and `fetch_code.py` (fetches the published
 t1_runner, t2 and rerank code at pinned commits and checks each file's size; the newest version,
