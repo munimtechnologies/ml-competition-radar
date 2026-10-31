@@ -12,6 +12,11 @@ recall ranks runs better than length, and whether it adds anything once length i
 (Kendall's partial tau). It also checks that MedAESQA's anonymised runs (M1-M30) are the 30
 BioGen runs.
 
+0.2.0: the nuggets are read from the field `nuggets`, which is where medaesqa_v1.json keeps them
+(bioace-zip-v1's field census: a list of strings in all 40 items). 0.1.0 read only
+`expert_curated_nuggets`, the name in the dataset's README, which the file does not have. The
+MedAESQA file is now pinned by sha256 as well as size. Nothing else changed.
+
 Outputs (counts and scores only, never question, nugget or sentence text):
   nugget.json       totals, nugget value shapes, question and run mapping, controls, sentence
                     AUROC, Kendall taus against the official Table 3/4 numbers
@@ -28,9 +33,11 @@ import time
 
 import biogen_reuse as br
 
-VERSION = "0.1.0"
+VERSION = "0.2.0"
 MEDAESQA_URL = "https://osf.io/download/9d3qs/"
 MEDAESQA_BYTES = 7276948  # size OSF lists for medaesqa_v1.json (read 2026-10-31); no hash is published
+MEDAESQA_SHA = "a062742c1678b4379121ad030a06bda574afd376f331df41575938dd9849c383"  # seen by medaesqa-nugget-v1
+NUGGET_KEYS = ("nuggets", "expert_curated_nuggets")  # the file's name first, then the README's
 BAR = 0.6  # fixed before any run; BARS are reported for sensitivity only
 BARS = (0.4, 0.5, 0.6, 0.7, 0.8)
 NUGGET_MIN = 2  # a nugget needs at least 2 content words to be scored
@@ -53,7 +60,7 @@ def pct(v):
 
 
 def nugget_texts(v):
-    """The strings inside an expert_curated_nuggets value, whatever its shape."""
+    """The strings inside a nuggets value, whatever its shape."""
     if isinstance(v, str):
         return [s.strip() for s in v.split("\n") if s.strip()]
     if isinstance(v, list):
@@ -88,16 +95,26 @@ def unwrap(obj):
     return obj
 
 
+def nugget_field(unit):
+    """(key name, value) of the first NUGGET_KEYS field the item has, else (None, None)."""
+    for name in NUGGET_KEYS:
+        for k, v in unit.items():
+            if br.norm(k) == br.norm(name):
+                return name, v
+    return None, None
+
+
 def load_expert(items):
     """{MedAESQA question id: question, nuggets and expert answer sentences as content-word sets},
-    and how often each nugget value shape was seen."""
+    how often each nugget value shape was seen, and how often each nugget field name was used."""
     obj = unwrap(items)
     pairs = list(obj.items()) if isinstance(obj, dict) else list(enumerate(obj))
-    out, shapes = {}, {}
+    out, shapes, fields = {}, {}, {}
     for k, unit in pairs:
         if not isinstance(unit, dict):
             continue
-        raw = br.get(unit, "expert_curated_nuggets")
+        name, raw = nugget_field(unit)
+        fields[str(name)] = fields.get(str(name), 0) + 1
         s = shape(raw)
         shapes[s] = shapes.get(s, 0) + 1
         texts = nugget_texts(raw)
@@ -107,7 +124,7 @@ def load_expert(items):
             "nugget_texts": len(texts),
             "expert": [w for w in map(br.content, sentences(br.get(unit, "expert_curated_answer")))
                        if len(w) >= br.MIN_WORDS]}
-    return out, shapes
+    return out, shapes, fields
 
 
 def topic_questions(topics):
@@ -283,7 +300,7 @@ def main(argv=None):
         dl = [br.download(br.TOPICS_URL, topics_path), br.download(br.ASSESS_URL, assess_path),
               br.download(MEDAESQA_URL, med_path)]
         res["download"] = dl
-        for d, want in zip(dl, (br.TOPICS_SHA, br.ASSESS_SHA)):
+        for d, want in zip(dl, (br.TOPICS_SHA, br.ASSESS_SHA, MEDAESQA_SHA)):
             if d["sha256"] != want:
                 raise ValueError("%s: sha256 %s, pinned %s" % (d["url"], d["sha256"], want))
         if dl[2]["bytes"] != MEDAESQA_BYTES:
@@ -296,12 +313,12 @@ def main(argv=None):
             items = json.load(f)
         with open(a.official, encoding="utf-8") as f:
             official = json.load(f)["runs"]
-        expert, shapes = load_expert(items)
+        expert, shapes, fields = load_expert(items)
         med = br.load_runs(items)
         qmap, how = match_questions(expert, data, tq)
         runmap = map_runs(med, data, qmap)
         shares = [v["share"] for v in runmap.values() if v["share"] is not None]
-        res.update({"medaesqa_items": len(expert), "nugget_shapes": shapes,
+        res.update({"medaesqa_items": len(expert), "nugget_fields": fields, "nugget_shapes": shapes,
                     "medaesqa_runs": len({m for q in med.values() for m in q}),
                     "question_match": how, "matched_topics_distinct": len(set(qmap.values())),
                     "run_map": runmap, "run_map_distinct": len({v["run"] for v in runmap.values()}),

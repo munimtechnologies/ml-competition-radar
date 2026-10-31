@@ -25,6 +25,12 @@ ITEMS = [
          "M1": {"answer": "x", "is_answer_accurate": "yes",
                 "answer_sentences": [sent("Aspirin lowers fever in adults [PMID: 12345678].", "required")]}}},
 ]
+# the shape medaesqa_v1.json has (bioace-zip-v1): `nuggets`, a list of strings
+ITEMS2 = [
+    {"question_id": "8", "question": "Does aspirin lower fever?", "expert_curated_nuggets": None,
+     "nuggets": ["Aspirin lowers fever", "aspirin"]},
+    {"question_id": "9", "question": "Does aspirin lower fever?"},
+]
 OFFICIAL = {"A": {"team": "X", "precision": 50.0, "completeness_r": 30.0, "completeness_rb": 31.0},
             "B": {"team": "Y", "precision": 100.0, "completeness_r": 20.0, "completeness_rb": 21.0}}
 
@@ -70,8 +76,8 @@ class TestMedaesqaNugget(unittest.TestCase):
         self.assertEqual(mn.run_scores(rows, [])[1][0.6], 0.0)
 
     def test_load_expert_and_match(self):
-        expert, shapes = mn.load_expert(ITEMS)
-        self.assertEqual(shapes, {"list[str]": 1})
+        expert, shapes, fields = mn.load_expert(ITEMS)
+        self.assertEqual((shapes, fields), ({"list[str]": 1}, {"expert_curated_nuggets": 1}))
         e = expert["7"]
         self.assertEqual(e["nuggets"], [frozenset({"aspirin", "lowers", "fever"}), frozenset({"eases", "pain"})])
         self.assertEqual(e["expert"], [frozenset({"aspirin", "lowers", "fever", "adults"})])  # 2nd: 2 words
@@ -80,6 +86,16 @@ class TestMedaesqaNugget(unittest.TestCase):
                          ({"7": "1"}, {"by_id": 0, "by_text": 1, "unmatched": 0, "id_text_differs": 0}))
         self.assertEqual(mn.match_questions({"1": {"question": frozenset({"cats"})}}, data, tq),
                          ({}, {"by_id": 0, "by_text": 0, "unmatched": 1, "id_text_differs": 1}))
+
+    def test_nuggets_field(self):
+        expert, shapes, fields = mn.load_expert(ITEMS2)
+        self.assertEqual(fields, {"nuggets": 1, "None": 1})
+        self.assertEqual(shapes, {"list[str]": 1, "NoneType": 1})
+        self.assertEqual(expert["8"]["nuggets"], [frozenset({"aspirin", "lowers", "fever"})])  # 1 word: dropped
+        self.assertEqual(expert["8"]["nugget_texts"], 2)
+        self.assertEqual((expert["9"]["nuggets"], expert["9"]["expert"]), ([], []))
+        self.assertEqual(mn.nugget_field({"Nuggets": ["a"]}), ("nuggets", ["a"]))
+        self.assertEqual(mn.nugget_field({}), (None, None))
 
     def test_map_runs_and_labels(self):
         med, data = br.load_runs(ITEMS), br.load_runs(ASSESS)
@@ -90,7 +106,7 @@ class TestMedaesqaNugget(unittest.TestCase):
                           "biogen_null_medaesqa_labelled": 0})
 
     def test_analyse_small(self):
-        expert, _ = mn.load_expert(ITEMS)
+        expert = mn.load_expert(ITEMS)[0]
         res, per = mn.analyse(expert, {"7": "1"}, br.load_runs(ASSESS), OFFICIAL)
         self.assertEqual((res["questions"], res["runs"], res["nuggets"]), (1, 2, 2))
         self.assertEqual(res["control_expert_recall"], 50.0)
