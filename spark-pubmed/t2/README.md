@@ -23,7 +23,7 @@ judged Required, Unnecessary, Borderline or Inappropriate. The 2025 track recomm
 assessments for development (https://trec-biogen.github.io/docs/). Its answers are at most 250
 words, with at most 3 PMIDs per sentence and 30 per answer. The 2025 track's own judgments are
 not public yet (its TREC data page lists topics only, plus a pointer to the BioACE scoring code;
-read 2026-10-28, 2026-10-30 and 2026-10-31).
+read 2026-10-28, 2026-10-30, 2026-10-31 and 2026-11-01).
 
 NLM's MedAESQA (https://osf.io/ydbzq, CC0 1.0) releases 40 of these 65 questions with an
 expert-written answer for each, next to the same judged machine answers: `medaesqa-nugget-v1`
@@ -66,8 +66,8 @@ Every job was pre-registered before it ran and graded word for word:
 | biogen-reuse-emb-v1 | `PREREGISTRATION-biogen-reuse-emb.md` | `RESULTS-biogen-reuse-emb.md`, `results-biogen-reuse-emb/` | 5 of 5 checks, 7 of 9; not adopted (length still ranks runs better: tau 0.82 against 0.80) |
 | medaesqa-nugget-v1 | `PREREGISTRATION-medaesqa-nugget.md` | `RESULTS-medaesqa-nugget.md`, `results-medaesqa-nugget/` | 4 of 4 checks, 2 of 10; not run as designed: it read the README's field name, which the file does not have, so no nuggets were read (corrected 2026-10-31) |
 | bioace-zip-v1 | none (a data survey, no predictions) | `RESULTS-bioace-zip.md`, `results-bioace-zip/` | MedAESQA's nuggets are under `nuggets` in all 40 items; NLM's BioACE bundle has nuggets for 2 other questions only (`bioace_zip/`) |
-| medaesqa-nugget-v2 | `PREREGISTRATION-medaesqa-nugget-v2.md` | queued (not run at 18:30 UTC, 2026-10-31) | v1's test on the right field, with a stricter bar: beat content words per question as well as sentences |
-| mv2-nugget-v1 | `PREREGISTRATION-mv2-nugget.md` | to be queued once MV2's local answers are copied into its folder | MV2's own extractive answers (`t2dev-v1`) against the expert nuggets, at each run's own length, with a ceiling from MV2's best sentences (`mv2-nugget/`) |
+| medaesqa-nugget-v2 | `PREREGISTRATION-medaesqa-nugget-v2.md` | `RESULTS-medaesqa-nugget-v2.md`, `results-medaesqa-nugget-v2/` | 5 of 5 checks, 6 of 9; both controls held, but nugget recall ranks runs at tau 0.41 against length's 0.80-0.85, so it is not used |
+| mv2-nugget-v1 | `PREREGISTRATION-mv2-nugget.md` | `RESULTS-mv2-nugget.md`, `results-mv2-nugget/` | 7 of 7 checks, 3 of 5; MV2's extractive answers beat 0 of 30 runs at matched length, and so does their ceiling; no decision (the matcher was not made a yardstick) |
 
 What v2 counted: 14,763 citation judgments (69.4% supporting, 1.9% contradicting, 4.3% invalid);
 55 of 65 topics have a contradicting judgment; 3,858 distinct PMIDs, all inside the SPARK
@@ -127,25 +127,35 @@ of sentences per question ranks runs against official completeness R at Kendall 
 - Table 3's precision is reproduced from the released labels within 0.005 for all 30 runs.
 - For a rewriting stage this means any yardstick must be compared at equal answer length.
 
-**Expert nuggets instead of other runs (`medaesqa-nugget-v1`, `-v2`).** These score each run
-against MedAESQA's expert nuggets by word containment (no language model), with a length
-baseline, a partial tau holding length fixed, and positive and negative controls. v1 read the
-README's field name (`expert_curated_nuggets`), which the file does not have, so it read no
-nuggets and tested nothing beyond the data checks: MedAESQA's 40 questions carry BioGen ids, its
-M1-M30 share 100% of their sentences with BioGen runs, and sentence labels agree in 4,901 of 4,906
-position-paired sentences. On these 40 questions length reaches tau 0.80 (sentences) and 0.85
-(content words). v2 reads `nuggets`, keeps v1's predictions, and must beat both length baselines
-to be used across answer lengths.
+**Expert nuggets instead of other runs (`medaesqa-nugget-v2`).** Each run is scored against
+MedAESQA's expert nuggets (40 questions, 498 nuggets, median 11.5 per question) by word
+containment (no language model), at bar 0.6. The matcher passed both controls: the expert answers
+cover 89.5% of their own nuggets, and runs cover 0.08% of the next question's. It separates
+Required sentences (AUROC 0.645 against 0.538 for question overlap). But it ranks the 30 runs
+against completeness R at only tau 0.41 (0.57-0.61 at looser bars, 0.68 for soft recall), while
+content words per question reach 0.85 and sentences 0.80. Holding length fixed leaves a partial
+tau of 0.30. By the rule fixed in advance it is **not used**, not even at equal length.
+
+| yardstick, 40 MedAESQA questions | tau, vs completeness R |
+|---|---|
+| content words per question | **0.852** |
+| sentences per question | 0.799 |
+| expert-nugget recall, bar 0.6 (`medaesqa-nugget-v2`) | 0.405 |
+| the same, partial tau with length held fixed | 0.299 |
+
+On these questions BioGen 2024's completeness score mostly tracks answer length, and recall of
+the experts' own facts agrees with it only in part (`RESULTS-medaesqa-nugget-v2.md`).
 
 **MV2's own answers against the nuggets (`mv2-nugget-v1`).** Pre-registered before either nugget
-job ran. MV2's extractive answers are about twice as long as any 2024 run, so they are compared
-at matched length: for each run, MV2's answer to each question is cut to that run's own length.
-A ceiling (MV2's best sentences, chosen knowing the nuggets, within the same length) tells
-whether a miss means the facts are absent from MV2's sentences or present but not chosen. A rule
-fixed in advance turns the result into the next Task 2 step (precision and conflicts, a
-sentence-selection stage, or the candidate pool), and only if `medaesqa-nugget-v2` finds the
-matcher usable at equal length. MV2's answers contain abstract text and stay local; only counts
-and scores are published.
+job ran. MV2's extractive answers (137.6 content words per question, at least 1.5 times the
+longest 2024 run) were cut to each run's own length and compared. **They beat 0 of the 30 runs,
+and so does the best possible choice of MV2's own sentences.** Uncut, they cover 7.1% of the
+experts' nuggets against the runs' median of 18.1%. Every nugget-covering sentence MV2 has fits
+in 40 content words. Because the matcher was not made a yardstick, the rule fixed in advance
+decides nothing. The gap is large enough to act on as a signal: quoted abstract sentences carry
+far fewer of the experts' facts than LLM-written answers, so the composer stays as the citation
+and grounding layer, not the answer writer (`RESULTS-mv2-nugget.md`). Why they miss (retrieval,
+the study-result style of abstracts, or the matcher's taste for general wording) is not tested.
 
 NLM's BioACE (arXiv 2602.04982) matches LLM-extracted answer nuggets to expert nuggets for these
 questions (Kendall 0.758 against human recall). `bioace-zip-v1` listed its data bundle
@@ -259,6 +269,8 @@ BM25 over all 39,167,523 records, then `compose.py`, on the 65 BioGen questions
 - 72.9% of the answers' citations were never judged (no 2024 run cited them); 16 answers have no
   judged citation at all. Of the judged citations, 75.7% are Supports or mixed papers.
 - The negation-cue conflict flag fired on no answer, although 10 answers cite a mixed paper.
+- Against the 40 MedAESQA questions' expert nuggets, these answers cover 7.1% of the nuggets
+  uncut and beat none of the 30 runs at matched length (`RESULTS-mv2-nugget.md`).
 
 With the MedCPT cross-encoder reranking the top 50 BM25 candidates first
 (`../rerank/RESULTS-spark36.md`): 70.0% unjudged, Supports share 21.7% (BM25: 16.9%), judged
@@ -272,13 +284,13 @@ precision 0.817 (BM25: 0.757); the conflict flag again fired on no answer.
    designed. No prediction has been tested yet. The job runner picks the machine by free memory,
    and a job cannot choose it. As `ADDENDUM-t2sys-v7.md` said, the job is not re-filed blind
    again; it waits until it can be placed on the machine with the full index.
-2. `medaesqa-nugget-v2`: if expert-nugget recall beats both length baselines, it becomes the
-   development yardstick for a Task 2 rewriting stage; if it adds something only at equal length,
-   it is used only at a fixed word budget; otherwise a rewriting stage waits for the TREC 2025
-   BioGen judgments. A rewrite keeps the composer's citations, so judged precision alone cannot
-   grade it.
-3. `mv2-nugget-v1`: grade MV2's answers against the nuggets at matched length and apply its
-   decision rule, if v2 finds the matcher usable.
+2. No yardstick from the 2024 data is in use: pool-based proxies and expert-nugget word
+   containment both rank runs worse than answer length. No further variant is tried on these
+   questions. A written-answer stage is developed against the TREC 2025 BioGen judgments (BioACE)
+   once they are public, or against SPARK's own scorer if NLM publishes one.
+3. Meanwhile, work that needs no yardstick: whether an openly licensed instruction model can
+   write a cited 250-word answer from MV2's retrieved abstracts on a CPU in reasonable time, with
+   every sentence keeping a citation that lexically supports it.
 
 Helpers: `t2dev.py` (wait, download pins, gold files) and `fetch_code.py` (fetches the published
 t1_runner, t2 and rerank code at pinned commits and checks each file's size; the newest version,
