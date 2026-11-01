@@ -1,0 +1,685 @@
+{
+ "MV2": {
+  "sentences_per_question": 10.575,
+  "content_words_per_question": 137.625,
+  "recall": {
+   "20": 2.2377,
+   "40": 4.0998,
+   "60": 4.6246,
+   "all": 7.0897
+  },
+  "words_at": {
+   "20": 14.875,
+   "40": 31.65,
+   "60": 50.625,
+   "all": 137.625
+  },
+  "ceiling": {
+   "20": 5.3315,
+   "40": 7.0897,
+   "60": 7.0897,
+   "all": 7.0897
+  },
+  "shuffled_recall": 0.0
+ },
+ "iiresearch_trec_bio2024_t5base_run": {
+  "sentences_per_question": 4.175,
+  "content_words_per_question": 62.4,
+  "recall": {
+   "20": 5.6838,
+   "40": 8.6462,
+   "60": 10.9414,
+   "all": 11.7587
+  },
+  "words_at": {
+   "20": 15.375,
+   "40": 33.025,
+   "60": 51.6,
+   "all": 62.4
+  },
+  "ceiling": {
+   "20": 8.8937,
+   "40": 11.5664,
+   "60": 11.7587,
+   "all": 11.7587
+  }
+ },
+ "listgalore_gpt-4o_arenuggetsallyouneed": {
+  "sentences_per_question": 8.4,
+  "content_words_per_question": 88.35,
+  "recall": {
+   "20": 10.3367,
+   "40": 16.4734,
+   "60": 18.1852,
+   "all": 21.372
+  },
+  "words_at": {
+   "20": 14.1,
+   "40": 34.65,
+   "60": 54.85,
+   "all": 88.35
+  },
+  "ceiling": {
+   "20": 19.1562,
+   "40": 21.372,
+   "60": 21.372,
+   "all": 21.372
+  }
+ },
+ "listgalore_gpt-4o_ragnarokv5biogen_top20": {
+  "sentences_per_question": 5.6,
+  "content_words_per_question": 85.375,
+  "recall": {
+   "20": 10.6586,
+   "40": 16.5168,
+   "60": 17.5584,
+   "all": 19.0659
+  },
+  "words_at": {
+   "20": 17.8,
+   "40": 32.0,
+   "60": 50.9,
+   "all": 85.375
+  },
+  "ceiling": {
+   "20": 12.4337,
+   "40": 18.626,
+   "60": 19.0659,
+   "all": 19.0659
+  }
+ },
+ "listgalore_l31-70b_ragnarokv5biogen_top20": {
+  "sentences_per_question": 6.0,
+  "content_words_per_question": 79.975,
+  "recall": {
+   "20": 9.0956,
+   "40": 17.3031,
+   "60": 18.9558,
+   "all": 21.8647
+  },
+  "words_at": {
+   "20": 14.5,
+   "40": 34.25,
+   "60": 52.35,
+   "all": 79.975
+  },
+  "ceiling": {
+   "20": 18.4815,
+   "40": 21.7331,
+   "60": 21.8647,
+   "all": 21.8647
+  }
+ },
+ "norarr.llm_only_2.boolena.llama3-70b_fixed": {
+  "sentences_per_question": 3.85,
+  "content_words_per_question": 50.2,
+  "recall": {
+   "20": 13.7745,
+   "40": 14.9321,
+   "60": 16.4358,
+   "all": 16.6858
+  },
+  "words_at": {
+   "20": 15.125,
+   "40": 29.35,
+   "60": 43.2,
+   "all": 50.2
+  },
+  "ceiling": {
+   "20": 15.5059,
+   "40": 16.6858,
+   "60": 16.6858,
+   "all": 16.6858
+  }
+ },
+ "norarr.llm_only_2.llama3-70b_fixed": {
+  "sentences_per_question": 3.575,
+  "content_words_per_question": 48.375,
+  "recall": {
+   "20": 11.7007,
+   "40": 16.7309,
+   "60": 20.5797,
+   "all": 20.6603
+  },
+  "words_at": {
+   "20": 14.175,
+   "40": 29.275,
+   "60": 42.65,
+   "all": 48.375
+  },
+  "ceiling": {
+   "20": 17.5834,
+   "40": 20.5132,
+   "60": 20.6603,
+   "all": 20.6603
+  }
+ },
+ "norarr.llm_only_2.llama3-8b_fixed": {
+  "sentences_per_question": 4.05,
+  "content_words_per_question": 55.625,
+  "recall": {
+   "20": 9.5543,
+   "40": 14.6583,
+   "60": 18.8266,
+   "all": 19.5909
+  },
+  "words_at": {
+   "20": 15.325,
+   "40": 30.8,
+   "60": 46.775,
+   "all": 55.625
+  },
+  "ceiling": {
+   "20": 16.0715,
+   "40": 18.8072,
+   "60": 19.5909,
+   "all": 19.5909
+  }
+ },
+ "rarr_attrfix.llm_only_2.llama3-70b_fixed": {
+  "sentences_per_question": 3.725,
+  "content_words_per_question": 50.1,
+  "recall": {
+   "20": 11.7007,
+   "40": 16.7309,
+   "60": 20.5797,
+   "all": 20.769
+  },
+  "words_at": {
+   "20": 14.55,
+   "40": 30.025,
+   "60": 44.525,
+   "all": 50.1
+  },
+  "ceiling": {
+   "20": 17.5834,
+   "40": 20.5132,
+   "60": 20.769,
+   "all": 20.769
+  }
+ },
+ "rarr_attrfix_custprompt.llm_only_3_v2.llama3-70b_fixed": {
+  "sentences_per_question": 3.7,
+  "content_words_per_question": 50.025,
+  "recall": {
+   "20": 11.7007,
+   "40": 16.7309,
+   "60": 20.5797,
+   "all": 20.6603
+  },
+  "words_at": {
+   "20": 14.2,
+   "40": 29.9,
+   "60": 44.0,
+   "all": 50.025
+  },
+  "ceiling": {
+   "20": 17.5834,
+   "40": 20.5132,
+   "60": 20.6603,
+   "all": 20.6603
+  }
+ },
+ "rarr_attronly.llm_only_2.llama3-70b_fixed": {
+  "sentences_per_question": 3.55,
+  "content_words_per_question": 47.5,
+  "recall": {
+   "20": 11.7007,
+   "40": 16.7309,
+   "60": 20.5797,
+   "all": 20.6603
+  },
+  "words_at": {
+   "20": 14.325,
+   "40": 29.05,
+   "60": 42.225,
+   "all": 47.5
+  },
+  "ceiling": {
+   "20": 17.5834,
+   "40": 20.5132,
+   "60": 20.6603,
+   "all": 20.6603
+  }
+ },
+ "rarr_qgen.llm_only_2.llama3-70b_fixed": {
+  "sentences_per_question": 3.275,
+  "content_words_per_question": 44.4,
+  "recall": {
+   "20": 11.5252,
+   "40": 16.6865,
+   "60": 19.7158,
+   "all": 19.7158
+  },
+  "words_at": {
+   "20": 14.625,
+   "40": 29.075,
+   "60": 41.575,
+   "all": 44.4
+  },
+  "ceiling": {
+   "20": 16.8726,
+   "40": 19.5688,
+   "60": 19.7158,
+   "all": 19.7158
+  }
+ },
+ "rarr_qgenfix.llm_only_2.llama3-70b_fixed": {
+  "sentences_per_question": 3.825,
+  "content_words_per_question": 55.55,
+  "recall": {
+   "20": 12.6919,
+   "40": 15.5365,
+   "60": 20.5682,
+   "all": 21.4471
+  },
+  "words_at": {
+   "20": 14.675,
+   "40": 27.325,
+   "60": 45.075,
+   "all": 55.55
+  },
+  "ceiling": {
+   "20": 17.4669,
+   "40": 20.0924,
+   "60": 21.0305,
+   "all": 21.4471
+  }
+ },
+ "rarr_qgenfix.llm_only_2.llama3-8b_fixed": {
+  "sentences_per_question": 4.025,
+  "content_words_per_question": 56.475,
+  "recall": {
+   "20": 10.9443,
+   "40": 16.6568,
+   "60": 18.7767,
+   "all": 19.6582
+  },
+  "words_at": {
+   "20": 15.35,
+   "40": 30.775,
+   "60": 45.65,
+   "all": 56.475
+  },
+  "ceiling": {
+   "20": 16.3443,
+   "40": 19.3862,
+   "60": 19.6582,
+   "all": 19.6582
+  }
+ },
+ "rarr_qgenfix_custprompt.llm_only_3_v2.llama3-70b_fixed": {
+  "sentences_per_question": 3.675,
+  "content_words_per_question": 53.125,
+  "recall": {
+   "20": 11.9147,
+   "40": 16.8625,
+   "60": 20.7302,
+   "all": 21.3549
+  },
+  "words_at": {
+   "20": 15.325,
+   "40": 30.525,
+   "60": 45.8,
+   "all": 53.125
+  },
+  "ceiling": {
+   "20": 17.0284,
+   "40": 21.0829,
+   "60": 21.2079,
+   "all": 21.3549
+  }
+ },
+ "rl31-70b_gpt-4o_ragnarokv5biogen_top20": {
+  "sentences_per_question": 5.775,
+  "content_words_per_question": 86.15,
+  "recall": {
+   "20": 9.6598,
+   "40": 15.132,
+   "60": 17.373,
+   "all": 18.1838
+  },
+  "words_at": {
+   "20": 17.875,
+   "40": 31.775,
+   "60": 53.375,
+   "all": 86.15
+  },
+  "ceiling": {
+   "20": 10.7277,
+   "40": 17.9755,
+   "60": 18.1838,
+   "all": 18.1838
+  }
+ },
+ "rl31-70b_gpt-4o_ragnarokv5biogennc_top20": {
+  "sentences_per_question": 6.1,
+  "content_words_per_question": 80.75,
+  "recall": {
+   "20": 9.2051,
+   "40": 12.7546,
+   "60": 14.2476,
+   "all": 15.6108
+  },
+  "words_at": {
+   "20": 15.6,
+   "40": 34.175,
+   "60": 53.675,
+   "all": 80.75
+  },
+  "ceiling": {
+   "20": 11.0874,
+   "40": 15.5021,
+   "60": 15.6108,
+   "all": 15.6108
+  }
+ },
+ "rl31-70b_l31-70b_ragnarokv5biogen_top20": {
+  "sentences_per_question": 5.825,
+  "content_words_per_question": 81.175,
+  "recall": {
+   "20": 11.9496,
+   "40": 15.2418,
+   "60": 17.7984,
+   "all": 21.6666
+  },
+  "words_at": {
+   "20": 14.75,
+   "40": 32.875,
+   "60": 52.8,
+   "all": 81.175
+  },
+  "ceiling": {
+   "20": 15.9909,
+   "40": 21.5195,
+   "60": 21.6666,
+   "all": 21.6666
+  }
+ },
+ "ten-shot-gemini-flash": {
+  "sentences_per_question": 5.675,
+  "content_words_per_question": 62.3,
+  "recall": {
+   "20": 10.0084,
+   "40": 12.4724,
+   "60": 13.3754,
+   "all": 15.1859
+  },
+  "words_at": {
+   "20": 14.525,
+   "40": 34.475,
+   "60": 53.7,
+   "all": 62.3
+  },
+  "ceiling": {
+   "20": 12.7323,
+   "40": 15.1859,
+   "60": 15.1859,
+   "all": 15.1859
+  }
+ },
+ "ten-shot-gemini-flash-wiki": {
+  "sentences_per_question": 5.525,
+  "content_words_per_question": 63.1,
+  "recall": {
+   "20": 6.784,
+   "40": 13.2052,
+   "60": 15.3809,
+   "all": 15.9365
+  },
+  "words_at": {
+   "20": 12.925,
+   "40": 33.775,
+   "60": 53.025,
+   "all": 63.1
+  },
+  "ceiling": {
+   "20": 14.2538,
+   "40": 15.7894,
+   "60": 15.9365,
+   "all": 15.9365
+  }
+ },
+ "ten-shot-gpt4o-mini": {
+  "sentences_per_question": 5.575,
+  "content_words_per_question": 69.4,
+  "recall": {
+   "20": 10.9286,
+   "40": 14.0759,
+   "60": 17.7367,
+   "all": 18.1808
+  },
+  "words_at": {
+   "20": 14.275,
+   "40": 34.175,
+   "60": 53.5,
+   "all": 69.4
+  },
+  "ceiling": {
+   "20": 16.2201,
+   "40": 18.1808,
+   "60": 18.1808,
+   "all": 18.1808
+  }
+ },
+ "ten-shot-gpt4o-mini-wiki": {
+  "sentences_per_question": 5.625,
+  "content_words_per_question": 67.675,
+  "recall": {
+   "20": 8.5719,
+   "40": 14.0377,
+   "60": 16.6429,
+   "all": 18.0747
+  },
+  "words_at": {
+   "20": 14.55,
+   "40": 33.6,
+   "60": 53.85,
+   "all": 67.675
+  },
+  "ceiling": {
+   "20": 15.4968,
+   "40": 17.9276,
+   "60": 18.0747,
+   "all": 18.0747
+  }
+ },
+ "webis-1": {
+  "sentences_per_question": 2.0,
+  "content_words_per_question": 22.725,
+  "recall": {
+   "20": 7.7042,
+   "40": 7.8292,
+   "60": 7.8292,
+   "all": 7.8292
+  },
+  "words_at": {
+   "20": 13.7,
+   "40": 21.325,
+   "60": 22.35,
+   "all": 22.725
+  },
+  "ceiling": {
+   "20": 7.7042,
+   "40": 7.8292,
+   "60": 7.8292,
+   "all": 7.8292
+  }
+ },
+ "webis-2": {
+  "sentences_per_question": 1.625,
+  "content_words_per_question": 16.175,
+  "recall": {
+   "20": 5.8075,
+   "40": 5.8075,
+   "60": 5.8075,
+   "all": 5.8075
+  },
+  "words_at": {
+   "20": 11.675,
+   "40": 16.175,
+   "60": 16.175,
+   "all": 16.175
+  },
+  "ceiling": {
+   "20": 5.8075,
+   "40": 5.8075,
+   "60": 5.8075,
+   "all": 5.8075
+  }
+ },
+ "webis-3": {
+  "sentences_per_question": 1.9,
+  "content_words_per_question": 22.525,
+  "recall": {
+   "20": 6.2975,
+   "40": 6.5607,
+   "60": 6.5607,
+   "all": 6.5607
+  },
+  "words_at": {
+   "20": 13.65,
+   "40": 19.9,
+   "60": 22.525,
+   "all": 22.525
+  },
+  "ceiling": {
+   "20": 5.3107,
+   "40": 6.5607,
+   "60": 6.5607,
+   "all": 6.5607
+  }
+ },
+ "webis-5": {
+  "sentences_per_question": 1.9,
+  "content_words_per_question": 22.525,
+  "recall": {
+   "20": 6.2975,
+   "40": 6.5607,
+   "60": 6.5607,
+   "all": 6.5607
+  },
+  "words_at": {
+   "20": 13.65,
+   "40": 19.9,
+   "60": 22.525,
+   "all": 22.525
+  },
+  "ceiling": {
+   "20": 5.3107,
+   "40": 6.5607,
+   "60": 6.5607,
+   "all": 6.5607
+  }
+ },
+ "webis-gpt-1": {
+  "sentences_per_question": 2.75,
+  "content_words_per_question": 36.95,
+  "recall": {
+   "20": 11.8889,
+   "40": 14.5195,
+   "60": 14.5195,
+   "all": 14.5195
+  },
+  "words_at": {
+   "20": 15.425,
+   "40": 34.2,
+   "60": 36.95,
+   "all": 36.95
+  },
+  "ceiling": {
+   "20": 9.9238,
+   "40": 14.5195,
+   "60": 14.5195,
+   "all": 14.5195
+  }
+ },
+ "webis-gpt-4": {
+  "sentences_per_question": 2.25,
+  "content_words_per_question": 30.575,
+  "recall": {
+   "20": 12.4687,
+   "40": 13.3931,
+   "60": 13.9813,
+   "all": 13.9813
+  },
+  "words_at": {
+   "20": 14.9,
+   "40": 27.825,
+   "60": 30.575,
+   "all": 30.575
+  },
+  "ceiling": {
+   "20": 12.958,
+   "40": 13.6872,
+   "60": 13.9813,
+   "all": 13.9813
+  }
+ },
+ "webis-gpt-6": {
+  "sentences_per_question": 2.75,
+  "content_words_per_question": 37.9,
+  "recall": {
+   "20": 5.4171,
+   "40": 8.4175,
+   "60": 8.4175,
+   "all": 8.4175
+  },
+  "words_at": {
+   "20": 14.15,
+   "40": 32.65,
+   "60": 37.9,
+   "all": 37.9
+  },
+  "ceiling": {
+   "20": 7.4516,
+   "40": 8.4175,
+   "60": 8.4175,
+   "all": 8.4175
+  }
+ },
+ "zero-shot-gemini-flash": {
+  "sentences_per_question": 6.8,
+  "content_words_per_question": 68.55,
+  "recall": {
+   "20": 7.8857,
+   "40": 10.2248,
+   "60": 12.4359,
+   "all": 14.2276
+  },
+  "words_at": {
+   "20": 15.425,
+   "40": 34.175,
+   "60": 52.85,
+   "all": 68.55
+  },
+  "ceiling": {
+   "20": 13.1856,
+   "40": 14.2276,
+   "60": 14.2276,
+   "all": 14.2276
+  }
+ },
+ "zero-shot-gpt4o-mini": {
+  "sentences_per_question": 5.55,
+  "content_words_per_question": 69.375,
+  "recall": {
+   "20": 10.8088,
+   "40": 13.6817,
+   "60": 15.8673,
+   "all": 16.7006
+  },
+  "words_at": {
+   "20": 15.375,
+   "40": 33.7,
+   "60": 54.375,
+   "all": 69.375
+  },
+  "ceiling": {
+   "20": 15.1088,
+   "40": 16.4923,
+   "60": 16.7006,
+   "all": 16.7006
+  }
+ }
+}
