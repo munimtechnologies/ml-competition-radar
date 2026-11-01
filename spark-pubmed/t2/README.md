@@ -68,6 +68,7 @@ Every job was pre-registered before it ran and graded word for word:
 | bioace-zip-v1 | none (a data survey, no predictions) | `RESULTS-bioace-zip.md`, `results-bioace-zip/` | MedAESQA's nuggets are under `nuggets` in all 40 items; NLM's BioACE bundle has nuggets for 2 other questions only (`bioace_zip/`) |
 | medaesqa-nugget-v2 | `PREREGISTRATION-medaesqa-nugget-v2.md` | `RESULTS-medaesqa-nugget-v2.md`, `results-medaesqa-nugget-v2/` | 5 of 5 checks, 6 of 9; both controls held, but nugget recall ranks runs at tau 0.41 against length's 0.80-0.85, so it is not used |
 | mv2-nugget-v1 | `PREREGISTRATION-mv2-nugget.md` | `RESULTS-mv2-nugget.md`, `results-mv2-nugget/` | 7 of 7 checks, 3 of 5; MV2's extractive answers beat 0 of 30 runs at matched length, and so does their ceiling; no decision (the matcher was not made a yardstick) |
+| t2gen-v1 | `PREREGISTRATION-t2gen.md` | queued (filed 2026-11-01) | can Qwen2.5-0.5B-Instruct write a cited answer on 2 CPUs from given abstracts? Speed, length, citations and lexical grounding only; no quality score |
 
 What v2 counted: 14,763 citation judgments (69.4% supporting, 1.9% contradicting, 4.3% invalid);
 55 of 65 topics have a contradicting judgment; 3,858 distinct PMIDs, all inside the SPARK
@@ -161,7 +162,10 @@ NLM's BioACE (arXiv 2602.04982) matches LLM-extracted answer nuggets to expert n
 questions (Kendall 0.758 against human recall). `bioace-zip-v1` listed its data bundle
 (`bioace-data-models.zip`, 3.5 GB) by HTTP range requests, reading 80,871 bytes in all: it holds a
 fine-tuned correctness model, the fitted mixture, a baseline's answers, and expert nuggets for only
-2 questions (ids 181 and 182), not for the 2024 questions (`RESULTS-bioace-zip.md`).
+2 questions (ids 181 and 182), not for the 2024 questions (`RESULTS-bioace-zip.md`). On
+2026-11-01 MV2 asked the BioACE maintainers, in one public issue, whether the TREC 2025 BioGen
+nuggets and assessments will be released and under what licence
+(https://github.com/deepaknlp/BioACE/issues/2).
 
 ## How hard is the conflict part? (TREC 2025 BioGen Task A, published numbers)
 
@@ -276,6 +280,20 @@ With the MedCPT cross-encoder reranking the top 50 BM25 candidates first
 (`../rerank/RESULTS-spark36.md`): 70.0% unjudged, Supports share 21.7% (BM25: 16.9%), judged
 precision 0.817 (BM25: 0.757); the conflict flag again fired on no answer.
 
+## A written stage: first feasibility test (`t2gen.py`, queued)
+
+`t2gen.py` 0.1.0 asks whether an openly licensed instruction model small enough for the shared
+CPUs can write a cited answer at all: Qwen2.5-0.5B-Instruct (Apache-2.0, float32, greedy) gets
+each of the 40 MedAESQA questions with up to 8 numbered abstracts (first the papers the expert
+answer cites, then papers the assessors judged Supports; title plus 160 words, fetched from NCBI)
+and is asked for at most 200 words with [n] citations. It measures seconds per answer, length
+against the 250-word limit, the share of sentences with a valid citation, lexical grounding of
+each sentence in the abstracts it cites, whether it cites the abstract it overlaps most, verbatim
+8-word spans and declines. The expert answers' own sentences against their cited abstracts are a
+reference, and the next question's abstracts are a negative control. It computes no quality
+score. The decision rule and 12 predictions are in `PREREGISTRATION-t2gen.md`. The generated
+answers are not published (they are derived from PubMed abstracts); only counts and scores are.
+
 ## Next
 
 1. `t2sys` (the 65 questions through the chosen Task 1 system, composed read-only, with BM25's
@@ -288,9 +306,8 @@ precision 0.817 (BM25: 0.757); the conflict flag again fired on no answer.
    containment both rank runs worse than answer length. No further variant is tried on these
    questions. A written-answer stage is developed against the TREC 2025 BioGen judgments (BioACE)
    once they are public, or against SPARK's own scorer if NLM publishes one.
-3. Meanwhile, work that needs no yardstick: whether an openly licensed instruction model can
-   write a cited 250-word answer from MV2's retrieved abstracts on a CPU in reasonable time, with
-   every sentence keeping a citation that lexically supports it.
+3. Meanwhile, `t2gen-v1` (above) tests whether a written stage is feasible at all on the shared
+   CPUs. Its decision rule says what follows either way.
 
 Helpers: `t2dev.py` (wait, download pins, gold files) and `fetch_code.py` (fetches the published
 t1_runner, t2 and rerank code at pinned commits and checks each file's size; the newest version,
