@@ -1,0 +1,80 @@
+{
+ "version": "0.1.0",
+ "model": "Qwen/Qwen2.5-0.5B-Instruct",
+ "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+ "k": 8,
+ "abstract_words": 160,
+ "answer_words_asked": 200,
+ "limit_words": 250,
+ "problem": null,
+ "download": {
+  "url": "https://osf.io/download/9d3qs/",
+  "bytes": 7276948,
+  "sha256": "a062742c1678b4379121ad030a06bda574afd376f331df41575938dd9849c383",
+  "cached": true
+ },
+ "items": 40,
+ "pmids": {
+  "requested": 787,
+  "returned": 785,
+  "with_abstract": 784
+ },
+ "expert": {
+  "sentences": 194,
+  "scored": 182,
+  "scored_without_fetched_pmid": 10,
+  "ground_mean": 0.5685,
+  "weak_share": 0.3407,
+  "verbatim_share": 0.0549,
+  "words_median": 78.0,
+  "questions_with_pmid": 40,
+  "pmids_per_question_median": 8.0
+ },
+ "evidence": {
+  "questions_with_evidence": 40,
+  "shown_median": 8.0,
+  "expert_shown_median": 8.0
+ },
+ "writer": {
+  "dtype": "float32",
+  "threads": 2,
+  "torch_threads": 2,
+  "cpu_limit": 2.0,
+  "load_seconds": 4.1,
+  "torch": "2.5.1+cpu",
+  "decoding": "greedy",
+  "max_new_tokens": 400
+ },
+ "probe_seconds_per_answer": 61.33,
+ "answers": {
+  "answers": 40,
+  "skipped": 0,
+  "empty": 0,
+  "seconds_median": 23.465,
+  "seconds_max": 931.18,
+  "seconds_total": 2757.62,
+  "prompt_tokens_median": 2043.5,
+  "new_tokens_median": 32.0,
+  "tokens_per_second": 2.0891,
+  "truncated": 8,
+  "words_median": 0.0,
+  "words_max": 314,
+  "within_limit": 34,
+  "sentences": 208,
+  "scored": 177,
+  "cited": 66,
+  "cited_share": 0.3729,
+  "invalid_citation_sentences": 2,
+  "invalid_citation_share": 0.0096,
+  "answers_without_valid_citation": 1,
+  "ground_cited_mean": 0.4475,
+  "ground_cited_weak_share": 0.5455,
+  "ground_any_mean": 0.8432,
+  "ground_other_mean": 0.227,
+  "cites_best_share": 0.3636,
+  "verbatim_share": 0.5932,
+  "declines": 0
+ },
+ "peak_rss_gb": 3.078,
+ "seconds": 2774.4
+}

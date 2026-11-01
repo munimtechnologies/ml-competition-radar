@@ -1,0 +1,39 @@
+{
+ "model": "Qwen/Qwen2.5-0.5B-Instruct",
+ "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+ "files": {
+  "LICENSE": {
+   "bytes": 11343,
+   "cached": true
+  },
+  "config.json": {
+   "bytes": 659,
+   "cached": true
+  },
+  "generation_config.json": {
+   "bytes": 242,
+   "cached": true
+  },
+  "merges.txt": {
+   "bytes": 1671839,
+   "cached": true
+  },
+  "model.safetensors": {
+   "bytes": 988097824,
+   "cached": true
+  },
+  "tokenizer.json": {
+   "bytes": 7031645,
+   "cached": true
+  },
+  "tokenizer_config.json": {
+   "bytes": 7305,
+   "cached": true
+  },
+  "vocab.json": {
+   "bytes": 2776833,
+   "cached": true
+  }
+ },
+ "problems": []
+}

@@ -1,0 +1,2873 @@
+[
+ {
+  "id": "116",
+  "shown": 8,
+  "expert_shown": 8,
+  "seconds": 22.68,
+  "prompt_tokens": 2010,
+  "new_tokens": 25,
+  "truncated": false,
+  "words": 0,
+  "sentences": 1,
+  "rows": [
+   {
+    "valid": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    "invalid": 0,
+    "content_words": 0,
+    "scored": false
+   }
+  ],
+  "declines": false
+ },
+ {
+  "id": "117",
+  "shown": 8,
+  "expert_shown": 8,
+  "seconds": 142.57,
+  "prompt_tokens": 2245,
+  "new_tokens": 400,
+  "truncated": true,
+  "words": 168,
+  "sentences": 16,
+  "rows": [
+   {
+    "valid": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    "invalid": 0,
+    "content_words": 7,
+    "scored": true,
+    "ground_any": 0.8571,
+    "ground_cited": 0.8571,
+    "cites_best": true,
+    "ground_other": 0.0,
+    "verbatim": false
+   },
+   {
+    "valid": [
+     2
+    ],
+    "invalid": 0,
+    "content_words": 8,
+    "scored": true,
+    "ground_any": 0.75,
+    "ground_cited": 0.5,
+    "cites_best": false,
+    "ground_other": 0.375,
+    "verbatim": false
+   },
+   {
+    "valid": [
+     2
+    ],
+    "invalid": 0,
+    "content_words": 8,
+    "scored": true,
+    "ground_any": 0.75,
+    "ground_cited": 0.5,
+    "cites_best": false,
+    "ground_other": 0.25,
+    "verbatim": false
+   },
+   {
+    "valid": [
+     2
+    ],
+    "invalid": 0,
+    "content_words": 8,
+    "scored": true,
+    "ground_any": 0.75,
+    "ground_cited": 0.5,
+    "cites_best": false,
+    "ground_other": 0.25,
+    "verbatim": false
+   },
+   {
+    "valid": [
+     2
+    ],
+    "invalid": 0,
+    "content_words": 8,
+    "scored": true,
+    "ground_any": 0.75,
+    "ground_cited": 0.5,
+    "cites_best": false,
+    "ground_other": 0.25,
+    "verbatim": false
+   },
+   {
+    "valid": [
+     2
+    ],
+    "invalid": 0,
+    "content_words": 8,
+    "scored": true,
+    "ground_any": 0.75,
+    "ground_cited": 0.5,
+    "cites_best": false,
+    "ground_other": 0.25,
+    "verbatim": false
+   },
+   {
+    "valid": [
+     2
+    ],
+    "invalid": 0,
+    "content_words": 8,
+    "scored": true,
+    "ground_any": 0.75,
+    "ground_cited": 0.5,
+    "cites_best": false,
+    "ground_other": 0.25,
+    "verbatim": false
+   },
+   {
+    "valid": [
+     2
+    ],
+    "invalid": 0,
+    "content_words": 8,
+    "scored": true,
+    "ground_any": 0.75,
+    "ground_cited": 0.5,
+    "cites_best": false,
+    "ground_other": 0.25,
+    "verbatim": false
+   },
+   {
+    "valid": [
+     2
+    ],
+    "invalid": 0,
+    "content_words": 8,
+    "scored": true,
+    "ground_any": 0.75,
+    "ground_cited": 0.5,
+    "cites_best": false,
+    "ground_other": 0.25,
+    "verbatim": false
+   },
+   {
+    "valid": [
+     2
+    ],
+    "invalid": 0,
+    "content_words": 8,
+    "scored": true,
+    "ground_any": 0.75,
+    "ground_cited": 0.5,
+    "cites_best": false,
+    "ground_other": 0.25,
+    "verbatim": false
+   },
+   {
+    "valid": [
+     2
+    ],
+    "invalid": 0,
+    "content_words": 8,
+    "scored": true,
+    "ground_any": 0.75,
+    "ground_cited": 0.5,
+    "cites_best": false,
+    "ground_other": 0.25,
+    "verbatim": false
+   },
+   {
+    "valid": [
+     2
+    ],
+    "invalid": 0,
+    "content_words": 8,
+    "scored": true,
+    "ground_any": 0.75,
+    "ground_cited": 0.5,
+    "cites_best": false,
+    "ground_other": 0.25,
+    "verbatim": false
+   },
+   {
+    "valid": [
+     2
+    ],
+    "invalid": 0,
+    "content_words": 8,
+    "scored": true,
+    "ground_any": 0.75,
+    "ground_cited": 0.5,
+    "cites_best": false,
+    "ground_other": 0.25,
+    "verbatim": false
+   },
+   {
+    "valid": [
+     2
+    ],
+    "invalid": 0,
+    "content_words": 8,
+    "scored": true,
+    "ground_any": 0.75,
+    "ground_cited": 0.5,
+    "cites_best": false,
+    "ground_other": 0.25,
+    "verbatim": false
+   },
+   {
+    "valid": [
+     2
+    ],
+    "invalid": 0,
+    "content_words": 8,
+    "scored": true,
+    "ground_any": 0.75,
+    "ground_cited": 0.5,
+    "cites_best": false,
+    "ground_other": 0.25,
+    "verbatim": false
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 2,
+    "scored": false
+   }
+  ],
+  "declines": false
+ },
+ {
+  "id": "118",
+  "shown": 8,
+  "expert_shown": 4,
+  "seconds": 18.73,
+  "prompt_tokens": 1805,
+  "new_tokens": 19,
+  "truncated": false,
+  "words": 0,
+  "sentences": 1,
+  "rows": [
+   {
+    "valid": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    "invalid": 0,
+    "content_words": 0,
+    "scored": false
+   }
+  ],
+  "declines": false
+ },
+ {
+  "id": "119",
+  "shown": 8,
+  "expert_shown": 6,
+  "seconds": 49.06,
+  "prompt_tokens": 2356,
+  "new_tokens": 92,
+  "truncated": false,
+  "words": 44,
+  "sentences": 3,
+  "rows": [
+   {
+    "valid": [
+     2,
+     6,
+     7
+    ],
+    "invalid": 0,
+    "content_words": 0,
+    "scored": false
+   },
+   {
+    "valid": [
+     8
+    ],
+    "invalid": 0,
+    "content_words": 0,
+    "scored": false
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 29,
+    "scored": true,
+    "ground_any": 0.8966,
+    "ground_other": 0.069,
+    "verbatim": true
+   }
+  ],
+  "declines": false
+ },
+ {
+  "id": "120",
+  "shown": 8,
+  "expert_shown": 8,
+  "seconds": 24.06,
+  "prompt_tokens": 1906,
+  "new_tokens": 25,
+  "truncated": false,
+  "words": 0,
+  "sentences": 1,
+  "rows": [
+   {
+    "valid": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    "invalid": 0,
+    "content_words": 0,
+    "scored": false
+   }
+  ],
+  "declines": false
+ },
+ {
+  "id": "121",
+  "shown": 8,
+  "expert_shown": 8,
+  "seconds": 22.33,
+  "prompt_tokens": 2266,
+  "new_tokens": 25,
+  "truncated": false,
+  "words": 0,
+  "sentences": 1,
+  "rows": [
+   {
+    "valid": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    "invalid": 0,
+    "content_words": 0,
+    "scored": false
+   }
+  ],
+  "declines": false
+ },
+ {
+  "id": "122",
+  "shown": 8,
+  "expert_shown": 8,
+  "seconds": 22.87,
+  "prompt_tokens": 2051,
+  "new_tokens": 24,
+  "truncated": false,
+  "words": 0,
+  "sentences": 1,
+  "rows": [
+   {
+    "valid": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    "invalid": 0,
+    "content_words": 0,
+    "scored": false
+   }
+  ],
+  "declines": false
+ },
+ {
+  "id": "123",
+  "shown": 8,
+  "expert_shown": 4,
+  "seconds": 48.84,
+  "prompt_tokens": 2311,
+  "new_tokens": 74,
+  "truncated": false,
+  "words": 34,
+  "sentences": 3,
+  "rows": [
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 12,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.1667,
+    "verbatim": true
+   },
+   {
+    "valid": [
+     2
+    ],
+    "invalid": 0,
+    "content_words": 12,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_cited": 0.4167,
+    "cites_best": false,
+    "ground_other": 0.1667,
+    "verbatim": true
+   },
+   {
+    "valid": [
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    "invalid": 0,
+    "content_words": 0,
+    "scored": false
+   }
+  ],
+  "declines": false
+ },
+ {
+  "id": "124",
+  "shown": 8,
+  "expert_shown": 6,
+  "seconds": 931.18,
+  "prompt_tokens": 2135,
+  "new_tokens": 400,
+  "truncated": true,
+  "words": 249,
+  "sentences": 13,
+  "rows": [
+   {
+    "valid": [
+     1
+    ],
+    "invalid": 0,
+    "content_words": 8,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_cited": 1.0,
+    "cites_best": true,
+    "ground_other": 0.125,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 18,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.1667,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 9,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.1111,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 13,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.1538,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 7,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.2857,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 9,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.2222,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 24,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.2083,
+    "verbatim": true
+   },
+   {
+    "valid": [
+     2
+    ],
+    "invalid": 0,
+    "content_words": 12,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_cited": 0.3333,
+    "cites_best": false,
+    "ground_other": 0.1667,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 8,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.125,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 16,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.375,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 9,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.0,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 18,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.1667,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 10,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.3,
+    "verbatim": true
+   }
+  ],
+  "declines": false
+ },
+ {
+  "id": "125",
+  "shown": 8,
+  "expert_shown": 8,
+  "seconds": 20.92,
+  "prompt_tokens": 2351,
+  "new_tokens": 25,
+  "truncated": false,
+  "words": 0,
+  "sentences": 1,
+  "rows": [
+   {
+    "valid": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    "invalid": 0,
+    "content_words": 0,
+    "scored": false
+   }
+  ],
+  "declines": false
+ },
+ {
+  "id": "126",
+  "shown": 8,
+  "expert_shown": 8,
+  "seconds": 17.37,
+  "prompt_tokens": 1956,
+  "new_tokens": 25,
+  "truncated": false,
+  "words": 0,
+  "sentences": 1,
+  "rows": [
+   {
+    "valid": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    "invalid": 0,
+    "content_words": 0,
+    "scored": false
+   }
+  ],
+  "declines": false
+ },
+ {
+  "id": "127",
+  "shown": 8,
+  "expert_shown": 7,
+  "seconds": 94.28,
+  "prompt_tokens": 1914,
+  "new_tokens": 400,
+  "truncated": true,
+  "words": 314,
+  "sentences": 16,
+  "rows": [
+   {
+    "valid": [
+     1
+    ],
+    "invalid": 0,
+    "content_words": 11,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_cited": 1.0,
+    "cites_best": true,
+    "ground_other": 0.4545,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 15,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.2,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 8,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.125,
+    "verbatim": true
+   },
+   {
+    "valid": [
+     2
+    ],
+    "invalid": 0,
+    "content_words": 12,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_cited": 0.3333,
+    "cites_best": false,
+    "ground_other": 0.3333,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 5,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.6,
+    "verbatim": false
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 14,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.2143,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 16,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.25,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 14,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.0714,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 12,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.0,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 10,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.0,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 13,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.1538,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 11,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.5455,
+    "verbatim": true
+   },
+   {
+    "valid": [
+     3
+    ],
+    "invalid": 0,
+    "content_words": 6,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_cited": 0.0,
+    "cites_best": false,
+    "ground_other": 0.6667,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 6,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.5,
+    "verbatim": false
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 7,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.4286,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 37,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.1081,
+    "verbatim": true
+   }
+  ],
+  "declines": false
+ },
+ {
+  "id": "128",
+  "shown": 8,
+  "expert_shown": 8,
+  "seconds": 31.5,
+  "prompt_tokens": 2265,
+  "new_tokens": 67,
+  "truncated": false,
+  "words": 40,
+  "sentences": 2,
+  "rows": [
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 8,
+    "scored": true,
+    "ground_any": 0.5,
+    "ground_other": 0.125,
+    "verbatim": false
+   },
+   {
+    "valid": [
+     2,
+     3,
+     4
+    ],
+    "invalid": 0,
+    "content_words": 16,
+    "scored": true,
+    "ground_any": 0.5,
+    "ground_cited": 0.25,
+    "cites_best": false,
+    "ground_other": 0.1875,
+    "verbatim": false
+   }
+  ],
+  "declines": false
+ },
+ {
+  "id": "129",
+  "shown": 8,
+  "expert_shown": 8,
+  "seconds": 15.7,
+  "prompt_tokens": 1820,
+  "new_tokens": 25,
+  "truncated": false,
+  "words": 0,
+  "sentences": 1,
+  "rows": [
+   {
+    "valid": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    "invalid": 0,
+    "content_words": 0,
+    "scored": false
+   }
+  ],
+  "declines": false
+ },
+ {
+  "id": "130",
+  "shown": 8,
+  "expert_shown": 8,
+  "seconds": 19.78,
+  "prompt_tokens": 2151,
+  "new_tokens": 25,
+  "truncated": false,
+  "words": 0,
+  "sentences": 1,
+  "rows": [
+   {
+    "valid": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    "invalid": 0,
+    "content_words": 0,
+    "scored": false
+   }
+  ],
+  "declines": false
+ },
+ {
+  "id": "131",
+  "shown": 8,
+  "expert_shown": 8,
+  "seconds": 20.04,
+  "prompt_tokens": 2345,
+  "new_tokens": 19,
+  "truncated": false,
+  "words": 0,
+  "sentences": 1,
+  "rows": [
+   {
+    "valid": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    "invalid": 0,
+    "content_words": 0,
+    "scored": false
+   }
+  ],
+  "declines": false
+ },
+ {
+  "id": "132",
+  "shown": 8,
+  "expert_shown": 7,
+  "seconds": 56.75,
+  "prompt_tokens": 1915,
+  "new_tokens": 204,
+  "truncated": false,
+  "words": 142,
+  "sentences": 8,
+  "rows": [
+   {
+    "valid": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    "invalid": 0,
+    "content_words": 20,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_cited": 1.0,
+    "cites_best": true,
+    "ground_other": 0.25,
+    "verbatim": false
+   },
+   {
+    "valid": [
+     2
+    ],
+    "invalid": 0,
+    "content_words": 4,
+    "scored": true,
+    "ground_any": 0.5,
+    "ground_cited": 0.5,
+    "cites_best": true,
+    "ground_other": 0.25,
+    "verbatim": false
+   },
+   {
+    "valid": [
+     3
+    ],
+    "invalid": 0,
+    "content_words": 12,
+    "scored": true,
+    "ground_any": 0.9167,
+    "ground_cited": 0.1667,
+    "cites_best": false,
+    "ground_other": 0.1667,
+    "verbatim": true
+   },
+   {
+    "valid": [
+     4
+    ],
+    "invalid": 0,
+    "content_words": 8,
+    "scored": true,
+    "ground_any": 0.875,
+    "ground_cited": 0.25,
+    "cites_best": false,
+    "ground_other": 0.125,
+    "verbatim": false
+   },
+   {
+    "valid": [
+     5
+    ],
+    "invalid": 0,
+    "content_words": 13,
+    "scored": true,
+    "ground_any": 0.8462,
+    "ground_cited": 0.2308,
+    "cites_best": false,
+    "ground_other": 0.0,
+    "verbatim": false
+   },
+   {
+    "valid": [
+     6
+    ],
+    "invalid": 0,
+    "content_words": 11,
+    "scored": true,
+    "ground_any": 0.8182,
+    "ground_cited": 0.1818,
+    "cites_best": false,
+    "ground_other": 0.4545,
+    "verbatim": true
+   },
+   {
+    "valid": [
+     7
+    ],
+    "invalid": 0,
+    "content_words": 8,
+    "scored": true,
+    "ground_any": 0.875,
+    "ground_cited": 0.5,
+    "cites_best": false,
+    "ground_other": 0.25,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 12,
+    "scored": true,
+    "ground_any": 0.75,
+    "ground_other": 0.5,
+    "verbatim": true
+   }
+  ],
+  "declines": false
+ },
+ {
+  "id": "133",
+  "shown": 8,
+  "expert_shown": 8,
+  "seconds": 19.96,
+  "prompt_tokens": 2216,
+  "new_tokens": 25,
+  "truncated": false,
+  "words": 0,
+  "sentences": 1,
+  "rows": [
+   {
+    "valid": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    "invalid": 0,
+    "content_words": 0,
+    "scored": false
+   }
+  ],
+  "declines": false
+ },
+ {
+  "id": "134",
+  "shown": 8,
+  "expert_shown": 8,
+  "seconds": 94.37,
+  "prompt_tokens": 1965,
+  "new_tokens": 383,
+  "truncated": false,
+  "words": 269,
+  "sentences": 15,
+  "rows": [
+   {
+    "valid": [
+     1
+    ],
+    "invalid": 0,
+    "content_words": 6,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_cited": 1.0,
+    "cites_best": true,
+    "ground_other": 0.3333,
+    "verbatim": false
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 15,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.4,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 9,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.2222,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 14,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.2143,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 13,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.2308,
+    "verbatim": true
+   },
+   {
+    "valid": [
+     2
+    ],
+    "invalid": 0,
+    "content_words": 11,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_cited": 0.0909,
+    "cites_best": false,
+    "ground_other": 0.0909,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 6,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.3333,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 19,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.4211,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 12,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.1667,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 9,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.2222,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 18,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.1111,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 19,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.3158,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 12,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.25,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 13,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.0769,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 4,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.0,
+    "verbatim": true
+   }
+  ],
+  "declines": false
+ },
+ {
+  "id": "135",
+  "shown": 8,
+  "expert_shown": 8,
+  "seconds": 108.26,
+  "prompt_tokens": 2130,
+  "new_tokens": 400,
+  "truncated": true,
+  "words": 245,
+  "sentences": 17,
+  "rows": [
+   {
+    "valid": [
+     1,
+     2,
+     3
+    ],
+    "invalid": 0,
+    "content_words": 14,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_cited": 1.0,
+    "cites_best": true,
+    "ground_other": 0.1429,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 7,
+    "scored": true,
+    "ground_any": 0.1429,
+    "ground_other": 0.2857,
+    "verbatim": false
+   },
+   {
+    "valid": [
+     3
+    ],
+    "invalid": 0,
+    "content_words": 8,
+    "scored": true,
+    "ground_any": 0.25,
+    "ground_cited": 0.0,
+    "cites_best": false,
+    "ground_other": 0.25,
+    "verbatim": false
+   },
+   {
+    "valid": [
+     2
+    ],
+    "invalid": 0,
+    "content_words": 5,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_cited": 0.4,
+    "cites_best": false,
+    "ground_other": 0.6,
+    "verbatim": false
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 8,
+    "scored": true,
+    "ground_any": 0.875,
+    "ground_other": 0.375,
+    "verbatim": false
+   },
+   {
+    "valid": [
+     2,
+     3
+    ],
+    "invalid": 0,
+    "content_words": 10,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_cited": 0.4,
+    "cites_best": false,
+    "ground_other": 0.5,
+    "verbatim": true
+   },
+   {
+    "valid": [
+     2,
+     3
+    ],
+    "invalid": 0,
+    "content_words": 7,
+    "scored": true,
+    "ground_any": 0.4286,
+    "ground_cited": 0.4286,
+    "cites_best": true,
+    "ground_other": 0.4286,
+    "verbatim": false
+   },
+   {
+    "valid": [
+     2,
+     3
+    ],
+    "invalid": 0,
+    "content_words": 9,
+    "scored": true,
+    "ground_any": 0.3333,
+    "ground_cited": 0.3333,
+    "cites_best": false,
+    "ground_other": 0.2222,
+    "verbatim": false
+   },
+   {
+    "valid": [
+     2,
+     3
+    ],
+    "invalid": 0,
+    "content_words": 11,
+    "scored": true,
+    "ground_any": 0.5455,
+    "ground_cited": 0.4545,
+    "cites_best": true,
+    "ground_other": 0.2727,
+    "verbatim": false
+   },
+   {
+    "valid": [
+     2,
+     3
+    ],
+    "invalid": 0,
+    "content_words": 9,
+    "scored": true,
+    "ground_any": 0.4444,
+    "ground_cited": 0.2222,
+    "cites_best": true,
+    "ground_other": 0.3333,
+    "verbatim": false
+   },
+   {
+    "valid": [
+     2,
+     3
+    ],
+    "invalid": 0,
+    "content_words": 5,
+    "scored": true,
+    "ground_any": 0.6,
+    "ground_cited": 0.4,
+    "cites_best": false,
+    "ground_other": 0.4,
+    "verbatim": false
+   },
+   {
+    "valid": [
+     2,
+     3
+    ],
+    "invalid": 0,
+    "content_words": 7,
+    "scored": true,
+    "ground_any": 0.2857,
+    "ground_cited": 0.2857,
+    "cites_best": true,
+    "ground_other": 0.4286,
+    "verbatim": false
+   },
+   {
+    "valid": [
+     2,
+     3
+    ],
+    "invalid": 0,
+    "content_words": 10,
+    "scored": true,
+    "ground_any": 0.7,
+    "ground_cited": 0.3,
+    "cites_best": false,
+    "ground_other": 0.6,
+    "verbatim": false
+   },
+   {
+    "valid": [
+     2,
+     3
+    ],
+    "invalid": 0,
+    "content_words": 7,
+    "scored": true,
+    "ground_any": 0.2857,
+    "ground_cited": 0.2857,
+    "cites_best": true,
+    "ground_other": 0.4286,
+    "verbatim": false
+   },
+   {
+    "valid": [
+     2,
+     3
+    ],
+    "invalid": 0,
+    "content_words": 12,
+    "scored": true,
+    "ground_any": 0.25,
+    "ground_cited": 0.1667,
+    "cites_best": false,
+    "ground_other": 0.1667,
+    "verbatim": false
+   },
+   {
+    "valid": [
+     2,
+     3
+    ],
+    "invalid": 0,
+    "content_words": 7,
+    "scored": true,
+    "ground_any": 0.2857,
+    "ground_cited": 0.2857,
+    "cites_best": true,
+    "ground_other": 0.4286,
+    "verbatim": false
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 7,
+    "scored": true,
+    "ground_any": 0.8571,
+    "ground_other": 0.5714,
+    "verbatim": false
+   }
+  ],
+  "declines": false
+ },
+ {
+  "id": "136",
+  "shown": 8,
+  "expert_shown": 8,
+  "seconds": 102.19,
+  "prompt_tokens": 1918,
+  "new_tokens": 400,
+  "truncated": true,
+  "words": 265,
+  "sentences": 19,
+  "rows": [
+   {
+    "valid": [
+     2
+    ],
+    "invalid": 0,
+    "content_words": 7,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_cited": 1.0,
+    "cites_best": true,
+    "ground_other": 0.4286,
+    "verbatim": false
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 10,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.1,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 14,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.0,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 11,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.3636,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 10,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.3,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 16,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.1875,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 10,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.0,
+    "verbatim": true
+   },
+   {
+    "valid": [
+     3
+    ],
+    "invalid": 0,
+    "content_words": 8,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_cited": 0.25,
+    "cites_best": false,
+    "ground_other": 0.0,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 4,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.25,
+    "verbatim": false
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 8,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.125,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 14,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.0,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 11,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.0,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 10,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.3,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 10,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.0,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 9,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.3333,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 10,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.1,
+    "verbatim": true
+   },
+   {
+    "valid": [
+     4
+    ],
+    "invalid": 0,
+    "content_words": 10,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_cited": 0.2,
+    "cites_best": false,
+    "ground_other": 0.3,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 4,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.25,
+    "verbatim": false
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 4,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.0,
+    "verbatim": false
+   }
+  ],
+  "declines": false
+ },
+ {
+  "id": "137",
+  "shown": 8,
+  "expert_shown": 8,
+  "seconds": 22.74,
+  "prompt_tokens": 2347,
+  "new_tokens": 25,
+  "truncated": false,
+  "words": 0,
+  "sentences": 1,
+  "rows": [
+   {
+    "valid": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    "invalid": 0,
+    "content_words": 0,
+    "scored": false
+   }
+  ],
+  "declines": false
+ },
+ {
+  "id": "138",
+  "shown": 8,
+  "expert_shown": 8,
+  "seconds": 22.48,
+  "prompt_tokens": 2127,
+  "new_tokens": 39,
+  "truncated": false,
+  "words": 0,
+  "sentences": 1,
+  "rows": [
+   {
+    "valid": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    "invalid": 0,
+    "content_words": 0,
+    "scored": false
+   }
+  ],
+  "declines": false
+ },
+ {
+  "id": "139",
+  "shown": 8,
+  "expert_shown": 7,
+  "seconds": 110.05,
+  "prompt_tokens": 2006,
+  "new_tokens": 400,
+  "truncated": true,
+  "words": 266,
+  "sentences": 13,
+  "rows": [
+   {
+    "valid": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    "invalid": 0,
+    "content_words": 4,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_cited": 1.0,
+    "cites_best": true,
+    "ground_other": 0.0,
+    "verbatim": false
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 10,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.4,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 19,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.1053,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 16,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.25,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 14,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.5714,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 8,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.25,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 10,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.1,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 18,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.1111,
+    "verbatim": true
+   },
+   {
+    "valid": [
+     3
+    ],
+    "invalid": 0,
+    "content_words": 12,
+    "scored": true,
+    "ground_any": 0.9167,
+    "ground_cited": 0.4167,
+    "cites_best": true,
+    "ground_other": 0.4167,
+    "verbatim": false
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 12,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.25,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 15,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.2,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 22,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.1364,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 2,
+    "scored": false
+   }
+  ],
+  "declines": false
+ },
+ {
+  "id": "140",
+  "shown": 8,
+  "expert_shown": 7,
+  "seconds": 94.09,
+  "prompt_tokens": 1740,
+  "new_tokens": 400,
+  "truncated": true,
+  "words": 270,
+  "sentences": 14,
+  "rows": [
+   {
+    "valid": [
+     1
+    ],
+    "invalid": 0,
+    "content_words": 4,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_cited": 1.0,
+    "cites_best": true,
+    "ground_other": 0.5,
+    "verbatim": false
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 9,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.2222,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 11,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.2727,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 14,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.0714,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 23,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.1304,
+    "verbatim": true
+   },
+   {
+    "valid": [
+     2
+    ],
+    "invalid": 0,
+    "content_words": 11,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_cited": 0.1818,
+    "cites_best": false,
+    "ground_other": 0.1818,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 9,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.2222,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 7,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.2857,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 19,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.4211,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 10,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.3,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 9,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.6667,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 35,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.1143,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 8,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.0,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 5,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.2,
+    "verbatim": true
+   }
+  ],
+  "declines": false
+ },
+ {
+  "id": "141",
+  "shown": 8,
+  "expert_shown": 8,
+  "seconds": 68.04,
+  "prompt_tokens": 2096,
+  "new_tokens": 246,
+  "truncated": false,
+  "words": 167,
+  "sentences": 9,
+  "rows": [
+   {
+    "valid": [
+     2
+    ],
+    "invalid": 0,
+    "content_words": 4,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_cited": 0.5,
+    "cites_best": false,
+    "ground_other": 0.0,
+    "verbatim": false
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 21,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.2857,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 13,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.0769,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 6,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.1667,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 6,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.0,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 11,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.0,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 11,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.0909,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 28,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.1786,
+    "verbatim": true
+   },
+   {
+    "valid": [
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    "invalid": 0,
+    "content_words": 0,
+    "scored": false
+   }
+  ],
+  "declines": false
+ },
+ {
+  "id": "142",
+  "shown": 8,
+  "expert_shown": 8,
+  "seconds": 16.16,
+  "prompt_tokens": 2019,
+  "new_tokens": 17,
+  "truncated": false,
+  "words": 0,
+  "sentences": 1,
+  "rows": [
+   {
+    "valid": [
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    "invalid": 0,
+    "content_words": 0,
+    "scored": false
+   }
+  ],
+  "declines": false
+ },
+ {
+  "id": "143",
+  "shown": 8,
+  "expert_shown": 8,
+  "seconds": 16.84,
+  "prompt_tokens": 2036,
+  "new_tokens": 17,
+  "truncated": false,
+  "words": 0,
+  "sentences": 1,
+  "rows": [
+   {
+    "valid": [
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    "invalid": 0,
+    "content_words": 0,
+    "scored": false
+   }
+  ],
+  "declines": false
+ },
+ {
+  "id": "144",
+  "shown": 8,
+  "expert_shown": 6,
+  "seconds": 52.71,
+  "prompt_tokens": 2064,
+  "new_tokens": 172,
+  "truncated": false,
+  "words": 0,
+  "sentences": 1,
+  "rows": [
+   {
+    "valid": [
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    "invalid": 1,
+    "content_words": 0,
+    "scored": false
+   }
+  ],
+  "declines": false
+ },
+ {
+  "id": "145",
+  "shown": 8,
+  "expert_shown": 8,
+  "seconds": 19.64,
+  "prompt_tokens": 2412,
+  "new_tokens": 19,
+  "truncated": false,
+  "words": 0,
+  "sentences": 1,
+  "rows": [
+   {
+    "valid": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    "invalid": 0,
+    "content_words": 0,
+    "scored": false
+   }
+  ],
+  "declines": false
+ },
+ {
+  "id": "146",
+  "shown": 8,
+  "expert_shown": 7,
+  "seconds": 16.19,
+  "prompt_tokens": 1916,
+  "new_tokens": 19,
+  "truncated": false,
+  "words": 0,
+  "sentences": 1,
+  "rows": [
+   {
+    "valid": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    "invalid": 0,
+    "content_words": 0,
+    "scored": false
+   }
+  ],
+  "declines": false
+ },
+ {
+  "id": "147",
+  "shown": 8,
+  "expert_shown": 8,
+  "seconds": 19.06,
+  "prompt_tokens": 1967,
+  "new_tokens": 25,
+  "truncated": false,
+  "words": 0,
+  "sentences": 1,
+  "rows": [
+   {
+    "valid": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    "invalid": 0,
+    "content_words": 0,
+    "scored": false
+   }
+  ],
+  "declines": false
+ },
+ {
+  "id": "148",
+  "shown": 8,
+  "expert_shown": 8,
+  "seconds": 40.13,
+  "prompt_tokens": 1694,
+  "new_tokens": 135,
+  "truncated": false,
+  "words": 81,
+  "sentences": 5,
+  "rows": [
+   {
+    "valid": [
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    "invalid": 0,
+    "content_words": 14,
+    "scored": true,
+    "ground_any": 0.8571,
+    "ground_cited": 0.8571,
+    "cites_best": true,
+    "ground_other": 0.2857,
+    "verbatim": false
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 11,
+    "scored": true,
+    "ground_any": 0.5455,
+    "ground_other": 0.1818,
+    "verbatim": false
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 9,
+    "scored": true,
+    "ground_any": 0.4444,
+    "ground_other": 0.1111,
+    "verbatim": false
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 12,
+    "scored": true,
+    "ground_any": 0.9167,
+    "ground_other": 0.25,
+    "verbatim": false
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 9,
+    "scored": true,
+    "ground_any": 0.4444,
+    "ground_other": 0.1111,
+    "verbatim": false
+   }
+  ],
+  "declines": false
+ },
+ {
+  "id": "149",
+  "shown": 8,
+  "expert_shown": 7,
+  "seconds": 79.73,
+  "prompt_tokens": 2171,
+  "new_tokens": 261,
+  "truncated": false,
+  "words": 80,
+  "sentences": 6,
+  "rows": [
+   {
+    "valid": [
+     1,
+     2
+    ],
+    "invalid": 0,
+    "content_words": 10,
+    "scored": true,
+    "ground_any": 0.6,
+    "ground_cited": 0.6,
+    "cites_best": true,
+    "ground_other": 0.5,
+    "verbatim": false
+   },
+   {
+    "valid": [
+     2
+    ],
+    "invalid": 0,
+    "content_words": 10,
+    "scored": true,
+    "ground_any": 0.5,
+    "ground_cited": 0.4,
+    "cites_best": true,
+    "ground_other": 0.3,
+    "verbatim": false
+   },
+   {
+    "valid": [
+     3,
+     4
+    ],
+    "invalid": 0,
+    "content_words": 10,
+    "scored": true,
+    "ground_any": 0.4,
+    "ground_cited": 0.0,
+    "cites_best": false,
+    "ground_other": 0.5,
+    "verbatim": false
+   },
+   {
+    "valid": [
+     5,
+     6,
+     7
+    ],
+    "invalid": 0,
+    "content_words": 8,
+    "scored": true,
+    "ground_any": 0.5,
+    "ground_cited": 0.25,
+    "cites_best": true,
+    "ground_other": 0.375,
+    "verbatim": false
+   },
+   {
+    "valid": [
+     7
+    ],
+    "invalid": 0,
+    "content_words": 7,
+    "scored": true,
+    "ground_any": 0.5714,
+    "ground_cited": 0.4286,
+    "cites_best": true,
+    "ground_other": 0.2857,
+    "verbatim": false
+   },
+   {
+    "valid": [
+     8
+    ],
+    "invalid": 1,
+    "content_words": 9,
+    "scored": true,
+    "ground_any": 0.7778,
+    "ground_cited": 0.6667,
+    "cites_best": true,
+    "ground_other": 0.1111,
+    "verbatim": false
+   }
+  ],
+  "declines": false
+ },
+ {
+  "id": "150",
+  "shown": 8,
+  "expert_shown": 7,
+  "seconds": 49.52,
+  "prompt_tokens": 2004,
+  "new_tokens": 147,
+  "truncated": false,
+  "words": 36,
+  "sentences": 1,
+  "rows": [
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 8,
+    "scored": true,
+    "ground_any": 0.0,
+    "ground_other": 0.0,
+    "verbatim": false
+   }
+  ],
+  "declines": false
+ },
+ {
+  "id": "151",
+  "shown": 8,
+  "expert_shown": 8,
+  "seconds": 84.99,
+  "prompt_tokens": 1987,
+  "new_tokens": 297,
+  "truncated": false,
+  "words": 209,
+  "sentences": 16,
+  "rows": [
+   {
+    "valid": [
+     2,
+     7
+    ],
+    "invalid": 0,
+    "content_words": 0,
+    "scored": false
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 11,
+    "scored": true,
+    "ground_any": 0.2727,
+    "ground_other": 0.1818,
+    "verbatim": false
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 9,
+    "scored": true,
+    "ground_any": 0.2222,
+    "ground_other": 0.0,
+    "verbatim": false
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 4,
+    "scored": true,
+    "ground_any": 0.0,
+    "ground_other": 0.0,
+    "verbatim": false
+   },
+   {
+    "valid": [
+     3
+    ],
+    "invalid": 0,
+    "content_words": 7,
+    "scored": true,
+    "ground_any": 0.1429,
+    "ground_cited": 0.0,
+    "cites_best": false,
+    "ground_other": 0.2857,
+    "verbatim": false
+   },
+   {
+    "valid": [
+     6
+    ],
+    "invalid": 0,
+    "content_words": 0,
+    "scored": false
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 5,
+    "scored": true,
+    "ground_any": 0.8,
+    "ground_other": 0.0,
+    "verbatim": false
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 8,
+    "scored": true,
+    "ground_any": 0.125,
+    "ground_other": 0.125,
+    "verbatim": false
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 12,
+    "scored": true,
+    "ground_any": 0.5,
+    "ground_other": 0.0833,
+    "verbatim": false
+   },
+   {
+    "valid": [
+     4
+    ],
+    "invalid": 0,
+    "content_words": 11,
+    "scored": true,
+    "ground_any": 0.2727,
+    "ground_cited": 0.0,
+    "cites_best": false,
+    "ground_other": 0.0,
+    "verbatim": false
+   },
+   {
+    "valid": [
+     5
+    ],
+    "invalid": 0,
+    "content_words": 0,
+    "scored": false
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 7,
+    "scored": true,
+    "ground_any": 0.5714,
+    "ground_other": 0.1429,
+    "verbatim": false
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 12,
+    "scored": true,
+    "ground_any": 0.6667,
+    "ground_other": 0.5,
+    "verbatim": false
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 12,
+    "scored": true,
+    "ground_any": 0.3333,
+    "ground_other": 0.0,
+    "verbatim": false
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 9,
+    "scored": true,
+    "ground_any": 0.3333,
+    "ground_other": 0.2222,
+    "verbatim": false
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 12,
+    "scored": true,
+    "ground_any": 0.4167,
+    "ground_other": 0.25,
+    "verbatim": false
+   }
+  ],
+  "declines": false
+ },
+ {
+  "id": "152",
+  "shown": 8,
+  "expert_shown": 8,
+  "seconds": 19.62,
+  "prompt_tokens": 2093,
+  "new_tokens": 25,
+  "truncated": false,
+  "words": 0,
+  "sentences": 1,
+  "rows": [
+   {
+    "valid": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    "invalid": 0,
+    "content_words": 0,
+    "scored": false
+   }
+  ],
+  "declines": false
+ },
+ {
+  "id": "153",
+  "shown": 8,
+  "expert_shown": 8,
+  "seconds": 17.9,
+  "prompt_tokens": 2017,
+  "new_tokens": 17,
+  "truncated": false,
+  "words": 0,
+  "sentences": 1,
+  "rows": [
+   {
+    "valid": [
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    "invalid": 0,
+    "content_words": 0,
+    "scored": false
+   }
+  ],
+  "declines": false
+ },
+ {
+  "id": "154",
+  "shown": 8,
+  "expert_shown": 8,
+  "seconds": 104.14,
+  "prompt_tokens": 2032,
+  "new_tokens": 400,
+  "truncated": true,
+  "words": 264,
+  "sentences": 10,
+  "rows": [
+   {
+    "valid": [
+     1
+    ],
+    "invalid": 0,
+    "content_words": 15,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_cited": 1.0,
+    "cites_best": true,
+    "ground_other": 0.2,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 5,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.4,
+    "verbatim": true
+   },
+   {
+    "valid": [
+     2
+    ],
+    "invalid": 0,
+    "content_words": 5,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_cited": 0.2,
+    "cites_best": false,
+    "ground_other": 0.0,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 11,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.0909,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 12,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.25,
+    "verbatim": true
+   },
+   {
+    "valid": [
+     3
+    ],
+    "invalid": 0,
+    "content_words": 31,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_cited": 0.1613,
+    "cites_best": false,
+    "ground_other": 0.2258,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 22,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.2727,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 19,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.1579,
+    "verbatim": true
+   },
+   {
+    "valid": [
+     4
+    ],
+    "invalid": 0,
+    "content_words": 34,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_cited": 0.3529,
+    "cites_best": false,
+    "ground_other": 0.1765,
+    "verbatim": true
+   },
+   {
+    "valid": [],
+    "invalid": 0,
+    "content_words": 6,
+    "scored": true,
+    "ground_any": 1.0,
+    "ground_other": 0.1667,
+    "verbatim": true
+   }
+  ],
+  "declines": false
+ },
+ {
+  "id": "155",
+  "shown": 8,
+  "expert_shown": 3,
+  "seconds": 20.15,
+  "prompt_tokens": 2205,
+  "new_tokens": 18,
+  "truncated": false,
+  "words": 0,
+  "sentences": 1,
+  "rows": [
+   {
+    "valid": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8
+    ],
+    "invalid": 0,
+    "content_words": 0,
+    "scored": false
+   }
+  ],
+  "declines": false
+ }
+]
