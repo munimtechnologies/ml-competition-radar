@@ -68,7 +68,7 @@ Every job was pre-registered before it ran and graded word for word:
 | bioace-zip-v1 | none (a data survey, no predictions) | `RESULTS-bioace-zip.md`, `results-bioace-zip/` | MedAESQA's nuggets are under `nuggets` in all 40 items; NLM's BioACE bundle has nuggets for 2 other questions only (`bioace_zip/`) |
 | medaesqa-nugget-v2 | `PREREGISTRATION-medaesqa-nugget-v2.md` | `RESULTS-medaesqa-nugget-v2.md`, `results-medaesqa-nugget-v2/` | 5 of 5 checks, 6 of 9; both controls held, but nugget recall ranks runs at tau 0.41 against length's 0.80-0.85, so it is not used |
 | mv2-nugget-v1 | `PREREGISTRATION-mv2-nugget.md` | `RESULTS-mv2-nugget.md`, `results-mv2-nugget/` | 7 of 7 checks, 3 of 5; MV2's extractive answers beat 0 of 30 runs at matched length, and so does their ceiling; no decision (the matcher was not made a yardstick) |
-| t2gen-v1 | `PREREGISTRATION-t2gen.md` | queued (filed 2026-11-01) | can Qwen2.5-0.5B-Instruct write a cited answer on 2 CPUs from given abstracts? Speed, length, citations and lexical grounding only; no quality score |
+| t2gen-v1 | `PREREGISTRATION-t2gen.md` | `RESULTS-t2gen.md`, `results-t2gen/` | 5 of 5 checks, 8 of 12; **not feasible** (2 of 6 criteria): 22 of 40 answers had no sentence at all, and most others copied the abstracts |
 
 What v2 counted: 14,763 citation judgments (69.4% supporting, 1.9% contradicting, 4.3% invalid);
 55 of 65 topics have a contradicting judgment; 3,858 distinct PMIDs, all inside the SPARK
@@ -280,19 +280,26 @@ With the MedCPT cross-encoder reranking the top 50 BM25 candidates first
 (`../rerank/RESULTS-spark36.md`): 70.0% unjudged, Supports share 21.7% (BM25: 16.9%), judged
 precision 0.817 (BM25: 0.757); the conflict flag again fired on no answer.
 
-## A written stage: first feasibility test (`t2gen.py`, queued)
+## A written stage: first feasibility test (`t2gen.py`): not feasible on the shared CPUs
 
-`t2gen.py` 0.1.0 asks whether an openly licensed instruction model small enough for the shared
-CPUs can write a cited answer at all: Qwen2.5-0.5B-Instruct (Apache-2.0, float32, greedy) gets
+`t2gen.py` 0.1.0 asked whether an openly licensed instruction model small enough for the shared
+CPUs can write a cited answer at all: Qwen2.5-0.5B-Instruct (Apache-2.0, float32, greedy) got
 each of the 40 MedAESQA questions with up to 8 numbered abstracts (first the papers the expert
 answer cites, then papers the assessors judged Supports; title plus 160 words, fetched from NCBI)
-and is asked for at most 200 words with [n] citations. It measures seconds per answer, length
-against the 250-word limit, the share of sentences with a valid citation, lexical grounding of
-each sentence in the abstracts it cites, whether it cites the abstract it overlaps most, verbatim
-8-word spans and declines. The expert answers' own sentences against their cited abstracts are a
-reference, and the next question's abstracts are a negative control. It computes no quality
-score. The decision rule and 12 predictions are in `PREREGISTRATION-t2gen.md`. The generated
-answers are not published (they are derived from PubMed abstracts); only counts and scores are.
+and was asked for at most 200 words with [n] citations. It computes no quality score.
+
+**Result (`RESULTS-t2gen.md`): 5 of 5 checks, 8 of 12 predictions; 2 of the 6 decision criteria
+met, so it is not feasible as a draft stage.** In 22 of the 40 answers the model wrote no
+sentence at all, only the abstract numbers (or, once, the titles in brackets). Of the scored
+sentences, 37% carry a citation (rule: 0.80), cited sentences ground at 0.45 (rule: 0.70), and
+36% of cited sentences cite the abstract they overlap most (rule: 0.60). 59% share an 8-word span with an
+abstract (the expert answers: 5.5%), so the model mostly copies. The answers with text took a
+median of 89.5 s each on 2 CPUs. The extractive composer stays the answer writer.
+
+Two lessons for any later written stage: the expert answers themselves ground at only 0.57
+lexically (34% of their sentences below 0.5), so word overlap is too strict a faithfulness check
+for paraphrased answers; and the model's habit of putting `[n]` before a sentence needs a
+citation parser that handles both placements.
 
 ## Next
 
@@ -306,8 +313,8 @@ answers are not published (they are derived from PubMed abstracts); only counts 
    containment both rank runs worse than answer length. No further variant is tried on these
    questions. A written-answer stage is developed against the TREC 2025 BioGen judgments (BioACE)
    once they are public, or against SPARK's own scorer if NLM publishes one.
-3. Meanwhile, `t2gen-v1` (above) tests whether a written stage is feasible at all on the shared
-   CPUs. Its decision rule says what follows either way.
+3. No larger writer is tried on the shared CPUs before NLM's SPARK information session
+   (2026-11-05) says what hardware and time the evaluation allows (`RESULTS-t2gen.md`).
 
 Helpers: `t2dev.py` (wait, download pins, gold files) and `fetch_code.py` (fetches the published
 t1_runner, t2 and rerank code at pinned commits and checks each file's size; the newest version,
