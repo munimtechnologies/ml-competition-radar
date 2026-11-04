@@ -1,0 +1,395 @@
+{
+ "version": "0.1.0",
+ "started_utc": "2026-11-03T16:46:59Z",
+ "config": {
+  "horizon_days": 5,
+  "test_start": "2021-01-01",
+  "fit_years": 4,
+  "min_fit_obs": 500,
+  "min_origins": 365,
+  "persist_back_days": 2,
+  "m7_days": 7,
+  "m7_min": 3
+ },
+ "sites": {
+  "brw": {
+   "url": "https://gml.noaa.gov/aftp/data/greenhouse_gases/ch4/in-situ/surface/txt/ch4_brw_surface-insitu_1_ccgg_DailyData.txt",
+   "bytes": 1793167,
+   "sha256": "95c78ea5f9c6fdc1530d20095b375a36395a20ae2d942260660cbd74c05b8eda",
+   "parse": {
+    "lines": 14738,
+    "data_lines": 14582,
+    "missing": 5032,
+    "rejected": 0,
+    "duplicates": 0,
+    "kept": 9550,
+    "columns": [
+     "site_code",
+     "year",
+     "month",
+     "day",
+     "hour",
+     "minute",
+     "second",
+     "datetime",
+     "time_decimal",
+     "midpoint_time",
+     "value",
+     "value_std_dev",
+     "nvalue",
+     "latitude",
+     "longitude",
+     "altitude",
+     "elevation",
+     "intake_height",
+     "qcflag"
+    ]
+   },
+   "first": "1986-01-29",
+   "last": "2025-12-24",
+   "origins": 903,
+   "fits": {
+    "2021": {
+     "n": 983,
+     "pairs": 705,
+     "phi": 0.0505,
+     "phi_raw": 0.0505,
+     "resid_sd": 20.292,
+     "origins": 188
+    },
+    "2022": {
+     "n": 990,
+     "pairs": 697,
+     "phi": 0.0558,
+     "phi_raw": 0.0558,
+     "resid_sd": 19.06,
+     "origins": 174
+    },
+    "2023": {
+     "n": 937,
+     "pairs": 624,
+     "phi": 0.0546,
+     "phi_raw": 0.0546,
+     "resid_sd": 19.955,
+     "origins": 182
+    },
+    "2024": {
+     "n": 937,
+     "pairs": 640,
+     "phi": 0.0934,
+     "phi_raw": 0.0934,
+     "resid_sd": 18.729,
+     "origins": 166
+    },
+    "2025": {
+     "n": 938,
+     "pairs": 632,
+     "phi": 0.1233,
+     "phi_raw": 0.1233,
+     "resid_sd": 19.631,
+     "origins": 193
+    }
+   },
+   "included": true,
+   "methods": {
+    "P": {
+     "rmse": 27.1002,
+     "mae": 14.7158,
+     "bias": 0.4392,
+     "skill_vs_P": 0.0
+    },
+    "M7": {
+     "rmse": 21.2022,
+     "mae": 13.5597,
+     "bias": 0.1306,
+     "skill_vs_P": 0.2176
+    },
+    "C": {
+     "rmse": 20.0299,
+     "mae": 14.2888,
+     "bias": 3.3212,
+     "skill_vs_P": 0.2609
+    },
+    "S": {
+     "rmse": 27.1421,
+     "mae": 14.7485,
+     "bias": 0.6825,
+     "skill_vs_P": -0.0015
+    },
+    "D": {
+     "rmse": 19.7593,
+     "mae": 13.9054,
+     "bias": 2.9421,
+     "skill_vs_P": 0.2709
+    }
+   },
+   "best": "D"
+  },
+  "mko": {
+   "url": "https://gml.noaa.gov/aftp/data/greenhouse_gases/ch4/in-situ/surface/txt/ch4_mko_surface-insitu_1_ccgg_DailyData.txt",
+   "bytes": 194294,
+   "sha256": "ca57c93a124c0ac4a052fc6762cc7da2601d18ca95db42d6a261bb8af46c6360",
+   "parse": {
+    "lines": 1615,
+    "data_lines": 1461,
+    "missing": 430,
+    "rejected": 0,
+    "duplicates": 0,
+    "kept": 1031,
+    "columns": [
+     "site_code",
+     "year",
+     "month",
+     "day",
+     "hour",
+     "minute",
+     "second",
+     "datetime",
+     "time_decimal",
+     "midpoint_time",
+     "value",
+     "value_std_dev",
+     "nvalue",
+     "latitude",
+     "longitude",
+     "altitude",
+     "elevation",
+     "intake_height",
+     "qcflag"
+    ]
+   },
+   "first": "2022-12-08",
+   "last": "2025-12-31",
+   "origins": 344,
+   "fits": {
+    "2022": {
+     "error": "only 0 observations in 2018-2021",
+     "origins": 0
+    },
+    "2023": {
+     "error": "only 24 observations in 2019-2022",
+     "origins": 0
+    },
+    "2024": {
+     "error": "only 357 observations in 2020-2023",
+     "origins": 0
+    },
+    "2025": {
+     "n": 675,
+     "pairs": 648,
+     "phi": 0.0935,
+     "phi_raw": 0.0935,
+     "resid_sd": 13.156,
+     "origins": 344
+    }
+   },
+   "included": false,
+   "reason": "fewer than 365 scorable origins",
+   "methods": {
+    "P": {
+     "rmse": 17.5003,
+     "mae": 13.194,
+     "bias": -0.1028,
+     "skill_vs_P": 0.0
+    },
+    "M7": {
+     "rmse": 15.9183,
+     "mae": 11.9365,
+     "bias": -0.0647,
+     "skill_vs_P": 0.0904
+    },
+    "C": {
+     "rmse": 12.3157,
+     "mae": 9.5007,
+     "bias": 0.2004,
+     "skill_vs_P": 0.2963
+    },
+    "S": {
+     "rmse": 17.44,
+     "mae": 13.161,
+     "bias": 0.018,
+     "skill_vs_P": 0.0034
+    },
+    "D": {
+     "rmse": 12.3549,
+     "mae": 9.5295,
+     "bias": 0.1834,
+     "skill_vs_P": 0.294
+    }
+   },
+   "best": "C"
+  },
+  "mlo": {
+   "url": "https://gml.noaa.gov/aftp/data/greenhouse_gases/ch4/in-situ/surface/txt/ch4_mlo_surface-insitu_1_ccgg_DailyData.txt",
+   "bytes": 1779829,
+   "sha256": "8994f4991a77c31a4aa08d9763419c69f13bb8f81683a21fb9fa242814b7d927",
+   "parse": {
+    "lines": 14401,
+    "data_lines": 14245,
+    "missing": 916,
+    "rejected": 0,
+    "duplicates": 0,
+    "kept": 13329,
+    "columns": [
+     "site_code",
+     "year",
+     "month",
+     "day",
+     "hour",
+     "minute",
+     "second",
+     "datetime",
+     "time_decimal",
+     "midpoint_time",
+     "value",
+     "value_std_dev",
+     "nvalue",
+     "latitude",
+     "longitude",
+     "altitude",
+     "elevation",
+     "intake_height",
+     "qcflag"
+    ]
+   },
+   "first": "1987-04-03",
+   "last": "2025-12-31",
+   "origins": 1544,
+   "fits": {
+    "2021": {
+     "n": 1433,
+     "pairs": 1401,
+     "phi": 0.0557,
+     "phi_raw": 0.0557,
+     "resid_sd": 14.217,
+     "origins": 356
+    },
+    "2022": {
+     "n": 1430,
+     "pairs": 1395,
+     "phi": 0.075,
+     "phi_raw": 0.075,
+     "resid_sd": 14.346,
+     "origins": 323
+    },
+    "2023": {
+     "n": 1398,
+     "pairs": 1364,
+     "phi": 0.0605,
+     "phi_raw": 0.0605,
+     "resid_sd": 14.631,
+     "origins": 156
+    },
+    "2024": {
+     "n": 1207,
+     "pairs": 1164,
+     "phi": 0.052,
+     "phi_raw": 0.052,
+     "resid_sd": 15.158,
+     "origins": 365
+    },
+    "2025": {
+     "n": 1217,
+     "pairs": 1183,
+     "phi": 0.0382,
+     "phi_raw": 0.0382,
+     "resid_sd": 14.866,
+     "origins": 344
+    }
+   },
+   "included": true,
+   "methods": {
+    "P": {
+     "rmse": 20.4071,
+     "mae": 15.7415,
+     "bias": -0.2689,
+     "skill_vs_P": 0.0
+    },
+    "M7": {
+     "rmse": 17.7492,
+     "mae": 13.7541,
+     "bias": -0.4741,
+     "skill_vs_P": 0.1302
+    },
+    "C": {
+     "rmse": 17.0557,
+     "mae": 13.5844,
+     "bias": 1.1166,
+     "skill_vs_P": 0.1642
+    },
+    "S": {
+     "rmse": 20.3668,
+     "mae": 15.726,
+     "bias": -0.0163,
+     "skill_vs_P": 0.002
+    },
+    "D": {
+     "rmse": 16.814,
+     "mae": 13.3752,
+     "bias": 1.0847,
+     "skill_vs_P": 0.1761
+    }
+   },
+   "best": "D"
+  },
+  "smo": {
+   "url": "https://gml.noaa.gov/aftp/data/greenhouse_gases/ch4/in-situ/surface/txt/ch4_smo_surface-insitu_1_ccgg_DailyData.txt",
+   "bytes": 55434,
+   "sha256": "cd6794b0f3ce1378d143770a2a979f4cd44e05c42fbd222875b86731db48f0b6",
+   "parse": {
+    "lines": 521,
+    "data_lines": 365,
+    "missing": 116,
+    "rejected": 0,
+    "duplicates": 0,
+    "kept": 249,
+    "columns": [
+     "site_code",
+     "year",
+     "month",
+     "day",
+     "hour",
+     "minute",
+     "second",
+     "datetime",
+     "time_decimal",
+     "midpoint_time",
+     "value",
+     "value_std_dev",
+     "nvalue",
+     "latitude",
+     "longitude",
+     "altitude",
+     "elevation",
+     "intake_height",
+     "qcflag"
+    ]
+   },
+   "first": "2025-04-01",
+   "last": "2025-12-31",
+   "origins": 0,
+   "fits": {
+    "2025": {
+     "error": "only 0 observations in 2021-2024",
+     "origins": 0
+    }
+   },
+   "included": false,
+   "reason": "no scorable origins"
+  }
+ },
+ "checks": {
+  "included_sites": [
+   "brw",
+   "mlo"
+  ],
+  "P1_at_least_two_sites": true,
+  "P2_D_beats_P_every_site": true,
+  "P3_D_at_most_C_every_site": true,
+  "P4_D_best_every_site": true,
+  "P5_D_gain_10pct_every_site": true,
+  "mean_phi": 0.0659,
+  "P6_mean_phi_between_0.2_and_0.8": false
+ },
+ "finished_utc": "2026-11-03T16:47:00Z"
+}
