@@ -1,6 +1,12 @@
 # Copyright 2026 Munim, Inc.
 # SPDX-License-Identifier: Apache-2.0
-"""Offline tests for param_parts (no network). Made with AI agents for MV2 of Munim, Inc."""
+"""Offline tests for param_parts (no network). Made with AI agents for MV2 of Munim, Inc.
+
+Correction 2026-11-06: the first version expected C = 3,450,000 and D = 1,450,000 for the
+GEMMA_LIKE fixture. The right values are C = 3,650,000 - 150,000 = 3,500,000 and
+D = 3,500,000 - 2,000,000 = 1,500,000 (a hand-arithmetic slip in the test, not a code bug);
+the expected Markdown row changes to match (C 0.004, D 0.002). param_parts.py is unchanged.
+"""
 import json
 import os
 import struct
@@ -98,8 +104,9 @@ class PartsTests(unittest.TestCase):
         self.assertEqual(tensors, 6)
         self.assertEqual(sums["per_layer_embed"], 2000000)
         c = pp.readings(sums)
+        # A 4.15e6; B = A - 0.3e6 - 0.2e6; C = B - 0.15e6; D = C - 2.0e6
         self.assertEqual(c, {"stored": 4150000, "no_towers": 3650000,
-                             "no_towers_mtp": 3450000, "text_effective": 1450000})
+                             "no_towers_mtp": 3500000, "text_effective": 1500000})
         self.assertEqual(prefixes["model.vision_tower.blocks"]["part"], "vision")
 
     def test_assess_against_cap(self):
@@ -151,7 +158,8 @@ class MainTests(unittest.TestCase):
         self.assertEqual(report["summary"]["fits"]["text_effective"], 1)
         self.assertEqual(report["rows"][1]["skipped"], "gated (no token used)")
         self.assertEqual(report["rows"][2]["error"], "HTTP 404")
-        self.assertIn("| g/e | 0.000 | 0.000 | 0.000 | 0.002 | **0.004** | **0.004** | 0.003 | 0.001 | yes |", md)
+        # C = 3.5e6 sits exactly on the 3.5e6 cap, so it is not bold.
+        self.assertIn("| g/e | 0.000 | 0.000 | 0.000 | 0.002 | **0.004** | **0.004** | 0.004 | 0.002 | yes |", md)
 
 
 if __name__ == "__main__":
