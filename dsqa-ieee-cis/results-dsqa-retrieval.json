@@ -1,0 +1,712 @@
+{
+ "generated_utc": "2026-11-06T22:38:47Z",
+ "python": "3.12.15",
+ "cpu_count": 16,
+ "versions": {
+  "pymupdf": "1.28.2",
+  "pypdf": "6.19.0",
+  "sentence_transformers": "6.2.0",
+  "torch": "2.15.0+cpu"
+ },
+ "budget_chars": 40000,
+ "model": "sentence-transformers/all-MiniLM-L6-v2",
+ "downloads": {
+  "onesearch-2509.03236": "ok",
+  "revel-2211.06154": "ok",
+  "winstat-make8010007": "HTTPError: HTTP Error 403: Forbidden",
+  "zerodiff-2406.02929": "ok",
+  "simclr-2002.05709": "ok",
+  "byzantine-cosine-2503.21244": "ok",
+  "gpais-2307.14283": "ok",
+  "mamba-2312.00752": "ok",
+  "onerec-2506.13695": "ok",
+  "semantic-ids-2508.10478": "ok",
+  "unisearch-2509.06887": "ok",
+  "onesearch-v2-2603.24422": "ok",
+  "onevision-2510.05759": "ok",
+  "zerodiffpp-2602.12401": "ok",
+  "xshield-2404.02611": "ok",
+  "xai-metrics-2302.12094": "ok",
+  "fcm-shap-2305.09399": "ok",
+  "fcm-bias-2112.12713": "ok",
+  "tape-2305.16642": "ok",
+  "krum-1703.02757": "ok",
+  "bulyan-1802.07927": "ok",
+  "layer-adaptive-brfl-2409.01435": "ok",
+  "byz-decentralized-2206.04568": "ok",
+  "gpai-definition-2306.02889": "ok",
+  "mamba2-2405.21060": "ok",
+  "s4-2111.00396": "ok",
+  "moco-1911.05722": "ok",
+  "byol-2006.07733": "ok",
+  "transformer-1706.03762": "ok"
+ },
+ "roles": {
+  "onesearch-2509.03236": "gold",
+  "revel-2211.06154": "gold",
+  "winstat-make8010007": "gold",
+  "zerodiff-2406.02929": "gold",
+  "simclr-2002.05709": "gold",
+  "byzantine-cosine-2503.21244": "gold",
+  "gpais-2307.14283": "gold",
+  "mamba-2312.00752": "gold",
+  "onerec-2506.13695": "hard",
+  "semantic-ids-2508.10478": "hard",
+  "unisearch-2509.06887": "hard",
+  "onesearch-v2-2603.24422": "hard",
+  "onevision-2510.05759": "hard",
+  "zerodiffpp-2602.12401": "hard",
+  "xshield-2404.02611": "hard",
+  "xai-metrics-2302.12094": "hard",
+  "fcm-shap-2305.09399": "hard",
+  "fcm-bias-2112.12713": "hard",
+  "tape-2305.16642": "hard",
+  "krum-1703.02757": "hard",
+  "bulyan-1802.07927": "hard",
+  "layer-adaptive-brfl-2409.01435": "hard",
+  "byz-decentralized-2206.04568": "hard",
+  "gpai-definition-2306.02889": "hard",
+  "mamba2-2405.21060": "hard",
+  "s4-2111.00396": "hard",
+  "moco-1911.05722": "hard",
+  "byol-2006.07733": "hard",
+  "transformer-1706.03762": "hard"
+ },
+ "docs": [
+  {
+   "id": "onesearch-2509.03236",
+   "role": "gold",
+   "bytes": 10735940,
+   "pages": 14,
+   "chars_pymupdf": 85550,
+   "sec_pymupdf": 0.1637,
+   "chars_pypdf": 84815,
+   "sec_pypdf": 1.1323
+  },
+  {
+   "id": "revel-2211.06154",
+   "role": "gold",
+   "bytes": 2541880,
+   "pages": 21,
+   "chars_pymupdf": 62550,
+   "sec_pymupdf": 0.2605,
+   "chars_pypdf": 61787,
+   "sec_pypdf": 6.8684
+  },
+  {
+   "id": "zerodiff-2406.02929",
+   "role": "gold",
+   "bytes": 2045416,
+   "pages": 21,
+   "chars_pymupdf": 67163,
+   "sec_pymupdf": 0.1025,
+   "chars_pypdf": 66179,
+   "sec_pypdf": 0.8592
+  },
+  {
+   "id": "simclr-2002.05709",
+   "role": "gold",
+   "bytes": 6564895,
+   "pages": 20,
+   "chars_pymupdf": 78959,
+   "sec_pymupdf": 0.149,
+   "chars_pypdf": 78295,
+   "sec_pypdf": 1.5034
+  },
+  {
+   "id": "byzantine-cosine-2503.21244",
+   "role": "gold",
+   "bytes": 1048687,
+   "pages": 17,
+   "chars_pymupdf": 60706,
+   "sec_pymupdf": 0.0688,
+   "chars_pypdf": 59995,
+   "sec_pypdf": 0.6785
+  },
+  {
+   "id": "gpais-2307.14283",
+   "role": "gold",
+   "bytes": 1538089,
+   "pages": 25,
+   "chars_pymupdf": 115104,
+   "sec_pymupdf": 0.0886,
+   "chars_pypdf": 114723,
+   "sec_pypdf": 0.953
+  },
+  {
+   "id": "mamba-2312.00752",
+   "role": "gold",
+   "bytes": 1168615,
+   "pages": 36,
+   "chars_pymupdf": 135695,
+   "sec_pymupdf": 0.1393,
+   "chars_pypdf": 156675,
+   "sec_pypdf": 1.6344
+  },
+  {
+   "id": "onerec-2506.13695",
+   "role": "hard",
+   "bytes": 8106029,
+   "pages": 39,
+   "chars_pymupdf": 94848,
+   "sec_pymupdf": 0.1279,
+   "chars_pypdf": 93408,
+   "sec_pypdf": 1.6482
+  },
+  {
+   "id": "semantic-ids-2508.10478",
+   "role": "hard",
+   "bytes": 676873,
+   "pages": 6,
+   "chars_pymupdf": 30335,
+   "sec_pymupdf": 0.0348,
+   "chars_pypdf": 30133,
+   "sec_pypdf": 0.2921
+  },
+  {
+   "id": "unisearch-2509.06887",
+   "role": "hard",
+   "bytes": 3562443,
+   "pages": 10,
+   "chars_pymupdf": 61408,
+   "sec_pymupdf": 0.0649,
+   "chars_pypdf": 60870,
+   "sec_pypdf": 0.6985
+  },
+  {
+   "id": "onesearch-v2-2603.24422",
+   "role": "hard",
+   "bytes": 2970457,
+   "pages": 16,
+   "chars_pymupdf": 90541,
+   "sec_pymupdf": 0.0675,
+   "chars_pypdf": 89701,
+   "sec_pypdf": 0.7967
+  },
+  {
+   "id": "onevision-2510.05759",
+   "role": "hard",
+   "bytes": 5287319,
+   "pages": 11,
+   "chars_pymupdf": 65488,
+   "sec_pymupdf": 0.0753,
+   "chars_pypdf": 64874,
+   "sec_pypdf": 1.0263
+  },
+  {
+   "id": "zerodiffpp-2602.12401",
+   "role": "hard",
+   "bytes": 2559382,
+   "pages": 18,
+   "chars_pymupdf": 92214,
+   "sec_pymupdf": 0.0862,
+   "chars_pypdf": 90695,
+   "sec_pypdf": 1.1636
+  },
+  {
+   "id": "xshield-2404.02611",
+   "role": "hard",
+   "bytes": 2445998,
+   "pages": 18,
+   "chars_pymupdf": 69775,
+   "sec_pymupdf": 0.2952,
+   "chars_pypdf": 69134,
+   "sec_pypdf": 4.1221
+  },
+  {
+   "id": "xai-metrics-2302.12094",
+   "role": "hard",
+   "bytes": 1526269,
+   "pages": 11,
+   "chars_pymupdf": 44845,
+   "sec_pymupdf": 0.0653,
+   "chars_pypdf": 44486,
+   "sec_pypdf": 0.6409
+  },
+  {
+   "id": "fcm-shap-2305.09399",
+   "role": "hard",
+   "bytes": 748192,
+   "pages": 20,
+   "chars_pymupdf": 49397,
+   "sec_pymupdf": 0.0823,
+   "chars_pypdf": 57473,
+   "sec_pypdf": 0.8301
+  },
+  {
+   "id": "fcm-bias-2112.12713",
+   "role": "hard",
+   "bytes": 934670,
+   "pages": 13,
+   "chars_pymupdf": 71803,
+   "sec_pymupdf": 0.0897,
+   "chars_pypdf": 82631,
+   "sec_pypdf": 1.995
+  },
+  {
+   "id": "tape-2305.16642",
+   "role": "hard",
+   "bytes": 854963,
+   "pages": 28,
+   "chars_pymupdf": 71640,
+   "sec_pymupdf": 0.0917,
+   "chars_pypdf": 71025,
+   "sec_pypdf": 0.9103
+  },
+  {
+   "id": "krum-1703.02757",
+   "role": "hard",
+   "bytes": 232101,
+   "pages": 16,
+   "chars_pymupdf": 39879,
+   "sec_pymupdf": 0.0448,
+   "chars_pypdf": 40332,
+   "sec_pypdf": 0.6801
+  },
+  {
+   "id": "bulyan-1802.07927",
+   "role": "hard",
+   "bytes": 807520,
+   "pages": 13,
+   "chars_pymupdf": 57707,
+   "sec_pymupdf": 0.0555,
+   "chars_pypdf": 56546,
+   "sec_pypdf": 0.6081
+  },
+  {
+   "id": "layer-adaptive-brfl-2409.01435",
+   "role": "hard",
+   "bytes": 643489,
+   "pages": 26,
+   "chars_pymupdf": 90833,
+   "sec_pymupdf": 0.0795,
+   "chars_pypdf": 89512,
+   "sec_pypdf": 1.3714
+  },
+  {
+   "id": "byz-decentralized-2206.04568",
+   "role": "hard",
+   "bytes": 698699,
+   "pages": 17,
+   "chars_pymupdf": 84490,
+   "sec_pymupdf": 0.0819,
+   "chars_pypdf": 82264,
+   "sec_pypdf": 1.3151
+  },
+  {
+   "id": "gpai-definition-2306.02889",
+   "role": "hard",
+   "bytes": 301978,
+   "pages": 14,
+   "chars_pymupdf": 35735,
+   "sec_pymupdf": 0.0312,
+   "chars_pypdf": 35828,
+   "sec_pypdf": 0.6578
+  },
+  {
+   "id": "mamba2-2405.21060",
+   "role": "hard",
+   "bytes": 3209170,
+   "pages": 52,
+   "chars_pymupdf": 178423,
+   "sec_pymupdf": 0.1368,
+   "chars_pypdf": 178364,
+   "sec_pypdf": 2.0796
+  },
+  {
+   "id": "s4-2111.00396",
+   "role": "hard",
+   "bytes": 3386172,
+   "pages": 32,
+   "chars_pymupdf": 95044,
+   "sec_pymupdf": 0.0807,
+   "chars_pypdf": 93992,
+   "sec_pypdf": 1.0258
+  },
+  {
+   "id": "moco-1911.05722",
+   "role": "hard",
+   "bytes": 593470,
+   "pages": 12,
+   "chars_pymupdf": 59792,
+   "sec_pymupdf": 0.0513,
+   "chars_pypdf": 59445,
+   "sec_pypdf": 0.6191
+  },
+  {
+   "id": "byol-2006.07733",
+   "role": "hard",
+   "bytes": 4837213,
+   "pages": 35,
+   "chars_pymupdf": 109975,
+   "sec_pymupdf": 0.1231,
+   "chars_pypdf": 108971,
+   "sec_pypdf": 1.3938
+  },
+  {
+   "id": "transformer-1706.03762",
+   "role": "hard",
+   "bytes": 2215244,
+   "pages": 15,
+   "chars_pymupdf": 40035,
+   "sec_pymupdf": 0.0954,
+   "chars_pypdf": 39524,
+   "sec_pypdf": 1.6431
+  }
+ ],
+ "extraction_totals": {
+  "pymupdf_seconds": 2.833,
+  "pypdf_seconds": 39.147,
+  "pages": 576,
+  "docs_both_ok": 28
+ },
+ "questions_evaluated": [
+  11,
+  14,
+  20,
+  22,
+  23,
+  24,
+  25
+ ],
+ "questions_excluded": [
+  15,
+  19
+ ],
+ "gold": {
+  "11": [
+   "onesearch-2509.03236"
+  ],
+  "14": [
+   "revel-2211.06154"
+  ],
+  "20": [
+   "zerodiff-2406.02929"
+  ],
+  "22": [
+   "simclr-2002.05709"
+  ],
+  "23": [
+   "byzantine-cosine-2503.21244"
+  ],
+  "24": [
+   "gpais-2307.14283"
+  ],
+  "25": [
+   "mamba-2312.00752"
+  ]
+ },
+ "methods": {
+  "bm25_pymupdf": {
+   "index_seconds": 0.465,
+   "chunks": 3880,
+   "per_question": {
+    "11": {
+     "top1_gold": true,
+     "first_gold_chunk_rank": 1,
+     "gold_doc_rank": 1,
+     "gold_in_context": true,
+     "gold_share": 0.4091,
+     "context_chunks": 53,
+     "top_doc": "onesearch-2509.03236"
+    },
+    "14": {
+     "top1_gold": true,
+     "first_gold_chunk_rank": 1,
+     "gold_doc_rank": 1,
+     "gold_in_context": true,
+     "gold_share": 0.6068,
+     "context_chunks": 57,
+     "top_doc": "revel-2211.06154"
+    },
+    "20": {
+     "top1_gold": true,
+     "first_gold_chunk_rank": 1,
+     "gold_doc_rank": 1,
+     "gold_in_context": true,
+     "gold_share": 0.3312,
+     "context_chunks": 53,
+     "top_doc": "zerodiff-2406.02929"
+    },
+    "22": {
+     "top1_gold": true,
+     "first_gold_chunk_rank": 1,
+     "gold_doc_rank": 1,
+     "gold_in_context": true,
+     "gold_share": 0.2892,
+     "context_chunks": 55,
+     "top_doc": "simclr-2002.05709"
+    },
+    "23": {
+     "top1_gold": false,
+     "first_gold_chunk_rank": 4,
+     "gold_doc_rank": 4,
+     "gold_in_context": true,
+     "gold_share": 0.2736,
+     "context_chunks": 54,
+     "top_doc": "revel-2211.06154"
+    },
+    "24": {
+     "top1_gold": true,
+     "first_gold_chunk_rank": 1,
+     "gold_doc_rank": 1,
+     "gold_in_context": true,
+     "gold_share": 0.8531,
+     "context_chunks": 54,
+     "top_doc": "gpais-2307.14283"
+    },
+    "25": {
+     "top1_gold": true,
+     "first_gold_chunk_rank": 1,
+     "gold_doc_rank": 1,
+     "gold_in_context": true,
+     "gold_share": 0.652,
+     "context_chunks": 56,
+     "top_doc": "mamba-2312.00752"
+    }
+   },
+   "summary": {
+    "n": 7,
+    "hit1": 6,
+    "mrr_doc": 0.8929,
+    "in_context": 7
+   }
+  },
+  "bm25_pypdf": {
+   "index_seconds": 0.521,
+   "chunks": 3025,
+   "per_question": {
+    "11": {
+     "top1_gold": true,
+     "first_gold_chunk_rank": 1,
+     "gold_doc_rank": 1,
+     "gold_in_context": true,
+     "gold_share": 0.3573,
+     "context_chunks": 44,
+     "top_doc": "onesearch-2509.03236"
+    },
+    "14": {
+     "top1_gold": true,
+     "first_gold_chunk_rank": 1,
+     "gold_doc_rank": 1,
+     "gold_in_context": true,
+     "gold_share": 0.5608,
+     "context_chunks": 43,
+     "top_doc": "revel-2211.06154"
+    },
+    "20": {
+     "top1_gold": false,
+     "first_gold_chunk_rank": 2,
+     "gold_doc_rank": 2,
+     "gold_in_context": true,
+     "gold_share": 0.3082,
+     "context_chunks": 42,
+     "top_doc": "zerodiffpp-2602.12401"
+    },
+    "22": {
+     "top1_gold": true,
+     "first_gold_chunk_rank": 1,
+     "gold_doc_rank": 1,
+     "gold_in_context": true,
+     "gold_share": 0.3023,
+     "context_chunks": 46,
+     "top_doc": "simclr-2002.05709"
+    },
+    "23": {
+     "top1_gold": false,
+     "first_gold_chunk_rank": 2,
+     "gold_doc_rank": 2,
+     "gold_in_context": true,
+     "gold_share": 0.3183,
+     "context_chunks": 45,
+     "top_doc": "krum-1703.02757"
+    },
+    "24": {
+     "top1_gold": true,
+     "first_gold_chunk_rank": 1,
+     "gold_doc_rank": 1,
+     "gold_in_context": true,
+     "gold_share": 0.8852,
+     "context_chunks": 43,
+     "top_doc": "gpais-2307.14283"
+    },
+    "25": {
+     "top1_gold": true,
+     "first_gold_chunk_rank": 1,
+     "gold_doc_rank": 1,
+     "gold_in_context": true,
+     "gold_share": 0.6725,
+     "context_chunks": 43,
+     "top_doc": "mamba-2312.00752"
+    }
+   },
+   "summary": {
+    "n": 7,
+    "hit1": 5,
+    "mrr_doc": 0.8571,
+    "in_context": 7
+   }
+  },
+  "dense_pymupdf": {
+   "index_seconds": 911.994,
+   "chunks": 3880,
+   "per_question": {
+    "11": {
+     "top1_gold": true,
+     "first_gold_chunk_rank": 1,
+     "gold_doc_rank": 1,
+     "gold_in_context": true,
+     "gold_share": 0.4353,
+     "context_chunks": 55,
+     "top_doc": "onesearch-2509.03236"
+    },
+    "14": {
+     "top1_gold": true,
+     "first_gold_chunk_rank": 1,
+     "gold_doc_rank": 1,
+     "gold_in_context": true,
+     "gold_share": 0.5925,
+     "context_chunks": 59,
+     "top_doc": "revel-2211.06154"
+    },
+    "20": {
+     "top1_gold": true,
+     "first_gold_chunk_rank": 1,
+     "gold_doc_rank": 1,
+     "gold_in_context": true,
+     "gold_share": 0.4498,
+     "context_chunks": 55,
+     "top_doc": "zerodiff-2406.02929"
+    },
+    "22": {
+     "top1_gold": true,
+     "first_gold_chunk_rank": 1,
+     "gold_doc_rank": 1,
+     "gold_in_context": true,
+     "gold_share": 0.2524,
+     "context_chunks": 59,
+     "top_doc": "simclr-2002.05709"
+    },
+    "23": {
+     "top1_gold": true,
+     "first_gold_chunk_rank": 1,
+     "gold_doc_rank": 1,
+     "gold_in_context": true,
+     "gold_share": 0.2873,
+     "context_chunks": 61,
+     "top_doc": "byzantine-cosine-2503.21244"
+    },
+    "24": {
+     "top1_gold": true,
+     "first_gold_chunk_rank": 1,
+     "gold_doc_rank": 1,
+     "gold_in_context": true,
+     "gold_share": 0.8413,
+     "context_chunks": 57,
+     "top_doc": "gpais-2307.14283"
+    },
+    "25": {
+     "top1_gold": true,
+     "first_gold_chunk_rank": 1,
+     "gold_doc_rank": 1,
+     "gold_in_context": true,
+     "gold_share": 0.4318,
+     "context_chunks": 57,
+     "top_doc": "mamba-2312.00752"
+    }
+   },
+   "summary": {
+    "n": 7,
+    "hit1": 7,
+    "mrr_doc": 1.0,
+    "in_context": 7
+   },
+   "model_load_seconds": 4.411
+  },
+  "hybrid_pymupdf": {
+   "index_seconds": 0.0,
+   "chunks": 3880,
+   "per_question": {
+    "11": {
+     "top1_gold": true,
+     "first_gold_chunk_rank": 1,
+     "gold_doc_rank": 1,
+     "gold_in_context": true,
+     "gold_share": 0.483,
+     "context_chunks": 53,
+     "top_doc": "onesearch-2509.03236"
+    },
+    "14": {
+     "top1_gold": true,
+     "first_gold_chunk_rank": 1,
+     "gold_doc_rank": 1,
+     "gold_in_context": true,
+     "gold_share": 0.6522,
+     "context_chunks": 58,
+     "top_doc": "revel-2211.06154"
+    },
+    "20": {
+     "top1_gold": true,
+     "first_gold_chunk_rank": 1,
+     "gold_doc_rank": 1,
+     "gold_in_context": true,
+     "gold_share": 0.4084,
+     "context_chunks": 55,
+     "top_doc": "zerodiff-2406.02929"
+    },
+    "22": {
+     "top1_gold": true,
+     "first_gold_chunk_rank": 1,
+     "gold_doc_rank": 1,
+     "gold_in_context": true,
+     "gold_share": 0.3721,
+     "context_chunks": 55,
+     "top_doc": "simclr-2002.05709"
+    },
+    "23": {
+     "top1_gold": false,
+     "first_gold_chunk_rank": 2,
+     "gold_doc_rank": 2,
+     "gold_in_context": true,
+     "gold_share": 0.3254,
+     "context_chunks": 56,
+     "top_doc": "bulyan-1802.07927"
+    },
+    "24": {
+     "top1_gold": true,
+     "first_gold_chunk_rank": 1,
+     "gold_doc_rank": 1,
+     "gold_in_context": true,
+     "gold_share": 0.8827,
+     "context_chunks": 55,
+     "top_doc": "gpais-2307.14283"
+    },
+    "25": {
+     "top1_gold": true,
+     "first_gold_chunk_rank": 1,
+     "gold_doc_rank": 1,
+     "gold_in_context": true,
+     "gold_share": 0.5731,
+     "context_chunks": 55,
+     "top_doc": "mamba-2312.00752"
+    }
+   },
+   "summary": {
+    "n": 7,
+    "hit1": 6,
+    "mrr_doc": 0.9286,
+    "in_context": 7
+   }
+  }
+ },
+ "grades": {
+  "P1": true,
+  "P2": true,
+  "P3": false,
+  "P4": true,
+  "P5": true,
+  "P6": false,
+  "P7": true,
+  "gradable": true
+ }
+}
