@@ -1,0 +1,449 @@
+{
+ "checked_at": "2026-11-05T21:03:13Z",
+ "cap": 3000000000,
+ "source": "https://huggingface.co/api/models/<model id>",
+ "rows": [
+  {
+   "model": "Qwen/Qwen3.5-0.8B",
+   "params": 873438784,
+   "params_b": 0.873,
+   "by_dtype": {
+    "F32": 2592,
+    "BF16": 873436192
+   },
+   "licence": "apache-2.0",
+   "permissive": true,
+   "fits_cap": true,
+   "verdict": "ok",
+   "pipeline_tag": "image-text-to-text",
+   "gated": false,
+   "sha": "2fc06364715b967f1860aea9cf38778875588b17",
+   "last_modified": "2026-03-02T11:26:58.000Z"
+  },
+  {
+   "model": "Qwen/Qwen3.5-2B",
+   "params": 2274069824,
+   "params_b": 2.274,
+   "by_dtype": {
+    "F32": 2592,
+    "BF16": 2274067232
+   },
+   "licence": "apache-2.0",
+   "permissive": true,
+   "fits_cap": true,
+   "verdict": "ok",
+   "pipeline_tag": "image-text-to-text",
+   "gated": false,
+   "sha": "15852e8c16360a2fea060d615a32b45270f8a8fc",
+   "last_modified": "2026-03-02T11:26:29.000Z"
+  },
+  {
+   "model": "Qwen/Qwen3.5-4B",
+   "params": 4659865088,
+   "params_b": 4.66,
+   "by_dtype": {
+    "BF16": 4659861248,
+    "F32": 3840
+   },
+   "licence": "apache-2.0",
+   "permissive": true,
+   "fits_cap": false,
+   "verdict": "over-cap",
+   "pipeline_tag": "image-text-to-text",
+   "gated": false,
+   "sha": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+   "last_modified": "2026-03-02T00:52:52.000Z"
+  },
+  {
+   "model": "Qwen/Qwen3-0.6B",
+   "params": 751632384,
+   "params_b": 0.752,
+   "by_dtype": {
+    "BF16": 751632384
+   },
+   "licence": "apache-2.0",
+   "permissive": true,
+   "fits_cap": true,
+   "verdict": "ok",
+   "pipeline_tag": "text-generation",
+   "gated": false,
+   "sha": "c1899de289a04d12100db370d81485cdf75e47ca",
+   "last_modified": "2025-07-26T03:46:27.000Z"
+  },
+  {
+   "model": "Qwen/Qwen3-1.7B",
+   "params": 2031739904,
+   "params_b": 2.032,
+   "by_dtype": {
+    "BF16": 2031739904
+   },
+   "licence": "apache-2.0",
+   "permissive": true,
+   "fits_cap": true,
+   "verdict": "ok",
+   "pipeline_tag": "text-generation",
+   "gated": false,
+   "sha": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+   "last_modified": "2025-07-26T03:46:32.000Z"
+  },
+  {
+   "model": "Qwen/Qwen3-4B-Instruct-2507",
+   "params": 4022468096,
+   "params_b": 4.022,
+   "by_dtype": {
+    "BF16": 4022468096
+   },
+   "licence": "apache-2.0",
+   "permissive": true,
+   "fits_cap": false,
+   "verdict": "over-cap",
+   "pipeline_tag": "text-generation",
+   "gated": false,
+   "sha": "cdbee75f17c01a7cc42f958dc650907174af0554",
+   "last_modified": "2025-09-17T06:56:53.000Z"
+  },
+  {
+   "model": "Qwen/Qwen2.5-1.5B-Instruct",
+   "params": 1543714304,
+   "params_b": 1.544,
+   "by_dtype": {
+    "BF16": 1543714304
+   },
+   "licence": "apache-2.0",
+   "permissive": true,
+   "fits_cap": true,
+   "verdict": "ok",
+   "pipeline_tag": "text-generation",
+   "gated": false,
+   "sha": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+   "last_modified": "2024-09-25T12:32:50.000Z"
+  },
+  {
+   "model": "Qwen/Qwen2.5-3B-Instruct",
+   "params": 3085938688,
+   "params_b": 3.086,
+   "by_dtype": {
+    "BF16": 3085938688
+   },
+   "licence": "other:qwen-research",
+   "permissive": false,
+   "fits_cap": false,
+   "verdict": "over-cap-and-licence",
+   "pipeline_tag": "text-generation",
+   "gated": false,
+   "sha": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+   "last_modified": "2024-09-25T12:33:00.000Z"
+  },
+  {
+   "model": "ibm-granite/granite-3.3-2b-instruct",
+   "params": 2533539840,
+   "params_b": 2.534,
+   "by_dtype": {
+    "BF16": 2533539840
+   },
+   "licence": "apache-2.0",
+   "permissive": true,
+   "fits_cap": true,
+   "verdict": "ok",
+   "pipeline_tag": "text-generation",
+   "gated": false,
+   "sha": "707f574c62054322f6b5b04b6d075f0a8f05e0f0",
+   "last_modified": "2025-05-08T15:01:59.000Z"
+  },
+  {
+   "model": "ibm-granite/granite-4.0-1b",
+   "params": 1631750144,
+   "params_b": 1.632,
+   "by_dtype": {
+    "BF16": 1631750144
+   },
+   "licence": "apache-2.0",
+   "permissive": true,
+   "fits_cap": true,
+   "verdict": "ok",
+   "pipeline_tag": "text-generation",
+   "gated": false,
+   "sha": "6a7381ba1f54d684ff508d991aeb7dc580157103",
+   "last_modified": "2025-10-23T08:53:17.000Z"
+  },
+  {
+   "model": "ibm-granite/granite-4.0-h-1b",
+   "params": 1461538368,
+   "params_b": 1.462,
+   "by_dtype": {
+    "BF16": 1461538368
+   },
+   "licence": "apache-2.0",
+   "permissive": true,
+   "fits_cap": true,
+   "verdict": "ok",
+   "pipeline_tag": "text-generation",
+   "gated": false,
+   "sha": "d18cca4c121edb87d022116d281ce212c9136f57",
+   "last_modified": "2025-10-23T08:52:58.000Z"
+  },
+  {
+   "model": "ibm-granite/granite-4.0-micro",
+   "params": 3402836480,
+   "params_b": 3.403,
+   "by_dtype": {
+    "BF16": 3402836480
+   },
+   "licence": "apache-2.0",
+   "permissive": true,
+   "fits_cap": false,
+   "verdict": "over-cap",
+   "pipeline_tag": "text-generation",
+   "gated": false,
+   "sha": "56111ae135df9c53a78c99028e7bc24035a9e979",
+   "last_modified": "2025-11-03T19:39:06.000Z"
+  },
+  {
+   "model": "ibm-granite/granite-4.0-h-micro",
+   "params": 3191396096,
+   "params_b": 3.191,
+   "by_dtype": {
+    "BF16": 3191396096
+   },
+   "licence": "apache-2.0",
+   "permissive": true,
+   "fits_cap": false,
+   "verdict": "over-cap",
+   "pipeline_tag": "text-generation",
+   "gated": false,
+   "sha": "d5f01a3ea75f088947be3aae039f4ad52837dfde",
+   "last_modified": "2025-11-03T19:41:11.000Z"
+  },
+  {
+   "model": "ibm-granite/granite-4.1-3b",
+   "params": 3402836480,
+   "params_b": 3.403,
+   "by_dtype": {
+    "BF16": 3402836480
+   },
+   "licence": "apache-2.0",
+   "permissive": true,
+   "fits_cap": false,
+   "verdict": "over-cap",
+   "pipeline_tag": "text-generation",
+   "gated": false,
+   "sha": "c0650403e44e78ec0262dab1c90914c65b196c4e",
+   "last_modified": "2026-05-04T17:36:00.000Z"
+  },
+  {
+   "model": "ibm-granite/granite-4.2-3b",
+   "params": 3659737600,
+   "params_b": 3.66,
+   "by_dtype": {
+    "BF16": 3659737600
+   },
+   "licence": "apache-2.0",
+   "permissive": true,
+   "fits_cap": false,
+   "verdict": "over-cap",
+   "pipeline_tag": "text-generation",
+   "gated": false,
+   "sha": "4e9c275e232f10211ec88644d106a1f6a1b60e06",
+   "last_modified": "2026-10-20T20:44:28.000Z"
+  },
+  {
+   "model": "HuggingFaceTB/SmolLM2-1.7B-Instruct",
+   "params": 1711376384,
+   "params_b": 1.711,
+   "by_dtype": {
+    "BF16": 1711376384
+   },
+   "licence": "apache-2.0",
+   "permissive": true,
+   "fits_cap": true,
+   "verdict": "ok",
+   "pipeline_tag": "text-generation",
+   "gated": false,
+   "sha": "31b70e2e869a7173562077fd711b654946d38674",
+   "last_modified": "2025-04-21T20:51:14.000Z"
+  },
+  {
+   "model": "HuggingFaceTB/SmolLM3-3B",
+   "params": 3075098624,
+   "params_b": 3.075,
+   "by_dtype": {
+    "BF16": 3075098624
+   },
+   "licence": "apache-2.0",
+   "permissive": true,
+   "fits_cap": false,
+   "verdict": "over-cap",
+   "pipeline_tag": "text-generation",
+   "gated": false,
+   "sha": "a07cc9a04f16550a088caea529712d1d335b0ac1",
+   "last_modified": "2025-09-10T12:28:11.000Z"
+  },
+  {
+   "model": "google/gemma-4-E2B-it",
+   "params": 5123178051,
+   "params_b": 5.123,
+   "by_dtype": {
+    "BF16": 5123178051
+   },
+   "licence": "apache-2.0",
+   "permissive": true,
+   "fits_cap": false,
+   "verdict": "over-cap",
+   "pipeline_tag": "any-to-any",
+   "gated": false,
+   "sha": "4adf15748de9e1a0097b6274cee9c15836c41c37",
+   "last_modified": "2026-11-03T16:10:29.000Z"
+  },
+  {
+   "model": "google/gemma-3-1b-it",
+   "params": 999885952,
+   "params_b": 1.0,
+   "by_dtype": {
+    "BF16": 999885952
+   },
+   "licence": "gemma",
+   "permissive": false,
+   "fits_cap": true,
+   "verdict": "licence",
+   "pipeline_tag": "text-generation",
+   "gated": "manual",
+   "sha": "dcc83ea841ab6100d6b47a070329e1ba4cf78752",
+   "last_modified": "2025-04-04T13:12:40.000Z"
+  },
+  {
+   "model": "meta-llama/Llama-3.2-1B-Instruct",
+   "params": 1235814400,
+   "params_b": 1.236,
+   "by_dtype": {
+    "BF16": 1235814400
+   },
+   "licence": "llama3.2",
+   "permissive": false,
+   "fits_cap": true,
+   "verdict": "licence",
+   "pipeline_tag": "text-generation",
+   "gated": "manual",
+   "sha": "9213176726f574b556790deb65791e0c5aa438b6",
+   "last_modified": "2024-10-24T15:07:51.000Z"
+  },
+  {
+   "model": "meta-llama/Llama-3.2-3B-Instruct",
+   "params": 3212749824,
+   "params_b": 3.213,
+   "by_dtype": {
+    "BF16": 3212749824
+   },
+   "licence": "llama3.2",
+   "permissive": false,
+   "fits_cap": false,
+   "verdict": "over-cap-and-licence",
+   "pipeline_tag": "text-generation",
+   "gated": "manual",
+   "sha": "0cb88a4f764b7a12671c53f0838cd831a0843b95",
+   "last_modified": "2024-10-24T15:07:29.000Z"
+  },
+  {
+   "model": "microsoft/Phi-4-mini-instruct",
+   "params": 3836021760,
+   "params_b": 3.836,
+   "by_dtype": {
+    "BF16": 3836021760
+   },
+   "licence": "mit",
+   "permissive": true,
+   "fits_cap": false,
+   "verdict": "over-cap",
+   "pipeline_tag": "text-generation",
+   "gated": false,
+   "sha": "cfbefacb99257ffa30c83adab238a50856ac3083",
+   "last_modified": "2025-12-10T20:24:40.000Z"
+  },
+  {
+   "model": "mistralai/Ministral-3-3B-Instruct-2512",
+   "params": 3849090048,
+   "params_b": 3.849,
+   "by_dtype": {
+    "BF16": 822899712,
+    "F8_E4M3": 3026190336
+   },
+   "licence": "apache-2.0",
+   "permissive": true,
+   "fits_cap": false,
+   "verdict": "over-cap",
+   "pipeline_tag": null,
+   "gated": false,
+   "sha": "b35d4dfe56c142746f54dbd64f579faab2744308",
+   "last_modified": "2026-07-15T12:21:35.000Z"
+  },
+  {
+   "model": "LiquidAI/LFM2-2.6B",
+   "params": 2569272320,
+   "params_b": 2.569,
+   "by_dtype": {
+    "BF16": 2569272320
+   },
+   "licence": "other:lfm1.0",
+   "permissive": false,
+   "fits_cap": true,
+   "verdict": "licence",
+   "pipeline_tag": "text-generation",
+   "gated": false,
+   "sha": "36ed799f7024ef169ba92ffe184821835e15cc66",
+   "last_modified": "2026-08-05T17:01:28.000Z"
+  },
+  {
+   "model": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+   "params": 1777088000,
+   "params_b": 1.777,
+   "by_dtype": {
+    "BF16": 1777088000
+   },
+   "licence": "mit",
+   "permissive": true,
+   "fits_cap": true,
+   "verdict": "ok",
+   "pipeline_tag": "text-generation",
+   "gated": false,
+   "sha": "ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562",
+   "last_modified": "2025-02-24T03:32:35.000Z"
+  },
+  {
+   "model": "allenai/OLMo-2-0425-1B-Instruct",
+   "params": 1484916736,
+   "params_b": 1.485,
+   "by_dtype": {
+    "BF16": 1484916736
+   },
+   "licence": "apache-2.0",
+   "permissive": true,
+   "fits_cap": true,
+   "verdict": "ok",
+   "pipeline_tag": "text-generation",
+   "gated": false,
+   "sha": "48d788eca847d4d7548f375ad03d3c9312f6139e",
+   "last_modified": "2025-04-30T22:32:46.000Z"
+  },
+  {
+   "model": "tiiuae/Falcon3-3B-Instruct",
+   "params": 3227655168,
+   "params_b": 3.228,
+   "by_dtype": {
+    "BF16": 3227655168
+   },
+   "licence": "other:falcon-llm-license",
+   "permissive": false,
+   "fits_cap": false,
+   "verdict": "over-cap-and-licence",
+   "pipeline_tag": "text-generation",
+   "gated": false,
+   "sha": "411bb94318f94f7a5735b77109f456b1e74b42a1",
+   "last_modified": "2025-01-10T06:58:36.000Z"
+  }
+ ],
+ "counts": {
+  "licence": 3,
+  "ok": 11,
+  "over-cap": 10,
+  "over-cap-and-licence": 3
+ }
+}
