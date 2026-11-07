@@ -41,6 +41,32 @@ SmolLM3-3B stores 3.075B parameters, Granite 4.0 Micro 3.40B and Gemma 4 E2B 5.1
 
   Its first run is pre-registered in `PREREGISTRATION-param-parts.md` (six predictions, written
   before any header was read). `wait_public.py` makes the sealed job wait until that file is public.
+  Results: `RESULTS-param-parts.md` (5 of 6 held) and `out-param-parts/`.
+
+- `param_scalars.py`: for each model, compares the per-dtype counts from the headers with the API's
+  and counts zero-dimensional (scalar) tensors by dtype, part and name. `fetch_dep.py` fetches
+  `param_parts.py` and `models.txt` and checks their git blob hashes first.
+
+  ```
+  python fetch_dep.py
+  python param_scalars.py --models models.txt --out-dir out
+  python -m unittest test_param_scalars -v       # 5 offline tests
+  ```
+
+  Pre-registered in `PREREGISTRATION-param-scalars.md`; results in `RESULTS-param-scalars.md`
+  (4 of 4 held) and `out-param-scalars/`.
+
+## Which count this reports
+
+`param_parts.py` counts a zero-dimensional tensor (shape `[]`, one number) as 1 parameter, as the
+`huggingface_hub` Python client (`get_safetensors_metadata`) does. On the 24 public models checked on
+2026-11-07, the Hub's model-info `safetensors.total` counts such a tensor as 0. So for a model with
+scalar tensors, our count A is higher than the API's by exactly their number: +364 for
+Ministral-3-3B-Instruct-2512 (per-tensor FP8 scales) and +928 for gemma-4-E2B-it (scalars named
+`input_min`, `input_max`, `output_min` and `output_max` in its vision and audio towers). The other 22 models have no scalar tensors and match exactly. The same
+Hub rule ("a tensor without dimensions is not a parameter") was noted earlier in
+https://github.com/cheesecave/cheesecave-backend/pull/90. No gap is
+anywhere near large enough to change a cap verdict.
 
 ## Limits
 
