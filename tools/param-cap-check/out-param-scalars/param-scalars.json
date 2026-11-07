@@ -1,0 +1,638 @@
+{
+ "checked_at": "2026-11-07T00:40:07Z",
+ "rows": [
+  {
+   "model": "Qwen/Qwen3.5-0.8B",
+   "sha": "2fc06364715b967f1860aea9cf38778875588b17",
+   "files": [
+    "model.safetensors-00001-of-00001.safetensors"
+   ],
+   "ours_total": 873438784,
+   "api_total": 873438784,
+   "gap": 0,
+   "zero_dim_tensors": 0,
+   "gap_equals_zero_dim": true,
+   "params_by_dtype": {
+    "F32": 2592,
+    "BF16": 873436192
+   },
+   "api_params_by_dtype": {
+    "F32": 2592,
+    "BF16": 873436192
+   },
+   "zero_dim_by_dtype": {},
+   "dtype_match_counting_zero_dim_as_1": true,
+   "dtype_match_counting_zero_dim_as_0": true,
+   "dtypes_missing_from_api": [],
+   "zero_dim_by_part": {},
+   "zero_dim_by_leaf": {}
+  },
+  {
+   "model": "Qwen/Qwen3.5-2B",
+   "sha": "15852e8c16360a2fea060d615a32b45270f8a8fc",
+   "files": [
+    "model.safetensors-00001-of-00001.safetensors"
+   ],
+   "ours_total": 2274069824,
+   "api_total": 2274069824,
+   "gap": 0,
+   "zero_dim_tensors": 0,
+   "gap_equals_zero_dim": true,
+   "params_by_dtype": {
+    "F32": 2592,
+    "BF16": 2274067232
+   },
+   "api_params_by_dtype": {
+    "F32": 2592,
+    "BF16": 2274067232
+   },
+   "zero_dim_by_dtype": {},
+   "dtype_match_counting_zero_dim_as_1": true,
+   "dtype_match_counting_zero_dim_as_0": true,
+   "dtypes_missing_from_api": [],
+   "zero_dim_by_part": {},
+   "zero_dim_by_leaf": {}
+  },
+  {
+   "model": "Qwen/Qwen3.5-4B",
+   "sha": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+   "files": [
+    "model.safetensors-00001-of-00002.safetensors",
+    "model.safetensors-00002-of-00002.safetensors"
+   ],
+   "ours_total": 4659865088,
+   "api_total": 4659865088,
+   "gap": 0,
+   "zero_dim_tensors": 0,
+   "gap_equals_zero_dim": true,
+   "params_by_dtype": {
+    "BF16": 4659861248,
+    "F32": 3840
+   },
+   "api_params_by_dtype": {
+    "BF16": 4659861248,
+    "F32": 3840
+   },
+   "zero_dim_by_dtype": {},
+   "dtype_match_counting_zero_dim_as_1": true,
+   "dtype_match_counting_zero_dim_as_0": true,
+   "dtypes_missing_from_api": [],
+   "zero_dim_by_part": {},
+   "zero_dim_by_leaf": {}
+  },
+  {
+   "model": "Qwen/Qwen3-0.6B",
+   "sha": "c1899de289a04d12100db370d81485cdf75e47ca",
+   "files": [
+    "model.safetensors"
+   ],
+   "ours_total": 751632384,
+   "api_total": 751632384,
+   "gap": 0,
+   "zero_dim_tensors": 0,
+   "gap_equals_zero_dim": true,
+   "params_by_dtype": {
+    "BF16": 751632384
+   },
+   "api_params_by_dtype": {
+    "BF16": 751632384
+   },
+   "zero_dim_by_dtype": {},
+   "dtype_match_counting_zero_dim_as_1": true,
+   "dtype_match_counting_zero_dim_as_0": true,
+   "dtypes_missing_from_api": [],
+   "zero_dim_by_part": {},
+   "zero_dim_by_leaf": {}
+  },
+  {
+   "model": "Qwen/Qwen3-1.7B",
+   "sha": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+   "files": [
+    "model-00001-of-00002.safetensors",
+    "model-00002-of-00002.safetensors"
+   ],
+   "ours_total": 2031739904,
+   "api_total": 2031739904,
+   "gap": 0,
+   "zero_dim_tensors": 0,
+   "gap_equals_zero_dim": true,
+   "params_by_dtype": {
+    "BF16": 2031739904
+   },
+   "api_params_by_dtype": {
+    "BF16": 2031739904
+   },
+   "zero_dim_by_dtype": {},
+   "dtype_match_counting_zero_dim_as_1": true,
+   "dtype_match_counting_zero_dim_as_0": true,
+   "dtypes_missing_from_api": [],
+   "zero_dim_by_part": {},
+   "zero_dim_by_leaf": {}
+  },
+  {
+   "model": "Qwen/Qwen3-4B-Instruct-2507",
+   "sha": "cdbee75f17c01a7cc42f958dc650907174af0554",
+   "files": [
+    "model-00001-of-00003.safetensors",
+    "model-00002-of-00003.safetensors",
+    "model-00003-of-00003.safetensors"
+   ],
+   "ours_total": 4022468096,
+   "api_total": 4022468096,
+   "gap": 0,
+   "zero_dim_tensors": 0,
+   "gap_equals_zero_dim": true,
+   "params_by_dtype": {
+    "BF16": 4022468096
+   },
+   "api_params_by_dtype": {
+    "BF16": 4022468096
+   },
+   "zero_dim_by_dtype": {},
+   "dtype_match_counting_zero_dim_as_1": true,
+   "dtype_match_counting_zero_dim_as_0": true,
+   "dtypes_missing_from_api": [],
+   "zero_dim_by_part": {},
+   "zero_dim_by_leaf": {}
+  },
+  {
+   "model": "Qwen/Qwen2.5-1.5B-Instruct",
+   "sha": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+   "files": [
+    "model.safetensors"
+   ],
+   "ours_total": 1543714304,
+   "api_total": 1543714304,
+   "gap": 0,
+   "zero_dim_tensors": 0,
+   "gap_equals_zero_dim": true,
+   "params_by_dtype": {
+    "BF16": 1543714304
+   },
+   "api_params_by_dtype": {
+    "BF16": 1543714304
+   },
+   "zero_dim_by_dtype": {},
+   "dtype_match_counting_zero_dim_as_1": true,
+   "dtype_match_counting_zero_dim_as_0": true,
+   "dtypes_missing_from_api": [],
+   "zero_dim_by_part": {},
+   "zero_dim_by_leaf": {}
+  },
+  {
+   "model": "Qwen/Qwen2.5-3B-Instruct",
+   "sha": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+   "files": [
+    "model-00001-of-00002.safetensors",
+    "model-00002-of-00002.safetensors"
+   ],
+   "ours_total": 3085938688,
+   "api_total": 3085938688,
+   "gap": 0,
+   "zero_dim_tensors": 0,
+   "gap_equals_zero_dim": true,
+   "params_by_dtype": {
+    "BF16": 3085938688
+   },
+   "api_params_by_dtype": {
+    "BF16": 3085938688
+   },
+   "zero_dim_by_dtype": {},
+   "dtype_match_counting_zero_dim_as_1": true,
+   "dtype_match_counting_zero_dim_as_0": true,
+   "dtypes_missing_from_api": [],
+   "zero_dim_by_part": {},
+   "zero_dim_by_leaf": {}
+  },
+  {
+   "model": "ibm-granite/granite-3.3-2b-instruct",
+   "sha": "707f574c62054322f6b5b04b6d075f0a8f05e0f0",
+   "files": [
+    "model-00001-of-00002.safetensors",
+    "model-00002-of-00002.safetensors"
+   ],
+   "ours_total": 2533539840,
+   "api_total": 2533539840,
+   "gap": 0,
+   "zero_dim_tensors": 0,
+   "gap_equals_zero_dim": true,
+   "params_by_dtype": {
+    "BF16": 2533539840
+   },
+   "api_params_by_dtype": {
+    "BF16": 2533539840
+   },
+   "zero_dim_by_dtype": {},
+   "dtype_match_counting_zero_dim_as_1": true,
+   "dtype_match_counting_zero_dim_as_0": true,
+   "dtypes_missing_from_api": [],
+   "zero_dim_by_part": {},
+   "zero_dim_by_leaf": {}
+  },
+  {
+   "model": "ibm-granite/granite-4.0-1b",
+   "sha": "6a7381ba1f54d684ff508d991aeb7dc580157103",
+   "files": [
+    "model.safetensors"
+   ],
+   "ours_total": 1631750144,
+   "api_total": 1631750144,
+   "gap": 0,
+   "zero_dim_tensors": 0,
+   "gap_equals_zero_dim": true,
+   "params_by_dtype": {
+    "BF16": 1631750144
+   },
+   "api_params_by_dtype": {
+    "BF16": 1631750144
+   },
+   "zero_dim_by_dtype": {},
+   "dtype_match_counting_zero_dim_as_1": true,
+   "dtype_match_counting_zero_dim_as_0": true,
+   "dtypes_missing_from_api": [],
+   "zero_dim_by_part": {},
+   "zero_dim_by_leaf": {}
+  },
+  {
+   "model": "ibm-granite/granite-4.0-h-1b",
+   "sha": "d18cca4c121edb87d022116d281ce212c9136f57",
+   "files": [
+    "model.safetensors"
+   ],
+   "ours_total": 1461538368,
+   "api_total": 1461538368,
+   "gap": 0,
+   "zero_dim_tensors": 0,
+   "gap_equals_zero_dim": true,
+   "params_by_dtype": {
+    "BF16": 1461538368
+   },
+   "api_params_by_dtype": {
+    "BF16": 1461538368
+   },
+   "zero_dim_by_dtype": {},
+   "dtype_match_counting_zero_dim_as_1": true,
+   "dtype_match_counting_zero_dim_as_0": true,
+   "dtypes_missing_from_api": [],
+   "zero_dim_by_part": {},
+   "zero_dim_by_leaf": {}
+  },
+  {
+   "model": "ibm-granite/granite-4.0-micro",
+   "sha": "56111ae135df9c53a78c99028e7bc24035a9e979",
+   "files": [
+    "model-00001-of-00002.safetensors",
+    "model-00002-of-00002.safetensors"
+   ],
+   "ours_total": 3402836480,
+   "api_total": 3402836480,
+   "gap": 0,
+   "zero_dim_tensors": 0,
+   "gap_equals_zero_dim": true,
+   "params_by_dtype": {
+    "BF16": 3402836480
+   },
+   "api_params_by_dtype": {
+    "BF16": 3402836480
+   },
+   "zero_dim_by_dtype": {},
+   "dtype_match_counting_zero_dim_as_1": true,
+   "dtype_match_counting_zero_dim_as_0": true,
+   "dtypes_missing_from_api": [],
+   "zero_dim_by_part": {},
+   "zero_dim_by_leaf": {}
+  },
+  {
+   "model": "ibm-granite/granite-4.0-h-micro",
+   "sha": "d5f01a3ea75f088947be3aae039f4ad52837dfde",
+   "files": [
+    "model-00001-of-00002.safetensors",
+    "model-00002-of-00002.safetensors"
+   ],
+   "ours_total": 3191396096,
+   "api_total": 3191396096,
+   "gap": 0,
+   "zero_dim_tensors": 0,
+   "gap_equals_zero_dim": true,
+   "params_by_dtype": {
+    "BF16": 3191396096
+   },
+   "api_params_by_dtype": {
+    "BF16": 3191396096
+   },
+   "zero_dim_by_dtype": {},
+   "dtype_match_counting_zero_dim_as_1": true,
+   "dtype_match_counting_zero_dim_as_0": true,
+   "dtypes_missing_from_api": [],
+   "zero_dim_by_part": {},
+   "zero_dim_by_leaf": {}
+  },
+  {
+   "model": "ibm-granite/granite-4.1-3b",
+   "sha": "c0650403e44e78ec0262dab1c90914c65b196c4e",
+   "files": [
+    "model-00001-of-00002.safetensors",
+    "model-00002-of-00002.safetensors"
+   ],
+   "ours_total": 3402836480,
+   "api_total": 3402836480,
+   "gap": 0,
+   "zero_dim_tensors": 0,
+   "gap_equals_zero_dim": true,
+   "params_by_dtype": {
+    "BF16": 3402836480
+   },
+   "api_params_by_dtype": {
+    "BF16": 3402836480
+   },
+   "zero_dim_by_dtype": {},
+   "dtype_match_counting_zero_dim_as_1": true,
+   "dtype_match_counting_zero_dim_as_0": true,
+   "dtypes_missing_from_api": [],
+   "zero_dim_by_part": {},
+   "zero_dim_by_leaf": {}
+  },
+  {
+   "model": "ibm-granite/granite-4.2-3b",
+   "sha": "4e9c275e232f10211ec88644d106a1f6a1b60e06",
+   "files": [
+    "model-00001-of-00002.safetensors",
+    "model-00002-of-00002.safetensors"
+   ],
+   "ours_total": 3659737600,
+   "api_total": 3659737600,
+   "gap": 0,
+   "zero_dim_tensors": 0,
+   "gap_equals_zero_dim": true,
+   "params_by_dtype": {
+    "BF16": 3659737600
+   },
+   "api_params_by_dtype": {
+    "BF16": 3659737600
+   },
+   "zero_dim_by_dtype": {},
+   "dtype_match_counting_zero_dim_as_1": true,
+   "dtype_match_counting_zero_dim_as_0": true,
+   "dtypes_missing_from_api": [],
+   "zero_dim_by_part": {},
+   "zero_dim_by_leaf": {}
+  },
+  {
+   "model": "HuggingFaceTB/SmolLM2-1.7B-Instruct",
+   "sha": "31b70e2e869a7173562077fd711b654946d38674",
+   "files": [
+    "model.safetensors"
+   ],
+   "ours_total": 1711376384,
+   "api_total": 1711376384,
+   "gap": 0,
+   "zero_dim_tensors": 0,
+   "gap_equals_zero_dim": true,
+   "params_by_dtype": {
+    "BF16": 1711376384
+   },
+   "api_params_by_dtype": {
+    "BF16": 1711376384
+   },
+   "zero_dim_by_dtype": {},
+   "dtype_match_counting_zero_dim_as_1": true,
+   "dtype_match_counting_zero_dim_as_0": true,
+   "dtypes_missing_from_api": [],
+   "zero_dim_by_part": {},
+   "zero_dim_by_leaf": {}
+  },
+  {
+   "model": "HuggingFaceTB/SmolLM3-3B",
+   "sha": "a07cc9a04f16550a088caea529712d1d335b0ac1",
+   "files": [
+    "model-00001-of-00002.safetensors",
+    "model-00002-of-00002.safetensors"
+   ],
+   "ours_total": 3075098624,
+   "api_total": 3075098624,
+   "gap": 0,
+   "zero_dim_tensors": 0,
+   "gap_equals_zero_dim": true,
+   "params_by_dtype": {
+    "BF16": 3075098624
+   },
+   "api_params_by_dtype": {
+    "BF16": 3075098624
+   },
+   "zero_dim_by_dtype": {},
+   "dtype_match_counting_zero_dim_as_1": true,
+   "dtype_match_counting_zero_dim_as_0": true,
+   "dtypes_missing_from_api": [],
+   "zero_dim_by_part": {},
+   "zero_dim_by_leaf": {}
+  },
+  {
+   "model": "google/gemma-4-E2B-it",
+   "sha": "4adf15748de9e1a0097b6274cee9c15836c41c37",
+   "files": [
+    "model.safetensors"
+   ],
+   "ours_total": 5123178979,
+   "api_total": 5123178051,
+   "gap": 928,
+   "zero_dim_tensors": 928,
+   "gap_equals_zero_dim": true,
+   "params_by_dtype": {
+    "BF16": 5123178979
+   },
+   "api_params_by_dtype": {
+    "BF16": 5123178051
+   },
+   "zero_dim_by_dtype": {
+    "BF16": 928
+   },
+   "dtype_match_counting_zero_dim_as_1": false,
+   "dtype_match_counting_zero_dim_as_0": true,
+   "dtypes_missing_from_api": [],
+   "zero_dim_by_part": {
+    "audio": 480,
+    "vision": 448
+   },
+   "zero_dim_by_leaf": {
+    "input_max": 232,
+    "input_min": 232,
+    "output_max": 232,
+    "output_min": 232
+   }
+  },
+  {
+   "model": "google/gemma-3-1b-it",
+   "skipped": "gated (no token used)"
+  },
+  {
+   "model": "meta-llama/Llama-3.2-1B-Instruct",
+   "skipped": "gated (no token used)"
+  },
+  {
+   "model": "meta-llama/Llama-3.2-3B-Instruct",
+   "skipped": "gated (no token used)"
+  },
+  {
+   "model": "microsoft/Phi-4-mini-instruct",
+   "sha": "cfbefacb99257ffa30c83adab238a50856ac3083",
+   "files": [
+    "model-00001-of-00002.safetensors",
+    "model-00002-of-00002.safetensors"
+   ],
+   "ours_total": 3836021760,
+   "api_total": 3836021760,
+   "gap": 0,
+   "zero_dim_tensors": 0,
+   "gap_equals_zero_dim": true,
+   "params_by_dtype": {
+    "BF16": 3836021760
+   },
+   "api_params_by_dtype": {
+    "BF16": 3836021760
+   },
+   "zero_dim_by_dtype": {},
+   "dtype_match_counting_zero_dim_as_1": true,
+   "dtype_match_counting_zero_dim_as_0": true,
+   "dtypes_missing_from_api": [],
+   "zero_dim_by_part": {},
+   "zero_dim_by_leaf": {}
+  },
+  {
+   "model": "mistralai/Ministral-3-3B-Instruct-2512",
+   "sha": "b35d4dfe56c142746f54dbd64f579faab2744308",
+   "files": [
+    "model.safetensors"
+   ],
+   "ours_total": 3849090412,
+   "api_total": 3849090048,
+   "gap": 364,
+   "zero_dim_tensors": 364,
+   "gap_equals_zero_dim": true,
+   "params_by_dtype": {
+    "BF16": 822900076,
+    "F8_E4M3": 3026190336
+   },
+   "api_params_by_dtype": {
+    "BF16": 822899712,
+    "F8_E4M3": 3026190336
+   },
+   "zero_dim_by_dtype": {
+    "BF16": 364
+   },
+   "dtype_match_counting_zero_dim_as_1": false,
+   "dtype_match_counting_zero_dim_as_0": true,
+   "dtypes_missing_from_api": [],
+   "zero_dim_by_part": {
+    "quant_scale": 364
+   },
+   "zero_dim_by_leaf": {
+    "activation_scale": 182,
+    "weight_scale_inv": 182
+   }
+  },
+  {
+   "model": "LiquidAI/LFM2-2.6B",
+   "sha": "36ed799f7024ef169ba92ffe184821835e15cc66",
+   "files": [
+    "model.safetensors"
+   ],
+   "ours_total": 2569272320,
+   "api_total": 2569272320,
+   "gap": 0,
+   "zero_dim_tensors": 0,
+   "gap_equals_zero_dim": true,
+   "params_by_dtype": {
+    "BF16": 2569272320
+   },
+   "api_params_by_dtype": {
+    "BF16": 2569272320
+   },
+   "zero_dim_by_dtype": {},
+   "dtype_match_counting_zero_dim_as_1": true,
+   "dtype_match_counting_zero_dim_as_0": true,
+   "dtypes_missing_from_api": [],
+   "zero_dim_by_part": {},
+   "zero_dim_by_leaf": {}
+  },
+  {
+   "model": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+   "sha": "ad9f0ae0864d7fbcd1cd905e3c6c5b069cc8b562",
+   "files": [
+    "model.safetensors"
+   ],
+   "ours_total": 1777088000,
+   "api_total": 1777088000,
+   "gap": 0,
+   "zero_dim_tensors": 0,
+   "gap_equals_zero_dim": true,
+   "params_by_dtype": {
+    "BF16": 1777088000
+   },
+   "api_params_by_dtype": {
+    "BF16": 1777088000
+   },
+   "zero_dim_by_dtype": {},
+   "dtype_match_counting_zero_dim_as_1": true,
+   "dtype_match_counting_zero_dim_as_0": true,
+   "dtypes_missing_from_api": [],
+   "zero_dim_by_part": {},
+   "zero_dim_by_leaf": {}
+  },
+  {
+   "model": "allenai/OLMo-2-0425-1B-Instruct",
+   "sha": "48d788eca847d4d7548f375ad03d3c9312f6139e",
+   "files": [
+    "model.safetensors"
+   ],
+   "ours_total": 1484916736,
+   "api_total": 1484916736,
+   "gap": 0,
+   "zero_dim_tensors": 0,
+   "gap_equals_zero_dim": true,
+   "params_by_dtype": {
+    "BF16": 1484916736
+   },
+   "api_params_by_dtype": {
+    "BF16": 1484916736
+   },
+   "zero_dim_by_dtype": {},
+   "dtype_match_counting_zero_dim_as_1": true,
+   "dtype_match_counting_zero_dim_as_0": true,
+   "dtypes_missing_from_api": [],
+   "zero_dim_by_part": {},
+   "zero_dim_by_leaf": {}
+  },
+  {
+   "model": "tiiuae/Falcon3-3B-Instruct",
+   "sha": "411bb94318f94f7a5735b77109f456b1e74b42a1",
+   "files": [
+    "model-00001-of-00002.safetensors",
+    "model-00002-of-00002.safetensors"
+   ],
+   "ours_total": 3227655168,
+   "api_total": 3227655168,
+   "gap": 0,
+   "zero_dim_tensors": 0,
+   "gap_equals_zero_dim": true,
+   "params_by_dtype": {
+    "BF16": 3227655168
+   },
+   "api_params_by_dtype": {
+    "BF16": 3227655168
+   },
+   "zero_dim_by_dtype": {},
+   "dtype_match_counting_zero_dim_as_1": true,
+   "dtype_match_counting_zero_dim_as_0": true,
+   "dtypes_missing_from_api": [],
+   "zero_dim_by_part": {},
+   "zero_dim_by_leaf": {}
+  }
+ ],
+ "summary": {
+  "models": 27,
+  "read": 24,
+  "gap_zero": 22,
+  "gap_equals_zero_dim": 24,
+  "with_zero_dim": 2
+ }
+}

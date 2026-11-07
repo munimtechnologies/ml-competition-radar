@@ -1,0 +1,11 @@
+{
+ "url": "https://raw.githubusercontent.com/munimtechnologies/ml-competition-radar/main/tools/param-cap-check/PREREGISTRATION-param-scalars.md",
+ "public": true,
+ "local_sha256": "12736e59ba475f5716a3057d68c4ff86964dd94a555b6f90b6b93ed7c9fdd5d6",
+ "public_sha256": "12736e59ba475f5716a3057d68c4ff86964dd94a555b6f90b6b93ed7c9fdd5d6",
+ "match": true,
+ "tries": 1,
+ "waited_seconds": 0,
+ "seen_at_utc": "2026-11-07T00:39:30Z",
+ "last_error": null
+}
