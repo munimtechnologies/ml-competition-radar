@@ -1,0 +1,6419 @@
+{
+ "version": "0.1.0",
+ "run_at_utc": "2026-11-08T19:46:12Z",
+ "as_of": "2026-11-08",
+ "listing_url": "https://gaw.kishou.go.jp/search/gas_species/ch4/latest",
+ "n_ids": 337,
+ "n_fetched": 337,
+ "n_rows": 337,
+ "unparsed": [],
+ "fetch_errors": [],
+ "summary": {
+  "AEMET | surface-insitu": {
+   "n": 1,
+   "n_active": 1,
+   "newest_end": "2025-12-31",
+   "min_lag_days": 312,
+   "median_lag_days_active": 312
+  },
+  "AGAGE | surface-insitu": {
+   "n": 13,
+   "n_active": 7,
+   "newest_end": "2026-01-01",
+   "min_lag_days": 311,
+   "median_lag_days_active": 378
+  },
+  "AGH | surface-insitu": {
+   "n": 1,
+   "n_active": 1,
+   "newest_end": "2025-12-31",
+   "min_lag_days": 312,
+   "median_lag_days_active": 312
+  },
+  "ATOMKI | tower-insitu": {
+   "n": 5,
+   "n_active": 0,
+   "newest_end": "2023-12-31",
+   "min_lag_days": 1043,
+   "median_lag_days_active": null
+  },
+  "BMKG | surface-insitu": {
+   "n": 1,
+   "n_active": 1,
+   "newest_end": "2025-12-31",
+   "min_lag_days": 312,
+   "median_lag_days_active": 312
+  },
+  "CAMS | surface-insitu": {
+   "n": 1,
+   "n_active": 1,
+   "newest_end": "2025-12-31",
+   "min_lag_days": 312,
+   "median_lag_days_active": 312
+  },
+  "CHMI | surface-flask": {
+   "n": 1,
+   "n_active": 0,
+   "newest_end": "2022-12-29",
+   "min_lag_days": 1410,
+   "median_lag_days_active": null
+  },
+  "CMA | surface-insitu": {
+   "n": 1,
+   "n_active": 0,
+   "newest_end": "2023-12-31",
+   "min_lag_days": 1043,
+   "median_lag_days_active": null
+  },
+  "CSIRO | aircraft-flask": {
+   "n": 1,
+   "n_active": 0,
+   "newest_end": "2000-09-28",
+   "min_lag_days": 9537,
+   "median_lag_days_active": null
+  },
+  "CSIRO | surface-flask": {
+   "n": 12,
+   "n_active": 9,
+   "newest_end": "2025-12-31",
+   "min_lag_days": 312,
+   "median_lag_days_active": 324
+  },
+  "DMC | surface-insitu": {
+   "n": 1,
+   "n_active": 1,
+   "newest_end": "2025-12-31",
+   "min_lag_days": 312,
+   "median_lag_days_active": 312
+  },
+  "ECCC | surface-flask": {
+   "n": 4,
+   "n_active": 0,
+   "newest_end": "2018-03-03",
+   "min_lag_days": 3172,
+   "median_lag_days_active": null
+  },
+  "ECCC | surface-insitu": {
+   "n": 16,
+   "n_active": 10,
+   "newest_end": "2025-12-31",
+   "min_lag_days": 312,
+   "median_lag_days_active": 312.0
+  },
+  "ENEA | surface-flask": {
+   "n": 2,
+   "n_active": 0,
+   "newest_end": "2022-12-30",
+   "min_lag_days": 1409,
+   "median_lag_days_active": null
+  },
+  "ESNZ | ship-flask": {
+   "n": 1,
+   "n_active": 0,
+   "newest_end": "2011-12-03",
+   "min_lag_days": 5454,
+   "median_lag_days_active": null
+  },
+  "ESNZ | surface-flask": {
+   "n": 3,
+   "n_active": 3,
+   "newest_end": "2025-12-20",
+   "min_lag_days": 323,
+   "median_lag_days_active": 388
+  },
+  "ESNZ | surface-insitu": {
+   "n": 2,
+   "n_active": 2,
+   "newest_end": "2025-12-31",
+   "min_lag_days": 312,
+   "median_lag_days_active": 317.5
+  },
+  "Empa | surface-insitu": {
+   "n": 1,
+   "n_active": 0,
+   "newest_end": "2024-12-31",
+   "min_lag_days": 677,
+   "median_lag_days_active": null
+  },
+  "FMI | surface-insitu": {
+   "n": 1,
+   "n_active": 0,
+   "newest_end": "2022-04-09",
+   "min_lag_days": 1674,
+   "median_lag_days_active": null
+  },
+  "GERC | surface-insitu": {
+   "n": 1,
+   "n_active": 0,
+   "newest_end": "2011-12-31",
+   "min_lag_days": 5426,
+   "median_lag_days_active": null
+  },
+  "IAFMS | surface-insitu": {
+   "n": 1,
+   "n_active": 1,
+   "newest_end": "2025-12-31",
+   "min_lag_days": 312,
+   "median_lag_days_active": 312
+  },
+  "ICOS | surface-insitu": {
+   "n": 15,
+   "n_active": 15,
+   "newest_end": "2026-08-24",
+   "min_lag_days": 76,
+   "median_lag_days_active": 76
+  },
+  "ICOS | tower-insitu": {
+   "n": 84,
+   "n_active": 83,
+   "newest_end": "2026-08-25",
+   "min_lag_days": 75,
+   "median_lag_days_active": 77
+  },
+  "IIA | surface-insitu": {
+   "n": 1,
+   "n_active": 0,
+   "newest_end": "2017-12-31",
+   "min_lag_days": 3234,
+   "median_lag_days_active": null
+  },
+  "INPE | aircraft-flask": {
+   "n": 1,
+   "n_active": 0,
+   "newest_end": "2009-12-31",
+   "min_lag_days": 6156,
+   "median_lag_days_active": null
+  },
+  "INPE | surface-flask": {
+   "n": 1,
+   "n_active": 0,
+   "newest_end": "2009-12-22",
+   "min_lag_days": 6165,
+   "median_lag_days_active": null
+  },
+  "INSTAAR | surface-insitu": {
+   "n": 1,
+   "n_active": 0,
+   "newest_end": "2016-12-31",
+   "min_lag_days": 3599,
+   "median_lag_days_active": null
+  },
+  "ISAC | surface-insitu": {
+   "n": 3,
+   "n_active": 0,
+   "newest_end": "2023-12-31",
+   "min_lag_days": 1043,
+   "median_lag_days_active": null
+  },
+  "JMA | aircraft-flask": {
+   "n": 1,
+   "n_active": 0,
+   "newest_end": "2024-03-21",
+   "min_lag_days": 962,
+   "median_lag_days_active": null
+  },
+  "JMA | ship-bottle": {
+   "n": 1,
+   "n_active": 0,
+   "newest_end": "2017-02-11",
+   "min_lag_days": 3557,
+   "median_lag_days_active": null
+  },
+  "JMA | ship-insitu": {
+   "n": 2,
+   "n_active": 2,
+   "newest_end": "2025-12-12",
+   "min_lag_days": 331,
+   "median_lag_days_active": 331.0
+  },
+  "JMA | surface-insitu": {
+   "n": 3,
+   "n_active": 2,
+   "newest_end": "2026-07-31",
+   "min_lag_days": 100,
+   "median_lag_days_active": 100.0
+  },
+  "KMA | surface-insitu": {
+   "n": 3,
+   "n_active": 3,
+   "newest_end": "2025-12-31",
+   "min_lag_days": 312,
+   "median_lag_days_active": 312
+  },
+  "KMD | surface-insitu": {
+   "n": 1,
+   "n_active": 1,
+   "newest_end": "2025-12-31",
+   "min_lag_days": 312,
+   "median_lag_days_active": 312
+  },
+  "KSNU | surface-remote": {
+   "n": 1,
+   "n_active": 0,
+   "newest_end": "2005-12-31",
+   "min_lag_days": 7617,
+   "median_lag_days_active": null
+  },
+  "Kyrgyzhydromet | surface-insitu": {
+   "n": 1,
+   "n_active": 1,
+   "newest_end": "2025-12-31",
+   "min_lag_days": 312,
+   "median_lag_days_active": 312
+  },
+  "LSCE | aircraft-flask": {
+   "n": 1,
+   "n_active": 0,
+   "newest_end": "2009-02-19",
+   "min_lag_days": 6471,
+   "median_lag_days_active": null
+  },
+  "LSCE | surface-flask": {
+   "n": 7,
+   "n_active": 0,
+   "newest_end": "2010-11-17",
+   "min_lag_days": 5835,
+   "median_lag_days_active": null
+  },
+  "LSCE | surface-insitu": {
+   "n": 3,
+   "n_active": 0,
+   "newest_end": "2015-07-02",
+   "min_lag_days": 4147,
+   "median_lag_days_active": null
+  },
+  "METRI | surface-flask": {
+   "n": 1,
+   "n_active": 0,
+   "newest_end": "1997-12-01",
+   "min_lag_days": 10569,
+   "median_lag_days_active": null
+  },
+  "MGO | surface-flask": {
+   "n": 2,
+   "n_active": 1,
+   "newest_end": "2025-12-26",
+   "min_lag_days": 317,
+   "median_lag_days_active": 317
+  },
+  "MRI | aircraft-flask": {
+   "n": 2,
+   "n_active": 0,
+   "newest_end": "2000-02-19",
+   "min_lag_days": 9759,
+   "median_lag_days_active": null
+  },
+  "MRI | ship-flask": {
+   "n": 5,
+   "n_active": 0,
+   "newest_end": "1993-02-22",
+   "min_lag_days": 12312,
+   "median_lag_days_active": null
+  },
+  "MRI | surface-insitu": {
+   "n": 1,
+   "n_active": 0,
+   "newest_end": "2002-06-30",
+   "min_lag_days": 8897,
+   "median_lag_days_active": null
+  },
+  "NIES | aircraft-flask": {
+   "n": 1,
+   "n_active": 1,
+   "newest_end": "2025-11-27",
+   "min_lag_days": 346,
+   "median_lag_days_active": 346
+  },
+  "NIES | surface-insitu": {
+   "n": 2,
+   "n_active": 2,
+   "newest_end": "2026-03-31",
+   "min_lag_days": 222,
+   "median_lag_days_active": 222.0
+  },
+  "NILU | surface-insitu": {
+   "n": 2,
+   "n_active": 1,
+   "newest_end": "2025-12-31",
+   "min_lag_days": 312,
+   "median_lag_days_active": 312
+  },
+  "NOAA | ship-flask": {
+   "n": 6,
+   "n_active": 1,
+   "newest_end": "2025-01-29",
+   "min_lag_days": 648,
+   "median_lag_days_active": 648
+  },
+  "NOAA | surface-flask": {
+   "n": 81,
+   "n_active": 50,
+   "newest_end": "2025-12-31",
+   "min_lag_days": 312,
+   "median_lag_days_active": 316.5
+  },
+  "NOAA | surface-insitu": {
+   "n": 4,
+   "n_active": 4,
+   "newest_end": "2025-12-31",
+   "min_lag_days": 312,
+   "median_lag_days_active": 312.0
+  },
+  "NPL | tower-insitu": {
+   "n": 2,
+   "n_active": 2,
+   "newest_end": "2026-04-01",
+   "min_lag_days": 221,
+   "median_lag_days_active": 221.5
+  },
+  "RIVM | surface-insitu": {
+   "n": 1,
+   "n_active": 0,
+   "newest_end": "2010-12-31",
+   "min_lag_days": 5791,
+   "median_lag_days_active": null
+  },
+  "RSE | surface-insitu": {
+   "n": 1,
+   "n_active": 0,
+   "newest_end": "2018-12-31",
+   "min_lag_days": 2869,
+   "median_lag_days_active": null
+  },
+  "SAWS | surface-insitu": {
+   "n": 1,
+   "n_active": 1,
+   "newest_end": "2025-12-31",
+   "min_lag_days": 312,
+   "median_lag_days_active": 312
+  },
+  "SMNA | surface-insitu": {
+   "n": 1,
+   "n_active": 1,
+   "newest_end": "2025-12-31",
+   "min_lag_days": 312,
+   "median_lag_days_active": 312
+  },
+  "TU | aircraft-flask": {
+   "n": 2,
+   "n_active": 0,
+   "newest_end": "2010-08-10",
+   "min_lag_days": 5934,
+   "median_lag_days_active": null
+  },
+  "TU | ship-flask": {
+   "n": 1,
+   "n_active": 0,
+   "newest_end": "2017-06-05",
+   "min_lag_days": 3443,
+   "median_lag_days_active": null
+  },
+  "TU | surface-flask": {
+   "n": 1,
+   "n_active": 0,
+   "newest_end": "2013-12-25",
+   "min_lag_days": 4701,
+   "median_lag_days_active": null
+  },
+  "TU | surface-insitu": {
+   "n": 1,
+   "n_active": 1,
+   "newest_end": "2026-01-31",
+   "min_lag_days": 281,
+   "median_lag_days_active": 281
+  },
+  "UBAA | surface-insitu": {
+   "n": 1,
+   "n_active": 1,
+   "newest_end": "2025-01-01",
+   "min_lag_days": 676,
+   "median_lag_days_active": 676
+  },
+  "UBAG | surface-insitu": {
+   "n": 7,
+   "n_active": 0,
+   "newest_end": "2024-03-31",
+   "min_lag_days": 952,
+   "median_lag_days_active": null
+  },
+  "UMLT | surface-insitu": {
+   "n": 1,
+   "n_active": 0,
+   "newest_end": "2019-12-31",
+   "min_lag_days": 2504,
+   "median_lag_days_active": null
+  },
+  "UNIURB | surface-insitu": {
+   "n": 1,
+   "n_active": 0,
+   "newest_end": "2017-12-31",
+   "min_lag_days": 3234,
+   "median_lag_days_active": null
+  },
+  "UNIVBRIS | tower-insitu": {
+   "n": 6,
+   "n_active": 3,
+   "newest_end": "2026-04-01",
+   "min_lag_days": 221,
+   "median_lag_days_active": 222
+  },
+  "UYRK | surface-insitu": {
+   "n": 1,
+   "n_active": 1,
+   "newest_end": "2025-12-31",
+   "min_lag_days": 312,
+   "median_lag_days_active": 312
+  },
+  "UoE | surface-insitu": {
+   "n": 1,
+   "n_active": 1,
+   "newest_end": "2026-05-11",
+   "min_lag_days": 181,
+   "median_lag_days_active": 181
+  },
+  "VNMHA | surface-insitu": {
+   "n": 1,
+   "n_active": 0,
+   "newest_end": "2022-12-31",
+   "min_lag_days": 1408,
+   "median_lag_days_active": null
+  }
+ },
+ "checks": {
+  "G1": {
+   "desc": "listing page links at least 300 file ids",
+   "n_ids": 337,
+   "held": true
+  },
+  "G2": {
+   "desc": "at least 95% of listed ids fetched and parsed into a dated row",
+   "n_fetched": 337,
+   "n_parsed": 337,
+   "fraction_of_ids": 1.0,
+   "held": true
+  },
+  "P1": {
+   "desc": "at least 13 ICOS surface in-situ datasets; all but at most 2 end in Aug 2026",
+   "n": 15,
+   "n_in_window": 15,
+   "outside": [],
+   "held": true,
+   "graded": true
+  },
+  "P2": {
+   "desc": "AGAGE in-situ datasets ending after 2024-01-01: at least 5, all end in Oct 2025",
+   "n": 7,
+   "n_in_window": 6,
+   "outside": [
+    [
+     "THD",
+     "2026-01-01",
+     "0004-4022-1002-01-01-2024"
+    ]
+   ],
+   "held": false,
+   "graded": true
+  },
+  "P3": {
+   "desc": "NOAA surface in-situ datasets: at least 4, all end in Dec 2025",
+   "n": 4,
+   "n_in_window": 4,
+   "outside": [],
+   "held": true,
+   "graded": true
+  },
+  "P4": {
+   "desc": "no surface in-situ dataset (any contributor) ends after 2026-09-30",
+   "n": 99,
+   "n_after": 0,
+   "after": [],
+   "held": true,
+   "graded": true
+  },
+  "P5": {
+   "desc": "median lag of surface in-situ datasets ending on/after 2025-01-01 > 120 days",
+   "n": 60,
+   "median_lag_days": 312.0,
+   "held": true,
+   "graded": true
+  },
+  "P6": {
+   "desc": "at least 90% of ICOS tower in-situ datasets end in Aug 2026",
+   "n": 84,
+   "n_in_window": 77,
+   "held": true,
+   "graded": true
+  }
+ },
+ "rows": [
+  {
+   "file_id": "0077-6019-1002-02-01-6186",
+   "station": "TAC",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 77,
+   "contributor": "UNIVBRIS",
+   "network": "UNIVBRIS",
+   "start": "2013-01-01",
+   "end": "2026-03-31",
+   "lag_days": 222,
+   "resolutions": [
+    "daily",
+    "event",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0077-6019-1002-02-01-6186"
+  },
+  {
+   "file_id": "0077-6293-1002-02-01-6043",
+   "station": "BSD",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 77,
+   "contributor": "UNIVBRIS",
+   "network": "UNIVBRIS",
+   "start": "2014-01-01",
+   "end": "2021-08-06",
+   "lag_days": 1920,
+   "resolutions": [
+    "daily",
+    "event",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0077-6293-1002-02-01-6043"
+  },
+  {
+   "file_id": "0077-6293-1002-02-01-6249",
+   "station": "BSD",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 77,
+   "contributor": "UNIVBRIS",
+   "network": "UNIVBRIS",
+   "start": "2014-01-01",
+   "end": "2021-08-10",
+   "lag_days": 1916,
+   "resolutions": [
+    "daily",
+    "event",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0077-6293-1002-02-01-6249"
+  },
+  {
+   "file_id": "0077-6019-1002-02-01-6101",
+   "station": "TAC",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 77,
+   "contributor": "UNIVBRIS",
+   "network": "UNIVBRIS",
+   "start": "2012-07-01",
+   "end": "2026-04-01",
+   "lag_days": 221,
+   "resolutions": [
+    "daily",
+    "event",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0077-6019-1002-02-01-6101"
+  },
+  {
+   "file_id": "0077-6019-1002-02-01-6055",
+   "station": "TAC",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 77,
+   "contributor": "UNIVBRIS",
+   "network": "UNIVBRIS",
+   "start": "2012-07-01",
+   "end": "2026-03-31",
+   "lag_days": 222,
+   "resolutions": [
+    "daily",
+    "event",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0077-6019-1002-02-01-6055"
+  },
+  {
+   "file_id": "0077-6293-1002-02-01-6109",
+   "station": "BSD",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 77,
+   "contributor": "UNIVBRIS",
+   "network": "UNIVBRIS",
+   "start": "2014-01-01",
+   "end": "2021-08-10",
+   "lag_days": 1916,
+   "resolutions": [
+    "daily",
+    "event",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0077-6293-1002-02-01-6109"
+  },
+  {
+   "file_id": "0162-6422-1002-02-01-6033",
+   "station": "STE",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2019-07-01",
+   "end": "2026-08-23",
+   "lag_days": 77,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6422-1002-02-01-6033"
+  },
+  {
+   "file_id": "0162-6379-1002-02-01-6126",
+   "station": "KRE",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2017-04-01",
+   "end": "2026-08-24",
+   "lag_days": 76,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6379-1002-02-01-6126"
+  },
+  {
+   "file_id": "0162-6057-1002-02-01-6099",
+   "station": "LIN",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2015-10-01",
+   "end": "2026-08-23",
+   "lag_days": 77,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6057-1002-02-01-6099"
+  },
+  {
+   "file_id": "0162-6260-1002-02-01-6059",
+   "station": "NOR",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2017-01-01",
+   "end": "2026-08-24",
+   "lag_days": 76,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6260-1002-02-01-6059"
+  },
+  {
+   "file_id": "0162-6020-1002-02-01-6046",
+   "station": "RGL",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2012-02-01",
+   "end": "2026-08-24",
+   "lag_days": 76,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6020-1002-02-01-6046"
+  },
+  {
+   "file_id": "0162-6260-1002-02-01-6101",
+   "station": "NOR",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2017-01-01",
+   "end": "2026-08-24",
+   "lag_days": 76,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6260-1002-02-01-6101"
+  },
+  {
+   "file_id": "0162-6039-1002-01-01-9999",
+   "station": "PRS",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2005-01-01",
+   "end": "2026-08-24",
+   "lag_days": 76,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6039-1002-01-01-9999"
+  },
+  {
+   "file_id": "0162-6064-1002-02-01-6077",
+   "station": "TOH",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2017-12-01",
+   "end": "2026-08-23",
+   "lag_days": 77,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6064-1002-02-01-6077"
+  },
+  {
+   "file_id": "0162-6022-1002-02-01-6164",
+   "station": "OXK",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2019-07-01",
+   "end": "2026-08-24",
+   "lag_days": 76,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6022-1002-02-01-6164"
+  },
+  {
+   "file_id": "0162-6084-1002-02-01-6061",
+   "station": "KIT",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2016-12-01",
+   "end": "2026-08-23",
+   "lag_days": 77,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6084-1002-02-01-6061"
+  },
+  {
+   "file_id": "0162-6437-1002-02-01-6011",
+   "station": "OPE",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2011-04-01",
+   "end": "2026-08-24",
+   "lag_days": 76,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6437-1002-02-01-6011"
+  },
+  {
+   "file_id": "0162-6415-1002-01-01-9999",
+   "station": "HEL",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2020-08-01",
+   "end": "2026-08-23",
+   "lag_days": 77,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6415-1002-01-01-9999"
+  },
+  {
+   "file_id": "0162-6422-1002-02-01-6188",
+   "station": "STE",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2019-07-01",
+   "end": "2026-03-16",
+   "lag_days": 237,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6422-1002-02-01-6188"
+  },
+  {
+   "file_id": "0162-6437-1002-02-01-6051",
+   "station": "OPE",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2011-04-01",
+   "end": "2026-08-24",
+   "lag_days": 76,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6437-1002-02-01-6051"
+  },
+  {
+   "file_id": "0162-6051-1002-01-01-9999",
+   "station": "LMP",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2008-01-01",
+   "end": "2026-08-23",
+   "lag_days": 77,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6051-1002-01-01-9999"
+  },
+  {
+   "file_id": "0162-6298-1002-02-01-6076",
+   "station": "BIR",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2020-09-01",
+   "end": "2026-08-23",
+   "lag_days": 77,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6298-1002-02-01-6076"
+  },
+  {
+   "file_id": "0162-6028-1002-02-01-6132",
+   "station": "HPB",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2015-09-01",
+   "end": "2026-08-24",
+   "lag_days": 76,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6028-1002-02-01-6132"
+  },
+  {
+   "file_id": "0162-6084-1002-02-01-6031",
+   "station": "KIT",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2016-12-01",
+   "end": "2026-08-23",
+   "lag_days": 77,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6084-1002-02-01-6031"
+  },
+  {
+   "file_id": "0162-6117-1002-02-01-6068",
+   "station": "CBW",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2000-01-01",
+   "end": "2026-08-24",
+   "lag_days": 76,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6117-1002-02-01-6068"
+  },
+  {
+   "file_id": "0162-6379-1002-02-01-6251",
+   "station": "KRE",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2017-04-01",
+   "end": "2026-08-24",
+   "lag_days": 76,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6379-1002-02-01-6251"
+  },
+  {
+   "file_id": "0162-6022-1002-02-01-6091",
+   "station": "OXK",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2019-07-01",
+   "end": "2026-08-24",
+   "lag_days": 76,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6022-1002-02-01-6091"
+  },
+  {
+   "file_id": "0162-6392-1002-02-01-6036",
+   "station": "SVB",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2017-05-01",
+   "end": "2026-07-28",
+   "lag_days": 103,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6392-1002-02-01-6036"
+  },
+  {
+   "file_id": "0162-6064-1002-02-01-6011",
+   "station": "TOH",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2017-12-01",
+   "end": "2026-08-23",
+   "lag_days": 77,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6064-1002-02-01-6011"
+  },
+  {
+   "file_id": "0162-6379-1002-02-01-6011",
+   "station": "KRE",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2017-04-01",
+   "end": "2026-08-24",
+   "lag_days": 76,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6379-1002-02-01-6011"
+  },
+  {
+   "file_id": "0162-4065-1002-02-01-6051",
+   "station": "SNO",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2021-05-01",
+   "end": "2026-08-23",
+   "lag_days": 77,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-4065-1002-02-01-6051"
+  },
+  {
+   "file_id": "0162-6423-1002-02-01-6061",
+   "station": "SAC",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2015-07-01",
+   "end": "2026-08-23",
+   "lag_days": 77,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6423-1002-02-01-6061"
+  },
+  {
+   "file_id": "0162-6034-1002-02-01-6083",
+   "station": "HUN",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2016-02-01",
+   "end": "2026-08-24",
+   "lag_days": 76,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6034-1002-02-01-6083"
+  },
+  {
+   "file_id": "0162-6260-1002-02-01-6033",
+   "station": "NOR",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2017-01-01",
+   "end": "2026-08-24",
+   "lag_days": 76,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6260-1002-02-01-6033"
+  },
+  {
+   "file_id": "0162-6298-1002-02-01-6051",
+   "station": "BIR",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2020-09-01",
+   "end": "2026-08-23",
+   "lag_days": 77,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6298-1002-02-01-6051"
+  },
+  {
+   "file_id": "0162-6421-1002-02-01-6121",
+   "station": "JUE",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2019-10-01",
+   "end": "2026-08-24",
+   "lag_days": 76,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6421-1002-02-01-6121"
+  },
+  {
+   "file_id": "0162-6084-1002-02-01-6201",
+   "station": "KIT",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2016-12-01",
+   "end": "2026-08-23",
+   "lag_days": 77,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6084-1002-02-01-6201"
+  },
+  {
+   "file_id": "0162-6422-1002-02-01-6083",
+   "station": "STE",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2019-07-01",
+   "end": "2026-08-23",
+   "lag_days": 77,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6422-1002-02-01-6083"
+  },
+  {
+   "file_id": "0162-6391-1002-01-01-9999",
+   "station": "WAO",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2013-03-01",
+   "end": "2026-08-24",
+   "lag_days": 76,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6391-1002-01-01-9999"
+  },
+  {
+   "file_id": "0162-6058-1002-02-01-6061",
+   "station": "GAT",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2016-05-01",
+   "end": "2026-08-23",
+   "lag_days": 77,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6058-1002-02-01-6061"
+  },
+  {
+   "file_id": "0162-6027-1002-02-01-6013",
+   "station": "SSL",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "1991-07-01",
+   "end": "2026-08-24",
+   "lag_days": 76,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6027-1002-02-01-6013"
+  },
+  {
+   "file_id": "0162-6421-1002-02-01-6081",
+   "station": "JUE",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2019-10-01",
+   "end": "2026-08-24",
+   "lag_days": 76,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6421-1002-02-01-6081"
+  },
+  {
+   "file_id": "0162-4065-1002-02-01-6086",
+   "station": "SNO",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2021-05-01",
+   "end": "2026-08-23",
+   "lag_days": 77,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-4065-1002-02-01-6086"
+  },
+  {
+   "file_id": "0162-6401-1002-02-01-6017",
+   "station": "SMR",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2015-05-01",
+   "end": "2026-08-21",
+   "lag_days": 79,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6401-1002-02-01-6017"
+  },
+  {
+   "file_id": "0162-6392-1002-02-01-6086",
+   "station": "SVB",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2017-05-01",
+   "end": "2026-07-28",
+   "lag_days": 103,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6392-1002-02-01-6086"
+  },
+  {
+   "file_id": "0162-6117-1002-02-01-6208",
+   "station": "CBW",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "1993-04-01",
+   "end": "2026-08-24",
+   "lag_days": 76,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6117-1002-02-01-6208"
+  },
+  {
+   "file_id": "0162-6423-1002-02-01-6101",
+   "station": "SAC",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2015-07-01",
+   "end": "2026-08-23",
+   "lag_days": 77,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6423-1002-02-01-6101"
+  },
+  {
+   "file_id": "0162-6020-1002-02-01-6091",
+   "station": "RGL",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2012-02-01",
+   "end": "2026-08-25",
+   "lag_days": 75,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6020-1002-02-01-6091"
+  },
+  {
+   "file_id": "0162-6057-1002-02-01-6003",
+   "station": "LIN",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2015-10-01",
+   "end": "2026-08-23",
+   "lag_days": 77,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6057-1002-02-01-6003"
+  },
+  {
+   "file_id": "0162-6058-1002-02-01-6133",
+   "station": "GAT",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2016-05-01",
+   "end": "2026-08-23",
+   "lag_days": 77,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6058-1002-02-01-6133"
+  },
+  {
+   "file_id": "0162-6232-1002-02-01-6051",
+   "station": "TRN",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2007-01-01",
+   "end": "2026-08-23",
+   "lag_days": 77,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6232-1002-02-01-6051"
+  },
+  {
+   "file_id": "0162-6001-1002-01-01-9999",
+   "station": "ZEP",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2017-07-01",
+   "end": "2026-08-24",
+   "lag_days": 76,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6001-1002-01-01-9999"
+  },
+  {
+   "file_id": "0162-6010-1002-01-01-9999",
+   "station": "WES",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2021-07-01",
+   "end": "2026-08-03",
+   "lag_days": 97,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6010-1002-01-01-9999"
+  },
+  {
+   "file_id": "0162-6036-1002-01-01-9999",
+   "station": "JFJ",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2005-01-01",
+   "end": "2026-08-24",
+   "lag_days": 76,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6036-1002-01-01-9999"
+  },
+  {
+   "file_id": "0162-6064-1002-02-01-6111",
+   "station": "TOH",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2017-12-01",
+   "end": "2026-08-23",
+   "lag_days": 77,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6064-1002-02-01-6111"
+  },
+  {
+   "file_id": "0162-4065-1002-02-01-6021",
+   "station": "SNO",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2021-05-01",
+   "end": "2026-08-23",
+   "lag_days": 77,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-4065-1002-02-01-6021"
+  },
+  {
+   "file_id": "0162-6325-1002-02-01-6085",
+   "station": "PUI",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2015-12-01",
+   "end": "2026-08-24",
+   "lag_days": 76,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6325-1002-02-01-6085"
+  },
+  {
+   "file_id": "0162-6272-1002-02-01-6061",
+   "station": "IPR",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2017-12-01",
+   "end": "2026-07-24",
+   "lag_days": 107,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6272-1002-02-01-6061"
+  },
+  {
+   "file_id": "0162-6064-1002-02-01-6148",
+   "station": "TOH",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2017-12-01",
+   "end": "2026-08-23",
+   "lag_days": 77,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6064-1002-02-01-6148"
+  },
+  {
+   "file_id": "0162-6319-1002-02-01-6071",
+   "station": "HTM",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2016-12-01",
+   "end": "2026-08-24",
+   "lag_days": 76,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6319-1002-02-01-6071"
+  },
+  {
+   "file_id": "0162-6272-1002-02-01-6041",
+   "station": "IPR",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2017-12-01",
+   "end": "2026-07-24",
+   "lag_days": 107,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6272-1002-02-01-6041"
+  },
+  {
+   "file_id": "0162-6042-1002-01-01-9999",
+   "station": "CMN",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2007-12-01",
+   "end": "2026-08-24",
+   "lag_days": 76,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6042-1002-01-01-9999"
+  },
+  {
+   "file_id": "0162-6057-1002-02-01-6011",
+   "station": "LIN",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2015-10-01",
+   "end": "2026-08-23",
+   "lag_days": 77,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6057-1002-02-01-6011"
+  },
+  {
+   "file_id": "0162-1042-1002-01-01-9999",
+   "station": "RUN",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2014-12-01",
+   "end": "2026-08-23",
+   "lag_days": 77,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-1042-1002-01-01-9999"
+  },
+  {
+   "file_id": "0162-6232-1002-02-01-6181",
+   "station": "TRN",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2007-01-01",
+   "end": "2026-08-23",
+   "lag_days": 77,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6232-1002-02-01-6181"
+  },
+  {
+   "file_id": "0162-6319-1002-02-01-6151",
+   "station": "HTM",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2016-12-01",
+   "end": "2026-08-24",
+   "lag_days": 76,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6319-1002-02-01-6151"
+  },
+  {
+   "file_id": "0162-6058-1002-02-01-6342",
+   "station": "GAT",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2016-05-01",
+   "end": "2026-08-23",
+   "lag_days": 77,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6058-1002-02-01-6342"
+  },
+  {
+   "file_id": "0162-6028-1002-02-01-6094",
+   "station": "HPB",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2015-09-01",
+   "end": "2026-08-24",
+   "lag_days": 76,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6028-1002-02-01-6094"
+  },
+  {
+   "file_id": "0162-6423-1002-02-01-6016",
+   "station": "SAC",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2015-07-01",
+   "end": "2026-08-23",
+   "lag_days": 77,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6423-1002-02-01-6016"
+  },
+  {
+   "file_id": "0162-6420-1002-01-01-9999",
+   "station": "LUT",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2006-05-01",
+   "end": "2026-08-23",
+   "lag_days": 77,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6420-1002-01-01-9999"
+  },
+  {
+   "file_id": "0162-6028-1002-02-01-6051",
+   "station": "HPB",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2015-09-01",
+   "end": "2026-08-24",
+   "lag_days": 76,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6028-1002-02-01-6051"
+  },
+  {
+   "file_id": "0162-6040-1002-01-01-9999",
+   "station": "PUY",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2011-04-01",
+   "end": "2026-08-23",
+   "lag_days": 77,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6040-1002-01-01-9999"
+  },
+  {
+   "file_id": "0162-6083-1002-02-01-6096",
+   "station": "ARN",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2024-02-01",
+   "end": "2026-08-24",
+   "lag_days": 76,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6083-1002-02-01-6096"
+  },
+  {
+   "file_id": "0162-6057-1002-02-01-6041",
+   "station": "LIN",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2015-10-01",
+   "end": "2026-08-23",
+   "lag_days": 77,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6057-1002-02-01-6041"
+  },
+  {
+   "file_id": "0162-6004-1002-01-01-9999",
+   "station": "PAL",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2004-02-01",
+   "end": "2026-08-24",
+   "lag_days": 76,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6004-1002-01-01-9999"
+  },
+  {
+   "file_id": "0162-6034-1002-02-01-6051",
+   "station": "HUN",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2020-01-01",
+   "end": "2026-08-24",
+   "lag_days": 76,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6034-1002-02-01-6051"
+  },
+  {
+   "file_id": "0162-6325-1002-02-01-6048",
+   "station": "PUI",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2020-04-01",
+   "end": "2026-08-24",
+   "lag_days": 76,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6325-1002-02-01-6048"
+  },
+  {
+   "file_id": "0162-6117-1002-02-01-6028",
+   "station": "CBW",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2000-01-01",
+   "end": "2026-08-24",
+   "lag_days": 76,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6117-1002-02-01-6028"
+  },
+  {
+   "file_id": "0162-6027-1002-02-01-6036",
+   "station": "SSL",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2021-09-01",
+   "end": "2026-08-24",
+   "lag_days": 76,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6027-1002-02-01-6036"
+  },
+  {
+   "file_id": "0162-6084-1002-02-01-6101",
+   "station": "KIT",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2016-12-01",
+   "end": "2026-08-23",
+   "lag_days": 77,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6084-1002-02-01-6101"
+  },
+  {
+   "file_id": "0162-6058-1002-02-01-6217",
+   "station": "GAT",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2016-05-01",
+   "end": "2026-08-23",
+   "lag_days": 77,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6058-1002-02-01-6217"
+  },
+  {
+   "file_id": "0162-6422-1002-02-01-6253",
+   "station": "STE",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2019-07-01",
+   "end": "2026-08-23",
+   "lag_days": 77,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6422-1002-02-01-6253"
+  },
+  {
+   "file_id": "0162-6105-1002-01-01-9999",
+   "station": "UTO",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2012-03-01",
+   "end": "2026-08-24",
+   "lag_days": 76,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6105-1002-01-01-9999"
+  },
+  {
+   "file_id": "0162-6034-1002-02-01-6116",
+   "station": "HUN",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2020-01-01",
+   "end": "2026-08-24",
+   "lag_days": 76,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6034-1002-02-01-6116"
+  },
+  {
+   "file_id": "0162-6401-1002-02-01-6126",
+   "station": "SMR",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2015-05-01",
+   "end": "2026-08-21",
+   "lag_days": 79,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6401-1002-02-01-6126"
+  },
+  {
+   "file_id": "0162-6319-1002-02-01-6031",
+   "station": "HTM",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2016-12-01",
+   "end": "2026-08-24",
+   "lag_days": 76,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6319-1002-02-01-6031"
+  },
+  {
+   "file_id": "0162-1002-1002-01-01-9999",
+   "station": "IZO",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "1984-01-01",
+   "end": "2026-08-24",
+   "lag_days": 76,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-1002-1002-01-01-9999"
+  },
+  {
+   "file_id": "0162-6422-1002-02-01-6128",
+   "station": "STE",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2019-07-01",
+   "end": "2026-08-23",
+   "lag_days": 77,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6422-1002-02-01-6128"
+  },
+  {
+   "file_id": "0162-6379-1002-02-01-6051",
+   "station": "KRE",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2017-04-01",
+   "end": "2026-08-24",
+   "lag_days": 76,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6379-1002-02-01-6051"
+  },
+  {
+   "file_id": "0162-6392-1002-02-01-6151",
+   "station": "SVB",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2017-05-01",
+   "end": "2026-07-28",
+   "lag_days": 103,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6392-1002-02-01-6151"
+  },
+  {
+   "file_id": "0162-6031-1002-01-01-9999",
+   "station": "ZSF",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2002-01-01",
+   "end": "2026-08-24",
+   "lag_days": 76,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6031-1002-01-01-9999"
+  },
+  {
+   "file_id": "0162-6083-1002-02-01-6011",
+   "station": "ARN",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2024-02-01",
+   "end": "2026-08-24",
+   "lag_days": 76,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6083-1002-02-01-6011"
+  },
+  {
+   "file_id": "0162-6272-1002-02-01-6101",
+   "station": "IPR",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2017-12-01",
+   "end": "2026-08-03",
+   "lag_days": 97,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6272-1002-02-01-6101"
+  },
+  {
+   "file_id": "0162-6117-1002-02-01-6128",
+   "station": "CBW",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2000-01-01",
+   "end": "2026-08-24",
+   "lag_days": 76,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6117-1002-02-01-6128"
+  },
+  {
+   "file_id": "0162-6298-1002-02-01-6011",
+   "station": "BIR",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2020-09-01",
+   "end": "2026-08-23",
+   "lag_days": 77,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6298-1002-02-01-6011"
+  },
+  {
+   "file_id": "0162-6034-1002-02-01-6011",
+   "station": "HUN",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2020-01-01",
+   "end": "2026-08-24",
+   "lag_days": 76,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6034-1002-02-01-6011"
+  },
+  {
+   "file_id": "0162-6022-1002-02-01-6024",
+   "station": "OXK",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2019-07-01",
+   "end": "2026-08-24",
+   "lag_days": 76,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6022-1002-02-01-6024"
+  },
+  {
+   "file_id": "0162-6401-1002-02-01-6068",
+   "station": "SMR",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2015-05-01",
+   "end": "2026-08-21",
+   "lag_days": 79,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6401-1002-02-01-6068"
+  },
+  {
+   "file_id": "0162-6232-1002-02-01-6006",
+   "station": "TRN",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2010-09-01",
+   "end": "2026-08-23",
+   "lag_days": 77,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6232-1002-02-01-6006"
+  },
+  {
+   "file_id": "0162-6083-1002-02-01-6051",
+   "station": "ARN",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2024-02-01",
+   "end": "2026-08-24",
+   "lag_days": 76,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6083-1002-02-01-6051"
+  },
+  {
+   "file_id": "0162-6437-1002-02-01-6121",
+   "station": "OPE",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2011-04-01",
+   "end": "2026-08-24",
+   "lag_days": 76,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6437-1002-02-01-6121"
+  },
+  {
+   "file_id": "0162-6421-1002-02-01-6051",
+   "station": "JUE",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2019-10-01",
+   "end": "2026-08-24",
+   "lag_days": 76,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6421-1002-02-01-6051"
+  },
+  {
+   "file_id": "0162-6058-1002-02-01-6031",
+   "station": "GAT",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2016-05-01",
+   "end": "2026-08-23",
+   "lag_days": 77,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6058-1002-02-01-6031"
+  },
+  {
+   "file_id": "0162-6232-1002-02-01-6101",
+   "station": "TRN",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2007-02-01",
+   "end": "2026-08-23",
+   "lag_days": 77,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6232-1002-02-01-6101"
+  },
+  {
+   "file_id": "0001-2029-1002-01-01-9999",
+   "station": "MNM",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 1,
+   "contributor": "JMA",
+   "network": "JMA",
+   "start": "1994-01-01",
+   "end": "2026-07-31",
+   "lag_days": 100,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0001-2029-1002-01-01-9999"
+  },
+  {
+   "file_id": "0001-2012-1002-01-01-9999",
+   "station": "RYO",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 1,
+   "contributor": "JMA",
+   "network": "JMA",
+   "start": "1991-01-01",
+   "end": "2026-07-31",
+   "lag_days": 100,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0001-2012-1002-01-01-9999"
+  },
+  {
+   "file_id": "0004-6016-1002-01-01-2021",
+   "station": "MHD",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 4,
+   "contributor": "AGAGE",
+   "network": "AGAGE",
+   "start": "1994-02-01",
+   "end": "2025-10-25",
+   "lag_days": 379,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0004-6016-1002-01-01-2021"
+  },
+  {
+   "file_id": "0004-4036-1002-01-01-2024",
+   "station": "RPB",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 4,
+   "contributor": "AGAGE",
+   "network": "AGAGE",
+   "start": "2016-08-01",
+   "end": "2025-10-26",
+   "lag_days": 378,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0004-4036-1002-01-01-2024"
+  },
+  {
+   "file_id": "0004-4016-1002-01-01-2011",
+   "station": "CMO",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 4,
+   "contributor": "AGAGE",
+   "network": "AGAGE",
+   "start": "1985-11-01",
+   "end": "1989-06-29",
+   "lag_days": 13646,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0004-4016-1002-01-01-2011"
+  },
+  {
+   "file_id": "0004-4036-1002-01-01-2021",
+   "station": "RPB",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 4,
+   "contributor": "AGAGE",
+   "network": "AGAGE",
+   "start": "1996-06-01",
+   "end": "2017-02-15",
+   "lag_days": 3553,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0004-4036-1002-01-01-2021"
+  },
+  {
+   "file_id": "0004-6016-1002-01-01-2011",
+   "station": "MHD",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 4,
+   "contributor": "AGAGE",
+   "network": "AGAGE",
+   "start": "1987-01-23",
+   "end": "1994-06-30",
+   "lag_days": 11819,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0004-6016-1002-01-01-2011"
+  },
+  {
+   "file_id": "0004-5011-1002-01-01-2024",
+   "station": "CGO",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 4,
+   "contributor": "AGAGE",
+   "network": "AGAGE",
+   "start": "2012-07-01",
+   "end": "2025-10-26",
+   "lag_days": 378,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0004-5011-1002-01-01-2024"
+  },
+  {
+   "file_id": "0004-5011-1002-01-01-2021",
+   "station": "CGO",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 4,
+   "contributor": "AGAGE",
+   "network": "AGAGE",
+   "start": "1993-08-01",
+   "end": "2025-10-25",
+   "lag_days": 379,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0004-5011-1002-01-01-2021"
+  },
+  {
+   "file_id": "0004-5009-1002-01-01-2021",
+   "station": "SMO",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 4,
+   "contributor": "AGAGE",
+   "network": "AGAGE",
+   "start": "1996-08-01",
+   "end": "2019-11-18",
+   "lag_days": 2547,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0004-5009-1002-01-01-2021"
+  },
+  {
+   "file_id": "0004-4022-1002-01-01-2021",
+   "station": "THD",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 4,
+   "contributor": "AGAGE",
+   "network": "AGAGE",
+   "start": "1995-09-01",
+   "end": "2025-10-31",
+   "lag_days": 373,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0004-4022-1002-01-01-2021"
+  },
+  {
+   "file_id": "0004-5009-1002-01-01-2011",
+   "station": "SMO",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 4,
+   "contributor": "AGAGE",
+   "network": "AGAGE",
+   "start": "1987-02-01",
+   "end": "1996-09-09",
+   "lag_days": 11017,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0004-5009-1002-01-01-2011"
+  },
+  {
+   "file_id": "0004-5011-1002-01-01-2011",
+   "station": "CGO",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 4,
+   "contributor": "AGAGE",
+   "network": "AGAGE",
+   "start": "1986-05-01",
+   "end": "1994-12-29",
+   "lag_days": 11637,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0004-5011-1002-01-01-2011"
+  },
+  {
+   "file_id": "0004-4022-1002-01-01-2024",
+   "station": "THD",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 4,
+   "contributor": "AGAGE",
+   "network": "AGAGE",
+   "start": "2014-03-01",
+   "end": "2026-01-01",
+   "lag_days": 311,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0004-4022-1002-01-01-2024"
+  },
+  {
+   "file_id": "0004-5011-1002-01-01-2026",
+   "station": "CGO",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 4,
+   "contributor": "AGAGE",
+   "network": "AGAGE",
+   "start": "2017-01-01",
+   "end": "2025-10-26",
+   "lag_days": 378,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0004-5011-1002-01-01-2026"
+  },
+  {
+   "file_id": "0154-6419-1002-02-01-6051",
+   "station": "HFD",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 154,
+   "contributor": "NPL",
+   "network": "NPL",
+   "start": "2014-03-01",
+   "end": "2026-03-31",
+   "lag_days": 222,
+   "resolutions": [
+    "daily",
+    "event",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0154-6419-1002-02-01-6051"
+  },
+  {
+   "file_id": "0154-6419-1002-02-01-6101",
+   "station": "HFD",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 154,
+   "contributor": "NPL",
+   "network": "NPL",
+   "start": "2014-03-01",
+   "end": "2026-04-01",
+   "lag_days": 221,
+   "resolutions": [
+    "daily",
+    "event",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0154-6419-1002-02-01-6101"
+  },
+  {
+   "file_id": "0002-4003-1002-01-01-3001",
+   "station": "BRW",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1986-01-29",
+   "end": "2025-12-31",
+   "lag_days": 312,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-4003-1002-01-01-3001"
+  },
+  {
+   "file_id": "0002-5026-1002-01-01-3001",
+   "station": "MKO",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "2022-01-01",
+   "end": "2025-12-31",
+   "lag_days": 312,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-5026-1002-01-01-3001"
+  },
+  {
+   "file_id": "0002-5002-1002-01-01-3001",
+   "station": "MLO",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1987-01-01",
+   "end": "2025-12-31",
+   "lag_days": 312,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-5002-1002-01-01-3001"
+  },
+  {
+   "file_id": "0002-5009-1002-01-01-3001",
+   "station": "SMO",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "2025-01-01",
+   "end": "2025-12-31",
+   "lag_days": 312,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-5009-1002-01-01-3001"
+  },
+  {
+   "file_id": "0039-2159-1002-01-01-9999",
+   "station": "ULD",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 39,
+   "contributor": "KMA",
+   "network": "KMA",
+   "start": "2018-01-01",
+   "end": "2025-12-31",
+   "lag_days": 312,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0039-2159-1002-01-01-9999"
+  },
+  {
+   "file_id": "0039-2014-1002-01-01-9999",
+   "station": "AMY",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 39,
+   "contributor": "KMA",
+   "network": "KMA",
+   "start": "1999-04-01",
+   "end": "2025-12-31",
+   "lag_days": 312,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0039-2014-1002-01-01-9999"
+  },
+  {
+   "file_id": "0039-2025-1002-01-01-9999",
+   "station": "GSN",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 39,
+   "contributor": "KMA",
+   "network": "KMA",
+   "start": "2014-01-01",
+   "end": "2025-12-31",
+   "lag_days": 312,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0039-2025-1002-01-01-9999"
+  },
+  {
+   "file_id": "0177-7023-1002-01-01-9999",
+   "station": "ZOS",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 177,
+   "contributor": "CAMS",
+   "network": "CAMS",
+   "start": "2025-01-01",
+   "end": "2025-12-31",
+   "lag_days": 312,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0177-7023-1002-01-01-9999"
+  },
+  {
+   "file_id": "0057-5012-1002-01-02-9999",
+   "station": "BHD",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 57,
+   "contributor": "ESNZ",
+   "network": "ESNZ",
+   "start": "1989-08-01",
+   "end": "2025-12-20",
+   "lag_days": 323,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0057-5012-1002-01-02-9999"
+  },
+  {
+   "file_id": "0020-4129-1002-01-01-9999",
+   "station": "BCK",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 20,
+   "contributor": "ECCC",
+   "network": "ECCC",
+   "start": "2010-10-01",
+   "end": "2025-12-31",
+   "lag_days": 312,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0020-4129-1002-01-01-9999"
+  },
+  {
+   "file_id": "0020-4007-1002-01-01-9999",
+   "station": "ETL",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 20,
+   "contributor": "ECCC",
+   "network": "ECCC",
+   "start": "2005-08-01",
+   "end": "2025-12-31",
+   "lag_days": 312,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0020-4007-1002-01-01-9999"
+  },
+  {
+   "file_id": "0020-4019-1002-01-01-9999",
+   "station": "WSA",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 20,
+   "contributor": "ECCC",
+   "network": "ECCC",
+   "start": "2003-06-01",
+   "end": "2025-12-31",
+   "lag_days": 312,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0020-4019-1002-01-01-9999"
+  },
+  {
+   "file_id": "0020-4165-1002-01-01-9999",
+   "station": "CBY",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 20,
+   "contributor": "ECCC",
+   "network": "ECCC",
+   "start": "2012-12-01",
+   "end": "2021-01-25",
+   "lag_days": 2113,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0020-4165-1002-01-01-9999"
+  },
+  {
+   "file_id": "0020-4001-1002-01-01-9999",
+   "station": "ALT",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 20,
+   "contributor": "ECCC",
+   "network": "ECCC",
+   "start": "1988-01-01",
+   "end": "2025-12-31",
+   "lag_days": 312,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0020-4001-1002-01-01-9999"
+  },
+  {
+   "file_id": "0020-4018-1002-01-01-9999",
+   "station": "EGB",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 20,
+   "contributor": "ECCC",
+   "network": "ECCC",
+   "start": "2005-03-01",
+   "end": "2025-12-31",
+   "lag_days": 312,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0020-4018-1002-01-01-9999"
+  },
+  {
+   "file_id": "0020-4013-1002-01-01-9999",
+   "station": "ESP",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 20,
+   "contributor": "ECCC",
+   "network": "ECCC",
+   "start": "2009-03-01",
+   "end": "2024-09-30",
+   "lag_days": 769,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0020-4013-1002-01-01-9999"
+  },
+  {
+   "file_id": "0020-4011-1002-01-01-9999",
+   "station": "FSD",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 20,
+   "contributor": "ECCC",
+   "network": "ECCC",
+   "start": "1990-01-01",
+   "end": "2025-12-31",
+   "lag_days": 312,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0020-4011-1002-01-01-9999"
+  },
+  {
+   "file_id": "0020-4004-1002-01-01-9999",
+   "station": "CHL",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 20,
+   "contributor": "ECCC",
+   "network": "ECCC",
+   "start": "2011-10-01",
+   "end": "2021-04-13",
+   "lag_days": 2035,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0020-4004-1002-01-01-9999"
+  },
+  {
+   "file_id": "0020-4218-1002-01-01-9999",
+   "station": "BRA",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 20,
+   "contributor": "ECCC",
+   "network": "ECCC",
+   "start": "2009-10-01",
+   "end": "2025-12-31",
+   "lag_days": 312,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0020-4218-1002-01-01-9999"
+  },
+  {
+   "file_id": "0020-4245-1002-01-01-9999",
+   "station": "CPS",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 20,
+   "contributor": "ECCC",
+   "network": "ECCC",
+   "start": "2011-12-01",
+   "end": "2025-12-31",
+   "lag_days": 312,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0020-4245-1002-01-01-9999"
+  },
+  {
+   "file_id": "0020-4008-1002-01-01-9999",
+   "station": "CDL",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 20,
+   "contributor": "ECCC",
+   "network": "ECCC",
+   "start": "2002-06-01",
+   "end": "2007-12-31",
+   "lag_days": 6887,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0020-4008-1002-01-01-9999"
+  },
+  {
+   "file_id": "0020-4012-1002-01-01-9999",
+   "station": "CHM",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 20,
+   "contributor": "ECCC",
+   "network": "ECCC",
+   "start": "2007-08-01",
+   "end": "2011-04-22",
+   "lag_days": 5679,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0020-4012-1002-01-01-9999"
+  },
+  {
+   "file_id": "0020-4019-1002-01-02-9999",
+   "station": "WSA",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 20,
+   "contributor": "ECCC",
+   "network": "ECCC",
+   "start": "1999-11-16",
+   "end": "2017-12-29",
+   "lag_days": 3236,
+   "resolutions": [
+    "event"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0020-4019-1002-01-02-9999"
+  },
+  {
+   "file_id": "0020-4001-1002-01-02-9999",
+   "station": "ALT",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 20,
+   "contributor": "ECCC",
+   "network": "ECCC",
+   "start": "1999-10-28",
+   "end": "2018-01-03",
+   "lag_days": 3231,
+   "resolutions": [
+    "event"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0020-4001-1002-01-02-9999"
+  },
+  {
+   "file_id": "0020-4006-1002-01-01-9999",
+   "station": "LLB",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 20,
+   "contributor": "ECCC",
+   "network": "ECCC",
+   "start": "2007-04-01",
+   "end": "2025-12-31",
+   "lag_days": 312,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0020-4006-1002-01-01-9999"
+  },
+  {
+   "file_id": "0020-4176-1002-01-01-9999",
+   "station": "INU",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 20,
+   "contributor": "ECCC",
+   "network": "ECCC",
+   "start": "2012-02-01",
+   "end": "2024-03-19",
+   "lag_days": 964,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0020-4176-1002-01-01-9999"
+  },
+  {
+   "file_id": "0020-4178-1002-01-01-9999",
+   "station": "EST",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 20,
+   "contributor": "ECCC",
+   "network": "ECCC",
+   "start": "2010-01-01",
+   "end": "2025-12-21",
+   "lag_days": 322,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0020-4178-1002-01-01-9999"
+  },
+  {
+   "file_id": "0020-4004-1002-01-02-9999",
+   "station": "CHL",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 20,
+   "contributor": "ECCC",
+   "network": "ECCC",
+   "start": "2007-04-29",
+   "end": "2018-03-03",
+   "lag_days": 3172,
+   "resolutions": [
+    "event"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0020-4004-1002-01-02-9999"
+  },
+  {
+   "file_id": "0020-4013-1002-01-02-9999",
+   "station": "ESP",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 20,
+   "contributor": "ECCC",
+   "network": "ECCC",
+   "start": "1999-12-04",
+   "end": "2018-01-06",
+   "lag_days": 3228,
+   "resolutions": [
+    "event"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0020-4013-1002-01-02-9999"
+  },
+  {
+   "file_id": "0001-8010-1002-06-01-1002",
+   "station": "RYF",
+   "platform": "ship",
+   "type": "insitu",
+   "contributor_no": 1,
+   "contributor": "JMA",
+   "network": "JMA",
+   "start": "1990-06-26",
+   "end": "2025-12-12",
+   "lag_days": 331,
+   "resolutions": [
+    "event"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0001-8010-1002-06-01-1002"
+  },
+  {
+   "file_id": "0001-8010-1002-06-01-1001",
+   "station": "RYF",
+   "platform": "ship",
+   "type": "insitu",
+   "contributor_no": 1,
+   "contributor": "JMA",
+   "network": "JMA",
+   "start": "1990-10-12",
+   "end": "2025-12-12",
+   "lag_days": 331,
+   "resolutions": [
+    "event"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0001-8010-1002-06-01-1001"
+  },
+  {
+   "file_id": "0002-3001-1002-01-02-3001",
+   "station": "NAT",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "2010-09-01",
+   "end": "2020-03-11",
+   "lag_days": 2433,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-3001-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-6034-1002-01-02-3001",
+   "station": "HUN",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1993-03-01",
+   "end": "2025-12-31",
+   "lag_days": 312,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-6034-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-1005-1002-01-02-3001",
+   "station": "MKN",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "2003-12-01",
+   "end": "2011-06-21",
+   "lag_days": 5619,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-1005-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-7011-1002-01-02-3001",
+   "station": "SPO",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1983-02-01",
+   "end": "2025-12-26",
+   "lag_days": 317,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-7011-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-5013-1002-01-02-3001",
+   "station": "NZL",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1983-06-07",
+   "end": "1985-04-09",
+   "lag_days": 15188,
+   "resolutions": [
+    "event"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-5013-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-4027-1002-01-02-3001",
+   "station": "ITN",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1992-07-01",
+   "end": "1999-06-09",
+   "lag_days": 10014,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-4027-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-4035-1002-01-02-3001",
+   "station": "AVI",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1983-05-01",
+   "end": "1990-08-29",
+   "lag_days": 13220,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-4035-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-4005-1002-01-02-3001",
+   "station": "CBA",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1983-05-01",
+   "end": "2025-12-30",
+   "lag_days": 313,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-4005-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-4016-1002-01-02-3001",
+   "station": "CMO",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1983-05-01",
+   "end": "1998-03-18",
+   "lag_days": 10462,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-4016-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-4017-1002-01-02-3001",
+   "station": "AMT",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "2003-09-18",
+   "end": "2008-12-29",
+   "lag_days": 6523,
+   "resolutions": [
+    "event"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-4017-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-6051-1002-01-02-3001",
+   "station": "LMP",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "2006-10-01",
+   "end": "2025-12-19",
+   "lag_days": 324,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-6051-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-5026-1002-01-02-3001",
+   "station": "MKO",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1984-04-06",
+   "end": "2025-12-30",
+   "lag_days": 313,
+   "resolutions": [
+    "event"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-5026-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-6001-1002-01-02-3001",
+   "station": "ZEP",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1994-02-11",
+   "end": "2025-10-16",
+   "lag_days": 388,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-6001-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-5009-1002-01-02-3001",
+   "station": "SMO",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1983-04-01",
+   "end": "2025-12-21",
+   "lag_days": 322,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-5009-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-4024-1002-01-02-3001",
+   "station": "UTA",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1993-05-01",
+   "end": "2025-12-31",
+   "lag_days": 312,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-4024-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-3006-1002-01-02-3001",
+   "station": "SGI",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1989-02-02",
+   "end": "1992-08-13",
+   "lag_days": 12505,
+   "resolutions": [
+    "event"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-3006-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-5006-1002-01-02-3001",
+   "station": "CHR",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1984-03-01",
+   "end": "2020-01-25",
+   "lag_days": 2479,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-5006-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-1006-1002-01-02-3001",
+   "station": "SEY",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1983-05-01",
+   "end": "2025-12-30",
+   "lag_days": 313,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-1006-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-2005-1002-01-02-3001",
+   "station": "KZD",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1997-10-01",
+   "end": "2009-08-15",
+   "lag_days": 6294,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-2005-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-1002-1002-01-02-3001",
+   "station": "IZO",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1991-11-01",
+   "end": "2025-12-28",
+   "lag_days": 315,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-1002-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-5011-1002-01-02-3001",
+   "station": "CGO",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1984-04-01",
+   "end": "2025-12-22",
+   "lag_days": 321,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-5011-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-5007-1002-01-02-3001",
+   "station": "BKT",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "2004-01-01",
+   "end": "2025-12-30",
+   "lag_days": 313,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-5007-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-6043-1002-01-02-3001",
+   "station": "BSC",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1994-10-01",
+   "end": "2011-12-26",
+   "lag_days": 5431,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-6043-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-2014-1002-01-02-3001",
+   "station": "AMY",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "2013-12-01",
+   "end": "2025-12-31",
+   "lag_days": 312,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-2014-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-7010-1002-01-02-3001",
+   "station": "MCM",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1985-12-04",
+   "end": "1987-10-28",
+   "lag_days": 14256,
+   "resolutions": [
+    "event"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-7010-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-6006-1002-01-02-3001",
+   "station": "STM",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1983-04-01",
+   "end": "2009-11-27",
+   "lag_days": 6190,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-6006-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-8034-1002-06-02-3001",
+   "station": "POC",
+   "platform": "ship",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1986-12-01",
+   "end": "2024-08-19",
+   "lag_days": 811,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-8034-1002-06-02-3001"
+  },
+  {
+   "file_id": "0002-8044-1002-06-02-3001",
+   "station": "DRP",
+   "platform": "ship",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "2003-04-07",
+   "end": "2025-01-29",
+   "lag_days": 648,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-8044-1002-06-02-3001"
+  },
+  {
+   "file_id": "0002-8029-1002-06-02-3001",
+   "station": "WPC",
+   "platform": "ship",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "2004-05-05",
+   "end": "2013-06-01",
+   "lag_days": 4908,
+   "resolutions": [
+    "event"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-8029-1002-06-02-3001"
+  },
+  {
+   "file_id": "0002-4036-1002-01-02-3001",
+   "station": "RPB",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1987-11-01",
+   "end": "2025-02-02",
+   "lag_days": 644,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-4036-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-2032-1002-01-02-3001",
+   "station": "LLN",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "2006-08-01",
+   "end": "2025-12-22",
+   "lag_days": 321,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-2032-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-5003-1002-01-02-3001",
+   "station": "KUM",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1983-04-01",
+   "end": "2025-12-22",
+   "lag_days": 321,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-5003-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-4031-1002-01-02-3001",
+   "station": "KPA",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1983-04-28",
+   "end": "1989-10-31",
+   "lag_days": 13522,
+   "resolutions": [
+    "event"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-4031-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-6053-1002-01-02-3001",
+   "station": "WIS",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1995-11-01",
+   "end": "2025-12-31",
+   "lag_days": 312,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-6053-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-1009-1002-01-02-3001",
+   "station": "CPT",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "2010-02-01",
+   "end": "2025-12-01",
+   "lag_days": 342,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-1009-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-3003-1002-01-02-3001",
+   "station": "ABP",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "2006-10-01",
+   "end": "2010-01-13",
+   "lag_days": 6143,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-3003-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-6004-1002-01-02-3001",
+   "station": "PAL",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "2001-12-01",
+   "end": "2025-12-23",
+   "lag_days": 320,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-6004-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-2011-1002-01-02-3001",
+   "station": "SDZ",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "2009-09-01",
+   "end": "2015-09-02",
+   "lag_days": 4085,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-2011-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-6002-1002-01-02-3001",
+   "station": "SUM",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1997-06-23",
+   "end": "2025-12-30",
+   "lag_days": 313,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-6002-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-4002-1002-01-02-3001",
+   "station": "MBC",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1983-04-01",
+   "end": "1997-05-26",
+   "lag_days": 10758,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-4002-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-8045-1002-06-02-3001",
+   "station": "PAO",
+   "platform": "ship",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "2006-03-08",
+   "end": "2006-10-03",
+   "lag_days": 7341,
+   "resolutions": [
+    "event"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-8045-1002-06-02-3001"
+  },
+  {
+   "file_id": "0002-4022-1002-01-02-3001",
+   "station": "THD",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "2002-04-01",
+   "end": "2017-06-01",
+   "lag_days": 3447,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-4022-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-1003-1002-01-02-3001",
+   "station": "ASK",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1995-09-01",
+   "end": "2025-05-25",
+   "lag_days": 532,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-1003-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-1007-1002-01-02-3001",
+   "station": "ASC",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1983-05-01",
+   "end": "2025-12-31",
+   "lag_days": 312,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-1007-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-4029-1002-01-02-3001",
+   "station": "BME",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1989-02-01",
+   "end": "2010-01-25",
+   "lag_days": 6131,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-4029-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-6028-1002-01-02-3001",
+   "station": "HPB",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "2006-04-01",
+   "end": "2025-12-29",
+   "lag_days": 314,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-6028-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-8038-1002-06-02-3001",
+   "station": "SCS",
+   "platform": "ship",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1991-07-01",
+   "end": "1998-10-15",
+   "lag_days": 10251,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-8038-1002-06-02-3001"
+  },
+  {
+   "file_id": "0002-4026-1002-01-02-3001",
+   "station": "SGP",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "2002-04-01",
+   "end": "2025-12-18",
+   "lag_days": 325,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-4026-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-5002-1002-01-02-3001",
+   "station": "MLO",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1983-05-01",
+   "end": "2025-12-30",
+   "lag_days": 313,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-5002-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-4009-1002-01-02-3001",
+   "station": "SHM",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1985-09-01",
+   "end": "2025-12-08",
+   "lag_days": 335,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-4009-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-7006-1002-01-02-3001",
+   "station": "SYO",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1986-01-25",
+   "end": "2025-12-18",
+   "lag_days": 325,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-7006-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-1008-1002-01-02-3001",
+   "station": "NMB",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1997-01-01",
+   "end": "2025-12-31",
+   "lag_days": 312,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-1008-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-2002-1002-01-02-3001",
+   "station": "TIK",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "2011-08-01",
+   "end": "2018-09-03",
+   "lag_days": 2988,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-2002-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-5004-1002-01-02-3001",
+   "station": "GMI",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1983-05-01",
+   "end": "2025-05-08",
+   "lag_days": 549,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-5004-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-6016-1002-01-02-3001",
+   "station": "MHD",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1991-06-01",
+   "end": "2025-12-22",
+   "lag_days": 321,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-6016-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-4001-1002-01-02-3001",
+   "station": "ALT",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1985-06-01",
+   "end": "2025-12-31",
+   "lag_days": 312,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-4001-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-7003-1002-01-02-3001",
+   "station": "PSA",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1983-01-01",
+   "end": "2025-12-29",
+   "lag_days": 314,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-7003-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-3007-1002-01-02-3001",
+   "station": "USH",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1994-09-01",
+   "end": "2025-12-31",
+   "lag_days": 312,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-3007-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-4028-1002-01-02-3001",
+   "station": "SIO",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1984-02-02",
+   "end": "1986-09-25",
+   "lag_days": 14654,
+   "resolutions": [
+    "event"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-4028-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-5012-1002-01-02-3001",
+   "station": "BHD",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1999-10-01",
+   "end": "2025-05-20",
+   "lag_days": 537,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-5012-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-6007-1002-01-02-3001",
+   "station": "ICE",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1992-10-01",
+   "end": "2025-12-30",
+   "lag_days": 313,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-6007-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-2013-1002-01-02-3001",
+   "station": "TAP",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1990-11-24",
+   "end": "2025-12-22",
+   "lag_days": 321,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-2013-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-6050-1002-01-02-3001",
+   "station": "GOZ",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1993-10-01",
+   "end": "1999-02-12",
+   "lag_days": 10131,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-6050-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-2007-1002-01-02-3001",
+   "station": "KZM",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1997-10-01",
+   "end": "2009-08-05",
+   "lag_days": 6304,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-2007-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-8018-1002-06-02-3001",
+   "station": "AOC",
+   "platform": "ship",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "2004-05-14",
+   "end": "2005-02-21",
+   "lag_days": 7930,
+   "resolutions": [
+    "event"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-8018-1002-06-02-3001"
+  },
+  {
+   "file_id": "0002-2004-1002-01-02-3001",
+   "station": "UUM",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1992-01-01",
+   "end": "2025-12-31",
+   "lag_days": 312,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-2004-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-6047-1002-01-02-3001",
+   "station": "AZR",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1983-05-01",
+   "end": "2025-07-23",
+   "lag_days": 473,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-6047-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-4023-1002-01-02-3001",
+   "station": "NWR",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1983-05-11",
+   "end": "2025-12-29",
+   "lag_days": 314,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-4023-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-4033-1002-01-02-3001",
+   "station": "KEY",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1983-10-01",
+   "end": "2025-12-18",
+   "lag_days": 325,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-4033-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-2015-1002-01-02-3001",
+   "station": "WLG",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1990-08-05",
+   "end": "2025-12-31",
+   "lag_days": 312,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-2015-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-4014-1002-01-02-3001",
+   "station": "OPW",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1984-11-06",
+   "end": "1990-05-30",
+   "lag_days": 13311,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-4014-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-5001-1002-01-02-3001",
+   "station": "MID",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1985-05-03",
+   "end": "2025-12-16",
+   "lag_days": 327,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-5001-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-3004-1002-01-02-3001",
+   "station": "EIC",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1994-01-01",
+   "end": "2025-01-08",
+   "lag_days": 669,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-3004-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-4025-1002-01-02-3001",
+   "station": "PTA",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1999-01-01",
+   "end": "2011-05-25",
+   "lag_days": 5646,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-4025-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-4032-1002-01-02-3001",
+   "station": "WKT",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "2001-02-11",
+   "end": "2010-10-01",
+   "lag_days": 5882,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-4032-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-1010-1002-01-02-3001",
+   "station": "AMS",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1983-01-01",
+   "end": "1990-12-07",
+   "lag_days": 13120,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-1010-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-4006-1002-01-02-3001",
+   "station": "LLB",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "2008-01-01",
+   "end": "2013-02-26",
+   "lag_days": 5003,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-4006-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-1011-1002-01-02-3001",
+   "station": "CRZ",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1991-03-03",
+   "end": "2025-12-28",
+   "lag_days": 315,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-1011-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-7008-1002-01-02-3001",
+   "station": "HBA",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1983-01-01",
+   "end": "2025-01-22",
+   "lag_days": 655,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-7008-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-6022-1002-01-02-3001",
+   "station": "OXK",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "2003-03-13",
+   "end": "2025-12-31",
+   "lag_days": 312,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-6022-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-2037-1002-01-02-3001",
+   "station": "KCO",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1998-03-02",
+   "end": "1999-07-15",
+   "lag_days": 9978,
+   "resolutions": [
+    "event"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-2037-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-4030-1002-01-02-3001",
+   "station": "BMW",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1989-05-01",
+   "end": "2025-12-30",
+   "lag_days": 313,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-4030-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-4034-1002-01-02-3001",
+   "station": "MEX",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "2009-01-01",
+   "end": "2025-12-27",
+   "lag_days": 316,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-4034-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-4015-1002-01-02-3001",
+   "station": "LEF",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1994-11-29",
+   "end": "2025-12-22",
+   "lag_days": 321,
+   "resolutions": [
+    "event"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-4015-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-6009-1002-01-02-3001",
+   "station": "BAL",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1992-08-01",
+   "end": "2011-06-22",
+   "lag_days": 5618,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-6009-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-4003-1002-01-02-3001",
+   "station": "BRW",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "1983-04-01",
+   "end": "2025-12-23",
+   "lag_days": 320,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-4003-1002-01-02-3001"
+  },
+  {
+   "file_id": "0002-6019-1002-01-02-3001",
+   "station": "TAC",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 2,
+   "contributor": "NOAA",
+   "network": "NOAA",
+   "start": "2014-06-06",
+   "end": "2016-01-04",
+   "lag_days": 3961,
+   "resolutions": [
+    "event"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0002-6019-1002-01-02-3001"
+  },
+  {
+   "file_id": "0053-2031-1002-01-01-9999",
+   "station": "HAT",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 53,
+   "contributor": "NIES",
+   "network": "NIES",
+   "start": "1996-01-01",
+   "end": "2026-03-31",
+   "lag_days": 222,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0053-2031-1002-01-01-9999"
+  },
+  {
+   "file_id": "0053-2008-1002-01-01-9999",
+   "station": "COI",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 53,
+   "contributor": "NIES",
+   "network": "NIES",
+   "start": "1995-07-01",
+   "end": "2026-03-31",
+   "lag_days": 222,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0053-2008-1002-01-01-9999"
+  },
+  {
+   "file_id": "0016-7004-1002-01-02-9999",
+   "station": "CYA",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 16,
+   "contributor": "CSIRO",
+   "network": "CSIRO",
+   "start": "1996-11-25",
+   "end": "2025-11-25",
+   "lag_days": 348,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0016-7004-1002-01-02-9999"
+  },
+  {
+   "file_id": "0016-6008-1002-01-02-9999",
+   "station": "SIS",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 16,
+   "contributor": "CSIRO",
+   "network": "CSIRO",
+   "start": "1992-11-01",
+   "end": "2004-01-10",
+   "lag_days": 8338,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0016-6008-1002-01-02-9999"
+  },
+  {
+   "file_id": "0016-8003-1002-05-02-9999",
+   "station": "AIA",
+   "platform": "aircraft",
+   "type": "flask",
+   "contributor_no": 16,
+   "contributor": "CSIRO",
+   "network": "CSIRO",
+   "start": "1991-06-24",
+   "end": "2000-09-28",
+   "lag_days": 9537,
+   "resolutions": [
+    "event"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0016-8003-1002-05-02-9999"
+  },
+  {
+   "file_id": "0016-5011-1002-01-02-9999",
+   "station": "CGO",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 16,
+   "contributor": "CSIRO",
+   "network": "CSIRO",
+   "start": "1984-08-01",
+   "end": "2025-12-22",
+   "lag_days": 321,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0016-5011-1002-01-02-9999"
+  },
+  {
+   "file_id": "0016-7011-1002-01-02-9999",
+   "station": "SPO",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 16,
+   "contributor": "CSIRO",
+   "network": "CSIRO",
+   "start": "1991-03-01",
+   "end": "2025-12-01",
+   "lag_days": 342,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0016-7011-1002-01-02-9999"
+  },
+  {
+   "file_id": "0016-4001-1002-01-02-9999",
+   "station": "ALT",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 16,
+   "contributor": "CSIRO",
+   "network": "CSIRO",
+   "start": "1991-04-01",
+   "end": "2025-12-31",
+   "lag_days": 312,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0016-4001-1002-01-02-9999"
+  },
+  {
+   "file_id": "0016-5002-1002-01-02-9999",
+   "station": "MLO",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 16,
+   "contributor": "CSIRO",
+   "network": "CSIRO",
+   "start": "1991-05-01",
+   "end": "2025-12-23",
+   "lag_days": 320,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0016-5002-1002-01-02-9999"
+  },
+  {
+   "file_id": "0016-4013-1002-01-02-9999",
+   "station": "ESP",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 16,
+   "contributor": "CSIRO",
+   "network": "CSIRO",
+   "start": "1993-06-01",
+   "end": "2002-01-12",
+   "lag_days": 9066,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0016-4013-1002-01-02-9999"
+  },
+  {
+   "file_id": "0016-5015-1002-01-02-9999",
+   "station": "MQA",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 16,
+   "contributor": "CSIRO",
+   "network": "CSIRO",
+   "start": "1990-04-01",
+   "end": "2025-12-29",
+   "lag_days": 314,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0016-5015-1002-01-02-9999"
+  },
+  {
+   "file_id": "0016-2036-1002-01-02-9999",
+   "station": "CRI",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 16,
+   "contributor": "CSIRO",
+   "network": "CSIRO",
+   "start": "1993-02-01",
+   "end": "2013-01-13",
+   "lag_days": 5047,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0016-2036-1002-01-02-9999"
+  },
+  {
+   "file_id": "0016-5008-1002-01-02-9999",
+   "station": "GPA",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 16,
+   "contributor": "CSIRO",
+   "network": "CSIRO",
+   "start": "2010-08-25",
+   "end": "2025-12-18",
+   "lag_days": 325,
+   "resolutions": [
+    "event"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0016-5008-1002-01-02-9999"
+  },
+  {
+   "file_id": "0016-5010-1002-01-02-9999",
+   "station": "CFA",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 16,
+   "contributor": "CSIRO",
+   "network": "CSIRO",
+   "start": "1991-06-01",
+   "end": "2025-12-19",
+   "lag_days": 324,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0016-5010-1002-01-02-9999"
+  },
+  {
+   "file_id": "0016-7005-1002-01-02-9999",
+   "station": "MAA",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 16,
+   "contributor": "CSIRO",
+   "network": "CSIRO",
+   "start": "1984-04-01",
+   "end": "2025-12-17",
+   "lag_days": 326,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0016-7005-1002-01-02-9999"
+  },
+  {
+   "file_id": "0151-1004-1002-01-01-9999",
+   "station": "CVO",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 151,
+   "contributor": "UoE",
+   "network": "UoE",
+   "start": "2012-10-26",
+   "end": "2026-05-11",
+   "lag_days": 181,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0151-1004-1002-01-01-9999"
+  },
+  {
+   "file_id": "0057-8023-1002-06-02-9999",
+   "station": "BSL",
+   "platform": "ship",
+   "type": "flask",
+   "contributor_no": 57,
+   "contributor": "ESNZ",
+   "network": "ESNZ",
+   "start": "1996-06-10",
+   "end": "2011-12-03",
+   "lag_days": 5454,
+   "resolutions": [
+    "event"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0057-8023-1002-06-02-9999"
+  },
+  {
+   "file_id": "0003-1002-1002-01-01-9999",
+   "station": "IZO",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 3,
+   "contributor": "AEMET",
+   "network": "AEMET",
+   "start": "1984-01-01",
+   "end": "2025-12-31",
+   "lag_days": 312,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0003-1002-1002-01-01-9999"
+  },
+  {
+   "file_id": "0001-8002-1002-05-02-9999",
+   "station": "AOA",
+   "platform": "aircraft",
+   "type": "flask",
+   "contributor_no": 1,
+   "contributor": "JMA",
+   "network": "JMA",
+   "start": "2011-02-16",
+   "end": "2024-03-21",
+   "lag_days": 962,
+   "resolutions": [
+    "event"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0001-8002-1002-05-02-9999"
+  },
+  {
+   "file_id": "0057-5012-1002-01-01-9999",
+   "station": "BHD",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 57,
+   "contributor": "ESNZ",
+   "network": "ESNZ",
+   "start": "2016-02-06",
+   "end": "2025-12-31",
+   "lag_days": 312,
+   "resolutions": [
+    "event",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0057-5012-1002-01-01-9999"
+  },
+  {
+   "file_id": "0057-7009-1002-01-02-9999",
+   "station": "ARH",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 57,
+   "contributor": "ESNZ",
+   "network": "ESNZ",
+   "start": "1989-11-01",
+   "end": "2025-07-31",
+   "lag_days": 465,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0057-7009-1002-01-02-9999"
+  },
+  {
+   "file_id": "0017-3005-1002-01-01-9999",
+   "station": "TLL",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 17,
+   "contributor": "DMC",
+   "network": "DMC",
+   "start": "2013-01-01",
+   "end": "2025-12-31",
+   "lag_days": 312,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0017-3005-1002-01-01-9999"
+  },
+  {
+   "file_id": "0155-2157-1002-01-01-9999",
+   "station": "CPA",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 155,
+   "contributor": "Kyrgyzhydromet",
+   "network": "Kyrgyzhydromet",
+   "start": "2016-01-01",
+   "end": "2025-12-31",
+   "lag_days": 312,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0155-2157-1002-01-01-9999"
+  },
+  {
+   "file_id": "0057-5014-1002-01-01-9999",
+   "station": "LAU",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 57,
+   "contributor": "ESNZ",
+   "network": "ESNZ",
+   "start": "2007-01-01",
+   "end": "2025-12-20",
+   "lag_days": 323,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0057-5014-1002-01-01-9999"
+  },
+  {
+   "file_id": "0057-5014-1002-01-02-9999",
+   "station": "LAU",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 57,
+   "contributor": "ESNZ",
+   "network": "ESNZ",
+   "start": "2009-05-01",
+   "end": "2025-10-16",
+   "lag_days": 388,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0057-5014-1002-01-02-9999"
+  },
+  {
+   "file_id": "0053-8007-1002-05-02-9999",
+   "station": "EOM",
+   "platform": "aircraft",
+   "type": "flask",
+   "contributor_no": 53,
+   "contributor": "NIES",
+   "network": "NIES",
+   "start": "1993-04-23",
+   "end": "2025-11-27",
+   "lag_days": 346,
+   "resolutions": [
+    "event"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0053-8007-1002-05-02-9999"
+  },
+  {
+   "file_id": "0070-7006-1002-01-01-9999",
+   "station": "SYO",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 70,
+   "contributor": "TU",
+   "network": "TU",
+   "start": "1987-02-01",
+   "end": "2026-01-31",
+   "lag_days": 281,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0070-7006-1002-01-01-9999"
+  },
+  {
+   "file_id": "0046-6003-1002-01-02-9999",
+   "station": "TER",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 46,
+   "contributor": "MGO",
+   "network": "MGO",
+   "start": "1999-01-01",
+   "end": "2025-12-26",
+   "lag_days": 317,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0046-6003-1002-01-02-9999"
+  },
+  {
+   "file_id": "0040-1005-1002-01-01-9999",
+   "station": "MKN",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 40,
+   "contributor": "KMD",
+   "network": "KMD",
+   "start": "2020-01-01",
+   "end": "2025-12-31",
+   "lag_days": 312,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0040-1005-1002-01-01-9999"
+  },
+  {
+   "file_id": "0069-3007-1002-01-01-9999",
+   "station": "USH",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 69,
+   "contributor": "SMNA",
+   "network": "SMNA",
+   "start": "2020-01-01",
+   "end": "2025-12-31",
+   "lag_days": 312,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0069-3007-1002-01-01-9999"
+  },
+  {
+   "file_id": "0054-6001-1002-01-01-9999",
+   "station": "ZEP",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 54,
+   "contributor": "NILU",
+   "network": "NILU",
+   "start": "2001-08-01",
+   "end": "2017-07-26",
+   "lag_days": 3392,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0054-6001-1002-01-01-9999"
+  },
+  {
+   "file_id": "0054-7039-1002-01-01-9999",
+   "station": "TRL",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 54,
+   "contributor": "NILU",
+   "network": "NILU",
+   "start": "2021-01-01",
+   "end": "2025-12-31",
+   "lag_days": 312,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0054-7039-1002-01-01-9999"
+  },
+  {
+   "file_id": "0010-5007-1002-01-01-9999",
+   "station": "BKT",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 10,
+   "contributor": "BMKG",
+   "network": "BMKG",
+   "start": "2009-01-01",
+   "end": "2025-12-31",
+   "lag_days": 312,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0010-5007-1002-01-01-9999"
+  },
+  {
+   "file_id": "0076-1004-1002-01-01-9999",
+   "station": "CVO",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 76,
+   "contributor": "UYRK",
+   "network": "UYRK",
+   "start": "2016-01-01",
+   "end": "2025-12-31",
+   "lag_days": 312,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0076-1004-1002-01-01-9999"
+  },
+  {
+   "file_id": "0001-2028-1002-01-01-9999",
+   "station": "YON",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 1,
+   "contributor": "JMA",
+   "network": "JMA",
+   "start": "1998-01-01",
+   "end": "2024-03-31",
+   "lag_days": 952,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0001-2028-1002-01-01-9999"
+  },
+  {
+   "file_id": "0029-6042-1002-01-01-9999",
+   "station": "CMN",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 29,
+   "contributor": "IAFMS",
+   "network": "IAFMS",
+   "start": "2015-01-01",
+   "end": "2025-12-31",
+   "lag_days": 312,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0029-6042-1002-01-01-9999"
+  },
+  {
+   "file_id": "0066-1009-1002-01-01-9999",
+   "station": "CPT",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 66,
+   "contributor": "SAWS",
+   "network": "SAWS",
+   "start": "1983-01-01",
+   "end": "2025-12-31",
+   "lag_days": 312,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0066-1009-1002-01-01-9999"
+  },
+  {
+   "file_id": "0163-6445-1002-01-01-9999",
+   "station": "KAS",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 163,
+   "contributor": "AGH",
+   "network": "AGH",
+   "start": "1994-09-16",
+   "end": "2025-12-31",
+   "lag_days": 312,
+   "resolutions": [
+    "daily",
+    "event",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0163-6445-1002-01-01-9999"
+  },
+  {
+   "file_id": "0055-2025-1002-01-02-9999",
+   "station": "GSN",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 55,
+   "contributor": "METRI",
+   "network": "METRI",
+   "start": "1995-01-01",
+   "end": "1997-12-01",
+   "lag_days": 10569,
+   "resolutions": [
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0055-2025-1002-01-02-9999"
+  },
+  {
+   "file_id": "0052-2025-1002-01-01-9999",
+   "station": "GSN",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 52,
+   "contributor": "GERC",
+   "network": "GERC",
+   "start": "2002-01-01",
+   "end": "2011-12-31",
+   "lag_days": 5426,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0052-2025-1002-01-01-9999"
+  },
+  {
+   "file_id": "0162-6034-1002-02-01-6097",
+   "station": "HUN",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 162,
+   "contributor": "ICOS",
+   "network": "ICOS",
+   "start": "2006-03-01",
+   "end": "2014-10-09",
+   "lag_days": 4413,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0162-6034-1002-02-01-6097"
+  },
+  {
+   "file_id": "0063-6015-1002-01-01-9999",
+   "station": "KMW",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 63,
+   "contributor": "RIVM",
+   "network": "RIVM",
+   "start": "1991-07-01",
+   "end": "2010-12-31",
+   "lag_days": 5791,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0063-6015-1002-01-01-9999"
+  },
+  {
+   "file_id": "0072-6032-1002-01-01-9999",
+   "station": "SNB",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 72,
+   "contributor": "UBAA",
+   "network": "UBAA",
+   "start": "2012-01-01",
+   "end": "2025-01-01",
+   "lag_days": 676,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0072-6032-1002-01-01-9999"
+  },
+  {
+   "file_id": "0046-2002-1002-01-02-9999",
+   "station": "TIK",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 46,
+   "contributor": "MGO",
+   "network": "MGO",
+   "start": "2011-01-01",
+   "end": "2018-12-26",
+   "lag_days": 2874,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0046-2002-1002-01-02-9999"
+  },
+  {
+   "file_id": "0023-6036-1002-01-01-9999",
+   "station": "JFJ",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 23,
+   "contributor": "Empa",
+   "network": "Empa",
+   "start": "2005-01-01",
+   "end": "2024-12-31",
+   "lag_days": 677,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0023-6036-1002-01-01-9999"
+  },
+  {
+   "file_id": "0013-2015-1002-01-01-9999",
+   "station": "WLG",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 13,
+   "contributor": "CMA",
+   "network": "CMA",
+   "start": "1994-08-01",
+   "end": "2023-12-31",
+   "lag_days": 1043,
+   "resolutions": [
+    "daily",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0013-2015-1002-01-01-9999"
+  },
+  {
+   "file_id": "0048-8005-1002-05-02-9999",
+   "station": "INS",
+   "platform": "aircraft",
+   "type": "flask",
+   "contributor_no": 48,
+   "contributor": "MRI",
+   "network": "MRI",
+   "start": "1989-03-05",
+   "end": "1990-10-22",
+   "lag_days": 13166,
+   "resolutions": [
+    "event"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0048-8005-1002-05-02-9999"
+  },
+  {
+   "file_id": "0048-8001-1002-05-02-9999",
+   "station": "OAS",
+   "platform": "aircraft",
+   "type": "flask",
+   "contributor_no": 48,
+   "contributor": "MRI",
+   "network": "MRI",
+   "start": "1986-02-12",
+   "end": "2000-02-19",
+   "lag_days": 9759,
+   "resolutions": [
+    "event"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0048-8001-1002-05-02-9999"
+  },
+  {
+   "file_id": "0048-8030-1002-06-02-9999",
+   "station": "HKH",
+   "platform": "ship",
+   "type": "flask",
+   "contributor_no": 48,
+   "contributor": "MRI",
+   "network": "MRI",
+   "start": "1990-09-04",
+   "end": "1990-12-11",
+   "lag_days": 13116,
+   "resolutions": [
+    "event"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0048-8030-1002-06-02-9999"
+  },
+  {
+   "file_id": "0048-8031-1002-06-02-9999",
+   "station": "MRI",
+   "platform": "ship",
+   "type": "flask",
+   "contributor_no": 48,
+   "contributor": "MRI",
+   "network": "MRI",
+   "start": "1978-01-28",
+   "end": "1991-10-31",
+   "lag_days": 12792,
+   "resolutions": [
+    "event"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0048-8031-1002-06-02-9999"
+  },
+  {
+   "file_id": "0048-8035-1002-06-02-9999",
+   "station": "RFM",
+   "platform": "ship",
+   "type": "flask",
+   "contributor_no": 48,
+   "contributor": "MRI",
+   "network": "MRI",
+   "start": "1978-01-22",
+   "end": "1993-02-22",
+   "lag_days": 12312,
+   "resolutions": [
+    "event"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0048-8035-1002-06-02-9999"
+  },
+  {
+   "file_id": "0048-2018-1002-01-01-9999",
+   "station": "TKB",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 48,
+   "contributor": "MRI",
+   "network": "MRI",
+   "start": "1985-06-01",
+   "end": "2002-06-30",
+   "lag_days": 8897,
+   "resolutions": [
+    "daily",
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0048-2018-1002-01-01-9999"
+  },
+  {
+   "file_id": "0048-8028-1002-06-02-1002",
+   "station": "NTU",
+   "platform": "ship",
+   "type": "flask",
+   "contributor_no": 48,
+   "contributor": "MRI",
+   "network": "MRI",
+   "start": "1987-01-26",
+   "end": "1990-02-08",
+   "lag_days": 13422,
+   "resolutions": [
+    "event"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0048-8028-1002-06-02-1002"
+  },
+  {
+   "file_id": "0048-8028-1002-06-02-1001",
+   "station": "NTU",
+   "platform": "ship",
+   "type": "flask",
+   "contributor_no": 48,
+   "contributor": "MRI",
+   "network": "MRI",
+   "start": "1987-01-26",
+   "end": "1991-03-10",
+   "lag_days": 13027,
+   "resolutions": [
+    "event"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0048-8028-1002-06-02-1001"
+  },
+  {
+   "file_id": "0074-6042-1002-01-01-9999",
+   "station": "CMN",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 74,
+   "contributor": "UNIURB",
+   "network": "UNIURB",
+   "start": "2008-01-01",
+   "end": "2017-12-31",
+   "lag_days": 3234,
+   "resolutions": [
+    "daily",
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0074-6042-1002-01-01-9999"
+  },
+  {
+   "file_id": "0070-8036-1002-06-02-9999",
+   "station": "NWP",
+   "platform": "ship",
+   "type": "flask",
+   "contributor_no": 70,
+   "contributor": "TU",
+   "network": "TU",
+   "start": "1987-12-25",
+   "end": "2017-06-05",
+   "lag_days": 3443,
+   "resolutions": [
+    "event"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0070-8036-1002-06-02-9999"
+  },
+  {
+   "file_id": "0070-6066-1002-01-02-9999",
+   "station": "NYA",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 70,
+   "contributor": "TU",
+   "network": "TU",
+   "start": "1991-08-01",
+   "end": "2013-12-25",
+   "lag_days": 4701,
+   "resolutions": [
+    "event"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0070-6066-1002-01-02-9999"
+  },
+  {
+   "file_id": "0070-8043-1002-05-02-9999",
+   "station": "PIP",
+   "platform": "aircraft",
+   "type": "flask",
+   "contributor_no": 70,
+   "contributor": "TU",
+   "network": "TU",
+   "start": "1988-01-29",
+   "end": "2010-08-10",
+   "lag_days": 5934,
+   "resolutions": [
+    "event"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0070-8043-1002-05-02-9999"
+  },
+  {
+   "file_id": "0070-8042-1002-05-02-9999",
+   "station": "TDA",
+   "platform": "aircraft",
+   "type": "flask",
+   "contributor_no": 70,
+   "contributor": "TU",
+   "network": "TU",
+   "start": "1988-01-18",
+   "end": "2010-07-21",
+   "lag_days": 5954,
+   "resolutions": [
+    "event"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0070-8042-1002-05-02-9999"
+  },
+  {
+   "file_id": "0037-6054-1002-01-01-9999",
+   "station": "LMT",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 37,
+   "contributor": "ISAC",
+   "network": "ISAC",
+   "start": "2015-01-01",
+   "end": "2016-12-31",
+   "lag_days": 3599,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0037-6054-1002-01-01-9999"
+  },
+  {
+   "file_id": "0045-1010-1002-01-02-9999",
+   "station": "AMS",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 45,
+   "contributor": "LSCE",
+   "network": "LSCE",
+   "start": "2003-10-01",
+   "end": "2010-03-15",
+   "lag_days": 6082,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0045-1010-1002-01-02-9999"
+  },
+  {
+   "file_id": "0037-6055-1002-01-01-9999",
+   "station": "ECO",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 37,
+   "contributor": "ISAC",
+   "network": "ISAC",
+   "start": "2015-01-01",
+   "end": "2017-12-31",
+   "lag_days": 3234,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0037-6055-1002-01-01-9999"
+  },
+  {
+   "file_id": "0157-6034-1002-02-01-6116",
+   "station": "HUN",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 157,
+   "contributor": "ATOMKI",
+   "network": "ATOMKI",
+   "start": "2020-02-01",
+   "end": "2023-12-31",
+   "lag_days": 1043,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0157-6034-1002-02-01-6116"
+  },
+  {
+   "file_id": "0034-6002-1002-01-01-9999",
+   "station": "SUM",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 34,
+   "contributor": "INSTAAR",
+   "network": "INSTAAR",
+   "start": "2012-05-01",
+   "end": "2016-12-31",
+   "lag_days": 3599,
+   "resolutions": [
+    "daily",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0034-6002-1002-01-01-9999"
+  },
+  {
+   "file_id": "0045-6044-1002-01-02-9999",
+   "station": "PDM",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 45,
+   "contributor": "LSCE",
+   "network": "LSCE",
+   "start": "2001-06-01",
+   "end": "2010-08-10",
+   "lag_days": 5934,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0045-6044-1002-01-02-9999"
+  },
+  {
+   "file_id": "0064-6039-1002-01-01-9999",
+   "station": "PRS",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 64,
+   "contributor": "RSE",
+   "network": "RSE",
+   "start": "1991-05-01",
+   "end": "2018-12-31",
+   "lag_days": 2869,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0064-6039-1002-01-01-9999"
+  },
+  {
+   "file_id": "0045-6046-1002-01-02-9999",
+   "station": "BGU",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 45,
+   "contributor": "LSCE",
+   "network": "LSCE",
+   "start": "2000-02-01",
+   "end": "2010-10-16",
+   "lag_days": 5867,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0045-6046-1002-01-02-9999"
+  },
+  {
+   "file_id": "0071-6023-1002-01-01-9999",
+   "station": "DEU",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 71,
+   "contributor": "UBAG",
+   "network": "UBAG",
+   "start": "1994-01-01",
+   "end": "2004-12-31",
+   "lag_days": 7982,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0071-6023-1002-01-01-9999"
+  },
+  {
+   "file_id": "0157-6034-1002-02-01-6083",
+   "station": "HUN",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 157,
+   "contributor": "ATOMKI",
+   "network": "ATOMKI",
+   "start": "2016-03-01",
+   "end": "2023-12-31",
+   "lag_days": 1043,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0157-6034-1002-02-01-6083"
+  },
+  {
+   "file_id": "0045-6026-1002-01-02-9999",
+   "station": "LPO",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 45,
+   "contributor": "LSCE",
+   "network": "LSCE",
+   "start": "2004-11-01",
+   "end": "2010-03-08",
+   "lag_days": 6089,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0045-6026-1002-01-02-9999"
+  },
+  {
+   "file_id": "0157-6034-1002-02-01-6011",
+   "station": "HUN",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 157,
+   "contributor": "ATOMKI",
+   "network": "ATOMKI",
+   "start": "2020-02-01",
+   "end": "2023-12-31",
+   "lag_days": 1043,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0157-6034-1002-02-01-6011"
+  },
+  {
+   "file_id": "0071-6010-1002-01-01-9999",
+   "station": "WES",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 71,
+   "contributor": "UBAG",
+   "network": "UBAG",
+   "start": "2021-07-01",
+   "end": "2024-03-31",
+   "lag_days": 952,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0071-6010-1002-01-01-9999"
+  },
+  {
+   "file_id": "0075-6049-1002-01-01-9999",
+   "station": "GLH",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 75,
+   "contributor": "UMLT",
+   "network": "UMLT",
+   "start": "2012-01-01",
+   "end": "2019-12-31",
+   "lag_days": 2504,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0075-6049-1002-01-01-9999"
+  },
+  {
+   "file_id": "0131-6056-1002-01-01-9999",
+   "station": "CUR",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 131,
+   "contributor": "IIA",
+   "network": "IIA",
+   "start": "2015-01-01",
+   "end": "2017-12-31",
+   "lag_days": 3234,
+   "resolutions": [
+    "hourly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0131-6056-1002-01-01-9999"
+  },
+  {
+   "file_id": "0051-2035-1002-01-01-9999",
+   "station": "PDI",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 51,
+   "contributor": "VNMHA",
+   "network": "VNMHA",
+   "start": "2014-01-01",
+   "end": "2022-12-31",
+   "lag_days": 1408,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0051-2035-1002-01-01-9999"
+  },
+  {
+   "file_id": "0045-1010-1002-01-01-9999",
+   "station": "AMS",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 45,
+   "contributor": "LSCE",
+   "network": "LSCE",
+   "start": "2012-01-20",
+   "end": "2015-07-02",
+   "lag_days": 4147,
+   "resolutions": [
+    "hourly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0045-1010-1002-01-01-9999"
+  },
+  {
+   "file_id": "0157-6034-1002-02-01-6049",
+   "station": "HUN",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 157,
+   "contributor": "ATOMKI",
+   "network": "ATOMKI",
+   "start": "2020-02-01",
+   "end": "2023-12-31",
+   "lag_days": 1043,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0157-6034-1002-02-01-6049"
+  },
+  {
+   "file_id": "0025-2002-1002-01-01-9999",
+   "station": "TIK",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 25,
+   "contributor": "FMI",
+   "network": "FMI",
+   "start": "2010-09-01",
+   "end": "2022-04-09",
+   "lag_days": 1674,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0025-2002-1002-01-01-9999"
+  },
+  {
+   "file_id": "0045-6052-1002-01-02-9999",
+   "station": "FKL",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 45,
+   "contributor": "LSCE",
+   "network": "LSCE",
+   "start": "1999-02-01",
+   "end": "2010-11-16",
+   "lag_days": 5836,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0045-6052-1002-01-02-9999"
+  },
+  {
+   "file_id": "0157-6034-1002-02-01-6097",
+   "station": "HUN",
+   "platform": "tower",
+   "type": "insitu",
+   "contributor_no": 157,
+   "contributor": "ATOMKI",
+   "network": "ATOMKI",
+   "start": "2006-03-01",
+   "end": "2014-10-31",
+   "lag_days": 4391,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0157-6034-1002-02-01-6097"
+  },
+  {
+   "file_id": "0045-6016-1002-01-02-9999",
+   "station": "MHD",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 45,
+   "contributor": "LSCE",
+   "network": "LSCE",
+   "start": "1998-12-01",
+   "end": "2010-10-26",
+   "lag_days": 5857,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0045-6016-1002-01-02-9999"
+  },
+  {
+   "file_id": "0036-8004-1002-05-02-9999",
+   "station": "SAN",
+   "platform": "aircraft",
+   "type": "flask",
+   "contributor_no": 36,
+   "contributor": "INPE",
+   "network": "INPE",
+   "start": "2007-01-16",
+   "end": "2009-12-31",
+   "lag_days": 6156,
+   "resolutions": [
+    "event"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0036-8004-1002-05-02-9999"
+  },
+  {
+   "file_id": "0071-6011-1002-01-01-9999",
+   "station": "ZGT",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 71,
+   "contributor": "UBAG",
+   "network": "UBAG",
+   "start": "1994-01-01",
+   "end": "2003-12-31",
+   "lag_days": 8348,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0071-6011-1002-01-01-9999"
+  },
+  {
+   "file_id": "0045-6016-1002-01-01-9999",
+   "station": "MHD",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 45,
+   "contributor": "LSCE",
+   "network": "LSCE",
+   "start": "2010-01-07",
+   "end": "2015-01-31",
+   "lag_days": 4299,
+   "resolutions": [
+    "hourly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0045-6016-1002-01-01-9999"
+  },
+  {
+   "file_id": "0071-6017-1002-01-01-9999",
+   "station": "NGL",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 71,
+   "contributor": "UBAG",
+   "network": "UBAG",
+   "start": "1994-01-01",
+   "end": "2013-12-31",
+   "lag_days": 4695,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0071-6017-1002-01-01-9999"
+  },
+  {
+   "file_id": "0071-6031-1002-01-01-9999",
+   "station": "ZSF",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 71,
+   "contributor": "UBAG",
+   "network": "UBAG",
+   "start": "2002-01-01",
+   "end": "2024-03-31",
+   "lag_days": 952,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0071-6031-1002-01-01-9999"
+  },
+  {
+   "file_id": "0045-6040-1002-01-01-9999",
+   "station": "PUY",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 45,
+   "contributor": "LSCE",
+   "network": "LSCE",
+   "start": "2011-04-18",
+   "end": "2015-01-31",
+   "lag_days": 4299,
+   "resolutions": [
+    "hourly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0045-6040-1002-01-01-9999"
+  },
+  {
+   "file_id": "0071-6030-1002-01-01-9999",
+   "station": "ZUG",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 71,
+   "contributor": "UBAG",
+   "network": "UBAG",
+   "start": "1994-01-01",
+   "end": "2001-12-31",
+   "lag_days": 9078,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0071-6030-1002-01-01-9999"
+  },
+  {
+   "file_id": "0041-2009-1002-01-08-9999",
+   "station": "ISK",
+   "platform": "surface",
+   "type": "remote",
+   "contributor_no": 41,
+   "contributor": "KSNU",
+   "network": "KSNU",
+   "start": "2004-08-01",
+   "end": "2005-12-31",
+   "lag_days": 7617,
+   "resolutions": [
+    "daily",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0041-2009-1002-01-08-9999"
+  },
+  {
+   "file_id": "0071-6027-1002-01-01-9999",
+   "station": "SSL",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 71,
+   "contributor": "UBAG",
+   "network": "UBAG",
+   "start": "1991-01-01",
+   "end": "2022-12-31",
+   "lag_days": 1408,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0071-6027-1002-01-01-9999"
+  },
+  {
+   "file_id": "0045-6040-1002-01-02-9999",
+   "station": "PUY",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 45,
+   "contributor": "LSCE",
+   "network": "LSCE",
+   "start": "2001-07-01",
+   "end": "2010-11-17",
+   "lag_days": 5835,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0045-6040-1002-01-02-9999"
+  },
+  {
+   "file_id": "0045-8047-1002-05-02-9999",
+   "station": "ORL",
+   "platform": "aircraft",
+   "type": "flask",
+   "contributor_no": 45,
+   "contributor": "LSCE",
+   "network": "LSCE",
+   "start": "1998-10-20",
+   "end": "2009-02-19",
+   "lag_days": 6471,
+   "resolutions": [
+    "event"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0045-8047-1002-05-02-9999"
+  },
+  {
+   "file_id": "0037-6048-1002-01-01-9999",
+   "station": "CGR",
+   "platform": "surface",
+   "type": "insitu",
+   "contributor_no": 37,
+   "contributor": "ISAC",
+   "network": "ISAC",
+   "start": "2015-01-01",
+   "end": "2023-12-31",
+   "lag_days": 1043,
+   "resolutions": [
+    "daily",
+    "hourly",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0037-6048-1002-01-01-9999"
+  },
+  {
+   "file_id": "0036-3003-1002-01-02-9999",
+   "station": "ABP",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 36,
+   "contributor": "INPE",
+   "network": "INPE",
+   "start": "2006-10-27",
+   "end": "2009-12-22",
+   "lag_days": 6165,
+   "resolutions": [
+    "event"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0036-3003-1002-01-02-9999"
+  },
+  {
+   "file_id": "0024-6418-1002-01-02-9999",
+   "station": "MDN",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 24,
+   "contributor": "ENEA",
+   "network": "ENEA",
+   "start": "2005-04-01",
+   "end": "2022-12-16",
+   "lag_days": 1423,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0024-6418-1002-01-02-9999"
+  },
+  {
+   "file_id": "0024-6051-1002-01-02-9999",
+   "station": "LMP",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 24,
+   "contributor": "ENEA",
+   "network": "ENEA",
+   "start": "1995-01-01",
+   "end": "2022-12-30",
+   "lag_days": 1409,
+   "resolutions": [
+    "event",
+    "monthly"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0024-6051-1002-01-02-9999"
+  },
+  {
+   "file_id": "0012-6024-1002-01-02-9999",
+   "station": "KOS",
+   "platform": "surface",
+   "type": "flask",
+   "contributor_no": 12,
+   "contributor": "CHMI",
+   "network": "CHMI",
+   "start": "1996-01-08",
+   "end": "2022-12-29",
+   "lag_days": 1410,
+   "resolutions": [
+    "event"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0012-6024-1002-01-02-9999"
+  },
+  {
+   "file_id": "0001-8010-1002-06-05-1012",
+   "station": "RYF",
+   "platform": "ship",
+   "type": "bottle",
+   "contributor_no": 1,
+   "contributor": "JMA",
+   "network": "JMA",
+   "start": "1998-01-30",
+   "end": "2017-02-11",
+   "lag_days": 3557,
+   "resolutions": [
+    "event"
+   ],
+   "url": "https://gaw.kishou.go.jp/search/file/0001-8010-1002-06-05-1012"
+  }
+ ]
+}
