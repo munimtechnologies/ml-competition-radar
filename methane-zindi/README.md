@@ -24,7 +24,9 @@ before its job ran; each job checks that the public copy matches before it compu
 | ch4lag | how fresh are public CH4 data (ICOS near-real-time, ICOS Level 2, NOAA files)? | [graded](RESULTS-ch4lag.md): 3 held, 1 failed, 1 ungraded |
 | ch4icos | the same baselines at 54 ICOS towers via the anonymous ICOS Zarr proxy, with data latency | [graded](RESULTS-ch4icos.md): 7 of 7 held |
 | ch4icos2 | can the seasonal fit's high bias at ICOS towers be fixed (monthly refit, 30-day level anchor)? | [graded](RESULTS-ch4icos2.md): 5 of 7 held |
-| wdcgglag | how far behind today does each public CH4 dataset on WMO's WDCGG archive end? | [pre-registered](PREREGISTRATION-wdcgglag.md), job queued |
+| wdcgglag | how far behind today does each public CH4 dataset on WMO's WDCGG archive end? | [graded](RESULTS-wdcgglag.md): both gates and 5 of 6 held |
+
+A summary of what is live and what is only history: [INPUT-FRESHNESS.md](INPUT-FRESHNESS.md).
 
 ### ch4base
 
@@ -68,7 +70,14 @@ proxy, CC BY 4.0, https://doi.org/10.18160/JZ2X-GZGU (please cite the ICOS data 
 
 ### wdcgglag
 
-`wdcgg_lag.py` 0.1.0 (standard library only, offline tests) reads WMO WDCGG's public listing of the
-latest CH4 datasets and records when each dataset ends, grouped by network (JMA, NOAA, AGAGE, ICOS).
-The goal is to learn which of the contest's five data networks have public inputs fresh enough
-for live five-day forecasts.
+`wdcgg_lag.py` 0.1.0 (standard library only, offline tests) read all 337 CH4 datasets on WMO WDCGG's
+"latest" listing on 2026-11-08 and recorded when each ends. None of the 99 surface in-situ datasets
+ends after 2026-09-30. The freshest are ICOS (towers: median 77 days behind), then JMA (100 days),
+NIES (222), and NOAA and most others (312, ending 2025-12-31). AGAGE's records end between
+2025-10-25 and 2026-01-01 (median 378 days). So WDCGG is a history source only. The one prediction
+that failed was too narrow: AGAGE's Trinidad Head Picarro record runs to the end of 2025, not
+October.
+
+Run it yourself: `python -m unittest -v test_wdcgg_lag && python wdcgg_lag.py --out-dir out --delay 1.0`
+
+Data: WMO GAW World Data Centre for Greenhouse Gases (https://gaw.kishou.go.jp), listing metadata only.
