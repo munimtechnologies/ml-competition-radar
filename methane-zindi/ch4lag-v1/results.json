@@ -1,0 +1,1730 @@
+{
+ "version": "0.1.0",
+ "started_utc": "2026-11-07T21:18:28Z",
+ "config": {
+  "live_days": 7.0,
+  "stale_days": 30.0,
+  "sample_n": 5,
+  "sample_gap_days": 2.0,
+  "nrt_spec": "http://meta.icos-cp.eu/resources/cpmeta/atcCh4NrtGrowingDataObject",
+  "l2_spec": "http://meta.icos-cp.eu/resources/cpmeta/atcCh4L2DataObject"
+ },
+ "icos": {
+  "queried_utc": "2026-11-07T21:18:28Z",
+  "query": "prefix cpmeta: <http://meta.icos-cp.eu/ontologies/cpmeta/>\nprefix prov: <http://www.w3.org/ns/prov#>\nselect ?dobj ?station ?stationId ?stationName ?samplingHeight ?timeStart ?timeEnd ?submTime ?fileName\nwhere {\n  VALUES ?spec {<%s>}\n  ?dobj cpmeta:hasObjectSpec ?spec .\n  FILTER NOT EXISTS {[] cpmeta:isNextVersionOf ?dobj}\n  ?dobj cpmeta:wasAcquiredBy ?acq .\n  ?acq prov:wasAssociatedWith ?station .\n  OPTIONAL {?station cpmeta:hasStationId ?stationId}\n  OPTIONAL {?station cpmeta:hasName ?stationName}\n  OPTIONAL {?acq cpmeta:hasSamplingHeight ?samplingHeight}\n  OPTIONAL {?acq prov:startedAtTime ?timeStart}\n  ?acq prov:endedAtTime ?timeEnd .\n  ?dobj cpmeta:wasSubmittedBy/prov:endedAtTime ?submTime .\n  OPTIONAL {?dobj cpmeta:hasName ?fileName}\n}",
+  "nrt": {
+   "bytes": 162505,
+   "sha256": "25c0f9fa62ca83d37ec81c3e7c6f41e518d0f20973f0b10b8b231615dc1337fd",
+   "rows": 124,
+   "summary": {
+    "stations": 41,
+    "live": 40,
+    "stale": 1,
+    "lagging_7_to_30_days": 0,
+    "median_lag_live_days": 0.929,
+    "median_publish_delay_live_days": 0.507
+   },
+   "stations": {
+    "AS_ARN": {
+     "station": "AS_ARN",
+     "station_id": "ARN",
+     "name": "El Arenosillo",
+     "objects": 3,
+     "heights": [
+      10.0,
+      50.0,
+      95.0
+     ],
+     "time_end": "2026-11-06T23:00:00Z",
+     "subm_time": "2026-11-07T11:07:22Z",
+     "dobj": "https://meta.icos-cp.eu/objects/jgkmMUWQG_jKXOojbN6nONy9",
+     "file_name": "ICOS_ATC_NRT_ARN_2026-04-01_2026-11-06_10.0_1513_CH4.zip",
+     "height": 10.0,
+     "lag_days": 0.929,
+     "publish_delay_days": 0.505,
+     "live": true,
+     "stale": false
+    },
+    "AS_BIR": {
+     "station": "AS_BIR",
+     "station_id": "BIR",
+     "name": "Birkenes",
+     "objects": 3,
+     "heights": [
+      10.0,
+      50.0,
+      75.0
+     ],
+     "time_end": "2026-11-06T23:00:00Z",
+     "subm_time": "2026-11-07T11:07:31Z",
+     "dobj": "https://meta.icos-cp.eu/objects/-yOh3g08PLdjzGI28fuZoqjX",
+     "file_name": "ICOS_ATC_NRT_BIR_2026-04-01_2026-11-06_10.0_547_CH4.zip",
+     "height": 10.0,
+     "lag_days": 0.929,
+     "publish_delay_days": 0.505,
+     "live": true,
+     "stale": false
+    },
+    "AS_CBW": {
+     "station": "AS_CBW",
+     "station_id": "CBW",
+     "name": "Cabauw",
+     "objects": 4,
+     "heights": [
+      27.0,
+      67.0,
+      127.0,
+      207.0
+     ],
+     "time_end": "2026-11-06T23:00:00Z",
+     "subm_time": "2026-11-07T11:07:42Z",
+     "dobj": "https://meta.icos-cp.eu/objects/zBN6UH_exe6Q2oFAkIoDf_pE",
+     "file_name": "ICOS_ATC_NRT_CBW_2026-04-01_2026-11-06_207.0_970-1113_CH4.zip",
+     "height": 207.0,
+     "lag_days": 0.929,
+     "publish_delay_days": 0.505,
+     "live": true,
+     "stale": false
+    },
+    "AS_CMN": {
+     "station": "AS_CMN",
+     "station_id": "CMN",
+     "name": "Monte Cimone",
+     "objects": 1,
+     "heights": [
+      8.0
+     ],
+     "time_end": "2026-11-06T23:00:00Z",
+     "subm_time": "2026-11-07T11:07:52Z",
+     "dobj": "https://meta.icos-cp.eu/objects/9zggBkRbhPKMKbzfgxGPxk4_",
+     "file_name": "ICOS_ATC_NRT_CMN_2026-04-01_2026-11-06_8.0_1793_CH4.zip",
+     "height": 8.0,
+     "lag_days": 0.929,
+     "publish_delay_days": 0.505,
+     "live": true,
+     "stale": false
+    },
+    "AS_GAT": {
+     "station": "AS_GAT",
+     "station_id": "GAT",
+     "name": "Gartow",
+     "objects": 5,
+     "heights": [
+      30.0,
+      60.0,
+      132.0,
+      216.0,
+      341.0
+     ],
+     "time_end": "2026-11-06T23:00:00Z",
+     "subm_time": "2026-11-07T11:07:54Z",
+     "dobj": "https://meta.icos-cp.eu/objects/-pZnD1f0zq7iJ2OVkt0_kDc6",
+     "file_name": "ICOS_ATC_NRT_GAT_2026-04-01_2026-11-06_132.0_1375_CH4.zip",
+     "height": 132.0,
+     "lag_days": 0.929,
+     "publish_delay_days": 0.505,
+     "live": true,
+     "stale": false
+    },
+    "AS_HEL": {
+     "station": "AS_HEL",
+     "station_id": "HEL",
+     "name": "Helgoland",
+     "objects": 1,
+     "heights": [
+      110.0
+     ],
+     "time_end": "2026-11-06T23:00:00Z",
+     "subm_time": "2026-11-07T11:08:15Z",
+     "dobj": "https://meta.icos-cp.eu/objects/sB4BpUEtiUhwAQd7cLJZ47bv",
+     "file_name": "ICOS_ATC_NRT_HEL_2026-04-01_2026-11-06_110.0_399_CH4.zip",
+     "height": 110.0,
+     "lag_days": 0.929,
+     "publish_delay_days": 0.506,
+     "live": true,
+     "stale": false
+    },
+    "AS_HPB": {
+     "station": "AS_HPB",
+     "station_id": "HPB",
+     "name": "Hohenpeissenberg",
+     "objects": 3,
+     "heights": [
+      50.0,
+      93.0,
+      131.0
+     ],
+     "time_end": "2026-11-06T23:00:00Z",
+     "subm_time": "2026-11-07T11:08:20Z",
+     "dobj": "https://meta.icos-cp.eu/objects/ms1Y66FgUOD_v1UL0yX9Q6iC",
+     "file_name": "ICOS_ATC_NRT_HPB_2026-04-01_2026-11-06_131.0_1516_CH4.zip",
+     "height": 131.0,
+     "lag_days": 0.929,
+     "publish_delay_days": 0.506,
+     "live": true,
+     "stale": false
+    },
+    "AS_HTM": {
+     "station": "AS_HTM",
+     "station_id": "HTM",
+     "name": "Hyltemossa",
+     "objects": 3,
+     "heights": [
+      30.0,
+      70.0,
+      150.0
+     ],
+     "time_end": "2026-11-06T23:00:00Z",
+     "subm_time": "2026-11-07T11:08:34Z",
+     "dobj": "https://meta.icos-cp.eu/objects/bLr87PPVxH3NZ5JVnpmRD0G4",
+     "file_name": "ICOS_ATC_NRT_HTM_2026-04-01_2026-11-06_150.0_1238_CH4.zip",
+     "height": 150.0,
+     "lag_days": 0.929,
+     "publish_delay_days": 0.506,
+     "live": true,
+     "stale": false
+    },
+    "AS_HUN": {
+     "station": "AS_HUN",
+     "station_id": "HUN",
+     "name": "Hegyh\u00e1ts\u00e1l h\u00e1tt\u00e9rszennyetts\u00e9g-m\u00e9r\u0151 \u00e1llom\u00e1s",
+     "objects": 4,
+     "heights": [
+      10.0,
+      50.0,
+      82.0,
+      115.0
+     ],
+     "time_end": "2026-11-06T23:00:00Z",
+     "subm_time": "2026-11-07T11:08:45Z",
+     "dobj": "https://meta.icos-cp.eu/objects/d8_Bta5NkNLgQvi5_cnHDMH0",
+     "file_name": "ICOS_ATC_NRT_HUN_2026-04-01_2026-11-06_10.0_1460_CH4.zip",
+     "height": 10.0,
+     "lag_days": 0.929,
+     "publish_delay_days": 0.506,
+     "live": true,
+     "stale": false
+    },
+    "AS_IPR": {
+     "station": "AS_IPR",
+     "station_id": "IPR",
+     "name": "Ispra",
+     "objects": 6,
+     "heights": [
+      40.0,
+      60.0,
+      100.0
+     ],
+     "time_end": "2026-11-06T23:00:00Z",
+     "subm_time": "2026-11-07T11:08:52Z",
+     "dobj": "https://meta.icos-cp.eu/objects/6eFiW4AUIhBWivDwKdS9ykt3",
+     "file_name": "ICOS_ATC_NRT_IPR_2026-04-01_2026-11-06_100.0_1075-619_CH4.zip",
+     "height": 100.0,
+     "lag_days": 0.929,
+     "publish_delay_days": 0.506,
+     "live": true,
+     "stale": false
+    },
+    "AS_IZO": {
+     "station": "AS_IZO",
+     "station_id": "IZO",
+     "name": "Iza\u00f1a",
+     "objects": 1,
+     "heights": [
+      29.0
+     ],
+     "time_end": "2026-11-06T23:00:00Z",
+     "subm_time": "2026-11-07T11:09:01Z",
+     "dobj": "https://meta.icos-cp.eu/objects/GoJqn2_uCyFT_ApI93GMwjaW",
+     "file_name": "ICOS_ATC_NRT_IZO_2026-04-01_2026-11-06_29.0_1174_CH4.zip",
+     "height": 29.0,
+     "lag_days": 0.929,
+     "publish_delay_days": 0.506,
+     "live": true,
+     "stale": false
+    },
+    "AS_JFJ": {
+     "station": "AS_JFJ",
+     "station_id": "JFJ",
+     "name": "Jungfraujoch",
+     "objects": 3,
+     "heights": [
+      5.0,
+      13.9
+     ],
+     "time_end": "2026-11-06T23:00:00Z",
+     "subm_time": "2026-11-07T11:09:06Z",
+     "dobj": "https://meta.icos-cp.eu/objects/DuE38-j6nYcYDLKABshPtT9O",
+     "file_name": "ICOS_ATC_NRT_JFJ_2026-04-01_2026-11-06_13.9_1788_CH4.zip",
+     "height": 13.9,
+     "lag_days": 0.929,
+     "publish_delay_days": 0.506,
+     "live": true,
+     "stale": false
+    },
+    "AS_JUE": {
+     "station": "AS_JUE",
+     "station_id": "JUE",
+     "name": "J\u00fclich",
+     "objects": 6,
+     "heights": [
+      50.0,
+      80.0,
+      120.0
+     ],
+     "time_end": "2026-11-06T23:00:00Z",
+     "subm_time": "2026-11-07T11:09:08Z",
+     "dobj": "https://meta.icos-cp.eu/objects/xvXN62lfetTdo9s6ssEZUXkM",
+     "file_name": "ICOS_ATC_NRT_JUE_2026-04-01_2026-11-06_120.0_1154_CH4.zip",
+     "height": 120.0,
+     "lag_days": 0.929,
+     "publish_delay_days": 0.506,
+     "live": true,
+     "stale": false
+    },
+    "AS_KIT": {
+     "station": "AS_KIT",
+     "station_id": "KIT",
+     "name": "Karlsruhe",
+     "objects": 8,
+     "heights": [
+      30.0,
+      60.0,
+      100.0,
+      200.0
+     ],
+     "time_end": "2026-11-06T23:00:00Z",
+     "subm_time": "2026-11-07T11:09:20Z",
+     "dobj": "https://meta.icos-cp.eu/objects/hHUYv1j35qKmx4jFsCIb2Q09",
+     "file_name": "ICOS_ATC_NRT_KIT_2026-04-01_2026-11-06_100.0_489-1918_CH4.zip",
+     "height": 100.0,
+     "lag_days": 0.929,
+     "publish_delay_days": 0.506,
+     "live": true,
+     "stale": false
+    },
+    "AS_KRE": {
+     "station": "AS_KRE",
+     "station_id": "KRE",
+     "name": "K\u0159e\u0161\u00edn u Pacova",
+     "objects": 4,
+     "heights": [
+      10.0,
+      50.0,
+      125.0,
+      250.0
+     ],
+     "time_end": "2026-11-06T23:00:00Z",
+     "subm_time": "2026-11-07T11:09:35Z",
+     "dobj": "https://meta.icos-cp.eu/objects/W1OgppcB7Y4eSKWxrjogi9Fz",
+     "file_name": "ICOS_ATC_NRT_KRE_2026-04-01_2026-11-06_10.0_1496_CH4.zip",
+     "height": 10.0,
+     "lag_days": 0.929,
+     "publish_delay_days": 0.507,
+     "live": true,
+     "stale": false
+    },
+    "AS_LIN": {
+     "station": "AS_LIN",
+     "station_id": "LIN",
+     "name": "Lindenberg",
+     "objects": 4,
+     "heights": [
+      2.5,
+      10.0,
+      40.0,
+      98.0
+     ],
+     "time_end": "2026-11-06T23:00:00Z",
+     "subm_time": "2026-11-07T11:09:50Z",
+     "dobj": "https://meta.icos-cp.eu/objects/2IwSqCFxHqExqJE1I7UTyj05",
+     "file_name": "ICOS_ATC_NRT_LIN_2026-04-01_2026-11-06_10.0_1515_CH4.zip",
+     "height": 10.0,
+     "lag_days": 0.929,
+     "publish_delay_days": 0.507,
+     "live": true,
+     "stale": false
+    },
+    "AS_LMP": {
+     "station": "AS_LMP",
+     "station_id": "LMP",
+     "name": "Lampedusa",
+     "objects": 1,
+     "heights": [
+      8.0
+     ],
+     "time_end": "2026-11-06T23:00:00Z",
+     "subm_time": "2026-11-07T11:10:07Z",
+     "dobj": "https://meta.icos-cp.eu/objects/FyBMpdHDsThqdsHf-Vlkw9qd",
+     "file_name": "ICOS_ATC_NRT_LMP_2026-04-01_2026-11-06_8.0_1198_CH4.zip",
+     "height": 8.0,
+     "lag_days": 0.929,
+     "publish_delay_days": 0.507,
+     "live": true,
+     "stale": false
+    },
+    "AS_LUT": {
+     "station": "AS_LUT",
+     "station_id": "LUT",
+     "name": "Lutjewad",
+     "objects": 1,
+     "heights": [
+      60.0
+     ],
+     "time_end": "2026-11-06T23:00:00Z",
+     "subm_time": "2026-11-07T11:10:10Z",
+     "dobj": "https://meta.icos-cp.eu/objects/TB0VCglWdKvzYY4TFA-anX2U",
+     "file_name": "ICOS_ATC_NRT_LUT_2026-04-01_2026-11-06_60.0_465_CH4.zip",
+     "height": 60.0,
+     "lag_days": 0.929,
+     "publish_delay_days": 0.507,
+     "live": true,
+     "stale": false
+    },
+    "AS_MHD": {
+     "station": "AS_MHD",
+     "station_id": "MHD",
+     "name": "Mace Head",
+     "objects": 3,
+     "heights": [
+      6.5,
+      10.0,
+      24.0
+     ],
+     "time_end": "2026-11-06T23:00:00Z",
+     "subm_time": "2026-11-07T11:10:12Z",
+     "dobj": "https://meta.icos-cp.eu/objects/-cLe4FK9hMH7Mwaliw7jjcmG",
+     "file_name": "ICOS_ATC_NRT_MHD_2026-04-01_2026-11-06_10.0_695-955_CH4.zip",
+     "height": 10.0,
+     "lag_days": 0.929,
+     "publish_delay_days": 0.507,
+     "live": true,
+     "stale": false
+    },
+    "AS_NOR": {
+     "station": "AS_NOR",
+     "station_id": "NOR",
+     "name": "Norunda",
+     "objects": 6,
+     "heights": [
+      32.0,
+      58.0,
+      100.0
+     ],
+     "time_end": "2026-11-06T23:00:00Z",
+     "subm_time": "2026-11-07T11:10:15Z",
+     "dobj": "https://meta.icos-cp.eu/objects/xw41QjXT7p6kfN_Al3BPlisY",
+     "file_name": "ICOS_ATC_NRT_NOR_2026-04-01_2026-11-06_100.0_462-1654_CH4.zip",
+     "height": 100.0,
+     "lag_days": 0.929,
+     "publish_delay_days": 0.507,
+     "live": true,
+     "stale": false
+    },
+    "AS_OPE": {
+     "station": "AS_OPE",
+     "station_id": "OPE",
+     "name": "Observatoire p\u00e9renne de l'environnement",
+     "objects": 3,
+     "heights": [
+      10.0,
+      50.0,
+      120.0
+     ],
+     "time_end": "2026-11-06T23:00:00Z",
+     "subm_time": "2026-11-07T11:10:27Z",
+     "dobj": "https://meta.icos-cp.eu/objects/nwdXzoxDGXmIvydfm4IwXi1V",
+     "file_name": "ICOS_ATC_NRT_OPE_2026-04-01_2026-11-06_10.0_379-728_CH4.zip",
+     "height": 10.0,
+     "lag_days": 0.929,
+     "publish_delay_days": 0.507,
+     "live": true,
+     "stale": false
+    },
+    "AS_OXK": {
+     "station": "AS_OXK",
+     "station_id": "OXK",
+     "name": "Ochsenkopf",
+     "objects": 3,
+     "heights": [
+      23.0,
+      90.0,
+      163.0
+     ],
+     "time_end": "2026-11-06T23:00:00Z",
+     "subm_time": "2026-11-07T11:10:37Z",
+     "dobj": "https://meta.icos-cp.eu/objects/RhPtG8DdbkgAXZX_eno8wQ5s",
+     "file_name": "ICOS_ATC_NRT_OXK_2026-04-01_2026-11-06_163.0_456_CH4.zip",
+     "height": 163.0,
+     "lag_days": 0.929,
+     "publish_delay_days": 0.507,
+     "live": true,
+     "stale": false
+    },
+    "AS_PAL": {
+     "station": "AS_PAL",
+     "station_id": "PAL",
+     "name": "Pallas",
+     "objects": 1,
+     "heights": [
+      12.0
+     ],
+     "time_end": "2026-11-06T23:00:00Z",
+     "subm_time": "2026-11-07T11:10:50Z",
+     "dobj": "https://meta.icos-cp.eu/objects/hMWeoqB-ROcknGWBaPOAjL1Z",
+     "file_name": "ICOS_ATC_NRT_PAL_2026-04-01_2026-11-06_12.0_485_CH4.zip",
+     "height": 12.0,
+     "lag_days": 0.929,
+     "publish_delay_days": 0.508,
+     "live": true,
+     "stale": false
+    },
+    "AS_PRS": {
+     "station": "AS_PRS",
+     "station_id": "PRS",
+     "name": "Plateau Rosa",
+     "objects": 2,
+     "heights": [
+      10.0
+     ],
+     "time_end": "2026-11-06T23:00:00Z",
+     "subm_time": "2026-11-07T11:10:52Z",
+     "dobj": "https://meta.icos-cp.eu/objects/edh_c2DzrIkFV993gJhfvRqZ",
+     "file_name": "ICOS_ATC_NRT_PRS_2026-04-01_2026-11-06_10.0_1798_CH4.zip",
+     "height": 10.0,
+     "lag_days": 0.929,
+     "publish_delay_days": 0.508,
+     "live": true,
+     "stale": false
+    },
+    "AS_PUI": {
+     "station": "AS_PUI",
+     "station_id": "PUI",
+     "name": "Puijo",
+     "objects": 2,
+     "heights": [
+      47.0,
+      84.0
+     ],
+     "time_end": "2026-11-06T23:00:00Z",
+     "subm_time": "2026-11-07T11:10:55Z",
+     "dobj": "https://meta.icos-cp.eu/objects/BvhQazi70B7QotlIYby82Ru6",
+     "file_name": "ICOS_ATC_NRT_PUI_2026-04-01_2026-11-06_47.0_1175_CH4.zip",
+     "height": 47.0,
+     "lag_days": 0.929,
+     "publish_delay_days": 0.508,
+     "live": true,
+     "stale": false
+    },
+    "AS_PUY": {
+     "station": "AS_PUY",
+     "station_id": "PUY",
+     "name": "Puy de D\u00f4me",
+     "objects": 1,
+     "heights": [
+      10.0
+     ],
+     "time_end": "2026-11-06T23:00:00Z",
+     "subm_time": "2026-11-07T11:11:02Z",
+     "dobj": "https://meta.icos-cp.eu/objects/LwL_JwawdQ8c1am7SGFX7SYr",
+     "file_name": "ICOS_ATC_NRT_PUY_2026-04-01_2026-11-06_10.0_473_CH4.zip",
+     "height": 10.0,
+     "lag_days": 0.929,
+     "publish_delay_days": 0.508,
+     "live": true,
+     "stale": false
+    },
+    "AS_RGL": {
+     "station": "AS_RGL",
+     "station_id": "RGL",
+     "name": "Ridge Hill",
+     "objects": 4,
+     "heights": [
+      45.0,
+      90.0
+     ],
+     "time_end": "2026-11-07T12:00:00Z",
+     "subm_time": "2026-11-07T11:11:08Z",
+     "dobj": "https://meta.icos-cp.eu/objects/Xn5zkImJ5ki2HPel1SeHoXmg",
+     "file_name": "ICOS_ATC_NRT_RGL_2026-04-01_2026-11-07_90.0_115-116_CH4.zip",
+     "height": 90.0,
+     "lag_days": 0.388,
+     "publish_delay_days": -0.034,
+     "live": true,
+     "stale": false
+    },
+    "AS_RUN": {
+     "station": "AS_RUN",
+     "station_id": "RUN",
+     "name": "La R\u00e9union",
+     "objects": 1,
+     "heights": [
+      6.0
+     ],
+     "time_end": "2026-11-06T23:00:00Z",
+     "subm_time": "2026-11-07T11:11:12Z",
+     "dobj": "https://meta.icos-cp.eu/objects/C_KrPOmbeVcmgKDur-dvLpbx",
+     "file_name": "ICOS_ATC_NRT_RUN_2026-04-01_2026-11-06_6.0_249_CH4.zip",
+     "height": 6.0,
+     "lag_days": 0.929,
+     "publish_delay_days": 0.508,
+     "live": true,
+     "stale": false
+    },
+    "AS_SAC": {
+     "station": "AS_SAC",
+     "station_id": "SAC",
+     "name": "Saclay",
+     "objects": 3,
+     "heights": [
+      15.0,
+      60.0,
+      100.0
+     ],
+     "time_end": "2026-11-06T23:00:00Z",
+     "subm_time": "2026-11-07T11:11:15Z",
+     "dobj": "https://meta.icos-cp.eu/objects/-BFNOpWLZS0Fx9hODjMA8shr",
+     "file_name": "ICOS_ATC_NRT_SAC_2026-04-01_2026-11-06_100.0_329-395_CH4.zip",
+     "height": 100.0,
+     "lag_days": 0.929,
+     "publish_delay_days": 0.508,
+     "live": true,
+     "stale": false
+    },
+    "AS_SMR": {
+     "station": "AS_SMR",
+     "station_id": "SMR",
+     "name": "Hyyti\u00e4l\u00e4",
+     "objects": 3,
+     "heights": [
+      16.8,
+      67.2,
+      125.0
+     ],
+     "time_end": "2026-11-06T23:00:00Z",
+     "subm_time": "2026-11-07T11:11:28Z",
+     "dobj": "https://meta.icos-cp.eu/objects/gQIhi2fOlCYrspbstzR4Gh7-",
+     "file_name": "ICOS_ATC_NRT_SMR_2026-04-01_2026-11-06_125.0_519_CH4.zip",
+     "height": 125.0,
+     "lag_days": 0.929,
+     "publish_delay_days": 0.508,
+     "live": true,
+     "stale": false
+    },
+    "AS_SNO": {
+     "station": "AS_SNO",
+     "station_id": "SNO",
+     "name": "Station Nord",
+     "objects": 6,
+     "heights": [
+      20.0,
+      50.0,
+      85.0
+     ],
+     "time_end": "2026-09-29T23:00:00Z",
+     "subm_time": "2026-10-15T10:11:25Z",
+     "dobj": "https://meta.icos-cp.eu/objects/5fb0a9ycqvFU3lnFYlRS36pz",
+     "file_name": "ICOS_ATC_NRT_SNO_2026-04-01_2026-09-29_20.0_1840-727_CH4.zip",
+     "height": 20.0,
+     "lag_days": 38.929,
+     "publish_delay_days": 15.466,
+     "live": false,
+     "stale": true
+    },
+    "AS_SSL": {
+     "station": "AS_SSL",
+     "station_id": "SSL",
+     "name": "Schauinsland",
+     "objects": 2,
+     "heights": [
+      12.0,
+      35.0
+     ],
+     "time_end": "2026-11-06T23:00:00Z",
+     "subm_time": "2026-11-07T11:11:37Z",
+     "dobj": "https://meta.icos-cp.eu/objects/fO_7nPVo9APiXOdtwZhfUJs-",
+     "file_name": "ICOS_ATC_NRT_SSL_2026-04-01_2026-11-06_12.0_881-1072_CH4.zip",
+     "height": 12.0,
+     "lag_days": 0.929,
+     "publish_delay_days": 0.508,
+     "live": true,
+     "stale": false
+    },
+    "AS_STE": {
+     "station": "AS_STE",
+     "station_id": "STE",
+     "name": "Steinkimmen",
+     "objects": 5,
+     "heights": [
+      32.0,
+      82.0,
+      127.0,
+      187.0,
+      252.0
+     ],
+     "time_end": "2026-11-06T23:00:00Z",
+     "subm_time": "2026-11-07T11:11:43Z",
+     "dobj": "https://meta.icos-cp.eu/objects/pEBKDqVD-OkTt1aSTVFMJxZY",
+     "file_name": "ICOS_ATC_NRT_STE_2026-04-01_2026-11-06_127.0_1749_CH4.zip",
+     "height": 127.0,
+     "lag_days": 0.929,
+     "publish_delay_days": 0.508,
+     "live": true,
+     "stale": false
+    },
+    "AS_SVB": {
+     "station": "AS_SVB",
+     "station_id": "SVB",
+     "name": "Svartberget",
+     "objects": 3,
+     "heights": [
+      35.0,
+      85.0,
+      150.0
+     ],
+     "time_end": "2026-11-06T23:00:00Z",
+     "subm_time": "2026-11-07T11:12:05Z",
+     "dobj": "https://meta.icos-cp.eu/objects/QptgOiMxXHJQ4i9uo_4J9w8C",
+     "file_name": "ICOS_ATC_NRT_SVB_2026-04-01_2026-11-06_150.0_1399_CH4.zip",
+     "height": 150.0,
+     "lag_days": 0.929,
+     "publish_delay_days": 0.508,
+     "live": true,
+     "stale": false
+    },
+    "AS_TOH": {
+     "station": "AS_TOH",
+     "station_id": "TOH",
+     "name": "Torfhaus",
+     "objects": 4,
+     "heights": [
+      10.0,
+      76.0,
+      110.0,
+      147.0
+     ],
+     "time_end": "2026-11-06T23:00:00Z",
+     "subm_time": "2026-11-07T11:12:17Z",
+     "dobj": "https://meta.icos-cp.eu/objects/pXTSS2QFHA_uclcMHUVv72T1",
+     "file_name": "ICOS_ATC_NRT_TOH_2026-04-01_2026-11-06_10.0_457_CH4.zip",
+     "height": 10.0,
+     "lag_days": 0.929,
+     "publish_delay_days": 0.509,
+     "live": true,
+     "stale": false
+    },
+    "AS_TRN": {
+     "station": "AS_TRN",
+     "station_id": "TRN",
+     "name": "Trainou",
+     "objects": 4,
+     "heights": [
+      5.0,
+      50.0,
+      100.0,
+      180.0
+     ],
+     "time_end": "2026-11-06T23:00:00Z",
+     "subm_time": "2026-11-07T11:12:33Z",
+     "dobj": "https://meta.icos-cp.eu/objects/b-vfdhA-b8clEdkesFItbNtk",
+     "file_name": "ICOS_ATC_NRT_TRN_2026-04-01_2026-11-06_100.0_472_CH4.zip",
+     "height": 100.0,
+     "lag_days": 0.929,
+     "publish_delay_days": 0.509,
+     "live": true,
+     "stale": false
+    },
+    "AS_UTO": {
+     "station": "AS_UTO",
+     "station_id": "UTO",
+     "name": "Ut\u00f6 - Baltic sea",
+     "objects": 1,
+     "heights": [
+      57.0
+     ],
+     "time_end": "2026-11-06T23:00:00Z",
+     "subm_time": "2026-11-07T11:12:49Z",
+     "dobj": "https://meta.icos-cp.eu/objects/YJAAxyvkalHegPMOgMaJkdVz",
+     "file_name": "ICOS_ATC_NRT_UTO_2026-04-01_2026-11-06_57.0_999_CH4.zip",
+     "height": 57.0,
+     "lag_days": 0.929,
+     "publish_delay_days": 0.509,
+     "live": true,
+     "stale": false
+    },
+    "AS_WAO": {
+     "station": "AS_WAO",
+     "station_id": "WAO",
+     "name": "Weybourne",
+     "objects": 1,
+     "heights": [
+      10.0
+     ],
+     "time_end": "2026-11-05T23:00:00Z",
+     "subm_time": "2026-11-06T11:13:28Z",
+     "dobj": "https://meta.icos-cp.eu/objects/K1euXrueKm0rctQifqn9-Lsv",
+     "file_name": "ICOS_ATC_NRT_WAO_2026-04-01_2026-11-05_10.0_1400-505_CH4.zip",
+     "height": 10.0,
+     "lag_days": 1.929,
+     "publish_delay_days": 0.509,
+     "live": true,
+     "stale": false
+    },
+    "AS_WES": {
+     "station": "AS_WES",
+     "station_id": "WES",
+     "name": "Westerland",
+     "objects": 2,
+     "heights": [
+      14.0
+     ],
+     "time_end": "2026-11-07T12:00:00Z",
+     "subm_time": "2026-11-07T11:12:52Z",
+     "dobj": "https://meta.icos-cp.eu/objects/PRn4qkNF92h2FNG6h46T8i2L",
+     "file_name": "ICOS_ATC_NRT_WES_2026-04-01_2026-11-07_14.0_1843-1153_CH4.zip",
+     "height": 14.0,
+     "lag_days": 0.388,
+     "publish_delay_days": -0.033,
+     "live": true,
+     "stale": false
+    },
+    "AS_ZEP": {
+     "station": "AS_ZEP",
+     "station_id": "ZEP",
+     "name": "Zeppelin",
+     "objects": 1,
+     "heights": [
+      15.0
+     ],
+     "time_end": "2026-11-06T23:00:00Z",
+     "subm_time": "2026-11-07T11:12:54Z",
+     "dobj": "https://meta.icos-cp.eu/objects/sjMOsRZq450rlBRdNbnVSPjI",
+     "file_name": "ICOS_ATC_NRT_ZEP_2026-04-01_2026-11-06_15.0_1272_CH4.zip",
+     "height": 15.0,
+     "lag_days": 0.929,
+     "publish_delay_days": 0.509,
+     "live": true,
+     "stale": false
+    },
+    "AS_ZSF": {
+     "station": "AS_ZSF",
+     "station_id": "ZSF",
+     "name": "Zugspitze",
+     "objects": 2,
+     "heights": [
+      3.0
+     ],
+     "time_end": "2026-11-06T23:00:00Z",
+     "subm_time": "2026-11-07T11:12:58Z",
+     "dobj": "https://meta.icos-cp.eu/objects/pELlnaA9vsx51C5AE_g2b6No",
+     "file_name": "ICOS_ATC_NRT_ZSF_2026-04-01_2026-11-06_3.0_1167_CH4.zip",
+     "height": 3.0,
+     "lag_days": 0.929,
+     "publish_delay_days": 0.509,
+     "live": true,
+     "stale": false
+    }
+   }
+  },
+  "l2": {
+   "bytes": 156889,
+   "sha256": "0de5ebe0c979294817392e60bf78ef3c44d16e601a5fc9f0f880db950cca309f",
+   "rows": 121,
+   "summary": {
+    "stations": 41,
+    "live": 0,
+    "stale": 41,
+    "lagging_7_to_30_days": 0,
+    "median_lag_live_days": null,
+    "median_publish_delay_live_days": null
+   },
+   "stations": {
+    "AS_ARN": {
+     "station": "AS_ARN",
+     "station_id": "ARN",
+     "name": "El Arenosillo",
+     "objects": 3,
+     "heights": [
+      10.0,
+      50.0,
+      95.0
+     ],
+     "time_end": "2026-03-31T23:00:00Z",
+     "subm_time": "2026-07-01T13:48:59Z",
+     "dobj": "https://meta.icos-cp.eu/objects/Y0peAOh7_ipsBLYvC2TrwLiL",
+     "file_name": "ICOS_ATC_L2_L2-2026.1_ARN_10.0_CTS_CH4.zip",
+     "height": 10.0,
+     "lag_days": 220.929,
+     "publish_delay_days": 91.617,
+     "live": false,
+     "stale": true
+    },
+    "AS_BIR": {
+     "station": "AS_BIR",
+     "station_id": "BIR",
+     "name": "Birkenes",
+     "objects": 3,
+     "heights": [
+      10.0,
+      50.0,
+      75.0
+     ],
+     "time_end": "2026-03-31T23:00:00Z",
+     "subm_time": "2026-07-01T13:49:14Z",
+     "dobj": "https://meta.icos-cp.eu/objects/3NjRhJEspe6ju7xZ_runslD8",
+     "file_name": "ICOS_ATC_L2_L2-2026.1_BIR_10.0_CTS_CH4.zip",
+     "height": 10.0,
+     "lag_days": 220.929,
+     "publish_delay_days": 91.618,
+     "live": false,
+     "stale": true
+    },
+    "AS_CBW": {
+     "station": "AS_CBW",
+     "station_id": "CBW",
+     "name": "Cabauw",
+     "objects": 4,
+     "heights": [
+      27.0,
+      67.0,
+      127.0,
+      207.0
+     ],
+     "time_end": "2026-03-31T23:00:00Z",
+     "subm_time": "2026-07-01T13:49:41Z",
+     "dobj": "https://meta.icos-cp.eu/objects/IiHidMHXlhhvCUuCSHJmdAxg",
+     "file_name": "ICOS_ATC_L2_L2-2026.1_CBW_127.0_CTS_CH4.zip",
+     "height": 127.0,
+     "lag_days": 220.929,
+     "publish_delay_days": 91.618,
+     "live": false,
+     "stale": true
+    },
+    "AS_CMN": {
+     "station": "AS_CMN",
+     "station_id": "CMN",
+     "name": "Monte Cimone",
+     "objects": 1,
+     "heights": [
+      8.0
+     ],
+     "time_end": "2026-03-31T23:00:00Z",
+     "subm_time": "2026-07-01T13:50:31Z",
+     "dobj": "https://meta.icos-cp.eu/objects/SGR4iaMgjDaCPs6tr-C6PKe_",
+     "file_name": "ICOS_ATC_L2_L2-2026.1_CMN_8.0_CTS_CH4.zip",
+     "height": 8.0,
+     "lag_days": 220.929,
+     "publish_delay_days": 91.618,
+     "live": false,
+     "stale": true
+    },
+    "AS_GAT": {
+     "station": "AS_GAT",
+     "station_id": "GAT",
+     "name": "Gartow",
+     "objects": 5,
+     "heights": [
+      30.0,
+      60.0,
+      132.0,
+      216.0,
+      341.0
+     ],
+     "time_end": "2026-03-31T23:00:00Z",
+     "subm_time": "2026-07-01T13:50:42Z",
+     "dobj": "https://meta.icos-cp.eu/objects/DReTul7CtAuhHPjrXtGasaxG",
+     "file_name": "ICOS_ATC_L2_L2-2026.1_GAT_132.0_CTS_CH4.zip",
+     "height": 132.0,
+     "lag_days": 220.929,
+     "publish_delay_days": 91.619,
+     "live": false,
+     "stale": true
+    },
+    "AS_HEL": {
+     "station": "AS_HEL",
+     "station_id": "HEL",
+     "name": "Helgoland",
+     "objects": 1,
+     "heights": [
+      110.0
+     ],
+     "time_end": "2026-03-31T23:00:00Z",
+     "subm_time": "2026-07-01T13:52:22Z",
+     "dobj": "https://meta.icos-cp.eu/objects/4NgOxYfPJ0bPxl2-vGmXgvxR",
+     "file_name": "ICOS_ATC_L2_L2-2026.1_HEL_110.0_CTS_CH4.zip",
+     "height": 110.0,
+     "lag_days": 220.929,
+     "publish_delay_days": 91.62,
+     "live": false,
+     "stale": true
+    },
+    "AS_HPB": {
+     "station": "AS_HPB",
+     "station_id": "HPB",
+     "name": "Hohenpeissenberg",
+     "objects": 6,
+     "heights": [
+      50.0,
+      93.0,
+      131.0
+     ],
+     "time_end": "2026-03-31T23:00:00Z",
+     "subm_time": "2026-07-01T13:52:32Z",
+     "dobj": "https://meta.icos-cp.eu/objects/1sms5KqXyEMNOARHvHzMfUUZ",
+     "file_name": "ICOS_ATC_L2_L2-2026.1_HPB_131.0_CTS_CH4.zip",
+     "height": 131.0,
+     "lag_days": 220.929,
+     "publish_delay_days": 91.62,
+     "live": false,
+     "stale": true
+    },
+    "AS_HTM": {
+     "station": "AS_HTM",
+     "station_id": "HTM",
+     "name": "Hyltemossa",
+     "objects": 3,
+     "heights": [
+      30.0,
+      70.0,
+      150.0
+     ],
+     "time_end": "2026-03-31T23:00:00Z",
+     "subm_time": "2026-07-01T13:53:38Z",
+     "dobj": "https://meta.icos-cp.eu/objects/2URLrXOsNLoGQlo-JPGpEl9Q",
+     "file_name": "ICOS_ATC_L2_L2-2026.1_HTM_150.0_CTS_CH4.zip",
+     "height": 150.0,
+     "lag_days": 220.929,
+     "publish_delay_days": 91.621,
+     "live": false,
+     "stale": true
+    },
+    "AS_HUN": {
+     "station": "AS_HUN",
+     "station_id": "HUN",
+     "name": "Hegyh\u00e1ts\u00e1l h\u00e1tt\u00e9rszennyetts\u00e9g-m\u00e9r\u0151 \u00e1llom\u00e1s",
+     "objects": 4,
+     "heights": [
+      10.0,
+      50.0,
+      82.0,
+      115.0
+     ],
+     "time_end": "2026-03-31T23:00:00Z",
+     "subm_time": "2026-07-01T13:54:16Z",
+     "dobj": "https://meta.icos-cp.eu/objects/0AGITZab4l01_A_OUTAeBwQG",
+     "file_name": "ICOS_ATC_L2_L2-2026.1_HUN_10.0_CTS_CH4.zip",
+     "height": 10.0,
+     "lag_days": 220.929,
+     "publish_delay_days": 91.621,
+     "live": false,
+     "stale": true
+    },
+    "AS_IPR": {
+     "station": "AS_IPR",
+     "station_id": "IPR",
+     "name": "Ispra",
+     "objects": 3,
+     "heights": [
+      40.0,
+      60.0,
+      100.0
+     ],
+     "time_end": "2026-03-31T23:00:00Z",
+     "subm_time": "2026-07-01T13:54:34Z",
+     "dobj": "https://meta.icos-cp.eu/objects/-QfqixPA9Cd1-Yixf2I7Fvrl",
+     "file_name": "ICOS_ATC_L2_L2-2026.1_IPR_100.0_CTS_CH4.zip",
+     "height": 100.0,
+     "lag_days": 220.929,
+     "publish_delay_days": 91.621,
+     "live": false,
+     "stale": true
+    },
+    "AS_IZO": {
+     "station": "AS_IZO",
+     "station_id": "IZO",
+     "name": "Iza\u00f1a",
+     "objects": 1,
+     "heights": [
+      29.0
+     ],
+     "time_end": "2026-03-31T23:00:00Z",
+     "subm_time": "2026-07-01T13:55:11Z",
+     "dobj": "https://meta.icos-cp.eu/objects/ItRFwPQqkuXlAmc4xV7QR6GV",
+     "file_name": "ICOS_ATC_L2_L2-2026.1_IZO_29.0_CTS_CH4.zip",
+     "height": 29.0,
+     "lag_days": 220.929,
+     "publish_delay_days": 91.622,
+     "live": false,
+     "stale": true
+    },
+    "AS_JFJ": {
+     "station": "AS_JFJ",
+     "station_id": "JFJ",
+     "name": "Jungfraujoch",
+     "objects": 2,
+     "heights": [
+      13.9
+     ],
+     "time_end": "2026-03-31T23:00:00Z",
+     "subm_time": "2026-07-01T13:55:24Z",
+     "dobj": "https://meta.icos-cp.eu/objects/nEdXuz3vdKFLVoMi5LSDVj1K",
+     "file_name": "ICOS_ATC_L2_L2-2026.1_JFJ_13.9_CTS_CH4.zip",
+     "height": 13.9,
+     "lag_days": 220.929,
+     "publish_delay_days": 91.622,
+     "live": false,
+     "stale": true
+    },
+    "AS_JUE": {
+     "station": "AS_JUE",
+     "station_id": "JUE",
+     "name": "J\u00fclich",
+     "objects": 3,
+     "heights": [
+      50.0,
+      80.0,
+      120.0
+     ],
+     "time_end": "2026-03-31T23:00:00Z",
+     "subm_time": "2026-07-01T13:55:39Z",
+     "dobj": "https://meta.icos-cp.eu/objects/XkgXNvbYBfyb1iT_VMsLCu-C",
+     "file_name": "ICOS_ATC_L2_L2-2026.1_JUE_120.0_CTS_CH4.zip",
+     "height": 120.0,
+     "lag_days": 220.929,
+     "publish_delay_days": 91.622,
+     "live": false,
+     "stale": true
+    },
+    "AS_KIT": {
+     "station": "AS_KIT",
+     "station_id": "KIT",
+     "name": "Karlsruhe",
+     "objects": 4,
+     "heights": [
+      30.0,
+      60.0,
+      100.0,
+      200.0
+     ],
+     "time_end": "2026-03-31T23:00:00Z",
+     "subm_time": "2026-07-01T13:56:23Z",
+     "dobj": "https://meta.icos-cp.eu/objects/-kcEXtbbs9Ejkf2Nko5mZMSj",
+     "file_name": "ICOS_ATC_L2_L2-2026.1_KIT_100.0_CTS_CH4.zip",
+     "height": 100.0,
+     "lag_days": 220.929,
+     "publish_delay_days": 91.622,
+     "live": false,
+     "stale": true
+    },
+    "AS_KRE": {
+     "station": "AS_KRE",
+     "station_id": "KRE",
+     "name": "K\u0159e\u0161\u00edn u Pacova",
+     "objects": 8,
+     "heights": [
+      10.0,
+      50.0,
+      125.0,
+      250.0
+     ],
+     "time_end": "2026-03-31T23:00:00Z",
+     "subm_time": "2026-07-01T13:57:31Z",
+     "dobj": "https://meta.icos-cp.eu/objects/5aHZSayhRBD3F5BA1H-HsKQd",
+     "file_name": "ICOS_ATC_L2_L2-2026.1_KRE_10.0_CTS_CH4.zip",
+     "height": 10.0,
+     "lag_days": 220.929,
+     "publish_delay_days": 91.623,
+     "live": false,
+     "stale": true
+    },
+    "AS_LIN": {
+     "station": "AS_LIN",
+     "station_id": "LIN",
+     "name": "Lindenberg",
+     "objects": 8,
+     "heights": [
+      2.5,
+      10.0,
+      40.0,
+      98.0
+     ],
+     "time_end": "2026-03-31T23:00:00Z",
+     "subm_time": "2026-07-01T13:58:43Z",
+     "dobj": "https://meta.icos-cp.eu/objects/6oQvfNnAHUGkosDpm64YbTPv",
+     "file_name": "ICOS_ATC_L2_L2-2026.1_LIN_10.0_CTS_CH4.zip",
+     "height": 10.0,
+     "lag_days": 220.929,
+     "publish_delay_days": 91.624,
+     "live": false,
+     "stale": true
+    },
+    "AS_LMP": {
+     "station": "AS_LMP",
+     "station_id": "LMP",
+     "name": "Lampedusa",
+     "objects": 1,
+     "heights": [
+      8.0
+     ],
+     "time_end": "2026-03-31T23:00:00Z",
+     "subm_time": "2026-07-01T13:59:57Z",
+     "dobj": "https://meta.icos-cp.eu/objects/mT5Q3SrynMBnDPUYd8rNfRV7",
+     "file_name": "ICOS_ATC_L2_L2-2026.1_LMP_8.0_CTS_CH4.zip",
+     "height": 8.0,
+     "lag_days": 220.929,
+     "publish_delay_days": 91.625,
+     "live": false,
+     "stale": true
+    },
+    "AS_LUT": {
+     "station": "AS_LUT",
+     "station_id": "LUT",
+     "name": "Lutjewad",
+     "objects": 2,
+     "heights": [
+      60.0
+     ],
+     "time_end": "2026-03-31T23:00:00Z",
+     "subm_time": "2026-07-01T14:00:09Z",
+     "dobj": "https://meta.icos-cp.eu/objects/Z3edClQGKnpYNIgdpo-ilBAf",
+     "file_name": "ICOS_ATC_L2_L2-2026.1_LUT_60.0_CTS_CH4.zip",
+     "height": 60.0,
+     "lag_days": 220.929,
+     "publish_delay_days": 91.625,
+     "live": false,
+     "stale": true
+    },
+    "AS_MHD": {
+     "station": "AS_MHD",
+     "station_id": "MHD",
+     "name": "Mace Head",
+     "objects": 2,
+     "heights": [
+      6.5,
+      24.0
+     ],
+     "time_end": "2026-03-31T23:00:00Z",
+     "subm_time": "2026-07-01T14:00:35Z",
+     "dobj": "https://meta.icos-cp.eu/objects/ou1R5TrjbHZzvMrWInOaiQWa",
+     "file_name": "ICOS_ATC_L2_L2-2026.1_MHD_6.5_CTS_CH4.zip",
+     "height": 6.5,
+     "lag_days": 220.929,
+     "publish_delay_days": 91.625,
+     "live": false,
+     "stale": true
+    },
+    "AS_NOR": {
+     "station": "AS_NOR",
+     "station_id": "NOR",
+     "name": "Norunda",
+     "objects": 3,
+     "heights": [
+      32.0,
+      58.0,
+      100.0
+     ],
+     "time_end": "2026-03-31T23:00:00Z",
+     "subm_time": "2026-07-01T14:00:44Z",
+     "dobj": "https://meta.icos-cp.eu/objects/q-5mi0XJpRfVdksVsjHyDpK5",
+     "file_name": "ICOS_ATC_L2_L2-2026.1_NOR_100.0_CTS_CH4.zip",
+     "height": 100.0,
+     "lag_days": 220.929,
+     "publish_delay_days": 91.626,
+     "live": false,
+     "stale": true
+    },
+    "AS_OPE": {
+     "station": "AS_OPE",
+     "station_id": "OPE",
+     "name": "Observatoire p\u00e9renne de l'environnement",
+     "objects": 3,
+     "heights": [
+      10.0,
+      50.0,
+      120.0
+     ],
+     "time_end": "2026-03-31T23:00:00Z",
+     "subm_time": "2026-07-01T14:01:34Z",
+     "dobj": "https://meta.icos-cp.eu/objects/TagcZGY8xOyDzxB-z0sm4ylO",
+     "file_name": "ICOS_ATC_L2_L2-2026.1_OPE_10.0_CTS_CH4.zip",
+     "height": 10.0,
+     "lag_days": 220.929,
+     "publish_delay_days": 91.626,
+     "live": false,
+     "stale": true
+    },
+    "AS_OXK": {
+     "station": "AS_OXK",
+     "station_id": "OXK",
+     "name": "Ochsenkopf",
+     "objects": 3,
+     "heights": [
+      23.0,
+      90.0,
+      163.0
+     ],
+     "time_end": "2026-03-31T23:00:00Z",
+     "subm_time": "2026-07-01T14:02:42Z",
+     "dobj": "https://meta.icos-cp.eu/objects/OMNIuyN2kXl3JAtrzu4dNfay",
+     "file_name": "ICOS_ATC_L2_L2-2026.1_OXK_163.0_CTS_CH4.zip",
+     "height": 163.0,
+     "lag_days": 220.929,
+     "publish_delay_days": 91.627,
+     "live": false,
+     "stale": true
+    },
+    "AS_PAL": {
+     "station": "AS_PAL",
+     "station_id": "PAL",
+     "name": "Pallas",
+     "objects": 1,
+     "heights": [
+      12.0
+     ],
+     "time_end": "2026-03-31T23:00:00Z",
+     "subm_time": "2026-07-01T14:03:21Z",
+     "dobj": "https://meta.icos-cp.eu/objects/Ilh0Pil6RFEeZTz9skAQxDPk",
+     "file_name": "ICOS_ATC_L2_L2-2026.1_PAL_12.0_CTS_CH4.zip",
+     "height": 12.0,
+     "lag_days": 220.929,
+     "publish_delay_days": 91.627,
+     "live": false,
+     "stale": true
+    },
+    "AS_PRS": {
+     "station": "AS_PRS",
+     "station_id": "PRS",
+     "name": "Plateau Rosa",
+     "objects": 2,
+     "heights": [
+      10.0
+     ],
+     "time_end": "2026-03-31T23:00:00Z",
+     "subm_time": "2026-07-01T14:03:30Z",
+     "dobj": "https://meta.icos-cp.eu/objects/_u7oaTx1y0UC7AILsCASbEP5",
+     "file_name": "ICOS_ATC_L2_L2-2026.1_PRS_10.0_CTS_CH4.zip",
+     "height": 10.0,
+     "lag_days": 220.929,
+     "publish_delay_days": 91.627,
+     "live": false,
+     "stale": true
+    },
+    "AS_PUI": {
+     "station": "AS_PUI",
+     "station_id": "PUI",
+     "name": "Puijo",
+     "objects": 2,
+     "heights": [
+      47.0,
+      84.0
+     ],
+     "time_end": "2026-03-31T23:00:00Z",
+     "subm_time": "2026-07-01T14:03:40Z",
+     "dobj": "https://meta.icos-cp.eu/objects/0tMigm6Ry3dzN3R9QG1ot4io",
+     "file_name": "ICOS_ATC_L2_L2-2026.1_PUI_47.0_CTS_CH4.zip",
+     "height": 47.0,
+     "lag_days": 220.929,
+     "publish_delay_days": 91.628,
+     "live": false,
+     "stale": true
+    },
+    "AS_PUY": {
+     "station": "AS_PUY",
+     "station_id": "PUY",
+     "name": "Puy de D\u00f4me",
+     "objects": 1,
+     "heights": [
+      10.0
+     ],
+     "time_end": "2026-03-31T23:00:00Z",
+     "subm_time": "2026-07-01T14:04:06Z",
+     "dobj": "https://meta.icos-cp.eu/objects/DdrIDK2jOeFXXLhP5JnizgHi",
+     "file_name": "ICOS_ATC_L2_L2-2026.1_PUY_10.0_CTS_CH4.zip",
+     "height": 10.0,
+     "lag_days": 220.929,
+     "publish_delay_days": 91.628,
+     "live": false,
+     "stale": true
+    },
+    "AS_RGL": {
+     "station": "AS_RGL",
+     "station_id": "RGL",
+     "name": "Ridge Hill",
+     "objects": 2,
+     "heights": [
+      45.0,
+      90.0
+     ],
+     "time_end": "2026-03-31T23:00:00Z",
+     "subm_time": "2026-07-01T14:04:17Z",
+     "dobj": "https://meta.icos-cp.eu/objects/UzUEfle9YQH3jhDOKhzHJ7-k",
+     "file_name": "ICOS_ATC_L2_L2-2026.1_RGL_45.0_CTS_CH4.zip",
+     "height": 45.0,
+     "lag_days": 220.929,
+     "publish_delay_days": 91.628,
+     "live": false,
+     "stale": true
+    },
+    "AS_RUN": {
+     "station": "AS_RUN",
+     "station_id": "RUN",
+     "name": "La R\u00e9union",
+     "objects": 1,
+     "heights": [
+      6.0
+     ],
+     "time_end": "2026-03-31T23:00:00Z",
+     "subm_time": "2026-07-01T14:04:36Z",
+     "dobj": "https://meta.icos-cp.eu/objects/l0w19GsqeFBt9kW29tx-6-ya",
+     "file_name": "ICOS_ATC_L2_L2-2026.1_RUN_6.0_CTS_CH4.zip",
+     "height": 6.0,
+     "lag_days": 220.929,
+     "publish_delay_days": 91.628,
+     "live": false,
+     "stale": true
+    },
+    "AS_SAC": {
+     "station": "AS_SAC",
+     "station_id": "SAC",
+     "name": "Saclay",
+     "objects": 6,
+     "heights": [
+      15.0,
+      60.0,
+      100.0
+     ],
+     "time_end": "2026-03-31T23:00:00Z",
+     "subm_time": "2026-07-01T14:04:49Z",
+     "dobj": "https://meta.icos-cp.eu/objects/fy64W91TXpSlF2nh5z44h6_w",
+     "file_name": "ICOS_ATC_L2_L2-2026.1_SAC_100.0_CTS_CH4.zip",
+     "height": 100.0,
+     "lag_days": 220.929,
+     "publish_delay_days": 91.628,
+     "live": false,
+     "stale": true
+    },
+    "AS_SMR": {
+     "station": "AS_SMR",
+     "station_id": "SMR",
+     "name": "Hyyti\u00e4l\u00e4",
+     "objects": 3,
+     "heights": [
+      16.8,
+      67.2,
+      125.0
+     ],
+     "time_end": "2026-03-31T23:00:00Z",
+     "subm_time": "2026-07-01T14:05:46Z",
+     "dobj": "https://meta.icos-cp.eu/objects/-9K6rnNlma10DUXNq5PXxgN7",
+     "file_name": "ICOS_ATC_L2_L2-2026.1_SMR_125.0_CTS_CH4.zip",
+     "height": 125.0,
+     "lag_days": 220.929,
+     "publish_delay_days": 91.629,
+     "live": false,
+     "stale": true
+    },
+    "AS_SNO": {
+     "station": "AS_SNO",
+     "station_id": "SNO",
+     "name": "Station Nord",
+     "objects": 3,
+     "heights": [
+      20.0,
+      50.0,
+      85.0
+     ],
+     "time_end": "2026-03-31T23:00:00Z",
+     "subm_time": "2026-07-01T14:06:29Z",
+     "dobj": "https://meta.icos-cp.eu/objects/Gmlx7PhA0GXxGUNTXf9XPdGo",
+     "file_name": "ICOS_ATC_L2_L2-2026.1_SNO_20.0_CTS_CH4.zip",
+     "height": 20.0,
+     "lag_days": 220.929,
+     "publish_delay_days": 91.63,
+     "live": false,
+     "stale": true
+    },
+    "AS_SSL": {
+     "station": "AS_SSL",
+     "station_id": "SSL",
+     "name": "Schauinsland",
+     "objects": 4,
+     "heights": [
+      12.0,
+      35.0
+     ],
+     "time_end": "2026-03-31T23:00:00Z",
+     "subm_time": "2026-07-01T14:06:52Z",
+     "dobj": "https://meta.icos-cp.eu/objects/gdSii-2bTwAa84qfQGfEys68",
+     "file_name": "ICOS_ATC_L2_L2-2026.1_SSL_12.0_CTS_CH4.zip",
+     "height": 12.0,
+     "lag_days": 220.929,
+     "publish_delay_days": 91.63,
+     "live": false,
+     "stale": true
+    },
+    "AS_STE": {
+     "station": "AS_STE",
+     "station_id": "STE",
+     "name": "Steinkimmen",
+     "objects": 5,
+     "heights": [
+      32.0,
+      82.0,
+      127.0,
+      187.0,
+      252.0
+     ],
+     "time_end": "2026-03-31T23:00:00Z",
+     "subm_time": "2026-07-01T14:07:19Z",
+     "dobj": "https://meta.icos-cp.eu/objects/vN3G4QIPgZq077METXrCqfrn",
+     "file_name": "ICOS_ATC_L2_L2-2026.1_STE_127.0_CTS_CH4.zip",
+     "height": 127.0,
+     "lag_days": 220.929,
+     "publish_delay_days": 91.63,
+     "live": false,
+     "stale": true
+    },
+    "AS_SVB": {
+     "station": "AS_SVB",
+     "station_id": "SVB",
+     "name": "Svartberget",
+     "objects": 3,
+     "heights": [
+      35.0,
+      85.0,
+      150.0
+     ],
+     "time_end": "2026-03-31T23:00:00Z",
+     "subm_time": "2026-07-01T14:08:29Z",
+     "dobj": "https://meta.icos-cp.eu/objects/1Z8DDxpXO2URH1xZJzRe6txO",
+     "file_name": "ICOS_ATC_L2_L2-2026.1_SVB_150.0_CTS_CH4.zip",
+     "height": 150.0,
+     "lag_days": 220.929,
+     "publish_delay_days": 91.631,
+     "live": false,
+     "stale": true
+    },
+    "AS_TOH": {
+     "station": "AS_TOH",
+     "station_id": "TOH",
+     "name": "Torfhaus",
+     "objects": 4,
+     "heights": [
+      10.0,
+      76.0,
+      110.0,
+      147.0
+     ],
+     "time_end": "2026-03-31T23:00:00Z",
+     "subm_time": "2026-07-01T14:09:09Z",
+     "dobj": "https://meta.icos-cp.eu/objects/fR2jTZElHM6qybya9d9YnK5X",
+     "file_name": "ICOS_ATC_L2_L2-2026.1_TOH_10.0_CTS_CH4.zip",
+     "height": 10.0,
+     "lag_days": 220.929,
+     "publish_delay_days": 91.631,
+     "live": false,
+     "stale": true
+    },
+    "AS_TRN": {
+     "station": "AS_TRN",
+     "station_id": "TRN",
+     "name": "Trainou",
+     "objects": 4,
+     "heights": [
+      5.0,
+      50.0,
+      100.0,
+      180.0
+     ],
+     "time_end": "2026-03-31T23:00:00Z",
+     "subm_time": "2026-07-01T14:10:17Z",
+     "dobj": "https://meta.icos-cp.eu/objects/kaW2vcL_4NYNm8Y51jBsY-jg",
+     "file_name": "ICOS_ATC_L2_L2-2026.1_TRN_100.0_CTS_CH4.zip",
+     "height": 100.0,
+     "lag_days": 220.929,
+     "publish_delay_days": 91.632,
+     "live": false,
+     "stale": true
+    },
+    "AS_UTO": {
+     "station": "AS_UTO",
+     "station_id": "UTO",
+     "name": "Ut\u00f6 - Baltic sea",
+     "objects": 2,
+     "heights": [
+      57.0
+     ],
+     "time_end": "2026-03-31T23:00:00Z",
+     "subm_time": "2026-07-01T14:11:26Z",
+     "dobj": "https://meta.icos-cp.eu/objects/zwzve1qA0h0UeTa45WJhhkP4",
+     "file_name": "ICOS_ATC_L2_L2-2026.1_UTO_57.0_CTS_CH4.zip",
+     "height": 57.0,
+     "lag_days": 220.929,
+     "publish_delay_days": 91.633,
+     "live": false,
+     "stale": true
+    },
+    "AS_WAO": {
+     "station": "AS_WAO",
+     "station_id": "WAO",
+     "name": "Weybourne",
+     "objects": 1,
+     "heights": [
+      10.0
+     ],
+     "time_end": "2026-03-31T23:00:00Z",
+     "subm_time": "2026-07-01T14:11:37Z",
+     "dobj": "https://meta.icos-cp.eu/objects/WqiS1MjRYILrZq74DFCxaJdC",
+     "file_name": "ICOS_ATC_L2_L2-2026.1_WAO_10.0_CTS_CH4.zip",
+     "height": 10.0,
+     "lag_days": 220.929,
+     "publish_delay_days": 91.633,
+     "live": false,
+     "stale": true
+    },
+    "AS_WES": {
+     "station": "AS_WES",
+     "station_id": "WES",
+     "name": "Westerland",
+     "objects": 1,
+     "heights": [
+      14.0
+     ],
+     "time_end": "2026-03-31T23:00:00Z",
+     "subm_time": "2026-07-01T14:11:47Z",
+     "dobj": "https://meta.icos-cp.eu/objects/FfF9lAK8yXSH1Bqa7r2Acpbu",
+     "file_name": "ICOS_ATC_L2_L2-2026.1_WES_14.0_CTS_CH4.zip",
+     "height": 14.0,
+     "lag_days": 220.929,
+     "publish_delay_days": 91.633,
+     "live": false,
+     "stale": true
+    },
+    "AS_ZEP": {
+     "station": "AS_ZEP",
+     "station_id": "ZEP",
+     "name": "Zeppelin",
+     "objects": 2,
+     "heights": [
+      15.0
+     ],
+     "time_end": "2026-03-31T23:00:00Z",
+     "subm_time": "2026-07-01T14:11:54Z",
+     "dobj": "https://meta.icos-cp.eu/objects/nqc7kqvoRpx-dYUjt0WdRePP",
+     "file_name": "ICOS_ATC_L2_L2-2026.1_ZEP_15.0_CTS_CH4.zip",
+     "height": 15.0,
+     "lag_days": 220.929,
+     "publish_delay_days": 91.633,
+     "live": false,
+     "stale": true
+    },
+    "AS_ZSF": {
+     "station": "AS_ZSF",
+     "station_id": "ZSF",
+     "name": "Zugspitze",
+     "objects": 1,
+     "heights": [
+      3.0
+     ],
+     "time_end": "2026-03-31T23:00:00Z",
+     "subm_time": "2026-07-01T14:12:11Z",
+     "dobj": "https://meta.icos-cp.eu/objects/nUM9uKJvr0vEvPIPN3g2xHNm",
+     "file_name": "ICOS_ATC_L2_L2-2026.1_ZSF_3.0_CTS_CH4.zip",
+     "height": 3.0,
+     "lag_days": 220.929,
+     "publish_delay_days": 91.633,
+     "live": false,
+     "stale": true
+    }
+   }
+  },
+  "samples": [
+   {
+    "station": "AS_RGL",
+    "dobj": "https://meta.icos-cp.eu/objects/Xn5zkImJ5ki2HPel1SeHoXmg",
+    "time_end": "2026-11-07T12:00:00Z",
+    "bytes": 61971,
+    "sha256": "ac86c7021f92030432bc5995587371183e1284cb37fd74dc9399340b2389d107",
+    "error": "ValueError: got an HTML page, not data: '\\n<!DOCTYPE html>\\n<html lang=\"en\">\\n<head>\\n\\t<link rel=\"shortcut icon\" type=\"image/png\" href=\"https://static.icos-cp.eu/ima'"
+   },
+   {
+    "station": "AS_WES",
+    "dobj": "https://meta.icos-cp.eu/objects/PRn4qkNF92h2FNG6h46T8i2L",
+    "time_end": "2026-11-07T12:00:00Z",
+    "bytes": 61971,
+    "sha256": "60e008dd0bb282e4b54a9f337bb695a04f907aefdf05e1bd2ea11d8ab7272749",
+    "error": "ValueError: got an HTML page, not data: '\\n<!DOCTYPE html>\\n<html lang=\"en\">\\n<head>\\n\\t<link rel=\"shortcut icon\" type=\"image/png\" href=\"https://static.icos-cp.eu/ima'"
+   },
+   {
+    "station": "AS_ARN",
+    "dobj": "https://meta.icos-cp.eu/objects/jgkmMUWQG_jKXOojbN6nONy9",
+    "time_end": "2026-11-06T23:00:00Z",
+    "bytes": 61971,
+    "sha256": "4037d8c66d510d7f0360fc42cd776baffa4cf8afb9f7624f02526942358a0ff2",
+    "error": "ValueError: got an HTML page, not data: '\\n<!DOCTYPE html>\\n<html lang=\"en\">\\n<head>\\n\\t<link rel=\"shortcut icon\" type=\"image/png\" href=\"https://static.icos-cp.eu/ima'"
+   },
+   {
+    "station": "AS_BIR",
+    "dobj": "https://meta.icos-cp.eu/objects/-yOh3g08PLdjzGI28fuZoqjX",
+    "time_end": "2026-11-06T23:00:00Z",
+    "bytes": 61971,
+    "sha256": "1cd67967b437bdab8919a494116bfb14337c7991d814045f02df9f57114b0f82",
+    "error": "ValueError: got an HTML page, not data: '\\n<!DOCTYPE html>\\n<html lang=\"en\">\\n<head>\\n\\t<link rel=\"shortcut icon\" type=\"image/png\" href=\"https://static.icos-cp.eu/ima'"
+   },
+   {
+    "station": "AS_CBW",
+    "dobj": "https://meta.icos-cp.eu/objects/zBN6UH_exe6Q2oFAkIoDf_pE",
+    "time_end": "2026-11-06T23:00:00Z",
+    "bytes": 61971,
+    "sha256": "3cfd656f48277c23852a307f593350ff205050cca6d03640b16182cf284ad648",
+    "error": "ValueError: got an HTML page, not data: '\\n<!DOCTYPE html>\\n<html lang=\"en\">\\n<head>\\n\\t<link rel=\"shortcut icon\" type=\"image/png\" href=\"https://static.icos-cp.eu/ima'"
+   }
+  ]
+ },
+ "noaa": {
+  "files": [
+   {
+    "file": "ch4_brw_surface-insitu_1_ccgg_DailyData.txt",
+    "bytes": 1793167,
+    "sha256": "95c78ea5f9c6fdc1530d20095b375a36395a20ae2d942260660cbd74c05b8eda",
+    "last_modified": "Tue, 11 Aug 2026 17:44:17 GMT",
+    "last_day": "2025-12-24",
+    "lag_days": 317.888
+   },
+   {
+    "file": "ch4_mko_surface-insitu_1_ccgg_DailyData.txt",
+    "bytes": 194294,
+    "sha256": "ca57c93a124c0ac4a052fc6762cc7da2601d18ca95db42d6a261bb8af46c6360",
+    "last_modified": "Tue, 11 Aug 2026 17:44:18 GMT",
+    "last_day": "2025-12-31",
+    "lag_days": 310.888
+   },
+   {
+    "file": "ch4_mlo_surface-insitu_1_ccgg_DailyData.txt",
+    "bytes": 1779829,
+    "sha256": "8994f4991a77c31a4aa08d9763419c69f13bb8f81683a21fb9fa242814b7d927",
+    "last_modified": "Tue, 11 Aug 2026 17:44:17 GMT",
+    "last_day": "2025-12-31",
+    "lag_days": 310.888
+   },
+   {
+    "file": "ch4_smo_surface-insitu_1_ccgg_DailyData.txt",
+    "bytes": 55434,
+    "sha256": "cd6794b0f3ce1378d143770a2a979f4cd44e05c42fbd222875b86731db48f0b6",
+    "last_modified": "Tue, 11 Aug 2026 17:44:18 GMT",
+    "last_day": "2025-12-31",
+    "lag_days": 310.888
+   }
+  ]
+ },
+ "checks": {
+  "I1_at_least_25_live": true,
+  "I2_median_lag_live_le_2d": true,
+  "I3_at_least_5_stale": false,
+  "I4_median_publish_delay_le_0.6d": true,
+  "sample_parsed": 0,
+  "sample_within_gap": 0,
+  "I5_sample_last_valid_within_2d": null
+ },
+ "finished_utc": "2026-11-07T21:18:50Z"
+}
