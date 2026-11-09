@@ -11,9 +11,10 @@ unlabelled, so entrants have to build their own labelled mixtures from vessel re
 organisers don't supply. Zindi's data need an account, which MV2 does not have yet. So this folder
 asks the same question on NOAA/U.S. Navy SanctSound data, which anyone can download.
 
-| study | question | status |
+| study / note | question | status |
 |---|---|---|
 | [vesselmix-v1](PREREGISTRATION-vesselmix.md) | How well do a constant, an untrained background floor and a learner trained on synthetic mixtures recover the added-vessel share? How much does it cost when training vessels come from a different site than test vessels? | pre-registered 2026-11-09, 7 predictions; queued |
+| [DATA-ACCESS.md](DATA-ACCESS.md) | Which vessel-recording sources can an entrant actually use? Access and licence for ONC, HearMyShip, SanctSound, DeepShip and ShipsEar | checked 2026-11-09: ONC needs a token (HTTP 401), HearMyShip's data licence unconfirmed, SanctSound open with no account |
 
 Files:
 - `vessel_mix.py` 0.1.0: downloads 12 days of 1-minute SanctSound HMD spectra and ship detections
