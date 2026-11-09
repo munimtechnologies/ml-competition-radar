@@ -1,0 +1,933 @@
+{
+ "version": "0.1.0",
+ "gate_GA": true,
+ "gate_GA_detail": {
+  "sb01": {
+   "days": 12,
+   "min_complete_minutes": 1440
+  },
+  "sb03": {
+   "days": 12,
+   "min_complete_minutes": 1440
+  },
+  "gr01": {
+   "days": 12,
+   "min_complete_minutes": 1440
+  }
+ },
+ "gate_GB": true,
+ "vessel_sites": [
+  "sb01",
+  "sb03"
+ ],
+ "sites": {
+  "gr01": {
+   "grid_windows": 1152,
+   "bg_train": 768,
+   "bg_test": 384,
+   "bg_windows_with_ship": 34,
+   "passage_windows_complete": 20,
+   "passage_snr_median_db": 1.0294978850702652,
+   "passages_train": 2,
+   "passages_test": 2
+  },
+  "sb01": {
+   "grid_windows": 1152,
+   "bg_train": 768,
+   "bg_test": 384,
+   "bg_windows_with_ship": 898,
+   "passage_windows_complete": 175,
+   "passage_snr_median_db": 1.2551207856753162,
+   "passages_train": 26,
+   "passages_test": 26
+  },
+  "sb03": {
+   "grid_windows": 1152,
+   "bg_train": 768,
+   "bg_test": 384,
+   "bg_windows_with_ship": 821,
+   "passage_windows_complete": 133,
+   "passage_snr_median_db": 2.4746345985926816,
+   "passages_train": 33,
+   "passages_test": 32
+  }
+ },
+ "folds": [
+  {
+   "test_vessel_site": "sb01",
+   "c0": 0.35348257100187197,
+   "train_vessels_G1": 35,
+   "train_vessels_G0": 26,
+   "test_vessels": 26,
+   "stats": {
+    "C0": {
+     "n": 1500,
+     "rmse": 0.2933799369932714,
+     "bias": 0.0061351790955477045,
+     "bins": {
+      "zero": {
+       "n": 387,
+       "rmse": 0.3534825710018719,
+       "bias": 0.353482571001872
+      },
+      "0-0.25": {
+       "n": 270,
+       "rmse": 0.21042295548993692,
+       "bias": 0.20221424937312593
+      },
+      "0.25-0.5": {
+       "n": 345,
+       "rmse": 0.07766115015039862,
+       "bias": -0.02692324389035214
+      },
+      "0.5-0.9": {
+       "n": 498,
+       "rmse": 0.3660169440014988,
+       "bias": -0.34719741872083415
+      }
+     }
+    },
+    "F1": {
+     "n": 1500,
+     "rmse": 0.28074479030157734,
+     "bias": -0.06802634565285265,
+     "bins": {
+      "zero": {
+       "n": 387,
+       "rmse": 0.27112819999369225,
+       "bias": 0.22799368354609056
+      },
+      "0-0.25": {
+       "n": 270,
+       "rmse": 0.14925927875748093,
+       "bias": 0.07927039173064622
+      },
+      "0.25-0.5": {
+       "n": 345,
+       "rmse": 0.1698529982846155,
+       "bias": -0.11271868521766255
+      },
+      "0.5-0.9": {
+       "n": 498,
+       "rmse": 0.38498286152468386,
+       "bias": -0.3469641232505962
+      }
+     }
+    },
+    "G1": {
+     "n": 1500,
+     "rmse": 0.26307357651160457,
+     "bias": -0.124393879579202,
+     "bins": {
+      "zero": {
+       "n": 387,
+       "rmse": 0.15164751820858602,
+       "bias": 0.09502435113918282
+      },
+      "0-0.25": {
+       "n": 270,
+       "rmse": 0.11337396335887152,
+       "bias": 0.005016380736758834
+      },
+      "0.25-0.5": {
+       "n": 345,
+       "rmse": 0.19955203398564755,
+       "bias": -0.14051418030429866
+      },
+      "0.5-0.9": {
+       "n": 498,
+       "rmse": 0.3950064707868978,
+       "bias": -0.353900148300419
+      }
+     }
+    },
+    "G0": {
+     "n": 1500,
+     "rmse": 0.21019843635459565,
+     "bias": -0.05274084972210185,
+     "bins": {
+      "zero": {
+       "n": 387,
+       "rmse": 0.18236541701832698,
+       "bias": 0.12626784213333678
+      },
+      "0-0.25": {
+       "n": 270,
+       "rmse": 0.13072090387065938,
+       "bias": 0.04695719435675991
+      },
+      "0.25-0.5": {
+       "n": 345,
+       "rmse": 0.1327484432177823,
+       "bias": -0.05936678351154786
+      },
+      "0.5-0.9": {
+       "n": 498,
+       "rmse": 0.29285730413363353,
+       "bias": -0.24131291496705876
+      }
+     }
+    }
+   }
+  },
+  {
+   "test_vessel_site": "sb03",
+   "c0": 0.3580678204945231,
+   "train_vessels_G1": 28,
+   "train_vessels_G0": 33,
+   "test_vessels": 32,
+   "stats": {
+    "C0": {
+     "n": 1500,
+     "rmse": 0.29521952460800865,
+     "bias": 0.0011097841700136333,
+     "bins": {
+      "zero": {
+       "n": 372,
+       "rmse": 0.3580678204945231,
+       "bias": 0.3580678204945232
+      },
+      "0-0.25": {
+       "n": 263,
+       "rmse": 0.21304541676680475,
+       "bias": 0.20545196406251123
+      },
+      "0.25-0.5": {
+       "n": 344,
+       "rmse": 0.07327848668628598,
+       "bias": -0.016965101822054834
+      },
+      "0.5-0.9": {
+       "n": 521,
+       "rmse": 0.36458493316520824,
+       "bias": -0.3449797015174582
+      }
+     }
+    },
+    "F1": {
+     "n": 1500,
+     "rmse": 0.26341678082576947,
+     "bias": -0.07487492266325652,
+     "bins": {
+      "zero": {
+       "n": 372,
+       "rmse": 0.26159175229593645,
+       "bias": 0.22012564415967403
+      },
+      "0-0.25": {
+       "n": 263,
+       "rmse": 0.13538729393418017,
+       "bias": 0.07102826862654486
+      },
+      "0.25-0.5": {
+       "n": 344,
+       "rmse": 0.14875954723904858,
+       "bias": -0.10608289050740813
+      },
+      "0.5-0.9": {
+       "n": 521,
+       "rmse": 0.3564414620095534,
+       "bias": -0.3385547868263271
+      }
+     }
+    },
+    "G1": {
+     "n": 1500,
+     "rmse": 0.2756773324763558,
+     "bias": -0.10480768085720425,
+     "bins": {
+      "zero": {
+       "n": 372,
+       "rmse": 0.19305632722382396,
+       "bias": 0.13540745525281545
+      },
+      "0-0.25": {
+       "n": 263,
+       "rmse": 0.12561258057509106,
+       "bias": 0.052162417652636205
+      },
+      "0.25-0.5": {
+       "n": 344,
+       "rmse": 0.1506990635140218,
+       "bias": -0.09160243410143716
+      },
+      "0.5-0.9": {
+       "n": 521,
+       "rmse": 0.41137895492704046,
+       "bias": -0.36428133042534094
+      }
+     }
+    },
+    "G0": {
+     "n": 1500,
+     "rmse": 0.17362241872854015,
+     "bias": -0.039323046089411166,
+     "bins": {
+      "zero": {
+       "n": 372,
+       "rmse": 0.15934327020598946,
+       "bias": 0.09706541374927638
+      },
+      "0-0.25": {
+       "n": 263,
+       "rmse": 0.10452381027078778,
+       "bias": 0.03167401378552053
+      },
+      "0.25-0.5": {
+       "n": 344,
+       "rmse": 0.10853000860069392,
+       "bias": -0.029362974739315904
+      },
+      "0.5-0.9": {
+       "n": 521,
+       "rmse": 0.23530396085526864,
+       "bias": -0.17912150741672703
+      }
+     }
+    }
+   }
+  }
+ ],
+ "pooled": {
+  "C0": {
+   "n": 3000,
+   "rmse": 0.29430116814239327,
+   "bias": 0.0036224816327806706,
+   "bins": {
+    "zero": {
+     "n": 759,
+     "rmse": 0.35573727180465947,
+     "bias": 0.3557298869587445
+    },
+    "0-0.25": {
+     "n": 533,
+     "rmse": 0.21172102515866234,
+     "bias": 0.20381184592717533
+    },
+    "0.25-0.5": {
+     "n": 689,
+     "rmse": 0.07550480437160235,
+     "bias": -0.021951399374395286
+    },
+    "0.5-0.9": {
+     "n": 1019,
+     "rmse": 0.3652854788924064,
+     "bias": -0.3460635319073318
+    }
+   }
+  },
+  "F1": {
+   "n": 3000,
+   "rmse": 0.27221869673305704,
+   "bias": -0.0714506341580546,
+   "bins": {
+    "zero": {
+     "n": 759,
+     "rmse": 0.2664968536554829,
+     "bias": 0.22413741127764925
+    },
+    "0-0.25": {
+     "n": 533,
+     "rmse": 0.14258315049478326,
+     "bias": 0.07520345293819096
+    },
+    "0.25-0.5": {
+     "n": 689,
+     "rmse": 0.1596702823208082,
+     "bias": -0.1094056033884499
+    },
+    "0.5-0.9": {
+     "n": 1019,
+     "rmse": 0.37066473054763127,
+     "bias": -0.34266455084917896
+    }
+   }
+  },
+  "G0": {
+   "n": 3000,
+   "rmse": 0.19277983158394127,
+   "bias": -0.04603194790575651,
+   "bins": {
+    "zero": {
+     "n": 759,
+     "rmse": 0.17146850261083219,
+     "bias": 0.11195518948660359
+    },
+    "0-0.25": {
+     "n": 533,
+     "rmse": 0.11852028942303622,
+     "bias": 0.039415962667761865
+    },
+    "0.25-0.5": {
+     "n": 689,
+     "rmse": 0.12126292283881468,
+     "bias": -0.04438665257156557
+    },
+    "0.5-0.9": {
+     "n": 1019,
+     "rmse": 0.2649974049940666,
+     "bias": -0.20951534545408249
+    }
+   }
+  },
+  "G1": {
+   "n": 3000,
+   "rmse": 0.2694491587478854,
+   "bias": -0.11460078021820314,
+   "bins": {
+    "zero": {
+     "n": 759,
+     "rmse": 0.1731843307448394,
+     "bias": 0.114816860665232
+    },
+    "0-0.25": {
+     "n": 533,
+     "rmse": 0.11956956784125362,
+     "bias": 0.0282798098340867
+    },
+    "0.25-0.5": {
+     "n": 689,
+     "rmse": 0.17685595307173102,
+     "bias": -0.11609380193886418
+    },
+    "0.5-0.9": {
+     "n": 1019,
+     "rmse": 0.40346050168508407,
+     "bias": -0.3592078969629159
+    }
+   }
+  },
+  "F1_mean_on_zero": 0.22413741127764925,
+  "F1_bias_share_ge_0.5": -0.34266455084917896,
+  "P7_by_site": {
+   "gr01": {
+    "n_ship": 5,
+    "n_noship": 239,
+    "G1_mean_ship": 0.03600477319811199,
+    "G1_mean_noship": 0.00440179399335832
+   },
+   "sb01": {
+    "n_ship": 193,
+    "n_noship": 51,
+    "G1_mean_ship": 0.17798880910552806,
+    "G1_mean_noship": 0.15833329887013506
+   },
+   "sb03": {
+    "n_ship": 196,
+    "n_noship": 75,
+    "G1_mean_ship": 0.17273922458298677,
+    "G1_mean_noship": 0.12840290928664902
+   }
+  }
+ },
+ "fetch": {
+  "sb01": {
+   "hmd_files_listed": 77,
+   "ships_file": "sanctsound/products/detections/sb01/sanctsound_sb01_01_ships/data/SanctSound_SB01_01_ships.csv",
+   "ship_detections": 1228,
+   "days": [
+    {
+     "file": "NEFSC_SBNMS_201811_SB01_20181114.nc",
+     "rows": 1440,
+     "complete_minutes": 1440,
+     "psd_var": "psd",
+     "freq_var": "frequency",
+     "n_freq": 2157,
+     "f_min": 20.0,
+     "f_max": 23960.7265625,
+     "time_method": "time variable"
+    },
+    {
+     "file": "NEFSC_SBNMS_201811_SB01_20181115.nc",
+     "rows": 1440,
+     "complete_minutes": 1440,
+     "psd_var": "psd",
+     "freq_var": "frequency",
+     "n_freq": 2157,
+     "f_min": 20.0,
+     "f_max": 23960.7265625,
+     "time_method": "time variable"
+    },
+    {
+     "file": "NEFSC_SBNMS_201811_SB01_20181116.nc",
+     "rows": 1440,
+     "complete_minutes": 1440,
+     "psd_var": "psd",
+     "freq_var": "frequency",
+     "n_freq": 2157,
+     "f_min": 20.0,
+     "f_max": 23960.7265625,
+     "time_method": "time variable"
+    },
+    {
+     "file": "NEFSC_SBNMS_201811_SB01_20181117.nc",
+     "rows": 1440,
+     "complete_minutes": 1440,
+     "psd_var": "psd",
+     "freq_var": "frequency",
+     "n_freq": 2157,
+     "f_min": 20.0,
+     "f_max": 23960.7265625,
+     "time_method": "time variable"
+    },
+    {
+     "file": "NEFSC_SBNMS_201811_SB01_20181118.nc",
+     "rows": 1440,
+     "complete_minutes": 1440,
+     "psd_var": "psd",
+     "freq_var": "frequency",
+     "n_freq": 2157,
+     "f_min": 20.0,
+     "f_max": 23960.7265625,
+     "time_method": "time variable"
+    },
+    {
+     "file": "NEFSC_SBNMS_201811_SB01_20181119.nc",
+     "rows": 1440,
+     "complete_minutes": 1440,
+     "psd_var": "psd",
+     "freq_var": "frequency",
+     "n_freq": 2157,
+     "f_min": 20.0,
+     "f_max": 23960.7265625,
+     "time_method": "time variable"
+    },
+    {
+     "file": "NEFSC_SBNMS_201811_SB01_20181120.nc",
+     "rows": 1440,
+     "complete_minutes": 1440,
+     "psd_var": "psd",
+     "freq_var": "frequency",
+     "n_freq": 2157,
+     "f_min": 20.0,
+     "f_max": 23960.7265625,
+     "time_method": "time variable"
+    },
+    {
+     "file": "NEFSC_SBNMS_201811_SB01_20181121.nc",
+     "rows": 1440,
+     "complete_minutes": 1440,
+     "psd_var": "psd",
+     "freq_var": "frequency",
+     "n_freq": 2157,
+     "f_min": 20.0,
+     "f_max": 23960.7265625,
+     "time_method": "time variable"
+    },
+    {
+     "file": "NEFSC_SBNMS_201811_SB01_20181122.nc",
+     "rows": 1440,
+     "complete_minutes": 1440,
+     "psd_var": "psd",
+     "freq_var": "frequency",
+     "n_freq": 2157,
+     "f_min": 20.0,
+     "f_max": 23960.7265625,
+     "time_method": "time variable"
+    },
+    {
+     "file": "NEFSC_SBNMS_201811_SB01_20181123.nc",
+     "rows": 1440,
+     "complete_minutes": 1440,
+     "psd_var": "psd",
+     "freq_var": "frequency",
+     "n_freq": 2157,
+     "f_min": 20.0,
+     "f_max": 23960.7265625,
+     "time_method": "time variable"
+    },
+    {
+     "file": "NEFSC_SBNMS_201811_SB01_20181124.nc",
+     "rows": 1440,
+     "complete_minutes": 1440,
+     "psd_var": "psd",
+     "freq_var": "frequency",
+     "n_freq": 2157,
+     "f_min": 20.0,
+     "f_max": 23960.7265625,
+     "time_method": "time variable"
+    },
+    {
+     "file": "NEFSC_SBNMS_201811_SB01_20181125.nc",
+     "rows": 1440,
+     "complete_minutes": 1440,
+     "psd_var": "psd",
+     "freq_var": "frequency",
+     "n_freq": 2157,
+     "f_min": 20.0,
+     "f_max": 23960.7265625,
+     "time_method": "time variable"
+    }
+   ]
+  },
+  "sb03": {
+   "hmd_files_listed": 72,
+   "ships_file": "sanctsound/products/detections/sb03/sanctsound_sb03_01_ships/data/SanctSound_SB03_01_ships.csv",
+   "ship_detections": 847,
+   "days": [
+    {
+     "file": "NEFSC_SBNMS_201811_SB03_20181113.nc",
+     "rows": 1440,
+     "complete_minutes": 1440,
+     "psd_var": "psd",
+     "freq_var": "frequency",
+     "n_freq": 2178,
+     "f_min": 0.0,
+     "f_max": 24000.0,
+     "time_method": "time variable"
+    },
+    {
+     "file": "NEFSC_SBNMS_201811_SB03_20181114.nc",
+     "rows": 1440,
+     "complete_minutes": 1440,
+     "psd_var": "psd",
+     "freq_var": "frequency",
+     "n_freq": 2178,
+     "f_min": 0.0,
+     "f_max": 24000.0,
+     "time_method": "time variable"
+    },
+    {
+     "file": "NEFSC_SBNMS_201811_SB03_20181115.nc",
+     "rows": 1440,
+     "complete_minutes": 1440,
+     "psd_var": "psd",
+     "freq_var": "frequency",
+     "n_freq": 2178,
+     "f_min": 0.0,
+     "f_max": 24000.0,
+     "time_method": "time variable"
+    },
+    {
+     "file": "NEFSC_SBNMS_201811_SB03_20181116.nc",
+     "rows": 1440,
+     "complete_minutes": 1440,
+     "psd_var": "psd",
+     "freq_var": "frequency",
+     "n_freq": 2178,
+     "f_min": 0.0,
+     "f_max": 24000.0,
+     "time_method": "time variable"
+    },
+    {
+     "file": "NEFSC_SBNMS_201811_SB03_20181117.nc",
+     "rows": 1440,
+     "complete_minutes": 1440,
+     "psd_var": "psd",
+     "freq_var": "frequency",
+     "n_freq": 2178,
+     "f_min": 0.0,
+     "f_max": 24000.0,
+     "time_method": "time variable"
+    },
+    {
+     "file": "NEFSC_SBNMS_201811_SB03_20181118.nc",
+     "rows": 1440,
+     "complete_minutes": 1440,
+     "psd_var": "psd",
+     "freq_var": "frequency",
+     "n_freq": 2178,
+     "f_min": 0.0,
+     "f_max": 24000.0,
+     "time_method": "time variable"
+    },
+    {
+     "file": "NEFSC_SBNMS_201811_SB03_20181119.nc",
+     "rows": 1440,
+     "complete_minutes": 1440,
+     "psd_var": "psd",
+     "freq_var": "frequency",
+     "n_freq": 2178,
+     "f_min": 0.0,
+     "f_max": 24000.0,
+     "time_method": "time variable"
+    },
+    {
+     "file": "NEFSC_SBNMS_201811_SB03_20181120.nc",
+     "rows": 1440,
+     "complete_minutes": 1440,
+     "psd_var": "psd",
+     "freq_var": "frequency",
+     "n_freq": 2178,
+     "f_min": 0.0,
+     "f_max": 24000.0,
+     "time_method": "time variable"
+    },
+    {
+     "file": "NEFSC_SBNMS_201811_SB03_20181121.nc",
+     "rows": 1440,
+     "complete_minutes": 1440,
+     "psd_var": "psd",
+     "freq_var": "frequency",
+     "n_freq": 2178,
+     "f_min": 0.0,
+     "f_max": 24000.0,
+     "time_method": "time variable"
+    },
+    {
+     "file": "NEFSC_SBNMS_201811_SB03_20181122.nc",
+     "rows": 1440,
+     "complete_minutes": 1440,
+     "psd_var": "psd",
+     "freq_var": "frequency",
+     "n_freq": 2178,
+     "f_min": 0.0,
+     "f_max": 24000.0,
+     "time_method": "time variable"
+    },
+    {
+     "file": "NEFSC_SBNMS_201811_SB03_20181123.nc",
+     "rows": 1440,
+     "complete_minutes": 1440,
+     "psd_var": "psd",
+     "freq_var": "frequency",
+     "n_freq": 2178,
+     "f_min": 0.0,
+     "f_max": 24000.0,
+     "time_method": "time variable"
+    },
+    {
+     "file": "NEFSC_SBNMS_201811_SB03_20181124.nc",
+     "rows": 1440,
+     "complete_minutes": 1440,
+     "psd_var": "psd",
+     "freq_var": "frequency",
+     "n_freq": 2178,
+     "f_min": 0.0,
+     "f_max": 24000.0,
+     "time_method": "time variable"
+    }
+   ]
+  },
+  "gr01": {
+   "hmd_files_listed": 139,
+   "ships_file": "sanctsound/products/detections/gr01/sanctsound_gr01_01_ships/data/SanctSound_GR01_01_ships.csv",
+   "ship_detections": 94,
+   "days": [
+    {
+     "file": "NEFSC_GRNMS_201812_GR01_20181215.nc",
+     "rows": 1440,
+     "complete_minutes": 1440,
+     "psd_var": "psd",
+     "freq_var": "frequency",
+     "n_freq": 2157,
+     "f_min": 20.0,
+     "f_max": 23960.7265625,
+     "time_method": "time variable"
+    },
+    {
+     "file": "NEFSC_GRNMS_201812_GR01_20181216.nc",
+     "rows": 1440,
+     "complete_minutes": 1440,
+     "psd_var": "psd",
+     "freq_var": "frequency",
+     "n_freq": 2157,
+     "f_min": 20.0,
+     "f_max": 23960.7265625,
+     "time_method": "time variable"
+    },
+    {
+     "file": "NEFSC_GRNMS_201812_GR01_20181217.nc",
+     "rows": 1440,
+     "complete_minutes": 1440,
+     "psd_var": "psd",
+     "freq_var": "frequency",
+     "n_freq": 2157,
+     "f_min": 20.0,
+     "f_max": 23960.7265625,
+     "time_method": "time variable"
+    },
+    {
+     "file": "NEFSC_GRNMS_201812_GR01_20181218.nc",
+     "rows": 1440,
+     "complete_minutes": 1440,
+     "psd_var": "psd",
+     "freq_var": "frequency",
+     "n_freq": 2157,
+     "f_min": 20.0,
+     "f_max": 23960.7265625,
+     "time_method": "time variable"
+    },
+    {
+     "file": "NEFSC_GRNMS_201812_GR01_20181219.nc",
+     "rows": 1440,
+     "complete_minutes": 1440,
+     "psd_var": "psd",
+     "freq_var": "frequency",
+     "n_freq": 2157,
+     "f_min": 20.0,
+     "f_max": 23960.7265625,
+     "time_method": "time variable"
+    },
+    {
+     "file": "NEFSC_GRNMS_201812_GR01_20181220.nc",
+     "rows": 1440,
+     "complete_minutes": 1440,
+     "psd_var": "psd",
+     "freq_var": "frequency",
+     "n_freq": 2157,
+     "f_min": 20.0,
+     "f_max": 23960.7265625,
+     "time_method": "time variable"
+    },
+    {
+     "file": "NEFSC_GRNMS_201812_GR01_20181221.nc",
+     "rows": 1440,
+     "complete_minutes": 1440,
+     "psd_var": "psd",
+     "freq_var": "frequency",
+     "n_freq": 2157,
+     "f_min": 20.0,
+     "f_max": 23960.7265625,
+     "time_method": "time variable"
+    },
+    {
+     "file": "NEFSC_GRNMS_201812_GR01_20181222.nc",
+     "rows": 1440,
+     "complete_minutes": 1440,
+     "psd_var": "psd",
+     "freq_var": "frequency",
+     "n_freq": 2157,
+     "f_min": 20.0,
+     "f_max": 23960.7265625,
+     "time_method": "time variable"
+    },
+    {
+     "file": "NEFSC_GRNMS_201812_GR01_20181223.nc",
+     "rows": 1440,
+     "complete_minutes": 1440,
+     "psd_var": "psd",
+     "freq_var": "frequency",
+     "n_freq": 2157,
+     "f_min": 20.0,
+     "f_max": 23960.7265625,
+     "time_method": "time variable"
+    },
+    {
+     "file": "NEFSC_GRNMS_201812_GR01_20181224.nc",
+     "rows": 1440,
+     "complete_minutes": 1440,
+     "psd_var": "psd",
+     "freq_var": "frequency",
+     "n_freq": 2157,
+     "f_min": 20.0,
+     "f_max": 23960.7265625,
+     "time_method": "time variable"
+    },
+    {
+     "file": "NEFSC_GRNMS_201812_GR01_20181225.nc",
+     "rows": 1440,
+     "complete_minutes": 1440,
+     "psd_var": "psd",
+     "freq_var": "frequency",
+     "n_freq": 2157,
+     "f_min": 20.0,
+     "f_max": 23960.7265625,
+     "time_method": "time variable"
+    },
+    {
+     "file": "NEFSC_GRNMS_201812_GR01_20181226.nc",
+     "rows": 1440,
+     "complete_minutes": 1440,
+     "psd_var": "psd",
+     "freq_var": "frequency",
+     "n_freq": 2157,
+     "f_min": 20.0,
+     "f_max": 23960.7265625,
+     "time_method": "time variable"
+    }
+   ]
+  }
+ },
+ "grades": [
+  {
+   "id": "P1",
+   "prediction": "pooled RMSE(G1) <= 0.6 x RMSE(C0)",
+   "held": false,
+   "value": {
+    "G1": 0.2694491587478854,
+    "C0": 0.29430116814239327,
+    "ratio": 0.915555858811666
+   }
+  },
+  {
+   "id": "P2",
+   "prediction": "pooled RMSE(F1) < RMSE(C0)",
+   "held": true,
+   "value": {
+    "F1": 0.27221869673305704,
+    "C0": 0.29430116814239327
+   }
+  },
+  {
+   "id": "P3",
+   "prediction": "pooled RMSE(G1) < RMSE(F1)",
+   "held": true,
+   "value": {
+    "G1": 0.2694491587478854,
+    "F1": 0.27221869673305704
+   }
+  },
+  {
+   "id": "P4",
+   "prediction": "RMSE(G0) < RMSE(G1) in every fold and pooled RMSE(G1)/RMSE(G0) >= 1.10",
+   "held": true,
+   "value": {
+    "every_fold": true,
+    "pooled_ratio": 1.3977040883063554,
+    "folds": {
+     "sb01": [
+      0.21019843635459565,
+      0.26307357651160457
+     ],
+     "sb03": [
+      0.17362241872854015,
+      0.2756773324763558
+     ]
+    }
+   }
+  },
+  {
+   "id": "P5",
+   "prediction": "mean F1 on share-0 windows > 0.05",
+   "held": true,
+   "value": 0.22413741127764925
+  },
+  {
+   "id": "P6",
+   "prediction": "mean (F1 - share) on windows with share >= 0.5 is < 0",
+   "held": true,
+   "value": -0.34266455084917896
+  },
+  {
+   "id": "P7",
+   "prediction": "share-0 windows: G1 mean higher with a labelled ship in the background (within site)",
+   "held": true,
+   "value": {
+    "eligible_sites": 2,
+    "sites_higher": 2,
+    "by_site": {
+     "gr01": {
+      "n_ship": 5,
+      "n_noship": 239,
+      "G1_mean_ship": 0.03600477319811199,
+      "G1_mean_noship": 0.00440179399335832
+     },
+     "sb01": {
+      "n_ship": 193,
+      "n_noship": 51,
+      "G1_mean_ship": 0.17798880910552806,
+      "G1_mean_noship": 0.15833329887013506
+     },
+     "sb03": {
+      "n_ship": 196,
+      "n_noship": 75,
+      "G1_mean_ship": 0.17273922458298677,
+      "G1_mean_noship": 0.12840290928664902
+     }
+    }
+   }
+  }
+ ],
+ "seconds": 66
+}
