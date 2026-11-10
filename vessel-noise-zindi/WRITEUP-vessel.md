@@ -1,8 +1,8 @@
 # When you can't hear the organisers' ships: what carries over in the Underwater Vessel Noise Challenge
 
-Version 1, 2026-11-10. MV2 of Munim, Inc. (made with AI agents working in his name). Text CC BY
-4.0; code Apache-2.0. Every number below comes from pre-registered studies on public NOAA/U.S. Navy
-SanctSound data in
+Version 2, 2026-11-10 (version 1 the same day; version 2 adds study 4 in section 6). MV2 of
+Munim, Inc. (made with AI agents working in his name). Text CC BY 4.0; code Apache-2.0. Every
+number below comes from pre-registered studies on public NOAA/U.S. Navy SanctSound data in
 [vessel-noise-zindi](https://github.com/munimtechnologies/ml-competition-radar/tree/main/vessel-noise-zindi).
 No Zindi data were used, and nothing here is a contest submission.
 
@@ -16,8 +16,8 @@ builds labelled mixtures from vessel audio of their own, and the organisers' ves
 from those.
 
 The question that decides the leaderboard is therefore not "which model fits my mixtures best?"
-but "what does my model learn that still holds for vessels I have never heard?" Study 3 adds a
-second question: what still holds on a recorder I have never heard?
+but "what does my model learn that still holds for vessels I have never heard?" Studies 3 and 4
+add a second question: what still holds on a recorder I have never heard?
 
 ## 2. An identity that changes the problem
 
@@ -40,7 +40,7 @@ consequences:
    absorbs vessel energy.
 
 I worked this out after the second study, from the mixing code. It was not a pre-registered
-prediction, but it explains the results of all three studies.
+prediction, but it explains the results of all four studies.
 
 ## 3. Validate on a held-out vessel source
 
@@ -84,51 +84,64 @@ while the randomised learner under-predicts on vessel-dominated ones.
 v2 also tried dropping spectral-shape features (G1S, RMSE 0.319, worse than the constant). But
 the variant also dropped the absolute level, so it removed two things at once. G1L shows level is
 the best cue that carries over between vessel sources, so G1S lost it along with the shape. The
-result says nothing about shape on its own. **An ablation must remove one thing.**
+result says nothing about shape on its own. **An ablation must remove one thing.** Study 4 does
+that (section 6).
 
-## 6. Loudness breaks on a recorder you have never heard
+## 6. Every trained model breaks on a recorder you have never heard
 
 The loudness cue needs to know the background's usual level. In v1 and v2 the test backgrounds
 came from the same three recorders as the training backgrounds (later days). The contest's levels
 are uncalibrated, so a recorder or gain difference between its training and test windows is
-plausible. Study [vesselmix-v3](https://github.com/munimtechnologies/ml-competition-radar/blob/main/vessel-noise-zindi/RESULTS-vesselmix3.md)
-(5 of 7 pre-registered predictions held) scored every model twice on the same 3,000 test windows:
-IN, with training backgrounds from all three recorders, and OUT, retrained without any background
-from the test window's recorder.
+plausible. Studies [vesselmix-v3](https://github.com/munimtechnologies/ml-competition-radar/blob/main/vessel-noise-zindi/RESULTS-vesselmix3.md)
+(5 of 7 pre-registered predictions held) and
+[vesselmix-v4](https://github.com/munimtechnologies/ml-competition-radar/blob/main/vessel-noise-zindi/RESULTS-vesselmix4.md)
+(5 of 7 held) scored every model twice on the same 3,000 test windows: IN, with training
+backgrounds from all three recorders, and OUT, retrained without any background from the test
+window's recorder. v4 added two learners that remove only the absolute level, the one input a gain
+offset moves; a unit test confirms a +10 dB shift leaves their predictions bit-for-bit unchanged.
 
 | estimator | IN RMSE | vs constant | OUT RMSE | vs constant |
 |---|---|---|---|---|
 | C0 constant | 0.2943 | - | 0.2944 | - |
 | F1 untrained floor share | 0.2722 | -7.5% | **0.2722** | **-7.5%** |
-| G1L level + floor share | 0.2342 | -20.4% | 0.3587 | +21.8% |
-| G1T randomised spectra | 0.2463 | -16.3% | 0.3744 | +27.2% |
+| G1L level + floor share | 0.2342 | -20.4% | 0.3587 | +21.9% |
+| G1T randomised spectra (132 features) | 0.2463 | -16.3% | 0.3744 | +27.2% |
 | B = average of G1L and G1T | **0.2251** | **-23.5%** | 0.3592 | +22.0% |
+| G1F = G1L without level (floor share only, learned) | 0.2647 | -10.1% | 0.2770 | -5.9% |
+| G1TI = G1T without level (131 gain-free features) | 0.2885 | -2.0% | 0.3719 | +26.3% |
 
 - **Recorder known:** averaging the two learners is the best model found without same-site
-  vessels. It closes 58% of the gap between the other-site and same-site learners.
-- **Recorder unseen:** every trained model is worse than the constant, and the untrained floor is
-  the best model. On windows with nothing added, the learners predict a mean share of 0.43 to
-  0.45. Holding out Gray's Reef, whose backgrounds are 6-12 dB louder than Stellwagen's, was the
-  worst case (G1L 0.469). But even between the two Stellwagen recorders, G1L fell from 0.260 to
+  vessels. It closes 58% of the gap between the other-site and same-site learners. The absolute
+  level carries much of that: without it, the 131-feature learner falls from 0.246 to 0.289.
+- **Recorder unseen:** every trained model with more than one input is worse than the constant.
+  On windows with nothing added, they predict a vessel where there is none (mean error +0.41 to
+  +0.45). Holding out Gray's Reef, whose backgrounds are 6-12 dB louder than Stellwagen's, was the
+  worst case (G1L 0.469), but even between the two Stellwagen recorders G1L fell from 0.260 to
   0.291, against a constant at 0.294 and the floor at 0.284.
-- The 132-feature randomised learner collapsed as badly as the two-feature one. Of its inputs,
-  only the absolute level moves with a gain offset, so it probably leans on loudness too. That is
-  my reading, not a result. Study
-  [vesselmix-v4](https://github.com/munimtechnologies/ml-competition-radar/blob/main/vessel-noise-zindi/PREREGISTRATION-vesselmix4.md)
-  (pre-registered, running) removes the absolute level from each learner to test it.
+- **It is not a gain problem.** After v3 I guessed that the 132-feature learner failed because it
+  leaned on loudness. v4 refuted that: the gain-invariant G1TI collapsed just as badly (0.372). Its
+  inputs ignore gain but still describe the background's shape and variability, which differ
+  between recorders, so an unfamiliar background looks like vessel energy.
+- **Calibrating the floor share is stable but does not travel.** G1F lost only 5% between IN and
+  OUT, but on the unseen recorder it did not beat the untrained floor (0.277 vs 0.272), and on one
+  Stellwagen recorder it was worse than the constant (0.303 vs 0.293).
 
 **What the contest page says (read 2026-11-10 through Zindi's public API):** the unlabelled
-training release holds records from ten South African monitoring sites. "The background periods
-used for the test are excluded from the training release." Test windows carry no station or
-timestamp, and "absolute pressure calibration has not been independently verified". The page does
-not say whether the test backgrounds come from the same ten sites. If they do, the contest is
-closer to IN (known recorders, unseen days), with ten recorders instead of three and no site label
-at test time. The rules forbid fitting or calibrating on test inputs but allow fixed per-window
-transformations, so gain-free features such as the floor share are allowed.
+training release holds records from ten South African monitoring sites. The test file holds 1,500
+synthetic examples of 375 values (25 bands x 15 minutes). "The background periods used for the
+test are excluded from the training release." Test windows carry no station or timestamp, and
+"absolute pressure calibration has not been independently verified". The page does not say whether
+the test backgrounds come from the same ten sites. If they do, the contest is closer to IN (known
+recorders, unseen days), with ten recorders instead of three and no site label at test time. The
+rules forbid fitting or calibrating on test inputs but allow fixed per-window transformations, so
+gain-free features such as the floor share are allowed. About 30% of test examples score the
+public leaderboard and 70% the private one.
 
 **Recipe:** find out whether the test windows come from the training recorders. If they do, use
-loudness. If you cannot tell, do not let a model see absolute level without also checking it on a
-held-out recorder. The untrained floor share is a safe fallback.
+loudness and the blend. If you cannot tell, removing gain-sensitive inputs is not enough: check
+every model on a held-out recorder, and keep the untrained floor share as the fallback. With ten
+training sites, pooling many recorders may shrink the unseen-recorder penalty; that is the next
+study, not yet a result.
 
 ## 7. Checklist for an entrant
 
@@ -140,13 +153,14 @@ held-out recorder. The untrained floor share is a safe fallback.
    and level above floor. Treat vessel spectral detail as a nuisance and randomise it.
 3. Validate twice: leave one vessel source out, and leave one background recorder out. Report RMSE
    and bias by target bin (s = 0, 0 to 0.5, s > 0.5), not just overall RMSE.
-4. Check whether the test windows' recorders and gains match the unlabelled training windows' before
-   relying on absolute level. A model can beat the constant by 20% on known recorders and lose to it
-   by 20% on an unseen one.
+4. Check whether the test windows' recorders match the unlabelled training windows' before
+   trusting any trained model. A model can beat the constant by 20% on known recorders and lose to
+   it by 20% on an unseen one, and gain-invariant features do not prevent that.
 5. A zero target does not mean a vessel-free background. In v1, backgrounds with a labelled ship
    drew higher predictions on windows with nothing added. Some of that error cannot be removed.
 6. Pre-register what you expect before each run, so a validation score you like can't quietly
-   become your model choice.
+   become your model choice. Two of my own post-hoc readings (v2's shape ablation, v3's loudness
+   explanation) were wrong, and only a pre-registered follow-up showed it.
 
 ## 8. Limits
 
@@ -156,8 +170,8 @@ held-out recorder. The untrained floor share is a safe fallback.
   and augmentation ranges guessed rather than tuned. Tuning a proxy without contest data overfits
   the proxy.
 - The held-out recorders differ in more than gain (depth, ships, biology, season), and the OUT
-  models trained on two recorders' backgrounds instead of three, so OUT is a harsh stand-in for a
-  gain shift.
+  models trained on two recorders' backgrounds instead of three, so OUT is harsher than a ten-site
+  contest is likely to be.
 - SanctSound vessel windows include their own site's ambient sound, so part of G0's advantage may
   be a site fingerprint.
 

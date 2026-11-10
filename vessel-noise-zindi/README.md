@@ -20,9 +20,10 @@ which cues carry over to new vessels and new recorders).
 | [vesselmix-v1](PREREGISTRATION-vesselmix.md) | How well do a constant, an untrained background floor and a learner trained on synthetic mixtures recover the added-vessel share? How much does it cost when training vessels come from a different site than test vessels? | [graded 2026-11-09](RESULTS-vesselmix.md): 6 of 7 held. Other-site learner only 8.4% below a constant (RMSE 0.269 vs 0.294); same-site learner 34.5% below (0.193). The error sits in vessel-dominated windows |
 | [vesselmix-v2](PREREGISTRATION-vesselmix2.md) | Can an entrant close that gap without knowing the organisers' vessels: no spectral-shape features, randomised vessel spectra, or loudness alone? | [graded 2026-11-10](RESULTS-vesselmix2.md): 6 of 7 held. Loudness + floor share alone (2 features) 20.4% below a constant (0.234), beating the 132-feature learner; randomised vessel spectra 16.3% below (0.246); dropping spectral shape (and level) hurt (0.319) |
 | [vesselmix-v3](PREREGISTRATION-vesselmix3.md) | Does the loudness cue survive a background recorder never seen in training, and does averaging the loudness and randomised-spectrum learners help? | [graded 2026-11-10](RESULTS-vesselmix3.md): 5 of 7 held. Known recorder: the average is best so far (0.225, 23.5% below a constant). Unseen recorder: every trained model is worse than the constant (0.359-0.374 vs 0.294); only the untrained floor keeps its edge (0.272) |
-| [vesselmix-v4](PREREGISTRATION-vesselmix4.md) | Do the learners keep their gain on an unseen recorder once the absolute level, the one input a gain offset moves, is removed? | pre-registered 2026-11-10, 7 predictions; queued |
+| [vesselmix-v4](PREREGISTRATION-vesselmix4.md) | Do the learners keep their gain on an unseen recorder once the absolute level, the one input a gain offset moves, is removed? | [graded 2026-11-10](RESULTS-vesselmix4.md): 5 of 7 held. No: the gain-invariant 131-feature learner still collapsed on the unseen recorder (0.372 vs constant 0.294), so the shift is not a gain shift. A learned floor-share calibration was stable (0.265 known, 0.277 unseen) but did not beat the untrained floor (0.272) |
+| [vesselmix-v5](PREREGISTRATION-vesselmix5.md) | Does training on more recorders (up to 16 of 21 SanctSound deployments) shrink the unseen-recorder penalty, and is the shift mainly between sites or between deployments? | pre-registered 2026-11-10, 7 predictions; queued |
 | [DATA-ACCESS.md](DATA-ACCESS.md) | Which vessel-recording sources can an entrant actually use? Access and licence for ONC, HearMyShip, SanctSound, DeepShip, ShipsEar and the VTUAD rebuild | checked 2026-11-09: ONC needs a token (HTTP 401), HearMyShip's data licence unconfirmed, SanctSound open with no account; VTUAD rebuild (CC BY 4.0, 525 clips) open on Zenodo. Update 2026-11-10: VTUAD's vessel clips are short (median 5 min; AIS interval median 3 min; only 7 of 487 reach the contest's 15-minute window) |
-| [WRITEUP-vessel.md](WRITEUP-vessel.md) | What should an entrant do, given all of the above? | version 1, 2026-11-10 |
+| [WRITEUP-vessel.md](WRITEUP-vessel.md) | What should an entrant do, given all of the above? | version 2, 2026-11-10 |
 
 Files:
 - `vessel_mix.py` 0.1.0: downloads 12 days of 1-minute SanctSound HMD spectra and ship detections
@@ -37,12 +38,17 @@ Files:
 - `vessel_mix4.py` 0.4.0: runs v3's analysis function unchanged (`fetch_base4.py` downloads v1-v3
   from commit 2c4e55b), reproduces v3's IN and OUT numbers, and adds two learners without the
   absolute level (G1F, G1TI).
-- `test_vessel_mix.py`, `test_vessel_mix2.py`, `test_vessel_mix3.py`, `test_vessel_mix4.py`:
+- `vessel_mix5.py` 0.5.0: treats deployments 01-07 of GR01, SB01 and SB03 as 21 background
+  recorders and retrains the v3/v4 learners on 1 to 16 of them for each held-out recorder
+  (`fetch_base5.py` downloads v1-v3 from commit 2c4e55b). About 1.4 GB of extra downloads.
+- `test_vessel_mix.py` to `test_vessel_mix5.py`:
   offline tests (band conversion, mixing, floor estimator, features, pools, augmentation, feature
   subsets, gain invariance, grading, a netCDF round trip, small synthetic end-to-end runs).
 - `wait_public.py`: refuses to start an analysis until its pre-registration is public.
 - `RESULTS-vesselmix-auto.md`, `results.json`, `RESULTS-vesselmix2-auto.md`, `results2.json`,
-  `RESULTS-vesselmix3-auto.md`, `results3.json`: machine output of v1 to v3.
+  `RESULTS-vesselmix3-auto.md`, `results3.json`, `RESULTS-vesselmix4-auto.md`, `results4.json`:
+  machine output of v1 to v4. `base_files4.json` and `prereg_public4.json`: v4's hash check of
+  the downloaded earlier code and its proof that the pre-registration was public first.
 
 Run: `pip install -r requirements.txt && python -m unittest -v test_vessel_mix test_vessel_mix2 test_vessel_mix3 test_vessel_mix4 && python vessel_mix.py --data-dir data --out-dir out && python vessel_mix2.py --data-dir data --out-dir out && python vessel_mix3.py --data-dir data --out-dir out && python vessel_mix4.py --data-dir data --out-dir out`
 (about 550 MB of downloads, reused by the later scripts).
@@ -57,6 +63,9 @@ Run: `pip install -r requirements.txt && python -m unittest -v test_vessel_mix t
    recorder, every trained model lost to the constant and the untrained floor share was best (v3).
    Find out whether the contest's test windows share recorders with its training windows before
    relying on level.
+4. Removing gain-sensitive inputs does not make a model safe on a new recorder (v4): a provably
+   gain-invariant learner collapsed just as badly, because recorders differ in background shape
+   and variability, not only in gain. Validate on a held-out recorder whatever your features are.
 
 Data credit: NOAA Office of National Marine Sanctuaries and U.S. Navy, SanctSound, NCEI (HMD
 product doi:10.25921/ymf8-5k59). Used as published, not redistributed here. Nothing in this folder
