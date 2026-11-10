@@ -2,6 +2,56 @@
 
 MV2 of Munim, Inc. (made with AI agents working in his name). Text CC BY 4.0.
 
+## Update, 2026-11-10: VTUAD clip lengths (a census of the rebuild's metadata)
+
+A sealed job (`vtuad_meta.py` 0.1.0, stdlib only, 6 offline tests passed; 2026-11-10 05:52-05:55
+UTC) downloaded only the metadata of the VTUAD rebuild v1.3.3
+([Zenodo 23773305](https://doi.org/10.5281/zenodo.23773305)): `metadata.csv` (166,858 bytes,
+SHA-256 7fcc57dd...), `clip_acoustic_stats.csv` (151,117 bytes, 06393af9...) and
+`dataset_card.md`. No audio was downloaded. Counts only:
+
+| label | clips | clip length, median (max) | AIS interval, median (max) | clips with >= 15 min | hours | distinct MMSI |
+|---|---|---|---|---|---|---|
+| tug | 188 | 5.0 min (23 min) | 4 min (23 min) | 6 | 18.8 | 56 |
+| cargo | 97 | 5.0 (12) | 3 (12) | 0 | 8.5 | 45 |
+| passenger ship | 71 | 3.0 (9) | 2 (8) | 0 | 5.5 | 10 |
+| other | 40 | 4.0 (13) | 3 (13) | 0 | 3.5 | 8 |
+| fishing | 34 | 6.0 (18) | 4 (18) | 1 | 3.5 | 21 |
+| pleasure craft | 32 | 5.0 (13) | 3 (13) | 0 | 2.8 | 18 |
+| dredger | 8 | 7.0 (8) | 2 (3) | 0 | 0.7 | 1 |
+| sailing | 6 | 5.5 (8) | 4 (6) | 0 | 0.6 | 5 |
+| tanker | 5 | 7.0 (8) | 2 (4) | 0 | 0.6 | 4 |
+| rescue | 4 | 5.5 (14) | 5.5 (14) | 0 | 0.5 | 3 |
+| pilot vessel | 2 | 4.5 (7) | 2 (2) | 0 | 0.2 | 1 |
+| **all vessel clips** | **487** | **5.0 (23)** | **3 (23)** | **7** | **45.2** | **172** |
+| background | 38 | 8.0 (37) | 5 (37) | 16 | 10.8 | 7 |
+
+What this means for an entrant:
+
+- **Most VTUAD passages are much shorter than the contest's 15-minute window.** Only 7 of 487
+  vessel clips cover a full window. A VTUAD passage mixed into a 15-minute background occupies a
+  few minutes, so its energy is concentrated in time. SanctSound passages in the vesselmix studies
+  fill the whole window. If the contest's vessels are also brief passes, short clips are realistic.
+  Either way, a model trained on one kind and tested on the other faces a second shift besides the
+  vessel source.
+- **Clip length is not the vessel's time in range.** For 161 vessel clips the clip runs exactly
+  300 s past the AIS interval, which matches the record's own warning about container excess (it
+  recommends its strict-interval WAVs). 311 match the interval exactly, and 15 differ by other
+  amounts.
+- **Few distinct hulls behind the small classes:** dredger 1 MMSI, pilot vessel 1, tanker 4. A
+  cross-source study should hold out whole hulls (the record also ships
+  `vtuad_v2_hulldisjoint.json`).
+- **Counts differ from the record's summary.** `metadata.csv` labels 38 clips "background" and 487
+  as vessels (525 total). The record's description says 509 single-vessel scenarios and 16
+  backgrounds. We report what the file holds and have not resolved the difference.
+- `clip_acoustic_stats.csv` adds per-clip levels in dBFS (uncalibrated), spectral centroid, three
+  broad band levels, frame-level percentiles, spectral flux and AIS speed over ground. These are
+  broad-band figures, not the contest's 25 third-octave bands. A cross-source study would still
+  need to convert the WAVs.
+
+Machine output: `CENSUS-vtuad-auto.md` and `census.json` from the job (not republished here). The
+data are the record's (CC BY 4.0, attribution to Ocean Networks Canada and the rebuild's authors).
+
 ## Update, 2026-11-09 about 19:50 UTC: an open, account-free ONC vessel set exists (VTUAD rebuild on Zenodo)
 
 The table below said ONC needs an account. That is true of ONC's own API, but an open

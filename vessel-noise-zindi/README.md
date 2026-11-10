@@ -11,12 +11,18 @@ unlabelled, so entrants have to build their own labelled mixtures from vessel re
 organisers don't supply. Zindi's data need an account, which MV2 does not have yet. So this folder
 asks the same question on NOAA/U.S. Navy SanctSound data, which anyone can download.
 
+**Start here:** [WRITEUP-vessel.md](WRITEUP-vessel.md) pulls the studies below into one guide for
+entrants (an identity that reduces the task to estimating the background, how to validate, and
+which cues carry over to new vessels and new recorders).
+
 | study / note | question | status |
 |---|---|---|
 | [vesselmix-v1](PREREGISTRATION-vesselmix.md) | How well do a constant, an untrained background floor and a learner trained on synthetic mixtures recover the added-vessel share? How much does it cost when training vessels come from a different site than test vessels? | [graded 2026-11-09](RESULTS-vesselmix.md): 6 of 7 held. Other-site learner only 8.4% below a constant (RMSE 0.269 vs 0.294); same-site learner 34.5% below (0.193). The error sits in vessel-dominated windows |
 | [vesselmix-v2](PREREGISTRATION-vesselmix2.md) | Can an entrant close that gap without knowing the organisers' vessels: no spectral-shape features, randomised vessel spectra, or loudness alone? | [graded 2026-11-10](RESULTS-vesselmix2.md): 6 of 7 held. Loudness + floor share alone (2 features) 20.4% below a constant (0.234), beating the 132-feature learner; randomised vessel spectra 16.3% below (0.246); dropping spectral shape (and level) hurt (0.319) |
-| [vesselmix-v3](PREREGISTRATION-vesselmix3.md) | Does the loudness cue survive a background recorder never seen in training, and does averaging the loudness and randomised-spectrum learners help? | pre-registered 2026-11-10, 7 predictions; queued |
-| [DATA-ACCESS.md](DATA-ACCESS.md) | Which vessel-recording sources can an entrant actually use? Access and licence for ONC, HearMyShip, SanctSound, DeepShip, ShipsEar and the VTUAD rebuild | checked 2026-11-09: ONC needs a token (HTTP 401), HearMyShip's data licence unconfirmed, SanctSound open with no account; update 19:50 UTC: an open CC BY 4.0 rebuild of VTUAD (ONC-derived, 525 AIS-labelled clips) is on Zenodo |
+| [vesselmix-v3](PREREGISTRATION-vesselmix3.md) | Does the loudness cue survive a background recorder never seen in training, and does averaging the loudness and randomised-spectrum learners help? | [graded 2026-11-10](RESULTS-vesselmix3.md): 5 of 7 held. Known recorder: the average is best so far (0.225, 23.5% below a constant). Unseen recorder: every trained model is worse than the constant (0.359-0.374 vs 0.294); only the untrained floor keeps its edge (0.272) |
+| [vesselmix-v4](PREREGISTRATION-vesselmix4.md) | Do the learners keep their gain on an unseen recorder once the absolute level, the one input a gain offset moves, is removed? | pre-registered 2026-11-10, 7 predictions; queued |
+| [DATA-ACCESS.md](DATA-ACCESS.md) | Which vessel-recording sources can an entrant actually use? Access and licence for ONC, HearMyShip, SanctSound, DeepShip, ShipsEar and the VTUAD rebuild | checked 2026-11-09: ONC needs a token (HTTP 401), HearMyShip's data licence unconfirmed, SanctSound open with no account; VTUAD rebuild (CC BY 4.0, 525 clips) open on Zenodo. Update 2026-11-10: VTUAD's vessel clips are short (median 5 min; AIS interval median 3 min; only 7 of 487 reach the contest's 15-minute window) |
+| [WRITEUP-vessel.md](WRITEUP-vessel.md) | What should an entrant do, given all of the above? | version 1, 2026-11-10 |
 
 Files:
 - `vessel_mix.py` 0.1.0: downloads 12 days of 1-minute SanctSound HMD spectra and ship detections
@@ -28,14 +34,17 @@ Files:
 - `vessel_mix3.py` 0.3.0: reuses both unchanged (`fetch_base.py` downloads them from commit
   9a2fb34), reproduces v2's G1L and G1T, and adds their average and a held-out background-site
   setting.
-- `test_vessel_mix.py`, `test_vessel_mix2.py`, `test_vessel_mix3.py`: offline tests (band
-  conversion, mixing, floor estimator, features, pools, augmentation, feature subsets, grading, a
-  netCDF round trip, small synthetic end-to-end runs).
+- `vessel_mix4.py` 0.4.0: runs v3's analysis function unchanged (`fetch_base4.py` downloads v1-v3
+  from commit 2c4e55b), reproduces v3's IN and OUT numbers, and adds two learners without the
+  absolute level (G1F, G1TI).
+- `test_vessel_mix.py`, `test_vessel_mix2.py`, `test_vessel_mix3.py`, `test_vessel_mix4.py`:
+  offline tests (band conversion, mixing, floor estimator, features, pools, augmentation, feature
+  subsets, gain invariance, grading, a netCDF round trip, small synthetic end-to-end runs).
 - `wait_public.py`: refuses to start an analysis until its pre-registration is public.
-- `RESULTS-vesselmix-auto.md`, `results.json`, `RESULTS-vesselmix2-auto.md`, `results2.json`:
-  machine output of v1 and v2.
+- `RESULTS-vesselmix-auto.md`, `results.json`, `RESULTS-vesselmix2-auto.md`, `results2.json`,
+  `RESULTS-vesselmix3-auto.md`, `results3.json`: machine output of v1 to v3.
 
-Run: `pip install -r requirements.txt && python -m unittest -v test_vessel_mix test_vessel_mix2 test_vessel_mix3 && python vessel_mix.py --data-dir data --out-dir out && python vessel_mix2.py --data-dir data --out-dir out && python vessel_mix3.py --data-dir data --out-dir out`
+Run: `pip install -r requirements.txt && python -m unittest -v test_vessel_mix test_vessel_mix2 test_vessel_mix3 test_vessel_mix4 && python vessel_mix.py --data-dir data --out-dir out && python vessel_mix2.py --data-dir data --out-dir out && python vessel_mix3.py --data-dir data --out-dir out && python vessel_mix4.py --data-dir data --out-dir out`
 (about 550 MB of downloads, reused by the later scripts).
 
 **Lessons so far for entrants:**
@@ -43,7 +52,11 @@ Run: `pip install -r requirements.txt && python -m unittest -v test_vessel_mix t
    vessels. With a source mismatch, v1's learner gave up most of its gain.
 2. When the target is the vessel's share of the window's energy, the window's loudness relative to
    its expected background carries over between vessel sources better than spectral detail does
-   (v2). Whether it survives an unseen recorder or gain is what v3 tests.
+   (v2).
+3. That loudness cue needs the test recorder to be one the model was trained on. On a held-out
+   recorder, every trained model lost to the constant and the untrained floor share was best (v3).
+   Find out whether the contest's test windows share recorders with its training windows before
+   relying on level.
 
 Data credit: NOAA Office of National Marine Sanctuaries and U.S. Navy, SanctSound, NCEI (HMD
 product doi:10.25921/ymf8-5k59). Used as published, not redistributed here. Nothing in this folder
