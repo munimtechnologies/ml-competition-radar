@@ -1,8 +1,9 @@
 # When you can't hear the organisers' ships: what carries over in the Underwater Vessel Noise Challenge
 
-Version 2, 2026-11-10 (version 1 the same day; version 2 adds study 4 in section 6). MV2 of
-Munim, Inc. (made with AI agents working in his name). Text CC BY 4.0; code Apache-2.0. Every
-number below comes from pre-registered studies on public NOAA/U.S. Navy SanctSound data in
+Version 3, 2026-11-11 (version 1 and 2 on 2026-11-10; version 3 adds study 5 in section 6 and
+changes its recipe). MV2 of Munim, Inc. (made with AI agents working in his name). Text CC BY 4.0;
+code Apache-2.0. Every number below comes from pre-registered studies on public NOAA/U.S. Navy
+SanctSound data in
 [vessel-noise-zindi](https://github.com/munimtechnologies/ml-competition-radar/tree/main/vessel-noise-zindi).
 No Zindi data were used, and nothing here is a contest submission.
 
@@ -16,7 +17,7 @@ builds labelled mixtures from vessel audio of their own, and the organisers' ves
 from those.
 
 The question that decides the leaderboard is therefore not "which model fits my mixtures best?"
-but "what does my model learn that still holds for vessels I have never heard?" Studies 3 and 4
+but "what does my model learn that still holds for vessels I have never heard?" Studies 3 to 5
 add a second question: what still holds on a recorder I have never heard?
 
 ## 2. An identity that changes the problem
@@ -40,7 +41,7 @@ consequences:
    absorbs vessel energy.
 
 I worked this out after the second study, from the mixing code. It was not a pre-registered
-prediction, but it explains the results of all four studies.
+prediction, but it explains the results of all five studies.
 
 ## 3. Validate on a held-out vessel source
 
@@ -87,18 +88,19 @@ the best cue that carries over between vessel sources, so G1S lost it along with
 result says nothing about shape on its own. **An ablation must remove one thing.** Study 4 does
 that (section 6).
 
-## 6. Every trained model breaks on a recorder you have never heard
+## 6. New recorders: train on many, and on similar sites
 
 The loudness cue needs to know the background's usual level. In v1 and v2 the test backgrounds
 came from the same three recorders as the training backgrounds (later days). The contest's levels
 are uncalibrated, so a recorder or gain difference between its training and test windows is
-plausible. Studies [vesselmix-v3](https://github.com/munimtechnologies/ml-competition-radar/blob/main/vessel-noise-zindi/RESULTS-vesselmix3.md)
-(5 of 7 pre-registered predictions held) and
-[vesselmix-v4](https://github.com/munimtechnologies/ml-competition-radar/blob/main/vessel-noise-zindi/RESULTS-vesselmix4.md)
-(5 of 7 held) scored every model twice on the same 3,000 test windows: IN, with training
-backgrounds from all three recorders, and OUT, retrained without any background from the test
-window's recorder. v4 added two learners that remove only the absolute level, the one input a gain
-offset moves; a unit test confirms a +10 dB shift leaves their predictions bit-for-bit unchanged.
+plausible.
+
+**Two training recorders are not enough (v3, v4).** Studies
+[vesselmix-v3](https://github.com/munimtechnologies/ml-competition-radar/blob/main/vessel-noise-zindi/RESULTS-vesselmix3.md)
+and [vesselmix-v4](https://github.com/munimtechnologies/ml-competition-radar/blob/main/vessel-noise-zindi/RESULTS-vesselmix4.md)
+(5 of 7 pre-registered predictions held in each) scored every model on the same 3,000 test
+windows: IN, with training backgrounds from all three recorders, and OUT, retrained without the
+test window's recorder.
 
 | estimator | IN RMSE | vs constant | OUT RMSE | vs constant |
 |---|---|---|---|---|
@@ -110,38 +112,52 @@ offset moves; a unit test confirms a +10 dB shift leaves their predictions bit-f
 | G1F = G1L without level (floor share only, learned) | 0.2647 | -10.1% | 0.2770 | -5.9% |
 | G1TI = G1T without level (131 gain-free features) | 0.2885 | -2.0% | 0.3719 | +26.3% |
 
-- **Recorder known:** averaging the two learners is the best model found without same-site
-  vessels. It closes 58% of the gap between the other-site and same-site learners. The absolute
-  level carries much of that: without it, the 131-feature learner falls from 0.246 to 0.289.
-- **Recorder unseen:** every trained model with more than one input is worse than the constant.
-  On windows with nothing added, they predict a vessel where there is none (mean error +0.41 to
-  +0.45). Holding out Gray's Reef, whose backgrounds are 6-12 dB louder than Stellwagen's, was the
-  worst case (G1L 0.469), but even between the two Stellwagen recorders G1L fell from 0.260 to
-  0.291, against a constant at 0.294 and the floor at 0.284.
-- **It is not a gain problem.** After v3 I guessed that the 132-feature learner failed because it
-  leaned on loudness. v4 refuted that: the gain-invariant G1TI collapsed just as badly (0.372). Its
-  inputs ignore gain but still describe the background's shape and variability, which differ
-  between recorders, so an unfamiliar background looks like vessel energy.
-- **Calibrating the floor share is stable but does not travel.** G1F lost only 5% between IN and
-  OUT, but on the unseen recorder it did not beat the untrained floor (0.277 vs 0.272), and on one
-  Stellwagen recorder it was worse than the constant (0.303 vs 0.293).
+On the unseen recorder every multi-input model predicted a vessel where there was none (mean error
++0.41 to +0.45 on windows with nothing added). v4 showed this is **not a gain problem**: G1TI,
+unaffected by a gain offset by construction (a unit test checks +10 dB), collapsed just as badly.
+Recorders differ in the shape and variability of their backgrounds, not only in gain.
+
+**Many recorders mostly fix it (v5).** Study
+[vesselmix-v5](https://github.com/munimtechnologies/ml-competition-radar/blob/main/vessel-noise-zindi/RESULTS-vesselmix5.md)
+(6 of 7 held) treated deployments 01-07 of the three sites as 21 recorders. For each held-out
+recorder it retrained the same learners on n other recorders (Dn), on recorders of the other two
+sites only (SALL), on the other deployments of the same site only (SAME), or on 15 others plus
+the test recorder's own earlier days (IN16). 4,200 test mixtures:
+
+| training backgrounds | C0 | F1 | G1F | G1L | B |
+|---|---|---|---|---|---|
+| D1 (1 other recorder) | 0.296 | 0.286 | 0.292 | 0.362 | 0.321 |
+| D4 | 0.296 | 0.286 | 0.277 | 0.295 | 0.251 |
+| D16 (16 other recorders) | 0.296 | 0.286 | 0.271 | 0.246 | **0.237** |
+| SALL (14, other two sites only) | 0.296 | 0.286 | 0.276 | 0.308 | 0.307 |
+| SAME (6, same site only) | 0.296 | 0.286 | 0.268 | 0.260 | 0.233 |
+| IN16 (test recorder heard) | 0.297 | 0.286 | 0.269 | 0.244 | 0.230 |
+
+- With 16 other recorders, B on an unseen recorder was 20.0% below the constant and close to its
+  score with the test recorder heard (0.237 vs 0.230).
+- Without the test recorder's site, it lost to the constant again (SALL 0.307). The failure sat at
+  Gray's Reef (B 0.367 vs constant 0.293), whose backgrounds are about 10 dB louder than any
+  Stellwagen recorder's. The Stellwagen recorders were fine under SALL (B 0.270 and 0.275 vs the
+  floor's 0.308 and 0.294), because the other Stellwagen site was in training.
+- The learned floor share G1F beat the untrained floor at every site under SALL (GR01 0.246 vs
+  0.252), so it is the safest trained model found.
 
 **What the contest page says (read 2026-11-10 through Zindi's public API):** the unlabelled
 training release holds records from ten South African monitoring sites. The test file holds 1,500
 synthetic examples of 375 values (25 bands x 15 minutes). "The background periods used for the
 test are excluded from the training release." Test windows carry no station or timestamp, and
 "absolute pressure calibration has not been independently verified". The page does not say whether
-the test backgrounds come from the same ten sites. If they do, the contest is closer to IN (known
-recorders, unseen days), with ten recorders instead of three and no site label at test time. The
-rules forbid fitting or calibrating on test inputs but allow fixed per-window transformations, so
-gain-free features such as the floor share are allowed. About 30% of test examples score the
-public leaderboard and 70% the private one.
+the test backgrounds come from the same ten sites. The rules forbid fitting or calibrating on test
+inputs but allow fixed per-window transformations, so gain-free features such as the floor share
+are allowed. About 30% of test examples score the public leaderboard and 70% the private one.
 
-**Recipe:** find out whether the test windows come from the training recorders. If they do, use
-loudness and the blend. If you cannot tell, removing gain-sensitive inputs is not enough: check
-every model on a held-out recorder, and keep the untrained floor share as the fallback. With ten
-training sites, pooling many recorders may shrink the unseen-recorder penalty; that is the next
-study, not yet a result.
+**Recipe:** pool backgrounds from all ten training sites and use the blend of the loudness and
+randomised-spectrum learners. If the test backgrounds come from those sites, this proxy expects a
+gain of about 20% over a constant even for unseen periods or deployments. If a test site may be
+unlike every training site (much louder or quieter, a different habitat), a trained multi-input
+model can still lose to a constant; keep the floor share (learned on all sites, or untrained) as
+the fallback. Asking the organisers whether test backgrounds come from the ten training sites is
+worth more than any further tuning.
 
 ## 7. Checklist for an entrant
 
@@ -151,11 +167,11 @@ study, not yet a result.
    the observed ones.
 2. Spend your modelling effort on the background: per-band floors, per-recorder typical levels,
    and level above floor. Treat vessel spectral detail as a nuisance and randomise it.
-3. Validate twice: leave one vessel source out, and leave one background recorder out. Report RMSE
-   and bias by target bin (s = 0, 0 to 0.5, s > 0.5), not just overall RMSE.
-4. Check whether the test windows' recorders match the unlabelled training windows' before
-   trusting any trained model. A model can beat the constant by 20% on known recorders and lose to
-   it by 20% on an unseen one, and gain-invariant features do not prevent that.
+3. Validate three ways: leave one vessel source out, leave one recorder out, and leave one whole
+   site out. Report RMSE and bias by target bin (s = 0, 0 to 0.5, s > 0.5), not just overall RMSE.
+4. Train on backgrounds from as many recorders and sites as you have. In the proxy, two recorders
+   gave models worse than a constant on a new one; sixteen gave a 20% gain. Gain-invariant
+   features alone do not prevent the collapse.
 5. A zero target does not mean a vessel-free background. In v1, backgrounds with a labelled ship
    drew higher predictions on windows with nothing added. Some of that error cannot be removed.
 6. Pre-register what you expect before each run, so a validation score you like can't quietly
@@ -169,16 +185,15 @@ study, not yet a result.
 - Two vessel folds, one learner (HistGradientBoostingRegressor), one seed, one share distribution,
   and augmentation ranges guessed rather than tuned. Tuning a proxy without contest data overfits
   the proxy.
-- The held-out recorders differ in more than gain (depth, ships, biology, season), and the OUT
-  models trained on two recorders' backgrounds instead of three, so OUT is harsher than a ten-site
-  contest is likely to be.
+- Only three sites, two on the same bank, so v5's "unseen site" case has little site diversity in
+  training; ten contest sites likely cover more. Deployments differ in season as well as
+  instrument, and the two cannot be separated.
 - SanctSound vessel windows include their own site's ambient sound, so part of G0's advantage may
   be a site fingerprint.
 
 Reproduce: each study's `vessel_mix*.py`, offline tests and `wait_public.py` (which refuses to run
 an analysis before its pre-registration is public) are in the folder above. Later studies load
-earlier code unchanged from a pinned commit, and each one first reproduces the previous study's
-numbers exactly.
+earlier code unchanged from a pinned commit and check it by SHA-256.
 
 Data credit: NOAA Office of National Marine Sanctuaries and U.S. Navy, SanctSound, NCEI (HMD
 product doi:10.25921/ymf8-5k59). Used as published, not redistributed.
