@@ -2,8 +2,20 @@
 
 MV2 of Munim, Inc. (mv2@munimtech.com). Made with AI agents working in his name. Text is CC BY 4.0 and code
 is Apache-2.0. Everything here comes from public pages and files, read 2026-11-10 between 16:30 and 17:00 UTC,
-with an addendum read between 20:45 and 21:15 UTC and study results from 2026-11-11 (marked below). The
-challenge opens 2026-11-13 12:00 UTC, and the rules may change before then.
+with an addendum read between 20:45 and 21:15 UTC, study results from 2026-11-11 and a scoring analysis read
+2026-11-11 between 12:10 and 12:40 UTC (marked below). The challenge opens 2026-11-13 12:00 UTC, and the rules
+may change before then.
+
+## New (2026-11-11 ~12:40 UTC): the scoring rule, and why short prompts win
+
+The challenge's pipeline repository [`Znbne/telco-retrieve`](https://github.com/Znbne/telco-retrieve) is now
+public (Apache-2.0; read at commit `075feaa3`). Its scorer is **Overall = 0.7 x Accuracy + 0.3 x Token
+efficiency**, with token efficiency = 100 x 2000 / (2000 + mean `input_prompt` tokens, `cl100k_base`), an 80%
+accuracy floor and a 4,096-token prompt cap. The weights and the 2,000 baseline are marked provisional.
+
+On that formula, 80% accuracy with 300-token prompts (82.09) beats 95% with 2,000-token prompts (81.50), and
+going from 300 to 2,000 mean tokens has to buy 15.8 accuracy points to break even. Details, the full table and
+what it implies for retrieval design: [SCORING.md](SCORING.md); calculator: [score_tradeoff.py](score_tradeoff.py).
 
 ## Result (2026-11-11): the default index's passages carry the query instruction
 
@@ -20,7 +32,9 @@ and the plain encoding), and 13 of those 16 are chunks exactly 254 characters lo
 [PREREGISTRATION-embcheck2.md](PREREGISTRATION-embcheck2.md) tests whether those chunks crowd the top 10 for
 300 public 3GPP questions (GSMA's Open Telco TeleQnA set), and whether encoding questions without the
 instruction avoids it. Code: [telco_embcheck2.py](telco_embcheck2.py) with offline tests in
-[test_telco_embcheck2.py](test_telco_embcheck2.py).
+[test_telco_embcheck2.py](test_telco_embcheck2.py). (2026-11-11: the starter kit's default `otel-0.6b` setup
+encodes questions with plain `encode()`, so they get the same default prompt as the passages; that is
+embcheck-2's "Q" setting.)
 
 ## The contest (from Zindi's public API)
 
@@ -42,18 +56,19 @@ instruction avoids it. Code: [telco_embcheck2.py](telco_embcheck2.py) with offli
    `farbodtavakkoli/OTel-Embedding-0.6B` according to its own `ingest.log`. That repo id now resolves to
    `OTel-Embedding-600M`, a fine-tune of `Qwen/Qwen3-Embedding-0.6B` with 1,024 dimensions. None of the 18
    base cells is labelled as built with the 300M OTel model. The closest, `embeddinggemma-300m-fp32`, is named
-   after the base Gemma embedder.
+   after the base Gemma embedder. (2026-11-11: the starter kit's challenge profile also defaults to
+   `otel-0.6b`, and its registry lists `otel-300m` with 1,024 dimensions.)
 2. **Public/private split.** The summary says about 30/70, the full rules about 20/80.
 3. **Team size.** The rules say up to 4 members. The API metadata says 3 and `allow_teams: false`.
-4. **Metric.** The API's metric field is `character_error_rate`, while the text describes an accuracy score
-   with token efficiency. No formula is published yet.
-5. **Pipeline code and questions.** `Znbne/telco-retrieve` (the `open-telco-rag` package the indexes were
-   built with) returns 404 on GitHub (checked again 2026-11-10 ~21:00 UTC). The Hugging Face collection linked
-   from the contest page returns 401, and so does `GSMA/telco-retrieve-QnA`. All three are probably private
-   until launch. No `Test.csv` or question set is public yet.
+4. **Metric.** *Resolved 2026-11-11 by the starter kit:* 0.7 x accuracy + 0.3 x token efficiency
+   (provisional), see [SCORING.md](SCORING.md). Zindi's API metric field still reads `character_error_rate`.
+5. **Pipeline code and questions.** *Code resolved 2026-11-11:* `Znbne/telco-retrieve` is public
+   (Apache-2.0). The questions are not: `GSMA/telco-retrieve-QnA` and the Hugging Face collection still return
+   401. The kit's guide names `Test_public.csv` (100 questions, columns `ID,question,options`, no answers) and a
+   `Reference.csv` (`ID,answer`).
 6. **Prize pool.** ITU's AI for Good event page gives the pool as €25,000, while Zindi gives $20,000. ITU
    lists a launch webinar on 13 November 2026 at 14:00 CET.
-7. **Query instruction on passages** (new, 2026-11-11): see the result above.
+7. **Query instruction on passages** (2026-11-11): see the result above.
 
 ## The prebuilt indexes (`GSMA/telco-retrieve-chunks`, folder `telcoretrievechallenge/`)
 
@@ -95,6 +110,8 @@ collection loads. This is noted here, not claimed as a defect.
 
 ## Files
 
+- `SCORING.md`, `score_tradeoff.py`, `test_score_tradeoff.py` (2026-11-11): the provisional scoring rule and
+  its arithmetic (standard library only).
 - `telco_embcheck.py` 0.1.0, `test_telco_embcheck.py`, `requirements.txt`: embcheck-1.
 - `embcheck1.json`, `RESULTS-embcheck1-auto.md`, `prereg_public_embcheck1.json`: its machine output and its
   proof that the pre-registration was public first.
