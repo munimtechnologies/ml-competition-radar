@@ -2,8 +2,25 @@
 
 MV2 of Munim, Inc. (mv2@munimtech.com). Made with AI agents working in his name. Text is CC BY 4.0 and code
 is Apache-2.0. Everything here comes from public pages and files, read 2026-11-10 between 16:30 and 17:00 UTC,
-with an addendum read between 20:45 and 21:15 UTC (marked below). The challenge opens 2026-11-13 12:00 UTC, and
-the rules may change before then.
+with an addendum read between 20:45 and 21:15 UTC and study results from 2026-11-11 (marked below). The
+challenge opens 2026-11-13 12:00 UTC, and the rules may change before then.
+
+## Result (2026-11-11): the default index's passages carry the query instruction
+
+[RESULTS-embcheck1.md](RESULTS-embcheck1.md), pre-registered in
+[PREREGISTRATION-embcheck1.md](PREREGISTRATION-embcheck1.md): all 100 randomly sampled stored vectors of the
+suggested starting cell `text_baseline/otel-0.6b` match their passage encoded *with* the OTel embedder's query
+instruction, and none match the plain encoding. All 40 sampled vectors of the base-model control cell
+`qwen3-embedding-0.6b` match the plain encoding. 3 of 5 predictions held (E2-E4); E1 failed as worded
+(`max_elements` is 2,097,152, though the graph does hold 1,064,960 vectors, fewer than the 1,072,821 chunks)
+and E5 failed (the instruction moves most passages only a little, median cosine 0.962).
+
+For most passages the effect is small. For 16 of 100 it is large (cosine 0.51-0.67 between the stored vector
+and the plain encoding), and 13 of those 16 are chunks exactly 254 characters long. Next:
+[PREREGISTRATION-embcheck2.md](PREREGISTRATION-embcheck2.md) tests whether those chunks crowd the top 10 for
+300 public 3GPP questions (GSMA's Open Telco TeleQnA set), and whether encoding questions without the
+instruction avoids it. Code: [telco_embcheck2.py](telco_embcheck2.py) with offline tests in
+[test_telco_embcheck2.py](test_telco_embcheck2.py).
 
 ## The contest (from Zindi's public API)
 
@@ -36,6 +53,7 @@ the rules may change before then.
    until launch. No `Test.csv` or question set is public yet.
 6. **Prize pool.** ITU's AI for Good event page gives the pool as €25,000, while Zindi gives $20,000. ITU
    lists a launch webinar on 13 November 2026 at 14:00 CET.
+7. **Query instruction on passages** (new, 2026-11-11): see the result above.
 
 ## The prebuilt indexes (`GSMA/telco-retrieve-chunks`, folder `telcoretrievechallenge/`)
 
@@ -68,32 +86,17 @@ not apply.
 - **One label to ignore.** The first check is named `chunk_count_is_1086324` and reads `true`, while every count
   in the same report is 1,072,821 (13,503 fewer). The name looks stale; the counts themselves agree with each
   other.
-- **The command shows no prompt flag.** Neither `command.txt` passes anything about query or document prompts,
-  so they do not settle the open question below.
+- **The command shows no prompt flag.** Neither `command.txt` passes anything about query or document prompts.
 
-## Open question under test: embcheck-1
+The persisted HNSW graph of the default cell holds 1,064,960 vectors (embcheck-1 read its header: exactly
+65 x 16,384), fewer than its 1,072,821 chunks. The verification report counts 1,072,821 Chroma ids in SQLite,
+so the remaining 7,861 are most likely held in Chroma's write-ahead queue and added to the graph when the
+collection loads. This is noted here, not claimed as a defect.
 
-The OTel embedder's sentence-transformers config sets `default_prompt_name = "Retrieval-query"`. Code that
-calls `model.encode(passages)` without a prompt name therefore adds the query instruction to every passage.
-This is a known trap; see sentence-transformers PRs #4095 and #4110. The default cell's ingest log prints the
-library's notice about this default. The notice alone does not prove that passages were prefixed, and the
-ingest code is not public.
+## Files
 
-[PREREGISTRATION-embcheck1.md](PREREGISTRATION-embcheck1.md) tests it from the stored vectors themselves:
-- It reads 100 random vectors from the default cell's HNSW file with HTTP range requests.
-- It looks up their text and re-encodes each passage on CPU with and without the instruction.
-- It runs the same check on the base-model cell `qwen3-embedding-0.6b` as a control.
-
-Code: [telco_embcheck.py](telco_embcheck.py), with offline tests in
-[test_telco_embcheck.py](test_telco_embcheck.py). Results will be added here when the job finishes.
-
-A note on timing: the pre-registration was written on 2026-11-10 before 16:40 UTC. Our first attempt to
-publish it, at 16:40 UTC, failed with a GitHub HTTP 504, so it was sent again unchanged about 21:15 UTC. The job
-had not started by then: it was still waiting in the compute queue, and it does not read any stored vector until
-the public copy matches the local one byte for byte.
-
-The same file sizes also show something about the default cell's HNSW graph. `data_level0.bin` has room for
-1,064,960 vectors (at 4,236 bytes each), fewer than its 1,072,821 chunks. The verification report (read after
-the pre-registration was written) counts 1,072,821 Chroma ids in SQLite, so the remaining ~7,900 are most likely
-held in Chroma's write-ahead queue and added to the graph when the collection loads. This is noted here, not
-claimed as a defect; embcheck-1's E1 only reads the persisted header.
+- `telco_embcheck.py` 0.1.0, `test_telco_embcheck.py`, `requirements.txt`: embcheck-1.
+- `embcheck1.json`, `RESULTS-embcheck1-auto.md`, `prereg_public_embcheck1.json`: its machine output and its
+  proof that the pre-registration was public first.
+- `telco_embcheck2.py` 0.2.0, `test_telco_embcheck2.py`, `fetch_base_embcheck2.py`, `wait_public.py`:
+  embcheck-2 (it downloads `telco_embcheck.py` unchanged from commit 4717478).
