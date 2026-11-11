@@ -1,17 +1,22 @@
 # Copyright 2026 Munim, Inc. Licensed under the Apache License, Version 2.0 (Apache-2.0).
 # MV2 of Munim, Inc. (mv2@munimtech.com). Made with AI agents working in his name.
-"""Arithmetic of TelcoRetrieve's provisional overall score (Zindi, ITU and GSMA).
+"""Arithmetic of TelcoRetrieve's overall score (Zindi, ITU and GSMA).
 
-Mirrors the starter kit's open_telco_rag/challenge/metrics (Znbne/telco-retrieve,
-commit 075feaa3, Apache-2.0), read 2026-11-11:
+Version 2 (2026-11-11 ~18:30 UTC). The challenge docs in the starter kit
+(Znbne/telco-retrieve, Apache-2.0, docs/challenge/README.md at commit a9b61be6,
+2026-11-11 16:01 UTC) now state:
 
-    TokenEfficiency = 100 * (2000 * N) / (2000 * N + sum of input_prompt tokens)
-                    = 100 * 2000 / (2000 + mean input_prompt tokens)
-    Overall         = 0.7 * Accuracy + 0.3 * TokenEfficiency     (weights "provisional")
-    Accuracy below 80 is "not eligible for code evaluation"; any prompt over 4096 tokens
-    invalidates the submission. The 2000 baseline is marked "proposed, not confirmed".
+    Score = 0.7 x accuracy + 0.3 x token efficiency,
+    token efficiency = 100 x B / (B + T), B = 850 tokens per question,
+    T = total prompt tokens (cl100k_base); minimum accuracy 80%;
+    every input_prompt at most 4,096 tokens.
 
-Standard library only. Run: python score_tradeoff.py [--json]
+The kit's own scorer code (open_telco_rag/challenge/metrics/token_efficiency.py)
+still carries the earlier 2000 marked "proposed, not confirmed". With B and T both
+taken over all questions, efficiency = 100 x B / (B + mean prompt tokens).
+The default baseline here is 850; pass --baseline 2000 for the earlier value.
+
+Standard library only. Run: python score_tradeoff.py [--json] [--baseline N]
 """
 from __future__ import annotations
 
@@ -20,7 +25,8 @@ import sys
 
 WEIGHT_ACCURACY = 0.7
 WEIGHT_TOKEN_EFFICIENCY = 0.3
-BASELINE_TOKENS_PER_QUESTION = 2000
+BASELINE_TOKENS_PER_QUESTION = 850
+EARLIER_BASELINE_TOKENS_PER_QUESTION = 2000
 MAX_PROMPT_TOKENS = 4096
 MIN_ACCURACY = 80.0
 
@@ -50,7 +56,7 @@ def token_efficiency_from_counts(counts, baseline: float = BASELINE_TOKENS_PER_Q
 def overall(accuracy: float, mean_tokens: float,
             w_acc: float = WEIGHT_ACCURACY, w_eff: float = WEIGHT_TOKEN_EFFICIENCY,
             baseline: float = BASELINE_TOKENS_PER_QUESTION) -> float:
-    """Provisional overall score for an accuracy (0-100) and a mean prompt length."""
+    """Overall score for an accuracy (0-100) and a mean prompt length."""
     if not 0 <= accuracy <= 100:
         raise ValueError("accuracy is a percentage")
     return w_acc * accuracy + w_eff * token_efficiency(mean_tokens, baseline)
@@ -74,36 +80,54 @@ ACCURACIES = (80, 85, 90, 95)
 TOKENS = (100, 300, 600, 1000, 2000, 3000)
 
 
-def report() -> dict:
-    grid = [{"accuracy": a, "mean_tokens": t, "overall": round(overall(a, t), 3)}
+def report(baseline: float = BASELINE_TOKENS_PER_QUESTION) -> dict:
+    grid = [{"accuracy": a, "mean_tokens": t, "overall": round(overall(a, t, baseline=baseline), 3)}
             for a in ACCURACIES for t in TOKENS]
-    effs = {t: round(token_efficiency(t), 3) for t in TOKENS}
+    effs = {t: round(token_efficiency(t, baseline), 3) for t in TOKENS}
     pairs = [(100, 300), (300, 600), (300, 1000), (300, 2000), (1000, 2000)]
-    breakeven = [{"from": f, "to": t, "accuracy_points": round(breakeven_accuracy_gain(f, t), 3)}
+    breakeven = [{"from": f, "to": t,
+                  "accuracy_points": round(breakeven_accuracy_gain(f, t, baseline=baseline), 3)}
                  for f, t in pairs]
-    marginal = {t: round(marginal_cost_per_100_tokens(t), 3) for t in TOKENS}
+    marginal = {t: round(marginal_cost_per_100_tokens(t, baseline=baseline), 3) for t in TOKENS}
     return {"weights": [WEIGHT_ACCURACY, WEIGHT_TOKEN_EFFICIENCY],
-            "baseline_tokens_per_question": BASELINE_TOKENS_PER_QUESTION,
+            "baseline_tokens_per_question": baseline,
             "token_efficiency": effs, "overall_grid": grid,
             "breakeven_accuracy_gain": breakeven,
             "accuracy_points_per_100_more_tokens": marginal}
 
 
+def parse_baseline(argv) -> float:
+    if "--baseline" in argv:
+        i = argv.index("--baseline")
+        if i + 1 >= len(argv):
+            raise ValueError("--baseline needs a number")
+        value = float(argv[i + 1])
+        if value <= 0:
+            raise ValueError("baseline must be > 0")
+        return value
+    return BASELINE_TOKENS_PER_QUESTION
+
+
 def main(argv) -> int:
-    rep = report()
+    baseline = parse_baseline(argv)
+    rep = report(baseline)
     if "--json" in argv:
         print(json.dumps(rep, indent=1))
         return 0
+    print("baseline B = %g tokens per question" % baseline)
     print("mean prompt tokens -> token efficiency")
     for t, e in rep["token_efficiency"].items():
         print("  %5d -> %.3f" % (t, e))
     print("overall score (rows: accuracy; columns: mean prompt tokens)")
     print("  acc  " + " ".join("%8d" % t for t in TOKENS))
     for a in ACCURACIES:
-        print("  %3d  " % a + " ".join("%8.3f" % overall(a, t) for t in TOKENS))
+        print("  %3d  " % a + " ".join("%8.3f" % overall(a, t, baseline=baseline) for t in TOKENS))
     print("accuracy points a longer prompt must add to break even")
     for row in rep["breakeven_accuracy_gain"]:
         print("  %5d -> %5d tokens: %.3f" % (row["from"], row["to"], row["accuracy_points"]))
+    print("accuracy points that 100 more mean tokens cost")
+    for t, m in rep["accuracy_points_per_100_more_tokens"].items():
+        print("  at %5d tokens: %.3f" % (t, m))
     return 0
 
 
