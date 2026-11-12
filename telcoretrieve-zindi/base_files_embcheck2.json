@@ -1,0 +1,11 @@
+{
+ "commit": "471747822d083dc65472dc3abc584a881ec04b8e",
+ "files": {
+  "telco_embcheck.py": {
+   "bytes": 19623,
+   "sha256": "c5fb4becd6dac95853e38a55b5ee3ac23fdf626175160ccbbe141899a5a1defc"
+  }
+ },
+ "telco_embcheck_version": "0.1.0",
+ "ok": true
+}

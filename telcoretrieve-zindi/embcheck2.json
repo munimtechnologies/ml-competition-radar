@@ -1,0 +1,601 @@
+{
+ "version": "0.2.0",
+ "base_version": "0.1.0",
+ "seed": 20261111,
+ "k": 10,
+ "dataset_revision": "2ec07608ee2a77a59a3f5995ca3c10e9cba4c976",
+ "started_utc": "2026-11-12T13:57:51Z",
+ "questions": {
+  "repo": "GSMA/ot-lite",
+  "revision": "1c0f2eac3ad0baa29704b147a95fea283b2906c7",
+  "file": "test_teleqna.json",
+  "sha256": "3bbb71301dd7a2228a8f42d4ca48c100fd57cbbb80b2e22749d5efe86ae31b5a",
+  "tagged_3gpp": 191,
+  "used": 191
+ },
+ "otel": {
+  "cell": "otel-0.6b",
+  "model": "farbodtavakkoli/OTel-Embedding-600M",
+  "model_revision": "f7755f8465599e0867a91a9c2d75a53d4f030ac8",
+  "header": {
+   "max_elements": 2097152,
+   "cur_element_count": 1064960,
+   "size_data_per_element": 4236
+  },
+  "block_starts": [
+   87750,
+   106000,
+   151000,
+   154750,
+   165500,
+   178250,
+   225250,
+   226250,
+   239500,
+   271750,
+   289750,
+   320500,
+   340750,
+   341750,
+   371750,
+   400500,
+   407750,
+   414750,
+   486250,
+   513000,
+   513250,
+   548500,
+   557250,
+   588750,
+   622000,
+   642750,
+   646000,
+   707250,
+   742000,
+   742750,
+   851000,
+   870250,
+   910000,
+   938500,
+   953750,
+   959250,
+   964000,
+   971250,
+   978000,
+   993250
+  ],
+  "metadata_fetch": "downloaded",
+  "label_map_source": "label_to_id",
+  "fts_fetch": "downloaded",
+  "text_lookup": {
+   "table": "bm25_index",
+   "id_column": "doc_id",
+   "text_column": "text"
+  },
+  "sampled": 10000,
+  "resolved": 10000,
+  "base_rates": {
+   "L254": 0.0829,
+   "SHORT": 0.296,
+   "LONG": 0.3681
+  },
+  "chars_quantiles": {
+   "0.05": 132.0,
+   "0.25": 254.0,
+   "0.5": 405.0,
+   "0.75": 629.0,
+   "0.95": 929.0499999999993
+  },
+  "prompts": {
+   "default_prompt_name": "Retrieval-query",
+   "query_prompt_name": "Retrieval-query",
+   "query_prompt": "Instruct: Given a telecom domain query, retrieve relevant passages that answer the query\nQuery:",
+   "document_prompt": "",
+   "dtype": "torch.bfloat16",
+   "sentence_transformers": "5.7.0",
+   "torch": "2.15.0+cpu"
+  },
+  "encode_seconds": 503.8,
+  "affinity": {
+   "L254": 0.46156823785583634,
+   "SHORT": 0.1969597896523681,
+   "LONG": 0.0891885258856501,
+   "all": 0.12159101014440565
+  },
+  "hubs": {
+   "Q": {
+    "L254": {
+     "slots": 1910,
+     "base_rate": 0.0829,
+     "topk_share": 0.0010471204188481676,
+     "ratio": 0.012631126885985134,
+     "any_in_topk": 0.010471204188481676,
+     "top1_share": 0.005235602094240838,
+     "n10_skew": 4.449479582862975,
+     "n10_max": 9,
+     "top1pct_slot_share": 0.19005235602094242,
+     "never_retrieved": 0.861
+    },
+    "SHORT": {
+     "slots": 1910,
+     "base_rate": 0.296,
+     "topk_share": 0.20523560209424083,
+     "ratio": 0.6933635205886515,
+     "any_in_topk": 0.8429319371727748,
+     "top1_share": 0.23036649214659685,
+     "n10_skew": 4.449479582862975,
+     "n10_max": 9,
+     "top1pct_slot_share": 0.19005235602094242,
+     "never_retrieved": 0.861
+    }
+   },
+   "D": {
+    "L254": {
+     "slots": 1910,
+     "base_rate": 0.0829,
+     "topk_share": 0.0020942408376963353,
+     "ratio": 0.025262253771970267,
+     "any_in_topk": 0.020942408376963352,
+     "top1_share": 0.005235602094240838,
+     "n10_skew": 3.714300958957624,
+     "n10_max": 6,
+     "top1pct_slot_share": 0.17591623036649215,
+     "never_retrieved": 0.8568
+    },
+    "SHORT": {
+     "slots": 1910,
+     "base_rate": 0.296,
+     "topk_share": 0.1905759162303665,
+     "ratio": 0.6438375548323192,
+     "any_in_topk": 0.8429319371727748,
+     "top1_share": 0.193717277486911,
+     "n10_skew": 3.714300958957624,
+     "n10_max": 6,
+     "top1pct_slot_share": 0.17591623036649215,
+     "never_retrieved": 0.8568
+    }
+   }
+  },
+  "top_hubs_Q": [
+   {
+    "internal_id": 87793,
+    "chunk_id": "Rel-19/23_series/23288-j20.md::otel-0.6b::1113",
+    "chars": 187,
+    "n10": 9,
+    "instruction_cos": 0.0547359781753147
+   },
+   {
+    "internal_id": 87805,
+    "chunk_id": "Rel-19/23_series/23288-j20.md::otel-0.6b::1530",
+    "chars": 247,
+    "n10": 8,
+    "instruction_cos": 0.0706109084542889
+   },
+   {
+    "internal_id": 106063,
+    "chunk_id": "Rel-19/24_series/24390-j00.md::otel-0.6b::26",
+    "chars": 504,
+    "n10": 8,
+    "instruction_cos": 0.13019953431036269
+   },
+   {
+    "internal_id": 106082,
+    "chunk_id": "Rel-19/24_series/24301-j20.md::otel-0.6b::228",
+    "chars": 761,
+    "n10": 7,
+    "instruction_cos": 0.19929191343763702
+   },
+   {
+    "internal_id": 87944,
+    "chunk_id": "Rel-19/23_series/23288-j20.md::otel-0.6b::1172",
+    "chars": 632,
+    "n10": 6,
+    "instruction_cos": 0.04402166306046674
+   },
+   {
+    "internal_id": 271979,
+    "chunk_id": "Rel-19/29_series/29078-j00.md::otel-0.6b::964",
+    "chars": 967,
+    "n10": 6,
+    "instruction_cos": 0.20346110785442295
+   },
+   {
+    "internal_id": 87807,
+    "chunk_id": "Rel-19/23_series/23288-j20.md::otel-0.6b::1609",
+    "chars": 220,
+    "n10": 5,
+    "instruction_cos": 0.02852701001511883
+   },
+   {
+    "internal_id": 106215,
+    "chunk_id": "Rel-19/24_series/24390-j00.md::otel-0.6b::179",
+    "chars": 283,
+    "n10": 5,
+    "instruction_cos": 0.10165997040576415
+   },
+   {
+    "internal_id": 225311,
+    "chunk_id": "Rel-19/26_series/26346-j00.md::otel-0.6b::5",
+    "chars": 388,
+    "n10": 5,
+    "instruction_cos": 0.10021045627913197
+   },
+   {
+    "internal_id": 407807,
+    "chunk_id": "Rel-19/32_series/32250-j00.md::otel-0.6b::33",
+    "chars": 888,
+    "n10": 5,
+    "instruction_cos": 0.36248011735396585
+   },
+   {
+    "internal_id": 622206,
+    "chunk_id": "Rel-19/36_series/36331-j21.md::otel-0.6b::256",
+    "chars": 737,
+    "n10": 5,
+    "instruction_cos": 0.15685058110929023
+   },
+   {
+    "internal_id": 851053,
+    "chunk_id": "Rel-19/36_series/36521-3.md::otel-0.6b::35130",
+    "chars": 295,
+    "n10": 5,
+    "instruction_cos": 0.07564420072608367
+   },
+   {
+    "internal_id": 87892,
+    "chunk_id": "Rel-19/23_series/23288-j20.md::otel-0.6b::1763",
+    "chars": 133,
+    "n10": 4,
+    "instruction_cos": 0.09324215038224751
+   },
+   {
+    "internal_id": 87935,
+    "chunk_id": "Rel-19/23_series/23288-j20.md::otel-0.6b::1125",
+    "chars": 285,
+    "n10": 4,
+    "instruction_cos": 0.08454790788195539
+   },
+   {
+    "internal_id": 106227,
+    "chunk_id": "Rel-19/24_series/24390-j00.md::otel-0.6b::22",
+    "chars": 428,
+    "n10": 4,
+    "instruction_cos": 0.16668557941926196
+   },
+   {
+    "internal_id": 165506,
+    "chunk_id": "Rel-19/24_series/24282-j20.md::otel-0.6b::737",
+    "chars": 583,
+    "n10": 4,
+    "instruction_cos": 0.06608854909909725
+   },
+   {
+    "internal_id": 226282,
+    "chunk_id": "Rel-19/26_series/26346-j00.md::otel-0.6b::6",
+    "chars": 500,
+    "n10": 4,
+    "instruction_cos": 0.10560294343397209
+   },
+   {
+    "internal_id": 226492,
+    "chunk_id": "Rel-19/28_series/28301-j00.md::otel-0.6b::23",
+    "chars": 311,
+    "n10": 4,
+    "instruction_cos": 0.13371511005984743
+   },
+   {
+    "internal_id": 289970,
+    "chunk_id": "Rel-19/29_series/29345-j00.md::otel-0.6b::240",
+    "chars": 275,
+    "n10": 4,
+    "instruction_cos": 0.14123961571747667
+   },
+   {
+    "internal_id": 320693,
+    "chunk_id": "Rel-19/29_series/29517-j20.md::otel-0.6b::22",
+    "chars": 627,
+    "n10": 4,
+    "instruction_cos": 0.1193964938243306
+   }
+  ]
+ },
+ "control": {
+  "cell": "qwen3-embedding-0.6b",
+  "model": "Qwen/Qwen3-Embedding-0.6B",
+  "model_revision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+  "header": {
+   "max_elements": 2097152,
+   "cur_element_count": 1064960,
+   "size_data_per_element": 4236
+  },
+  "block_starts": [
+   87750,
+   106000,
+   151000,
+   154750,
+   165500,
+   178250,
+   225250,
+   226250,
+   239500,
+   271750,
+   289750,
+   320500,
+   340750,
+   341750,
+   371750,
+   400500,
+   407750,
+   414750,
+   486250,
+   513000,
+   513250,
+   548500,
+   557250,
+   588750,
+   622000,
+   642750,
+   646000,
+   707250,
+   742000,
+   742750,
+   851000,
+   870250,
+   910000,
+   938500,
+   953750,
+   959250,
+   964000,
+   971250,
+   978000,
+   993250
+  ],
+  "metadata_fetch": "downloaded",
+  "label_map_source": "label_to_id",
+  "fts_fetch": "downloaded",
+  "text_lookup": {
+   "table": "bm25_index",
+   "id_column": "doc_id",
+   "text_column": "text"
+  },
+  "sampled": 10000,
+  "resolved": 10000,
+  "base_rates": {
+   "L254": 0.0915,
+   "SHORT": 0.2979,
+   "LONG": 0.3722
+  },
+  "chars_quantiles": {
+   "0.05": 137.0,
+   "0.25": 254.0,
+   "0.5": 405.5,
+   "0.75": 638.0,
+   "0.95": 931.0
+  },
+  "prompts": {
+   "default_prompt_name": null,
+   "query_prompt_name": "query",
+   "query_prompt": "Instruct: Given a web search query, retrieve relevant passages that answer the query\nQuery:",
+   "document_prompt": "",
+   "dtype": "torch.bfloat16",
+   "sentence_transformers": "5.7.0",
+   "torch": "2.15.0+cpu"
+  },
+  "encode_seconds": 502.9,
+  "affinity": {
+   "L254": 0.29068377806637136,
+   "SHORT": 0.24569670508070074,
+   "LONG": 0.17497928383668204,
+   "all": 0.20069232864438472
+  },
+  "hubs": {
+   "Q": {
+    "L254": {
+     "slots": 1910,
+     "base_rate": 0.0915,
+     "topk_share": 0.0005235602094240838,
+     "ratio": 0.0057219695019025555,
+     "any_in_topk": 0.005235602094240838,
+     "top1_share": 0.0,
+     "n10_skew": 5.347943599219303,
+     "n10_max": 13,
+     "top1pct_slot_share": 0.21099476439790577,
+     "never_retrieved": 0.8677
+    },
+    "SHORT": {
+     "slots": 1910,
+     "base_rate": 0.2979,
+     "topk_share": 0.187434554973822,
+     "ratio": 0.6291861529836253,
+     "any_in_topk": 0.837696335078534,
+     "top1_share": 0.193717277486911,
+     "n10_skew": 5.347943599219303,
+     "n10_max": 13,
+     "top1pct_slot_share": 0.21099476439790577,
+     "never_retrieved": 0.8677
+    }
+   },
+   "D": {
+    "L254": {
+     "slots": 1910,
+     "base_rate": 0.0915,
+     "topk_share": 0.0,
+     "ratio": 0.0,
+     "any_in_topk": 0.0,
+     "top1_share": 0.0,
+     "n10_skew": 16.272261070616892,
+     "n10_max": 42,
+     "top1pct_slot_share": 0.5146596858638743,
+     "never_retrieved": 0.9254
+    },
+    "SHORT": {
+     "slots": 1910,
+     "base_rate": 0.2979,
+     "topk_share": 0.2481675392670157,
+     "ratio": 0.833056526576085,
+     "any_in_topk": 0.8795811518324608,
+     "top1_share": 0.20418848167539266,
+     "n10_skew": 16.272261070616892,
+     "n10_max": 42,
+     "top1pct_slot_share": 0.5146596858638743,
+     "never_retrieved": 0.9254
+    }
+   }
+  },
+  "top_hubs_Q": [
+   {
+    "internal_id": 642987,
+    "chunk_id": "Rel-19/43_series/43055-j00.md::qwen3-embedding-0.6b::197",
+    "chars": 737,
+    "n10": 13,
+    "instruction_cos": 0.25612186213888044
+   },
+   {
+    "internal_id": 371876,
+    "chunk_id": "Rel-19/29_series/29519-j20.md::qwen3-embedding-0.6b::1199",
+    "chars": 729,
+    "n10": 8,
+    "instruction_cos": 0.33058225419010157
+   },
+   {
+    "internal_id": 87976,
+    "chunk_id": "Rel-19/23_series/23288-j20.md::qwen3-embedding-0.6b::1566",
+    "chars": 1039,
+    "n10": 7,
+    "instruction_cos": 0.24657090098500165
+   },
+   {
+    "internal_id": 371805,
+    "chunk_id": "Rel-19/29_series/29502-j20.md::qwen3-embedding-0.6b::78",
+    "chars": 735,
+    "n10": 7,
+    "instruction_cos": 0.1452486126997528
+   },
+   {
+    "internal_id": 371812,
+    "chunk_id": "Rel-19/29_series/29519-j20.md::qwen3-embedding-0.6b::1165",
+    "chars": 758,
+    "n10": 7,
+    "instruction_cos": 0.27752892886206726
+   },
+   {
+    "internal_id": 486378,
+    "chunk_id": "Rel-19/37_series/37171-j00.md::qwen3-embedding-0.6b::85",
+    "chars": 128,
+    "n10": 7,
+    "instruction_cos": 0.16052514936468132
+   },
+   {
+    "internal_id": 910015,
+    "chunk_id": "Rel-19/36_series/36523-1.md::qwen3-embedding-0.6b::2067",
+    "chars": 171,
+    "n10": 7,
+    "instruction_cos": 0.25240815861893684
+   },
+   {
+    "internal_id": 87811,
+    "chunk_id": "Rel-19/23_series/23288-j20.md::qwen3-embedding-0.6b::1720",
+    "chars": 722,
+    "n10": 6,
+    "instruction_cos": 0.19302541074890034
+   },
+   {
+    "internal_id": 87974,
+    "chunk_id": "Rel-19/23_series/23288-j20.md::qwen3-embedding-0.6b::1859",
+    "chars": 983,
+    "n10": 6,
+    "instruction_cos": 0.14420600526324812
+   },
+   {
+    "internal_id": 320597,
+    "chunk_id": "Rel-19/29_series/29509-j20.md::qwen3-embedding-0.6b::272",
+    "chars": 650,
+    "n10": 6,
+    "instruction_cos": 0.2577335739117603
+   },
+   {
+    "internal_id": 400637,
+    "chunk_id": "Rel-19/32_series/32256-j10.md::qwen3-embedding-0.6b::2",
+    "chars": 474,
+    "n10": 6,
+    "instruction_cos": 0.13836243057166983
+   },
+   {
+    "internal_id": 407756,
+    "chunk_id": "Rel-19/29_series/29518-j20.md::qwen3-embedding-0.6b::2735",
+    "chars": 426,
+    "n10": 6,
+    "instruction_cos": 0.22319794592680328
+   },
+   {
+    "internal_id": 414827,
+    "chunk_id": "Rel-19/29_series/29558-j20.md::qwen3-embedding-0.6b::1702",
+    "chars": 264,
+    "n10": 6,
+    "instruction_cos": 0.28732553401543826
+   },
+   {
+    "internal_id": 938580,
+    "chunk_id": "Rel-19/36_series/36523-1.md::qwen3-embedding-0.6b::31239",
+    "chars": 212,
+    "n10": 6,
+    "instruction_cos": 0.23004431132091602
+   },
+   {
+    "internal_id": 87768,
+    "chunk_id": "Rel-19/23_series/23288-j20.md::qwen3-embedding-0.6b::1634",
+    "chars": 907,
+    "n10": 5,
+    "instruction_cos": 0.14412011686512227
+   },
+   {
+    "internal_id": 87859,
+    "chunk_id": "Rel-19/23_series/23288-j20.md::qwen3-embedding-0.6b::1702",
+    "chars": 862,
+    "n10": 5,
+    "instruction_cos": 0.14246841567185364
+   },
+   {
+    "internal_id": 87889,
+    "chunk_id": "Rel-19/24_series/24173-j00.md::qwen3-embedding-0.6b::114",
+    "chars": 757,
+    "n10": 5,
+    "instruction_cos": 0.1961519061943099
+   },
+   {
+    "internal_id": 178475,
+    "chunk_id": "Rel-19/25_series/25141-j00.md::qwen3-embedding-0.6b::193",
+    "chars": 104,
+    "n10": 5,
+    "instruction_cos": 0.2427204031910694
+   },
+   {
+    "internal_id": 239639,
+    "chunk_id": "Rel-19/28_series/28312-j10.md::qwen3-embedding-0.6b::705",
+    "chars": 148,
+    "n10": 5,
+    "instruction_cos": 0.3391249417851031
+   },
+   {
+    "internal_id": 400593,
+    "chunk_id": "Rel-19/29_series/29510-j20.md::qwen3-embedding-0.6b::2957",
+    "chars": 871,
+    "n10": 5,
+    "instruction_cos": 0.27434035567337495
+   }
+  ]
+ },
+ "gates": {
+  "GA": true,
+  "GQ": false
+ },
+ "grades": {
+  "P1": null,
+  "P2": null,
+  "P3": null,
+  "P4": null,
+  "P5": null,
+  "P6": null
+ },
+ "finished_utc": "2026-11-12T14:16:16Z"
+}

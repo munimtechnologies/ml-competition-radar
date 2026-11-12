@@ -2,9 +2,29 @@
 
 MV2 of Munim, Inc. (mv2@munimtech.com). Made with AI agents working in his name. Text is CC BY 4.0 and code
 is Apache-2.0. Everything here comes from public pages and files, read 2026-11-10 between 16:30 and 17:00 UTC,
-with an addendum read between 20:45 and 21:15 UTC, study results from 2026-11-11 and a scoring analysis read
-2026-11-11 between 12:10 and 12:40 UTC, updated between 18:15 and 18:40 UTC (marked below). The challenge
-opens 2026-11-13 12:00 UTC, and the rules may change before then.
+with an addendum read between 20:45 and 21:15 UTC, study results from 2026-11-11 and 2026-11-12 and a scoring
+analysis read 2026-11-11 between 12:10 and 12:40 UTC, updated between 18:15 and 18:40 UTC (marked below). The
+challenge opens 2026-11-13 12:00 UTC, and the rules may change before then.
+
+## New (2026-11-12): the 254-character chunks are not hubs. Dense retrieval almost never returns them
+
+[RESULTS-embcheck2.md](RESULTS-embcheck2.md), pre-registered in
+[PREREGISTRATION-embcheck2.md](PREREGISTRATION-embcheck2.md). **No prediction is graded.** The
+pre-registration needed 300 3GPP-tagged public questions, and GSMA's `ot-lite` TeleQnA test file has only 191.
+The numbers are therefore exploratory, but they are clear. Chunks exactly 254 characters long make up 8-9% of
+10,000 sampled vectors in both the default `otel-0.6b` cell and the base `qwen3-embedding-0.6b` cell, yet they
+took **0-4 of 1,910 top-10 slots** (158-175 expected), whether questions were encoded with or without the
+query instruction. Chunks shorter than 254 characters got about their fair share. So the pre-registered worry
+(instruction-dominated chunks crowding the top 10) is not supported, and the gap shows up in the cleanly built
+control cell too.
+
+Also exploratory: in the base Qwen3 cell, questions encoded *without* its query instruction make one chunk
+appear in 42 of 191 top 10s. Use the instruction there.
+
+Next: [PREREGISTRATION-embcheck3.md](PREREGISTRATION-embcheck3.md) describes these chunks from the full chunk
+tables (how many there are, whether they come in runs within a document, what kind of text they hold).
+Code: [telco_embcheck3.py](telco_embcheck3.py) with offline tests in
+[test_telco_embcheck3.py](test_telco_embcheck3.py).
 
 ## Updated (2026-11-11 ~18:30 UTC): the scoring rule, and why short prompts win
 
@@ -36,13 +56,10 @@ instruction, and none match the plain encoding. All 40 sampled vectors of the ba
 and E5 failed (the instruction moves most passages only a little, median cosine 0.962).
 
 For most passages the effect is small. For 16 of 100 it is large (cosine 0.51-0.67 between the stored vector
-and the plain encoding), and 13 of those 16 are chunks exactly 254 characters long. Next:
-[PREREGISTRATION-embcheck2.md](PREREGISTRATION-embcheck2.md) tests whether those chunks crowd the top 10 for
-300 public 3GPP questions (GSMA's Open Telco TeleQnA set), and whether encoding questions without the
-instruction avoids it. Code: [telco_embcheck2.py](telco_embcheck2.py) with offline tests in
-[test_telco_embcheck2.py](test_telco_embcheck2.py). (2026-11-11: the starter kit's default `otel-0.6b` setup
-encodes questions with plain `encode()`, so they get the same default prompt as the passages; that is
-embcheck-2's "Q" setting.)
+and the plain encoding), and 13 of those 16 are chunks exactly 254 characters long. embcheck-2 (above) then
+tested whether those chunks crowd the top 10. (2026-11-11: the starter kit's default `otel-0.6b` setup encodes
+questions with plain `encode()`, so they get the same default prompt as the passages; that is embcheck-2's "Q"
+setting.)
 
 ## The contest (from Zindi's public API)
 
@@ -125,3 +142,7 @@ collection loads. This is noted here, not claimed as a defect.
   proof that the pre-registration was public first.
 - `telco_embcheck2.py` 0.2.0, `test_telco_embcheck2.py`, `fetch_base_embcheck2.py`, `wait_public.py`:
   embcheck-2 (it downloads `telco_embcheck.py` unchanged from commit 4717478).
+- `RESULTS-embcheck2.md`, `embcheck2.json`, `RESULTS-embcheck2-auto.md`, `prereg_public_embcheck2.json`,
+  `base_files_embcheck2.json` (2026-11-12): embcheck-2's write-up, machine output and proofs.
+- `PREREGISTRATION-embcheck3.md`, `telco_embcheck3.py` 0.3.0, `test_telco_embcheck3.py` (2026-11-12):
+  embcheck-3, standard library only. It reuses `wait_public.py` unchanged.
