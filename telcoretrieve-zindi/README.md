@@ -4,7 +4,8 @@ MV2 of Munim, Inc. (mv2@munimtech.com). Made with AI agents working in his name.
 is Apache-2.0. Everything here comes from public pages and files, read 2026-11-10 between 16:30 and 17:00 UTC,
 with an addendum read between 20:45 and 21:15 UTC, study results from 2026-11-11 and 2026-11-12 and a scoring
 analysis read 2026-11-11 between 12:10 and 12:40 UTC, updated between 18:15 and 18:40 UTC (marked below). The
-challenge opens 2026-11-13 12:00 UTC, and the rules may change before then.
+contest facts were re-read from Zindi's public API on 2026-11-12 around 20:55 UTC. The challenge opens
+2026-11-13 12:00 UTC, and the rules may change before then.
 
 ## New (2026-11-12): the 254-character chunks are not hubs. Dense retrieval almost never returns them
 
@@ -24,7 +25,7 @@ appear in 42 of 191 top 10s. Use the instruction there.
 Next: [PREREGISTRATION-embcheck3.md](PREREGISTRATION-embcheck3.md) describes these chunks from the full chunk
 tables (how many there are, whether they come in runs within a document, what kind of text they hold).
 Code: [telco_embcheck3.py](telco_embcheck3.py) with offline tests in
-[test_telco_embcheck3.py](test_telco_embcheck3.py).
+[test_telco_embcheck3.py](test_telco_embcheck3.py). It is queued and has not run yet.
 
 ## Updated (2026-11-11 ~18:30 UTC): the scoring rule, and why short prompts win
 
@@ -34,7 +35,7 @@ public (Apache-2.0). Its challenge docs, updated at commit `a9b61be6` (2026-11-1
 tokens per question** and T the prompt tokens (`cl100k_base`), equivalently 100 x 850 / (850 + mean
 `input_prompt` tokens). There is an 80% accuracy floor and a 4,096-token prompt cap. Our first reading
 (12:40 UTC, commit `075feaa3`) used the kit code's earlier B = 2,000, which that code still marks "proposed,
-not confirmed".
+not confirmed". (2026-11-12 20:55 UTC: `a9b61be6` is still the kit's newest commit.)
 
 With B = 850, 80% accuracy with 300-token prompts (78.17) beats 95% with 2,000-token prompts (75.45), and going
 from 300 to 2,000 mean tokens has to buy 18.9 accuracy points to break even (15.8 with B = 2,000). 100 more mean
@@ -61,18 +62,26 @@ tested whether those chunks crowd the top 10. (2026-11-11: the starter kit's def
 questions with plain `encode()`, so they get the same default prompt as the passages; that is embcheck-2's "Q"
 setting.)
 
-## The contest (from Zindi's public API)
+## The contest (from Zindi's public API, re-read 2026-11-12 ~20:55 UTC)
 
-- **Prize:** $20,000 (8,000 / 5,000 / 3,500 / 2,000 / 1,500).
-- **Dates:** entries close 2027-01-06, submissions close 2027-01-13, private evaluation runs 15-31 January 2027.
+- **Prize:** Zindi's reward field now reads **€25,000** (it read $20,000 before). The cash places are
+  8,000 / 5,000 / 3,500 / 2,000 / 1,500 (the page labels them both "€" and "USD"; the rules say winners are paid
+  "in USD or the currency of the challenge"). The top three also each get an MWC Barcelona Leader Pass (given as
+  worth €2,000) and up to 1,500 towards the costs of attending MWC Barcelona in March 2027.
+- **Dates:** opens 2026-11-13 12:00 UTC; entries close 2027-01-06 23:59; submissions close 2027-01-13 22:25;
+  the contest ends 22:55. Phase 1 (public evaluation) runs 13 November 2026 - 13 January 2027 and Phase 2
+  (private evaluation) 15-31 January 2027, with AMD GPU instances available from 15 January 2027.
 - **Task:** answer questions grounded in 3GPP standards.
 - **Required models:**
   - generator `google/gemma-3n-e4b-it`
   - embedder `farbodtavakkoli/OTel-Embedding-300M`
   - reranker `farbodtavakkoli/OTel-Reranker-0.6B`
-  - Fine-tuning them is allowed.
-- **Data:** only the provided datasets may be used. There is an 80% accuracy floor. Each team gets 10
-  submissions a day.
+  - Fine-tuning them is allowed; other pretrained models only if openly available to everyone.
+- **Data and tools:** only the provided datasets may be used. AutoML tools are not permitted, nor paid services
+  or free trials that need a credit card. The rules do not mention AI-assisted code.
+- **Limits:** an 80% accuracy floor (below it a submission is disqualified); 10 submissions a day, 300 in total.
+- **Metric on Zindi:** listed as "multi" (token efficiency and accuracy). The page itself gives no formula, B or
+  token cap; those come from the starter kit (above).
 
 ## Things that do not line up yet (worth asking about once the forum opens)
 
@@ -83,16 +92,18 @@ setting.)
    base cells is labelled as built with the 300M OTel model. The closest, `embeddinggemma-300m-fp32`, is named
    after the base Gemma embedder. (2026-11-11: the starter kit's challenge profile also defaults to
    `otel-0.6b`, and its registry lists `otel-300m` with 1,024 dimensions.)
-2. **Public/private split.** The summary says about 30/70, the full rules about 20/80.
+2. **Public/private split.** The summary says about 30/70, the full rules about 20/80 (still so on 2026-11-12).
 3. **Team size.** The rules say up to 4 members. The API metadata says 3 and `allow_teams: false`.
 4. **Metric.** *Resolved 2026-11-11 by the starter kit:* 0.7 x accuracy + 0.3 x token efficiency, see
-   [SCORING.md](SCORING.md). Zindi's API metric field still reads `character_error_rate`. *New mismatch
-   (18:30 UTC):* the kit's docs give B = 850, its scorer code still uses 2,000 ("proposed, not confirmed").
+   [SCORING.md](SCORING.md). Zindi's API metric field read `character_error_rate` on 2026-11-11 and reads
+   "multi" (token efficiency, accuracy) on 2026-11-12. *Open mismatch (2026-11-11 18:30 UTC):* the kit's docs
+   give B = 850, its scorer code still uses 2,000 ("proposed, not confirmed").
 5. **Pipeline code and questions.** *Code resolved 2026-11-11:* `Znbne/telco-retrieve` is public
    (Apache-2.0). *Questions (18:30 UTC):* the kit's docs now point to `Test.csv` on the Zindi challenge page
    (columns `ID,question,options`, no answers) instead of `GSMA/telco-retrieve-QnA` on Hugging Face.
-6. **Prize pool.** ITU's AI for Good event page gives the pool as €25,000, while Zindi gives $20,000. ITU
-   lists a launch webinar on 13 November 2026 at 14:00 CET.
+6. **Prize pool.** *Mostly resolved 2026-11-12:* Zindi's reward field now says €25,000, matching ITU's AI for
+   Good event page. The listed cash places still add up to 20,000, and the page mixes "€" and "USD" labels.
+   ITU lists a launch webinar on 13 November 2026 at 14:00 CET.
 7. **Query instruction on passages** (2026-11-11): see the result above.
 
 ## The prebuilt indexes (`GSMA/telco-retrieve-chunks`, folder `telcoretrievechallenge/`)
